@@ -4,9 +4,9 @@ Bloqs lib to develop awesome tools to teach robotics
 
 ## About
 
-A JavaScript library by Tom Calvo.
+A JavaScript library by Bitbloq Team
 
-See the [project homepage](http://tocalvo.github.io/bloqs).
+See the [project homepage](https://github.com/bq/bloqs).
 
 ## Installation
 
@@ -14,7 +14,7 @@ Using Bower:
 
     bower install bloqs
 
-Or grab the [source](https://github.com/tocalvo/bloqs/dist/bloqs.js) ([minified](https://github.com/tocalvo/bloqs/dist/bloqs.min.js)).
+Or grab the [source](https://github.com/bq/bloqs/dist/bloqs.js) ([minified](https://github.com/bq/bloqs/dist/bloqs.min.js)).
 
 ## Usage
 
