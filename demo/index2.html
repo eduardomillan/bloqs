@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>bloqs demo</title>
+    <link rel="stylesheet" href="./assets/normalize.css" />
+    <link rel="stylesheet" href="./assets/main.css" />
+    <style>
+      /* begin demo embedded styles */
+      body,html{
+        width: 100%;
+        height: 100%;
+      }
+      #field1{
+        width: 100%;
+        height: 100%;
+      }
+      /* end demo embedded styles */
+    </style>
+  </head>
+  <body>
+    <h1>bloqs demo</h1>
+
+    <!-- begin demo markup -->
+    <div id="field1"></div>
+    <!-- end demo markup -->
+
+    <p>See the <a href="http://bq.github.io/bloqs">project homepage</a>.
+    <p>Check out the <a href="https://github.com/bq/bloqs">project repo</a>.
+    <p>Copyright 2015 bq</p>
+    <script src="./../bower_components/svg.js/dist/svg.js"></script>
+    <script src="./../bower_components/svg.draggable.js/svg.draggable.js"></script>
+
+    <script src="./../dist/bloqs.js"></script>
+
+    <script>
+      /* begin demo script */
+
+      var n = bloqs();
+      console.log(n);
+      console.log(n.VERSION);
+      console.log(n.createField());
+
+      var field = SVG('field1');
+      SVG.registerEvent('connector:move');
+      var block1 = n.createBloq([300,100], [{location:'down',type:'string'},{location:'left', type:'int'}], '#000', {setup:"blablalba", loop:"blablabla2"});
+      var block2 = n.createBloq([300,300], [{location:'up',type:'int'},{location:'right', type:'int'}], '#045', {setup:"blablalba1111", loop:"blablabla11112"});
+      // var block2 = n.createBloq('output', '#000', [100,100]);
+
+
+
+
+      /* end demo script */
+    </script>
+  </body>
+</html>
