@@ -30,7 +30,7 @@
         return code;
     };
     data.createBloq = function(position, connections, color, code) {
-        var size = [150, 100];
+        var size = [200, 100];
         var bloq = field.rect(size[0], size[1]).move(position[0], position[1]).fill(color);
         bloq.connections = connections;
         bloq.code = code;
@@ -39,7 +39,6 @@
         //     console.log('mouseover', bloq.code);
         // });
         bloq.dragmove = function() {
-            console.log('aaaaaaaaa', data.connectedBloqs[this.node.id]);
             if (data.connectedBloqs[this.node.id] !== undefined) {
                 //remove parent of this and child in parent!:
                 if (data.connectedBloqs[this.node.id]._parent !== undefined) {
@@ -51,8 +50,7 @@
                   var bloq1=data.connectedBloqs[this.node.id]._children[i].bloq;
                   var bloq2=this;
                     var location = data.connectedBloqs[this.node.id]._children[i].location;
-                    console.log('location', location);
-                    this.connectBloqs(data.connectedBloqs[this.node.id]._children[i].bloq,this, data.connectedBloqs[this.node.id]._children[i].location);
+                    this.connectBloqs(bloq1,bloq2, location);
                 }
             }
         };
@@ -89,6 +87,7 @@
                     var connector1 = this.createConnectors(bloq1, bloq1.connections[type].location);
                     var connector2 = this.createConnectors(bloq2, bloq2Location);
                     if (itsOver(connector1, connector2)) {
+                        console.log('aaaaaaaa', bloq1.connections[type].location);
                         this.connectBloqs(bloq1, bloq2, bloq1.connections[type].location);
                         break;
                     }
@@ -104,14 +103,15 @@
                 bloq1.x(bloq2.x());
                 bloq1.y(bloq2.y() - bloq2.height());
                 this.updateConnectedBloqs(bloq1, bloq2, 'up');
+            } else if (location === 'right') {
+                bloq1.x(bloq2.x() - bloq2.width());
+                bloq1.y(bloq2.y());
+                this.updateConnectedBloqs(bloq1, bloq2, 'left');
+            } else if (location === 'left') {
+                bloq1.x(bloq2.x() + bloq2.width());
+                bloq1.y(bloq2.y());
+                this.updateConnectedBloqs(bloq2, bloq1, 'left');
             }
-            // else if (location === 'right') {
-            //     bloq1.x(bloq2.x() - bloq2.width());
-            //     bloq1.y(bloq2.y());
-            // } else if (location === 'left') {
-            //     bloq1.x(bloq2.x() + bloq2.width());
-            //     bloq1.y(bloq2.y());
-            // }
         };
         bloq.updateConnectedBloqs = function(parent, child, location) {
             if (data.connectedBloqs[parent.node.id] === undefined || data.connectedBloqs[parent.node.id]._children === undefined) {
@@ -153,15 +153,15 @@
                 });
             } else if (type === 'down') {
                 return ({
-                    X1: bloq.x(),
-                    X2: bloq.x() + bloq.width(),
+                    X1: bloq.x()+50,
+                    X2: bloq.x() + bloq.width()-50,
                     Y1: bloq.y() + bloq.height() - 50,
                     Y2: bloq.y() + bloq.height()
                 });
             } else if (type === 'up') {
                 return ({
-                    X1: bloq.x(),
-                    X2: bloq.x() + bloq.width(),
+                    X1: bloq.x()+50,
+                    X2: bloq.x() + bloq.width()-50,
                     Y1: bloq.y(),
                     Y2: bloq.y() + 50
                 });
