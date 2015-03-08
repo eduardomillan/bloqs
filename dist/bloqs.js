@@ -3,9 +3,24 @@
     var data = {
         bloqs: []
     };
+    var field = SVG('field1');
     data.VERSION = '0.0.0';
     data.createField = function() {
         return true;
+    };
+    data.bloqsToCode = function() {
+        var setup = 'void setup (){\n';
+        var loop = 'void loop (){\n';
+        for (var i in data.bloqs) {
+            setup += '  '+ data.bloqs[i].code.setup;
+            loop += '  '+ data.bloqs[i].code.loop;
+            setup += '\n';
+            loop += '\n';
+        }
+        setup += '}\n';
+        loop += '}\n';
+        var code = setup + loop;
+        return code;
     };
     data.createBloq = function(position, connections, color, code) {
         var size = [200, 150];

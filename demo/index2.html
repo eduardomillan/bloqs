@@ -31,7 +31,9 @@
     <script src="./../bower_components/svg.draggable.js/svg.draggable.js"></script>
 
     <script src="./../dist/bloqs.js"></script>
+    <div id="code" style="position: absolute; top: 30px; left: 710px; width: 700px; height: 700px; background-color: #E6E6FA;">    </div>
 
+    <button  style="position: absolute; top: 10px; left: 710px; " onclick="document.getElementById('code').innerHTML ='<pre>'+n.bloqsToCode()+'</pre>'">CODE</button>
     <script>
       /* begin demo script */
 
@@ -40,11 +42,8 @@
       console.log(n.VERSION);
       console.log(n.createField());
 
-      var field = SVG('field1');
-      SVG.registerEvent('connector:move');
-      var block1 = n.createBloq([300,100], [{location:'down',type:'string'},{location:'left', type:'int'}], '#000', {setup:"blablalba", loop:"blablabla2"});
+      var block1 = n.createBloq([300,100], [{location:'down',type:'int'},{location:'left', type:'int'}], '#000', {setup:"blablalba", loop:"blablabla2"});
       var block2 = n.createBloq([300,300], [{location:'up',type:'int'},{location:'right', type:'int'}], '#045', {setup:"blablalba1111", loop:"blablabla11112"});
-      // var block2 = n.createBloq('output', '#000', [100,100]);
 
 
 
