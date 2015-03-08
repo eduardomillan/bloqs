@@ -1,7 +1,14 @@
 (function(root, undefined) {
     "use strict";
     var data = {
-        bloqs: []
+        bloqs: [],
+        connectedBloqs: [{
+            _parent: '',
+            _childs: [{
+                bloq: undefined,
+                location: ''
+            }]
+        }]
     };
     var field = SVG('field1');
     data.VERSION = '0.0.0';
@@ -11,9 +18,9 @@
     data.bloqsToCode = function() {
         var setup = 'void setup (){\n';
         var loop = 'void loop (){\n';
-        for (var i in data.bloqs) {
-            setup += '  '+ data.bloqs[i].code.setup;
-            loop += '  '+ data.bloqs[i].code.loop;
+        for (var i in data.connectedBloqs) {
+            setup += '  ' + data.connectedBloqs[i].code.setup;
+            loop += '  ' + data.connectedBloqs[i].code.loop;
             setup += '\n';
             loop += '\n';
         }
@@ -23,7 +30,7 @@
         return code;
     };
     data.createBloq = function(position, connections, color, code) {
-        var size = [200, 150];
+        var size = [150, 100];
         var bloq = field.rect(size[0], size[1]).move(position[0], position[1]).fill(color);
         bloq.connections = connections;
         bloq.code = code;
@@ -31,103 +38,149 @@
         // bloq.on('mouseover', function() {
         //     console.log('mouseover', bloq.code);
         // });
+        bloq.dragmove = function() {
+            if (data.connectedBloqs[this.node.id] !== undefined) {
+                //remove parent of this and child in parent!:
+                if (data.connectedBloqs[this.node.id]._parent !== undefined) {
+                    delete data.connectedBloqs[data.connectedBloqs[this.node.id]._parent.node.id]._childs[this.node.id];
+                    data.connectedBloqs[this.node.id]._parent = undefined;
+                }
+                //move child bloqs:
+                for (var i in data.connectedBloqs[this.node.id]._childs) {
+                    this.connectBloqs(data.connectedBloqs[this.node.id]._childs[i].bloq, this, data.connectedBloqs[this.node.id]._childs[i].location);
+                }
+            }
+        };
         bloq.dragend = function() {
-            var bloq1, bloq2;
-            var i = 0;
+            // //check if any bloqs have been disconnected
+            // if (data.connectedBloqs[this.node.id] !== undefined) {
+            //     data.connectedBloqs[this.node.id]._parent = undefined;
+            //     for (var i in data.connectedBloqs[this.node.id]._childs) {
+            //         this.connectBloqs(this, data.connectedBloqs[this.node.id]._childs[i].bloq, data.connectedBloqs[this.node.id]._childs[i].location);
+            //     }
+            // }
+            // console.log('aaaaaaaaaaa', data.connectedBloqs[this.node.id]);
+            // if (this.isParent(this.node.id)) {}
+            //     console.log('it was previously connected! Is it, now?');
+            //     // if the connection is down (i.e. the bloq is the upper one) or right (i.e. the bloq is the left one) --> REVIEW THIS CONNECT BLOQS!!
+            //     if (data.connectedBloqs[this.node.id].connection === 'up' || data.connectedBloqs[this.node.id].connection === 'right') {
+            //         this.connectBloqs(data.connectedBloqs[this.node.id]._child, data.connectedBloqs[this.node.id]._parent, data.connectedBloqs[this.node.id].connection);
+            //     } else {
+            //         delete data.connectedBloqs[this.node.id];
+            //     }
+            //     //move the child bloqs
+            //     //otherwise
+            //     //don't move the child bloqs & remove entries from connectedBloqs dictionnary
+            // }
+            //check if any bloqs have been connected
             for (var bloq in data.bloqs) {
                 for (var type in this.connections) {
                     if (this.connections[type].location === 'left' && this.node.id !== data.bloqs[bloq].node.id) {
-                        for (i in data.bloqs[bloq].connections) {
-                            if (data.bloqs[bloq].connections[i].location === 'right' && this.connections[type].type === data.bloqs[bloq].connections[i].type) {
-                                bloq1 = leftConnector(this);
-                                bloq2 = rightConnector(data.bloqs[bloq]);
-                                if (itsOver(bloq1, bloq2)) {
-                                    this.x(data.bloqs[bloq].x() + data.bloqs[bloq].width());
-                                    this.y(data.bloqs[bloq].y());
-                                    break;
-                                }
-                            }
-                        }
+                        this.manageConnections(type, this, data.bloqs[bloq]);
                     } else if (this.connections[type].location === 'right' && this.node.id !== data.bloqs[bloq].node.id) {
-                        for (i in data.bloqs[bloq].connections) {
-                            if (data.bloqs[bloq].connections[i].location === 'left' && this.connections[type].type === data.bloqs[bloq].connections[i].type) {
-                                bloq1 = rightConnector(this);
-                                bloq2 = leftConnector(data.bloqs[bloq]);
-                                if (itsOver(bloq1, bloq2)) {
-                                    this.x(data.bloqs[bloq].x() - data.bloqs[bloq].width());
-                                    this.y(data.bloqs[bloq].y());
-                                    break;
-                                }
-                            }
-                        }
+                        this.manageConnections(type, this, data.bloqs[bloq]);
                     } else if (this.connections[type].location === 'up' && this.node.id !== data.bloqs[bloq].node.id) {
-                        for (i in data.bloqs[bloq].connections) {
-                            if (data.bloqs[bloq].connections[i].location === 'down' && this.connections[type].type === data.bloqs[bloq].connections[i].type) {
-                                bloq1 = upConnector(this);
-                                bloq2 = downConnector(data.bloqs[bloq]);
-                                if (itsOver(bloq1, bloq2)) {
-                                    this.x(data.bloqs[bloq].x());
-                                    this.y(data.bloqs[bloq].y() + data.bloqs[bloq].height());
-                                    break;
-                                }
-                            }
-                        }
+                        this.manageConnections(type, this, data.bloqs[bloq]);
                     } else if (this.connections[type].location === 'down' && this.node.id !== data.bloqs[bloq].node.id) {
-                        for (i in data.bloqs[bloq].connections) {
-                            if (data.bloqs[bloq].connections[i].location === 'up' && this.connections[type].type === data.bloqs[bloq].connections[i].type) {
-                                bloq1 = downConnector(this);
-                                bloq2 = upConnector(data.bloqs[bloq]);
-                                if (itsOver(bloq1, bloq2)) {
-                                    this.x(data.bloqs[bloq].x());
-                                    this.y(data.bloqs[bloq].y() - data.bloqs[bloq].height());
-                                    break;
-                                }
-                            }
-                        }
+                        this.manageConnections(type, this, data.bloqs[bloq]);
+                    }
+                }
+            }
+            console.log('data.connectedBloqs', data.connectedBloqs);
+        };
+        bloq.manageConnections = function(type, bloq1, bloq2) {
+            var bloq2Location;
+            if (bloq1.connections[type].location === 'up') {
+                bloq2Location = 'down';
+            } else if (bloq1.connections[type].location === 'down') {
+                bloq2Location = 'up';
+            } else if (bloq1.connections[type].location === 'right') {
+                bloq2Location = 'left';
+            } else if (bloq1.connections[type].location === 'left') {
+                bloq2Location = 'right';
+            }
+            for (var i in bloq2.connections) {
+                if (bloq2.connections[i].location === bloq2Location && bloq1.connections[type].type === bloq2.connections[i].type) {
+                    var connector1 = this.createConnectors(bloq1, bloq1.connections[type].location);
+                    var connector2 = this.createConnectors(bloq2, bloq2Location);
+                    if (itsOver(connector1, connector2)) {
+                        this.connectBloqs(bloq1, bloq2, bloq1.connections[type].location);
+                        break;
                     }
                 }
             }
         };
-        bloq.dragmove = function() {};
+        bloq.connectBloqs = function(bloq1, bloq2, location) {
+            if (location === 'up') {
+                bloq1.x(bloq2.x());
+                bloq1.y(bloq2.y() + bloq2.height());
+                this.updateConnectedBloqs(bloq2, bloq1, location);
+            } else if (location === 'down') {
+                bloq1.x(bloq2.x());
+                bloq1.y(bloq2.y() - bloq2.height());
+                this.updateConnectedBloqs(bloq1, bloq2, location);
+            }
+            // else if (location === 'right') {
+            //     bloq1.x(bloq2.x() - bloq2.width());
+            //     bloq1.y(bloq2.y());
+            // } else if (location === 'left') {
+            //     bloq1.x(bloq2.x() + bloq2.width());
+            //     bloq1.y(bloq2.y());
+            // }
+        };
+        bloq.updateConnectedBloqs = function(parent, child, location) {
+            if (data.connectedBloqs[parent.node.id] === undefined || data.connectedBloqs[parent.node.id]._childs === undefined) {
+                data.connectedBloqs[parent.node.id] = {};
+                data.connectedBloqs[parent.node.id]._childs = [{}];
+            }
+            if (data.connectedBloqs[parent.node.id] !== undefined && data.connectedBloqs[parent.node.id]._childs[child.node.id] === undefined) {
+                data.connectedBloqs[parent.node.id]._childs[child.node.id] = {
+                    bloq: child,
+                    location: location
+                };
+            }
+            if (data.connectedBloqs[child.node.id] === undefined || data.connectedBloqs[parent.node.id]._parent === undefined) {
+                data.connectedBloqs[child.node.id] = {
+                    _parent: parent
+                };
+            } else if (data.connectedBloqs[child.node.id] !== undefined) {
+                data.connectedBloqs[child.node.id]._parent = parent;
+            }
+        }
 
         function itsOver(dragRect, staticRect) {
             return dragRect.X1 < staticRect.X2 && dragRect.X2 > staticRect.X1 && dragRect.Y1 < staticRect.Y2 && dragRect.Y2 > staticRect.Y1;
         }
-
-        function leftConnector(bloq) {
-            return ({
-                X1: bloq.x(),
-                X2: bloq.x() + 50,
-                Y1: bloq.y(),
-                Y2: bloq.y() + bloq.height()
-            });
-        }
-
-        function rightConnector(bloq) {
-            return ({
-                X1: bloq.x() + bloq.width() - 50,
-                X2: bloq.x() + bloq.width(),
-                Y1: bloq.y(),
-                Y2: bloq.y() + bloq.height()
-            });
-        }
-
-        function downConnector(bloq) {
-            return ({
-                X1: bloq.x(),
-                X2: bloq.x() + bloq.width(),
-                Y1: bloq.y() + bloq.height() - 50,
-                Y2: bloq.y() + bloq.height()
-            });
-        }
-
-        function upConnector(bloq) {
-            return ({
-                X1: bloq.x(),
-                X2: bloq.x() + bloq.width(),
-                Y1: bloq.y(),
-                Y2: bloq.y() + 50
-            });
+        bloq.createConnectors = function(bloq, type) {
+            if (type === 'left') {
+                return ({
+                    X1: bloq.x(),
+                    X2: bloq.x() + 50,
+                    Y1: bloq.y(),
+                    Y2: bloq.y() + bloq.height()
+                });
+            } else if (type === 'right') {
+                return ({
+                    X1: bloq.x() + bloq.width() - 50,
+                    X2: bloq.x() + bloq.width(),
+                    Y1: bloq.y(),
+                    Y2: bloq.y() + bloq.height()
+                });
+            } else if (type === 'down') {
+                return ({
+                    X1: bloq.x(),
+                    X2: bloq.x() + bloq.width(),
+                    Y1: bloq.y() + bloq.height() - 50,
+                    Y2: bloq.y() + bloq.height()
+                });
+            } else if (type === 'up') {
+                return ({
+                    X1: bloq.x(),
+                    X2: bloq.x() + bloq.width(),
+                    Y1: bloq.y(),
+                    Y2: bloq.y() + 50
+                });
+            }
         }
         data.bloqs.push(bloq);
         return bloq;
