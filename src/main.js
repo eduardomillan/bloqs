@@ -4,7 +4,7 @@
         bloqs: [],
         connectedBloqs: [{
             _parent: '',
-            _childs: [{
+            _children: [{
                 bloq: undefined,
                 location: ''
             }]
@@ -39,39 +39,24 @@
         //     console.log('mouseover', bloq.code);
         // });
         bloq.dragmove = function() {
+            console.log('aaaaaaaaa', data.connectedBloqs[this.node.id]);
             if (data.connectedBloqs[this.node.id] !== undefined) {
                 //remove parent of this and child in parent!:
                 if (data.connectedBloqs[this.node.id]._parent !== undefined) {
-                    delete data.connectedBloqs[data.connectedBloqs[this.node.id]._parent.node.id]._childs[this.node.id];
+                    delete data.connectedBloqs[data.connectedBloqs[this.node.id]._parent.node.id]._children[this.node.id];
                     data.connectedBloqs[this.node.id]._parent = undefined;
                 }
                 //move child bloqs:
-                for (var i in data.connectedBloqs[this.node.id]._childs) {
-                    this.connectBloqs(data.connectedBloqs[this.node.id]._childs[i].bloq, this, data.connectedBloqs[this.node.id]._childs[i].location);
+                for (var i in data.connectedBloqs[this.node.id]._children) {
+                  var bloq1=data.connectedBloqs[this.node.id]._children[i].bloq;
+                  var bloq2=this;
+                    var location = data.connectedBloqs[this.node.id]._children[i].location;
+                    console.log('location', location);
+                    this.connectBloqs(data.connectedBloqs[this.node.id]._children[i].bloq,this, data.connectedBloqs[this.node.id]._children[i].location);
                 }
             }
         };
         bloq.dragend = function() {
-            // //check if any bloqs have been disconnected
-            // if (data.connectedBloqs[this.node.id] !== undefined) {
-            //     data.connectedBloqs[this.node.id]._parent = undefined;
-            //     for (var i in data.connectedBloqs[this.node.id]._childs) {
-            //         this.connectBloqs(this, data.connectedBloqs[this.node.id]._childs[i].bloq, data.connectedBloqs[this.node.id]._childs[i].location);
-            //     }
-            // }
-            // console.log('aaaaaaaaaaa', data.connectedBloqs[this.node.id]);
-            // if (this.isParent(this.node.id)) {}
-            //     console.log('it was previously connected! Is it, now?');
-            //     // if the connection is down (i.e. the bloq is the upper one) or right (i.e. the bloq is the left one) --> REVIEW THIS CONNECT BLOQS!!
-            //     if (data.connectedBloqs[this.node.id].connection === 'up' || data.connectedBloqs[this.node.id].connection === 'right') {
-            //         this.connectBloqs(data.connectedBloqs[this.node.id]._child, data.connectedBloqs[this.node.id]._parent, data.connectedBloqs[this.node.id].connection);
-            //     } else {
-            //         delete data.connectedBloqs[this.node.id];
-            //     }
-            //     //move the child bloqs
-            //     //otherwise
-            //     //don't move the child bloqs & remove entries from connectedBloqs dictionnary
-            // }
             //check if any bloqs have been connected
             for (var bloq in data.bloqs) {
                 for (var type in this.connections) {
@@ -118,7 +103,7 @@
             } else if (location === 'down') {
                 bloq1.x(bloq2.x());
                 bloq1.y(bloq2.y() - bloq2.height());
-                this.updateConnectedBloqs(bloq1, bloq2, location);
+                this.updateConnectedBloqs(bloq1, bloq2, 'up');
             }
             // else if (location === 'right') {
             //     bloq1.x(bloq2.x() - bloq2.width());
@@ -129,17 +114,17 @@
             // }
         };
         bloq.updateConnectedBloqs = function(parent, child, location) {
-            if (data.connectedBloqs[parent.node.id] === undefined || data.connectedBloqs[parent.node.id]._childs === undefined) {
+            if (data.connectedBloqs[parent.node.id] === undefined || data.connectedBloqs[parent.node.id]._children === undefined) {
                 data.connectedBloqs[parent.node.id] = {};
-                data.connectedBloqs[parent.node.id]._childs = [{}];
+                data.connectedBloqs[parent.node.id]._children = [{}];
             }
-            if (data.connectedBloqs[parent.node.id] !== undefined && data.connectedBloqs[parent.node.id]._childs[child.node.id] === undefined) {
-                data.connectedBloqs[parent.node.id]._childs[child.node.id] = {
+            if (data.connectedBloqs[parent.node.id] !== undefined && data.connectedBloqs[parent.node.id]._children[child.node.id] === undefined) {
+                data.connectedBloqs[parent.node.id]._children[child.node.id] = {
                     bloq: child,
                     location: location
                 };
             }
-            if (data.connectedBloqs[child.node.id] === undefined || data.connectedBloqs[parent.node.id]._parent === undefined) {
+            if (data.connectedBloqs[child.node.id] === undefined || data.connectedBloqs[child.node.id]._parent === undefined) {
                 data.connectedBloqs[child.node.id] = {
                     _parent: parent
                 };
