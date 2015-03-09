@@ -42,12 +42,30 @@
       console.log(n.VERSION);
       console.log(n.createField());
 
-      var block1 = n.createBloq([300,100], [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}], '#000', {setup:"1", loop:"1"});
-      var block2 = n.createBloq([300,300], [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}], '#045', {setup:"12", loop:"12"});
-      // var block3 = n.createBloq([300,500], [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'}], '#045', {setup:"123", loop:"123"});
+      var bloq1 = {
+          connections: [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}],
+          size: [200, 100],
+          color: '#000',
+          code: {setup:"1", loop:"1"}
+      };
 
+      var bloq2 = {
+          connections: [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}],
+          size: [200, 100],
+          color: '#045',
+          code: {setup:"12", loop:"12"}
+      };
 
+      var bloq3 = {
+          connections: [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}],
+          size: [200, 100],
+          color: '#dd4b39',
+          code: {setup:"123", loop:"123"}
+      };
 
+      var block1 = n.createBloq(bloq1, [300,100]);
+      var block2 = n.createBloq(bloq2, [300,300]);
+      var block3 = n.createBloq(bloq3, [300,500]);
 
       /* end demo script */
     </script>

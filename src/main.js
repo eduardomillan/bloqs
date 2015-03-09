@@ -1,4 +1,4 @@
-(function(root, undefined) {
+(function (root, undefined) {
     "use strict";
     var data = {
         bloqs: [],
@@ -12,10 +12,10 @@
     };
     var field = SVG('field1');
     data.VERSION = '0.0.0';
-    data.createField = function() {
+    data.createField = function () {
         return true;
     };
-    data.bloqsToCode = function() {
+    data.bloqsToCode = function () {
         var setup = 'void setup (){\n';
         var loop = 'void loop (){\n';
         for (var i in data.connectedBloqs) {
@@ -29,16 +29,23 @@
         var code = setup + loop;
         return code;
     };
-    data.createBloq = function(position, connections, color, code) {
-        var size = [200, 100];
-        var bloq = field.rect(size[0], size[1]).move(position[0], position[1]).fill(color);
-        bloq.connections = connections;
-        bloq.code = code;
+
+    /**
+     * Create a bloq and setup its properties and events.
+     *
+     * @param bloqData bloq object
+     * @param position x,y position (just useful for the demo version)
+     *
+     * @returns Object bloq
+     */
+    data.createBloq = function (bloqData, position) {
+        var size = bloqData.size;
+        var bloq = field.rect(size[0], size[1]).move(position[0], position[1]).fill(bloqData.color);
+        bloq.connections = bloqData.connections;
+        bloq.code = bloqData.code;
         bloq.draggable();
-        // bloq.on('mouseover', function() {
-        //     console.log('mouseover', bloq.code);
-        // });
-        bloq.dragmove = function() {
+
+        bloq.dragmove = function () {
             if (data.connectedBloqs[this.node.id] !== undefined) {
                 //remove parent of this and child in parent!:
                 if (data.connectedBloqs[this.node.id]._parent !== undefined) {
@@ -47,14 +54,14 @@
                 }
                 //move child bloqs:
                 for (var i in data.connectedBloqs[this.node.id]._children) {
-                  var bloq1=data.connectedBloqs[this.node.id]._children[i].bloq;
-                  var bloq2=this;
+                    var bloq1 = data.connectedBloqs[this.node.id]._children[i].bloq;
+                    var bloq2 = this;
                     var location = data.connectedBloqs[this.node.id]._children[i].location;
-                    this.connectBloqs(bloq1,bloq2, location);
+                    this.connectBloqs(bloq1, bloq2, location);
                 }
             }
         };
-        bloq.dragend = function() {
+        bloq.dragend = function () {
             //check if any bloqs have been connected
             for (var bloq in data.bloqs) {
                 for (var type in this.connections) {
@@ -71,7 +78,7 @@
             }
             console.log('data.connectedBloqs', data.connectedBloqs);
         };
-        bloq.manageConnections = function(type, bloq1, bloq2) {
+        bloq.manageConnections = function (type, bloq1, bloq2) {
             var bloq2Location;
             if (bloq1.connections[type].location === 'up') {
                 bloq2Location = 'down';
@@ -94,7 +101,7 @@
                 }
             }
         };
-        bloq.connectBloqs = function(bloq1, bloq2, location) {
+        bloq.connectBloqs = function (bloq1, bloq2, location) {
             if (location === 'up') {
                 bloq1.x(bloq2.x());
                 bloq1.y(bloq2.y() + bloq2.height());
@@ -113,7 +120,7 @@
                 this.updateConnectedBloqs(bloq2, bloq1, 'left');
             }
         };
-        bloq.updateConnectedBloqs = function(parent, child, location) {
+        bloq.updateConnectedBloqs = function (parent, child, location) {
             if (data.connectedBloqs[parent.node.id] === undefined || data.connectedBloqs[parent.node.id]._children === undefined) {
                 data.connectedBloqs[parent.node.id] = {};
                 data.connectedBloqs[parent.node.id]._children = [{}];
@@ -136,7 +143,8 @@
         function itsOver(dragRect, staticRect) {
             return dragRect.X1 < staticRect.X2 && dragRect.X2 > staticRect.X1 && dragRect.Y1 < staticRect.Y2 && dragRect.Y2 > staticRect.Y1;
         }
-        bloq.createConnectors = function(bloq, type) {
+
+        bloq.createConnectors = function (bloq, type) {
             if (type === 'left') {
                 return ({
                     X1: bloq.x(),
@@ -153,15 +161,15 @@
                 });
             } else if (type === 'down') {
                 return ({
-                    X1: bloq.x()+50,
-                    X2: bloq.x() + bloq.width()-50,
+                    X1: bloq.x() + 50,
+                    X2: bloq.x() + bloq.width() - 50,
                     Y1: bloq.y() + bloq.height() - 50,
                     Y2: bloq.y() + bloq.height()
                 });
             } else if (type === 'up') {
                 return ({
-                    X1: bloq.x()+50,
-                    X2: bloq.x() + bloq.width()-50,
+                    X1: bloq.x() + 50,
+                    X2: bloq.x() + bloq.width() - 50,
                     Y1: bloq.y(),
                     Y2: bloq.y() + 50
                 });
@@ -171,7 +179,7 @@
         return bloq;
     };
     // Base function.
-    var bloqs = function() {
+    var bloqs = function () {
         return data;
     };
     // Export to the root, which is probably `window`.
