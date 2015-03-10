@@ -4,13 +4,7 @@
         bloqs: []
     };
 
-    var field = SVG('field1');
     var connectionThreshold = 50; // px
-    data.VERSION = '0.0.0';
-
-    data.createField = function () {
-        return true;
-    };
 
     data.bloqsToCode = function () {
         var setup = 'void setup (){\n';
@@ -31,11 +25,12 @@
      * Create a bloq and setup its properties and events.
      *
      * @param bloqData bloq object
+     * @param field element to create the bloq into
      * @param position x,y position (just useful for the demo version)
      *
      * @returns Object bloq
      */
-    data.createBloq = function (bloqData, position) {
+    data.createBloq = function (bloqData, field, position) {
         var size = bloqData.size;
         var bloq = field.rect(size[0], size[1]).move(position[0], position[1]).fill(bloqData.color);
         bloq.connections = bloqData.connections;
@@ -52,8 +47,14 @@
 
         bloq.location = '';
 
+        /**
+         * Set this bloq as draggable
+         */
         bloq.draggable();
 
+        /**
+         * We start dragging
+         */
         bloq.dragmove = function () {
             var movedBloq = this;
             // remove parent of this and child in parent!:
@@ -70,6 +71,9 @@
             }
         };
 
+        /**
+         * We stop dragging
+         */
         bloq.dragend = function () {
             //check if any bloqs have been connected
             for (var bloq in data.bloqs) {

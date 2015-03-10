@@ -1,15 +1,29 @@
 {
   "name": "bloqs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "dist/bloqs.min.js",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "test"
+    "test",
+    "tests"
   ],
   "dependencies": {
     "svg.js": "~1.0.1",
     "svg.draggable.js": "~0.1.0"
-  }
+  },
+  "homepage": "https://github.com/bq/bloqs",
+  "authors": [
+    "Irene Sanz <irene.sanz@bq.com>",
+    "Jesús Flores <jesus.flores@bq.com>"
+  ],
+  "description": "Library to create bloqs in bitbloq",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "bloqs"
+  ],
+  "license": "GPL"
 }
