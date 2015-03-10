@@ -7,7 +7,7 @@
             loop: ''
         }
     };
-    var connectionThreshold = 50; // px
+    var connectionThreshold = 25; // px
     data.bloqsToCode = function() {
         data.functionCode(data.bloqs.setup, 'setup');
         data.functionCode(data.bloqs.loop, 'loop');
@@ -47,19 +47,21 @@
                 type: 'int'
             });
         }
-        if (bloqData.output !== undefined) {
-            bloq.connections.push({
-                location: 'right',
-                type: bloqData.output
-            });
-        }
-        for (var i in bloqData.inputs) {
+        for (var i in bloqData.output) {
             bloq.connections.push({
                 location: 'left',
+                type: bloqData.output[i]
+            });
+        }
+        for (i in bloqData.inputs) {
+            console.log('aaaa inputs:',bloqData.inputs[i]);
+            bloq.connections.push({
+                location: 'right',
                 type: bloqData.inputs[i]
             });
         }
-        console.log('aaa', bloq.connections);
+        console.log('aaaa', bloq, bloq.connections);
+
         bloq.code = bloqData.code;
         bloq.label = bloqData.label;
         /**
@@ -75,8 +77,8 @@
         /**
          * We store the code of the inputs of the bloq here
          */
-        bloq.inputs = [];
-        bloq.location = '';
+        bloq.inputs = bloqData.inputs;
+        // bloq.location = '';
         /**
          * Set this bloq as draggable
          */
@@ -90,7 +92,6 @@
             var movedBloq = this;
             // remove parent of this and child in parent:
             if (movedBloq.relations.parent !== undefined) {
-                // console.log('aaa',this.getBloqById(this.relations.parent));
                 movedBloq.getBloqById(movedBloq.relations.parent).deleteChild(movedBloq);
                 movedBloq.deleteParent(true);
             }
@@ -123,7 +124,6 @@
         };
         bloq.manageConnections = function(type, connectingBloq, updateParent) {
             var connectingBloqLocation;
-            console.log('this.connections[type]', this.connections[type], this.connections, type);
             if (this.connections[type].location === 'up') {
                 connectingBloqLocation = 'down';
             } else if (this.connections[type].location === 'down') {
@@ -139,7 +139,6 @@
             var connector1, connector2;
             for (var i in connectingBloq.connections) {
                 if (connectingBloq.connections[i].location === connectingBloqLocation && this.connections[type].type === connectingBloq.connections[i].type) {
-                    console.log('aaa', this.connections[type].location);
                     connector1 = this.createConnectors(this, this.connections[type].location);
                     connector2 = this.createConnectors(connectingBloq, connectingBloqLocation);
                     if (this.itsOver(connector1, connector2)) {
@@ -307,6 +306,11 @@
                 replacement = this.getBloqById(this.relations.inputChildren).getCode(_function);
                 search = '{[' + i + ']}';
                 code = code.replace(new RegExp(search, 'g'), replacement);
+            }
+            console.log('aaaaaaaaaa', this, this.inputs);
+            for (i in this.inputs) {
+                search = '{[' + i + ']}';
+                code = code.replace(new RegExp(search, 'g'), ' ');
             }
             return code;
         };
