@@ -122,9 +122,9 @@
          * @param location
          */
         bloq.connectBloqs = function (bloq1, bloq2, location) {
-            console.log('connecting '+location);
             var parent = bloq1;
             var child = bloq2;
+            var newLocation = 'up';
             if (location === 'up') {
                 bloq2.x(bloq1.x());
                 bloq2.y(bloq1.y() + bloq1.height());
@@ -138,11 +138,13 @@
                 bloq2.y(bloq1.y());
                 parent = bloq2;
                 child = bloq1;
+                newLocation = 'left';
             } else if (location === 'left') {
                 bloq2.x(bloq1.x() + bloq1.width());
                 bloq2.y(bloq1.y());
+                newLocation = 'left';
             }
-            child.location = location;
+            child.location = newLocation;
             this.updateBloqs(parent, child);
         };
 
