@@ -41,10 +41,11 @@
       var bloqs = bloqs();
 
       var bloq1 = {
+          label : 'loop',
           connections: [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}],
           size: [200, 100],
           color: '#000',
-          code: {setup:"1", loop:"1"}
+          code: {setup:"", loop:"void loop (){\n"}
       };
 
       var bloq2 = {

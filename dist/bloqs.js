@@ -1,22 +1,32 @@
 (function(root, undefined) {
     "use strict";
     var data = {
-        bloqs: []
+        bloqs: [],
+        loop: ''
     };
     var connectionThreshold = 50; // px
     data.bloqsToCode = function() {
         var setup = 'void setup (){\n';
-        var loop = 'void loop (){\n';
-        for (var i in data.bloqs) {
-            // @todo: this has to change to only reflect the code of connected and valid bloqs
-            setup += '  ' + data.bloqs[i].code.setup;
-            loop += '  ' + data.bloqs[i].code.loop;
-            setup += '\n';
-            loop += '\n';
+        // var loop = '';
+        setup += '';
+        data.loopToCode(data.bloqs.loop);
+        console.log('data.bloqs.loop.codeChildren', data.bloqs.loop.relations.codeChildren);
+        // loop += data.loopToCode(data.bloqs.loop); //'  ' + data.bloqs[i].code.loop;
+        setup += '\n}\n';
+        // loop += '\n}\n';
+        return setup + data.loop;
+    };
+    data.loopToCode = function(bloq) {
+        if (bloq === data.bloqs.loop) {
+            data.loop = bloq.code.loop;
+        } else {
+            data.loop += '   ' + bloq.code.loop + ';\n';
         }
-        setup += '}\n';
-        loop += '}\n';
-        return setup + loop;
+        if (bloq.relations.codeChildren.length > 0) {
+            data.loopToCode(bloq.getBloqById(bloq.relations.codeChildren));
+        } else {
+            data.loop += '\n}\n';
+        }
     };
     /**
      * Create a bloq and setup its properties and events.
@@ -32,14 +42,20 @@
         var bloq = field.rect(size[0], size[1]).move(position[0], position[1]).fill(bloqData.color);
         bloq.connections = bloqData.connections;
         bloq.code = bloqData.code;
+        bloq.label = bloqData.label;
         /**
          * We store relations here, using nodes
          * @type {{parent: undefined, children: Array}}
          */
         bloq.relations = {
             parent: undefined,
-            children: []
+            children: [],
+            codeChildren: []
         };
+        /**
+         * We store the code of the inputs of the bloq here
+         */
+        bloq.inputs = [];
         bloq.location = '';
         /**
          * Set this bloq as draggable
@@ -52,6 +68,8 @@
             var movedBloq = this;
             // remove parent of this and child in parent:
             if (movedBloq.relations.parent !== undefined) {
+                // console.log('aaa',this.getBloqById(this.relations.parent));
+                movedBloq.getBloqById(movedBloq.relations.parent).deleteChild(movedBloq);
                 movedBloq.deleteParent(true);
             }
             // move child bloqs along with this one
@@ -117,7 +135,6 @@
              */
             if (this.relations.children.length > 0) {
                 for (var child in this.relations.children) {
-                    console.log('aaa', this.getBloqById(this.relations.children[child]));
                     this.getBloqById(this.relations.children[child]).manageConnections(type, connectingBloq, true);
                 }
             }
@@ -162,7 +179,7 @@
             }
         };
         bloq.updateBloqs = function(parent, child) {
-            parent.setChildren(child.node.id);
+            parent.setChildren(child.node.id, child.location);
             child.setParent(parent.node.id);
         };
         bloq.itsOver = function(dragRect, staticRect) {
@@ -207,7 +224,22 @@
             }
             this.relations.parent = undefined;
         };
-        bloq.setChildren = function(childrenId) {
+        bloq.deleteChild = function(child) {
+            for (var i in this.relations.children) {
+                if (this.relations.children[i] === child.node.id) {
+                    this.relations.children.splice(i, 1);
+                    break;
+                }
+            }
+            for (i in this.relations.codeChildren) {
+                if (this.relations.codeChildren[i] === child.node.id) {
+                    this.relations.codeChildren.splice(i, 1);
+                    break;
+                }
+            }
+            // console.log('aaaaaaaaaaa',this.relations.children , child.node.id);
+        };
+        bloq.setChildren = function(childrenId, location) {
             for (var bloqIndex in this.relations.children) {
                 if (childrenId == this.relations.children[bloqIndex]) {
                     // it exists, do nothing
@@ -216,6 +248,9 @@
             }
             // if we made it so far, add a new child
             this.relations.children.push(childrenId);
+            if (location === 'up') {
+                this.relations.codeChildren.push(childrenId);
+            }
             return true;
         };
         bloq.setParent = function(parentId) {
@@ -231,6 +266,11 @@
             }
             return null;
         };
+        if (bloq.label === 'loop') {
+            data.bloqs.loop = bloq;
+        } else if (bloq.label === 'setup') {
+            data.bloqs.setup = bloq;
+        }
         data.bloqs.push(bloq);
         return bloq;
     };
