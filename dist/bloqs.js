@@ -5,6 +5,7 @@
     };
 
     var field = SVG('field1');
+    var connectionThreshold = 50; // px
     data.VERSION = '0.0.0';
 
     data.createField = function () {
@@ -49,19 +50,21 @@
             children: []
         };
 
+        bloq.location = '';
+
         bloq.draggable();
 
         bloq.dragmove = function () {
-            var movedBloq = this.getBloqById(this.node.id);
+            var movedBloq = this;
             // remove parent of this and child in parent!:
-            if (this.relations.parent !== undefined) {
+            if (movedBloq.relations.parent !== undefined) {
                 movedBloq.deleteParent(true);
             }
 
             // move child bloqs along with this one
-            for (var i in this.relations.children) {
-                var childBloq = this.getBloqById(this.children[i]);
-                var parentBloq = this;
+            for (var i in movedBloq.relations.children) {
+                var childBloq = movedBloq.getBloqById(movedBloq.relations.children[i]);
+                var parentBloq = movedBloq;
                 var location = childBloq.location;
                 this.connectBloqs(parentBloq, childBloq, location);
             }
@@ -72,37 +75,36 @@
             for (var bloq in data.bloqs) {
                 for (var type in this.connections) {
                     if (this.connections[type].location === 'left' && this !== data.bloqs[bloq]) {
-                        this.manageConnections(type, this, data.bloqs[bloq]);
+                        this.manageConnections(type, data.bloqs[bloq]);
                     } else if (this.connections[type].location === 'right' && this !== data.bloqs[bloq]) {
-                        this.manageConnections(type, this, data.bloqs[bloq]);
+                        this.manageConnections(type,  data.bloqs[bloq]);
                     } else if (this.connections[type].location === 'up' && this !== data.bloqs[bloq]) {
-                        this.manageConnections(type, this, data.bloqs[bloq]);
+                        this.manageConnections(type, data.bloqs[bloq]);
                     } else if (this.connections[type].location === 'down' && this !== data.bloqs[bloq]) {
-                        this.manageConnections(type, this, data.bloqs[bloq]);
+                        this.manageConnections(type,  data.bloqs[bloq]);
                     }
                 }
             }
-            console.log('data.bloqs', data.bloqs);
         };
 
-        bloq.manageConnections = function (type, bloq1, bloq2) {
-            var bloq2Location;
-            if (bloq1.connections[type].location === 'up') {
-                bloq2Location = 'down';
-            } else if (bloq1.connections[type].location === 'down') {
-                bloq2Location = 'up';
-            } else if (bloq1.connections[type].location === 'right') {
-                bloq2Location = 'left';
-            } else if (bloq1.connections[type].location === 'left') {
-                bloq2Location = 'right';
+        bloq.manageConnections = function (type, connectingBloq) {
+            var connectingBloqLocation;
+            if (this.connections[type].location === 'up') {
+                connectingBloqLocation = 'down';
+            } else if (this.connections[type].location === 'down') {
+                connectingBloqLocation = 'up';
+            } else if (this.connections[type].location === 'right') {
+                connectingBloqLocation = 'left';
+            } else if (this.connections[type].location === 'left') {
+                connectingBloqLocation = 'right';
             }
-            for (var i in bloq2.connections) {
-                if (bloq2.connections[i].location === bloq2Location && bloq1.connections[type].type === bloq2.connections[i].type) {
-                    var connector1 = this.createConnectors(bloq1, bloq1.connections[type].location);
-                    var connector2 = this.createConnectors(bloq2, bloq2Location);
+
+            for (var i in connectingBloq.connections) {
+                if (connectingBloq.connections[i].location === connectingBloqLocation && bloq1.connections[type].type === connectingBloq.connections[i].type) {
+                    var connector1 = this.createConnectors(this, bloq1.connections[type].location);
+                    var connector2 = this.createConnectors(connectingBloq, connectingBloqLocation);
                     if (this.itsOver(connector1, connector2)) {
-                        console.log('bloq', bloq1.connections[type].location);
-                        this.connectBloqs(bloq1, bloq2, bloq1.connections[type].location);
+                        this.connectBloqs(connectingBloq, this, this.connections[type].location);
                         break;
                     }
                 }
@@ -111,48 +113,38 @@
 
         /**
          * take 2 bloqs and connect them
-         * @param parentBloq
-         * @param childBloq
+         * @param bloq1
+         * @param bloq2
          * @param location
          */
-        bloq.connectBloqs = function (parentBloq, childBloq, location) {
+        bloq.connectBloqs = function (bloq1, bloq2, location) {
+            console.log('connecting '+location);
+            var parent = bloq1;
+            var child = bloq2;
             if (location === 'up') {
-                childBloq.x(parentBloq.x());
-                childBloq.y(parentBloq.y() + parentBloq.height());
-                this.updatebloqs(parentBloq, childBloq, location);
+                bloq2.x(bloq1.x());
+                bloq2.y(bloq1.y() + bloq1.height());
             } else if (location === 'down') {
-                childBloq.x(parentBloq.x());
-                childBloq.y(parentBloq.y() - parentBloq.height());
-                this.updatebloqs(childBloq, parentBloq, 'up');
+                bloq2.x(bloq1.x());
+                bloq2.y(bloq1.y() - bloq1.height());
+                parent = bloq2;
+                child = bloq1;
             } else if (location === 'right') {
-                childBloq.x(parentBloq.x() - parentBloq.width());
-                childBloq.y(parentBloq.y());
-                this.updatebloqs(childBloq, parentBloq, 'left');
+                bloq2.x(bloq1.x() - bloq1.width());
+                bloq2.y(bloq1.y());
+                parent = bloq2;
+                child = bloq1;
             } else if (location === 'left') {
-                childBloq.x(parentBloq.x() + parentBloq.width());
-                childBloq.y(parentBloq.y());
-                this.updatebloqs(parentBloq, childBloq, 'left');
+                bloq2.x(bloq1.x() + bloq1.width());
+                bloq2.y(bloq1.y());
             }
+            child.location = location;
+            this.updateBloqs(parent, child);
         };
 
-        bloq.updatebloqs = function (parent, child, location) {
-            if (parent.node.id === undefined || parent.relations.children === undefined) {
-                data.bloqs[parent.node.id] = {};
-                data.bloqs[parent.node.id].children = [{}];
-            }
-            if (data.bloqs[parent.node.id] !== undefined && data.bloqs[parent.node.id].children[child.node.id] === undefined) {
-                data.bloqs[parent.node.id].children[child.node.id] = {
-                    bloq: child,
-                    location: location
-                };
-            }
-            if (data.bloqs[child.node.id] === undefined || data.bloqs[child.node.id].parent === undefined) {
-                data.bloqs[child.node.id] = {
-                    parent: parent
-                };
-            } else if (data.bloqs[child.node.id] !== undefined) {
-                data.bloqs[child.node.id].parent = parent;
-            }
+        bloq.updateBloqs = function (parent, child) {
+            parent.setChildren(child.node.id);
+            child.setParent(parent.node.id);
         };
 
         bloq.itsOver = function (dragRect, staticRect) {
@@ -163,30 +155,30 @@
             if (type === 'left') {
                 return ({
                     X1: bloq.x(),
-                    X2: bloq.x() + 50,
+                    X2: bloq.x() + connectionThreshold,
                     Y1: bloq.y(),
                     Y2: bloq.y() + bloq.height()
                 });
             } else if (type === 'right') {
                 return ({
-                    X1: bloq.x() + bloq.width() - 50,
+                    X1: bloq.x() + bloq.width() - connectionThreshold,
                     X2: bloq.x() + bloq.width(),
                     Y1: bloq.y(),
                     Y2: bloq.y() + bloq.height()
                 });
             } else if (type === 'down') {
                 return ({
-                    X1: bloq.x() + 50,
-                    X2: bloq.x() + bloq.width() - 50,
-                    Y1: bloq.y() + bloq.height() - 50,
+                    X1: bloq.x() + connectionThreshold,
+                    X2: bloq.x() + bloq.width() - connectionThreshold,
+                    Y1: bloq.y() + bloq.height() - connectionThreshold,
                     Y2: bloq.y() + bloq.height()
                 });
             } else if (type === 'up') {
                 return ({
-                    X1: bloq.x() + 50,
-                    X2: bloq.x() + bloq.width() - 50,
+                    X1: bloq.x() + connectionThreshold,
+                    X2: bloq.x() + bloq.width() - connectionThreshold,
                     Y1: bloq.y(),
-                    Y2: bloq.y() + 50
+                    Y2: bloq.y() + connectionThreshold
                 });
             }
         };
@@ -194,10 +186,27 @@
         // utilities
         bloq.deleteParent = function (cascade) {
             if (cascade !== false) {
-                var parentBloq = this.getBloqById(this.parent);
+                var parentBloq = this.getBloqById(this.relations.parent);
                 parentBloq.relations.children = [];
             }
             this.relations.parent = undefined;
+        };
+
+        bloq.setChildren = function(childrenId){
+            for (var bloqIndex in this.relations.children) {
+                if (childrenId == this.relations.children[bloqIndex]) {
+                    // it exists, do nothing
+                    return false;
+                }
+            }
+            // if we made it so far, add a new child
+            this.relations.children.push(childrenId);
+            return true;
+        };
+
+        bloq.setParent = function(parentId){
+            this.relations.parent = parentId;
+            return true;
         };
 
         bloq.getBloqById = function (nodeId) {

@@ -1,33 +1,30 @@
 (function (root, undefined) {
     "use strict";
     var data = {
-        bloqs: [],
-        connectedBloqs: [{
-            _parent: '',
-            _children: [{
-                bloq: undefined,
-                location: ''
-            }]
-        }]
+        bloqs: []
     };
+
     var field = SVG('field1');
+    var connectionThreshold = 50; // px
     data.VERSION = '0.0.0';
+
     data.createField = function () {
         return true;
     };
+
     data.bloqsToCode = function () {
         var setup = 'void setup (){\n';
         var loop = 'void loop (){\n';
-        for (var i in data.connectedBloqs) {
-            setup += '  ' + data.connectedBloqs[i].code.setup;
-            loop += '  ' + data.connectedBloqs[i].code.loop;
+        for (var i in data.bloqs) {
+            // @todo: this has to change to only reflect the code of connected and valid bloqs
+            setup += '  ' + data.bloqs[i].code.setup;
+            loop += '  ' + data.bloqs[i].code.loop;
             setup += '\n';
             loop += '\n';
         }
         setup += '}\n';
         loop += '}\n';
-        var code = setup + loop;
-        return code;
+        return setup + loop;
     };
 
     /**
@@ -43,138 +40,185 @@
         var bloq = field.rect(size[0], size[1]).move(position[0], position[1]).fill(bloqData.color);
         bloq.connections = bloqData.connections;
         bloq.code = bloqData.code;
+
+        /**
+         * We store relations here, using nodes
+         * @type {{parent: undefined, children: Array}}
+         */
+        bloq.relations = {
+            parent: undefined,
+            children: []
+        };
+
+        bloq.location = '';
+
         bloq.draggable();
 
         bloq.dragmove = function () {
-            if (data.connectedBloqs[this.node.id] !== undefined) {
-                //remove parent of this and child in parent!:
-                if (data.connectedBloqs[this.node.id]._parent !== undefined) {
-                    delete data.connectedBloqs[data.connectedBloqs[this.node.id]._parent.node.id]._children[this.node.id];
-                    data.connectedBloqs[this.node.id]._parent = undefined;
-                }
-                //move child bloqs:
-                for (var i in data.connectedBloqs[this.node.id]._children) {
-                    var bloq1 = data.connectedBloqs[this.node.id]._children[i].bloq;
-                    var bloq2 = this;
-                    var location = data.connectedBloqs[this.node.id]._children[i].location;
-                    this.connectBloqs(bloq1, bloq2, location);
-                }
+            var movedBloq = this;
+            // remove parent of this and child in parent!:
+            if (movedBloq.relations.parent !== undefined) {
+                movedBloq.deleteParent(true);
+            }
+
+            // move child bloqs along with this one
+            for (var i in movedBloq.relations.children) {
+                var childBloq = movedBloq.getBloqById(movedBloq.relations.children[i]);
+                var parentBloq = movedBloq;
+                var location = childBloq.location;
+                this.connectBloqs(parentBloq, childBloq, location);
             }
         };
+
         bloq.dragend = function () {
             //check if any bloqs have been connected
             for (var bloq in data.bloqs) {
                 for (var type in this.connections) {
-                    if (this.connections[type].location === 'left' && this.node.id !== data.bloqs[bloq].node.id) {
-                        this.manageConnections(type, this, data.bloqs[bloq]);
-                    } else if (this.connections[type].location === 'right' && this.node.id !== data.bloqs[bloq].node.id) {
-                        this.manageConnections(type, this, data.bloqs[bloq]);
-                    } else if (this.connections[type].location === 'up' && this.node.id !== data.bloqs[bloq].node.id) {
-                        this.manageConnections(type, this, data.bloqs[bloq]);
-                    } else if (this.connections[type].location === 'down' && this.node.id !== data.bloqs[bloq].node.id) {
-                        this.manageConnections(type, this, data.bloqs[bloq]);
+                    if (this.connections[type].location === 'left' && this !== data.bloqs[bloq]) {
+                        this.manageConnections(type, data.bloqs[bloq]);
+                    } else if (this.connections[type].location === 'right' && this !== data.bloqs[bloq]) {
+                        this.manageConnections(type,  data.bloqs[bloq]);
+                    } else if (this.connections[type].location === 'up' && this !== data.bloqs[bloq]) {
+                        this.manageConnections(type, data.bloqs[bloq]);
+                    } else if (this.connections[type].location === 'down' && this !== data.bloqs[bloq]) {
+                        this.manageConnections(type,  data.bloqs[bloq]);
                     }
                 }
             }
-            console.log('data.connectedBloqs', data.connectedBloqs);
         };
-        bloq.manageConnections = function (type, bloq1, bloq2) {
-            var bloq2Location;
-            if (bloq1.connections[type].location === 'up') {
-                bloq2Location = 'down';
-            } else if (bloq1.connections[type].location === 'down') {
-                bloq2Location = 'up';
-            } else if (bloq1.connections[type].location === 'right') {
-                bloq2Location = 'left';
-            } else if (bloq1.connections[type].location === 'left') {
-                bloq2Location = 'right';
+
+        bloq.manageConnections = function (type, connectingBloq) {
+            var connectingBloqLocation;
+            if (this.connections[type].location === 'up') {
+                connectingBloqLocation = 'down';
+            } else if (this.connections[type].location === 'down') {
+                connectingBloqLocation = 'up';
+            } else if (this.connections[type].location === 'right') {
+                connectingBloqLocation = 'left';
+            } else if (this.connections[type].location === 'left') {
+                connectingBloqLocation = 'right';
             }
-            for (var i in bloq2.connections) {
-                if (bloq2.connections[i].location === bloq2Location && bloq1.connections[type].type === bloq2.connections[i].type) {
-                    var connector1 = this.createConnectors(bloq1, bloq1.connections[type].location);
-                    var connector2 = this.createConnectors(bloq2, bloq2Location);
-                    if (itsOver(connector1, connector2)) {
-                        console.log('aaaaaaaa', bloq1.connections[type].location);
-                        this.connectBloqs(bloq1, bloq2, bloq1.connections[type].location);
+
+            for (var i in connectingBloq.connections) {
+                if (connectingBloq.connections[i].location === connectingBloqLocation && bloq1.connections[type].type === connectingBloq.connections[i].type) {
+                    var connector1 = this.createConnectors(this, bloq1.connections[type].location);
+                    var connector2 = this.createConnectors(connectingBloq, connectingBloqLocation);
+                    if (this.itsOver(connector1, connector2)) {
+                        this.connectBloqs(connectingBloq, this, this.connections[type].location);
                         break;
                     }
                 }
             }
         };
-        bloq.connectBloqs = function (bloq1, bloq2, location) {
-            if (location === 'up') {
-                bloq1.x(bloq2.x());
-                bloq1.y(bloq2.y() + bloq2.height());
-                this.updateConnectedBloqs(bloq2, bloq1, location);
-            } else if (location === 'down') {
-                bloq1.x(bloq2.x());
-                bloq1.y(bloq2.y() - bloq2.height());
-                this.updateConnectedBloqs(bloq1, bloq2, 'up');
-            } else if (location === 'right') {
-                bloq1.x(bloq2.x() - bloq2.width());
-                bloq1.y(bloq2.y());
-                this.updateConnectedBloqs(bloq1, bloq2, 'left');
-            } else if (location === 'left') {
-                bloq1.x(bloq2.x() + bloq2.width());
-                bloq1.y(bloq2.y());
-                this.updateConnectedBloqs(bloq2, bloq1, 'left');
-            }
-        };
-        bloq.updateConnectedBloqs = function (parent, child, location) {
-            if (data.connectedBloqs[parent.node.id] === undefined || data.connectedBloqs[parent.node.id]._children === undefined) {
-                data.connectedBloqs[parent.node.id] = {};
-                data.connectedBloqs[parent.node.id]._children = [{}];
-            }
-            if (data.connectedBloqs[parent.node.id] !== undefined && data.connectedBloqs[parent.node.id]._children[child.node.id] === undefined) {
-                data.connectedBloqs[parent.node.id]._children[child.node.id] = {
-                    bloq: child,
-                    location: location
-                };
-            }
-            if (data.connectedBloqs[child.node.id] === undefined || data.connectedBloqs[child.node.id]._parent === undefined) {
-                data.connectedBloqs[child.node.id] = {
-                    _parent: parent
-                };
-            } else if (data.connectedBloqs[child.node.id] !== undefined) {
-                data.connectedBloqs[child.node.id]._parent = parent;
-            }
-        }
 
-        function itsOver(dragRect, staticRect) {
+        /**
+         * take 2 bloqs and connect them
+         * @param bloq1
+         * @param bloq2
+         * @param location
+         */
+        bloq.connectBloqs = function (bloq1, bloq2, location) {
+            console.log('connecting '+location);
+            var parent = bloq1;
+            var child = bloq2;
+            if (location === 'up') {
+                bloq2.x(bloq1.x());
+                bloq2.y(bloq1.y() + bloq1.height());
+            } else if (location === 'down') {
+                bloq2.x(bloq1.x());
+                bloq2.y(bloq1.y() - bloq1.height());
+                parent = bloq2;
+                child = bloq1;
+            } else if (location === 'right') {
+                bloq2.x(bloq1.x() - bloq1.width());
+                bloq2.y(bloq1.y());
+                parent = bloq2;
+                child = bloq1;
+            } else if (location === 'left') {
+                bloq2.x(bloq1.x() + bloq1.width());
+                bloq2.y(bloq1.y());
+            }
+            child.location = location;
+            this.updateBloqs(parent, child);
+        };
+
+        bloq.updateBloqs = function (parent, child) {
+            parent.setChildren(child.node.id);
+            child.setParent(parent.node.id);
+        };
+
+        bloq.itsOver = function (dragRect, staticRect) {
             return dragRect.X1 < staticRect.X2 && dragRect.X2 > staticRect.X1 && dragRect.Y1 < staticRect.Y2 && dragRect.Y2 > staticRect.Y1;
-        }
+        };
 
         bloq.createConnectors = function (bloq, type) {
             if (type === 'left') {
                 return ({
                     X1: bloq.x(),
-                    X2: bloq.x() + 50,
+                    X2: bloq.x() + connectionThreshold,
                     Y1: bloq.y(),
                     Y2: bloq.y() + bloq.height()
                 });
             } else if (type === 'right') {
                 return ({
-                    X1: bloq.x() + bloq.width() - 50,
+                    X1: bloq.x() + bloq.width() - connectionThreshold,
                     X2: bloq.x() + bloq.width(),
                     Y1: bloq.y(),
                     Y2: bloq.y() + bloq.height()
                 });
             } else if (type === 'down') {
                 return ({
-                    X1: bloq.x() + 50,
-                    X2: bloq.x() + bloq.width() - 50,
-                    Y1: bloq.y() + bloq.height() - 50,
+                    X1: bloq.x() + connectionThreshold,
+                    X2: bloq.x() + bloq.width() - connectionThreshold,
+                    Y1: bloq.y() + bloq.height() - connectionThreshold,
                     Y2: bloq.y() + bloq.height()
                 });
             } else if (type === 'up') {
                 return ({
-                    X1: bloq.x() + 50,
-                    X2: bloq.x() + bloq.width() - 50,
+                    X1: bloq.x() + connectionThreshold,
+                    X2: bloq.x() + bloq.width() - connectionThreshold,
                     Y1: bloq.y(),
-                    Y2: bloq.y() + 50
+                    Y2: bloq.y() + connectionThreshold
                 });
             }
-        }
+        };
+
+        // utilities
+        bloq.deleteParent = function (cascade) {
+            if (cascade !== false) {
+                var parentBloq = this.getBloqById(this.relations.parent);
+                parentBloq.relations.children = [];
+            }
+            this.relations.parent = undefined;
+        };
+
+        bloq.setChildren = function(childrenId){
+            for (var bloqIndex in this.relations.children) {
+                if (childrenId == this.relations.children[bloqIndex]) {
+                    // it exists, do nothing
+                    return false;
+                }
+            }
+            // if we made it so far, add a new child
+            this.relations.children.push(childrenId);
+            return true;
+        };
+
+        bloq.setParent = function(parentId){
+            this.relations.parent = parentId;
+            return true;
+        };
+
+        bloq.getBloqById = function (nodeId) {
+            for (var bloqIndex in data.bloqs) {
+                var bloq = data.bloqs[bloqIndex];
+                if (bloq.node.id == nodeId) {
+                    return bloq;
+                }
+            }
+            return null;
+        };
+
         data.bloqs.push(bloq);
         return bloq;
     };
