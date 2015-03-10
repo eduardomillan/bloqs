@@ -50,7 +50,7 @@
          */
         bloq.dragmove = function() {
             var movedBloq = this;
-            // remove parent of this and child in parent!:
+            // remove parent of this and child in parent:
             if (movedBloq.relations.parent !== undefined) {
                 movedBloq.deleteParent(true);
             }
@@ -81,7 +81,7 @@
                 }
             }
         };
-        bloq.manageConnections = function(type, connectingBloq) {
+        bloq.manageConnections = function(type, connectingBloq, updateParent) {
             var connectingBloqLocation;
             if (this.connections[type].location === 'up') {
                 connectingBloqLocation = 'down';
@@ -92,14 +92,33 @@
             } else if (this.connections[type].location === 'left') {
                 connectingBloqLocation = 'right';
             }
+            /**
+             * Check if there are any new connections in the bloq's connectors
+             */
+            var connector1, connector2;
             for (var i in connectingBloq.connections) {
-                if (connectingBloq.connections[i].location === connectingBloqLocation && bloq1.connections[type].type === connectingBloq.connections[i].type) {
-                    var connector1 = this.createConnectors(this, bloq1.connections[type].location);
-                    var connector2 = this.createConnectors(connectingBloq, connectingBloqLocation);
+                if (connectingBloq.connections[i].location === connectingBloqLocation && this.connections[type].type === connectingBloq.connections[i].type) {
+                    connector1 = this.createConnectors(this, this.connections[type].location);
+                    connector2 = this.createConnectors(connectingBloq, connectingBloqLocation);
                     if (this.itsOver(connector1, connector2)) {
                         this.connectBloqs(connectingBloq, this, this.connections[type].location);
+                        /**
+                         * If updateParent --> update parent's position
+                         */
+                        if (updateParent === true) {
+                            this.connectBloqs(this, this.getBloqById(this.relations.parent), this.connections[type].location);
+                        }
                         break;
                     }
+                }
+            }
+            /**
+             * Check if there are any new connections in the bloq's child's connectors
+             */
+            if (this.relations.children.length > 0) {
+                for (var child in this.relations.children) {
+                    console.log('aaa', this.getBloqById(this.relations.children[child]));
+                    this.getBloqById(this.relations.children[child]).manageConnections(type, connectingBloq, true);
                 }
             }
         };
@@ -134,7 +153,6 @@
             }
             child.location = newLocation;
             this.updateBloqs(parent, child);
-
             if (child.relations.children.length > 0) {
                 for (var i in child.relations.children) {
                     var nextChild = child.getBloqById(child.relations.children[i]);
