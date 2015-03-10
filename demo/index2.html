@@ -39,7 +39,13 @@
 
       var field = SVG('field1');
       var bloqs = bloqs();
-
+      var bloq0 = {
+          label : 'setup',
+          connections: [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}],
+          size: [200, 100],
+          color: '#000',
+          code: {setup:"", loop:"void setup (){\n"}
+      };
       var bloq1 = {
           label : 'loop',
           connections: [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}],
@@ -52,7 +58,7 @@
           connections: [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}],
           size: [200, 100],
           color: '#045',
-          code: {setup:"12", loop:"12"}
+          code: {setup:"12", loop:"aaa[ {0} ]"}
       };
 
       var bloq3 = {
@@ -62,6 +68,7 @@
           code: {setup:"123", loop:"123"}
       };
 
+      var block0 = bloqs.createBloq(bloq0, field, [300,0]);
       var block1 = bloqs.createBloq(bloq1, field, [300,100]);
       var block2 = bloqs.createBloq(bloq2, field, [300,300]);
       var block3 = bloqs.createBloq(bloq3, field, [300,500]);

@@ -2,30 +2,29 @@
     "use strict";
     var data = {
         bloqs: [],
-        loop: ''
+        code: {
+            setup: '',
+            loop: ''
+        }
     };
     var connectionThreshold = 50; // px
     data.bloqsToCode = function() {
-        var setup = 'void setup (){\n';
-        // var loop = '';
-        setup += '';
-        data.loopToCode(data.bloqs.loop);
-        console.log('data.bloqs.loop.codeChildren', data.bloqs.loop.relations.codeChildren);
-        // loop += data.loopToCode(data.bloqs.loop); //'  ' + data.bloqs[i].code.loop;
-        setup += '\n}\n';
-        // loop += '\n}\n';
-        return setup + data.loop;
+
+        data.functionCode(data.bloqs.setup, 'setup');
+        data.functionCode(data.bloqs.loop, 'loop');
+
+        return data.code.setup+data.code.loop;
     };
-    data.loopToCode = function(bloq) {
-        if (bloq === data.bloqs.loop) {
-            data.loop = bloq.code.loop;
+    data.functionCode = function(bloq, _function) {
+        if (bloq === data.bloqs.loop || bloq === data.bloqs.setup) {
+            data.code[_function] = bloq.code.loop;
         } else {
-            data.loop += '   ' + bloq.code.loop + ';\n';
+            data.code[_function] += '   ' + bloq.getCode(_function) + ';\n';
         }
         if (bloq.relations.codeChildren.length > 0) {
-            data.loopToCode(bloq.getBloqById(bloq.relations.codeChildren));
+            data.functionCode(bloq.getBloqById(bloq.relations.codeChildren), _function);
         } else {
-            data.loop += '\n}\n';
+            data.code[_function] += '\n}\n';
         }
     };
     /**
@@ -50,7 +49,8 @@
         bloq.relations = {
             parent: undefined,
             children: [],
-            codeChildren: []
+            codeChildren: [],
+            inputChildren: []
         };
         /**
          * We store the code of the inputs of the bloq here
@@ -237,7 +237,12 @@
                     break;
                 }
             }
-            // console.log('aaaaaaaaaaa',this.relations.children , child.node.id);
+            for (i in this.relations.inputChildren) {
+                if (this.relations.inputChildren[i] === child.node.id) {
+                    this.relations.inputChildren.splice(i, 1);
+                    break;
+                }
+            }
         };
         bloq.setChildren = function(childrenId, location) {
             for (var bloqIndex in this.relations.children) {
@@ -250,6 +255,8 @@
             this.relations.children.push(childrenId);
             if (location === 'up') {
                 this.relations.codeChildren.push(childrenId);
+            } else {
+                this.relations.inputChildren.push(childrenId);
             }
             return true;
         };
@@ -265,6 +272,18 @@
                 }
             }
             return null;
+        };
+        bloq.getCode = function(_function) {
+            // for (var i =)
+            var code = this.code[_function];
+            var search = '';
+            var replacement = '';
+            for (var i in this.relations.inputChildren) {
+                replacement = this.getBloqById(this.relations.inputChildren).getCode(_function);
+                search = '{[' + i + ']}';
+                code = code.replace(new RegExp(search, 'g'), replacement);
+            }
+            return code;
         };
         if (bloq.label === 'loop') {
             data.bloqs.loop = bloq;
