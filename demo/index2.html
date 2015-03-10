@@ -39,38 +39,42 @@
 
       var field = SVG('field1');
       var bloqs = bloqs();
-      var bloq0 = {
+      var setup = {
           label : 'setup',
-          connections: [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}],
-          size: [200, 100],
+          connections: ['down'],
+          size: [200, 50],
           color: '#000',
           code: {setup:"", loop:"void setup (){\n"}
       };
-      var bloq1 = {
+      var loop = {
           label : 'loop',
-          connections: [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}],
-          size: [200, 100],
+          connections: ['down'],
+          size: [200, 50],
           color: '#000',
           code: {setup:"", loop:"void loop (){\n"}
       };
 
       var bloq2 = {
-          connections: [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}],
+          connections: ['up','down'],
+          inputs: ['int'],
+          output: 'int',
           size: [200, 100],
           color: '#045',
-          code: {setup:"12", loop:"aaa[ {0} ]"}
+          code: {setup:"blablabla({0});\n", loop:"aaa[{0}];\n   aaa2[{0}];\n"}
       };
 
       var bloq3 = {
-          connections: [{location:'up',type:'int'},{location:'down',type:'int'},{location:'right', type:'int'},{location:'left', type:'int'}],
+          connections: ['up','down'],
+          inputs: ['int'],
+          output: undefined,
           size: [200, 100],
           color: '#dd4b39',
           code: {setup:"123", loop:"123"}
       };
 
-      var block0 = bloqs.createBloq(bloq0, field, [300,0]);
-      var block1 = bloqs.createBloq(bloq1, field, [300,100]);
-      var block2 = bloqs.createBloq(bloq2, field, [300,300]);
+      var block0 = bloqs.createBloq(setup, field, [300,0]);
+      var block1 = bloqs.createBloq(loop, field, [300,300]);
+      var block2 = bloqs.createBloq(bloq2, field, [300,400]);
       var block3 = bloqs.createBloq(bloq3, field, [300,500]);
 
       /* end demo script */
