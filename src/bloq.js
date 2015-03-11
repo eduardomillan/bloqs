@@ -5,10 +5,10 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
     var size = bloqData.size;
     var bloq = field.rect(size[0], size[1]).move(position[0], position[1]).fill(bloqData.color);
     bloq.connections = {
-        inputs: {
+        inputs: [{
             location: undefined,
             type: ''
-        },
+        }],
         output: {
             location: undefined,
             type: ''
@@ -88,28 +88,20 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
          * We store the positions of the input connections of the bloq here
          */
         if (bloqData.inputs) {
-            // for (var i in bloqData.inputs) {
-            //     bloq.connections.inputs.push({
-            //         location: {
-            //             x1: bloq.x() + bloq.width() - connectionThreshold,
-            //             x2: bloq.x() + bloq.width(),
-            //             y1: bloq.y() + i * connectionThreshold,
-            //             y2: bloq.y() + (1 + i) * connectionThreshold
-            //         },
-            //         type: bloqData.inputs[i]
-            //     });
-            // }
-            // bloq.inputsNumber = bloqData.inputs.length;
-            bloq.connections.inputs = {
-                location: {
-                    x1: bloq.x() + bloq.width() - connectionThreshold,
-                    x2: bloq.x() + bloq.width(),
-                    y1: bloq.y(),
-                    y2: bloq.y() + bloq.height()
-                },
-                type: bloqData.inputs
-            };
-            bloq.inputsNumber = 1;
+            bloq.connections.inputs = [{}];
+            for (var i in bloqData.inputs) {
+                bloq.connections.inputs.push({
+                    location: {
+                        x1: bloq.x() + bloq.width() - connectionThreshold,
+                        x2: bloq.x() + bloq.width(),
+                        y1: bloq.y() + i * connectionThreshold,
+                        y2: bloq.y() + (1 + i) * connectionThreshold
+                    },
+                    type: bloqData.inputs[i]
+                });
+            }
+            console.log('inputs!:', bloq.connections.inputs);
+            bloq.inputsNumber = bloqData.inputs.length;
         } else {
             bloq.connections.inputs = undefined;
             bloq.inputsNumber = 0;
@@ -132,6 +124,7 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
             var childBloq = movedBloq.getBloqById(movedBloq.relations.children[i]);
             var parentBloq = movedBloq;
             var location = childBloq.location;
+            console.log('movvvinggg', location);
             this.connectBloqs(parentBloq, childBloq, location);
         }
     };
@@ -148,29 +141,26 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
             }
         }
     };
-    bloq.manageConnections = function(type, connectingBloq, updateParent) {
+    bloq.manageConnections = function(type, connectingBloq) {
         var connectingBloqLocation = this.oppositeConnection[type];
-        if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined && this.connections[type].type === connectingBloq.connections[connectingBloqLocation].type) { // if the type is the same
-            if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation].location)) {
-                this.connectBloqs(connectingBloq, this, type);
-                /**
-                 * If updateParent --> update parent's position
-                 */
-                if (updateParent === true) {
-                    this.connectBloqs(this, this.getBloqById(this.relations.parent), this.connections[type].location);
+        if (connectingBloqLocation === 'inputs') {
+            if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined) {
+                for (var i in connectingBloq.connections[connectingBloqLocation]) {
+                    if (this.connections[type].type === connectingBloq.connections[connectingBloqLocation][i].type) { // if the type is the same
+                        if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation][i].location)) {
+                            this.connectBloqs(connectingBloq, this, type + i);
+                            console.log('input position :', i);
+                        }
+                    }
+                }
+            }
+        } else {
+            if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined && this.connections[type].type === connectingBloq.connections[connectingBloqLocation].type) { // if the type is the same
+                if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation].location)) {
+                    this.connectBloqs(connectingBloq, this, type);
                 }
             }
         }
-        /**
-         * Check if there are any new connections in the bloq's child's connectors
-         */
-        // if (this.relations.children.length > 0) {
-        //     for (var child in this.relations.children) {
-        //         for (var j in this.getBloqById(this.relations.children[child]).connections) {
-        //             this.getBloqById(this.relations.children[child]).manageConnections(j, connectingBloq, true);
-        //         }
-        //     }
-        // }
     };
     /**
      * take 2 bloqs and connect them
@@ -196,10 +186,12 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
             parent = bloq2;
             child = bloq1;
             newLocation = 'output';
-        } else if (location === 'output') {
+        } else if (location.indexOf('output') >= 0) {
+            console.log('location', location);
+            var i = parseInt(location.replace('output', ''), 10);
             bloq2.x(bloq1.x() + bloq1.width());
-            bloq2.y(bloq1.y());
-            newLocation = 'output';
+            bloq2.y(bloq1.y() + 100 * (i - 1));
+            newLocation = location;
         }
         child.location = newLocation;
         this.updateBloqs(parent, child);
@@ -281,6 +273,7 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
         var code = this.code[_function];
         var search = '';
         var replacement = '';
+        //TODO: Modify this function so that each input children only replaces its input's tags!
         for (var i in this.relations.inputChildren) {
             replacement = this.getBloqById(this.relations.inputChildren).getCode(_function);
             search = '{[' + i + ']}';
