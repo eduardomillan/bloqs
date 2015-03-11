@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/bq/bloqs.png?label=ready&title=Ready)](https://waffle.io/bq/bloqs)
 # bloqs
 
 Bloqs lib to develop awesome tools to teach robotics
