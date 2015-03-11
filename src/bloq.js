@@ -5,10 +5,10 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
     var size = bloqData.size;
     var bloq = field.rect(size[0], size[1]).move(position[0], position[1]).fill(bloqData.color);
     bloq.connections = {
-        inputs: [{
+        inputs: {
             location: undefined,
             type: ''
-        }],
+        },
         output: {
             location: undefined,
             type: ''
@@ -28,66 +28,6 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
     }
     bloq.code = bloqData.code;
     bloq.label = bloqData.label;
-    // console.log('bloqData', bloqData);
-    if (bloqData.up) {
-        bloq.connections.up.location = {
-            x1: bloq.x() + connectionThreshold,
-            x2: bloq.x() + bloq.width() - connectionThreshold,
-            y1: bloq.y(),
-            y2: bloq.y() + connectionThreshold
-        };
-    } else {
-        bloq.connections.up = undefined;
-    }
-    if (bloqData.down) {
-        bloq.connections.down.location = {
-            x1: bloq.x() + connectionThreshold,
-            x2: bloq.x() + bloq.width() - connectionThreshold,
-            y1: bloq.y() + bloq.height() - connectionThreshold,
-            y2: bloq.y() + bloq.height()
-        };
-    } else {
-        bloq.connections.down = undefined;
-    }
-    /**
-     * We store the position of the output connection of the bloq here
-     */
-    if (bloqData.output !== undefined) {
-        bloq.connections.output = {
-            location: {
-                x1: bloq.x(),
-                x2: bloq.x() + connectionThreshold,
-                y1: bloq.y(),
-                y2: bloq.y() + bloq.height()
-            },
-            type: bloqData.output
-        };
-    } else {
-        bloq.connections.output = undefined;
-    }
-    /**
-     * We store the positions of the input connections of the bloq here
-     */
-    if (bloqData.inputs) {
-        for (var i in bloqData.inputs) {
-            bloq.connections.inputs.push({
-                location: {
-                    x1: bloq.x() + bloq.width() - connectionThreshold,
-                    x2: bloq.x() + bloq.width(),
-                    y1: bloq.y() + i * connectionThreshold,
-                    y2: bloq.y() + (1 + i) * connectionThreshold
-                },
-                type: bloqData.inputs[i]
-            });
-        }
-        /**
-         * We store the code of the inputs of the bloq here
-         */
-        bloq.inputsNumber = bloqData.inputs.length;
-    } else {
-        bloq.connections.inputs = undefined;
-        bloq.inputsNumber = 0;
-    }
     /**
      * We store relations here, using nodes
      * @type {{parent: undefined, children: Array}}
@@ -107,19 +47,7 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
     bloq.getConnections = function(location) {
         return bloq.connections[location];
     };
-    bloq.getConnectors = function(location) {
-        // var connectors = [{}];
-        // if (bloq.connections[location] === null) {
-        //     return null;
-        // }
-        // if (location === 'inputs' && bloq.inputsNumber > 0) {
-        //     for (var i in bloq.connections[location]) {
-        //         connectors.push(bloq.connections[location][i].location);
-        //     }
-        //     return connectors;
-        // } else {
-        //     return bloq.connections[location].location;
-        // }
+    bloq.updateConnectors = function(location) {
         if (bloqData.up) {
             bloq.connections.up.location = {
                 x1: bloq.x() + connectionThreshold,
@@ -160,27 +88,35 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
          * We store the positions of the input connections of the bloq here
          */
         if (bloqData.inputs) {
-            for (var i in bloqData.inputs) {
-                bloq.connections.inputs.push({
-                    location: {
-                        x1: bloq.x() + bloq.width() - connectionThreshold,
-                        x2: bloq.x() + bloq.width(),
-                        y1: bloq.y() + i * connectionThreshold,
-                        y2: bloq.y() + (1 + i) * connectionThreshold
-                    },
-                    type: bloqData.inputs[i]
-                });
-            }
-            /**
-             * We store the code of the inputs of the bloq here
-             */
-            bloq.inputsNumber = bloqData.inputs.length;
+            // for (var i in bloqData.inputs) {
+            //     bloq.connections.inputs.push({
+            //         location: {
+            //             x1: bloq.x() + bloq.width() - connectionThreshold,
+            //             x2: bloq.x() + bloq.width(),
+            //             y1: bloq.y() + i * connectionThreshold,
+            //             y2: bloq.y() + (1 + i) * connectionThreshold
+            //         },
+            //         type: bloqData.inputs[i]
+            //     });
+            // }
+            // bloq.inputsNumber = bloqData.inputs.length;
+            bloq.connections.inputs = {
+                location: {
+                    x1: bloq.x() + bloq.width() - connectionThreshold,
+                    x2: bloq.x() + bloq.width(),
+                    y1: bloq.y(),
+                    y2: bloq.y() + bloq.height()
+                },
+                type: bloqData.inputs
+            };
+            bloq.inputsNumber = 1;
         } else {
             bloq.connections.inputs = undefined;
             bloq.inputsNumber = 0;
         }
         return bloq.connections[location];
     };
+    bloq.updateConnectors();
     /**
      * We start dragging
      */
@@ -203,11 +139,10 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
      * We stop dragging
      */
     bloq.dragend = function() {
-        this.getConnectors();
+        this.updateConnectors();
         for (var j in this.connections) {
             if (this.connections[j] !== undefined) {
                 for (var i in data.bloqs) {
-                    console.log('connector:', j);
                     this.manageConnections(j, data.bloqs[i], false);
                 }
             }
@@ -215,10 +150,10 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
     };
     bloq.manageConnections = function(type, connectingBloq, updateParent) {
         var connectingBloqLocation = this.oppositeConnection[type];
+
         if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined && this.connections[type].type === connectingBloq.connections[connectingBloqLocation].type) { // if the type is the same
             if (this.connections[type] !== undefined) {
                 if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation].location)) {
-                    console.log('itsover!!');
                     this.connectBloqs(connectingBloq, this, type);
                     /**
                      * If updateParent --> update parent's position
@@ -259,16 +194,16 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
             bloq2.y(bloq1.y() - bloq1.height());
             parent = bloq2;
             child = bloq1;
-        } else if (location === 'right') {
+        } else if (location === 'inputs') {
             bloq2.x(bloq1.x() - bloq1.width());
             bloq2.y(bloq1.y());
             parent = bloq2;
             child = bloq1;
-            newLocation = 'left';
-        } else if (location === 'left') {
+            newLocation = 'output';
+        } else if (location === 'output') {
             bloq2.x(bloq1.x() + bloq1.width());
             bloq2.y(bloq1.y());
-            newLocation = 'left';
+            newLocation = 'output';
         }
         child.location = newLocation;
         this.updateBloqs(parent, child);
@@ -353,12 +288,11 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
             search = '{[' + i + ']}';
             code = code.replace(new RegExp(search, 'g'), replacement);
         }
-        for (i =0; i<this.inputsNumber;i++) {
+        for (i = 0; i < this.inputsNumber; i++) {
             search = '{[' + i + ']}';
             code = code.replace(new RegExp(search, 'g'), ' ');
         }
         return code;
     };
-
     return bloq;
 };
