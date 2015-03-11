@@ -150,31 +150,28 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
     };
     bloq.manageConnections = function(type, connectingBloq, updateParent) {
         var connectingBloqLocation = this.oppositeConnection[type];
-
         if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined && this.connections[type].type === connectingBloq.connections[connectingBloqLocation].type) { // if the type is the same
-            if (this.connections[type] !== undefined) {
-                if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation].location)) {
-                    this.connectBloqs(connectingBloq, this, type);
-                    /**
-                     * If updateParent --> update parent's position
-                     */
-                    if (updateParent === true) {
-                        this.connectBloqs(this, this.getBloqById(this.relations.parent), this.connections[type].location);
-                    }
-                    // break;
+            if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation].location)) {
+                this.connectBloqs(connectingBloq, this, type);
+                /**
+                 * If updateParent --> update parent's position
+                 */
+                if (updateParent === true) {
+                    this.connectBloqs(this, this.getBloqById(this.relations.parent), this.connections[type].location);
                 }
+                // break;
             }
         }
         /**
          * Check if there are any new connections in the bloq's child's connectors
          */
-        if (this.relations.children.length > 0) {
-            for (var child in this.relations.children) {
-                for (var j in this.getBloqById(this.relations.children[child]).connections) {
-                    this.getBloqById(this.relations.children[child]).manageConnections(j, connectingBloq, true);
-                }
-            }
-        }
+        // if (this.relations.children.length > 0) {
+        //     for (var child in this.relations.children) {
+        //         for (var j in this.getBloqById(this.relations.children[child]).connections) {
+        //             this.getBloqById(this.relations.children[child]).manageConnections(j, connectingBloq, true);
+        //         }
+        //     }
+        // }
     };
     /**
      * take 2 bloqs and connect them
