@@ -159,7 +159,6 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
                 if (updateParent === true) {
                     this.connectBloqs(this, this.getBloqById(this.relations.parent), this.connections[type].location);
                 }
-                // break;
             }
         }
         /**
@@ -204,6 +203,8 @@ bloqsNamespace.newBloq = function(bloqData, field, position, data) {
         }
         child.location = newLocation;
         this.updateBloqs(parent, child);
+        parent.updateConnectors();
+        child.updateConnectors();
         if (child.relations.children.length > 0) {
             for (var i in child.relations.children) {
                 var nextChild = child.getBloqById(child.relations.children[i]);
