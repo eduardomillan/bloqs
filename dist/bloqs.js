@@ -194,7 +194,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             console.log('location', location);
             var i = parseInt(location.replace('output', ''), 10);
             bloq2.x(bloq1.x() + bloq1.first().width());
-            bloq2.y(bloq1.y() + 100 * (i - 1));
+            bloq2.y(bloq1.y() + (i - 1)); // todo: rework for bloq height
             newLocation = location;
         }
         child.location = newLocation;
