@@ -1,10 +1,24 @@
 var bloqsNamespace = bloqsNamespace || {};
 bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     "use strict";
-    var connectionThreshold = 25; // px
+    var connectionThreshold = 50; // px
     var size = bloqData.size;
     var bloq = canvas.group().move(position[0], position[1]);
     var rect = bloq.rect(size[0], size[1]).fill(bloqData.color).radius(10);
+    var border = bloq.rect(size[0], size[1]).fill('none').stroke({ width: 1 }).radius(10);
+    var selection = bloq.rect(size[0], size[1]).fill('none').stroke({ width: 3, color: '#FFCC33' }).radius(10).hide();
+    if(bloqData.hasOwnProperty('label') && bloqData.label != ''){
+        bloq.label = bloqData.label;
+        var text = bloq.text(bloqData.label.toUpperCase()).font({
+            family:   'Helvetica'
+            , fill: '#fff'
+            , size:     14
+        }).move(10, 5);
+    } else {
+        bloq.label = '';
+    }
+
+
     bloq.connections = {
         inputs: [{
             location: undefined,
@@ -26,9 +40,15 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         output: 'inputs',
         up: 'down',
         down: 'up'
-    }
+    };
     bloq.code = bloqData.code;
-    bloq.label = bloqData.label;
+    bloq.border = border;
+    bloq.selection = selection;
+    if(bloqData.hasOwnProperty('factoryCode')){
+        bloq.factoryCode = bloqData.factoryCode;
+    } else {
+        bloq.factoryCode = '';
+    }
     /**
      * We store relations here, using nodes
      * @type {{parent: undefined, children: Array}}
@@ -191,10 +211,9 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             child = bloq1;
             newLocation = 'output';
         } else if (location.indexOf('output') >= 0) {
-            console.log('location', location);
             var i = parseInt(location.replace('output', ''), 10);
             bloq2.x(bloq1.x() + bloq1.first().width());
-            bloq2.y(bloq1.y() + (i - 1)); // todo: rework for bloq height
+            bloq2.y(bloq1.y() + (i - 1));
             newLocation = location;
         }
         child.location = newLocation;
@@ -289,6 +308,21 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         }
         return code;
     };
+
+    bloq.on('click', function(){
+        if(this.label.toLowerCase() != 'loop' && this.label.toLowerCase() != 'setup'){
+            // remove other borders
+            var canvasChilds = canvas.children();
+            $.each(canvasChilds, function(index){
+                if(canvasChilds[index].hasOwnProperty('border')){
+                    // hide selection
+                    canvasChilds[index].selection.hide();
+                }
+            });
+            this.selection.show();
+        }
+    });
+
     return bloq;
 };
 (function(root, undefined) {
