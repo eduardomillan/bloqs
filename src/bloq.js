@@ -1,65 +1,10 @@
+// @include utils.js
 var bloqsNamespace = bloqsNamespace || {};
 bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     "use strict";
     var connectionThreshold = 50; // px
     var size = bloqData.size;
     var bloq = canvas.group().move(position[0], position[1]);
-    bloq.appendInput = function(inputText, posx, posy, id) {
-        var text = bloq.foreignObject(100, 100).attr({
-            id: 'fobj',
-            color: '#FFCC33'
-        });
-        text.appendChild("input", {
-            id: id,
-            value: inputText,
-            color: '#FFCC33',
-        }).move(posx, posy);
-        document.getElementById(id).addEventListener("mousedown", function(e) {
-            e.stopPropagation();
-        }, false);
-    };
-    var rect = bloq.rect(size[0], size[1]).fill(bloqData.color).radius(10);
-    var border = bloq.rect(size[0], size[1]).fill('none').stroke({
-        width: 1
-    }).radius(10);
-    var selection = bloq.rect(size[0], size[1]).fill('none').stroke({
-        width: 3,
-        color: '#FFCC33'
-    }).radius(10).hide();
-    if (bloqData.hasOwnProperty('label') && bloqData.label !== '') {
-        bloq.label = bloqData.label;
-        bloq.text(bloqData.label.toUpperCase()).font({
-            family: 'Helvetica',
-            fill: '#fff',
-            size: 14
-        }).move(10, 5);
-    } else {
-        bloq.label = '';
-    }
-    if (bloqData.hasOwnProperty('text')) {
-        console.log('bloqData', bloqData.text);
-        var margin = 10;
-        var posx = margin;
-        var posy = margin;
-        for (var i in bloqData.text) {
-            if (bloqData.text[i].indexOf('userInput') >= 0) {
-                bloq.appendInput(bloqData.text[i].replace('userInput-', ''), posx, posy, i);
-                posx += 110;
-            } else {
-                var text = bloq.text(bloqData.text[i]).font({
-                    family: 'Helvetica',
-                    fill: '#fff',
-                    size: 14
-                }).move(posx, posy);
-                posx += text.width() + 30;
-            }
-            console.log('posx', posx);
-        }
-        //UPDATE all positions depending on inputs
-        rect.size(posx, size[1]);
-        border.size(posx, size[1]);
-        selection.size(posx, size[1]);
-    }
     bloq.connections = {
         inputs: [{
             location: undefined,
@@ -83,8 +28,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         down: 'up'
     };
     bloq.code = bloqData.code;
-    bloq.border = border;
-    bloq.selection = selection;
     if (bloqData.hasOwnProperty('factoryCode')) {
         bloq.factoryCode = bloqData.factoryCode;
     } else {
@@ -105,6 +48,103 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
      */
     if (bloq.label !== 'setup' && bloq.label !== 'loop') {
         bloq.draggable();
+    }
+    bloq.appendUserInput = function(inputText, type, posx, posy, id) {
+        var text = bloq.foreignObject(100, 100).attr({
+            id: 'fobj',
+            color: '#FFCC33'
+        });
+        text.appendChild("input", {
+            id: id,
+            value: inputText,
+            color: '#FFCC33',
+        }).move(posx, posy);
+        document.getElementById(id).addEventListener("mousedown", function(e) {
+            e.stopPropagation();
+        }, false);
+        //Check that the input of the user is the one spected
+        document.getElementById(id).addEventListener("change", function(e) {
+            if (type === 'number') {
+                if (isNaN(parseFloat(document.getElementById(id).value))) {
+                    //If type is number and input is not a number, remove user input. 
+                    //ToDo : UX warning!
+                    document.getElementById(id).value = '';
+                }
+            }
+        }, false);
+    };
+    bloq.appendBloqInput = function(inputText, type, posx, posy, id) {
+        //draw white (ToDo: UX) rectangle
+        var width = posx;
+        bloq.rect(70, 30).attr({
+            fill: '#fff'
+        }).move(width, posy);
+        //add connector (input, type)
+        bloq.connections.inputs.push({
+            location: {
+                x1: posx + width - connectionThreshold,
+                x2: posx + width,
+                y1: posy + i * connectionThreshold,
+                y2: posy + (1 + i) * connectionThreshold
+            },
+            type: type
+        });
+        bloq.inputsNumber = bloqData.inputs.length;
+        //add to bloq's inputs
+    };
+    bloq.body = bloq.rect(size[0], size[1]).fill(bloqData.color).radius(10);
+    bloq.border = bloq.rect(size[0], size[1]).fill('none').stroke({
+        width: 1
+    }).radius(10);
+    bloq.selection = bloq.rect(size[0], size[1]).fill('none').stroke({
+        width: 3,
+        color: '#FFCC33'
+    }).radius(10).hide();
+    if (bloqData.hasOwnProperty('label') && bloqData.label !== '') {
+        bloq.label = bloqData.label;
+        bloq.text(bloqData.label.toUpperCase()).font({
+            family: 'Helvetica',
+            fill: '#fff',
+            size: 14
+        }).move(10, 5);
+    } else {
+        bloq.label = '';
+    }
+    if (bloqData.hasOwnProperty('text')) {
+        var margin = 10;
+        var posx = margin;
+        var width = 0;
+        var posy = margin;
+        var text = '';
+        for (var j in bloqData.text) {
+            for (var i in bloqData.text[j]) {
+                if (typeof(bloqData.text[j][i]) === typeof({})) {
+                    if (bloqData.text[j][i].input === 'userInput') {
+                        bloq.appendUserInput(bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, i);
+                        posx += 110;
+                    } else if (bloqData.text[j][i].input === 'bloqInput') {
+                        bloq.appendBloqInput(bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, i);
+                        posx += 110;
+                    }
+                } else {
+                    var text = bloq.text(bloqData.text[j][i]).font({
+                        family: 'Helvetica',
+                        fill: '#fff',
+                        size: 14
+                    }).move(posx, posy);
+                    posx += text.width() + 30;
+                }
+            }
+            if (posx > width) {
+                width = posx;
+            }
+            posx = margin;
+            posy += 50;
+        }
+        //UPDATE all positions depending on inputs
+        bloq.body.size(width, posy);
+        bloq.border.size(width, posy);
+        bloq.selection.size(width, posy);
     }
     bloq.getConnections = function(location) {
         return bloq.connections[location];
