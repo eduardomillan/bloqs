@@ -4,21 +4,62 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     var connectionThreshold = 50; // px
     var size = bloqData.size;
     var bloq = canvas.group().move(position[0], position[1]);
+    bloq.appendInput = function(inputText, posx, posy, id) {
+        var text = bloq.foreignObject(100, 100).attr({
+            id: 'fobj',
+            color: '#FFCC33'
+        });
+        text.appendChild("input", {
+            id: id,
+            value: inputText,
+            color: '#FFCC33',
+        }).move(posx, posy);
+        document.getElementById(id).addEventListener("mousedown", function(e) {
+            e.stopPropagation();
+        }, false);
+    };
     var rect = bloq.rect(size[0], size[1]).fill(bloqData.color).radius(10);
-    var border = bloq.rect(size[0], size[1]).fill('none').stroke({ width: 1 }).radius(10);
-    var selection = bloq.rect(size[0], size[1]).fill('none').stroke({ width: 3, color: '#FFCC33' }).radius(10).hide();
-    if(bloqData.hasOwnProperty('label') && bloqData.label != ''){
+    var border = bloq.rect(size[0], size[1]).fill('none').stroke({
+        width: 1
+    }).radius(10);
+    var selection = bloq.rect(size[0], size[1]).fill('none').stroke({
+        width: 3,
+        color: '#FFCC33'
+    }).radius(10).hide();
+    if (bloqData.hasOwnProperty('label') && bloqData.label !== '') {
         bloq.label = bloqData.label;
-        var text = bloq.text(bloqData.label.toUpperCase()).font({
-            family:   'Helvetica'
-            , fill: '#fff'
-            , size:     14
+        bloq.text(bloqData.label.toUpperCase()).font({
+            family: 'Helvetica',
+            fill: '#fff',
+            size: 14
         }).move(10, 5);
     } else {
         bloq.label = '';
     }
-
-
+    if (bloqData.hasOwnProperty('text')) {
+        console.log('bloqData', bloqData.text);
+        var margin = 10;
+        var posx = margin;
+        var posy = margin;
+        for (var i in bloqData.text) {
+            if (bloqData.text[i].indexOf('userInput') >= 0) {
+                bloq.appendInput(bloqData.text[i].replace('userInput-', ''), posx, posy, i);
+                posx += 110;
+            } else {
+                var text = bloq.text(bloqData.text[i]).font({
+                    family: 'Helvetica',
+                    fill: '#fff',
+                    size: 14
+                }).move(posx, posy);
+                posx += text.width() + 30;
+            }
+            console.log('posx', posx);
+        }
+        //UPDATE all positions depending on inputs
+        rect.size(posx, size[1]);
+        border.size(posx, size[1]);
+        selection.size(posx, size[1]);
+    }
     bloq.connections = {
         inputs: [{
             location: undefined,
@@ -44,7 +85,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     bloq.code = bloqData.code;
     bloq.border = border;
     bloq.selection = selection;
-    if(bloqData.hasOwnProperty('factoryCode')){
+    if (bloqData.hasOwnProperty('factoryCode')) {
         bloq.factoryCode = bloqData.factoryCode;
     } else {
         bloq.factoryCode = '';
@@ -149,7 +190,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             var childBloq = movedBloq.getBloqById(movedBloq.relations.children[i]);
             var parentBloq = movedBloq;
             var location = childBloq.location;
-            console.log('movvvinggg', location);
             this.connectBloqs(parentBloq, childBloq, location);
         }
     };
@@ -296,7 +336,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         var code = this.code[_function];
         var search = '';
         var replacement = '';
-        console.log('this.relations.inputChildren',this.getBloqById(this.relations.inputChildren));
+        console.log('this.relations.inputChildren', this.getBloqById(this.relations.inputChildren));
         for (var i in this.relations.inputChildren) {
             replacement = this.getBloqById(this.relations.inputChildren).getCode(_function);
             search = '{[' + i + ']}';
@@ -308,13 +348,12 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         }
         return code;
     };
-
-    bloq.on('click', function(){
-        if(this.label.toLowerCase() != 'loop' && this.label.toLowerCase() != 'setup'){
+    bloq.on('click', function() {
+        if (this.label.toLowerCase() != 'loop' && this.label.toLowerCase() != 'setup') {
             // remove other borders
             var canvasChilds = canvas.children();
-            $.each(canvasChilds, function(index){
-                if(canvasChilds[index].hasOwnProperty('border')){
+            $.each(canvasChilds, function(index) {
+                if (canvasChilds[index].hasOwnProperty('border')) {
                     // hide selection
                     canvasChilds[index].selection.hide();
                 }
@@ -322,7 +361,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             this.selection.show();
         }
     });
-
     return bloq;
 };
 (function(root, undefined) {
@@ -334,14 +372,12 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             loop: ''
         }
     };
-
     var field = {};
     var canvas = {};
-
-    data.createCanvas = function(element){
-        if($.isEmptyObject(canvas)){
+    data.createCanvas = function(element) {
+        if ($.isEmptyObject(canvas)) {
             field = SVG(element).size('100%', '100%');
-            canvas = field.group().attr('class', 'bloqs-canvas')
+            canvas = field.group().attr('class', 'bloqs-canvas');
         }
         return canvas;
     };

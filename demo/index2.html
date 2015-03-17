@@ -1,85 +1,80 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>bloqs demo</title>
-    <link rel="stylesheet" href="./assets/normalize.css" />
-    <link rel="stylesheet" href="./assets/main.css" />
-    <style>
-      /* begin demo embedded styles */
-      body,html{
-        width: 100%;
-        height: 100%;
-      }
-      #field1{
-        width: 100%;
-        height: 100%;
-      }
-      /* end demo embedded styles */
-    </style>
-  </head>
-  <body>
-    <h1>bloqs demo</h1>
+    <head>
+        <title>bloqs demo</title>
+        <link rel="stylesheet" href="./assets/normalize.css" />
+        <link rel="stylesheet" href="./assets/main.css" />
+        <style>
+            /* begin demo embedded styles */
+            body,html{
+                width: 100%;
+                height: 100%;
+            }
+            #field1{
+                width: 100%;
+                height: 100%;
+            }
+            /* end demo embedded styles */
+        </style>
+    </head>
+    <body>
+        <h1>bloqs demo</h1>
+        <!-- begin demo markup -->
+        <div id="field1"></div>
+        <!-- end demo markup -->
+        <p>See the <a href="http://bq.github.io/bloqs">project homepage</a>.
+        <p>Check out the <a href="https://github.com/bq/bloqs">project repo</a>.
+        <p>Copyright 2015 bq</p>
+        <script src="./../bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="./../bower_components/svg.js/dist/svg.js"></script>
+        <script src="./../../svg.foreignobject.js/svg.foreignobject.js"></script>
+        <script src="./../bower_components/svg.draggable/svg.draggable.js"></script>
+        <script src="./../dist/bloqs.js"></script>
+        <div id="code" style="position: absolute; top: 30px; left: 710px; width: 700px; height: 700px; background-color: #E6E6FA;">    </div>
+<button  style="position: absolute; top: 10px; left: 710px; " onclick="document.getElementById('code').innerHTML ='<pre>'+bloqs.bloqsToCode()+'</pre>'">CODE</button>
+<script>
+    /* begin demo script */
+    var bloqs = bloqs();
+    var canvas = bloqs.createCanvas("field1");
+    var setup = {
+        label : 'setup',
+        down: true,
+        size: [200, 50],
+        color: '#000',
+        code: {setup:"", loop:"void setup (){\n"}
+    };
+    var loop = {
+        label : 'loop',
+        down: true,
+        size: [200, 50],
+        color: '#000',
+        code: {setup:"", loop:"void loop (){\n"}
+    };
+    var bloq2 = {
+        up: true,
+        down: true,
+        inputs: ['int','string'],
+        size: [200,200],
+        color: '#045',
+        code: {setup:"blablabla({0});\n", loop:"aaa[{0}];\n   aaa2[{0}];\n"}
+    };
+    var bloq3 = {
+        output: 'string',
+        up: true,
+        down: true,
+        inputs: ['int','string'],
+        size: [200, 100],
+        color: '#dd4b39',
+        text : ["if", "userInput-INPUT", "==", "userInput-aaa"],
+        code: {setup:"123", loop:"123"}
+    };
+    var block0 = bloqs.createBloq(setup, canvas, [300,0]);
+    var block1 = bloqs.createBloq(loop, canvas, [300,300]);
+    var block2 = bloqs.createBloq(bloq2, canvas, [300,400]);
+    var block3 = bloqs.createBloq(bloq3, canvas, [300,500]);
+    /* end demo script */
+</script>
 
-    <!-- begin demo markup -->
-    <div id="field1"></div>
-    <!-- end demo markup -->
-
-    <p>See the <a href="http://bq.github.io/bloqs">project homepage</a>.
-    <p>Check out the <a href="https://github.com/bq/bloqs">project repo</a>.
-    <p>Copyright 2015 bq</p>
-    <script src="./../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="./../bower_components/svg.js/dist/svg.js"></script>
-    <script src="./../bower_components/svg.draggable/svg.draggable.js"></script>
-
-    <script src="./../dist/bloqs.js"></script>
-    <div id="code" style="position: absolute; top: 30px; left: 710px; width: 700px; height: 700px; background-color: #E6E6FA;">    </div>
-
-    <button  style="position: absolute; top: 10px; left: 710px; " onclick="document.getElementById('code').innerHTML ='<pre>'+bloqs.bloqsToCode()+'</pre>'">CODE</button>
-    <script>
-      /* begin demo script */
-
-      var bloqs = bloqs();
-      var canvas = bloqs.createCanvas('field1');
-      var setup = {
-          label : 'setup',
-          down: true,
-          size: [200, 50],
-          color: '#000',
-          code: {setup:"", loop:"void setup (){\n"}
-      };
-      var loop = {
-          label : 'loop',
-          down: true,
-          size: [200, 50],
-          color: '#000',
-          code: {setup:"", loop:"void loop (){\n"}
-      };
-
-      var bloq2 = {
-          up: true,
-          down: true,
-          inputs: ['int','string'],
-          size: [200,200],
-          color: '#045',
-          code: {setup:"blablabla({0});\n", loop:"aaa[{0}];\n   aaa2[{0}];\n"}
-      };
-
-      var bloq3 = {
-          output: 'string',
-          up: true,
-          down: true,
-          inputs: ['int','string'],
-          size: [200, 100],
-          color: '#dd4b39',
-          code: {setup:"123", loop:"123"}
-      };
-
-      var block0 = bloqs.createBloq(setup, canvas, [300,0]);
-      var block1 = bloqs.createBloq(loop, canvas, [300,300]);
-      var block2 = bloqs.createBloq(bloq2, canvas, [300,400]);
-      var block3 = bloqs.createBloq(bloq3, canvas, [300,500]);
-
-      /* end demo script */
-    </script>
-  </body>
+</svg>
+    </body>
 </html>

@@ -8,13 +8,21 @@
             loop: ''
         }
     };
+    var field = {};
+    var canvas = {};
+    data.createCanvas = function(element) {
+        if ($.isEmptyObject(canvas)) {
+            field = SVG(element).size('100%', '100%');
+            canvas = field.group().attr('class', 'bloqs-canvas');
+        }
+        return canvas;
+    };
     data.bloqsToCode = function() {
         data.functionCode(data.bloqs.setup, 'setup');
         data.functionCode(data.bloqs.loop, 'loop');
         return data.code.setup + data.code.loop;
     };
     data.functionCode = function(bloq, _function) {
-        console.log('bloq:',bloq);
         if (bloq === data.bloqs.loop || bloq === data.bloqs.setup) {
             data.code[_function] = bloq.code.loop;
         } else {
@@ -30,16 +38,13 @@
      * Create a bloq and setup its properties and events.
      *
      * @param bloqData bloq object
-     * @param field element to create the bloq into
+     * @param canvas element to create the bloq into
      * @param position x,y position (just useful for the demo version)
      *
      * @returns Object bloq
      */
-    data.createBloq = function(bloqData, field, position) {
-        var bloq = bloqsNamespace.newBloq(bloqData, field, position, data);
-        console.log('this.connections:', bloq, bloq.connections);
-        // console.log('getconnectors:',bloq, bloq.getConnectors('output'));//,bloq.getConnectors('down'),bloq.getConnectors('inputs'),bloq.getConnectors('output'));
-        // console.log('getconnections:', bloq.getConnections('up'),bloq.getConnections('down'),bloq.getConnections('inputs'),bloq.getConnections('output'));
+    data.createBloq = function(bloqData, canvas, position) {
+        var bloq = bloqsNamespace.newBloq(bloqData, canvas, position, data);
         data.bloqs.push(bloq);
         if (bloq.label === 'loop') {
             data.bloqs.loop = bloq;
