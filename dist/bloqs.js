@@ -99,7 +99,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     bloq.appendBloqInput = function(inputText, type, posx, posy, id) {
         //draw white (ToDo: UX) rectangle
         var width = posx;
-        bloq.rect(70, 30).attr({
+        var bloqInput = bloq.rect(70, 30).attr({
             fill: '#fff'
         }).move(width, posy);
         if (bloq.connections.inputs === undefined) {
@@ -110,6 +110,12 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         }
         //add connector (input, type)
         bloq.connections.inputs.push({
+            positionInBloq: {
+                x: bloqInput.x(),
+                y: bloqInput.y(),
+                width : bloqInput.width(),
+                height : bloqInput.height()
+            },
             location: {
                 x1: posx + width - connectionThreshold,
                 x2: posx + width,
@@ -225,14 +231,22 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
          * We store the positions of the input connections of the bloq here
          */
         if (bloq.connections.inputs) {
-            // bloq.connections.inputs = [{}];
             for (var i in bloq.connections.inputs) {
-                bloq.connections.inputs[i].location = {
-                    x1: posx + bloqWidth - connectionThreshold,
-                    x2: posx + bloqWidth,
-                    y1: posy + i * connectionThreshold,
-                    y2: posy + (1 + i) * connectionThreshold
-                };
+                if (bloq.connections.inputs[i].positionInBloq !== undefined) {
+                    bloq.connections.inputs[i].location = {
+                        x1: posx + bloq.connections.inputs[i].positionInBloq.x,
+                        x2: posx +bloq.connections.inputs[i].positionInBloq.x + bloq.connections.inputs[i].positionInBloq.width,
+                        y1: posy + bloq.connections.inputs[i].positionInBloq.y - connectionThreshold,
+                        y2: posy + bloq.connections.inputs[i].positionInBloq.y + + bloq.connections.inputs[i].positionInBloq.height
+                    };
+                } else {
+                    bloq.connections.inputs[i].location = {
+                        x1: posx + bloqWidth - connectionThreshold,
+                        x2: posx + bloqWidth,
+                        y1: posy + i * connectionThreshold,
+                        y2: posy + (1 + i) * connectionThreshold
+                    };
+                }
                 // bloq.connections.inputs[i].type;
             }
             bloq.inputsNumber = bloq.connections.inputs.length;
