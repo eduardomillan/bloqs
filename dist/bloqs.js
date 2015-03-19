@@ -334,12 +334,12 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
      * We start dragging
      */
     bloq.dragmove = function(a, e) {
-        console.log('--------------------------------------> a.x, a.y', a.x, a.y, bloq.x(), bloq.y());
+        console.log('--------------------------------------> lastx, lasty', bloq.lastx, bloq.lasty);
         bloq.deltaX = a.x - bloq.lastx; //e.movementX;
         bloq.deltaY = a.y - bloq.lasty; //e.movementY;
         bloq.lastx = a.x;
         bloq.lasty = a.y;
-        console.log('DRAGMOVE +++++++++++++++++++++++++ deltax, deltay', bloq.node.id, bloq.deltaX, bloq.deltaY);
+        console.log('DRAGMOVE +++++++++++++++++++++++++  deltax, deltay', bloq.node.id, bloq.deltaX, bloq.deltaY);
 
         // console.log('deltax, deltay', bloq.deltaX, bloq.deltaY);
         bloq.updateConnectors();
@@ -389,7 +389,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             if (bloq.connections[j] !== undefined) {
                 for (var i in data.bloqs) {
                     if (data.bloqs[i].node.id !== bloq.node.id) {
-                        data.bloqs[i].updateConnectors();
+                        // data.bloqs[i].updateConnectors();
                         if (bloq.manageConnections(j, data.bloqs[i], false) === true) {
                             flag = true;
                             break; //propagate break!
@@ -433,6 +433,8 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 bloq.updateConnectors();
                 bloq.lastx = 0;
                 bloq.lasty = 0;
+                connectingBloq.lastx = 0;
+                connectingBloq.lasty=0;
                 // connectingBloq.updateConnectors();
                 console.log('ids:', bloq.node.id, connectingBloq.node.id);
                 console.log('conectors location AFTER UPDATE: connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].location, bloq.connections[type].location);
