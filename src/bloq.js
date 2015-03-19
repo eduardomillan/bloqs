@@ -15,7 +15,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     if (bloqData.output) {
         bloq.connections.output = {
             location: undefined,
-            type: ''
+            type: bloqData.output
         };
     }
     if (bloqData.up) {
@@ -96,9 +96,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         bloq.connections.inputs.push({
             positionInBloq: {
                 x: bloqInput.x(),
-                y: bloqInput.y(),
-                width: bloqInput.width(),
-                height: bloqInput.height()
+                y: bloqInput.y()
             },
             location: {
                 x1: posx + width - connectionThreshold,
@@ -198,7 +196,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         if (bloq.connections.down) {
             bloq.connections.down.positionInBloq = {
                 x: posx,
-                y: posy+bloqHeight
+                y: posy + bloqHeight
             },
             bloq.connections.down.location = {
                 x1: posx,
@@ -208,6 +206,10 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             };
         }
         if (bloq.connections.output !== undefined) {
+            bloq.connections.output.positionInBloq = {
+                x: posx,
+                y: posy
+            },
             bloq.connections.output.location = {
                 x1: posx,
                 x2: posx + connectionThreshold,
@@ -238,14 +240,16 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             }
             bloq.inputsNumber = bloq.connections.inputs.length;
         }
+        console.log('bloq.connections.inputs', bloq.connections.inputs);
     };
     bloq.updateConnectors();
     /**
      * We start dragging
      */
-    bloq.dragmove = function(evt) {
+    bloq.dragmove = function() {
         //move dragged bloq on top
         bloq.node.parentNode.appendChild(bloq.node);
+        bloq.updateConnectors();
         var movedBloq = this;
         // remove parent of this and child in parent:
         if (movedBloq.relations.parent !== undefined) {
@@ -264,10 +268,12 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
      * We stop dragging
      */
     bloq.dragend = function() {
+        console.log('this', bloq.connections.output);
         bloq.updateConnectors();
         for (var j in this.connections) {
             if (this.connections[j] !== undefined) {
                 for (var i in data.bloqs) {
+                    console.log('the other bloq:', data.bloqs[i].connections.inputs);
                     this.manageConnections(j, data.bloqs[i], false);
                 }
             }
@@ -275,79 +281,39 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     };
     bloq.manageConnections = function(type, connectingBloq) {
         var connectingBloqLocation = this.oppositeConnection[type];
-        // if (connectingBloqLocation === 'inputs') {
-        //     if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined) {
-        //         for (var i in connectingBloq.connections[connectingBloqLocation]) {
-        //             if (this.connections[type].type === connectingBloq.connections[connectingBloqLocation][i].type) { // if the type is the same
-        //                 if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation][i].location)) {
-        //                     // this.connectBloqs(connectingBloq, this, type + i);
-        //                     // this.updateConnectors
-        //                     utils.moveBloq(this,  this.connections[type].positionInBloq);
-        //                     console.log('INPUT : isover!!');
-        //                 } else {
-        //                     console.log('INPUT: not over');
-        //                 }
-        //             }
-        //         }
-        //     }
-        // } else {
-        if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined && this.connections[type].type === connectingBloq.connections[connectingBloqLocation].type) { // if the type is the same
-            if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation].location)) {
-                console.log('aaaaaaaaaa', connectingBloq.connections[connectingBloqLocation].positionInBloq, this.connections[type].positionInBloq, type);
-                utils.moveBloq(this, connectingBloq.connections[connectingBloqLocation].positionInBloq);
-                this.updateConnectors();
-                connectingBloq.updateConnectors();
-                // this.connectBloqs(connectingBloq, this, type);
-                // this.updateConnectors
-                console.log('isover!!');
-            } else {
-                console.log('not over');
+        if (connectingBloqLocation === 'inputs') {
+            if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined) {
+                for (var i in connectingBloq.connections[connectingBloqLocation]) {
+                    console.log('aaaaaaaaaaaa', this.connections[type], connectingBloq.connections[connectingBloqLocation][i]);
+                    if (this.connections[type].type === connectingBloq.connections[connectingBloqLocation][i].type) { // if the type is the same
+                        if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation][i].location)) {
+                            console.log('connectingBloq.connections[connectingBloqLocation][i].positionInBloq', connectingBloq.connections[connectingBloqLocation][i]);
+                            utils.moveBloq(this, connectingBloq.connections[connectingBloqLocation][i].positionInBloq);
+                            this.updateConnectors();
+                            connectingBloq.updateConnectors();
+                            console.log('INPUT : isover!!');
+                        } else {
+                            console.log('INPUT: not over');
+                        }
+                    }
+                }
+            }
+        } else {
+            if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined && this.connections[type].type === connectingBloq.connections[connectingBloqLocation].type) { // if the type is the same
+                if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation].location)) {
+                    console.log('aaaaaaaaaa', connectingBloq.connections[connectingBloqLocation].positionInBloq, type);
+                    utils.moveBloq(this, connectingBloq.connections[connectingBloqLocation].positionInBloq);
+                    this.updateConnectors();
+                    connectingBloq.updateConnectors();
+                    // this.connectBloqs(connectingBloq, this, type);
+                    // this.updateConnectors
+                    console.log('isover!!');
+                } else {
+                    console.log('not over');
+                }
             }
         }
-        // }
     };
-    /**
-     * take 2 bloqs and connect them
-     * @param bloq1
-     * @param bloq2
-     * @param location
-     */
-    // bloq.connectBloqs = function(bloq1, bloq2, location) {
-    //     var parent = bloq1;
-    //     var child = bloq2;
-    //     var newLocation = 'up';
-    //     if (location === 'up') {
-    //         bloq2.x(bloq1.x());
-    //         bloq2.y(bloq1.y() + bloq1.first().height());
-    //     } else if (location === 'down') {
-    //         bloq2.x(bloq1.x());
-    //         bloq2.y(bloq1.y() - bloq1.first().height());
-    //         parent = bloq2;
-    //         child = bloq1;
-    //     } else if (location === 'inputs') {
-    //         bloq2.x(bloq1.x() - bloq1.first().width());
-    //         bloq2.y(bloq1.y());
-    //         parent = bloq2;
-    //         child = bloq1;
-    //         newLocation = 'output';
-    //     } else if (location.indexOf('output') >= 0) {
-    //         var i = parseInt(location.replace('output', ''), 10);
-    //         bloq2.x(bloq1.x() + bloq1.first().width());
-    //         bloq2.y(bloq1.y() + (i - 1));
-    //         newLocation = location;
-    //     }
-    //     child.location = newLocation;
-    //     this.updateBloqs(parent, child);
-    //     parent.updateConnectors();
-    //     child.updateConnectors();
-    //     if (child.relations.children.length > 0) {
-    //         for (var i in child.relations.children) {
-    //             var nextChild = child.getBloqById(child.relations.children[i]);
-    //             var nextLocation = nextChild.location;
-    //             child.connectBloqs(child, nextChild, nextLocation);
-    //         }
-    //     }
-    // };
     bloq.updateBloqs = function(parent, child) {
         parent.setChildren(child.node.id, child.location);
         child.setParent(parent.node.id);
