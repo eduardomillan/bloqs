@@ -5,6 +5,8 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     var connectionThreshold = 50; // px
     var size = bloqData.size;
     var bloq = canvas.group().move(position[0], position[1]);
+    bloq.deltaX = 0;
+    bloq.deltaY = 0;
     bloq.connections = {};
     if (bloqData.inputs) {
         bloq.connections.inputs = [{
@@ -66,11 +68,11 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             value: inputText,
             color: '#FFCC33',
         }).move(posx, posy);
-        document.getElementById(id).addEventListener("mousedown", function(e) {
+        document.getElementById(id).addEventListener("mousedown", function() {
             e.stopPropagation();
         }, false);
         //Check that the input of the user is the one spected
-        document.getElementById(id).addEventListener("change", function(e) {
+        document.getElementById(id).addEventListener("change", function() {
             if (type === 'number') {
                 if (isNaN(parseFloat(document.getElementById(id).value))) {
                     //If type is number and input is not a number, remove user input. 
@@ -133,7 +135,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         var posx = margin;
         var width = 0;
         var posy = margin;
-        var text = '';
         for (var j in bloqData.text) {
             for (var i in bloqData.text[j]) {
                 if (typeof(bloqData.text[j][i]) === typeof({})) {
@@ -185,7 +186,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             bloq.connections.up.positionInBloq = {
                 x: posx,
                 y: posy - bloqHeight
-            },
+            };
             bloq.connections.up.location = {
                 x1: posx,
                 x2: posx + bloqWidth,
@@ -197,7 +198,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             bloq.connections.down.positionInBloq = {
                 x: posx,
                 y: posy + bloqHeight
-            },
+            };
             bloq.connections.down.location = {
                 x1: posx,
                 x2: posx + bloqWidth,
@@ -205,48 +206,51 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 y2: posy + bloqHeight
             };
         }
-        if (bloq.connections.output !== undefined) {
-            bloq.connections.output.positionInBloq = {
-                x: posx,
-                y: posy
-            },
-            bloq.connections.output.location = {
-                x1: posx,
-                x2: posx + connectionThreshold,
-                y1: posy,
-                y2: posy + bloqHeight
-            }
-        }
-        /**
-         * We store the positions of the input connections of the bloq here
-         */
-        if (bloq.connections.inputs) {
-            for (var i in bloq.connections.inputs) {
-                if (bloq.connections.inputs[i].positionInBloq !== undefined) {
-                    bloq.connections.inputs[i].location = {
-                        x1: posx + bloq.connections.inputs[i].positionInBloq.x,
-                        x2: posx + bloq.connections.inputs[i].positionInBloq.x + bloq.connections.inputs[i].positionInBloq.width,
-                        y1: posy + bloq.connections.inputs[i].positionInBloq.y,
-                        y2: posy + bloq.connections.inputs[i].positionInBloq.y + bloq.connections.inputs[i].positionInBloq.height
-                    };
-                } else {
-                    bloq.connections.inputs[i].location = {
-                        x1: posx + bloqWidth - connectionThreshold,
-                        x2: posx + bloqWidth,
-                        y1: posy + i * connectionThreshold,
-                        y2: posy + (1 + i) * connectionThreshold
-                    };
-                }
-            }
-            bloq.inputsNumber = bloq.connections.inputs.length;
-        }
-        console.log('bloq.connections.inputs', bloq.connections.inputs);
+        // if (bloq.connections.output !== undefined) {
+        //     bloq.connections.output.positionInBloq = {
+        //         x: posx,
+        //         y: posy
+        //     };
+        //     bloq.connections.output.location = {
+        //         x1: posx,
+        //         x2: posx + connectionThreshold,
+        //         y1: posy,
+        //         y2: posy + bloqHeight
+        //     };
+        // }
+        // /**
+        //  * We store the positions of the input connections of the bloq here
+        //  */
+        // if (bloq.connections.inputs) {
+        //     for (var i in bloq.connections.inputs) {
+        //         if (bloq.connections.inputs[i].positionInBloq !== undefined) {
+        //             bloq.connections.inputs[i].location = {
+        //                 x1: posx + bloq.connections.inputs[i].positionInBloq.x,
+        //                 x2: posx + bloq.connections.inputs[i].positionInBloq.x + bloq.connections.inputs[i].positionInBloq.width,
+        //                 y1: posy + bloq.connections.inputs[i].positionInBloq.y,
+        //                 y2: posy + bloq.connections.inputs[i].positionInBloq.y + bloq.connections.inputs[i].positionInBloq.height
+        //             };
+        //         } else {
+        //             bloq.connections.inputs[i].location = {
+        //                 x1: posx + bloqWidth - connectionThreshold,
+        //                 x2: posx + bloqWidth,
+        //                 y1: posy + i * connectionThreshold,
+        //                 y2: posy + (1 + i) * connectionThreshold
+        //             };
+        //         }
+        //     }
+        //     bloq.inputsNumber = bloq.connections.inputs.length;
+        // }
+        // console.log('bloq.connections.inputs', bloq.connections.inputs);
     };
     bloq.updateConnectors();
     /**
      * We start dragging
      */
-    bloq.dragmove = function() {
+    bloq.dragmove = function(a) {
+        bloq.deltaX = a.x;
+        bloq.deltaY = a.y;
+        console.log('a,e', bloq.deltaX, bloq.deltaY);
         //move dragged bloq on top
         bloq.node.parentNode.appendChild(bloq.node);
         bloq.updateConnectors();

@@ -1,5 +1,4 @@
 var utils = utils || {};
-var connectionThreshold = 50; // px
 /**
  * Takes 2 bloqs and connects them
  * @param bloq1
@@ -44,7 +43,8 @@ var connectionThreshold = 50; // px
 //         }
 //     }
 // };
-utils.moveBloq = function( bloq2, location) {
+utils.moveBloq = function(bloq2, location) {
+    "use strict";
     console.log('movebloq', bloq2, location);
     bloq2.x(location.x);
     bloq2.y(location.y);
