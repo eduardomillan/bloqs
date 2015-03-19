@@ -43,9 +43,14 @@ var utils = utils || {};
 //         }
 //     }
 // };
-utils.moveBloq = function(bloq2, location) {
+utils.moveBloq = function(bloq, location) {
     "use strict";
-    console.log('movebloq', bloq2, location);
-    bloq2.x(location.x);
-    bloq2.y(location.y);
+    // var initX = bloq.x();
+    // var initY = bloq.y();
+    bloq.x(location.x);
+    bloq.y(location.y);
+    // console.log('MOVEBLOQ:', initX, bloq.x(), initY,bloq.y());
+    // return [(initX - bloq.x()), (initY-bloq.y())];
 };
+
+
