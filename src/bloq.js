@@ -155,6 +155,10 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         if (connectionType==='up'){
             return {x : bloq.connections[connectionType].connectionPosition.x, y:bloq.connections[connectionType].connectionPosition.y - bloqToConnect.size.height};
         }
+        if (connectionType === 'output'){
+            return {x : bloq.connections[connectionType].connectionPosition.x - bloqToConnect.size.width, y:bloq.connections[connectionType].connectionPosition.y };
+
+        }
         return bloq.connections[connectionType].connectionPosition;
     };
 
