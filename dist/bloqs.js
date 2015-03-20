@@ -52,27 +52,9 @@ utils.moveBloq = function(bloq, location) {
     // console.log('MOVEBLOQ:', initX, bloq.x(), initY,bloq.y());
     // return [(initX - bloq.x()), (initY-bloq.y())];
 };
-
-
-
-var bloqsNamespace = bloqsNamespace || {};
-bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
+utils.createConnectors = function(bloq, bloqData) {
     "use strict";
     var connectionThreshold = 20; // px
-    var bloq = canvas.group().move(position[0], position[1]);
-    bloq.size = {
-        width: 0,
-        heigh: 0
-    };
-    bloq.size.width = bloqData.size[0];
-    bloq.size.height = bloqData.size[1];
-    bloq.delta={
-        x:0,
-        y:0,
-        lastx:0,
-        lasty:0
-    };
-
     bloq.connections = {};
     if (bloqData.inputs) {
         bloq.connections.inputs = [{
@@ -101,9 +83,9 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             y1: bloq.y() - connectionThreshold,
             y2: bloq.y() + connectionThreshold
         };
-        bloq.rect(bloq.size.width + 10, connectionThreshold*2).attr({
+        bloq.rect(bloq.size.width + 10, connectionThreshold * 2).attr({
             fill: '#000'
-        }).move(0, - connectionThreshold);
+        }).move(0, -connectionThreshold);
     }
     if (bloqData.down) {
         bloq.connections.down = {
@@ -120,27 +102,96 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             y1: bloq.y() + bloq.size.height - connectionThreshold,
             y2: bloq.y() + bloq.size.height + connectionThreshold
         };
-        bloq.rect(bloq.size.width + 10, connectionThreshold*2).attr({
+        bloq.rect(bloq.size.width + 10, connectionThreshold * 2).attr({
             fill: '#000'
-        }).move(0, bloq.size.height-connectionThreshold);
+        }).move(0, bloq.size.height - connectionThreshold);
     }
-    console.log('initially : ', bloq.node.id, bloq.connections.up.location, bloq.connections.down.location);
-    // bloq.connections.down.positionInBloq = {
-    //     x: posx,
-    //     y: posy + bloqHeight
-    // };
-    // bloq.connections.down.location = {
-    //     x1: posx,
-    //     x2: posx + bloqWidth,
-    //     y1: posy + bloqHeight - connectionThreshold,
-    //     y2: posy + bloqHeight
-    // };
-    bloq.oppositeConnection = {
-        inputs: 'output',
-        output: 'inputs',
-        up: 'down',
-        down: 'up'
+    return bloq.connections;
+};
+/**
+ * Updates de position of the connectors of a bloq (used after modifying the bloq's position)
+ * @param bloq
+ */
+utils.updateConnectors = function(bloq) {
+    if (bloq.connections.up) {
+        bloq.connections.up.positionInBloq.x += bloq.delta.x;
+        bloq.connections.up.positionInBloq.y += bloq.delta.y;
+        bloq.connections.up.location.x1 += bloq.delta.x;
+        bloq.connections.up.location.x2 += bloq.delta.x;
+        bloq.connections.up.location.y1 += bloq.delta.y;
+        bloq.connections.up.location.y2 += bloq.delta.y;
+    }
+    if (bloq.connections.down) {
+        bloq.connections.down.positionInBloq.x += bloq.delta.x;
+        bloq.connections.down.positionInBloq.y += bloq.delta.y;
+        bloq.connections.down.location.x1 += bloq.delta.x;
+        bloq.connections.down.location.x2 += bloq.delta.x;
+        bloq.connections.down.location.y1 += bloq.delta.y;
+        bloq.connections.down.location.y2 += bloq.delta.y;
+    }
+    // if (bloq.connections.output !== undefined) {
+    //     bloq.connections.output.positionInBloq = {
+    //         x: posx,
+    //         y: posy
+    //     };
+    //     bloq.connections.output.location = {
+    //         x1: posx,
+    //         x2: posx + connectionThreshold,
+    //         y1: posy,
+    //         y2: posy + bloqHeight
+    //     };
+    // }
+    // /**
+    //  * We store the positions of the input connections of the bloq here
+    //  */
+    // if (bloq.connections.inputs) {
+    //     for (var i in bloq.connections.inputs) {
+    //         if (bloq.connections.inputs[i].positionInBloq !== undefined) {
+    //             bloq.connections.inputs[i].location = {
+    //                 x1: posx + bloq.connections.inputs[i].positionInBloq.x,
+    //                 x2: posx + bloq.connections.inputs[i].positionInBloq.x + bloq.connections.inputs[i].positionInBloq.width,
+    //                 y1: posy + bloq.connections.inputs[i].positionInBloq.y,
+    //                 y2: posy + bloq.connections.inputs[i].positionInBloq.y + bloq.connections.inputs[i].positionInBloq.height
+    //             };
+    //         } else {
+    //             bloq.connections.inputs[i].location = {
+    //                 x1: posx + bloqWidth - connectionThreshold,
+    //                 x2: posx + bloqWidth,
+    //                 y1: posy + i * connectionThreshold,
+    //                 y2: posy + (1 + i) * connectionThreshold
+    //             };
+    //         }
+    //     }
+    //     bloq.inputsNumber = bloq.connections.inputs.length;
+    // }
+    // console.log('bloq.connections.inputs', bloq.connections.inputs);
+    return bloq.connections;
+};
+utils.oppositeConnection = {
+    inputs: 'output',
+    output: 'inputs',
+    up: 'down',
+    down: 'up'
+};
+var bloqsNamespace = bloqsNamespace || {};
+bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
+    "use strict";
+    var connectionThreshold = 20; // px
+    var bloq = canvas.group().move(position[0], position[1]);
+    bloq.size = {
+        width: 0,
+        heigh: 0
     };
+    bloq.size.width = bloqData.size[0];
+    bloq.size.height = bloqData.size[1];
+    bloq.delta = {
+        x: 0,
+        y: 0,
+        lastx: 0,
+        lasty: 0
+    };
+    bloq.connections = utils.createConnectors(bloq, bloqData);
+    console.log('initially : ', bloq.node.id, bloq.connections.up.location, bloq.connections.down.location);
     bloq.code = bloqData.code;
     if (bloqData.hasOwnProperty('factoryCode')) {
         bloq.factoryCode = bloqData.factoryCode;
@@ -163,60 +214,8 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     if (bloq.label !== 'setup' && bloq.label !== 'loop') {
         bloq.draggable();
     }
-    bloq.appendUserInput = function(inputText, type, posx, posy, id) {
-        var text = bloq.foreignObject(100, 100).attr({
-            id: 'fobj',
-            color: '#FFCC33'
-        });
-        text.appendChild("input", {
-            id: id,
-            value: inputText,
-            color: '#FFCC33',
-        }).move(posx, posy);
-        document.getElementById(id).addEventListener("mousedown", function(e) {
-            e.stopPropagation();
-        }, false);
-        //Check that the input of the user is the one spected
-        document.getElementById(id).addEventListener("change", function() {
-            if (type === 'number') {
-                if (isNaN(parseFloat(document.getElementById(id).value))) {
-                    //If type is number and input is not a number, remove user input. 
-                    //ToDo : UX warning!
-                    document.getElementById(id).value = '';
-                }
-            }
-        }, false);
-    };
-    bloq.appendBloqInput = function(inputText, type, posx, posy, id) {
-        //draw white (ToDo: UX) rectangle
-        var width = posx;
-        var bloqInput = bloq.rect(70, 30).attr({
-            fill: '#fff'
-        }).move(width, posy);
-        if (bloq.connections.inputs === undefined) {
-            bloq.connections.inputs = [{
-                location: undefined,
-                type: ''
-            }];
-        }
-        //add connector (input, type)
-        bloq.connections.inputs.push({
-            positionInBloq: {
-                x: bloqInput.x(),
-                y: bloqInput.y()
-            },
-            location: {
-                x1: posx + width - connectionThreshold,
-                x2: posx + width,
-                y1: posy + i * connectionThreshold,
-                y2: posy + (1 + i) * connectionThreshold
-            },
-            type: type
-        });
-        bloq.inputsNumber = bloq.connections.inputs.length;
-        console.log('after:', bloq.connections.inputs);
-        //add to bloq's inputs
-    };
+
+ 
     bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(10);
     bloq.border = bloq.rect(bloq.size.width, bloq.size.height).fill('none').stroke({
         width: 1
@@ -274,66 +273,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         bloq.size.height = posy;
     }
     /**
-     * Updates de position of the connectors of a bloq (used after modifying the bloq's position)
-     * @param bloq
-     */
-    bloq.updateConnectors = function() {
-        if (bloq.connections.up) {
-            bloq.connections.up.positionInBloq.x += bloq.delta.x;
-            bloq.connections.up.positionInBloq.y += bloq.delta.y;
-            bloq.connections.up.location.x1 += bloq.delta.x;
-            bloq.connections.up.location.x2 += bloq.delta.x;
-            bloq.connections.up.location.y1 += bloq.delta.y;
-            bloq.connections.up.location.y2 += bloq.delta.y;
-        }
-        if (bloq.connections.down) {
-            bloq.connections.down.positionInBloq.x += bloq.delta.x;
-            bloq.connections.down.positionInBloq.y += bloq.delta.y;
-            bloq.connections.down.location.x1 += bloq.delta.x;
-            bloq.connections.down.location.x2 += bloq.delta.x;
-            bloq.connections.down.location.y1 += bloq.delta.y;
-            bloq.connections.down.location.y2 += bloq.delta.y;
-        }
-        bloq.delta.x = 0;
-        bloq.delta.y = 0;
-        // if (bloq.connections.output !== undefined) {
-        //     bloq.connections.output.positionInBloq = {
-        //         x: posx,
-        //         y: posy
-        //     };
-        //     bloq.connections.output.location = {
-        //         x1: posx,
-        //         x2: posx + connectionThreshold,
-        //         y1: posy,
-        //         y2: posy + bloqHeight
-        //     };
-        // }
-        // /**
-        //  * We store the positions of the input connections of the bloq here
-        //  */
-        // if (bloq.connections.inputs) {
-        //     for (var i in bloq.connections.inputs) {
-        //         if (bloq.connections.inputs[i].positionInBloq !== undefined) {
-        //             bloq.connections.inputs[i].location = {
-        //                 x1: posx + bloq.connections.inputs[i].positionInBloq.x,
-        //                 x2: posx + bloq.connections.inputs[i].positionInBloq.x + bloq.connections.inputs[i].positionInBloq.width,
-        //                 y1: posy + bloq.connections.inputs[i].positionInBloq.y,
-        //                 y2: posy + bloq.connections.inputs[i].positionInBloq.y + bloq.connections.inputs[i].positionInBloq.height
-        //             };
-        //         } else {
-        //             bloq.connections.inputs[i].location = {
-        //                 x1: posx + bloqWidth - connectionThreshold,
-        //                 x2: posx + bloqWidth,
-        //                 y1: posy + i * connectionThreshold,
-        //                 y2: posy + (1 + i) * connectionThreshold
-        //             };
-        //         }
-        //     }
-        //     bloq.inputsNumber = bloq.connections.inputs.length;
-        // }
-        // console.log('bloq.connections.inputs', bloq.connections.inputs);
-    };
-    /**
      * We start dragging
      */
     bloq.dragmove = function(a, e) {
@@ -343,8 +282,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         bloq.delta.lastx = a.x;
         bloq.delta.lasty = a.y;
         console.log('DRAGMOVE +++++++++++++++++++++++++  deltax, deltay', bloq.node.id, bloq.delta.x, bloq.delta.y);
-
-        bloq.updateConnectors();
+        bloq.connections = utils.updateConnectors(bloq);
         console.log('DRAGMOVE +++++++++++++++++++++++++connectors[up,down]location', bloq.connections.up.location, bloq.connections.down.location);
         // console.log('connectors[up,down]positionInBloq', bloq.connections.up.positionInBloq, bloq.connections.down.positionInBloq);
         // console.log('bloq location :', bloq.x(), bloq.y());
@@ -368,15 +306,13 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
      * We stop dragging
      */
     bloq.dragend = function(a, e) {
-
-        bloq.delta.lastx=0;
-        bloq.delta.lasty=0;
-        console.log('DRAGEND +++++++++++++++++++++++++++++++');
-        console.log('bloq location :', bloq.x(), bloq.y());
-
-        console.log('connectors[up,down]location', bloq.connections.up.location, bloq.connections.down.location);
-        console.log('connectors[up,down]positionInBloq', bloq.connections.up.positionInBloq, bloq.connections.down.positionInBloq);
-
+        //Initialize lasx y laxy
+        bloq.delta.lastx = 0;
+        bloq.delta.lasty = 0;
+        // console.log('DRAGEND +++++++++++++++++++++++++++++++');
+        // console.log('bloq location :', bloq.x(), bloq.y());
+        // console.log('connectors[up,down]location', bloq.connections.up.location, bloq.connections.down.location);
+        // console.log('connectors[up,down]positionInBloq', bloq.connections.up.positionInBloq, bloq.connections.down.positionInBloq);
         var flag = false;
         for (var j in bloq.connections) {
             if (flag === true) {
@@ -386,7 +322,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             if (bloq.connections[j] !== undefined) {
                 for (var i in data.bloqs) {
                     if (data.bloqs[i].node.id !== bloq.node.id) {
-                        // data.bloqs[i].updateConnectors();
                         if (bloq.manageConnections(j, data.bloqs[i], false) === true) {
                             flag = true;
                             break; //propagate break!
@@ -397,7 +332,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         }
     };
     bloq.manageConnections = function(type, connectingBloq) {
-        var connectingBloqLocation = bloq.oppositeConnection[type];
+        var connectingBloqLocation = utils.oppositeConnection[type];
         // if (connectingBloqLocation === 'inputs') {
         //     if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined) {
         //         for (var i in connectingBloq.connections[connectingBloqLocation]) {
@@ -426,11 +361,9 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 bloq.delta.y = connectingBloq.connections[connectingBloqLocation].location.y1 - bloq.connections[type].location.y1;
                 var a = utils.moveBloq(bloq, connectingBloq.connections[connectingBloqLocation].positionInBloq);
                 console.log('deltas:', bloq.delta.x, bloq.delta.y, connectingBloq.delta.x, connectingBloq.delta.y);
-                bloq.updateConnectors();
+                bloq.connections = utils.updateConnectors(bloq);
                 bloq.delta.lastx = 0;
                 bloq.delta.lasty = 0;
-
-                // connectingBloq.updateConnectors();
                 console.log('ids:', bloq.node.id, connectingBloq.node.id);
                 console.log('conectors location AFTER UPDATE: connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].location, bloq.connections[type].location);
                 console.log('conectors positionInBloq AFTER UPDATE:connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].positionInBloq, bloq.connections[type].positionInBloq);
