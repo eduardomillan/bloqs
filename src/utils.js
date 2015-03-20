@@ -19,18 +19,18 @@ utils.createConnectors = function(bloq, bloqData) {
             };
             bloq.connections.inputs[i].connectionPosition = {
                 x: bloq.x() + bloq.size.width,
-                y: bloq.y() + i* connectionThreshold
+                y: bloq.y() + i * connectionThreshold
             };
             bloq.connections.inputs[i].connectorArea = {
                 x1: bloq.x() + bloq.size.width - connectionThreshold,
                 x2: bloq.x() + bloq.size.width + connectionThreshold,
-                y1: bloq.y() + i*connectionThreshold,
-                y2: bloq.y() + i*connectionThreshold + connectionThreshold
+                y1: bloq.y() + i * connectionThreshold,
+                y2: bloq.y() + i * connectionThreshold + connectionThreshold
             };
             bloq.connections.inputs[i].type = bloqData.inputs[i];
             bloq.rect(connectionThreshold * 2, connectionThreshold).attr({
                 fill: '#000'
-            }).move(bloq.size.width - connectionThreshold, i*connectionThreshold);
+            }).move(bloq.size.width - connectionThreshold, i * connectionThreshold);
         }
         console.log('inputs :::', bloq.connections.inputs);
     }
@@ -126,4 +126,24 @@ utils.oppositeConnection = {
     output: 'inputs',
     up: 'down',
     down: 'up'
+};
+utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID) {
+    "use strict";
+    if (bloq2Connection !== undefined && bloq1Connection !== undefined) {
+        if (bloq1Connection.type === bloq2Connection.type) { // if the type is the same
+            if (bloq1.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
+                console.log('isover!! ---> ', type);
+                bloq1.delta.x = bloq2Connection.connectorArea.x1 - bloq1Connection.connectorArea.x1;
+                bloq1.delta.y = bloq2Connection.connectorArea.y1 - bloq1Connection.connectorArea.y1;
+                utils.moveBloq(bloq1, bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
+                bloq1.connections = utils.updateConnectors(bloq1);
+                bloq1.delta.lastx = 0;
+                bloq1.delta.lasty = 0;
+                return true;
+            } else {
+                console.log('not over');
+            }
+        }
+    }
+    return false;
 };
