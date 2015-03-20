@@ -1,48 +1,4 @@
 var utils = utils || {};
-/**
- * Takes 2 bloqs and connects them
- * @param bloq1
- * @param bloq2
- * @param location
- */
-// utils.connectBloqs = function(bloq1, bloq2, location) {
-//     var parent = bloq1;
-//     var child = bloq2;
-//     if (typeof(location) === typeof({})) {
-//         bloq2.x(location.x1);
-//         bloq2.y(location.y1);
-//     } else {
-//         var newLocation = 'up';
-//         if (location === 'up') {
-//             bloq2.x(bloq1.x());
-//             bloq2.y(bloq1.y() + bloq1.first().height());
-//         } else if (location === 'down') {
-//             bloq2.x(bloq1.x());
-//             bloq2.y(bloq1.y() - bloq1.first().height());
-//             parent = bloq2;
-//             child = bloq1;
-//         } else if (location === 'inputs') {
-//             bloq2.x(bloq1.x() - bloq1.first().width());
-//             bloq2.y(bloq1.y());
-//             parent = bloq2;
-//             child = bloq1;
-//             newLocation = 'output';
-//         } else if (location.indexOf('output') >= 0) {
-//             var i = parseInt(location.replace('output', ''), 10);
-//             bloq2.x(bloq1.x() + bloq1.first().width());
-//             bloq2.y(bloq1.y() + (i - 1));
-//             newLocation = location;
-//         }
-//         child.location = newLocation;
-//         if (child.relations.children.length > 0) {
-//             for (var i in child.relations.children) {
-//                 var nextChild = child.getBloqById(child.relations.children[i]);
-//                 var nextLocation = nextChild.location;
-//                 child.connectBloqs(child, nextChild, nextLocation);
-//             }
-//         }
-//     }
-// };
 utils.moveBloq = function(bloq, location) {
     "use strict";
     bloq.x(location.x);
@@ -52,28 +8,42 @@ utils.createConnectors = function(bloq, bloqData) {
     "use strict";
     var connectionThreshold = 20; // px
     bloq.connections = {};
-    if (bloqData.inputs) {
-        bloq.connections.inputs = [{
-            location: undefined,
-            type: ''
-        }];
-    }
-    if (bloqData.output) {
-        bloq.connections.output = {
-            location: undefined,
-            type: bloqData.output
-        };
-    }
+    // if (bloqData.inputs) {
+    //     bloq.connections.inputs = [{
+    //         connectorArea: undefined,
+    //         type: ''
+    //     }];
+    // }
+    // if (bloqData.output) {
+    //     bloq.connections.output = {
+    //         connectionPosition: {},
+    //         connectorArea: {},
+    //         type : bloqData.output
+    //     };
+    //     bloq.connections.output.connectionPosition = {
+    //         x: bloq.x(),
+    //         y: bloq.y()
+    //     };
+    //     bloq.connections.output.connectorArea = {
+    //         x1: bloq.x(),
+    //         x2: bloq.x() + bloq.size.width,
+    //         y1: bloq.y() - connectionThreshold,
+    //         y2: bloq.y() + connectionThreshold
+    //     };
+    //     bloq.rect(bloq.size.width + 10, connectionThreshold * 2).attr({
+    //         fill: '#000'
+    //     }).move(0, -connectionThreshold);
+    // }
     if (bloqData.up) {
         bloq.connections.up = {
-            positionInBloq: {},
-            location: {}
+            connectionPosition: {},
+            connectorArea: {}
         };
-        bloq.connections.up.positionInBloq = {
+        bloq.connections.up.connectionPosition = {
             x: bloq.x(),
             y: bloq.y()
         };
-        bloq.connections.up.location = {
+        bloq.connections.up.connectorArea = {
             x1: bloq.x(),
             x2: bloq.x() + bloq.size.width,
             y1: bloq.y() - connectionThreshold,
@@ -85,14 +55,14 @@ utils.createConnectors = function(bloq, bloqData) {
     }
     if (bloqData.down) {
         bloq.connections.down = {
-            positionInBloq: {},
-            location: {}
+            connectionPosition: {},
+            connectorArea: {}
         };
-        bloq.connections.down.positionInBloq = {
+        bloq.connections.down.connectionPosition = {
             x: bloq.x(),
             y: bloq.y() + bloq.size.height
         };
-        bloq.connections.down.location = {
+        bloq.connections.down.connectorArea = {
             x1: bloq.x(),
             x2: bloq.x() + bloq.size.width,
             y1: bloq.y() + bloq.size.height - connectionThreshold,
@@ -109,50 +79,26 @@ utils.createConnectors = function(bloq, bloqData) {
  * @param bloq
  */
 utils.updateConnectors = function(bloq) {
+    "use strict";
     for (var type in bloq.connections) {
         if (bloq.connections[type] && type === 'inputs') {
             for (var i in bloq.connections[type]) {
-                bloq.connections[type][i].positionInBloq.x += bloq.delta.x;
-                bloq.connections[type][i].positionInBloq.y += bloq.delta.y;
-                bloq.connections[type][i].location.x1 += bloq.delta.x;
-                bloq.connections[type][i].location.x2 += bloq.delta.x;
-                bloq.connections[type][i].location.y1 += bloq.delta.y;
-                bloq.connections[type][i].location.y2 += bloq.delta.y;
+                bloq.connections[type][i].connectionPosition.x += bloq.delta.x;
+                bloq.connections[type][i].connectionPosition.y += bloq.delta.y;
+                bloq.connections[type][i].connectorArea.x1 += bloq.delta.x;
+                bloq.connections[type][i].connectorArea.x2 += bloq.delta.x;
+                bloq.connections[type][i].connectorArea.y1 += bloq.delta.y;
+                bloq.connections[type][i].connectorArea.y2 += bloq.delta.y;
             }
-        }
-        else if (bloq.connections[type]) {
-            bloq.connections[type].positionInBloq.x += bloq.delta.x;
-            bloq.connections[type].positionInBloq.y += bloq.delta.y;
-            bloq.connections[type].location.x1 += bloq.delta.x;
-            bloq.connections[type].location.x2 += bloq.delta.x;
-            bloq.connections[type].location.y1 += bloq.delta.y;
-            bloq.connections[type].location.y2 += bloq.delta.y;
+        } else if (bloq.connections[type]) {
+            bloq.connections[type].connectionPosition.x += bloq.delta.x;
+            bloq.connections[type].connectionPosition.y += bloq.delta.y;
+            bloq.connections[type].connectorArea.x1 += bloq.delta.x;
+            bloq.connections[type].connectorArea.x2 += bloq.delta.x;
+            bloq.connections[type].connectorArea.y1 += bloq.delta.y;
+            bloq.connections[type].connectorArea.y2 += bloq.delta.y;
         }
     }
-    // /**
-    //  * We store the positions of the input connections of the bloq here
-    //  */
-    // if (bloq.connections.inputs) {
-    //     for (var i in bloq.connections.inputs) {
-    //         if (bloq.connections.inputs[i].positionInBloq !== undefined) {
-    //             bloq.connections.inputs[i].location = {
-    //                 x1: posx + bloq.connections.inputs[i].positionInBloq.x,
-    //                 x2: posx + bloq.connections.inputs[i].positionInBloq.x + bloq.connections.inputs[i].positionInBloq.width,
-    //                 y1: posy + bloq.connections.inputs[i].positionInBloq.y,
-    //                 y2: posy + bloq.connections.inputs[i].positionInBloq.y + bloq.connections.inputs[i].positionInBloq.height
-    //             };
-    //         } else {
-    //             bloq.connections.inputs[i].location = {
-    //                 x1: posx + bloqWidth - connectionThreshold,
-    //                 x2: posx + bloqWidth,
-    //                 y1: posy + i * connectionThreshold,
-    //                 y2: posy + (1 + i) * connectionThreshold
-    //             };
-    //         }
-    //     }
-    //     bloq.inputsNumber = bloq.connections.inputs.length;
-    // }
-    // console.log('bloq.connections.inputs', bloq.connections.inputs);
     return bloq.connections;
 };
 utils.oppositeConnection = {
@@ -231,17 +177,17 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         }).move(width, posy);
         // if (bloq.connections.inputs === undefined) {
         //     bloq.connections.inputs = [{
-        //         location: undefined,
+        //         connectorArea: undefined,
         //         type: ''
         //     }];
         // }
         //add connector (input, type)
         // bloq.connections.inputs.push({
-        //     positionInBloq: {
+        //     connectionPosition: {
         //         x: bloqInput.x(),
         //         y: bloqInput.y()
         //     },
-        //     location: {
+        //     connectorArea: {
         //         x1: posx + width - connectionThreshold,
         //         x2: posx + width,
         //         y1: posy + i * connectionThreshold,
@@ -315,15 +261,15 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
 
     bloq.getConnectionPosition = function (connectionType, bloqToConnect){
         if (connectionType==='up'){
-            return {x : bloq.connections[connectionType].positionInBloq.x, y:bloq.connections[connectionType].positionInBloq.y - bloqToConnect.size.height};
+            return {x : bloq.connections[connectionType].connectionPosition.x, y:bloq.connections[connectionType].connectionPosition.y - bloqToConnect.size.height};
         }
-        return bloq.connections[connectionType].positionInBloq;
+        return bloq.connections[connectionType].connectionPosition;
     };
 
     /**
      * We start dragging
      */
-    bloq.dragmove = function(a, e) {
+    bloq.dragmove = function(a) {
         //Update the deltaX and deltaY movements
         bloq.delta.x = a.x - bloq.delta.lastx;
         bloq.delta.y = a.y - bloq.delta.lasty;
@@ -338,7 +284,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
 
         // remove parent of this and child in parent:
         if (bloq.relations.parent !== undefined) {
-            bloq.getBloqById(movedBloq.relations.parent).deleteChild(bloq);
+            bloq.getBloqById(bloq.relations.parent).deleteChild(bloq);
             bloq.deleteParent(true);
         }
 
@@ -346,21 +292,21 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         // for (var i in movedBloq.relations.children) {
         //     var childBloq = movedBloq.getBloqById(movedBloq.relations.children[i]);
         //     var parentBloq = movedBloq;
-        //     var location = childBloq.location;
-        //     this.connectBloqs(parentBloq, childBloq, location);
+        //     var connectorArea = childBloq.connectorArea;
+        //     this.connectBloqs(parentBloq, childBloq, connectorArea);
         // }
     };
     /**
      * We stop dragging
      */
-    bloq.dragend = function(a, e) {
+    bloq.dragend = function() {
         //Initialize lasx y laxy
         bloq.delta.lastx = 0;
         bloq.delta.lasty = 0;
         // console.log('DRAGEND +++++++++++++++++++++++++++++++');
-        // console.log('bloq location :', bloq.x(), bloq.y());
-        // console.log('connectors[up,down]location', bloq.connections.up.location, bloq.connections.down.location);
-        // console.log('connectors[up,down]positionInBloq', bloq.connections.up.positionInBloq, bloq.connections.down.positionInBloq);
+        // console.log('bloq connectorArea :', bloq.x(), bloq.y());
+        // console.log('connectors[up,down]connectorArea', bloq.connections.up.connectorArea, bloq.connections.down.connectorArea);
+        // console.log('connectors[up,down]connectionPosition', bloq.connections.up.connectionPosition, bloq.connections.down.connectionPosition);
         var flag = false;
         for (var j in bloq.connections) {
             if (flag === true) {
@@ -381,14 +327,14 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     };
     bloq.manageConnections = function(type, connectingBloq) {
         var connectingBloqLocation = utils.oppositeConnection[type];
-        // if (connectingBloqLocation === 'inputs') {
+        // if (connectingBloqconnectorArea === 'inputs') {
         //     if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined) {
         //         for (var i in connectingBloq.connections[connectingBloqLocation]) {
         //             console.log('aaaaaaaaaaaa', this.connections[type], connectingBloq.connections[connectingBloqLocation][i]);
         //             if (this.connections[type].type === connectingBloq.connections[connectingBloqLocation][i].type) { // if the type is the same
-        //                 if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation][i].location)) {
-        //                     console.log('connectingBloq.connections[connectingBloqLocation][i].positionInBloq', connectingBloq.connections[connectingBloqLocation][i]);
-        //                     utils.moveBloq(this, connectingBloq.connections[connectingBloqLocation][i].positionInBloq);
+        //                 if (this.itsOver(this.connections[type].connectorArea, connectingBloq.connections[connectingBloqLocation][i].connectorArea)) {
+        //                     console.log('connectingBloq.connections[connectingBloqLocation][i].connectionPosition', connectingBloq.connections[connectingBloqLocation][i]);
+        //                     utils.moveBloq(this, connectingBloq.connections[connectingBloqLocation][i].connectionPosition);
         //                     this.updateConnectors();
         //                     connectingBloq.updateConnectors();
         //                     console.log('INPUT : isover!!');
@@ -400,16 +346,16 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         //     }
         // } else {
         if (connectingBloq.connections[connectingBloqLocation] !== undefined && bloq.connections[type] !== undefined && bloq.connections[type].type === connectingBloq.connections[connectingBloqLocation].type) { // if the type is the same
-            if (bloq.itsOver(bloq.connections[type].location, connectingBloq.connections[connectingBloqLocation].location)) {
+            if (bloq.itsOver(bloq.connections[type].connectorArea, connectingBloq.connections[connectingBloqLocation].connectorArea)) {
                 console.log('isover!! ---> ', type);
-                // console.log('moving to :', connectingBloq.connections[connectingBloqLocation].positionInBloq);
-                // console.log('conectors location BEFORE UPDATE:', connectingBloq.connections[connectingBloqLocation].location, bloq.connections[type].location);
-                // console.log('conectors positionInBloq BEFORE UPDATE:', connectingBloq.connections[connectingBloqLocation].positionInBloq, bloq.connections[type].positionInBloq);
-                bloq.delta.x = connectingBloq.connections[connectingBloqLocation].location.x1 - bloq.connections[type].location.x1;
-                bloq.delta.y = connectingBloq.connections[connectingBloqLocation].location.y1 - bloq.connections[type].location.y1;
+                // console.log('moving to :', connectingBloq.connections[connectingBloqLocation].connectionPosition);
+                // console.log('conectors location BEFORE UPDATE:', connectingBloq.connections[connectingBloqLocation].connectorArea, bloq.connections[type].connectorArea);
+                // console.log('conectors connectionPosition BEFORE UPDATE:', connectingBloq.connections[connectingBloqLocation].connectionPosition, bloq.connections[type].connectionPosition);
+                bloq.delta.x = connectingBloq.connections[connectingBloqLocation].connectorArea.x1 - bloq.connections[type].connectorArea.x1;
+                bloq.delta.y = connectingBloq.connections[connectingBloqLocation].connectorArea.y1 - bloq.connections[type].connectorArea.y1;
                 // console.log('aaa',connectingBloq.getConnectionPosition(connectingBloqLocation, bloq));
-                // var positionX = connectingBloq.connections[connectingBloqLocation].positionInBloq.x;
-                // var positionY = connectingBloq.connections[connectingBloqLocation].positionInBloq.y;
+                // var positionX = connectingBloq.connections[connectingBloqLocation].connectionPosition.x;
+                // var positionY = connectingBloq.connections[connectingBloqLocation].connectionPosition.y;
                 // if (type === 'down'){
                 //     positionY-=bloq.size.height;
                 // }
@@ -422,19 +368,19 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 bloq.delta.lastx = 0;
                 bloq.delta.lasty = 0;
                 // console.log('ids:', bloq.node.id, connectingBloq.node.id);
-                // console.log('conectors location AFTER UPDATE: connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].location, bloq.connections[type].location);
-                // console.log('conectors positionInBloq AFTER UPDATE:connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].positionInBloq, bloq.connections[type].positionInBloq);
+                // console.log('conectors location AFTER UPDATE: connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].connectorArea, bloq.connections[type].connectorArea);
+                // console.log('conectors connectionPosition AFTER UPDATE:connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].connectionPosition, bloq.connections[type].connectionPosition);
                 return true;
             } else {
                 console.log('not over');
-                console.log('conectors location:', connectingBloq.connections[connectingBloqLocation].location, bloq.connections[type].location);
+                console.log('conectors location:', connectingBloq.connections[connectingBloqLocation].connectorArea, bloq.connections[type].connectorArea);
             }
             // }
         }
         return false;
     };
     bloq.updateBloqs = function(parent, child) {
-        parent.setChildren(child.node.id, child.location);
+        parent.setChildren(child.node.id, child.connectorArea);
         child.setParent(parent.node.id);
     };
     bloq.itsOver = function(dragRect, staticRect) {

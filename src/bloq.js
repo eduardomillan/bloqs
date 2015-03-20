@@ -69,17 +69,17 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         }).move(width, posy);
         // if (bloq.connections.inputs === undefined) {
         //     bloq.connections.inputs = [{
-        //         location: undefined,
+        //         connectorArea: undefined,
         //         type: ''
         //     }];
         // }
         //add connector (input, type)
         // bloq.connections.inputs.push({
-        //     positionInBloq: {
+        //     connectionPosition: {
         //         x: bloqInput.x(),
         //         y: bloqInput.y()
         //     },
-        //     location: {
+        //     connectorArea: {
         //         x1: posx + width - connectionThreshold,
         //         x2: posx + width,
         //         y1: posy + i * connectionThreshold,
@@ -153,15 +153,15 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
 
     bloq.getConnectionPosition = function (connectionType, bloqToConnect){
         if (connectionType==='up'){
-            return {x : bloq.connections[connectionType].positionInBloq.x, y:bloq.connections[connectionType].positionInBloq.y - bloqToConnect.size.height};
+            return {x : bloq.connections[connectionType].connectionPosition.x, y:bloq.connections[connectionType].connectionPosition.y - bloqToConnect.size.height};
         }
-        return bloq.connections[connectionType].positionInBloq;
+        return bloq.connections[connectionType].connectionPosition;
     };
 
     /**
      * We start dragging
      */
-    bloq.dragmove = function(a, e) {
+    bloq.dragmove = function(a) {
         //Update the deltaX and deltaY movements
         bloq.delta.x = a.x - bloq.delta.lastx;
         bloq.delta.y = a.y - bloq.delta.lasty;
@@ -176,7 +176,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
 
         // remove parent of this and child in parent:
         if (bloq.relations.parent !== undefined) {
-            bloq.getBloqById(movedBloq.relations.parent).deleteChild(bloq);
+            bloq.getBloqById(bloq.relations.parent).deleteChild(bloq);
             bloq.deleteParent(true);
         }
 
@@ -184,21 +184,21 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         // for (var i in movedBloq.relations.children) {
         //     var childBloq = movedBloq.getBloqById(movedBloq.relations.children[i]);
         //     var parentBloq = movedBloq;
-        //     var location = childBloq.location;
-        //     this.connectBloqs(parentBloq, childBloq, location);
+        //     var connectorArea = childBloq.connectorArea;
+        //     this.connectBloqs(parentBloq, childBloq, connectorArea);
         // }
     };
     /**
      * We stop dragging
      */
-    bloq.dragend = function(a, e) {
+    bloq.dragend = function() {
         //Initialize lasx y laxy
         bloq.delta.lastx = 0;
         bloq.delta.lasty = 0;
         // console.log('DRAGEND +++++++++++++++++++++++++++++++');
-        // console.log('bloq location :', bloq.x(), bloq.y());
-        // console.log('connectors[up,down]location', bloq.connections.up.location, bloq.connections.down.location);
-        // console.log('connectors[up,down]positionInBloq', bloq.connections.up.positionInBloq, bloq.connections.down.positionInBloq);
+        // console.log('bloq connectorArea :', bloq.x(), bloq.y());
+        // console.log('connectors[up,down]connectorArea', bloq.connections.up.connectorArea, bloq.connections.down.connectorArea);
+        // console.log('connectors[up,down]connectionPosition', bloq.connections.up.connectionPosition, bloq.connections.down.connectionPosition);
         var flag = false;
         for (var j in bloq.connections) {
             if (flag === true) {
@@ -219,14 +219,14 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     };
     bloq.manageConnections = function(type, connectingBloq) {
         var connectingBloqLocation = utils.oppositeConnection[type];
-        // if (connectingBloqLocation === 'inputs') {
+        // if (connectingBloqconnectorArea === 'inputs') {
         //     if (connectingBloq.connections[connectingBloqLocation] !== undefined && this.connections[type] !== undefined) {
         //         for (var i in connectingBloq.connections[connectingBloqLocation]) {
         //             console.log('aaaaaaaaaaaa', this.connections[type], connectingBloq.connections[connectingBloqLocation][i]);
         //             if (this.connections[type].type === connectingBloq.connections[connectingBloqLocation][i].type) { // if the type is the same
-        //                 if (this.itsOver(this.connections[type].location, connectingBloq.connections[connectingBloqLocation][i].location)) {
-        //                     console.log('connectingBloq.connections[connectingBloqLocation][i].positionInBloq', connectingBloq.connections[connectingBloqLocation][i]);
-        //                     utils.moveBloq(this, connectingBloq.connections[connectingBloqLocation][i].positionInBloq);
+        //                 if (this.itsOver(this.connections[type].connectorArea, connectingBloq.connections[connectingBloqLocation][i].connectorArea)) {
+        //                     console.log('connectingBloq.connections[connectingBloqLocation][i].connectionPosition', connectingBloq.connections[connectingBloqLocation][i]);
+        //                     utils.moveBloq(this, connectingBloq.connections[connectingBloqLocation][i].connectionPosition);
         //                     this.updateConnectors();
         //                     connectingBloq.updateConnectors();
         //                     console.log('INPUT : isover!!');
@@ -238,16 +238,16 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         //     }
         // } else {
         if (connectingBloq.connections[connectingBloqLocation] !== undefined && bloq.connections[type] !== undefined && bloq.connections[type].type === connectingBloq.connections[connectingBloqLocation].type) { // if the type is the same
-            if (bloq.itsOver(bloq.connections[type].location, connectingBloq.connections[connectingBloqLocation].location)) {
+            if (bloq.itsOver(bloq.connections[type].connectorArea, connectingBloq.connections[connectingBloqLocation].connectorArea)) {
                 console.log('isover!! ---> ', type);
-                // console.log('moving to :', connectingBloq.connections[connectingBloqLocation].positionInBloq);
-                // console.log('conectors location BEFORE UPDATE:', connectingBloq.connections[connectingBloqLocation].location, bloq.connections[type].location);
-                // console.log('conectors positionInBloq BEFORE UPDATE:', connectingBloq.connections[connectingBloqLocation].positionInBloq, bloq.connections[type].positionInBloq);
-                bloq.delta.x = connectingBloq.connections[connectingBloqLocation].location.x1 - bloq.connections[type].location.x1;
-                bloq.delta.y = connectingBloq.connections[connectingBloqLocation].location.y1 - bloq.connections[type].location.y1;
+                // console.log('moving to :', connectingBloq.connections[connectingBloqLocation].connectionPosition);
+                // console.log('conectors location BEFORE UPDATE:', connectingBloq.connections[connectingBloqLocation].connectorArea, bloq.connections[type].connectorArea);
+                // console.log('conectors connectionPosition BEFORE UPDATE:', connectingBloq.connections[connectingBloqLocation].connectionPosition, bloq.connections[type].connectionPosition);
+                bloq.delta.x = connectingBloq.connections[connectingBloqLocation].connectorArea.x1 - bloq.connections[type].connectorArea.x1;
+                bloq.delta.y = connectingBloq.connections[connectingBloqLocation].connectorArea.y1 - bloq.connections[type].connectorArea.y1;
                 // console.log('aaa',connectingBloq.getConnectionPosition(connectingBloqLocation, bloq));
-                // var positionX = connectingBloq.connections[connectingBloqLocation].positionInBloq.x;
-                // var positionY = connectingBloq.connections[connectingBloqLocation].positionInBloq.y;
+                // var positionX = connectingBloq.connections[connectingBloqLocation].connectionPosition.x;
+                // var positionY = connectingBloq.connections[connectingBloqLocation].connectionPosition.y;
                 // if (type === 'down'){
                 //     positionY-=bloq.size.height;
                 // }
@@ -260,19 +260,19 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 bloq.delta.lastx = 0;
                 bloq.delta.lasty = 0;
                 // console.log('ids:', bloq.node.id, connectingBloq.node.id);
-                // console.log('conectors location AFTER UPDATE: connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].location, bloq.connections[type].location);
-                // console.log('conectors positionInBloq AFTER UPDATE:connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].positionInBloq, bloq.connections[type].positionInBloq);
+                // console.log('conectors location AFTER UPDATE: connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].connectorArea, bloq.connections[type].connectorArea);
+                // console.log('conectors connectionPosition AFTER UPDATE:connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].connectionPosition, bloq.connections[type].connectionPosition);
                 return true;
             } else {
                 console.log('not over');
-                console.log('conectors location:', connectingBloq.connections[connectingBloqLocation].location, bloq.connections[type].location);
+                console.log('conectors location:', connectingBloq.connections[connectingBloqLocation].connectorArea, bloq.connections[type].connectorArea);
             }
             // }
         }
         return false;
     };
     bloq.updateBloqs = function(parent, child) {
-        parent.setChildren(child.node.id, child.location);
+        parent.setChildren(child.node.id, child.connectorArea);
         child.setParent(parent.node.id);
     };
     bloq.itsOver = function(dragRect, staticRect) {
