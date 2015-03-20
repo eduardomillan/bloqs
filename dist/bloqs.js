@@ -45,12 +45,8 @@ var utils = utils || {};
 // };
 utils.moveBloq = function(bloq, location) {
     "use strict";
-    // var initX = bloq.x();
-    // var initY = bloq.y();
     bloq.x(location.x);
     bloq.y(location.y);
-    // console.log('MOVEBLOQ:', initX, bloq.x(), initY,bloq.y());
-    // return [(initX - bloq.x()), (initY-bloq.y())];
 };
 utils.createConnectors = function(bloq, bloqData) {
     "use strict";
@@ -75,7 +71,7 @@ utils.createConnectors = function(bloq, bloqData) {
         };
         bloq.connections.up.positionInBloq = {
             x: bloq.x(),
-            y: bloq.y() - bloq.size.height
+            y: bloq.y()
         };
         bloq.connections.up.location = {
             x1: bloq.x(),
@@ -87,6 +83,7 @@ utils.createConnectors = function(bloq, bloqData) {
             fill: '#000'
         }).move(0, -connectionThreshold);
     }
+
     if (bloqData.down) {
         bloq.connections.down = {
             positionInBloq: {},
@@ -173,25 +170,24 @@ utils.oppositeConnection = {
     up: 'down',
     down: 'up'
 };
+
+
 var bloqsNamespace = bloqsNamespace || {};
 bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     "use strict";
     var connectionThreshold = 20; // px
     var bloq = canvas.group().move(position[0], position[1]);
     bloq.size = {
-        width: 0,
-        heigh: 0
+        width: bloqData.size[0],
+        height: bloqData.size[1]
     };
-    bloq.size.width = bloqData.size[0];
-    bloq.size.height = bloqData.size[1];
+    console.log('bloqdata.size',bloqData.size);
     bloq.delta = {
         x: 0,
         y: 0,
         lastx: 0,
         lasty: 0
     };
-    bloq.connections = utils.createConnectors(bloq, bloqData);
-    console.log('initially : ', bloq.node.id, bloq.connections.up.location, bloq.connections.down.location);
     bloq.code = bloqData.code;
     if (bloqData.hasOwnProperty('factoryCode')) {
         bloq.factoryCode = bloqData.factoryCode;
@@ -214,8 +210,59 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     if (bloq.label !== 'setup' && bloq.label !== 'loop') {
         bloq.draggable();
     }
-
- 
+    bloq.appendUserInput = function(inputText, type, posx, posy, id) {
+        var text = bloq.foreignObject(100, 100).attr({
+            id: 'fobj',
+            color: '#FFCC33'
+        });
+        text.appendChild("input", {
+            id: id,
+            value: inputText,
+            color: '#FFCC33',
+        }).move(posx, posy);
+        document.getElementById(id).addEventListener("mousedown", function(e) {
+            e.stopPropagation();
+        }, false);
+        //Check that the input of the user is the one spected
+        document.getElementById(id).addEventListener("change", function() {
+            if (type === 'number') {
+                if (isNaN(parseFloat(document.getElementById(id).value))) {
+                    //If type is number and input is not a number, remove user input. 
+                    //ToDo : UX warning!
+                    document.getElementById(id).value = '';
+                }
+            }
+        }, false);
+    };
+    bloq.appendBloqInput = function(inputText, type, posx, posy, id) {
+        //draw white (ToDo: UX) rectangle
+        var width = posx;
+        var bloqInput = bloq.rect(70, 30).attr({
+            fill: '#fff'
+        }).move(width, posy);
+        // if (bloq.connections.inputs === undefined) {
+        //     bloq.connections.inputs = [{
+        //         location: undefined,
+        //         type: ''
+        //     }];
+        // }
+        //add connector (input, type)
+        // bloq.connections.inputs.push({
+        //     positionInBloq: {
+        //         x: bloqInput.x(),
+        //         y: bloqInput.y()
+        //     },
+        //     location: {
+        //         x1: posx + width - connectionThreshold,
+        //         x2: posx + width,
+        //         y1: posy + i * connectionThreshold,
+        //         y2: posy + (1 + i) * connectionThreshold
+        //     },
+        //     type: type
+        // });
+        // bloq.inputsNumber = bloq.connections.inputs.length;
+        // console.log('after:', bloq.connections.inputs);
+    };
     bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(10);
     bloq.border = bloq.rect(bloq.size.width, bloq.size.height).fill('none').stroke({
         width: 1
@@ -272,18 +319,31 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         bloq.size.width = width;
         bloq.size.height = posy;
     }
+
+    bloq.connections = utils.createConnectors(bloq, bloqData);
+    console.log('initially : ', bloq.node.id, bloq.connections.up.positionInBloq, bloq.connections.down.positionInBloq);
+
+
+    bloq.getConnectionPosition = function (connectionType, bloqToConnect){
+
+        if (connectionType==='up'){
+            return {x : bloq.connections[connectionType].positionInBloq.x, y:bloq.connections[connectionType].positionInBloq.y - bloqToConnect.size.height}
+        }
+        return bloq.connections[connectionType].positionInBloq;
+    };
+
     /**
      * We start dragging
      */
     bloq.dragmove = function(a, e) {
-        console.log('--------------------------------------> delta.lastx, delta.lasty', bloq.delta.lastx, bloq.delta.lasty);
+        // console.log('--------------------------------------> delta.lastx, delta.lasty', bloq.delta.lastx, bloq.delta.lasty);
         bloq.delta.x = a.x - bloq.delta.lastx; //e.movementX;
         bloq.delta.y = a.y - bloq.delta.lasty; //e.movementY;
         bloq.delta.lastx = a.x;
         bloq.delta.lasty = a.y;
-        console.log('DRAGMOVE +++++++++++++++++++++++++  deltax, deltay', bloq.node.id, bloq.delta.x, bloq.delta.y);
+        // console.log('DRAGMOVE +++++++++++++++++++++++++  deltax, deltay', bloq.node.id, bloq.delta.x, bloq.delta.y);
         bloq.connections = utils.updateConnectors(bloq);
-        console.log('DRAGMOVE +++++++++++++++++++++++++connectors[up,down]location', bloq.connections.up.location, bloq.connections.down.location);
+        // console.log('DRAGMOVE +++++++++++++++++++++++++connectors[up,down]location', bloq.connections.up.location, bloq.connections.down.location);
         // console.log('connectors[up,down]positionInBloq', bloq.connections.up.positionInBloq, bloq.connections.down.positionInBloq);
         // console.log('bloq location :', bloq.x(), bloq.y());
         //move dragged bloq on top
@@ -359,14 +419,23 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 // console.log('conectors positionInBloq BEFORE UPDATE:', connectingBloq.connections[connectingBloqLocation].positionInBloq, bloq.connections[type].positionInBloq);
                 bloq.delta.x = connectingBloq.connections[connectingBloqLocation].location.x1 - bloq.connections[type].location.x1;
                 bloq.delta.y = connectingBloq.connections[connectingBloqLocation].location.y1 - bloq.connections[type].location.y1;
-                var a = utils.moveBloq(bloq, connectingBloq.connections[connectingBloqLocation].positionInBloq);
-                console.log('deltas:', bloq.delta.x, bloq.delta.y, connectingBloq.delta.x, connectingBloq.delta.y);
+                // console.log('aaa',connectingBloq.getConnectionPosition(connectingBloqLocation, bloq));
+                // var positionX = connectingBloq.connections[connectingBloqLocation].positionInBloq.x;
+                // var positionY = connectingBloq.connections[connectingBloqLocation].positionInBloq.y;
+                // if (type === 'down'){
+                //     positionY-=bloq.size.height;
+                // }
+                // console.log('aaa',positionX, positionY);
+                // utils.moveBloq(bloq, {x:positionX, y:positionY});
+                utils.moveBloq(bloq, connectingBloq.getConnectionPosition(connectingBloqLocation, bloq));
+
+                // console.log('deltas:', bloq.delta.x, bloq.delta.y, connectingBloq.delta.x, connectingBloq.delta.y);
                 bloq.connections = utils.updateConnectors(bloq);
                 bloq.delta.lastx = 0;
                 bloq.delta.lasty = 0;
-                console.log('ids:', bloq.node.id, connectingBloq.node.id);
-                console.log('conectors location AFTER UPDATE: connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].location, bloq.connections[type].location);
-                console.log('conectors positionInBloq AFTER UPDATE:connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].positionInBloq, bloq.connections[type].positionInBloq);
+                // console.log('ids:', bloq.node.id, connectingBloq.node.id);
+                // console.log('conectors location AFTER UPDATE: connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].location, bloq.connections[type].location);
+                // console.log('conectors positionInBloq AFTER UPDATE:connectingBloq, this:', connectingBloq.connections[connectingBloqLocation].positionInBloq, bloq.connections[type].positionInBloq);
                 return true;
             } else {
                 console.log('not over');
@@ -382,9 +451,9 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     };
     bloq.itsOver = function(dragRect, staticRect) {
         if (dragRect !== undefined && staticRect !== undefined) {
-            console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1);
-            console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1 < staticRect.x2, dragRect.x2 > staticRect.x1, dragRect.y1 < staticRect.y2, dragRect.y2 > staticRect.y1);
-            console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1, staticRect.x2, dragRect.x2, staticRect.x1, dragRect.y1, staticRect.y2, dragRect.y2, staticRect.y1);
+            // console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1);
+            // console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1 < staticRect.x2, dragRect.x2 > staticRect.x1, dragRect.y1 < staticRect.y2, dragRect.y2 > staticRect.y1);
+            // console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1, staticRect.x2, dragRect.x2, staticRect.x1, dragRect.y1, staticRect.y2, dragRect.y2, staticRect.y1);
             return dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1;
         } else {
             return false;

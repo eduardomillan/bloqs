@@ -45,12 +45,8 @@ var utils = utils || {};
 // };
 utils.moveBloq = function(bloq, location) {
     "use strict";
-    // var initX = bloq.x();
-    // var initY = bloq.y();
     bloq.x(location.x);
     bloq.y(location.y);
-    // console.log('MOVEBLOQ:', initX, bloq.x(), initY,bloq.y());
-    // return [(initX - bloq.x()), (initY-bloq.y())];
 };
 utils.createConnectors = function(bloq, bloqData) {
     "use strict";
@@ -75,7 +71,7 @@ utils.createConnectors = function(bloq, bloqData) {
         };
         bloq.connections.up.positionInBloq = {
             x: bloq.x(),
-            y: bloq.y() - bloq.size.height
+            y: bloq.y()
         };
         bloq.connections.up.location = {
             x1: bloq.x(),
@@ -87,6 +83,7 @@ utils.createConnectors = function(bloq, bloqData) {
             fill: '#000'
         }).move(0, -connectionThreshold);
     }
+
     if (bloqData.down) {
         bloq.connections.down = {
             positionInBloq: {},
@@ -173,3 +170,4 @@ utils.oppositeConnection = {
     up: 'down',
     down: 'up'
 };
+
