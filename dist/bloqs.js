@@ -28,7 +28,7 @@ utils.createConnectors = function(bloq, bloqData) {
                 y2: bloq.y() + i * connectionThreshold + connectionThreshold
             };
             bloq.connections.inputs[i].type = bloqData.inputs[i];
-            bloq.rect(connectionThreshold * 2, connectionThreshold).attr({
+            bloq.connections.inputs[i].UI=bloq.rect(connectionThreshold * 2, connectionThreshold).attr({
                 fill: '#000'
             }).move(bloq.size.width - connectionThreshold, i * connectionThreshold);
         }
@@ -50,7 +50,7 @@ utils.createConnectors = function(bloq, bloqData) {
             y1: bloq.y(),
             y2: bloq.y() + connectionThreshold
         };
-        bloq.rect(connectionThreshold * 2, connectionThreshold).attr({
+        bloq.connections.output.UI=bloq.rect(connectionThreshold * 2, connectionThreshold).attr({
             fill: '#000'
         }).move(-connectionThreshold, 0);
     }
@@ -69,7 +69,7 @@ utils.createConnectors = function(bloq, bloqData) {
             y1: bloq.y() - connectionThreshold,
             y2: bloq.y() + connectionThreshold
         };
-        bloq.rect(connectionThreshold, connectionThreshold * 2).attr({
+        bloq.connections.up.UI=bloq.rect(connectionThreshold, connectionThreshold * 2).attr({
             fill: '#000'
         }).move(0, -connectionThreshold);
     }
@@ -88,13 +88,12 @@ utils.createConnectors = function(bloq, bloqData) {
             y1: bloq.y() + bloq.size.height - connectionThreshold,
             y2: bloq.y() + bloq.size.height + connectionThreshold
         };
-        bloq.rect(connectionThreshold, connectionThreshold * 2).attr({
+        bloq.connections.down.UI=bloq.rect(connectionThreshold, connectionThreshold * 2).attr({
             fill: '#000'
         }).move(0, bloq.size.height - connectionThreshold);
     }
     return bloq.connections;
 };
-
 /**
  * Updates de position of the connectors of a bloq (used after modifying the bloq's position)
  * @param bloq
@@ -122,14 +121,24 @@ utils.updateConnectors = function(bloq) {
     }
     return bloq.connections;
 };
-
+utils.updateConnector = function(connector, delta) {
+    "use strict";
+    connector.connectionPosition.x += delta.x;
+    connector.connectionPosition.y += delta.y;
+    connector.connectorArea.x1 += delta.x;
+    connector.connectorArea.x2 += delta.x;
+    connector.connectorArea.y1 += delta.y;
+    connector.connectorArea.y2 += delta.y;
+    console.log('connector.UI movement!', delta.x, delta.y);
+    connector.UI.move(connector.UI.x()+delta.x, connector.UI.y()+delta.y);
+    return connector;
+};
 utils.oppositeConnection = {
     inputs: 'output',
     output: 'inputs',
     up: 'down',
     down: 'up'
 };
-
 utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID) {
     "use strict";
     if (bloq2Connection !== undefined && bloq1Connection !== undefined) {
@@ -299,7 +308,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     }
     //Create the connectors using the bloq information
     bloq.connections = utils.createConnectors(bloq, bloqData);
-    bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputsId) {
+    bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
         if (connectionType === 'up') {
             return {
                 x: bloq.connections[connectionType].connectionPosition.x,
@@ -309,11 +318,17 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         if (connectionType === 'output') {
             return {
                 x: bloq.connections[connectionType].connectionPosition.x - bloqToConnect.size.width,
-                y: bloq.connections[connectionType].connectionPosition.y - inputsId * connectionThreshold
+                y: bloq.connections[connectionType].connectionPosition.y - inputID * connectionThreshold
             };
         }
         if (connectionType === 'inputs') {
-            return bloq.connections[connectionType][inputsId].connectionPosition;
+            for (var k in bloq.connections[connectionType]){
+                if (k > inputID){
+                    bloq.connections[connectionType][k] = utils.updateConnector(bloq.connections[connectionType][k], {x:0, y:bloqToConnect.size.height - k*connectionThreshold});
+                }
+                console.log('aaaaaaaaaaaaaa', bloq.connections[connectionType][k]);
+            }
+            return bloq.connections[connectionType][inputID].connectionPosition;
         }
         return bloq.connections[connectionType].connectionPosition;
     };
@@ -367,7 +382,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                     } else if (j === 'output') {
                         for (var h in data.bloqs[i].connections[utils.oppositeConnection[j]]) {
                             a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]][h], bloq, data.bloqs[i], h);
-                            console.log('h',h);
                         }
                     } else {
                         a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]], bloq, data.bloqs[i]);

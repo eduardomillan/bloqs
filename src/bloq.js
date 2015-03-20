@@ -148,7 +148,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     }
     //Create the connectors using the bloq information
     bloq.connections = utils.createConnectors(bloq, bloqData);
-    bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputsId) {
+    bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
         if (connectionType === 'up') {
             return {
                 x: bloq.connections[connectionType].connectionPosition.x,
@@ -158,11 +158,17 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         if (connectionType === 'output') {
             return {
                 x: bloq.connections[connectionType].connectionPosition.x - bloqToConnect.size.width,
-                y: bloq.connections[connectionType].connectionPosition.y - inputsId * connectionThreshold
+                y: bloq.connections[connectionType].connectionPosition.y - inputID * connectionThreshold
             };
         }
         if (connectionType === 'inputs') {
-            return bloq.connections[connectionType][inputsId].connectionPosition;
+            for (var k in bloq.connections[connectionType]){
+                if (k > inputID){
+                    bloq.connections[connectionType][k] = utils.updateConnector(bloq.connections[connectionType][k], {x:0, y:bloqToConnect.size.height - k*connectionThreshold});
+                }
+                console.log('aaaaaaaaaaaaaa', bloq.connections[connectionType][k]);
+            }
+            return bloq.connections[connectionType][inputID].connectionPosition;
         }
         return bloq.connections[connectionType].connectionPosition;
     };
@@ -216,7 +222,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                     } else if (j === 'output') {
                         for (var h in data.bloqs[i].connections[utils.oppositeConnection[j]]) {
                             a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]][h], bloq, data.bloqs[i], h);
-                            console.log('h',h);
                         }
                     } else {
                         a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]], bloq, data.bloqs[i]);
