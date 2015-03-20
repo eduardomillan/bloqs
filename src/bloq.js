@@ -162,11 +162,19 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             };
         }
         if (connectionType === 'inputs') {
-            for (var k in bloq.connections[connectionType]){
-                if (k > inputID){
-                    bloq.connections[connectionType][k] = utils.updateConnector(bloq.connections[connectionType][k], {x:0, y:bloqToConnect.size.height - k*connectionThreshold});
+            for (var k in bloq.connections[connectionType]) {
+                if (k > inputID) {
+                    bloq.connections[connectionType][k] = utils.updateConnector(bloq.connections[connectionType][k], {
+                        x: 0,
+                        y: bloqToConnect.size.height - k * connectionThreshold
+                    });
+                    if (bloq.connections[connectionType][k].bloq !== undefined) {
+                        utils.moveBloq2(bloq.connections[connectionType][k].bloq, {
+                            x: 0,
+                            y: bloqToConnect.size.height - k * connectionThreshold
+                        });
+                    }
                 }
-                console.log('aaaaaaaaaaaaaa', bloq.connections[connectionType][k]);
             }
             return bloq.connections[connectionType][inputID].connectionPosition;
         }
@@ -188,7 +196,26 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         bloq.node.parentNode.appendChild(bloq.node);
         // remove parent of this and child in parent:
         if (bloq.relations.parent !== undefined) {
-            bloq.getBloqById(bloq.relations.parent).deleteChild(bloq);
+            var parentBloq = bloq.getBloqById(bloq.relations.parent);
+            console.log('parentBloq.relations.children[bloq.id]', parentBloq.relations.children[bloq.id()]);
+            if (parentBloq.relations.children[bloq.id()].connection === 'output') {
+                for (var k in parentBloq.connections.inputs) {
+                    if (k > parentBloq.relations.children[bloq.id()].inputID) {
+                        parentBloq.connections.inputs[k] = utils.updateConnector(parentBloq.connections.inputs[k], {
+                            x: 0,
+                            y: -bloq.size.height + k * connectionThreshold
+                        });
+                        // if there is a bloq connected, push it up!
+                        if (parentBloq.connections.inputs[k].bloq !== undefined) {
+                            utils.moveBloq2(parentBloq.connections.inputs[k].bloq, {
+                                x: 0,
+                                y: -bloq.size.height + k * connectionThreshold
+                            });
+                        }
+                    }
+                }
+            }
+            parentBloq.deleteChild(bloq);
             bloq.deleteParent(true);
         }
         // move child bloqs along with this one
@@ -235,8 +262,8 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         }
         console.log('-----------------------------------------------------------------------');
     };
-    bloq.updateBloqs = function(parent, child) {
-        parent.setChildren(child.node.id, child.connectorArea);
+    bloq.updateBloqs = function(parent, child, type, inputID) {
+        parent.setChildren(child.node.id, type, inputID);
         child.setParent(parent.node.id);
     };
     bloq.itsOver = function(dragRect, staticRect) {
@@ -277,7 +304,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             }
         }
     };
-    bloq.setChildren = function(childrenId, location) {
+    bloq.setChildren = function(childrenId, location, inputID) {
         for (var bloqIndex in this.relations.children) {
             if (childrenId == this.relations.children[bloqIndex]) {
                 // it exists, do nothing
@@ -285,7 +312,11 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             }
         }
         // if we made it so far, add a new child
-        this.relations.children.push(childrenId);
+        this.relations.children[childrenId] = {
+            bloq: this.getBloqById(childrenId),
+            connection: location,
+            inputID: inputID
+        };
         if (location === 'up') {
             this.relations.codeChildren.push(childrenId);
         } else {

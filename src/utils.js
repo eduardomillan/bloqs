@@ -4,6 +4,11 @@ utils.moveBloq = function(bloq, location) {
     bloq.x(location.x);
     bloq.y(location.y);
 };
+utils.moveBloq2 = function(bloq, delta) {
+    "use strict";
+    bloq.x(bloq.x()+delta.x);
+    bloq.y(bloq.y()+delta.y);
+};
 utils.createConnectors = function(bloq, bloqData) {
     "use strict";
     var connectionThreshold = 20; // px
@@ -28,8 +33,8 @@ utils.createConnectors = function(bloq, bloqData) {
                 y2: bloq.y() + i * connectionThreshold + connectionThreshold
             };
             bloq.connections.inputs[i].type = bloqData.inputs[i];
-            bloq.connections.inputs[i].UI=bloq.rect(connectionThreshold * 2, connectionThreshold).attr({
-                fill: '#000'
+            bloq.connections.inputs[i].UI = bloq.rect(connectionThreshold * 2, connectionThreshold).attr({
+                fill: '#FFCC33'
             }).move(bloq.size.width - connectionThreshold, i * connectionThreshold);
         }
         console.log('inputs :::', bloq.connections.inputs);
@@ -50,8 +55,8 @@ utils.createConnectors = function(bloq, bloqData) {
             y1: bloq.y(),
             y2: bloq.y() + connectionThreshold
         };
-        bloq.connections.output.UI=bloq.rect(connectionThreshold * 2, connectionThreshold).attr({
-            fill: '#000'
+        bloq.connections.output.UI = bloq.rect(connectionThreshold * 2, connectionThreshold).attr({
+            fill: '#FFCC33'
         }).move(-connectionThreshold, 0);
     }
     if (bloqData.up) {
@@ -69,7 +74,7 @@ utils.createConnectors = function(bloq, bloqData) {
             y1: bloq.y() - connectionThreshold,
             y2: bloq.y() + connectionThreshold
         };
-        bloq.connections.up.UI=bloq.rect(connectionThreshold, connectionThreshold * 2).attr({
+        bloq.connections.up.UI = bloq.rect(connectionThreshold, connectionThreshold * 2).attr({
             fill: '#000'
         }).move(0, -connectionThreshold);
     }
@@ -88,7 +93,7 @@ utils.createConnectors = function(bloq, bloqData) {
             y1: bloq.y() + bloq.size.height - connectionThreshold,
             y2: bloq.y() + bloq.size.height + connectionThreshold
         };
-        bloq.connections.down.UI=bloq.rect(connectionThreshold, connectionThreshold * 2).attr({
+        bloq.connections.down.UI = bloq.rect(connectionThreshold, connectionThreshold * 2).attr({
             fill: '#000'
         }).move(0, bloq.size.height - connectionThreshold);
     }
@@ -130,7 +135,7 @@ utils.updateConnector = function(connector, delta) {
     connector.connectorArea.y1 += delta.y;
     connector.connectorArea.y2 += delta.y;
     console.log('connector.UI movement!', delta.x, delta.y);
-    connector.UI.move(connector.UI.x()+delta.x, connector.UI.y()+delta.y);
+    connector.UI.move(connector.UI.x() + delta.x, connector.UI.y() + delta.y);
     return connector;
 };
 utils.oppositeConnection = {
@@ -148,7 +153,14 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 bloq1.delta.x = bloq2Connection.connectorArea.x1 - bloq1Connection.connectorArea.x1;
                 bloq1.delta.y = bloq2Connection.connectorArea.y1 - bloq1Connection.connectorArea.y1;
                 utils.moveBloq(bloq1, bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
-                bloq1.connections = utils.updateConnectors(bloq1);
+                if (type === 'inputs' || type === 'down') {
+                    bloq1.updateBloqs(bloq1, bloq2, type, inputID);
+                    bloq1Connection.bloq = bloq2;
+                } else {
+                    bloq1.updateBloqs(bloq2, bloq1, type, inputID);
+                    bloq2Connection.bloq = bloq1;
+                }
+                bloq1.connections = utils.updateConnectors(bloq1, type);
                 bloq1.delta.lastx = 0;
                 bloq1.delta.lasty = 0;
                 return true;
