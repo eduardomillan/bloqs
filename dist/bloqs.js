@@ -19,7 +19,7 @@ utils.createConnectors = function(bloq, bloqData) {
             };
             bloq.connections.inputs[i].connectionPosition = {
                 x: bloq.x() + bloq.size.width,
-                y: bloq.y() + i
+                y: bloq.y() + i* connectionThreshold
             };
             bloq.connections.inputs[i].connectorArea = {
                 x1: bloq.x() + bloq.size.width - connectionThreshold,
