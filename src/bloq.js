@@ -147,14 +147,13 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         bloq.size.height = posy;
     }
 
+    //Create the connectors using the bloq information
     bloq.connections = utils.createConnectors(bloq, bloqData);
-    console.log('initially : ', bloq.node.id, bloq.connections.up.positionInBloq, bloq.connections.down.positionInBloq);
 
 
     bloq.getConnectionPosition = function (connectionType, bloqToConnect){
-
         if (connectionType==='up'){
-            return {x : bloq.connections[connectionType].positionInBloq.x, y:bloq.connections[connectionType].positionInBloq.y - bloqToConnect.size.height}
+            return {x : bloq.connections[connectionType].positionInBloq.x, y:bloq.connections[connectionType].positionInBloq.y - bloqToConnect.size.height};
         }
         return bloq.connections[connectionType].positionInBloq;
     };
@@ -163,24 +162,24 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
      * We start dragging
      */
     bloq.dragmove = function(a, e) {
-        // console.log('--------------------------------------> delta.lastx, delta.lasty', bloq.delta.lastx, bloq.delta.lasty);
-        bloq.delta.x = a.x - bloq.delta.lastx; //e.movementX;
-        bloq.delta.y = a.y - bloq.delta.lasty; //e.movementY;
+        //Update the deltaX and deltaY movements
+        bloq.delta.x = a.x - bloq.delta.lastx;
+        bloq.delta.y = a.y - bloq.delta.lasty;
+        //Update the lastx and lasty variables
         bloq.delta.lastx = a.x;
         bloq.delta.lasty = a.y;
-        // console.log('DRAGMOVE +++++++++++++++++++++++++  deltax, deltay', bloq.node.id, bloq.delta.x, bloq.delta.y);
+        //Update the bloq's connectors using the new deltas
         bloq.connections = utils.updateConnectors(bloq);
-        // console.log('DRAGMOVE +++++++++++++++++++++++++connectors[up,down]location', bloq.connections.up.location, bloq.connections.down.location);
-        // console.log('connectors[up,down]positionInBloq', bloq.connections.up.positionInBloq, bloq.connections.down.positionInBloq);
-        // console.log('bloq location :', bloq.x(), bloq.y());
+
         //move dragged bloq on top
         bloq.node.parentNode.appendChild(bloq.node);
-        var movedBloq = this;
+
         // remove parent of this and child in parent:
-        if (movedBloq.relations.parent !== undefined) {
-            movedBloq.getBloqById(movedBloq.relations.parent).deleteChild(movedBloq);
-            movedBloq.deleteParent(true);
+        if (bloq.relations.parent !== undefined) {
+            bloq.getBloqById(movedBloq.relations.parent).deleteChild(bloq);
+            bloq.deleteParent(true);
         }
+
         // move child bloqs along with this one
         // for (var i in movedBloq.relations.children) {
         //     var childBloq = movedBloq.getBloqById(movedBloq.relations.children[i]);
