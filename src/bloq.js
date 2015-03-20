@@ -158,7 +158,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         if (connectionType === 'output') {
             return {
                 x: bloq.connections[connectionType].connectionPosition.x - bloqToConnect.size.width,
-                y: bloq.connections[connectionType].connectionPosition.y
+                y: bloq.connections[connectionType].connectionPosition.y - inputsId * connectionThreshold
             };
         }
         if (connectionType === 'inputs') {
@@ -211,11 +211,12 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 if (data.bloqs[i].node.id !== bloq.node.id) {
                     if (j === 'inputs') {
                         for (var k in bloq.connections[j]) {
-                            a = utils.manageConnections(j, bloq.connections[j][k], data.bloqs[i].connections[utils.oppositeConnection[j]], bloq, data.bloqs[i]);
+                            a = utils.manageConnections(j, bloq.connections[j][k], data.bloqs[i].connections[utils.oppositeConnection[j]], bloq, data.bloqs[i], k);
                         }
                     } else if (j === 'output') {
                         for (var h in data.bloqs[i].connections[utils.oppositeConnection[j]]) {
                             a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]][h], bloq, data.bloqs[i], h);
+                            console.log('h',h);
                         }
                     } else {
                         a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]], bloq, data.bloqs[i]);
@@ -229,7 +230,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         }
         console.log('-----------------------------------------------------------------------');
     };
- 
     bloq.updateBloqs = function(parent, child) {
         parent.setChildren(child.node.id, child.connectorArea);
         child.setParent(parent.node.id);

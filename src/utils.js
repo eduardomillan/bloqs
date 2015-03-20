@@ -94,6 +94,7 @@ utils.createConnectors = function(bloq, bloqData) {
     }
     return bloq.connections;
 };
+
 /**
  * Updates de position of the connectors of a bloq (used after modifying the bloq's position)
  * @param bloq
@@ -121,12 +122,14 @@ utils.updateConnectors = function(bloq) {
     }
     return bloq.connections;
 };
+
 utils.oppositeConnection = {
     inputs: 'output',
     output: 'inputs',
     up: 'down',
     down: 'up'
 };
+
 utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID) {
     "use strict";
     if (bloq2Connection !== undefined && bloq1Connection !== undefined) {
