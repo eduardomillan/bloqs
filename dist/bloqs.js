@@ -180,7 +180,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         width: bloqData.size[0],
         height: bloqData.size[1]
     };
-    console.log('bloqdata.size', bloqData.size);
     bloq.delta = {
         x: 0,
         y: 0,
@@ -369,7 +368,8 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         // remove parent of this and child in parent:
         if (bloq.relations.parent !== undefined) {
             var parentBloq = bloq.getBloqById(bloq.relations.parent);
-            console.log('parentBloq.relations.children[bloq.id]', parentBloq.relations.children[bloq.id()]);
+            console.log('parentBloq.relations.children', parentBloq.relations.children);
+            // console.log('parentBloq.relations.children[bloq.id]', parentBloq.relations.children[bloq.id()]);
             if (parentBloq.relations.children[bloq.id()].connection === 'output') {
                 for (var k in parentBloq.connections.inputs) {
                     if (k > parentBloq.relations.children[bloq.id()].inputID) {
@@ -388,7 +388,8 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 }
             }
             parentBloq.deleteChild(bloq);
-            bloq.deleteParent(true);
+            bloq.deleteParent(false);
+            console.log('parentBloq after ', parentBloq.relations.children);
         }
         // move child bloqs along with this one
         // for (var i in movedBloq.relations.children) {
@@ -457,13 +458,19 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         this.relations.parent = undefined;
     };
     bloq.deleteChild = function(child) {
-        for (var i in this.relations.children) {
-            if (this.relations.children[i] === child.node.id) {
-                this.relations.children.splice(i, 1);
-                break;
+        //remove bloq from connection definition
+        console.log('aaa',this.relations.children[child.node.id] , this.relations.children[child.node.id].connection ,'output');
+        if (this.relations.children[child.node.id] !== undefined && this.relations.children[child.node.id].connection === 'output') {
+            for (var i in this.connections.inputs) {
+                if (this.connections.inputs[i].bloq.id() === child.node.id) {
+                    this.connections.inputs[i].bloq = undefined;
+                    break;
+                }
             }
         }
-        for (i in this.relations.codeChildren) {
+        //remove bloq from children 
+        delete bloq.relations.children[child.node.id];
+        for (var i in this.relations.codeChildren) {
             if (this.relations.codeChildren[i] === child.node.id) {
                 this.relations.codeChildren.splice(i, 1);
                 break;
@@ -484,20 +491,21 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             }
         }
         // if we made it so far, add a new child
-        this.relations.children[childrenId] = {
-            bloq: this.getBloqById(childrenId),
+        bloq.relations.children[childrenId] = {
+            bloq: bloq.getBloqById(childrenId),
             connection: location,
             inputID: inputID
         };
-        if (location === 'up') {
-            this.relations.codeChildren.push(childrenId);
-        } else {
-            this.relations.inputChildren.push(childrenId);
-        }
-        return true;
+        console.log('adding children : ', bloq.relations.children);
+        // if (location === 'up') {
+        //     this.relations.codeChildren.push(childrenId);
+        // } else {
+        //     this.relations.inputChildren.push(childrenId);
+        // }
+        // return true;
     };
     bloq.setParent = function(parentId) {
-        this.relations.parent = parentId;
+        bloq.relations.parent = parentId;
         return true;
     };
     bloq.getBloqById = function(nodeId) {
@@ -513,7 +521,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         var code = this.code[_function];
         var search = '';
         var replacement = '';
-        console.log('this.relations.inputChildren', this.getBloqById(this.relations.inputChildren));
+        // console.log('this.relations.inputChildren', this.getBloqById(this.relations.inputChildren));
         for (var i in this.relations.inputChildren) {
             replacement = this.getBloqById(this.relations.inputChildren).getCode(_function);
             search = '{[' + i + ']}';
