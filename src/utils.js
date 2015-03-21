@@ -9,6 +9,15 @@ utils.moveBloq2 = function(bloq, delta) {
     bloq.x(bloq.x() + delta.x);
     bloq.y(bloq.y() + delta.y);
 };
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 utils.createConnectors = function(bloq, bloqData) {
     "use strict";
     var connectionThreshold = 20; // px
@@ -34,7 +43,7 @@ utils.createConnectors = function(bloq, bloqData) {
             };
             bloq.connections.inputs[i].type = bloqData.inputs[i];
             bloq.connections.inputs[i].UI = bloq.rect(connectionThreshold * 2, connectionThreshold).attr({
-                fill: '#FFCC33'
+                fill: getRandomColor()
             }).move(bloq.size.width - connectionThreshold, i * connectionThreshold);
         }
         console.log('inputs :::', bloq.connections.inputs);
