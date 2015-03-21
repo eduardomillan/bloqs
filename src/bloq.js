@@ -173,8 +173,8 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                             x: 0,
                             y: bloqToConnect.size.height - k * connectionThreshold
                         });
-                        bloqConnected.delta.x=0;
-                        bloqConnected.delta.y= bloqToConnect.size.height - k * connectionThreshold;
+                        bloqConnected.delta.x = 0;
+                        bloqConnected.delta.y = bloqToConnect.size.height - k * connectionThreshold;
                         bloqConnected.connections = utils.updateConnectors(bloqConnected);
                         // bloqConnected.connections.output = utils.updateConnector(bloqConnected.connections.output, {
                         //     x: 0,
@@ -192,16 +192,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
      */
     bloq.dragmove = function(a) {
         bloq.dragmoveFlag = true;
-        //Update the deltaX and deltaY movements
-        bloq.delta.x = a.x - bloq.delta.lastx;
-        bloq.delta.y = a.y - bloq.delta.lasty;
-        //Update the lastx and lasty variables
-        bloq.delta.lastx = a.x;
-        bloq.delta.lasty = a.y;
-        //Update the bloq's connectors using the new deltas
-        bloq.connections = utils.updateConnectors(bloq);
-        //move dragged bloq on top
-        bloq.node.parentNode.appendChild(bloq.node);
         // remove parent of this and child in parent:
         if (bloq.relations.parent !== undefined) {
             var parentBloq = bloq.getBloqById(bloq.relations.parent);
@@ -219,9 +209,9 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                                 x: 0,
                                 y: -bloq.size.height + k * connectionThreshold
                             });
-                        bloqConnected.delta.x=0;
-                        bloqConnected.delta.y= -bloq.size.height + k * connectionThreshold;
-                        bloqConnected.connections = utils.updateConnectors(bloqConnected);
+                            bloqConnected.delta.x = 0;
+                            bloqConnected.delta.y = -bloq.size.height + k * connectionThreshold;
+                            bloqConnected.connections = utils.updateConnectors(bloqConnected);
                         }
                     }
                 }
@@ -229,14 +219,21 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             parentBloq.deleteChild(bloq);
             bloq.deleteParent(false);
         }
+        //Update the deltaX and deltaY movements
+        bloq.delta.x = a.x - bloq.delta.lastx;
+        bloq.delta.y = a.y - bloq.delta.lasty;
+        //Update the lastx and lasty variables
+        bloq.delta.lastx = a.x;
+        bloq.delta.lasty = a.y;
+        //Update the bloq's connectors using the new deltas
+        bloq.connections = utils.updateConnectors(bloq);
+        //move dragged bloq on top
+        bloq.node.parentNode.appendChild(bloq.node);
         // move child bloqs along with this one
-        // for (var i in movedBloq.relations.children) {
-        //     var childBloq = movedBloq.getBloqById(movedBloq.relations.children[i]);
-        //     var parentBloq = movedBloq;
-        //     var connectorArea = childBloq.connectorArea;
-        //     this.connectBloqs(parentBloq, childBloq, connectorArea);
-        // }
+        utils.moveChildren(bloq, bloq.delta);
+
     };
+
     /**
      * We stop dragging
      */
