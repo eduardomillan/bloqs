@@ -287,10 +287,9 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     };
     bloq.deleteChild = function(child) {
         //remove bloq from connection definition
-        console.log('aaa',this.relations.children[child.node.id] , this.relations.children[child.node.id].connection ,'output');
         if (this.relations.children[child.node.id] !== undefined && this.relations.children[child.node.id].connection === 'output') {
             for (var i in this.connections.inputs) {
-                if (this.connections.inputs[i].bloq.id() === child.node.id) {
+                if (this.connections.inputs[i].bloq!== undefined && this.connections.inputs[i].bloq.id() === child.node.id) {
                     this.connections.inputs[i].bloq = undefined;
                     break;
                 }

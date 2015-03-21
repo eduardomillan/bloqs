@@ -6,8 +6,8 @@ utils.moveBloq = function(bloq, location) {
 };
 utils.moveBloq2 = function(bloq, delta) {
     "use strict";
-    bloq.x(bloq.x()+delta.x);
-    bloq.y(bloq.y()+delta.y);
+    bloq.x(bloq.x() + delta.x);
+    bloq.y(bloq.y() + delta.y);
 };
 utils.createConnectors = function(bloq, bloqData) {
     "use strict";
@@ -147,9 +147,10 @@ utils.oppositeConnection = {
 utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID) {
     "use strict";
     if (bloq2Connection !== undefined && bloq1Connection !== undefined) {
-        if (bloq1Connection.type === bloq2Connection.type) { // if the type is the same
-            if (bloq1.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
-                console.log('isover!! ---> ', type);
+        if (bloq1.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
+            console.log('isover!! ---> ', type);
+            if (bloq1Connection.type === bloq2Connection.type) { // if the type is the same --> connect
+                console.log('same type!');
                 bloq1.delta.x = bloq2Connection.connectorArea.x1 - bloq1Connection.connectorArea.x1;
                 bloq1.delta.y = bloq2Connection.connectorArea.y1 - bloq1Connection.connectorArea.y1;
                 utils.moveBloq(bloq1, bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
@@ -160,14 +161,35 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     bloq1.updateBloqs(bloq2, bloq1, type, inputID);
                     bloq2Connection.bloq = bloq1;
                 }
-                bloq1.connections = utils.updateConnectors(bloq1, type);
+                bloq1.connections = utils.updateConnectors(bloq1);
                 bloq1.delta.lastx = 0;
                 bloq1.delta.lasty = 0;
                 return true;
-            } else {
-                console.log('not over');
+            } else { //reject
+                // if (type === 'inputs' || type === 'down') {
+                utils.rejectBloq(bloq1);
+                bloq1.connections = utils.updateConnectors(bloq1);
+                bloq1.delta.lastx = 0;
+                bloq1.delta.lasty = 0;
+                //    } else {
+                // }
             }
+        } else {
+            console.log('not over');
         }
     }
     return false;
+};
+utils.rejectBloq = function(bloq, connectionPosition) {
+    "use strict";
+    var rejectionLocation = {
+        x: 50,
+        y: 0
+    };
+    utils.moveBloq2(bloq, {
+        x: rejectionLocation.x,
+        y: rejectionLocation.y
+    });
+    bloq.delta.x = rejectionLocation.x;
+    bloq.delta.y = rejectionLocation.y;
 };
