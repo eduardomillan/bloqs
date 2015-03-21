@@ -161,6 +161,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             };
         }
         if (connectionType === 'inputs') {
+            console.log('--------------------------------------------------> MOVING DOWN');
             for (var k in bloq.connections[connectionType]) {
                 if (k > inputID) {
                     bloq.connections[connectionType][k] = utils.updateConnector(bloq.connections[connectionType][k], {
@@ -185,10 +186,13 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
      */
     bloq.dragmove = function(a) {
         bloq.dragmoveFlag = true;
+        console.log('bloq.relations.parent', bloq.relations.parent);
         // remove parent of this and child in parent:
         if (bloq.relations.parent !== undefined) {
             var parentBloq = bloq.getBloqById(bloq.relations.parent);
+            console.log('parentBloq.relations.children[bloq.id()].connection',parentBloq.relations.children[bloq.id()].connection);
             if (parentBloq.relations.children[bloq.id()].connection === 'output') {
+                console.log('--------------------------------------------------> MOVING UP');
                 for (var k in parentBloq.connections.inputs) {
                     if (k > parentBloq.relations.children[bloq.id()].inputID) {
                         parentBloq.connections.inputs[k] = utils.updateConnector(parentBloq.connections.inputs[k], {

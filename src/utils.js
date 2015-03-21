@@ -172,7 +172,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 //move bloq's children
                 utils.moveChildren(bloq1, delta);
                 if (type === 'inputs' || type === 'down') {
-                    bloq1.updateBloqs(bloq1, bloq2, type, inputID);
+                    bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID);
                     bloq1Connection.bloq = bloq2;
                 } else {
                     bloq1.updateBloqs(bloq2, bloq1, type, inputID);
