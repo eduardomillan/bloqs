@@ -8,6 +8,7 @@ utils.moveBloq2 = function(bloq, delta) {
     "use strict";
     bloq.x(bloq.x() + delta.x);
     bloq.y(bloq.y() + delta.y);
+    bloq.connections = utils.updateConnectors(bloq, delta);
 };
 
 function getRandomColor() {
@@ -112,27 +113,27 @@ utils.createConnectors = function(bloq, bloqData) {
  * Updates de position of the connectors of a bloq (used after modifying the bloq's position)
  * @param bloq
  */
-utils.updateConnectors = function(bloq) {
+utils.updateConnectors = function(bloq, delta) {
     "use strict";
     for (var type in bloq.connections) {
         if (bloq.connections[type] && type === 'inputs') {
             for (var i in bloq.connections[type]) {
-                bloq.connections[type][i].connectionPosition.x += bloq.delta.x;
-                bloq.connections[type][i].connectionPosition.y += bloq.delta.y;
-                bloq.connections[type][i].connectorArea.x1 += bloq.delta.x;
-                bloq.connections[type][i].connectorArea.x2 += bloq.delta.x;
-                bloq.connections[type][i].connectorArea.y1 += bloq.delta.y;
-                bloq.connections[type][i].connectorArea.y2 += bloq.delta.y;
-                bloq.connections[type][i].UI.move(bloq.connections[type][i].UI.x() + bloq.delta.x, bloq.connections[type][i].UI.y() + bloq.delta.y);
+                bloq.connections[type][i].connectionPosition.x += delta.x;
+                bloq.connections[type][i].connectionPosition.y += delta.y;
+                bloq.connections[type][i].connectorArea.x1 += delta.x;
+                bloq.connections[type][i].connectorArea.x2 += delta.x;
+                bloq.connections[type][i].connectorArea.y1 += delta.y;
+                bloq.connections[type][i].connectorArea.y2 += delta.y;
+                bloq.connections[type][i].UI.move(bloq.connections[type][i].UI.x() + delta.x, bloq.connections[type][i].UI.y() + delta.y);
             }
         } else if (bloq.connections[type]) {
-            bloq.connections[type].connectionPosition.x += bloq.delta.x;
-            bloq.connections[type].connectionPosition.y += bloq.delta.y;
-            bloq.connections[type].connectorArea.x1 += bloq.delta.x;
-            bloq.connections[type].connectorArea.x2 += bloq.delta.x;
-            bloq.connections[type].connectorArea.y1 += bloq.delta.y;
-            bloq.connections[type].connectorArea.y2 += bloq.delta.y;
-            bloq.connections[type].UI.move(bloq.connections[type].UI.x() + bloq.delta.x, bloq.connections[type].UI.y() + bloq.delta.y);
+            bloq.connections[type].connectionPosition.x += delta.x;
+            bloq.connections[type].connectionPosition.y += delta.y;
+            bloq.connections[type].connectorArea.x1 += delta.x;
+            bloq.connections[type].connectorArea.x2 += delta.x;
+            bloq.connections[type].connectorArea.y1 += delta.y;
+            bloq.connections[type].connectorArea.y2 += delta.y;
+            bloq.connections[type].UI.move(bloq.connections[type].UI.x() + delta.x, bloq.connections[type].UI.y() + delta.y);
         }
     }
     return bloq.connections;
@@ -162,9 +163,14 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
             console.log('isover!! ---> ', type);
             if (bloq1Connection.type === bloq2Connection.type) { // if the type is the same --> connect
                 console.log('same type!');
-                bloq1.delta.x = bloq2Connection.connectorArea.x1 - bloq1Connection.connectorArea.x1;
-                bloq1.delta.y = bloq2Connection.connectorArea.y1 - bloq1Connection.connectorArea.y1;
+                var delta = {
+                    x: bloq2Connection.connectorArea.x1 - bloq1Connection.connectorArea.x1,
+                    y: bloq2Connection.connectorArea.y1 - bloq1Connection.connectorArea.y1
+                };
+                //move bloq
                 utils.moveBloq(bloq1, bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
+                //move bloq's children
+                utils.moveChildren(bloq1, delta);
                 if (type === 'inputs' || type === 'down') {
                     bloq1.updateBloqs(bloq1, bloq2, type, inputID);
                     bloq1Connection.bloq = bloq2;
@@ -172,18 +178,14 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     bloq1.updateBloqs(bloq2, bloq1, type, inputID);
                     bloq2Connection.bloq = bloq1;
                 }
-                bloq1.connections = utils.updateConnectors(bloq1);
+                bloq1.connections = utils.updateConnectors(bloq1, delta);
                 bloq1.delta.lastx = 0;
                 bloq1.delta.lasty = 0;
                 return true;
             } else { //reject
-                // if (type === 'inputs' || type === 'down') {
                 utils.rejectBloq(bloq1);
-                bloq1.connections = utils.updateConnectors(bloq1);
                 bloq1.delta.lastx = 0;
                 bloq1.delta.lasty = 0;
-                //    } else {
-                // }
             }
         } else {
             console.log('not over');
@@ -201,17 +203,13 @@ utils.rejectBloq = function(bloq, connectionPosition) {
         x: rejectionLocation.x,
         y: rejectionLocation.y
     });
-    bloq.delta.x = rejectionLocation.x;
-    bloq.delta.y = rejectionLocation.y;
 };
 utils.moveChildren = function(bloq, delta) {
     for (var i in bloq.relations.children) {
-        var child = bloq.relations.children[i];
-        utils.moveBloq2(child.bloq, delta);
-        child.delta = delta;
-        child.connections = utils.updateConnectors(child);
-        if (child.relations !== undefined && child.relations.children) {
-            utils.moveChildren(child.bloq, delta);
+        var child = bloq.relations.children[i].bloq;
+        utils.moveBloq2(child, delta);
+        if (child.relations !== undefined && child.relations.children !== undefined) {
+            utils.moveChildren(child, delta);
         }
     }
 };
@@ -389,13 +387,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                             x: 0,
                             y: bloqToConnect.size.height - k * connectionThreshold
                         });
-                        bloqConnected.delta.x = 0;
-                        bloqConnected.delta.y = bloqToConnect.size.height - k * connectionThreshold;
-                        bloqConnected.connections = utils.updateConnectors(bloqConnected);
-                        // bloqConnected.connections.output = utils.updateConnector(bloqConnected.connections.output, {
-                        //     x: 0,
-                        //     y: bloqToConnect.size.height - k * connectionThreshold
-                        // });
                     }
                 }
             }
@@ -425,9 +416,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                                 x: 0,
                                 y: -bloq.size.height + k * connectionThreshold
                             });
-                            bloqConnected.delta.x = 0;
-                            bloqConnected.delta.y = -bloq.size.height + k * connectionThreshold;
-                            bloqConnected.connections = utils.updateConnectors(bloqConnected);
                         }
                     }
                 }
@@ -442,21 +430,18 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         bloq.delta.lastx = a.x;
         bloq.delta.lasty = a.y;
         //Update the bloq's connectors using the new deltas
-        bloq.connections = utils.updateConnectors(bloq);
+        bloq.connections = utils.updateConnectors(bloq, bloq.delta);
         //move dragged bloq on top
         bloq.node.parentNode.appendChild(bloq.node);
         // move child bloqs along with this one
         utils.moveChildren(bloq, bloq.delta);
-
     };
-
     /**
      * We stop dragging
      */
     bloq.dragend = function() {
         //Flag used to prevent the execution of these functions when dragend is called after just a click on the bloq!
         if (bloq.dragmoveFlag) {
-            console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --> ', bloq.node.id, bloq.connections);
             //Initialize lasx y laxy
             bloq.delta.lastx = 0;
             bloq.delta.lasty = 0;
@@ -472,18 +457,26 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                         if (j === 'inputs') {
                             for (var k in bloq.connections[j]) {
                                 a = utils.manageConnections(j, bloq.connections[j][k], data.bloqs[i].connections[utils.oppositeConnection[j]], bloq, data.bloqs[i], k);
+                                // if (a === true) {
+                                //     flag = true;
+                                //     break;
+                                // }
                             }
                         } else if (j === 'output') {
                             for (var h in data.bloqs[i].connections[utils.oppositeConnection[j]]) {
                                 a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]][h], bloq, data.bloqs[i], h);
+                                // if (a === true) {
+                                //     flag = true;
+                                //     break;
+                                // }
                             }
                         } else {
                             a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]], bloq, data.bloqs[i]);
                         }
-                        if (a === true) {
-                            flag = true;
-                            break;
-                        }
+                        // if (a === true) {
+                        //     flag = true;
+                        //     break;
+                        // }
                     }
                 }
             }

@@ -173,13 +173,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                             x: 0,
                             y: bloqToConnect.size.height - k * connectionThreshold
                         });
-                        bloqConnected.delta.x = 0;
-                        bloqConnected.delta.y = bloqToConnect.size.height - k * connectionThreshold;
-                        bloqConnected.connections = utils.updateConnectors(bloqConnected);
-                        // bloqConnected.connections.output = utils.updateConnector(bloqConnected.connections.output, {
-                        //     x: 0,
-                        //     y: bloqToConnect.size.height - k * connectionThreshold
-                        // });
                     }
                 }
             }
@@ -209,9 +202,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                                 x: 0,
                                 y: -bloq.size.height + k * connectionThreshold
                             });
-                            bloqConnected.delta.x = 0;
-                            bloqConnected.delta.y = -bloq.size.height + k * connectionThreshold;
-                            bloqConnected.connections = utils.updateConnectors(bloqConnected);
                         }
                     }
                 }
@@ -226,21 +216,18 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         bloq.delta.lastx = a.x;
         bloq.delta.lasty = a.y;
         //Update the bloq's connectors using the new deltas
-        bloq.connections = utils.updateConnectors(bloq);
+        bloq.connections = utils.updateConnectors(bloq, bloq.delta);
         //move dragged bloq on top
         bloq.node.parentNode.appendChild(bloq.node);
         // move child bloqs along with this one
         utils.moveChildren(bloq, bloq.delta);
-
     };
-
     /**
      * We stop dragging
      */
     bloq.dragend = function() {
         //Flag used to prevent the execution of these functions when dragend is called after just a click on the bloq!
         if (bloq.dragmoveFlag) {
-            console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa --> ', bloq.node.id, bloq.connections);
             //Initialize lasx y laxy
             bloq.delta.lastx = 0;
             bloq.delta.lasty = 0;
@@ -256,18 +243,26 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                         if (j === 'inputs') {
                             for (var k in bloq.connections[j]) {
                                 a = utils.manageConnections(j, bloq.connections[j][k], data.bloqs[i].connections[utils.oppositeConnection[j]], bloq, data.bloqs[i], k);
+                                // if (a === true) {
+                                //     flag = true;
+                                //     break;
+                                // }
                             }
                         } else if (j === 'output') {
                             for (var h in data.bloqs[i].connections[utils.oppositeConnection[j]]) {
                                 a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]][h], bloq, data.bloqs[i], h);
+                                // if (a === true) {
+                                //     flag = true;
+                                //     break;
+                                // }
                             }
                         } else {
                             a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]], bloq, data.bloqs[i]);
                         }
-                        if (a === true) {
-                            flag = true;
-                            break;
-                        }
+                        // if (a === true) {
+                        //     flag = true;
+                        //     break;
+                        // }
                     }
                 }
             }
