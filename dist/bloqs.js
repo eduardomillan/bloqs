@@ -342,6 +342,10 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             value: inputText,
             color: '#FFCC33',
         }).move(posx, posy);
+        bloq.UIElements.push({
+            element: text,
+            elementsToPush: undefined
+        });
         document.getElementById(id).addEventListener("mousedown", function(e) {
             e.stopPropagation();
         }, false);
@@ -362,6 +366,10 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             fill: '#fff'
         }).move(posx, posy);
         utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type); //bloq.x()+posx + width, bloq.x()+posy + i * connectionThreshold);
+        bloq.UIElements.push({
+            element: bloqInput,
+            elementsToPush: undefined
+        });
     };
     bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(10);
     bloq.border = bloq.rect(bloq.size.width, bloq.size.height).fill('none').stroke({
@@ -386,6 +394,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         var posx = margin;
         var width = 0;
         var posy = margin;
+        bloq.UIElements = [{}];
         for (var j in bloqData.text) {
             for (var i in bloqData.text[j]) {
                 if (typeof(bloqData.text[j][i]) === typeof({})) {
@@ -403,6 +412,10 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                         size: 14
                     }).move(posx, posy);
                     posx += bloqData.text[j][i].length * 5 + 30;
+                    bloq.UIElements.push({
+                        element: text,
+                        elementsToPush: undefined
+                    });
                 }
             }
             if (posx > width) {
@@ -434,7 +447,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             console.log('--------------------------------------------------> MOVING DOWN');
             for (var k in bloq.connections[connectionType]) {
                 //If the input is inline and there is not a bloq connected still
-                if (bloq.connections[connectionType][k].inline === true && bloq.connections[connectionType][k].bloq === undefined) {
+                if (bloq.connections[connectionType][k].inline === true && bloq.connections[connectionType][k].bloq === undefined && k === inputID) {
                     utils.resizeBloq(bloq, {
                         x: bloqToConnect.size.width,
                         y: bloqToConnect.size.height
@@ -470,7 +483,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             if (parentBloq.relations.children[bloq.id()].connection === 'output') {
                 console.log('--------------------------------------------------> MOVING UP');
                 for (var k in parentBloq.connections.inputs) {
-                    if (parentBloq.connections.inputs[k].inline === true){ //&& bloq.connections[connectionType][k].bloq === undefined) {
+                    if (parentBloq.connections.inputs[k].inline === true &&k ===parentBloq.relations.children[bloq.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                         utils.resizeBloq(parentBloq, {
                             x: -bloq.size.width,
                             y: -bloq.size.height
