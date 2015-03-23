@@ -1,4 +1,5 @@
 var utils = utils || {};
+var connectionThreshold = 20; // px
 utils.moveBloq = function(bloq, location) {
     "use strict";
     bloq.x(location.x);
@@ -20,9 +21,37 @@ function getRandomColor() {
     }
     return color;
 }
+utils.addInput = function(bloq, posx, posy, type) {
+    "use strict";
+    var index = 0;
+    if (bloq.connections.inputs !== undefined) {
+        index = bloq.connections.inputs.length;
+    } else {
+        bloq.connections.inputs = [{}];
+    }
+    bloq.connections.inputs[index] = {
+        connectionPosition: {
+            x: posx,
+            y: posy
+        },
+        connectorArea: {
+            x1: posx - connectionThreshold,
+            x2: posx + connectionThreshold,
+            y1: posy,
+            y2: posy + connectionThreshold
+        },
+        type: type,
+        inline: true,
+        movedDown: false,
+        UI: canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
+            fill: getRandomColor()
+        }).move(posx - connectionThreshold, posy)
+    };
+    console.log('-------------------------', bloq.connections.inputs);
+    bloq.inputsNumber = bloq.connections.inputs.length;
+};
 utils.createConnectors = function(bloq, bloqData) {
     "use strict";
-    var connectionThreshold = 20; // px
     bloq.connections = {};
     if (bloqData.inputs) {
         bloq.connections.inputs = [{}];
@@ -232,19 +261,22 @@ utils.moveChildren = function(bloq, delta) {
 };
 utils.resizeBloq = function(bloq, delta) {
     "use strict";
+    bloq.size.width += delta.x;
     bloq.size.height += delta.y;
     bloq.body.size(bloq.size.width, bloq.size.height);
     bloq.border.size(bloq.size.width, bloq.size.height);
     bloq.selection.size(bloq.size.width, bloq.size.height);
     //update down connector:
     if (bloq.connections.down !== undefined) {
-        utils.updateConnector(bloq.connections.down, delta);
+        utils.updateConnector(bloq.connections.down, {
+            x: 0,
+            y: delta.y
+        });
     }
 };
 utils.moveConnector = function(bloq, connection, delta) {
     //Move connector 
     connection = utils.updateConnector(connection, delta);
-
     //If there is a bloq connected, move the bloq also
     if (connection.bloq !== undefined) {
         var bloqConnected = connection.bloq;
@@ -252,4 +284,12 @@ utils.moveConnector = function(bloq, connection, delta) {
     }
     //Update bloq's size
     utils.resizeBloq(bloq, delta);
+};
+utils.bloqOnTop = function(bloq) {
+    bloq.node.parentNode.appendChild(bloq.node);
+    var child={};
+    for (var i in bloq.relations.children){
+        child = bloq.relations.children[i].bloq;
+        child.node.parentNode.appendChild(child.node);
+    }
 };
