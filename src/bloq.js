@@ -164,24 +164,13 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             console.log('--------------------------------------------------> MOVING DOWN');
             for (var k in bloq.connections[connectionType]) {
                 if (k > inputID && bloq.connections[connectionType][k].movedDown === false) {
-                    bloq.connections[connectionType][k] = utils.updateConnector(bloq.connections[connectionType][k], {
+                    utils.moveConnector(bloq, bloq.connections[connectionType][k], {
                         x: 0,
                         y: bloqToConnect.size.height - k * connectionThreshold
                     });
-                    //The bloq has already been moved down once
+                    //The connector has already been moved down once
                     bloq.connections[connectionType][k].movedDown = true;
-                    //Update bloq's size
-                    utils.resizeBloq(bloq, {
-                        x: 0,
-                        y: bloqToConnect.size.height
-                    });
-                    if (bloq.connections[connectionType][k].bloq !== undefined) {
-                        var bloqConnected = bloq.connections[connectionType][k].bloq;
-                        utils.moveBloq2(bloqConnected, {
-                            x: 0,
-                            y: bloqToConnect.size.height - k * connectionThreshold
-                        });
-                    }
+                    bloq.connections[connectionType][k].movedUp = false;
                 }
             }
             return bloq.connections[connectionType][inputID].connectionPosition;
@@ -200,25 +189,30 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             if (parentBloq.relations.children[bloq.id()].connection === 'output') {
                 console.log('--------------------------------------------------> MOVING UP');
                 for (var k in parentBloq.connections.inputs) {
-                    if (k > parentBloq.relations.children[bloq.id()].inputID) {
-                        parentBloq.connections.inputs[k] = utils.updateConnector(parentBloq.connections.inputs[k], {
+                    if (k > parentBloq.relations.children[bloq.id()].inputID && parentBloq.connections.inputs[k].movedUp === false) {
+                        utils.moveConnector(parentBloq, parentBloq.connections.inputs[k], {
                             x: 0,
                             y: -bloq.size.height + k * connectionThreshold
                         });
-                        //Update bloq's size
-                        utils.resizeBloq(parentBloq, {
-                            x: 0,
-                            y: -bloq.size.height
-                        });
+                        parentBloq.connections.inputs[k].movedUp = true;
+                        // parentBloq.connections.inputs[k] = utils.updateConnector(parentBloq.connections.inputs[k], {
+                        //     x: 0,
+                        //     y: -bloq.size.height + k * connectionThreshold
+                        // });
+                        // //Update bloq's size
+                        // utils.resizeBloq(parentBloq, {
+                        //     x: 0,
+                        //     y: -bloq.size.height
+                        // });
                         parentBloq.connections.inputs[k].movedDown = false;
-                        // if there is a bloq connected, push it up!
-                        if (parentBloq.connections.inputs[k].bloq !== undefined) {
-                            var bloqConnected = parentBloq.connections.inputs[k].bloq;
-                            utils.moveBloq2(bloqConnected, {
-                                x: 0,
-                                y: -bloq.size.height + k * connectionThreshold
-                            });
-                        }
+                        // // if there is a bloq connected, push it up!
+                        // if (parentBloq.connections.inputs[k].bloq !== undefined) {
+                        //     var bloqConnected = parentBloq.connections.inputs[k].bloq;
+                        //     utils.moveBloq2(bloqConnected, {
+                        //         x: 0,
+                        //         y: -bloq.size.height + k * connectionThreshold
+                        //     });
+                        // }
                     }
                 }
             }
