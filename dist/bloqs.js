@@ -223,14 +223,24 @@ utils.moveChildren = function(bloq, delta) {
         }
     }
 };
+utils.resizeBloq = function(bloq, delta) {
+    bloq.size.height += delta.y;
+    bloq.body.size(bloq.size.width, bloq.size.height);
+    bloq.border.size(bloq.size.width, bloq.size.height);
+    bloq.selection.size(bloq.size.width, bloq.size.height);
+    //update down connector:
+    if (bloq.connections.down !== undefined) {
+        utils.updateConnector(bloq.connections.down, delta);
+    }
+};
 var bloqsNamespace = bloqsNamespace || {};
 bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     "use strict";
     var connectionThreshold = 20; // px
     var bloq = canvas.group().move(position[0], position[1]);
     bloq.size = {
-        width: bloqData.size[0],
-        height: bloqData.size[1]
+        width: 200,
+        height: 50
     };
     bloq.delta = {
         x: 0,
@@ -379,7 +389,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             };
         }
         if (connectionType === 'output') {
-            console.log('--------------------------------------------------> MOVING OUTPUT');
             return {
                 x: bloq.connections[connectionType].connectionPosition.x - bloqToConnect.size.width,
                 y: bloq.connections[connectionType].connectionPosition.y - inputID * connectionThreshold
@@ -393,7 +402,13 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                         x: 0,
                         y: bloqToConnect.size.height - k * connectionThreshold
                     });
+                    //The bloq has already been moved down once
                     bloq.connections[connectionType][k].movedDown = true;
+                    //Update bloq's size
+                    utils.resizeBloq(bloq, {
+                        x: 0,
+                        y: bloqToConnect.size.height
+                    });
                     if (bloq.connections[connectionType][k].bloq !== undefined) {
                         var bloqConnected = bloq.connections[connectionType][k].bloq;
                         utils.moveBloq2(bloqConnected, {
@@ -416,7 +431,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         // remove parent of this and child in parent:
         if (bloq.relations.parent !== undefined) {
             var parentBloq = bloq.getBloqById(bloq.relations.parent);
-            console.log('parentBloq.relations.children[bloq.id()].connection', parentBloq.relations.children[bloq.id()].connection);
             if (parentBloq.relations.children[bloq.id()].connection === 'output') {
                 console.log('--------------------------------------------------> MOVING UP');
                 for (var k in parentBloq.connections.inputs) {
@@ -424,6 +438,11 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                         parentBloq.connections.inputs[k] = utils.updateConnector(parentBloq.connections.inputs[k], {
                             x: 0,
                             y: -bloq.size.height + k * connectionThreshold
+                        });
+                        //Update bloq's size
+                        utils.resizeBloq(parentBloq, {
+                            x: 0,
+                            y: -bloq.size.height
                         });
                         parentBloq.connections.inputs[k].movedDown = false;
                         // if there is a bloq connected, push it up!

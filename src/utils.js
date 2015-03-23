@@ -223,3 +223,13 @@ utils.moveChildren = function(bloq, delta) {
         }
     }
 };
+utils.resizeBloq = function(bloq, delta) {
+    bloq.size.height += delta.y;
+    bloq.body.size(bloq.size.width, bloq.size.height);
+    bloq.border.size(bloq.size.width, bloq.size.height);
+    bloq.selection.size(bloq.size.width, bloq.size.height);
+    //update down connector:
+    if (bloq.connections.down !== undefined) {
+        utils.updateConnector(bloq.connections.down, delta);
+    }
+};
