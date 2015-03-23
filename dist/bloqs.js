@@ -287,10 +287,17 @@ utils.moveConnector = function(bloq, connection, delta) {
 };
 utils.bloqOnTop = function(bloq) {
     bloq.node.parentNode.appendChild(bloq.node);
-    var child={};
-    for (var i in bloq.relations.children){
+    var child = {};
+    for (var i in bloq.relations.children) {
         child = bloq.relations.children[i].bloq;
         child.node.parentNode.appendChild(child.node);
+    }
+};
+utils.pushElements = function(bloq, elements, delta) {
+    for (var j in elements) {
+        elements[j].x(elements[j].x()+delta.x);
+        elements[j].y(elements[j].y()+delta.y);
+        // bloq.connections.inputs[]
     }
 };
 var bloqsNamespace = bloqsNamespace || {};
@@ -368,7 +375,8 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type); //bloq.x()+posx + width, bloq.x()+posy + i * connectionThreshold);
         bloq.UIElements.push({
             element: bloqInput,
-            elementsToPush: undefined
+            elementsToPush: undefined,
+            id: bloq.connections.inputs.length-1
         });
     };
     bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(10);
@@ -424,6 +432,19 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             posx = margin;
             posy += 50;
         }
+        bloq.UIElements.shift();
+        //Add the elements that must be pushed
+        for (var i in bloq.UIElements) {
+            bloq.UIElements[i].elementsToPush = [{}];
+            // console.log('---->',bloq.UIElements.splice(0, bloq.UIElements.length-i));
+            for (var j in bloq.UIElements) {
+                if (j > i) {
+                    bloq.UIElements[i].elementsToPush.push(bloq.UIElements[j].element);
+                }
+            }
+            bloq.UIElements[i].elementsToPush.shift();
+        }
+        console.log('triaaaaaaaaaal', bloq.UIElements);
         //Update bloq's size
         utils.resizeBloq(bloq, {
             x: Math.abs(bloq.size.width - width),
@@ -450,10 +471,21 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 if (bloq.connections[connectionType][k].inline === true && bloq.connections[connectionType][k].bloq === undefined && k === inputID) {
                     utils.resizeBloq(bloq, {
                         x: bloqToConnect.size.width,
-                        y: bloqToConnect.size.height
+                        y: 0
                     });
+                    for (var i in bloq.UIElements) {
+                    console.log('hereee', bloq.UIElements[i].id === parseInt(inputID,10));
+                    console.log('hereee', bloq.UIElements[i].id , parseInt(inputID,10));
+                        if (bloq.UIElements[i].id === parseInt(inputID,10)) {
+                            console.log('here pushing');
+                            utils.pushElements(bloq, bloq.UIElements[i].elementsToPush, {
+                                x: bloqToConnect.size.width,
+                                y: 0
+                            });
+                            break;
+                        }
+                    }
                 }
-                console.log('bloq.connections[connectionType][k].inline', bloq.connections[connectionType][k].inline, k > inputID);
                 if (k > inputID) {
                     if (bloq.connections[connectionType][k].inline === false && bloq.connections[connectionType][k].movedDown === false) {
                         utils.moveConnector(bloq, bloq.connections[connectionType][k], {
@@ -483,10 +515,10 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             if (parentBloq.relations.children[bloq.id()].connection === 'output') {
                 console.log('--------------------------------------------------> MOVING UP');
                 for (var k in parentBloq.connections.inputs) {
-                    if (parentBloq.connections.inputs[k].inline === true &&k ===parentBloq.relations.children[bloq.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
+                    if (parentBloq.connections.inputs[k].inline === true && k === parentBloq.relations.children[bloq.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                         utils.resizeBloq(parentBloq, {
                             x: -bloq.size.width,
-                            y: -bloq.size.height
+                            y: 0
                         });
                     }
                     if (k > parentBloq.relations.children[bloq.id()].inputID && parentBloq.connections.inputs[k].movedUp === false) {

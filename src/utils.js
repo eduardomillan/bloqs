@@ -287,9 +287,16 @@ utils.moveConnector = function(bloq, connection, delta) {
 };
 utils.bloqOnTop = function(bloq) {
     bloq.node.parentNode.appendChild(bloq.node);
-    var child={};
-    for (var i in bloq.relations.children){
+    var child = {};
+    for (var i in bloq.relations.children) {
         child = bloq.relations.children[i].bloq;
         child.node.parentNode.appendChild(child.node);
+    }
+};
+utils.pushElements = function(bloq, elements, delta) {
+    for (var j in elements) {
+        elements[j].x(elements[j].x()+delta.x);
+        elements[j].y(elements[j].y()+delta.y);
+        // bloq.connections.inputs[]
     }
 };
