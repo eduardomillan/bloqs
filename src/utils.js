@@ -259,6 +259,7 @@ utils.moveChildren = function(bloq, delta) {
         }
     }
 };
+
 utils.resizeBloq = function(bloq, delta) {
     "use strict";
     bloq.size.width += delta.x;

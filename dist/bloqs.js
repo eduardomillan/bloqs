@@ -259,6 +259,7 @@ utils.moveChildren = function(bloq, delta) {
         }
     }
 };
+
 utils.resizeBloq = function(bloq, delta) {
     "use strict";
     bloq.size.width += delta.x;
@@ -538,7 +539,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                     if (parentBloq.connections.inputs[k].inline === true && k === parentBloq.relations.children[bloq.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                         var delta = {
                             x: -bloq.size.width + parentBloq.bloqInput.width,
-                            y: -bloq.size.height +parentBloq.bloqInput.height
+                            y: -bloq.size.height + parentBloq.bloqInput.height
                         };
                         // var delta = {
                         //     x: -bloq.size.width + bloq.bloqInput.width,
@@ -669,16 +670,17 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 break;
             }
         }
-        for (i in this.relations.inputChildren) {
-            if (this.relations.inputChildren[i] === child.node.id) {
-                this.relations.inputChildren.splice(i, 1);
-                break;
-            }
-        }
+        delete this.relations.inputChildren[child.node.id];
+        // for (i in this.relations.inputChildren) {
+        //     if (this.relations.inputChildren[i] === child.node.id) {
+        //         this.relations.inputChildren.splice(i, 1);
+        //         break;
+        //     }
+        // }
     };
     bloq.setChildren = function(childrenId, location, inputID) {
-        for (var bloqIndex in this.relations.children) {
-            if (childrenId == this.relations.children[bloqIndex]) {
+        for (var bloqIndex in bloq.relations.children) {
+            if (childrenId == bloq.relations.children[bloqIndex]) {
                 // it exists, do nothing
                 return false;
             }
@@ -689,11 +691,22 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             connection: location,
             inputID: inputID
         };
-        if (location === 'up') {
-            this.relations.codeChildren.push(childrenId);
-        } else {
-            this.relations.inputChildren.push(childrenId);
+        for (bloqIndex in bloq.relations.codeChildren) {
+            if (childrenId == bloq.relations.codeChildren[bloqIndex]) {
+                // it exists, do nothing
+                return false;
+            }
         }
+        if (location === 'up') {
+            bloq.relations.codeChildren.push(childrenId);
+        } else {
+            console.log('bloq.relations.inputChildren', bloq.relations.inputChildren, childrenId);
+            bloq.relations.inputChildren[childrenId] = {
+                bloq: bloq.getBloqById(childrenId),
+                id: inputID
+            };
+        }
+        console.log('setChildren', bloq.relations.codeChildren);
         return true;
     };
     bloq.setParent = function(parentId) {
@@ -713,10 +726,9 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         var code = this.code[_function];
         var search = '';
         var replacement = '';
-        // console.log('this.relations.inputChildren', this.getBloqById(this.relations.inputChildren));
         for (var i in this.relations.inputChildren) {
-            replacement = this.getBloqById(this.relations.inputChildren).getCode(_function);
-            search = '{[' + i + ']}';
+            search = '{[' + this.relations.inputChildren[i].id + ']}';
+            replacement = this.relations.inputChildren[i].bloq.getCode(_function);
             code = code.replace(new RegExp(search, 'g'), replacement);
         }
         for (i = 0; i < this.inputsNumber; i++) {
@@ -767,6 +779,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         if (bloq === data.bloqs.loop || bloq === data.bloqs.setup) {
             data.code[_function] = bloq.code.loop;
         } else {
+            console.log('functionCode: bloq',bloq);
             data.code[_function] += '   ' + bloq.getCode(_function);
         }
         if (bloq.relations.codeChildren.length > 0) {
@@ -774,6 +787,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         } else {
             data.code[_function] += '\n}\n';
         }
+        console.log('code: ', data.code[_function]);
     };
     /**
      * Create a bloq and setup its properties and events.

@@ -30,7 +30,7 @@
         <script src="./../../svg.foreignobject.js/svg.foreignobject.js"></script>
         <script src="./../bower_components/svg.draggable/svg.draggable.js"></script>
         <script src="./../dist/bloqs.js"></script>
-        <!-- <div id="code" style="position: absolute; top: 30px; left: 710px; width: 700px; height: 700px; background-color: #E6E6FA;">    </div> -->
+        <div id="code" style="position: absolute; top: 30px; left: 710px; width: 700px; height: 700px; background-color: #E6E6FA;">    </div>
 <button  style="position: absolute; top: 10px; left: 710px; " onclick="document.getElementById('code').innerHTML ='<pre>'+bloqs.bloqsToCode()+'</pre>'">CODE</button>
 <script>
     /* begin demo script */
@@ -64,10 +64,9 @@
         // inputs: ['int', 'string'],
         // size: [200, 100],
         color: '#dd4b39',
-        text : [ ["trial1", {input : 'bloqInput',type:"int",label:"INPUT"}, "trial2", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
-
+        text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "string", {input : 'bloqInput',type:"string",label:"INPUT"}] ] ,
         // text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
-        code: {setup:"123", loop:"123"}
+        code: {setup:"trial({0},{1});\n", loop:"trial({0},{1});\n"}
     };
     var bloq4 = {
         // up: true,
@@ -75,18 +74,20 @@
         output: 'int',
         // size: [200, 50],
         color: '#dd4b39',
-        text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
+        text:[["int"]],
+        // text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
         // text : [["trial2", {input : 'bloqInput',type:"int",label:"INPUT"}]],
-        code: {setup:"123", loop:"123"}
+        code: {setup:"2", loop:"2"}
     };
         var bloq5 = {
         up: true,
         down: true,
-        output: 'int',
+        output: 'string',
         // size: [200, 50],
         color: '#dd4b39',
+        text:[["string"]],
         // text : [["trial2", {input : 'bloqInput',type:"int",label:"INPUT"}]],
-        code: {setup:"123", loop:"123"}
+        code: {setup:'"hola"', loop:'"hola"'}
     };
     var block0 = bloqs.createBloq(setup, canvas, [100,0]);
     var block1 = bloqs.createBloq(loop, canvas, [100,300]);
