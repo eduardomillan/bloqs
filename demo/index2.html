@@ -65,7 +65,7 @@
         // size: [200, 100],
         color: '#dd4b39',
         // text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "string", {input : 'bloqInput',type:"string",label:"INPUT"}] ] ,
-        text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "string", {input : 'bloqInput',type:"string",label:"INPUT"}, "userInput", {input:'userInput', type:"string",label:"userInput"}] ] ,
+        text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "number:", {input : 'bloqInput',type:"int",label:"INPUT"}, "userInput", {input:'userInput', type:"string",label:"userInput"}] ] ,
         // text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
         code: {setup:"trial({0},{1},{2});\n", loop:"trial({0},{1},{2});\n"}
     };
@@ -83,12 +83,12 @@
         var bloq5 = {
         up: true,
         down: true,
-        output: 'string',
+        output: 'int',
         // size: [200, 50],
         color: '#dd4b39',
-        text:[["string"]],
+        text:[["number",{input:'userInput', type:"number",label:"number"}]],
         // text : [["trial2", {input : 'bloqInput',type:"int",label:"INPUT"}]],
-        code: {setup:'"hola"', loop:'"hola"'}
+        code: {setup:'{0}', loop:'{0}'}
     };
     var block0 = bloqs.createBloq(setup, canvas, [100,0]);
     var block1 = bloqs.createBloq(loop, canvas, [100,300]);
