@@ -293,10 +293,16 @@ utils.bloqOnTop = function(bloq) {
         child.node.parentNode.appendChild(child.node);
     }
 };
-utils.pushElements = function(bloq, elements, delta) {
+utils.pushElements = function(UIElement, delta) {
+    console.log('elements:', UIElement);
+    var elements = UIElement.elementsToPush;
     for (var j in elements) {
-        elements[j].x(elements[j].x()+delta.x);
-        elements[j].y(elements[j].y()+delta.y);
-        // bloq.connections.inputs[]
+        elements[j].bloq.x(elements[j].bloq.x() + delta.x);
+        elements[j].bloq.y(elements[j].bloq.y() + delta.y);
+        var connector = elements[j].connector;
+        console.log(j,'UIElement', UIElement);
+        if (connector !== undefined) {
+            utils.updateConnector(connector, delta);
+        }
     }
 };
