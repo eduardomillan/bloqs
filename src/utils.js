@@ -47,7 +47,6 @@ utils.addInput = function(bloq, posx, posy, type) {
             fill: getRandomColor()
         }).move(posx - connectionThreshold, posy)
     };
-    console.log('-------------------------', bloq.connections.inputs);
     bloq.inputsNumber = bloq.connections.inputs.length;
 };
 utils.createConnectors = function(bloq, bloqData) {
@@ -83,7 +82,6 @@ utils.createConnectors = function(bloq, bloqData) {
                 fill: getRandomColor()
             }).move(bloq.x() + bloq.size.width - connectionThreshold, bloq.y() + i * connectionThreshold);
         }
-        console.log('inputs :::', bloq.connections.inputs);
     }
     if (bloqData.output) {
         bloq.connections.output = {
@@ -182,7 +180,6 @@ utils.updateConnector = function(connector, delta) {
     connector.connectorArea.x2 += delta.x;
     connector.connectorArea.y1 += delta.y;
     connector.connectorArea.y2 += delta.y;
-    console.log('connector.UI movement!', delta.x, delta.y);
     connector.UI.move(connector.UI.x() + delta.x, connector.UI.y() + delta.y);
     return connector;
 };
@@ -196,9 +193,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
     "use strict";
     if (bloq2Connection !== undefined && bloq1Connection !== undefined) {
         if (bloq1.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
-            console.log('isover!! ---> ', type);
             if (bloq1Connection.type === bloq2Connection.type) { // if the type is the same --> connect
-                console.log('same type!');
                 var deltaParent = {
                     x: bloq1Connection.connectorArea.x1 - bloq2Connection.connectorArea.x1,
                     y: bloq1Connection.connectorArea.y1 - bloq2Connection.connectorArea.y1
@@ -233,7 +228,6 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 bloq1.delta.lasty = 0;
             }
         } else {
-            console.log('not over');
         }
     }
     return false;
@@ -297,13 +291,11 @@ utils.bloqOnTop = function(bloq) {
 };
 utils.pushElements = function(bloq, UIElement, delta) {
     "use strict";
-    console.log('elements:', UIElement);
     var elements = UIElement.elementsToPush;
     for (var j in elements) {
         elements[j].bloq.x(elements[j].bloq.x() + delta.x);
         elements[j].bloq.y(elements[j].bloq.y() + delta.y);
         var connector = elements[j].connector;
-        console.log('connector:', connector);
         if (connector !== undefined) {
             utils.moveConnector(bloq, connector, delta);
         }
@@ -324,10 +316,9 @@ utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
         elementsToPush: undefined
     });
     var code;
-    if (type === 'number'){
-        code =  document.getElementById(id).value ;
-    }
-    else{
+    if (type === 'number') {
+        code = document.getElementById(id).value;
+    } else {
         code = '"' + document.getElementById(id).value + '"';
     }
     bloq.relations.inputChildren[id] = {
@@ -335,7 +326,6 @@ utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
         bloq: 'userInput',
         code: code
     };
-    console.log('appendUserInput', bloq.relations.codeChildren);
     document.getElementById(id).addEventListener("mousedown", function(e) {
         e.stopPropagation();
     }, false);
@@ -354,6 +344,33 @@ utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
         }
     }, false);
 };
+utils.appendDropdownInput = function(bloq, dropdown_text, type, posx, posy, id) {
+    var dropdown = bloq.foreignObject(100, 100).attr({
+        id: id,
+        color: '#FFCC33'
+    });
+    var newList = document.createElement("select");
+    for (var i in dropdown_text) {
+        var newListData = new Option(dropdown_text[i].label, dropdown_text[i].value);
+        //Here we append that text node to our drop down list.
+        newList.appendChild(newListData);
+    }
+    //Append the list to dropdown foreignobject:
+    dropdown.appendChild(newList).move(posx, posy);
+    bloq.UIElements.push({
+        element: dropdown,
+        elementsToPush: undefined
+    });
+
+    bloq.relations.inputChildren[id] = {
+        id: id,
+        bloq: 'userInput',
+        code: newList.value
+    };
+    newList.onchange = function(){
+        bloq.relations.inputChildren[id].code = newList.value;
+    }
+};
 utils.appendBloqInput = function(bloq, inputText, type, posx, posy) {
     //draw white (ToDo: UX) rectangle
     var bloqInput = bloq.rect(bloq.bloqInput.width, bloq.bloqInput.height).attr({
@@ -366,7 +383,6 @@ utils.appendBloqInput = function(bloq, inputText, type, posx, posy) {
         id: bloq.connections.inputs.length - 1,
         connector: bloq.connections.inputs[bloq.connections.inputs.length - 1]
     });
-    console.log('appending bloq input ', bloq.connections.inputs[bloq.connections.inputs.length - 1]);
 };
 utils.createBloqUI = function(bloq, bloqData) {
     var margin = 10;
@@ -384,6 +400,10 @@ utils.createBloqUI = function(bloq, bloqData) {
                     posx += 110;
                 } else if (bloqData.text[j][i].input === 'bloqInput') {
                     utils.appendBloqInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy);
+                    inputID += 1;
+                    posx += 110;
+                } else if (bloqData.text[j][i].input === 'dropdown') {
+                    utils.appendDropdownInput(bloq, bloqData.text[j][i].data, bloqData.text[j][i].type, posx, posy, inputID)
                     inputID += 1;
                     posx += 110;
                 }
@@ -410,7 +430,6 @@ utils.createBloqUI = function(bloq, bloqData) {
     //Add the elements that must be pushed
     for (var i in bloq.UIElements) {
         bloq.UIElements[i].elementsToPush = [{}];
-        // console.log('---->',bloq.UIElements.splice(0, bloq.UIElements.length-i));
         for (var j in bloq.UIElements) {
             if (j > i) {
                 bloq.UIElements[i].elementsToPush.push({

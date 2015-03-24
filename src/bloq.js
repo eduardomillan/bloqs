@@ -320,7 +320,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         for (var i in this.relations.inputChildren) {
             console.log('getcode:', this.relations.inputChildren[i]);
                 search = '{[' + this.relations.inputChildren[i].id + ']}';
-            if (this.relations.inputChildren[i].bloq === 'userInput') {
+            if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
                 replacement = this.relations.inputChildren[i].code;
             } else {
                 replacement = this.relations.inputChildren[i].bloq.getCode(_function);
