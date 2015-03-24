@@ -312,7 +312,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     var connectionThreshold = 20; // px
     var bloq = canvas.group().move(position[0], position[1]);
     bloq.size = {
-        width: 200,
+        width: 100,
         height: 50
     };
     bloq.delta = {
@@ -320,6 +320,10 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         y: 0,
         lastx: 0,
         lasty: 0
+    };
+    bloq.bloqInput = {
+        width: 70,
+        height: 30
     };
     bloq.code = bloqData.code;
     if (bloqData.hasOwnProperty('factoryCode')) {
@@ -375,7 +379,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     };
     bloq.appendBloqInput = function(inputText, type, posx, posy, id) {
         //draw white (ToDo: UX) rectangle
-        var bloqInput = bloq.rect(70, 30).attr({
+        var bloqInput = bloq.rect(bloq.bloqInput.width, bloq.bloqInput.height).attr({
             fill: '#fff'
         }).move(posx, posy);
         utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type); //bloq.x()+posx + width, bloq.x()+posy + i * connectionThreshold);
@@ -478,18 +482,16 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             console.log('--------------------------------------------------> MOVING DOWN');
             for (var k in bloq.connections[connectionType]) {
                 //If the input is inline and there is not a bloq connected still
-                if (bloq.connections[connectionType][k].inline === true && k === inputID) {
-                    utils.resizeBloq(bloq, {
-                        x: bloqToConnect.size.width,
+                if (bloq.connections[connectionType][k].inline === true && k === inputID && bloq.connections[connectionType][k].bloq === undefined) {
+                    var delta = {
+                        x: bloqToConnect.size.width - bloq.bloqInput.width,
                         y: 0
-                    });
+                    };
+                    utils.resizeBloq(bloq, delta);
                     for (var i in bloq.UIElements) {
                         if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
                             console.log('here pushing', bloq.UIElements[i].elementsToPush);
-                            utils.pushElements(bloq, bloq.UIElements[i], {
-                                x: bloqToConnect.size.width,
-                                y: 0
-                            });
+                            utils.pushElements(bloq, bloq.UIElements[i], delta);
                             break;
                         }
                     }
@@ -524,16 +526,14 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 console.log('--------------------------------------------------> MOVING UP');
                 for (var k in parentBloq.connections.inputs) {
                     if (parentBloq.connections.inputs[k].inline === true && k === parentBloq.relations.children[bloq.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
-                        utils.resizeBloq(parentBloq, {
-                            x: -bloq.size.width,
+                        var delta = {
+                            x: -bloq.size.width + bloq.bloqInput.width,
                             y: 0
-                        });
+                        };
+                        utils.resizeBloq(parentBloq, delta);
                         for (var i in parentBloq.UIElements) {
                             if (parentBloq.UIElements[i].id === parseInt(k, 10)) {
-                                utils.pushElements(parentBloq, parentBloq.UIElements[i], {
-                                    x: -bloq.size.width,
-                                    y: 0
-                                });
+                                utils.pushElements(parentBloq, parentBloq.UIElements[i], delta);
                                 break;
                             }
                         }
