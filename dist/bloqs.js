@@ -450,7 +450,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     }
     //Create the connectors using the bloq information
     bloq.connections = utils.createConnectors(bloq, bloqData);
-
     bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(10);
     bloq.border = bloq.rect(bloq.size.width, bloq.size.height).fill('none').stroke({
         width: 1
@@ -472,7 +471,6 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     if (bloqData.hasOwnProperty('text')) {
         utils.createBloqUI(bloq, bloqData);
     }
-
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
         if (connectionType === 'up') {
             return {
@@ -493,9 +491,13 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 if (bloq.connections[connectionType][k].inline === true && k === inputID && bloq.connections[connectionType][k].bloq === undefined) {
                     var delta = {
                         x: bloqToConnect.size.width - bloq.bloqInput.width,
-                        y: 0
+                        y: bloqToConnect.size.height - bloq.bloqInput.height
                     };
                     utils.resizeBloq(bloq, delta);
+                    delta = {
+                        x: bloqToConnect.size.width - bloq.bloqInput.width,
+                        y: 0
+                    };
                     for (var i in bloq.UIElements) {
                         if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
                             console.log('here pushing', bloq.UIElements[i].elementsToPush);
@@ -535,10 +537,18 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                 for (var k in parentBloq.connections.inputs) {
                     if (parentBloq.connections.inputs[k].inline === true && k === parentBloq.relations.children[bloq.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                         var delta = {
-                            x: -bloq.size.width + bloq.bloqInput.width,
+                            x: -bloq.size.width + parentBloq.bloqInput.width,
+                            y: -bloq.size.height +parentBloq.bloqInput.height
+                        };
+                        // var delta = {
+                        //     x: -bloq.size.width + bloq.bloqInput.width,
+                        //     y: -parentBloq.size.height + bloq.bloqInput.height
+                        // };
+                        utils.resizeBloq(parentBloq, delta);
+                        delta = {
+                            x: -bloq.size.width + parentBloq.bloqInput.width,
                             y: 0
                         };
-                        utils.resizeBloq(parentBloq, delta);
                         for (var i in parentBloq.UIElements) {
                             if (parentBloq.UIElements[i].id === parseInt(k, 10)) {
                                 utils.pushElements(parentBloq, parentBloq.UIElements[i], delta);
