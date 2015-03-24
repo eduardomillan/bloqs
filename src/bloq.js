@@ -70,7 +70,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             }
         }, false);
     };
-    bloq.appendBloqInput = function(inputText, type, posx, posy, id) {
+    bloq.appendBloqInput = function(inputText, type, posx, posy) {
         //draw white (ToDo: UX) rectangle
         var bloqInput = bloq.rect(bloq.bloqInput.width, bloq.bloqInput.height).attr({
             fill: '#fff'
@@ -103,61 +103,9 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         bloq.label = '';
     }
     if (bloqData.hasOwnProperty('text')) {
-        var margin = 10;
-        var posx = margin;
-        var width = 0;
-        var posy = margin;
-        bloq.UIElements = [{}];
-        for (var j in bloqData.text) {
-            for (var i in bloqData.text[j]) {
-                if (typeof(bloqData.text[j][i]) === typeof({})) {
-                    if (bloqData.text[j][i].input === 'userInput') {
-                        bloq.appendUserInput(bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, i);
-                        posx += 110;
-                    } else if (bloqData.text[j][i].input === 'bloqInput') {
-                        bloq.appendBloqInput(bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, i);
-                        posx += 110;
-                    }
-                } else {
-                    var text = bloq.text(bloqData.text[j][i]).font({
-                        family: 'Helvetica',
-                        fill: '#fff',
-                        size: 14
-                    }).move(posx, posy);
-                    posx += bloqData.text[j][i].length * 5 + 30;
-                    bloq.UIElements.push({
-                        element: text,
-                        elementsToPush: undefined
-                    });
-                }
-            }
-            if (posx > width) {
-                width = posx;
-            }
-            posx = margin;
-            posy += 50;
-        }
-        bloq.UIElements.shift();
-        //Add the elements that must be pushed
-        for (var i in bloq.UIElements) {
-            bloq.UIElements[i].elementsToPush = [{}];
-            // console.log('---->',bloq.UIElements.splice(0, bloq.UIElements.length-i));
-            for (var j in bloq.UIElements) {
-                if (j > i) {
-                    bloq.UIElements[i].elementsToPush.push({
-                        bloq: bloq.UIElements[j].element,
-                        connector: bloq.UIElements[j].connector
-                    });
-                }
-            }
-            bloq.UIElements[i].elementsToPush.shift();
-        }
-        //Update bloq's size
-        utils.resizeBloq(bloq, {
-            x: Math.abs(bloq.size.width - width),
-            y: Math.abs(bloq.size.height - posy)
-        });
+        utils.addBloqUI(bloq, bloqData);
     }
+
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
         if (connectionType === 'up') {
             return {

@@ -275,6 +275,7 @@ utils.resizeBloq = function(bloq, delta) {
     }
 };
 utils.moveConnector = function(bloq, connection, delta) {
+    "use strict";
     //Move connector 
     connection = utils.updateConnector(connection, delta);
     //If there is a bloq connected, move the bloq also
@@ -286,6 +287,7 @@ utils.moveConnector = function(bloq, connection, delta) {
     utils.resizeBloq(bloq, delta);
 };
 utils.bloqOnTop = function(bloq) {
+    "use strict";
     bloq.node.parentNode.appendChild(bloq.node);
     var child = {};
     for (var i in bloq.relations.children) {
@@ -294,6 +296,7 @@ utils.bloqOnTop = function(bloq) {
     }
 };
 utils.pushElements = function(bloq, UIElement, delta) {
+    "use strict";
     console.log('elements:', UIElement);
     var elements = UIElement.elementsToPush;
     for (var j in elements) {
@@ -305,4 +308,60 @@ utils.pushElements = function(bloq, UIElement, delta) {
             utils.moveConnector(bloq, connector, delta);
         }
     }
+};
+utils.addBloqUI = function(bloq, bloqData) {
+    var margin = 10;
+    var posx = margin;
+    var width = 0;
+    var posy = margin;
+    bloq.UIElements = [{}];
+    for (var j in bloqData.text) {
+        for (var i in bloqData.text[j]) {
+            if (typeof(bloqData.text[j][i]) === typeof({})) {
+                if (bloqData.text[j][i].input === 'userInput') {
+                    bloq.appendUserInput(bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, i);
+                    posx += 110;
+                } else if (bloqData.text[j][i].input === 'bloqInput') {
+                    bloq.appendBloqInput(bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy);
+                    posx += 110;
+                }
+            } else {
+                var text = bloq.text(bloqData.text[j][i]).font({
+                    family: 'Helvetica',
+                    fill: '#fff',
+                    size: 14
+                }).move(posx, posy);
+                posx += bloqData.text[j][i].length * 5 + 30;
+                bloq.UIElements.push({
+                    element: text,
+                    elementsToPush: undefined
+                });
+            }
+        }
+        if (posx > width) {
+            width = posx;
+        }
+        posx = margin;
+        posy += 50;
+    }
+    bloq.UIElements.shift();
+    //Add the elements that must be pushed
+    for (var i in bloq.UIElements) {
+        bloq.UIElements[i].elementsToPush = [{}];
+        // console.log('---->',bloq.UIElements.splice(0, bloq.UIElements.length-i));
+        for (var j in bloq.UIElements) {
+            if (j > i) {
+                bloq.UIElements[i].elementsToPush.push({
+                    bloq: bloq.UIElements[j].element,
+                    connector: bloq.UIElements[j].connector
+                });
+            }
+        }
+        bloq.UIElements[i].elementsToPush.shift();
+    }
+    //Update bloq's size
+    utils.resizeBloq(bloq, {
+        x: Math.abs(bloq.size.width - width),
+        y: Math.abs(bloq.size.height - posy)
+    });
 };
