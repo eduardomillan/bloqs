@@ -309,7 +309,49 @@ utils.pushElements = function(bloq, UIElement, delta) {
         }
     }
 };
-utils.addBloqUI = function(bloq, bloqData) {
+utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
+    var text = bloq.foreignObject(100, 100).attr({
+        id: 'fobj',
+        color: '#FFCC33'
+    });
+    text.appendChild("input", {
+        id: id,
+        value: inputText,
+        color: '#FFCC33',
+    }).move(posx, posy);
+    bloq.UIElements.push({
+        element: text,
+        elementsToPush: undefined
+    });
+    document.getElementById(id).addEventListener("mousedown", function(e) {
+        e.stopPropagation();
+    }, false);
+    //Check that the input of the user is the one spected
+    document.getElementById(id).addEventListener("change", function() {
+        if (type === 'number') {
+            if (isNaN(parseFloat(document.getElementById(id).value))) {
+                //If type is number and input is not a number, remove user input. 
+                //ToDo : UX warning!
+                document.getElementById(id).value = '';
+            }
+        }
+    }, false);
+};
+utils.appendBloqInput = function(bloq, inputText, type, posx, posy) {
+    //draw white (ToDo: UX) rectangle
+    var bloqInput = bloq.rect(bloq.bloqInput.width, bloq.bloqInput.height).attr({
+        fill: '#fff'
+    }).move(posx, posy);
+    utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type); //bloq.x()+posx + width, bloq.x()+posy + i * connectionThreshold);
+    bloq.UIElements.push({
+        element: bloqInput,
+        elementsToPush: undefined,
+        id: bloq.connections.inputs.length - 1,
+        connector: bloq.connections.inputs[bloq.connections.inputs.length - 1]
+    });
+    console.log('appending bloq input ', bloq.connections.inputs[bloq.connections.inputs.length - 1]);
+};
+utils.createBloqUI = function(bloq, bloqData) {
     var margin = 10;
     var posx = margin;
     var width = 0;
@@ -319,10 +361,10 @@ utils.addBloqUI = function(bloq, bloqData) {
         for (var i in bloqData.text[j]) {
             if (typeof(bloqData.text[j][i]) === typeof({})) {
                 if (bloqData.text[j][i].input === 'userInput') {
-                    bloq.appendUserInput(bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, i);
+                    utils.appendUserInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, i);
                     posx += 110;
                 } else if (bloqData.text[j][i].input === 'bloqInput') {
-                    bloq.appendBloqInput(bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy);
+                    utils.appendBloqInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy);
                     posx += 110;
                 }
             } else {
@@ -408,48 +450,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     }
     //Create the connectors using the bloq information
     bloq.connections = utils.createConnectors(bloq, bloqData);
-    bloq.appendUserInput = function(inputText, type, posx, posy, id) {
-        var text = bloq.foreignObject(100, 100).attr({
-            id: 'fobj',
-            color: '#FFCC33'
-        });
-        text.appendChild("input", {
-            id: id,
-            value: inputText,
-            color: '#FFCC33',
-        }).move(posx, posy);
-        bloq.UIElements.push({
-            element: text,
-            elementsToPush: undefined
-        });
-        document.getElementById(id).addEventListener("mousedown", function(e) {
-            e.stopPropagation();
-        }, false);
-        //Check that the input of the user is the one spected
-        document.getElementById(id).addEventListener("change", function() {
-            if (type === 'number') {
-                if (isNaN(parseFloat(document.getElementById(id).value))) {
-                    //If type is number and input is not a number, remove user input. 
-                    //ToDo : UX warning!
-                    document.getElementById(id).value = '';
-                }
-            }
-        }, false);
-    };
-    bloq.appendBloqInput = function(inputText, type, posx, posy) {
-        //draw white (ToDo: UX) rectangle
-        var bloqInput = bloq.rect(bloq.bloqInput.width, bloq.bloqInput.height).attr({
-            fill: '#fff'
-        }).move(posx, posy);
-        utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type); //bloq.x()+posx + width, bloq.x()+posy + i * connectionThreshold);
-        bloq.UIElements.push({
-            element: bloqInput,
-            elementsToPush: undefined,
-            id: bloq.connections.inputs.length - 1,
-            connector: bloq.connections.inputs[bloq.connections.inputs.length - 1]
-        });
-        console.log('appending bloq input ', bloq.connections.inputs[bloq.connections.inputs.length - 1]);
-    };
+
     bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(10);
     bloq.border = bloq.rect(bloq.size.width, bloq.size.height).fill('none').stroke({
         width: 1
@@ -469,7 +470,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         bloq.label = '';
     }
     if (bloqData.hasOwnProperty('text')) {
-        utils.addBloqUI(bloq, bloqData);
+        utils.createBloqUI(bloq, bloqData);
     }
 
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
