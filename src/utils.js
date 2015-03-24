@@ -300,9 +300,9 @@ utils.pushElements = function(UIElement, delta) {
         elements[j].bloq.x(elements[j].bloq.x() + delta.x);
         elements[j].bloq.y(elements[j].bloq.y() + delta.y);
         var connector = elements[j].connector;
-        console.log(j,'UIElement', UIElement);
+        console.log('connector:', connector);
         if (connector !== undefined) {
-            utils.updateConnector(connector, delta);
+            utils.moveConnector(connector.bloq, connector, delta);
         }
     }
 };

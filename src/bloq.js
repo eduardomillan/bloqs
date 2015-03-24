@@ -171,7 +171,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
             console.log('--------------------------------------------------> MOVING DOWN');
             for (var k in bloq.connections[connectionType]) {
                 //If the input is inline and there is not a bloq connected still
-                if (bloq.connections[connectionType][k].inline === true && bloq.connections[connectionType][k].bloq === undefined && k === inputID) {
+                if (bloq.connections[connectionType][k].inline === true && k === inputID) {
                     utils.resizeBloq(bloq, {
                         x: bloqToConnect.size.width,
                         y: 0
