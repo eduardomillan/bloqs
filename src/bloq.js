@@ -179,7 +179,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                     for (var i in bloq.UIElements) {
                         if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
                             console.log('here pushing', bloq.UIElements[i].elementsToPush);
-                            utils.pushElements(bloq.UIElements[i], {
+                            utils.pushElements(bloq, bloq.UIElements[i], {
                                 x: bloqToConnect.size.width,
                                 y: 0
                             });
@@ -223,7 +223,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                         });
                         for (var i in parentBloq.UIElements) {
                             if (parentBloq.UIElements[i].id === parseInt(k, 10)) {
-                                utils.pushElements(parentBloq.UIElements[i], {
+                                utils.pushElements(parentBloq, parentBloq.UIElements[i], {
                                     x: -bloq.size.width,
                                     y: 0
                                 });

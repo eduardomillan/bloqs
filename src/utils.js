@@ -293,7 +293,7 @@ utils.bloqOnTop = function(bloq) {
         child.node.parentNode.appendChild(child.node);
     }
 };
-utils.pushElements = function(UIElement, delta) {
+utils.pushElements = function(bloq, UIElement, delta) {
     console.log('elements:', UIElement);
     var elements = UIElement.elementsToPush;
     for (var j in elements) {
@@ -302,7 +302,7 @@ utils.pushElements = function(UIElement, delta) {
         var connector = elements[j].connector;
         console.log('connector:', connector);
         if (connector !== undefined) {
-            utils.moveConnector(connector.bloq, connector, delta);
+            utils.moveConnector(bloq, connector, delta);
         }
     }
 };
