@@ -318,9 +318,14 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         var search = '';
         var replacement = '';
         for (var i in this.relations.inputChildren) {
-            search = '{[' + this.relations.inputChildren[i].id + ']}';
-            replacement = this.relations.inputChildren[i].bloq.getCode(_function);
-            code = code.replace(new RegExp(search, 'g'), replacement);
+            console.log('getcode:', this.relations.inputChildren[i]);
+                search = '{[' + this.relations.inputChildren[i].id + ']}';
+            if (this.relations.inputChildren[i].bloq === 'userInput') {
+                replacement = this.relations.inputChildren[i].code;
+            } else {
+                replacement = this.relations.inputChildren[i].bloq.getCode(_function);
+            }
+                code = code.replace(new RegExp(search, 'g'), replacement);
         }
         for (i = 0; i < this.inputsNumber; i++) {
             search = '{[' + i + ']}';

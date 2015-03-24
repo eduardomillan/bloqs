@@ -259,7 +259,6 @@ utils.moveChildren = function(bloq, delta) {
         }
     }
 };
-
 utils.resizeBloq = function(bloq, delta) {
     "use strict";
     bloq.size.width += delta.x;
@@ -324,18 +323,26 @@ utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
         element: text,
         elementsToPush: undefined
     });
+    bloq.relations.inputChildren[id] = {
+        id:id,
+        bloq: 'userInput',
+        code: document.getElementById(id).value
+    };
+    console.log('appendUserInput', bloq.relations.codeChildren);
     document.getElementById(id).addEventListener("mousedown", function(e) {
         e.stopPropagation();
     }, false);
     //Check that the input of the user is the one spected
     document.getElementById(id).addEventListener("change", function() {
-        if (type === 'number') {
-            if (isNaN(parseFloat(document.getElementById(id).value))) {
-                //If type is number and input is not a number, remove user input. 
-                //ToDo : UX warning!
-                document.getElementById(id).value = '';
-            }
-        }
+        bloq.relations.inputChildren[id].code = document.getElementById(id).value;
+        console.log('changing text:', bloq.relations.inputChildren[id].code);
+        // if (type === 'number') {
+        //     if (isNaN(parseFloat(document.getElementById(id).value))) {
+        //         //If type is number and input is not a number, remove user input. 
+        //         //ToDo : UX warning!
+        //         document.getElementById(id).value = '';
+        //     }
+        // }
     }, false);
 };
 utils.appendBloqInput = function(bloq, inputText, type, posx, posy) {
@@ -357,15 +364,18 @@ utils.createBloqUI = function(bloq, bloqData) {
     var posx = margin;
     var width = 0;
     var posy = margin;
+    var inputID = 0;
     bloq.UIElements = [{}];
     for (var j in bloqData.text) {
         for (var i in bloqData.text[j]) {
             if (typeof(bloqData.text[j][i]) === typeof({})) {
                 if (bloqData.text[j][i].input === 'userInput') {
-                    utils.appendUserInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, i);
+                    utils.appendUserInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, inputID);
+                    inputID+=1;
                     posx += 110;
                 } else if (bloqData.text[j][i].input === 'bloqInput') {
                     utils.appendBloqInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy);
+                    inputID+=1;
                     posx += 110;
                 }
             } else {
