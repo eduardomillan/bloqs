@@ -75,7 +75,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         bloq.UIElements.push({
             element: bloqInput,
             elementsToPush: undefined,
-            id: bloq.connections.inputs.length-1
+            id: bloq.connections.inputs.length - 1
         });
     };
     bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(10);
@@ -173,9 +173,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                         y: 0
                     });
                     for (var i in bloq.UIElements) {
-                    console.log('hereee', bloq.UIElements[i].id === parseInt(inputID,10));
-                    console.log('hereee', bloq.UIElements[i].id , parseInt(inputID,10));
-                        if (bloq.UIElements[i].id === parseInt(inputID,10)) {
+                        if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
                             console.log('here pushing');
                             utils.pushElements(bloq, bloq.UIElements[i].elementsToPush, {
                                 x: bloqToConnect.size.width,
@@ -219,6 +217,17 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
                             x: -bloq.size.width,
                             y: 0
                         });
+                        for (var i in parentBloq.UIElements) {
+                            console.log('aaaaaaaaa',parentBloq.UIElements[i].id , k);
+                            if (parentBloq.UIElements[i].id === parseInt(k,10)) {
+                                console.log('here pushing');
+                                utils.pushElements(parentBloq, parentBloq.UIElements[i].elementsToPush, {
+                                    x: -bloq.size.width,
+                                    y: 0
+                                });
+                                break;
+                            }
+                        }
                     }
                     if (k > parentBloq.relations.children[bloq.id()].inputID && parentBloq.connections.inputs[k].movedUp === false) {
                         utils.moveConnector(parentBloq, parentBloq.connections.inputs[k], {
