@@ -328,11 +328,13 @@ utils.moveChildren = function (bloq, delta) {
  */
 utils.resizeBloq = function (bloq, delta) {
     "use strict";
-    bloq.size.width += delta.x;
+    /*bloq.size.width += delta.x;
     bloq.size.height += delta.y;
-    bloq.body.size(bloq.size.width, bloq.size.height);
+    //bloq.body.size(bloq.size.width, bloq.size.height);
     bloq.border.size(bloq.size.width, bloq.size.height);
-    bloq.selection.size(bloq.size.width, bloq.size.height);
+    //bloq.selection.size(bloq.size.width, bloq.size.height);
+    console.log(bloq.bbox().width);
+    console.log(bloq.bbox().height);*/
     //update down connector:
     if (bloq.connections.down !== undefined) {
         utils.updateConnector(bloq.connections.down, {
@@ -574,6 +576,35 @@ utils.createBloqUI = function (bloq, bloqData) {
     });
 };
 
+utils.getBloqPath = function(bloq, bloqData){
+    var path = "m 0,8 A 8,8 0 0,1 8,0 H 15 l 6,4 3,0 6,-4 H 217.11582946777344 v 5 c 0,10 -8,-8 -8,7.5 s 8,-2.5 8,7.5 v 60 v 25 H 30 l -6,4 -3,0 -6,-4 H 8 a 8,8 0 0,1 -8,-8 z";
+    if(bloqData.down){
+        // if it has a down connection, it has to have an up one
+        // lets see if it has inputs
+        if(bloqData.hasOwnProperty('inputs') && bloqData.inputs.length > 0){
+            // deal with the inputs
+        } else {
+            // this bloq has no inputs, only top and down
+        }
+        // deal with inner bottoms
+        // deal with inner inputs
+    } else if ((!bloqData.hasOwnProperty('down') || bloqData.down == false) && (!bloqData.hasOwnProperty('up') || bloqData.up == false)){
+        // bloq without up or down connections
+        // this means that we have at least an output
+        if(bloqData.hasOwnProperty('inputs') && bloqData.inputs.length > 0){
+            // deal with the inputs
+            path = 'm 0,0 H 88.04196166992188 v 5 c 0,10 -8,-8 -8,7.5 s 8,-2.5 8,7.5 v 5 H 0 V 20 c 0,-10 -8,8 -8,-7.5 s 8,2.5 8,-7.5 z';
+        } else {
+            // this bloq has no inputs
+            // absolute coordinates for path
+            path = 'M256,50 C256,50 12,50 12,50 C9.791,50 8,48.209 8,46 C8,46 8,33 8,33 C3.582,33 0,29.418 0,25 C0,20.582 3.582,17 8,17 C8,17 8,4 8,4 C8,1.791 9.791,0 12,0 C12,0 256,0 256,0 C258.209,0 260,1.791 260,4 C260,4 260,46 260,46 C260,48.209 258.209,50 256,50 Z';
+        }
+    } else if (bloqData.up && !bloqData.hasOwnProperty('down')){
+        // bloq with only top
+    }
+    return path;
+};
+
 var bloqsNamespace = bloqsNamespace || {};
 
 /**
@@ -624,16 +655,24 @@ bloqsNamespace.newBloq = function (bloqData, canvas, position, data) {
     if (bloq.label !== 'setup' && bloq.label !== 'loop') {
         bloq.draggable();
     }
-    //Create the connectors using the bloq information
-    bloq.connections = utils.createConnectors(bloq, bloqData);
-    bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(10);
-    bloq.border = bloq.rect(bloq.size.width, bloq.size.height).fill('none').stroke({
-        width: 1
-    }).radius(10);
-    bloq.selection = bloq.rect(bloq.size.width, bloq.size.height).fill('none').stroke({
+
+    // basic path (shape) for bloq
+    var path = utils.getBloqPath(bloq, bloqData);
+    bloq.body = bloq.path(path).fill(bloqData.color);
+    bloq.border = bloq.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
+    bloq.border.stroke({ color: '#e5a33b', width: 3 });
+
+    bloq.size = {
+        width: bloq.bbox().width,
+        height: bloq.bbox().height
+    };
+    /*bloq.selection = bloq.rect(bloq.size.width, bloq.size.height).fill('none').stroke({
         width: 3,
         color: '#FFCC33'
-    }).radius(10).hide();
+    }).radius(10).hide();*/
+
+    //Create the connectors using the bloq information
+    bloq.connections = utils.createConnectors(bloq, bloqData);
     if (bloqData.hasOwnProperty('label') && bloqData.label !== '') {
         bloq.label = bloqData.label;
         bloq.text(bloqData.label.toUpperCase()).font({
@@ -924,10 +963,10 @@ bloqsNamespace.newBloq = function (bloqData, canvas, position, data) {
             $.each(canvasChilds, function (index) {
                 if (canvasChilds[index].hasOwnProperty('border')) {
                     // hide selection
-                    canvasChilds[index].selection.hide();
+                    //canvasChilds[index].selection.hide();
                 }
             });
-            this.selection.show();
+            //this.selection.show();
         }
     });
     return bloq;
