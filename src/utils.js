@@ -51,6 +51,7 @@ utils.addInput = function(bloq, posx, posy, type) {
 };
 utils.createConnectors = function(bloq, bloqData) {
     "use strict";
+    console.log('createConnectors');
     bloq.connections = {};
     if (bloqData.inputs) {
         bloq.connections.inputs = [{}];
@@ -284,6 +285,7 @@ utils.resizeBloq = function (bloq, delta) {
 };
 utils.moveConnector = function(bloq, connection, delta) {
     "use strict";
+    console.log('move connector');
     //Move connector 
     connection = utils.updateConnector(connection, delta);
     //If there is a bloq connected, move the bloq also
@@ -399,6 +401,7 @@ utils.appendBloqInput = function(bloq, inputText, type, posx, posy) {
     });
 };
 utils.createBloqUI = function(bloq, bloqData) {
+    console.log('createBloqUI');
     var margin = 10;
     var posx = margin;
     var width = 0;
@@ -438,7 +441,7 @@ utils.createBloqUI = function(bloq, bloqData) {
             width = posx;
         }
         posx = margin;
-        posy += 50;
+        posy += 40;
     }
     bloq.UIElements.shift();
     //Add the elements that must be pushed
@@ -454,10 +457,12 @@ utils.createBloqUI = function(bloq, bloqData) {
         }
         bloq.UIElements[i].elementsToPush.shift();
     }
+
+    console.log('size:',  bloq.size.width,width,bloq.size.height, posy, bloq.size.width - width, bloq.size.height - posy, bloq);
     //Update bloq's size
     utils.resizeBloq(bloq, {
-        x: Math.abs(bloq.size.width - width),
-        y: Math.abs(bloq.size.height - posy)
+        x: width - bloq.size.width ,
+        y: posy - bloq.size.height 
     });
 };
 
