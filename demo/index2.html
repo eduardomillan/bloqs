@@ -4,17 +4,18 @@
         <title>bloqs demo</title>
         <link rel="stylesheet" href="./assets/normalize.css" />
         <link rel="stylesheet" href="./assets/main.css" />
+        <link rel="stylesheet" href="./assets/trial.css" />
         <style>
-                            /* begin demo embedded styles */
-                            body,html{
-                                width: 100%;
-                                height: 100%;
-                            }
-                            #field1{
-                                width: 100%;
-                                height: 100%;
-                            }
-                            /* end demo embedded styles */
+                                    /* begin demo embedded styles */
+                                    body,html{
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                    #field1{
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                    /* end demo embedded styles */
         </style>
     </head>
     <body>
@@ -27,77 +28,89 @@
         <p>Copyright 2015 bq</p>
         <script src="./../bower_components/jquery/dist/jquery.min.js"></script>
         <script src="./../bower_components/svg.js/dist/svg.js"></script>
+        <script src="./../bower_components/svg.parser.js/svg.parser.js"></script>
+        <script src="./../bower_components/svg.import.js/svg.import.js"></script>
         <script src="./../../svg.foreignobject.js/svg.foreignobject.js"></script>
+
         <script src="./../bower_components/svg.draggable/svg.draggable.js"></script>
         <script src="./../bower_components/svg.foreignobject/svg.foreignobject.js"></script>
         <script src="./../dist/bloqs.js"></script>
         <div id="code" style="position: absolute; top: 30px; left: 710px; width: 700px; height: 700px; background-color: #E6E6FA;">    </div>
 <button  style="position: absolute; top: 10px; left: 710px; " onclick="document.getElementById('code').innerHTML ='<pre>'+bloqs.bloqsToCode()+'</pre>'">CODE</button>
 <script>
-    /* begin demo script */
-    var bloqs = bloqs();
-    var canvas = bloqs.createCanvas("field1");
-    var setup = {
-        label : 'setup',
-        down: true,
-        // size: [200, 50],
-        color: '#000',
-        code: {setup:"", loop:"void setup (){\n"}
-    };
-    var loop = {
-        label : 'loop',
-        down: true,
-        // size: [200, 50],
-        color: '#000',
-        code: {setup:"", loop:"void loop (){\n"}
-    };
-    var bloq2 = {
-        up: true,
-        down: true,
-        inputs: ['int','string'],
-        // size: [200,200],
-        color: '#045',
-        code: {setup:"blablabla({0});\n", loop:"aaa[{0}];\n   aaa2[{0}];\n"}
-    };
-    var bloq3 = {
-        up: true,
-        down: true,
-        // inputs: ['int', 'string'],
-        // size: [200, 100],
-        color: '#dd4b39',
-        // text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "string", {input : 'bloqInput',type:"string",label:"INPUT"}] ] ,
-        text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "number:", {input : 'bloqInput',type:"int",label:"INPUT"}, "userInput", {input:'userInput', type:"string",label:"userInput"}] ] ,
-        // text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
-        code: {setup:"trial({0},{1},{2});\n", loop:"trial({0},{1},{2});\n"}
-    };
-    var bloq4 = {
-        // up: true,
-        // down: true,
-        output: 'int',
-        // size: [200, 50],
-        color: '#dd4b39',
-        text:[[{input:'dropdown', type:"text",data:[{label:'ON',value:'HIGH'},{label:'OFF',value:'LOW'}]}]],
-        // text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
-        // text : [["trial2", {input : 'bloqInput',type:"int",label:"INPUT"}]],
-        code: {setup:"{0}", loop:"{0}"}
-    };
-        var bloq5 = {
-        up: true,
-        down: true,
-        output: 'int',
-        // size: [200, 50],
-        color: '#dd4b39',
-        text:[["number",{input:'userInput', type:"number",label:"number"}]],
-        // text : [["trial2", {input : 'bloqInput',type:"int",label:"INPUT"}]],
-        code: {setup:'{0}', loop:'{0}'}
-    };
-    var block0 = bloqs.createBloq(setup, canvas, [100,0]);
-    var block1 = bloqs.createBloq(loop, canvas, [100,300]);
-    // var block2 = bloqs.createBloq(bloq2, canvas, [300,400]);
-    var block3 = bloqs.createBloq(bloq3, canvas, [400,100]);
-    var block4 = bloqs.createBloq(bloq4, canvas, [400,200]);
-    var block5 = bloqs.createBloq(bloq5, canvas, [400,300]);
-    /* end demo script */
+// var read_sensor = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="260" height="50" viewBox="0 0 260 50">  <g id="pinanalogico">    <path d="M256.000,50.000 C256.000,50.000 12.000,50.000 12.000,50.000 C9.791,50.000 8.000,48.209 8.000,46.000 C8.000,46.000 8.000,33.000 8.000,33.000 C3.582,33.000 0.000,29.418 0.000,25.000 C0.000,20.582 3.582,17.000 8.000,17.000 C8.000,17.000 8.000,4.000 8.000,4.000 C8.000,1.791 9.791,0.000 12.000,0.000 C12.000,0.000 256.000,0.000 256.000,0.000 C258.209,0.000 260.000,1.791 260.000,4.000 C260.000,4.000 260.000,46.000 260.000,46.000 C260.000,48.209 258.209,50.000 256.000,50.000 Z" id="path-1" class="cls-3" fill-rule="evenodd"/>    <g id="listado">      <path d="M128.000,14.000 C128.000,14.000 236.000,14.000 236.000,14.000 C238.209,14.000 240.000,15.791 240.000,18.000 C240.000,18.000 240.000,35.000 240.000,35.000 C240.000,37.209 238.209,39.000 236.000,39.000 C236.000,39.000 128.000,39.000 128.000,39.000 C125.791,39.000 124.000,37.209 124.000,35.000 C124.000,35.000 124.000,18.000 124.000,18.000 C124.000,15.791 125.791,14.000 128.000,14.000 Z" id="path-2" class="cls-7" fill-rule="evenodd"/>      <path d="M220.000,25.000 C220.000,25.000 230.000,25.000 230.000,25.000 C230.000,25.000 225.000,31.000 225.000,31.000 C225.000,31.000 220.000,25.000 220.000,25.000 Z" id="path-3" class="cls-10" fill-rule="evenodd"/>    </g>  </g></svg>';
+
+// var draw = SVG('field1');
+
+// var a = draw.svg(read_sensor);
+
+
+
+
+/* begin demo script */
+var bloqs = bloqs();
+var canvas = bloqs.createCanvas("field1");
+var setup = {
+    label : 'setup',
+    down: true,
+    // size: [200, 50],
+    color: '#000',
+    code: {setup:"", loop:"void setup (){\n"}
+};
+var loop = {
+    label : 'loop',
+    down: true,
+    // size: [200, 50],
+    color: '#000',
+    code: {setup:"", loop:"void loop (){\n"}
+};
+var bloq2 = {
+    up: true,
+    down: true,
+    inputs: ['int','string'],
+    // size: [200,200],
+    color: '#045',
+    code: {setup:"blablabla({0});\n", loop:"aaa[{0}];\n   aaa2[{0}];\n"}
+};
+var bloq3 = {
+    up: true,
+    down: true,
+    // inputs: ['int', 'string'],
+    // size: [200, 100],
+    color: '#dd4b39',
+    // text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "string", {input : 'bloqInput',type:"string",label:"INPUT"}] ] ,
+    text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "number:", {input : 'bloqInput',type:"int",label:"INPUT"}, "userInput", {input:'userInput', type:"string",label:"userInput"}] ] ,
+    // text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
+    code: {setup:"trial({0},{1},{2});\n", loop:"trial({0},{1},{2});\n"}
+};
+var bloq4 = {
+    // up: true,
+    // down: true,
+    output: 'int',
+    // size: [200, 50],
+    color: '#dd4b39',
+    text:[[{input:'dropdown', type:"text",data:[{label:'ON',value:'HIGH'},{label:'OFF',value:'LOW'}]}]],
+    // text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
+    // text : [["trial2", {input : 'bloqInput',type:"int",label:"INPUT"}]],
+    code: {setup:"{0}", loop:"{0}"}
+};
+    var bloq5 = {
+    up: true,
+    down: true,
+    output: 'int',
+    // size: [200, 50],
+    color: '#dd4b39',
+    text:[["number",{input:'userInput', type:"number",label:"number"}]],
+    // text : [["trial2", {input : 'bloqInput',type:"int",label:"INPUT"}]],
+    code: {setup:'{0}', loop:'{0}'}
+};
+var block0 = bloqs.createBloq(setup, canvas, [100,0]);
+var block1 = bloqs.createBloq(loop, canvas, [100,300]);
+// var block2 = bloqs.createBloq(bloq2, canvas, [300,400]);
+var block3 = bloqs.createBloq(bloq3, canvas, [400,100]);
+var block4 = bloqs.createBloq(bloq4, canvas, [400,200]);
+var block5 = bloqs.createBloq(bloq5, canvas, [400,300]);
+/* end demo script */
 </script>
 </svg>
     </body>

@@ -14,6 +14,7 @@
         if ($.isEmptyObject(canvas)) {
             field = SVG(element).size('100%', '100%');
             canvas = field.group().attr('class', 'bloqs-canvas');
+
         }
         return canvas;
     };

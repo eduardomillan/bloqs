@@ -42,14 +42,18 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     }
     //Create the connectors using the bloq information
     bloq.connections = utils.createConnectors(bloq, bloqData);
-    bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(10);
-    bloq.border = bloq.rect(bloq.size.width, bloq.size.height).fill('none').stroke({
-        width: 1
-    }).radius(10);
-    bloq.selection = bloq.rect(bloq.size.width, bloq.size.height).fill('none').stroke({
-        width: 3,
-        color: '#FFCC33'
-    }).radius(10).hide();
+    // basic path (shape) for bloq
+    var path = utils.getBloqPath(bloq, bloqData);
+    bloq.body = bloq.path(path).fill(bloqData.color);
+    bloq.border = bloq.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
+    bloq.border.stroke({
+        color: '#e5a33b',
+        width: 3
+    });
+    bloq.size = {
+        width: bloq.bbox().width,
+        height: bloq.bbox().height
+    };
     if (bloqData.hasOwnProperty('label') && bloqData.label !== '') {
         bloq.label = bloqData.label;
         bloq.text(bloqData.label.toUpperCase()).font({
@@ -319,13 +323,13 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         var replacement = '';
         for (var i in this.relations.inputChildren) {
             console.log('getcode:', this.relations.inputChildren[i]);
-                search = '{[' + this.relations.inputChildren[i].id + ']}';
+            search = '{[' + this.relations.inputChildren[i].id + ']}';
             if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
                 replacement = this.relations.inputChildren[i].code;
             } else {
                 replacement = this.relations.inputChildren[i].bloq.getCode(_function);
             }
-                code = code.replace(new RegExp(search, 'g'), replacement);
+            code = code.replace(new RegExp(search, 'g'), replacement);
         }
         for (i = 0; i < this.inputsNumber; i++) {
             search = '{[' + i + ']}';
@@ -334,17 +338,17 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         return code;
     };
     bloq.on('click', function() {
-        if (this.label.toLowerCase() != 'loop' && this.label.toLowerCase() != 'setup') {
-            // remove other borders
-            var canvasChilds = canvas.children();
-            $.each(canvasChilds, function(index) {
-                if (canvasChilds[index].hasOwnProperty('border')) {
-                    // hide selection
-                    canvasChilds[index].selection.hide();
-                }
-            });
-            this.selection.show();
-        }
+        // if (this.label.toLowerCase() != 'loop' && this.label.toLowerCase() != 'setup') {
+        //     // remove other borders
+        //     var canvasChilds = canvas.children();
+        //     $.each(canvasChilds, function(index) {
+        //         if (canvasChilds[index].hasOwnProperty('border')) {
+        //             // hide selection
+        //             canvasChilds[index].selection.hide();
+        //         }
+        //     });
+        //     this.selection.show();
+        // }
     });
     return bloq;
 };
