@@ -16,7 +16,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     };
     bloq.bloqInput = {
         width: 70,
-        height: 30
+        height: 50
     };
     bloq.code = bloqData.code;
     if (bloqData.hasOwnProperty('factoryCode')) {
@@ -321,9 +321,13 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         var code = this.code[_function];
         var search = '';
         var replacement = '';
+        var id;
         for (var i in this.relations.inputChildren) {
             console.log('getcode:', this.relations.inputChildren[i]);
-            search = '{[' + this.relations.inputChildren[i].id + ']}';
+            id = this.relations.inputChildren[i].id;
+            console.log('aaaaaaaaaaaaa',id.substr(id.indexOf('_')+1, id.length));
+            id = id.substr(id.indexOf('_')+1, id.length);
+            search = '{[' + id + ']}';
             if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
                 replacement = this.relations.inputChildren[i].code;
             } else {

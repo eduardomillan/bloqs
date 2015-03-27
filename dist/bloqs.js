@@ -228,8 +228,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 bloq1.delta.lastx = 0;
                 bloq1.delta.lasty = 0;
             }
-        } else {
-        }
+        } else {}
     }
     return false;
 };
@@ -259,22 +258,17 @@ utils.moveChildren = function(bloq, delta) {
  * @param bloq
  * @param delta
  */
-utils.resizeBloq = function (bloq, delta) {
+utils.resizeBloq = function(bloq, delta) {
     "use strict";
     // bloq.transform('matrix', '1.5,0,0,1,0,0');
     // bloq.transform('matrix', '1.5,0,0,1,0,0');
-
-
     console.log('bloq.size before', bloq.size);
     bloq.size.width += delta.x;
     bloq.size.height += delta.y;
-
     console.log('bloq.size after', bloq.size);
-
     bloq.body.size(bloq.size.width, bloq.size.height);
     // bloq.border.size(bloq.size.width, bloq.size.height);
     // //bloq.selection.size(bloq.size.width, bloq.size.height);
-
     //update down connector:
     if (bloq.connections.down !== undefined) {
         utils.updateConnector(bloq.connections.down, {
@@ -343,10 +337,14 @@ utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
         code: code
     };
     document.getElementById(id).addEventListener("mousedown", function(e) {
+        console.log('aaaaaaaaaaaaaaaa', id);
+
         e.stopPropagation();
     }, false);
+
     //Check that the input of the user is the one spected
     document.getElementById(id).addEventListener("change", function() {
+        console.log('aaaaaaaaaaaaaaaa', id);
         if (type === 'number') {
             if (isNaN(parseFloat(document.getElementById(id).value))) {
                 //If type is number and input is not a number, remove user input. 
@@ -361,6 +359,7 @@ utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
     }, false);
 };
 utils.appendDropdownInput = function(bloq, dropdown_text, type, posx, posy, id) {
+    // console.log('alñsjkdfñalskjdfñlkajsdf', bloq.node.id+'_'+id);
     var dropdown = bloq.foreignObject(100, 100).attr({
         id: id,
         color: '#FFCC33'
@@ -377,21 +376,32 @@ utils.appendDropdownInput = function(bloq, dropdown_text, type, posx, posy, id) 
         element: dropdown,
         elementsToPush: undefined
     });
-
     bloq.relations.inputChildren[id] = {
         id: id,
         bloq: 'userInput',
         code: newList.value
     };
-    newList.onchange = function(){
+
+    console.log('aaaaaaaaaaaaaaaa', id);
+
+    newList.onchange = function() {
         bloq.relations.inputChildren[id].code = newList.value;
     }
+        document.getElementById(id).addEventListener("mousedown", function(e) {
+        console.log('aaaaaaaaaaaaaaaa', id);
+
+        e.stopPropagation();
+    }, false);
+};
+utils.paths = {
+    output: 'M256,50 C256,50 12,50 12,50 C9.791,50 8,48.209 8,46 C8,46 8,33 8,33 C3.582,33 0,29.418 0,25 C0,20.582 3.582,17 8,17 C8,17 8,4 8,4 C8,1.791 9.791,0 12,0 C12,0 256,0 256,0 C258.209,0 260,1.791 260,4 C260,4 260,46 260,46 C260,48.209 258.209,50 256,50 Z'
 };
 utils.appendBloqInput = function(bloq, inputText, type, posx, posy) {
     //draw white (ToDo: UX) rectangle
-    var bloqInput = bloq.rect(bloq.bloqInput.width, bloq.bloqInput.height).attr({
-        fill: '#fff'
-    }).move(posx, posy);
+    var bloqInput = bloq.path(utils.paths.output).fill('#cccccc').move(posx, posy).size(bloq.bloqInput.width, bloq.bloqInput.height);
+    // var bloqInput = bloq.rect(bloq.bloqInput.width, bloq.bloqInput.height).attr({
+    //     fill: '#fff'
+    // }).move(posx, posy);
     utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type); //bloq.x()+posx + width, bloq.x()+posy + i * connectionThreshold);
     bloq.UIElements.push({
         element: bloqInput,
@@ -412,22 +422,22 @@ utils.createBloqUI = function(bloq, bloqData) {
         for (var i in bloqData.text[j]) {
             if (typeof(bloqData.text[j][i]) === typeof({})) {
                 if (bloqData.text[j][i].input === 'userInput') {
-                    utils.appendUserInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, inputID);
+                    utils.appendUserInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, bloq.node.id+'_'+inputID);
                     inputID += 1;
                     posx += 110;
                 } else if (bloqData.text[j][i].input === 'bloqInput') {
-                    utils.appendBloqInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy);
+                    utils.appendBloqInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy - margin);
                     inputID += 1;
                     posx += 110;
                 } else if (bloqData.text[j][i].input === 'dropdown') {
-                    utils.appendDropdownInput(bloq, bloqData.text[j][i].data, bloqData.text[j][i].type, posx, posy, inputID)
+                    utils.appendDropdownInput(bloq, bloqData.text[j][i].data, bloqData.text[j][i].type, posx, posy, bloq.node.id+'_'+inputID)
                     inputID += 1;
                     posx += 110;
                 }
             } else {
                 var text = bloq.text(bloqData.text[j][i]).font({
                     family: 'Helvetica',
-                    fill: '#fff',
+                    fill: '#000',
                     size: 14
                 }).move(posx, posy);
                 posx += bloqData.text[j][i].length * 5 + 30;
@@ -457,24 +467,20 @@ utils.createBloqUI = function(bloq, bloqData) {
         }
         bloq.UIElements[i].elementsToPush.shift();
     }
-
-    console.log('size:',  bloq.size.width,width,bloq.size.height, posy, bloq.size.width - width, bloq.size.height - posy, bloq);
+    console.log('size:', bloq.size.width, width, bloq.size.height, posy, bloq.size.width - width, bloq.size.height - posy, bloq);
     //Update bloq's size
     utils.resizeBloq(bloq, {
-        x: width - bloq.size.width ,
-        y: posy - bloq.size.height 
+        x: width - bloq.size.width,
+        y: posy - bloq.size.height
     });
 };
-
-
-utils.getBloqPath = function(bloq, bloqData){
+utils.getBloqPath = function(bloq, bloqData) {
     var path = "m 0,8 A 8,8 0 0,1 8,0 H 15 l 6,4 3,0 6,-4 H 217.11582946777344 v 5 c 0,10 -8,-8 -8,7.5 s 8,-2.5 8,7.5 v 60 v 25 H 30 l -6,4 -3,0 -6,-4 H 8 a 8,8 0 0,1 -8,-8 z";
     // console.log('path.length()',path.length=300);
-
-    if(bloqData.down){
+    if (bloqData.down) {
         // if it has a down connection, it has to have an up one
         // lets see if it has inputs
-        if(bloqData.hasOwnProperty('inputs') && bloqData.inputs.length > 0){
+        if (bloqData.hasOwnProperty('inputs') && bloqData.inputs.length > 0) {
             // deal with the inputs
         } else {
             // this bloq has no inputs, only top and down
@@ -482,10 +488,10 @@ utils.getBloqPath = function(bloq, bloqData){
         }
         // deal with inner bottoms
         // deal with inner inputs
-    } else if ((!bloqData.hasOwnProperty('down') || bloqData.down == false) && (!bloqData.hasOwnProperty('up') || bloqData.up == false)){
+    } else if ((!bloqData.hasOwnProperty('down') || bloqData.down == false) && (!bloqData.hasOwnProperty('up') || bloqData.up == false)) {
         // bloq without up or down connections
         // this means that we have at least an output
-        if(bloqData.hasOwnProperty('inputs') && bloqData.inputs.length > 0){
+        if (bloqData.hasOwnProperty('inputs') && bloqData.inputs.length > 0) {
             // deal with the inputs
             path = 'm 0,0 H 88.04196166992188 v 5 c 0,10 -8,-8 -8,7.5 s 8,-2.5 8,7.5 v 5 H 0 V 20 c 0,-10 -8,8 -8,-7.5 s 8,2.5 8,-7.5 z';
         } else {
@@ -493,12 +499,11 @@ utils.getBloqPath = function(bloq, bloqData){
             // absolute coordinates for path
             path = 'M256,50 C256,50 12,50 12,50 C9.791,50 8,48.209 8,46 C8,46 8,33 8,33 C3.582,33 0,29.418 0,25 C0,20.582 3.582,17 8,17 C8,17 8,4 8,4 C8,1.791 9.791,0 12,0 C12,0 256,0 256,0 C258.209,0 260,1.791 260,4 C260,4 260,46 260,46 C260,48.209 258.209,50 256,50 Z';
         }
-    } else if (bloqData.up && !bloqData.hasOwnProperty('down')){
+    } else if (bloqData.up && !bloqData.hasOwnProperty('down')) {
         // bloq with only top
     }
     return path;
 };
-
 var bloqsNamespace = bloqsNamespace || {};
 bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     "use strict";
@@ -516,7 +521,7 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     };
     bloq.bloqInput = {
         width: 70,
-        height: 30
+        height: 50
     };
     bloq.code = bloqData.code;
     if (bloqData.hasOwnProperty('factoryCode')) {
@@ -821,9 +826,13 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         var code = this.code[_function];
         var search = '';
         var replacement = '';
+        var id;
         for (var i in this.relations.inputChildren) {
             console.log('getcode:', this.relations.inputChildren[i]);
-            search = '{[' + this.relations.inputChildren[i].id + ']}';
+            id = this.relations.inputChildren[i].id;
+            console.log('aaaaaaaaaaaaa',id.substr(id.indexOf('_')+1, id.length));
+            id = id.substr(id.indexOf('_')+1, id.length);
+            search = '{[' + id + ']}';
             if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
                 replacement = this.relations.inputChildren[i].code;
             } else {
