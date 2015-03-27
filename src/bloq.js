@@ -1,4 +1,5 @@
 // @include utils.js
+// @include connector.js
 var bloqsNamespace = bloqsNamespace || {};
 bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     "use strict";
@@ -43,13 +44,16 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     //Create the connectors using the bloq information
     bloq.connections = utils.createConnectors(bloq, bloqData);
     // basic path (shape) for bloq
-    var path = utils.getBloqPath(bloq, bloqData);
-    bloq.body = bloq.path(path).fill(bloqData.color);
-    bloq.border = bloq.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
-    bloq.border.stroke({
-        color: '#e5a33b',
-        width: 3
-    });
+    if (bloqData.output) {
+        bloq.body = utils.getOutputBloq(bloq, 0, bloq.size.width, bloq.size.height);
+    } else {
+        bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(4);
+    }
+    // bloq.border = bloq.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
+    // bloq.border.stroke({
+    //     color: '#e5a33b',
+    //     width: 3
+    // });
     bloq.size = {
         width: bloq.bbox().width,
         height: bloq.bbox().height
@@ -323,10 +327,8 @@ bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
         var replacement = '';
         var id;
         for (var i in this.relations.inputChildren) {
-            console.log('getcode:', this.relations.inputChildren[i]);
             id = this.relations.inputChildren[i].id;
-            console.log('aaaaaaaaaaaaa',id.substr(id.indexOf('_')+1, id.length));
-            id = id.substr(id.indexOf('_')+1, id.length);
+            id = id.substr(id.indexOf('_') + 1, id.length);
             search = '{[' + id + ']}';
             if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
                 replacement = this.relations.inputChildren[i].code;
