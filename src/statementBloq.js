@@ -4,7 +4,6 @@
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-
 var newStatementBloq = function(bloqData, canvas, position, data) {
     "use strict";
     var connectionThreshold = 20; // px
@@ -17,7 +16,6 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
             };
         }
         if (connectionType === 'inputs') {
-            console.log('--------------------------------------------------> MOVING DOWN');
             for (var k in bloq.connections[connectionType]) {
                 //If the input is inline and there is not a bloq connected still
                 if (bloq.connections[connectionType][k].inline === true && k === inputID && bloq.connections[connectionType][k].bloq === undefined) {
@@ -36,17 +34,6 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
                             utils.pushElements(bloq, bloq.UIElements[i], delta);
                             break;
                         }
-                    }
-                }
-                if (k > inputID) {
-                    if (bloq.connections[connectionType][k].inline === false && bloq.connections[connectionType][k].movedDown === false) {
-                        utils.moveConnector(bloq, bloq.connections[connectionType][k], {
-                            x: 0,
-                            y: bloqToConnect.size.height - k * connectionThreshold
-                        });
-                        //The connector has already been moved down once
-                        bloq.connections[connectionType][k].movedDown = true;
-                        bloq.connections[connectionType][k].movedUp = false;
                     }
                 }
             }

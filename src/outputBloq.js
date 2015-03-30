@@ -13,8 +13,7 @@ var newOutputBloq = function(bloqData, canvas, position, data) {
     bloq.body.connector.x(-8);
     bloq.add(bloq.body.connector);
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-        // if (connectionType === 'inputs') {
-        console.log('--------------------------------------------------> MOVING DOWN');
+        // connectionType === 'inputs's
         for (var k in bloq.connections[connectionType]) {
             //If the input is inline and there is not a bloq connected still
             if (bloq.connections[connectionType][k].inline === true && k === inputID && bloq.connections[connectionType][k].bloq === undefined) {
@@ -29,7 +28,6 @@ var newOutputBloq = function(bloqData, canvas, position, data) {
                 };
                 for (var i in bloq.UIElements) {
                     if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
-                        console.log('here pushing', bloq.UIElements[i].elementsToPush);
                         utils.pushElements(bloq, bloq.UIElements[i], delta);
                         break;
                     }

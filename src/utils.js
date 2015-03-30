@@ -208,6 +208,8 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     bloq1Connection.bloq = bloq2;
                     //move bloq's children
                     utils.moveChildren(bloq2, deltaParent);
+                    //put child bloq on top if it is not already: 
+                    utils.bloqOnTop(bloq2);
                 } else { //parent is bloq2
                     //move bloq
                     utils.moveBloq(bloq1, bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
@@ -216,6 +218,8 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     bloq2Connection.bloq = bloq1;
                     //move bloq's children
                     utils.moveChildren(bloq1, deltaChild);
+                    //put child bloq on top if it is not already: 
+                    utils.bloqOnTop(bloq1);
                 }
                 bloq1.delta.lastx = 0;
                 bloq1.delta.lasty = 0;
@@ -293,7 +297,7 @@ utils.bloqOnTop = function(bloq) {
     var child = {};
     for (var i in bloq.relations.children) {
         child = bloq.relations.children[i].bloq;
-        child.node.parentNode.appendChild(child.node);
+        utils.bloqOnTop(child);//.node.parentNode.appendChild(child.node);
     }
 };
 utils.pushElements = function(bloq, UIElement, delta) {

@@ -215,6 +215,8 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     bloq1Connection.bloq = bloq2;
                     //move bloq's children
                     utils.moveChildren(bloq2, deltaParent);
+                    //put child bloq on top if it is not already: 
+                    utils.bloqOnTop(bloq2);
                 } else { //parent is bloq2
                     //move bloq
                     utils.moveBloq(bloq1, bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
@@ -223,6 +225,8 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     bloq2Connection.bloq = bloq1;
                     //move bloq's children
                     utils.moveChildren(bloq1, deltaChild);
+                    //put child bloq on top if it is not already: 
+                    utils.bloqOnTop(bloq1);
                 }
                 bloq1.delta.lastx = 0;
                 bloq1.delta.lasty = 0;
@@ -300,7 +304,7 @@ utils.bloqOnTop = function(bloq) {
     var child = {};
     for (var i in bloq.relations.children) {
         child = bloq.relations.children[i].bloq;
-        child.node.parentNode.appendChild(child.node);
+        utils.bloqOnTop(child);//.node.parentNode.appendChild(child.node);
     }
 };
 utils.pushElements = function(bloq, UIElement, delta) {
@@ -521,8 +525,6 @@ utils.createBloqUI = function(bloq, bloqData) {
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-
-
 var newBloq = function(bloqData, canvas, position, data) {
     "use strict";
     var connectionThreshold = 20; // px
@@ -589,57 +591,6 @@ var newBloq = function(bloqData, canvas, position, data) {
     if (bloq.label !== 'setup' && bloq.label !== 'loop') {
         bloq.draggable();
     }
-    // bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-    //     if (connectionType === 'up') {
-    //         return {
-    //             x: bloq.connections[connectionType].connectionPosition.x,
-    //             y: bloq.connections[connectionType].connectionPosition.y - bloqToConnect.size.height
-    //         };
-    //     }
-    //     if (connectionType === 'output') {
-    //         return {
-    //             x: bloq.connections[connectionType].connectionPosition.x - bloqToConnect.size.width,
-    //             y: bloq.connections[connectionType].connectionPosition.y - inputID * connectionThreshold
-    //         };
-    //     }
-    //     if (connectionType === 'inputs') {
-    //         console.log('--------------------------------------------------> MOVING DOWN');
-    //         for (var k in bloq.connections[connectionType]) {
-    //             //If the input is inline and there is not a bloq connected still
-    //             if (bloq.connections[connectionType][k].inline === true && k === inputID && bloq.connections[connectionType][k].bloq === undefined) {
-    //                 var delta = {
-    //                     x: bloqToConnect.size.width - bloq.bloqInput.width,
-    //                     y: bloqToConnect.size.height - bloq.bloqInput.height
-    //                 };
-    //                 utils.resizeBloq(bloq, delta);
-    //                 delta = {
-    //                     x: bloqToConnect.size.width - bloq.bloqInput.width,
-    //                     y: 0
-    //                 };
-    //                 for (var i in bloq.UIElements) {
-    //                     if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
-    //                         console.log('here pushing', bloq.UIElements[i].elementsToPush);
-    //                         utils.pushElements(bloq, bloq.UIElements[i], delta);
-    //                         break;
-    //                     }
-    //                 }
-    //             }
-    //             if (k > inputID) {
-    //                 if (bloq.connections[connectionType][k].inline === false && bloq.connections[connectionType][k].movedDown === false) {
-    //                     utils.moveConnector(bloq, bloq.connections[connectionType][k], {
-    //                         x: 0,
-    //                         y: bloqToConnect.size.height - k * connectionThreshold
-    //                     });
-    //                     //The connector has already been moved down once
-    //                     bloq.connections[connectionType][k].movedDown = true;
-    //                     bloq.connections[connectionType][k].movedUp = false;
-    //                 }
-    //             }
-    //         }
-    //         return bloq.connections[connectionType][inputID].connectionPosition;
-    //     }
-    //     return bloq.connections[connectionType].connectionPosition;
-    // };
     /**
      * We start dragging
      */
@@ -651,17 +602,12 @@ var newBloq = function(bloqData, canvas, position, data) {
             utils.bloqOnTop(bloq);
             var parentBloq = bloq.getBloqById(bloq.relations.parent);
             if (parentBloq.relations.children[bloq.id()].connection === 'output') {
-                console.log('--------------------------------------------------> MOVING UP');
                 for (var k in parentBloq.connections.inputs) {
                     if (parentBloq.connections.inputs[k].inline === true && k === parentBloq.relations.children[bloq.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                         var delta = {
                             x: -bloq.size.width + parentBloq.bloqInput.width,
                             y: -bloq.size.height + parentBloq.bloqInput.height
                         };
-                        // var delta = {
-                        //     x: -bloq.size.width + bloq.bloqInput.width,
-                        //     y: -parentBloq.size.height + bloq.bloqInput.height
-                        // };
                         utils.resizeBloq(parentBloq, delta);
                         delta = {
                             x: -bloq.size.width + parentBloq.bloqInput.width,
@@ -673,15 +619,6 @@ var newBloq = function(bloqData, canvas, position, data) {
                                 break;
                             }
                         }
-                    }
-                    if (k > parentBloq.relations.children[bloq.id()].inputID && parentBloq.connections.inputs[k].movedUp === false) {
-                        utils.moveConnector(parentBloq, parentBloq.connections.inputs[k], {
-                            x: 0,
-                            y: -bloq.size.height + k * connectionThreshold
-                        });
-                        //The connector has already been moved up once
-                        parentBloq.connections.inputs[k].movedUp = true;
-                        parentBloq.connections.inputs[k].movedDown = false;
                     }
                 }
             }
@@ -720,26 +657,14 @@ var newBloq = function(bloqData, canvas, position, data) {
                         if (j === 'inputs') {
                             for (var k in bloq.connections[j]) {
                                 a = utils.manageConnections(j, bloq.connections[j][k], data.bloqs[i].connections[utils.oppositeConnection[j]], bloq, data.bloqs[i], k);
-                                // if (a === true) {
-                                //     flag = true;
-                                //     break;
-                                // }
                             }
                         } else if (j === 'output') {
                             for (var h in data.bloqs[i].connections[utils.oppositeConnection[j]]) {
                                 a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]][h], bloq, data.bloqs[i], h);
-                                // if (a === true) {
-                                //     flag = true;
-                                //     break;
-                                // }
                             }
                         } else {
                             a = utils.manageConnections(j, bloq.connections[j], data.bloqs[i].connections[utils.oppositeConnection[j]], bloq, data.bloqs[i]);
                         }
-                        // if (a === true) {
-                        //     flag = true;
-                        //     break;
-                        // }
                     }
                 }
             }
@@ -788,12 +713,6 @@ var newBloq = function(bloqData, canvas, position, data) {
             }
         }
         delete this.relations.inputChildren[child.node.id];
-        // for (i in this.relations.inputChildren) {
-        //     if (this.relations.inputChildren[i] === child.node.id) {
-        //         this.relations.inputChildren.splice(i, 1);
-        //         break;
-        //     }
-        // }
     };
     bloq.setChildren = function(childrenId, location, inputID) {
         for (var bloqIndex in bloq.relations.children) {
@@ -845,12 +764,11 @@ var newBloq = function(bloqData, canvas, position, data) {
         var replacement = '';
         var id;
         for (var i in this.relations.inputChildren) {
-
-            console.log('this.relations.inputChildren',this.relations.inputChildren);
+            console.log('this.relations.inputChildren', this.relations.inputChildren);
             id = this.relations.inputChildren[i].id;
             id = id.substr(id.indexOf('_') + 1, id.length);
             search = '{[' + id + ']}';
-            console.log('search:',search);
+            console.log('search:', search);
             if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
                 replacement = this.relations.inputChildren[i].code;
             } else {
@@ -879,6 +797,7 @@ var newBloq = function(bloqData, canvas, position, data) {
     });
     return bloq;
 };
+
 //----------------------------------------------------------------//
 // This file is part of the bloqs Project                         //
 //                                                                //
@@ -894,8 +813,7 @@ var newOutputBloq = function(bloqData, canvas, position, data) {
     bloq.body.connector.x(-8);
     bloq.add(bloq.body.connector);
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-        // if (connectionType === 'inputs') {
-        console.log('--------------------------------------------------> MOVING DOWN');
+        // connectionType === 'inputs's
         for (var k in bloq.connections[connectionType]) {
             //If the input is inline and there is not a bloq connected still
             if (bloq.connections[connectionType][k].inline === true && k === inputID && bloq.connections[connectionType][k].bloq === undefined) {
@@ -910,7 +828,6 @@ var newOutputBloq = function(bloqData, canvas, position, data) {
                 };
                 for (var i in bloq.UIElements) {
                     if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
-                        console.log('here pushing', bloq.UIElements[i].elementsToPush);
                         utils.pushElements(bloq, bloq.UIElements[i], delta);
                         break;
                     }
@@ -927,7 +844,6 @@ var newOutputBloq = function(bloqData, canvas, position, data) {
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-
 var newStatementBloq = function(bloqData, canvas, position, data) {
     "use strict";
     var connectionThreshold = 20; // px
@@ -940,7 +856,6 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
             };
         }
         if (connectionType === 'inputs') {
-            console.log('--------------------------------------------------> MOVING DOWN');
             for (var k in bloq.connections[connectionType]) {
                 //If the input is inline and there is not a bloq connected still
                 if (bloq.connections[connectionType][k].inline === true && k === inputID && bloq.connections[connectionType][k].bloq === undefined) {
@@ -959,17 +874,6 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
                             utils.pushElements(bloq, bloq.UIElements[i], delta);
                             break;
                         }
-                    }
-                }
-                if (k > inputID) {
-                    if (bloq.connections[connectionType][k].inline === false && bloq.connections[connectionType][k].movedDown === false) {
-                        utils.moveConnector(bloq, bloq.connections[connectionType][k], {
-                            x: 0,
-                            y: bloqToConnect.size.height - k * connectionThreshold
-                        });
-                        //The connector has already been moved down once
-                        bloq.connections[connectionType][k].movedDown = true;
-                        bloq.connections[connectionType][k].movedUp = false;
                     }
                 }
             }
