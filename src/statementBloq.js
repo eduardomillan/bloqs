@@ -52,10 +52,12 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
             utils.bloqOnTop(bloq);
             var parentBloq = bloq.getBloqById(bloq.relations.parent);
             if (parentBloq.relations.children[bloq.id()].connection === 'up') {
-                parentBloq.getChildrenHeight();
+                bloq.getChildrenHeight(true);
+                bloq.childrenHeight += bloq.size.height;
+                console.log('going up by : ', bloq.childrenHeight);
                 parentBloq.resizeStatementsInput({
                     x: 0,
-                    y: -parentBloq.childrenHeight
+                    y: -bloq.childrenHeight
                 });
             } else if (parentBloq.relations.children[bloq.id()].connection === 'output') {
                 for (var k in parentBloq.connections.inputs) {

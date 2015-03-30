@@ -203,9 +203,9 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 };
                 if (type === 'inputs' || type === 'down') { // parent is bloq1
                     //move bloq
+                    bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID);
                     utils.moveBloq(bloq2, bloq1.getConnectionPosition(type, bloq2, inputID));
                     bloq2.connections = utils.updateConnectors(bloq2, deltaParent);
-                    bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID);
                     bloq1Connection.bloq = bloq2;
                     //move bloq's children
                     utils.moveChildren(bloq2, deltaParent);
@@ -213,9 +213,9 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     utils.bloqOnTop(bloq2);
                 } else { //parent is bloq2
                     //move bloq
+                    bloq1.updateBloqs(bloq2, bloq1, type, inputID);
                     utils.moveBloq(bloq1, bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
                     bloq1.connections = utils.updateConnectors(bloq1, deltaChild);
-                    bloq1.updateBloqs(bloq2, bloq1, type, inputID);
                     bloq2Connection.bloq = bloq1;
                     //move bloq's children
                     utils.moveChildren(bloq1, deltaChild);

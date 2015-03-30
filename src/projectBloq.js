@@ -39,9 +39,13 @@ var newProjectBloq = function(bloqData, canvas, position, data) {
         bloq.body.downPart.move(0, bloq.body.downPart.y() + delta.y);
     };
     bloq.resize = bloq.resizeStatementsInput;
-
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-        //connectionType === 'down'
+        bloqToConnect.getChildrenHeight(true);
+        bloqToConnect.childrenHeight+=bloqToConnect.size.height;
+        console.log('bloqToConnect', bloqToConnect.childrenHeight);
+        bloq.resizeStatementsInput({x:0,y:bloqToConnect.childrenHeight});
+        bloqToConnect.childrenHeight=0;
+
         return {
             x: bloq.connections[connectionType].connectionPosition.x,
             y: bloq.connections[connectionType].connectionPosition.y
