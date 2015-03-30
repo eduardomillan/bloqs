@@ -1,3 +1,11 @@
+//----------------------------------------------------------------//
+// This file is part of the bloqs Project                         //
+//                                                                //
+// Date: March 2015                                               //
+// Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
+//----------------------------------------------------------------//
+
+
 var newBloq = function(bloqData, canvas, position, data) {
     "use strict";
     var connectionThreshold = 20; // px
@@ -32,20 +40,10 @@ var newBloq = function(bloqData, canvas, position, data) {
         codeChildren: [],
         inputChildren: []
     };
-    /**
-     * Set this bloq as draggable
-     */
-    if (bloq.label !== 'setup' && bloq.label !== 'loop') {
-        bloq.draggable();
-    }
     //Create the connectors using the bloq information
     bloq.connections = utils.createConnectors(bloq, bloqData);
-    // basic path (shape) for bloq
-    if (bloqData.output) {
-        bloq.body = utils.getOutputBloq(bloq, 0, bloq.size.width, bloq.size.height);
-    } else {
-        bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(4);
-    }
+    // basic shape of the bloq
+    bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(4);
     // bloq.border = bloq.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
     // bloq.border.stroke({
     //     color: '#e5a33b',
@@ -67,6 +65,12 @@ var newBloq = function(bloqData, canvas, position, data) {
     }
     if (bloqData.hasOwnProperty('text')) {
         utils.createBloqUI(bloq, bloqData);
+    }
+    /**
+     * Set this bloq as draggable
+     */
+    if (bloq.label !== 'setup' && bloq.label !== 'loop') {
+        bloq.draggable();
     }
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
         if (connectionType === 'up') {

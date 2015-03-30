@@ -1,3 +1,10 @@
+//----------------------------------------------------------------//
+// This file is part of the bloqs Project                         //
+//                                                                //
+// Date: March 2015                                               //
+// Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
+//----------------------------------------------------------------//
+
 // @include ../utils.js
 // @include ../bloq.js
 // @include ../outputBloq.js

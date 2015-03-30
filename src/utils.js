@@ -1,3 +1,10 @@
+//----------------------------------------------------------------//
+// This file is part of the bloqs Project                         //
+//                                                                //
+// Date: March 2015                                               //
+// Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
+//----------------------------------------------------------------//
+
 var utils = utils || {};
 var connectionThreshold = 20; // px
 utils.moveBloq = function(bloq, location) {
@@ -468,7 +475,6 @@ utils.createBloqUI = function(bloq, bloqData) {
         }
         bloq.UIElements[i].elementsToPush.shift();
     }
-    console.log('resizing : ', width - bloq.size.width, width, bloq.size.width);
     //Update bloq's size
     utils.resizeBloq(bloq, {
         x: width - bloq.size.width,

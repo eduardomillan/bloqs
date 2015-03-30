@@ -1,124 +1,19 @@
+//----------------------------------------------------------------//
+// This file is part of the bloqs Project                         //
+//                                                                //
+// Date: March 2015                                               //
+// Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
+//----------------------------------------------------------------//
+
 var newOutputBloq = function(bloqData, canvas, position, data) {
     "use strict";
     var connectionThreshold = 20; // px
     var bloq = newBloq(bloqData, canvas, position, data);  //canvas.group().move(position[0], position[1]);
-    // bloq.size = {
-    //     width: 100,
-    //     height: 50
-    // };
-    // bloq.delta = {
-    //     x: 0,
-    //     y: 0,
-    //     lastx: 0,
-    //     lasty: 0
-    // };
-    // bloq.bloqInput = {
-    //     width: 70,
-    //     height: 50
-    // };
-    // bloq.code = bloqData.code;
-    // if (bloqData.hasOwnProperty('factoryCode')) {
-    //     bloq.factoryCode = bloqData.factoryCode;
-    // } else {
-    //     bloq.factoryCode = '';
-    // }
-    /**
-     * We store relations here, using nodes
-     * @type {{parent: undefined, children: Array}}
-     */
-    // bloq.relations = {
-    //     parent: undefined,
-    //     children: [],
-    //     codeChildren: [],
-    //     inputChildren: []
-    // };
-    /**
-     * Set this bloq as draggable
-     */
-    // if (bloq.label !== 'setup' && bloq.label !== 'loop') {
-    //     bloq.draggable();
-    // }
-    //Create the connectors using the bloq information
-    // bloq.connections = utils.createConnectors(bloq, bloqData);
-    // basic path (shape) for bloq
-    // if (bloqData.output) {
-    //     bloq.body = utils.getOutputBloq(bloq, 0, bloq.size.width, bloq.size.height);
-    // } else {
-    //     bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(4);
-    // }
-    // bloq.border = bloq.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
-    // bloq.border.stroke({
-    //     color: '#e5a33b',
-    //     width: 3
-    // });
-    // bloq.size = {
-    //     width: bloq.bbox().width,
-    //     height: bloq.bbox().height
-    // };
-    // if (bloqData.hasOwnProperty('label') && bloqData.label !== '') {
-    //     bloq.label = bloqData.label;
-    //     bloq.text(bloqData.label.toUpperCase()).font({
-    //         family: 'Helvetica',
-    //         fill: '#fff',
-    //         size: 14
-    //     }).move(10, 5);
-    // } else {
-    //     bloq.label = '';
-    // }
-    // if (bloqData.hasOwnProperty('text')) {
-    //     utils.createBloqUI(bloq, bloqData);
-    // }
-    bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-        if (connectionType === 'up') {
-            return {
-                x: bloq.connections[connectionType].connectionPosition.x,
-                y: bloq.connections[connectionType].connectionPosition.y - bloqToConnect.size.height
-            };
-        }
-        if (connectionType === 'output') {
-            return {
-                x: bloq.connections[connectionType].connectionPosition.x - bloqToConnect.size.width,
-                y: bloq.connections[connectionType].connectionPosition.y - inputID * connectionThreshold
-            };
-        }
-        if (connectionType === 'inputs') {
-            console.log('--------------------------------------------------> MOVING DOWN');
-            for (var k in bloq.connections[connectionType]) {
-                //If the input is inline and there is not a bloq connected still
-                if (bloq.connections[connectionType][k].inline === true && k === inputID && bloq.connections[connectionType][k].bloq === undefined) {
-                    var delta = {
-                        x: bloqToConnect.size.width - bloq.bloqInput.width,
-                        y: bloqToConnect.size.height - bloq.bloqInput.height
-                    };
-                    utils.resizeBloq(bloq, delta);
-                    delta = {
-                        x: bloqToConnect.size.width - bloq.bloqInput.width,
-                        y: 0
-                    };
-                    for (var i in bloq.UIElements) {
-                        if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
-                            console.log('here pushing', bloq.UIElements[i].elementsToPush);
-                            utils.pushElements(bloq, bloq.UIElements[i], delta);
-                            break;
-                        }
-                    }
-                }
-                if (k > inputID) {
-                    if (bloq.connections[connectionType][k].inline === false && bloq.connections[connectionType][k].movedDown === false) {
-                        utils.moveConnector(bloq, bloq.connections[connectionType][k], {
-                            x: 0,
-                            y: bloqToConnect.size.height - k * connectionThreshold
-                        });
-                        //The connector has already been moved down once
-                        bloq.connections[connectionType][k].movedDown = true;
-                        bloq.connections[connectionType][k].movedUp = false;
-                    }
-                }
-            }
-            return bloq.connections[connectionType][inputID].connectionPosition;
-        }
-        return bloq.connections[connectionType].connectionPosition;
-    };
+
+    //Add the connector to the bloq's UI:
+    bloq.body.connector = bloq.path(utils.paths.leftConnector).fill('#cccccc'); //.move(posx, posy);
+    bloq.body.connector.x(-8);
+    bloq.add(bloq.body.connector);
     /**
      * We start dragging
      */
