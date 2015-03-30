@@ -4,7 +4,6 @@
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-
 var utils = utils || {};
 var connectionThreshold = 20; // px
 utils.moveBloq = function(bloq, location) {
@@ -49,11 +48,13 @@ utils.addInput = function(bloq, posx, posy, type) {
         },
         type: type,
         inline: true,
-        movedDown: false,
-        UI: canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
-            fill: getRandomColor()
-        }).move(posx - connectionThreshold, posy)
+        movedDown: false
     };
+    if (posx !== undefined && posy !== undefined) {
+        bloq.connections.inputs[index].UI = canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
+            fill: getRandomColor()
+        }).move(posx - connectionThreshold, posy);
+    }
     bloq.inputsNumber = bloq.connections.inputs.length;
 };
 utils.createConnectors = function(bloq, bloqData) {
@@ -159,22 +160,10 @@ utils.updateConnectors = function(bloq, delta) {
     for (var type in bloq.connections) {
         if (bloq.connections[type] && type === 'inputs') {
             for (var i in bloq.connections[type]) {
-                bloq.connections[type][i].connectionPosition.x += delta.x;
-                bloq.connections[type][i].connectionPosition.y += delta.y;
-                bloq.connections[type][i].connectorArea.x1 += delta.x;
-                bloq.connections[type][i].connectorArea.x2 += delta.x;
-                bloq.connections[type][i].connectorArea.y1 += delta.y;
-                bloq.connections[type][i].connectorArea.y2 += delta.y;
-                bloq.connections[type][i].UI.move(bloq.connections[type][i].UI.x() + delta.x, bloq.connections[type][i].UI.y() + delta.y);
+                utils.updateConnector(bloq.connections[type][i], delta);
             }
         } else if (bloq.connections[type]) {
-            bloq.connections[type].connectionPosition.x += delta.x;
-            bloq.connections[type].connectionPosition.y += delta.y;
-            bloq.connections[type].connectorArea.x1 += delta.x;
-            bloq.connections[type].connectorArea.x2 += delta.x;
-            bloq.connections[type].connectorArea.y1 += delta.y;
-            bloq.connections[type].connectorArea.y2 += delta.y;
-            bloq.connections[type].UI.move(bloq.connections[type].UI.x() + delta.x, bloq.connections[type].UI.y() + delta.y);
+            utils.updateConnector(bloq.connections[type], delta);
         }
     }
     return bloq.connections;
@@ -187,7 +176,9 @@ utils.updateConnector = function(connector, delta) {
     connector.connectorArea.x2 += delta.x;
     connector.connectorArea.y1 += delta.y;
     connector.connectorArea.y2 += delta.y;
-    connector.UI.move(connector.UI.x() + delta.x, connector.UI.y() + delta.y);
+    if (connector.UI !== undefined) {
+        connector.UI.move(connector.UI.x() + delta.x, connector.UI.y() + delta.y);
+    }
     return connector;
 };
 utils.oppositeConnection = {
@@ -343,8 +334,7 @@ utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
         bloq: 'userInput',
         code: code
     };
-    utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type);
-
+    utils.addInput(bloq, undefined, undefined, type);
     document.getElementById(id).addEventListener("mousedown", function(e) {
         e.stopPropagation();
     }, false);
@@ -375,9 +365,7 @@ utils.appendDropdownInput = function(bloq, dropdownText, type, posx, posy, id) {
         //Here we append that text node to our drop down list.
         newList.appendChild(newListData);
     }
-
-    utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type);
-
+    utils.addInput(bloq, undefined, undefined, type);
     //Append the list to dropdown foreignobject:
     dropdown.appendChild(newList).move(posx, posy);
     bloq.UIElements.push({
@@ -441,13 +429,11 @@ utils.createBloqUI = function(bloq, bloqData) {
                     posx += 110;
                 } else if (bloqData.text[j][i].input === 'bloqInput') {
                     console.log('bloqinput, id:', inputID);
-
                     utils.appendBloqInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy - margin, inputID);
                     inputID += 1;
                     posx += 110;
                 } else if (bloqData.text[j][i].input === 'dropdown') {
                     console.log('dropdown, id:', inputID);
-
                     utils.appendDropdownInput(bloq, bloqData.text[j][i].data, bloqData.text[j][i].type, posx, posy, bloq.node.id + '_' + inputID);
                     inputID += 1;
                     posx += 110;
