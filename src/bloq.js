@@ -1,5 +1,4 @@
 // @include utils.js
-// @include connector.js
 var bloqsNamespace = bloqsNamespace || {};
 bloqsNamespace.newBloq = function(bloqData, canvas, position, data) {
     "use strict";
