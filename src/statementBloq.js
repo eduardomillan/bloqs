@@ -23,7 +23,7 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
                         x: bloqToConnect.size.width - bloq.bloqInput.width,
                         y: bloqToConnect.size.height - bloq.bloqInput.height
                     };
-                    utils.resizeBloq(bloq, delta);
+                    bloq.resize(delta);
                     delta = {
                         x: bloqToConnect.size.width - bloq.bloqInput.width,
                         y: 0
@@ -40,6 +40,57 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
             return bloq.connections[connectionType][inputID].connectionPosition;
         }
         return bloq.connections[connectionType].connectionPosition;
+    };
+    /**
+     * We start dragging
+     */
+    bloq.dragmove = function(a) {
+        bloq.dragmoveFlag = true;
+        // remove parent of this and child in parent:
+        if (bloq.relations.parent !== undefined) {
+            //move dragged bloq on top
+            utils.bloqOnTop(bloq);
+            var parentBloq = bloq.getBloqById(bloq.relations.parent);
+            if (parentBloq.relations.children[bloq.id()].connection === 'up') {
+                parentBloq.getChildrenHeight();
+                parentBloq.resizeStatementsInput({
+                    x: 0,
+                    y: -parentBloq.childrenHeight
+                });
+            } else if (parentBloq.relations.children[bloq.id()].connection === 'output') {
+                for (var k in parentBloq.connections.inputs) {
+                    if (parentBloq.connections.inputs[k].inline === true && k === parentBloq.relations.children[bloq.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
+                        var delta = {
+                            x: -bloq.size.width + parentBloq.bloqInput.width,
+                            y: -bloq.size.height + parentBloq.bloqInput.height
+                        };
+                        parentBloq.resize(delta);
+                        delta = {
+                            x: -bloq.size.width + parentBloq.bloqInput.width,
+                            y: 0
+                        };
+                        for (var i in parentBloq.UIElements) {
+                            if (parentBloq.UIElements[i].id === parseInt(k, 10)) {
+                                utils.pushElements(parentBloq, parentBloq.UIElements[i], delta);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            parentBloq.deleteChild(bloq);
+            bloq.deleteParent(false);
+        }
+        //Update the deltaX and deltaY movements
+        bloq.delta.x = a.x - bloq.delta.lastx;
+        bloq.delta.y = a.y - bloq.delta.lasty;
+        //Update the lastx and lasty variables
+        bloq.delta.lastx = a.x;
+        bloq.delta.lasty = a.y;
+        //Update the bloq's connectors using the new deltas
+        bloq.connections = utils.updateConnectors(bloq, bloq.delta);
+        // move child bloqs along with this one
+        utils.moveChildren(bloq, bloq.delta);
     };
     return bloq;
 };

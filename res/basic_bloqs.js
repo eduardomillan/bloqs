@@ -10,13 +10,13 @@ var getBasicBloqs = function(){
             down: true,
             color: '#000',
             code: {setup: "", loop: "void setup (){\n"}
-        },
-        loop: {
-            label: 'loop',
-            down: true,
-            color: '#000',
-            code: {setup: "", loop: "void loop (){\n"}
         }//,
+        // loop: {
+        //     label: 'loop',
+        //     down: true,
+        //     color: '#000',
+        //     code: {setup: "", loop: "void loop (){\n"}
+        // },
         // horizontal3Inputs: {
         //     up: true,
         //     down: true,

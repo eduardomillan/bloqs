@@ -21,7 +21,7 @@ var newOutputBloq = function(bloqData, canvas, position, data) {
                     x: bloqToConnect.size.width - bloq.bloqInput.width,
                     y: bloqToConnect.size.height - bloq.bloqInput.height
                 };
-                utils.resizeBloq(bloq, delta);
+                bloq.resize(delta);
                 delta = {
                     x: bloqToConnect.size.width - bloq.bloqInput.width,
                     y: 0

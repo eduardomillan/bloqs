@@ -8,6 +8,7 @@
 // @include ../bloq.js
 // @include ../outputBloq.js
 // @include ../statementBloq.js
+// @include ../projectBloq.js
 // @include ../../res/basic_bloqs.js
 (function(root, undefined) {
     "use strict";
@@ -79,7 +80,7 @@
         var bloqTypes = getBasicBloqs();
         var counter = 100;
         for (var i in bloqTypes) {
-            data.bloqs[i] = data.createBloq(bloqTypes[i], canvas, [100, counter]);
+            data.bloqs[i] = newProjectBloq(bloqTypes[i], canvas, [100, counter], data);
             counter += 100;
         }
     };

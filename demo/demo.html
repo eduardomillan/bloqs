@@ -5,16 +5,16 @@
         <link rel="stylesheet" href="./assets/normalize.css" />
         <link rel="stylesheet" href="./assets/main.css" />
         <style>
-                            /* begin demo embedded styles */
-                            body,html{
-                                width: 100%;
-                                height: 100%;
-                            }
-                            #field1{
-                                width: 100%;
-                                height: 100%;
-                            }
-                            /* end demo embedded styles */
+                                    /* begin demo embedded styles */
+                                    body,html{
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                    #field1{
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                    /* end demo embedded styles */
         </style>
     </head>
     <body>
@@ -36,7 +36,16 @@
     /* begin demo script */
     var bloqs = bloqs();
     var canvas = bloqs.createCanvas("field1");
-    bloqs.createProyectStructure();
+    bloqs.createProjectStructure();
+    var bloq5 = {
+    up: true,
+    down: true,
+    color: '#e2e2e2',
+    text:[["number",{input:'userInput', type:"number",label:"number"}]],
+    code: {setup:'{0}', loop:'{0}'}
+    };
+    var block5 = bloqs.createBloq(bloq5, canvas, [400,300]);
+    var block6 = bloqs.createBloq(bloq5, canvas, [400,300]);
     /* end demo script */
 </script>
 </svg>

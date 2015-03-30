@@ -82,7 +82,7 @@ utils.createConnectors = function(bloq, bloqData) {
             bloq.connections.inputs[i].type = bloqData.inputs[i];
             bloq.connections.inputs[i].movedDown = false;
             //Update bloq's size
-            utils.resizeBloq(bloq, {
+            bloq.resize({
                 x: 0,
                 y: connectionThreshold
             });
@@ -127,7 +127,7 @@ utils.createConnectors = function(bloq, bloqData) {
             y2: bloq.y() + connectionThreshold
         };
         bloq.connections.up.UI = canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
-            fill: '#000'
+            fill: '#FF0000'
         }).move(bloq.x(), bloq.y() - connectionThreshold);
     }
     if (bloqData.down) {
@@ -146,7 +146,7 @@ utils.createConnectors = function(bloq, bloqData) {
             y2: bloq.y() + bloq.size.height + connectionThreshold
         };
         bloq.connections.down.UI = canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
-            fill: '#000'
+            fill: '#FF0000'
         }).move(bloq.x(), bloq.y() + bloq.size.height - connectionThreshold);
     }
     return bloq.connections;
@@ -192,6 +192,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
     if (bloq2Connection !== undefined && bloq1Connection !== undefined) {
         if (bloq1.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
             if (bloq1Connection.type === bloq2Connection.type) { // if the type is the same --> connect
+                console.log('here');
                 var deltaParent = {
                     x: bloq1Connection.connectorArea.x1 - bloq2Connection.connectorArea.x1,
                     y: bloq1Connection.connectorArea.y1 - bloq2Connection.connectorArea.y1
@@ -254,31 +255,6 @@ utils.moveChildren = function(bloq, delta) {
         }
     }
 };
-/**
- * Resize a bloq and update its down connector, if any
- * @param bloq
- * @param delta
- */
-utils.resizeBloq = function(bloq, delta) {
-    "use strict";
-    console.log('resizing:', delta);
-    bloq.size.width += delta.x;
-    bloq.size.height += delta.y;
-    if (bloq.body.children !== undefined) {
-        bloq.body.children()[1].size(bloq.size.width, bloq.size.height);
-    } else {
-        bloq.body.size(bloq.size.width, bloq.size.height);
-    }
-    // bloq.border.size(bloq.size.width, bloq.size.height);
-    // //bloq.selection.size(bloq.size.width, bloq.size.height);
-    //update down connector:
-    if (bloq.connections.down !== undefined) {
-        utils.updateConnector(bloq.connections.down, {
-            x: 0,
-            y: delta.y
-        });
-    }
-};
 utils.moveConnector = function(bloq, connection, delta) {
     "use strict";
     //Move connector 
@@ -289,7 +265,7 @@ utils.moveConnector = function(bloq, connection, delta) {
         utils.moveBloq2(bloqConnected, delta);
     }
     //Update bloq's size
-    utils.resizeBloq(bloq, delta);
+    bloq.resize(delta);
 };
 utils.bloqOnTop = function(bloq) {
     "use strict";
@@ -476,7 +452,7 @@ utils.createBloqUI = function(bloq, bloqData) {
         bloq.UIElements[i].elementsToPush.shift();
     }
     //Update bloq's size
-    utils.resizeBloq(bloq, {
+    bloq.resize({
         x: width - bloq.size.width,
         y: posy - bloq.size.height
     });

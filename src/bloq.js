@@ -41,9 +41,7 @@ var newBloq = function(bloqData, canvas, position, data) {
     //Create the connectors using the bloq information
     bloq.connections = utils.createConnectors(bloq, bloqData);
     // basic shape of the bloq
-    bloq.body = bloq.rect(bloq.size.width, bloq.size.height);
-    // bloq.body.fill(bloqData.color);
-    // bloq.body.radius(4);
+    bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(4);
     // bloq.border = bloq.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
     // bloq.border.stroke({
     //     color: '#e5a33b',
@@ -53,16 +51,31 @@ var newBloq = function(bloqData, canvas, position, data) {
         width: bloq.bbox().width,
         height: bloq.bbox().height
     };
-    if (bloqData.hasOwnProperty('label') && bloqData.label !== '') {
-        bloq.label = bloqData.label;
-        bloq.text(bloqData.label.toUpperCase()).font({
-            family: 'Helvetica',
-            fill: '#fff',
-            size: 14
-        }).move(10, 5);
-    } else {
-        bloq.label = '';
-    }
+    bloq.childrenHeight = 0;
+    /**
+     * Resize a bloq and update its down connector, if any
+     * @param bloq
+     * @param delta
+     */
+    bloq.resize = function(delta) {
+        "use strict";
+        bloq.size.width += delta.x;
+        bloq.size.height += delta.y;
+        if (bloq.body.children !== undefined) {
+            bloq.body.children()[1].size(bloq.size.width, bloq.size.height);
+        } else {
+            bloq.body.size(bloq.size.width, bloq.size.height);
+        }
+        // bloq.border.size(bloq.size.width, bloq.size.height);
+        // //bloq.selection.size(bloq.size.width, bloq.size.height);
+        //update down connector:
+        if (bloq.connections.down !== undefined) {
+            utils.updateConnector(bloq.connections.down, {
+                x: 0,
+                y: delta.y
+            });
+        }
+    };
     if (bloqData.hasOwnProperty('text')) {
         utils.createBloqUI(bloq, bloqData);
     }
@@ -89,7 +102,7 @@ var newBloq = function(bloqData, canvas, position, data) {
                             x: -bloq.size.width + parentBloq.bloqInput.width,
                             y: -bloq.size.height + parentBloq.bloqInput.height
                         };
-                        utils.resizeBloq(parentBloq, delta);
+                        parentBloq.resize(delta);
                         delta = {
                             x: -bloq.size.width + parentBloq.bloqInput.width,
                             y: 0
@@ -202,6 +215,7 @@ var newBloq = function(bloqData, canvas, position, data) {
                 return false;
             }
         }
+        console.log('childrenId', childrenId, data);
         // if we made it so far, add a new child
         bloq.relations.children[childrenId] = {
             bloq: bloq.getBloqById(childrenId),
@@ -217,13 +231,11 @@ var newBloq = function(bloqData, canvas, position, data) {
         if (location === 'up') {
             bloq.relations.codeChildren.push(childrenId);
         } else {
-            console.log('bloq.relations.inputChildren', bloq.relations.inputChildren, childrenId);
             bloq.relations.inputChildren[childrenId] = {
                 bloq: bloq.getBloqById(childrenId),
                 id: inputID
             };
         }
-        console.log('setChildren', bloq.relations.codeChildren);
         return true;
     };
     bloq.setParent = function(parentId) {
@@ -263,6 +275,18 @@ var newBloq = function(bloqData, canvas, position, data) {
         }
         return code;
     };
+    bloq.getChildrenHeight = function() {
+        var children;
+        console.log('bloq.relations.inputChildren', bloq.relations.inputChildren);
+        for (var i in bloq.relations.inputChildren) {
+            children = bloq.relations.inputChildren;
+            console.log('children:', children);
+            bloq.childrenHeight += bloq.getBloqById(children).size.height();
+            if (children.relations.inputChildren !== undefined) {
+                children.getChildrenHeight();
+            }
+        }
+    }
     bloq.on('click', function() {
         // if (this.label.toLowerCase() != 'loop' && this.label.toLowerCase() != 'setup') {
         //     // remove other borders
@@ -276,5 +300,6 @@ var newBloq = function(bloqData, canvas, position, data) {
         //     this.selection.show();
         // }
     });
+    bloq.resizeStatementsInput = function() {};
     return bloq;
 };
