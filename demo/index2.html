@@ -79,9 +79,9 @@ var bloq3 = {
     // size: [200, 100],
     color: '#e2e2e2',
     // text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "string", {input : 'bloqInput',type:"string",label:"INPUT"}] ] ,
-    text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "number:", {input : 'bloqInput',type:"int",label:"INPUT"}, "userInput", {input:'userInput', type:"string",label:"userInput"}] ] ,
+    text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}]],//, "number:", {input : 'bloqInput',type:"int",label:"INPUT"}, "userInput", {input:'userInput', type:"string",label:"userInput"}] ] ,
     // text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
-    code: {setup:"trial({0},{1},{2});\n", loop:"trial({0},{1},{2});\n"}
+    code: {setup:"trial({0});\n", loop:"trial({0});\n"}
 };
 var bloq4 = {
     // up: true,
@@ -89,10 +89,10 @@ var bloq4 = {
     output: 'int',
     // size: [200, 50],
     color: '#e2e2e2',
-    text:[[{input:'dropdown', type:"text",data:[{label:'ON',value:'HIGH'},{label:'OFF',value:'LOW'}]}]],
+    text:[[{input:'dropdown', type:"text",data:[{label:'ON',value:'HIGH'},{label:'OFF',value:'LOW'}]}, , {input : 'bloqInput',type:"int",label:"INPUT"}]],
     // text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
     // text : [["trial2", {input : 'bloqInput',type:"int",label:"INPUT"}]],
-    code: {setup:"{0}", loop:"{0}"}
+    code: {setup:"[{0},{1}]", loop:"[{0},{1}]"}
 };
     var bloq5 = {
     // up: true,

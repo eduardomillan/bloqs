@@ -328,9 +328,12 @@ var newBloq = function(bloqData, canvas, position, data) {
         var replacement = '';
         var id;
         for (var i in this.relations.inputChildren) {
+
+            console.log('this.relations.inputChildren',this.relations.inputChildren);
             id = this.relations.inputChildren[i].id;
             id = id.substr(id.indexOf('_') + 1, id.length);
             search = '{[' + id + ']}';
+            console.log('search:',search);
             if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
                 replacement = this.relations.inputChildren[i].code;
             } else {

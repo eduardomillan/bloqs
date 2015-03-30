@@ -343,6 +343,8 @@ utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
         bloq: 'userInput',
         code: code
     };
+    utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type);
+
     document.getElementById(id).addEventListener("mousedown", function(e) {
         e.stopPropagation();
     }, false);
@@ -373,6 +375,9 @@ utils.appendDropdownInput = function(bloq, dropdownText, type, posx, posy, id) {
         //Here we append that text node to our drop down list.
         newList.appendChild(newListData);
     }
+
+    utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type);
+
     //Append the list to dropdown foreignobject:
     dropdown.appendChild(newList).move(posx, posy);
     bloq.UIElements.push({
@@ -406,7 +411,7 @@ utils.getOutputBloq = function(bloq, posx, width, height) {
     group.add(outputBloq);
     return group;
 };
-utils.appendBloqInput = function(bloq, inputText, type, posx, posy) {
+utils.appendBloqInput = function(bloq, inputText, type, posx, posy, inputID) {
     "use strict";
     //draw white (ToDo: UX) rectangle
     var bloqInput = utils.getOutputBloq(bloq, posx, bloq.bloqInput.width, bloq.bloqInput.height);
@@ -414,7 +419,7 @@ utils.appendBloqInput = function(bloq, inputText, type, posx, posy) {
     bloq.UIElements.push({
         element: bloqInput,
         elementsToPush: undefined,
-        id: bloq.connections.inputs.length - 1,
+        id: inputID,
         connector: bloq.connections.inputs[bloq.connections.inputs.length - 1]
     });
 };
@@ -430,14 +435,19 @@ utils.createBloqUI = function(bloq, bloqData) {
         for (var i in bloqData.text[j]) {
             if (typeof(bloqData.text[j][i]) === typeof({})) {
                 if (bloqData.text[j][i].input === 'userInput') {
+                    console.log('userinput, id:', inputID);
                     utils.appendUserInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, bloq.node.id + '_' + inputID);
                     inputID += 1;
                     posx += 110;
                 } else if (bloqData.text[j][i].input === 'bloqInput') {
-                    utils.appendBloqInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy - margin);
+                    console.log('bloqinput, id:', inputID);
+
+                    utils.appendBloqInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy - margin, inputID);
                     inputID += 1;
                     posx += 110;
                 } else if (bloqData.text[j][i].input === 'dropdown') {
+                    console.log('dropdown, id:', inputID);
+
                     utils.appendDropdownInput(bloq, bloqData.text[j][i].data, bloqData.text[j][i].type, posx, posy, bloq.node.id + '_' + inputID);
                     inputID += 1;
                     posx += 110;
