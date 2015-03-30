@@ -1,4 +1,7 @@
+// @include ../utils.js
 // @include ../bloq.js
+// @include ../outputBloq.js
+// @include ../statementBloq.js
 (function(root, undefined) {
     "use strict";
     var data = {
@@ -45,7 +48,15 @@
      * @returns Object bloq
      */
     data.createBloq = function(bloqData, canvas, position) {
-        var bloq = bloqsNamespace.newBloq(bloqData, canvas, position, data);
+        var bloq; 
+        if (bloqData.hasOwnProperty('output')){
+         bloq = newOutputBloq(bloqData, canvas, position, data);
+
+        }
+        else{
+            
+         bloq = newStatementBloq(bloqData, canvas, position, data);
+        }
         data.bloqs.push(bloq);
         if (bloq.label === 'loop') {
             data.bloqs.loop = bloq;

@@ -1,73 +1,73 @@
-var newBloq = function(bloqData, canvas, position, data) {
+var newStatementBloq = function(bloqData, canvas, position, data) {
     "use strict";
     var connectionThreshold = 20; // px
-    var bloq = canvas.group().move(position[0], position[1]);
-    bloq.size = {
-        width: 100,
-        height: 50
-    };
-    bloq.delta = {
-        x: 0,
-        y: 0,
-        lastx: 0,
-        lasty: 0
-    };
-    bloq.bloqInput = {
-        width: 70,
-        height: 50
-    };
-    bloq.code = bloqData.code;
-    if (bloqData.hasOwnProperty('factoryCode')) {
-        bloq.factoryCode = bloqData.factoryCode;
-    } else {
-        bloq.factoryCode = '';
-    }
-    /**
-     * We store relations here, using nodes
-     * @type {{parent: undefined, children: Array}}
-     */
-    bloq.relations = {
-        parent: undefined,
-        children: [],
-        codeChildren: [],
-        inputChildren: []
-    };
-    /**
-     * Set this bloq as draggable
-     */
-    if (bloq.label !== 'setup' && bloq.label !== 'loop') {
-        bloq.draggable();
-    }
-    //Create the connectors using the bloq information
-    bloq.connections = utils.createConnectors(bloq, bloqData);
-    // basic path (shape) for bloq
-    if (bloqData.output) {
-        bloq.body = utils.getOutputBloq(bloq, 0, bloq.size.width, bloq.size.height);
-    } else {
-        bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(4);
-    }
-    // bloq.border = bloq.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
-    // bloq.border.stroke({
-    //     color: '#e5a33b',
-    //     width: 3
-    // });
-    bloq.size = {
-        width: bloq.bbox().width,
-        height: bloq.bbox().height
-    };
-    if (bloqData.hasOwnProperty('label') && bloqData.label !== '') {
-        bloq.label = bloqData.label;
-        bloq.text(bloqData.label.toUpperCase()).font({
-            family: 'Helvetica',
-            fill: '#fff',
-            size: 14
-        }).move(10, 5);
-    } else {
-        bloq.label = '';
-    }
-    if (bloqData.hasOwnProperty('text')) {
-        utils.createBloqUI(bloq, bloqData);
-    }
+    var bloq = newBloq(bloqData, canvas, position, data);  //canvas.group().move(position[0], position[1]);
+    // bloq.size = {
+    //     width: 100,
+    //     height: 50
+    // };
+    // bloq.delta = {
+    //     x: 0,
+    //     y: 0,
+    //     lastx: 0,
+    //     lasty: 0
+    // };
+    // bloq.bloqInput = {
+    //     width: 70,
+    //     height: 50
+    // };
+    // bloq.code = bloqData.code;
+    // if (bloqData.hasOwnProperty('factoryCode')) {
+    //     bloq.factoryCode = bloqData.factoryCode;
+    // } else {
+    //     bloq.factoryCode = '';
+    // }
+    // /**
+    //  * We store relations here, using nodes
+    //  * @type {{parent: undefined, children: Array}}
+    //  */
+    // bloq.relations = {
+    //     parent: undefined,
+    //     children: [],
+    //     codeChildren: [],
+    //     inputChildren: []
+    // };
+    // /**
+    //  * Set this bloq as draggable
+    //  */
+    // if (bloq.label !== 'setup' && bloq.label !== 'loop') {
+    //     bloq.draggable();
+    // }
+    // //Create the connectors using the bloq information
+    // bloq.connections = utils.createConnectors(bloq, bloqData);
+    // // basic path (shape) for bloq
+    // if (bloqData.output) {
+    //     bloq.body = utils.getOutputBloq(bloq, 0, bloq.size.width, bloq.size.height);
+    // } else {
+    //     bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(4);
+    // }
+    // // bloq.border = bloq.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
+    // // bloq.border.stroke({
+    // //     color: '#e5a33b',
+    // //     width: 3
+    // // });
+    // bloq.size = {
+    //     width: bloq.bbox().width,
+    //     height: bloq.bbox().height
+    // };
+    // if (bloqData.hasOwnProperty('label') && bloqData.label !== '') {
+    //     bloq.label = bloqData.label;
+    //     bloq.text(bloqData.label.toUpperCase()).font({
+    //         family: 'Helvetica',
+    //         fill: '#fff',
+    //         size: 14
+    //     }).move(10, 5);
+    // } else {
+    //     bloq.label = '';
+    // }
+    // if (bloqData.hasOwnProperty('text')) {
+    //     utils.createBloqUI(bloq, bloqData);
+    // }
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
         if (connectionType === 'up') {
             return {
@@ -226,98 +226,7 @@ var newBloq = function(bloqData, canvas, position, data) {
             bloq.dragmoveFlag = false;
         }
     };
-    bloq.updateBloqs = function(parent, child, type, inputID) {
-        parent.setChildren(child.node.id, type, inputID);
-        child.setParent(parent.node.id);
-    };
-    bloq.itsOver = function(dragRect, staticRect) {
-        if (dragRect !== undefined && staticRect !== undefined) {
-            // console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1);
-            // console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1 < staticRect.x2, dragRect.x2 > staticRect.x1, dragRect.y1 < staticRect.y2, dragRect.y2 > staticRect.y1);
-            // console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1, staticRect.x2, dragRect.x2, staticRect.x1, dragRect.y1, staticRect.y2, dragRect.y2, staticRect.y1);
-            return dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1;
-        } else {
-            return false;
-        }
-    };
-    // utilities
-    bloq.deleteParent = function(cascade) {
-        if (cascade !== false) {
-            var parentBloq = this.getBloqById(this.relations.parent);
-            parentBloq.relations.children = [];
-        }
-        this.relations.parent = undefined;
-    };
-    bloq.deleteChild = function(child) {
-        //remove bloq from connection definition
-        if (this.relations.children[child.node.id] !== undefined && this.relations.children[child.node.id].connection === 'output') {
-            for (var i in this.connections.inputs) {
-                if (this.connections.inputs[i].bloq !== undefined && this.connections.inputs[i].bloq.id() === child.node.id) {
-                    this.connections.inputs[i].bloq = undefined;
-                    break;
-                }
-            }
-        }
-        //remove bloq from children 
-        delete bloq.relations.children[child.node.id];
-        for (var i in this.relations.codeChildren) {
-            if (this.relations.codeChildren[i] === child.node.id) {
-                this.relations.codeChildren.splice(i, 1);
-                break;
-            }
-        }
-        delete this.relations.inputChildren[child.node.id];
-        // for (i in this.relations.inputChildren) {
-        //     if (this.relations.inputChildren[i] === child.node.id) {
-        //         this.relations.inputChildren.splice(i, 1);
-        //         break;
-        //     }
-        // }
-    };
-    bloq.setChildren = function(childrenId, location, inputID) {
-        for (var bloqIndex in bloq.relations.children) {
-            if (childrenId == bloq.relations.children[bloqIndex]) {
-                // it exists, do nothing
-                return false;
-            }
-        }
-        // if we made it so far, add a new child
-        bloq.relations.children[childrenId] = {
-            bloq: bloq.getBloqById(childrenId),
-            connection: location,
-            inputID: inputID
-        };
-        for (bloqIndex in bloq.relations.codeChildren) {
-            if (childrenId == bloq.relations.codeChildren[bloqIndex]) {
-                // it exists, do nothing
-                return false;
-            }
-        }
-        if (location === 'up') {
-            bloq.relations.codeChildren.push(childrenId);
-        } else {
-            console.log('bloq.relations.inputChildren', bloq.relations.inputChildren, childrenId);
-            bloq.relations.inputChildren[childrenId] = {
-                bloq: bloq.getBloqById(childrenId),
-                id: inputID
-            };
-        }
-        console.log('setChildren', bloq.relations.codeChildren);
-        return true;
-    };
-    bloq.setParent = function(parentId) {
-        bloq.relations.parent = parentId;
-        return true;
-    };
-    bloq.getBloqById = function(nodeId) {
-        for (var bloqIndex in data.bloqs) {
-            var bloq = data.bloqs[bloqIndex];
-            if (bloq.node.id == nodeId) {
-                return bloq;
-            }
-        }
-        return null;
-    };
+
     bloq.getCode = function(_function) {
         var code = this.code[_function];
         var search = '';
