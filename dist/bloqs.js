@@ -4,7 +4,6 @@
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-
 //----------------------------------------------------------------//
 // This file is part of the bloqs Project                         //
 //                                                                //
@@ -562,7 +561,9 @@ var newBloq = function(bloqData, canvas, position, data) {
     //Create the connectors using the bloq information
     bloq.connections = utils.createConnectors(bloq, bloqData);
     // basic shape of the bloq
-    bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(4);
+    bloq.body = bloq.rect(bloq.size.width, bloq.size.height);
+    // bloq.body.fill(bloqData.color);
+    // bloq.body.radius(4);
     // bloq.border = bloq.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
     // bloq.border.stroke({
     //     color: '#e5a33b',
@@ -883,6 +884,51 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
     };
     return bloq;
 };
+/**
+ * Created by jesus on 30/03/15.
+ */
+
+var getBasicBloqs = function(){
+
+    var data = {
+        setup: {
+            label: 'setup',
+            down: true,
+            color: '#000',
+            code: {setup: "", loop: "void setup (){\n"}
+        },
+        loop: {
+            label: 'loop',
+            down: true,
+            color: '#000',
+            code: {setup: "", loop: "void loop (){\n"}
+        }//,
+        // horizontal3Inputs: {
+        //     up: true,
+        //     down: true,
+        //     path: '',
+        //     color: '#e2e2e2',
+        //     text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "number:", {input : 'bloqInput',type:"int",label:"INPUT"}, "userInput", {input:'userInput', type:"string",label:"userInput"}] ] ,
+        //     code: {setup:"trial({0},{1},{2});\n", loop:"trial({0},{1},{2});\n"}
+        // },
+        // basicInputDropdown: {
+        //     output: 'int',
+        //     color: '#e2e2e2',
+        //     text:[[{input:'dropdown', type:"text",data:[{label:'ON',value:'HIGH'},{label:'OFF',value:'LOW'}]}]],
+        //     code: {setup:"{0}", loop:"{0}"}
+        // },
+        // basicInputNumber: {
+        //     output: 'int',
+        //     color: '#e2e2e2',
+        //     text:[["number",{input:'userInput', type:"number",label:"number"}]],
+        //     code: {setup:'{0}', loop:'{0}'}
+        // }
+    };
+    return data;
+
+
+};
+
 (function(root, undefined) {
     "use strict";
     var data = {
@@ -898,7 +944,6 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
         if ($.isEmptyObject(canvas)) {
             field = SVG(element).size('100%', '100%');
             canvas = field.group().attr('class', 'bloqs-canvas');
-
         }
         return canvas;
     };
@@ -929,22 +974,34 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
      * @returns Object bloq
      */
     data.createBloq = function(bloqData, canvas, position) {
-        var bloq; 
-        if (bloqData.hasOwnProperty('output')){
-         bloq = newOutputBloq(bloqData, canvas, position, data);
-
-        }
-        else{
-            
-         bloq = newStatementBloq(bloqData, canvas, position, data);
+        var bloq;
+        if (bloqData.hasOwnProperty('output')) {
+            bloq = newOutputBloq(bloqData, canvas, position, data);
+        } else {
+            bloq = newStatementBloq(bloqData, canvas, position, data);
         }
         data.bloqs.push(bloq);
-        if (bloq.label === 'loop') {
+        if (bloqData.label === 'loop') {
             data.bloqs.loop = bloq;
-        } else if (bloq.label === 'setup') {
+        } else if (bloqData.label === 'setup') {
             data.bloqs.setup = bloq;
         }
         return bloq;
+    };
+    /**
+     * Create a set of bloqs and setup its properties and events.
+     *
+     * @param path path to the set of JSON files defining the bloqs
+     *
+     * @returns array of Object bloq
+     */
+    data.createProyectStructure = function() {
+        var bloqTypes = getBasicBloqs();
+        var counter = 100;
+        for (var i in bloqTypes) {
+            data.bloqs[i] = data.createBloq(bloqTypes[i], canvas, [100, counter]);
+            counter += 100;
+        }
     };
     // Base function.
     var bloqs = function() {

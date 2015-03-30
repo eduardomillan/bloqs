@@ -41,7 +41,9 @@ var newBloq = function(bloqData, canvas, position, data) {
     //Create the connectors using the bloq information
     bloq.connections = utils.createConnectors(bloq, bloqData);
     // basic shape of the bloq
-    bloq.body = bloq.rect(bloq.size.width, bloq.size.height).fill(bloqData.color).radius(4);
+    bloq.body = bloq.rect(bloq.size.width, bloq.size.height);
+    // bloq.body.fill(bloqData.color);
+    // bloq.body.radius(4);
     // bloq.border = bloq.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
     // bloq.border.stroke({
     //     color: '#e5a33b',

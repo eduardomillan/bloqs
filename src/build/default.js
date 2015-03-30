@@ -4,11 +4,11 @@
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-
 // @include ../utils.js
 // @include ../bloq.js
 // @include ../outputBloq.js
 // @include ../statementBloq.js
+// @include ../../res/basic_bloqs.js
 (function(root, undefined) {
     "use strict";
     var data = {
@@ -24,7 +24,6 @@
         if ($.isEmptyObject(canvas)) {
             field = SVG(element).size('100%', '100%');
             canvas = field.group().attr('class', 'bloqs-canvas');
-
         }
         return canvas;
     };
@@ -55,22 +54,34 @@
      * @returns Object bloq
      */
     data.createBloq = function(bloqData, canvas, position) {
-        var bloq; 
-        if (bloqData.hasOwnProperty('output')){
-         bloq = newOutputBloq(bloqData, canvas, position, data);
-
-        }
-        else{
-            
-         bloq = newStatementBloq(bloqData, canvas, position, data);
+        var bloq;
+        if (bloqData.hasOwnProperty('output')) {
+            bloq = newOutputBloq(bloqData, canvas, position, data);
+        } else {
+            bloq = newStatementBloq(bloqData, canvas, position, data);
         }
         data.bloqs.push(bloq);
-        if (bloq.label === 'loop') {
+        if (bloqData.label === 'loop') {
             data.bloqs.loop = bloq;
-        } else if (bloq.label === 'setup') {
+        } else if (bloqData.label === 'setup') {
             data.bloqs.setup = bloq;
         }
         return bloq;
+    };
+    /**
+     * Create a set of bloqs and setup its properties and events.
+     *
+     * @param path path to the set of JSON files defining the bloqs
+     *
+     * @returns array of Object bloq
+     */
+    data.createProjectStructure = function() {
+        var bloqTypes = getBasicBloqs();
+        var counter = 100;
+        for (var i in bloqTypes) {
+            data.bloqs[i] = data.createBloq(bloqTypes[i], canvas, [100, counter]);
+            counter += 100;
+        }
     };
     // Base function.
     var bloqs = function() {
