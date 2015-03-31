@@ -41,16 +41,16 @@ function getRandomColor() {
  * @param bloq
  */
 utils.updateConnectors = function(bloq, delta) {
-    for (var type in bloq.connections) {
-        if (bloq.connections[type] && type === 'inputs') {
-            for (var i in bloq.connections[type]) {
-                utils.updateConnector(bloq.connections[type][i], delta);
+    for (var type in bloq.bloqBody.connections) {
+        if (bloq.bloqBody.connections[type] && type === 'inputs') {
+            for (var i in bloq.bloqBody.connections[type]) {
+                utils.updateConnector(bloq.bloqBody.connections[type][i], delta);
             }
-        } else if (bloq.connections[type]) {
-            utils.updateConnector(bloq.connections[type], delta);
+        } else if (bloq.bloqBody.connections[type]) {
+            utils.updateConnector(bloq.bloqBody.connections[type], delta);
         }
     }
-    return bloq.connections;
+    return bloq.bloqBody.connections;
 };
 utils.updateConnector = function(connector, delta) {
     connector.connectionPosition.x += delta.x;
@@ -139,14 +139,10 @@ utils.rejectBloq = function(bloq) {
     });
 };
 utils.moveChildren = function(bloq, delta) {
-    console.log('bloq', bloq);
-    if (bloq.relations === undefined){
-        return;
-    }
-    for (var i in bloq.relations.children) {
-        var child = bloq.relations.children[i].bloq;
+    for (var i in bloq.bloqBody.relations.children) {
+        var child = bloq.bloqBody.relations.children[i].bloq;
         utils.moveBloq2(child, delta);
-        if (child.relations !== undefined && child.relations.children !== undefined) {
+        if (child.bloqBody.relations !== undefined && child.bloqBody.relations.children !== undefined) {
             utils.moveChildren(child, delta);
         }
     }
@@ -347,9 +343,9 @@ Bloq.prototype.dragmove = function(a) {
     this.delta.lastx = a.x;
     this.delta.lasty = a.y;
     //Update the bloq's connectors using the new deltas
-    this.connections = utils.updateConnectors(this, this.delta);
+    this.connections = utils.updateConnectors(this.bloq, this.delta);
     // move child bloqs along with this one
-    utils.moveChildren(this, this.delta);
+    utils.moveChildren(this.bloq, this.delta);
 };
 Bloq.prototype.getParent = function() {
     return this.relations.parent;
@@ -387,6 +383,7 @@ Bloq.prototype.dragend = function() {
                         }
                     } else {
                         //type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID
+                        // console.log('this.data.bloqs[i].bloqBody.connections',this.data.bloqs[i]);
                         a = utils.manageConnections(j, this.connections[j], this.data.bloqs[i].bloqBody.connections[utils.oppositeConnection[j]], thisBloq, this.data.bloqs[i]);
                     }
                 }

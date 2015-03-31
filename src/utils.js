@@ -30,16 +30,16 @@ function getRandomColor() {
  * @param bloq
  */
 utils.updateConnectors = function(bloq, delta) {
-    for (var type in bloq.connections) {
-        if (bloq.connections[type] && type === 'inputs') {
-            for (var i in bloq.connections[type]) {
-                utils.updateConnector(bloq.connections[type][i], delta);
+    for (var type in bloq.bloqBody.connections) {
+        if (bloq.bloqBody.connections[type] && type === 'inputs') {
+            for (var i in bloq.bloqBody.connections[type]) {
+                utils.updateConnector(bloq.bloqBody.connections[type][i], delta);
             }
-        } else if (bloq.connections[type]) {
-            utils.updateConnector(bloq.connections[type], delta);
+        } else if (bloq.bloqBody.connections[type]) {
+            utils.updateConnector(bloq.bloqBody.connections[type], delta);
         }
     }
-    return bloq.connections;
+    return bloq.bloqBody.connections;
 };
 utils.updateConnector = function(connector, delta) {
     connector.connectionPosition.x += delta.x;
@@ -128,14 +128,10 @@ utils.rejectBloq = function(bloq) {
     });
 };
 utils.moveChildren = function(bloq, delta) {
-    console.log('bloq', bloq);
-    if (bloq.relations === undefined){
-        return;
-    }
-    for (var i in bloq.relations.children) {
-        var child = bloq.relations.children[i].bloq;
+    for (var i in bloq.bloqBody.relations.children) {
+        var child = bloq.bloqBody.relations.children[i].bloq;
         utils.moveBloq2(child, delta);
-        if (child.relations !== undefined && child.relations.children !== undefined) {
+        if (child.bloqBody.relations !== undefined && child.bloqBody.relations.children !== undefined) {
             utils.moveChildren(child, delta);
         }
     }

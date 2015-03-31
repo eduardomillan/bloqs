@@ -124,9 +124,9 @@ Bloq.prototype.dragmove = function(a) {
     this.delta.lastx = a.x;
     this.delta.lasty = a.y;
     //Update the bloq's connectors using the new deltas
-    this.connections = utils.updateConnectors(this, this.delta);
+    this.connections = utils.updateConnectors(this.bloq, this.delta);
     // move child bloqs along with this one
-    utils.moveChildren(this, this.delta);
+    utils.moveChildren(this.bloq, this.delta);
 };
 Bloq.prototype.getParent = function() {
     return this.relations.parent;
@@ -164,6 +164,7 @@ Bloq.prototype.dragend = function() {
                         }
                     } else {
                         //type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID
+                        // console.log('this.data.bloqs[i].bloqBody.connections',this.data.bloqs[i]);
                         a = utils.manageConnections(j, this.connections[j], this.data.bloqs[i].bloqBody.connections[utils.oppositeConnection[j]], thisBloq, this.data.bloqs[i]);
                     }
                 }
