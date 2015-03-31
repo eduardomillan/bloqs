@@ -265,13 +265,16 @@ function Bloq(bloqData, canvas, position, data) {
  * @param delta
  */
 Bloq.prototype.resize = function(delta) {
+    console.log('BEFORE:', this.size);
     this.size.width += delta.x;
     this.size.height += delta.y;
-    // if (this.body.children !== undefined) {
-    //     this.body.children()[1].size(this.size.width, this.size.height);
-    // } else {
+    console.log('resizing:', this.size, delta, this.bloqBody.children());
+    if (this.bloqBody.children !== undefined) {
+        console.log('here');
+        this.bloqBody.children()[0].size(this.size.width, this.size.height);
+    } else {
         this.bloqBody.size(this.size.width, this.size.height);
-    // }
+    }
     // this.border.size(this.size.width, this.size.height);
     // //this.selection.size(this.size.width, this.size.height);
     //update down connector:

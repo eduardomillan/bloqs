@@ -69,11 +69,11 @@ function Bloq(bloqData, canvas, position, data) {
 Bloq.prototype.resize = function(delta) {
     this.size.width += delta.x;
     this.size.height += delta.y;
-    // if (this.body.children !== undefined) {
-    //     this.body.children()[1].size(this.size.width, this.size.height);
-    // } else {
+    if (this.bloqBody.children !== undefined) {
+        this.bloqBody.children()[0].size(this.size.width, this.size.height);
+    } else {
         this.bloqBody.size(this.size.width, this.size.height);
-    // }
+    }
     // this.border.size(this.size.width, this.size.height);
     // //this.selection.size(this.size.width, this.size.height);
     //update down connector:
