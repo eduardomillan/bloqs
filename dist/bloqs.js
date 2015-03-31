@@ -36,128 +36,7 @@ function getRandomColor() {
     }
     return color;
 }
-utils.addInput = function(bloq, posx, posy, type) {
-    var index = 0;
-    if (bloq.connections.inputs !== undefined) {
-        index = bloq.connections.inputs.length;
-    } else {
-        bloq.connections.inputs = [{}];
-    }
-    bloq.connections.inputs[index] = {
-        connectionPosition: {
-            x: posx,
-            y: posy
-        },
-        connectorArea: {
-            x1: posx - connectionThreshold,
-            x2: posx + connectionThreshold,
-            y1: posy,
-            y2: posy + connectionThreshold
-        },
-        type: type,
-        inline: true,
-        movedDown: false
-    };
-    if (posx !== undefined && posy !== undefined) {
-        bloq.connections.inputs[index].UI = bloq.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
-            fill: getRandomColor()
-        }).move(posx - connectionThreshold, posy);
-    }
-    bloq.inputsNumber = bloq.connections.inputs.length;
-};
-utils.createConnectors = function(bloq, bloqData) {
-    bloq.connections = {};
-    if (bloqData.inputs) {
-        bloq.connections.inputs = [{}];
-        for (var i in bloqData.inputs) {
-            i = parseInt(i, 10);
-            bloq.connections.inputs[i] = {
-                connectionPosition: {},
-                connectorArea: {},
-                type: ''
-            };
-            bloq.connections.inputs[i].connectionPosition = {
-                x: bloq.x() + bloq.size.width,
-                y: bloq.y() + i * connectionThreshold
-            };
-            bloq.connections.inputs[i].connectorArea = {
-                x1: bloq.x() + bloq.size.width - connectionThreshold,
-                x2: bloq.x() + bloq.size.width + connectionThreshold,
-                y1: bloq.y() + i * connectionThreshold,
-                y2: bloq.y() + i * connectionThreshold + connectionThreshold
-            };
-            bloq.connections.inputs[i].type = bloqData.inputs[i];
-            bloq.connections.inputs[i].movedDown = false;
-            //Update bloq's size
-            bloq.resize({
-                x: 0,
-                y: connectionThreshold
-            });
-            bloq.connections.inputs[i].UI = bloq.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
-                fill: getRandomColor()
-            }).move(bloq.x() + bloq.size.width - connectionThreshold, bloq.y() + i * connectionThreshold);
-        }
-    }
-    if (bloqData.output) {
-        bloq.connections.output = {
-            connectionPosition: {},
-            connectorArea: {},
-            type: bloqData.output
-        };
-        bloq.connections.output.connectionPosition = {
-            x: bloq.x(),
-            y: bloq.y()
-        };
-        bloq.connections.output.connectorArea = {
-            x1: bloq.x() - connectionThreshold,
-            x2: bloq.x() + connectionThreshold,
-            y1: bloq.y(),
-            y2: bloq.y() + connectionThreshold
-        };
-        bloq.connections.output.UI = bloq.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
-            fill: '#FFCC33'
-        }).move(bloq.x() - connectionThreshold, bloq.y());
-    }
-    if (bloqData.up) {
-        bloq.connections.up = {
-            connectionPosition: {},
-            connectorArea: {}
-        };
-        bloq.connections.up.connectionPosition = {
-            x: bloq.x(),
-            y: bloq.y()
-        };
-        bloq.connections.up.connectorArea = {
-            x1: bloq.x(),
-            x2: bloq.x() + connectionThreshold,
-            y1: bloq.y() - connectionThreshold,
-            y2: bloq.y() + connectionThreshold
-        };
-        bloq.connections.up.UI = bloq.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
-            fill: '#FF0000'
-        }).move(bloq.x(), bloq.y() - connectionThreshold);
-    }
-    if (bloqData.down) {
-        bloq.connections.down = {
-            connectionPosition: {},
-            connectorArea: {}
-        };
-        bloq.connections.down.connectionPosition = {
-            x: bloq.x(),
-            y: bloq.y() + bloq.size.height
-        };
-        bloq.connections.down.connectorArea = {
-            x1: bloq.x(),
-            x2: bloq.x() + connectionThreshold,
-            y1: bloq.y() + bloq.size.height - connectionThreshold,
-            y2: bloq.y() + bloq.size.height + connectionThreshold
-        };
-        bloq.connections.down.UI = bloq.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
-            fill: '#FF0000'
-        }).move(bloq.x(), bloq.y() + bloq.size.height - connectionThreshold);
-    }
-    return bloq.connections;
-};
+
 /**
  * Updates de position of the connectors of a bloq (used after modifying the bloq's position)
  * @param bloq
@@ -276,182 +155,15 @@ utils.bloqOnTop = function(bloq) {
         utils.bloqOnTop(child); //.node.parentNode.appendChild(child.node);
     }
 };
-utils.pushElements = function(bloq, UIElement, delta) {
-    var elements = UIElement.elementsToPush;
-    for (var j in elements) {
-        elements[j].bloq.x(elements[j].bloq.x() + delta.x);
-        elements[j].bloq.y(elements[j].bloq.y() + delta.y);
-        var connector = elements[j].connector;
-        if (connector !== undefined) {
-            utils.moveConnector(bloq, connector, delta);
-        }
-    }
-};
-utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
-    var text = bloq.foreignObject(100, 100).attr({
-        id: 'fobj',
-        color: '#FFCC33'
-    });
-    text.appendChild("input", {
-        id: id,
-        value: inputText,
-        color: '#FFCC33',
-    }).move(posx, posy);
-    bloq.UIElements.push({
-        element: text,
-        elementsToPush: undefined
-    });
-    var code;
-    if (type === 'number') {
-        code = document.getElementById(id).value;
-    } else {
-        code = '"' + document.getElementById(id).value + '"';
-    }
-    bloq.relations.inputChildren[id] = {
-        id: id,
-        bloq: 'userInput',
-        code: code
-    };
-    utils.addInput(bloq, undefined, undefined, type);
-    document.getElementById(id).addEventListener("mousedown", function(e) {
-        e.stopPropagation();
-    }, false);
-    //Check that the input of the user is the one spected
-    document.getElementById(id).addEventListener("change", function() {
-        if (type === 'number') {
-            if (isNaN(parseFloat(document.getElementById(id).value))) {
-                //If type is number and input is not a number, remove user input. 
-                //ToDo : UX warning!
-                document.getElementById(id).value = '';
-            } else {
-                bloq.relations.inputChildren[id].code = document.getElementById(id).value;
-            }
-        } else {
-            bloq.relations.inputChildren[id].code = '"' + document.getElementById(id).value + '"';
-        }
-    }, false);
-};
-utils.appendDropdownInput = function(bloq, dropdownText, type, posx, posy, id) {
-    var dropdown = bloq.foreignObject(100, 100).attr({
-        id: id,
-        color: '#FFCC33'
-    });
-    var newList = document.createElement("select");
-    for (var i in dropdownText) {
-        var newListData = new Option(dropdownText[i].label, dropdownText[i].value);
-        //Here we append that text node to our drop down list.
-        newList.appendChild(newListData);
-    }
-    utils.addInput(bloq, undefined, undefined, type);
-    //Append the list to dropdown foreignobject:
-    dropdown.appendChild(newList).move(posx, posy);
-    bloq.UIElements.push({
-        element: dropdown,
-        elementsToPush: undefined
-    });
-    bloq.relations.inputChildren[id] = {
-        id: id,
-        bloq: 'userInput',
-        code: newList.value
-    };
-    newList.onchange = function() {
-        bloq.relations.inputChildren[id].code = newList.value;
-    };
-    document.getElementById(id).addEventListener("mousedown", function(e) {
-        e.stopPropagation();
-    }, false);
-};
-utils.paths = {
-    // output: 'M256,50 C256,50 12,50 12,50 C9.791,50 8,48.209 8,46 C8,46 8,33 8,33 C3.582,33 0,29.418 0,25 C0,20.582 3.582,17 8,17 C8,17 8,4 8,4 C8,1.791 9.791,0 12,0 C12,0 256,0 256,0 C258.209,0 260,1.791 260,4 C260,4 260,46 260,46 C260,48.209 258.209,50 256,50 Z',
-    leftConnector: 'm 36,32 c -4.418,0 -8,-2.582 -8,-7 0,-4.418 3.582,-7 8,-7 l 0,14 z',
-    // connector_left: 'M28.000,50.000 C28.000,50.000 4.000,50.000 4.000,50.000 C1.791,50.000 -0.000,48.209 -0.000,46.000 C-0.000,46.000 -0.000,33.000 -0.000,33.000 C4.418,33.000 8.000,29.418 8.000,25.000 C8.000,20.582 4.418,17.000 -0.000,17.000 C-0.000,17.000 -0.000,4.000 -0.000,4.000 C-0.000,1.791 1.791,0.000 4.000,0.000 C4.000,0.000 28.000,0.000 28.000,0.000 C28.000,0.000 28.000,50.000 28.000,50.000 Z'
-};
 utils.getOutputBloq = function(bloq, posx, width, height) {
+    var path = 'm 36,32 c -4.418,0 -8,-2.582 -8,-7 0,-4.418 3.582,-7 8,-7 l 0,14 z';
     var group = bloq.group();
-    var connector = bloq.path(utils.paths.leftConnector).fill('#cccccc'); //.move(posx, posy);
+    var connector = bloq.path(path).fill('#cccccc'); //.move(posx, posy);
     connector.x(posx);
     group.add(connector);
     var outputBloq = bloq.rect(width, height).fill('#cccccc').radius(4).move(posx + 8, 0);
     group.add(outputBloq);
     return group;
-};
-utils.appendBloqInput = function(bloq, inputText, type, posx, posy, inputID) {
-    //draw white (ToDo: UX) rectangle
-    var bloqInput = utils.getOutputBloq(bloq, posx, bloq.bloqInput.width, bloq.bloqInput.height);
-    utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type); //bloq.x()+posx + width, bloq.x()+posy + i * connectionThreshold);
-    bloq.UIElements.push({
-        element: bloqInput,
-        elementsToPush: undefined,
-        id: inputID,
-        connector: bloq.connections.inputs[bloq.connections.inputs.length - 1]
-    });
-};
-utils.createBloqUI = function(bloq, bloqData) {
-    var margin = 10;
-    var posx = margin;
-    var width = 0;
-    var posy = margin;
-    var inputID = 0;
-    bloq.UIElements = [{}];
-    var i = 0;
-    var j = 0;
-    for (j in bloqData.text) {
-        for (i in bloqData.text[j]) {
-            if (typeof(bloqData.text[j][i]) === typeof({})) {
-                if (bloqData.text[j][i].input === 'userInput') {
-                    console.log('userinput, id:', inputID);
-                    utils.appendUserInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy, bloq.node.id + '_' + inputID);
-                    inputID += 1;
-                    posx += 110;
-                } else if (bloqData.text[j][i].input === 'bloqInput') {
-                    console.log('bloqinput, id:', inputID);
-                    utils.appendBloqInput(bloq, bloqData.text[j][i].label, bloqData.text[j][i].type, posx, posy - margin, inputID);
-                    inputID += 1;
-                    posx += 110;
-                } else if (bloqData.text[j][i].input === 'dropdown') {
-                    console.log('dropdown, id:', inputID);
-                    utils.appendDropdownInput(bloq, bloqData.text[j][i].data, bloqData.text[j][i].type, posx, posy, bloq.node.id + '_' + inputID);
-                    inputID += 1;
-                    posx += 110;
-                }
-            } else {
-                var text = bloq.text(bloqData.text[j][i]).font({
-                    family: 'Helvetica',
-                    fill: '#000',
-                    size: 14
-                }).move(posx, posy);
-                posx += bloqData.text[j][i].length * 5 + 30;
-                bloq.UIElements.push({
-                    element: text,
-                    elementsToPush: undefined
-                });
-            }
-        }
-        if (posx > width) {
-            width = posx;
-        }
-        posx = margin;
-        posy += 40;
-    }
-    bloq.UIElements.shift();
-    //Add the elements that must be pushed
-    for (i in bloq.UIElements) {
-        bloq.UIElements[i].elementsToPush = [{}];
-        for (j in bloq.UIElements) {
-            if (j > i) {
-                bloq.UIElements[i].elementsToPush.push({
-                    bloq: bloq.UIElements[j].element,
-                    connector: bloq.UIElements[j].connector
-                });
-            }
-        }
-        bloq.UIElements[i].elementsToPush.shift();
-    }
-    //Update bloq's size
-    bloq.resize({
-        x: width - bloq.size.width,
-        y: posy - bloq.size.height
-    });
 };
 // utils.getBloqPath = function(bloq, bloqData) {
 //     
@@ -491,7 +203,8 @@ utils.createBloqUI = function(bloq, bloqData) {
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
 function Bloq(bloqData, canvas, position, data) {
-    this.bloq = canvas.group().move(position[0], position[1]);
+    this.bloqBody = canvas.group().move(position[0], position[1]);
+    this.bloqData = bloqData;
     this.canvas = canvas;
     this.data = data;
     this.size = {
@@ -508,7 +221,7 @@ function Bloq(bloqData, canvas, position, data) {
         width: 70,
         height: 50
     };
-    this.code = bloqData.code;
+    this.code = this.bloqData.code;
     /**
      * We store relations here, using nodes
      * @type {{parent: undefined, children: Array}}
@@ -520,26 +233,30 @@ function Bloq(bloqData, canvas, position, data) {
         inputChildren: []
     };
     //Create the connectors using the bloq information
-    this.connections = utils.createConnectors(this, bloqData);
+    this.createConnectors();
+
     // basic shape of the bloq
-    this.body = this.bloq.rect(this.size.width, this.size.height).fill(bloqData.color).radius(4);
+    this.body = this.bloqBody.rect(this.size.width, this.size.height).fill(bloqData.color).radius(4);
+    this.id = this.body.node.id;
     // this.border = this.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
     // this.border.stroke({
     //     color: '#e5a33b',
     //     width: 3
     // });
     this.size = {
-        width: this.bloq.bbox().width,
-        height: this.bloq.bbox().height
+        width: this.bloqBody.bbox().width,
+        height: this.bloqBody.bbox().height
     };
     this.childrenHeight = 0;
-    if (bloqData.hasOwnProperty('text')) {
-        utils.createBloqUI(this, bloqData);
+    if (this.bloqData.hasOwnProperty('text')) {
+        this.createBloqUI();
     }
     /**
      * Set this bloq as draggable
      */
-    this.body.draggable();
+    this.bloqBody.draggable();
+
+    this.bloqBody.dragmove = Bloq.prototype.dragmove;
 }
 /**
  * Resize a bloq and update its down connector, if any
@@ -549,11 +266,11 @@ function Bloq(bloqData, canvas, position, data) {
 Bloq.prototype.resize = function(delta) {
     this.size.width += delta.x;
     this.size.height += delta.y;
-    if (this.body.children !== undefined) {
-        this.body.children()[1].size(this.size.width, this.size.height);
-    } else {
-        this.body.size(this.size.width, this.size.height);
-    }
+    // if (this.body.children !== undefined) {
+    //     this.body.children()[1].size(this.size.width, this.size.height);
+    // } else {
+        this.bloqBody.size(this.size.width, this.size.height);
+    // }
     // this.border.size(this.size.width, this.size.height);
     // //this.selection.size(this.size.width, this.size.height);
     //update down connector:
@@ -568,11 +285,13 @@ Bloq.prototype.resize = function(delta) {
  * We start dragging
  */
 Bloq.prototype.dragmove = function(a) {
+    console.log('this', this, Bloq);
+    this = Bloq;
     this.dragmoveFlag = true;
     // remove parent of this and child in parent:
     if (this.relations.parent !== undefined) {
         //move dragged bloq on top
-        utils.bloqOnTop(this.bloq);
+        utils.bloqOnTop(this.bloqBody);
         var parentBloq = this.getBloqById(this.relations.parent);
         if (parentBloq.relations.children[this.id()].connection === 'output') {
             for (var k in parentBloq.connections.inputs) {
@@ -807,6 +526,303 @@ Bloq.prototype.resizeParents = function(direction) {
             y: this.childrenHeight
         });
     }
+};
+
+
+Bloq.prototype.createConnectors = function() {
+    this.connections = {};
+    if (this.bloqData.inputs) {
+        this.connections.inputs = [{}];
+        for (var i in this.bloqData.inputs) {
+            i = parseInt(i, 10);
+            this.connections.inputs[i] = {
+                connectionPosition: {},
+                connectorArea: {},
+                type: ''
+            };
+            this.connections.inputs[i].connectionPosition = {
+                x: this.bloqBody.x() + this.size.width,
+                y: this.bloqBody.y() + i * connectionThreshold
+            };
+            this.connections.inputs[i].connectorArea = {
+                x1: this.bloqBody.x() + this.size.width - connectionThreshold,
+                x2: this.bloqBody.x() + this.size.width + connectionThreshold,
+                y1: this.bloqBody.y() + i * connectionThreshold,
+                y2: this.bloqBody.y() + i * connectionThreshold + connectionThreshold
+            };
+            this.connections.inputs[i].type = this.bloqData.inputs[i];
+            this.connections.inputs[i].movedDown = false;
+            //Update bloq's size
+            this.resize({
+                x: 0,
+                y: connectionThreshold
+            });
+            this.connections.inputs[i].UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
+                fill: getRandomColor()
+            }).move(this.bloqBody.x() + this.size.width - connectionThreshold, this.bloqBody.y() + i * connectionThreshold);
+        }
+    }
+    if (this.bloqData.output) {
+        this.connections.output = {
+            connectionPosition: {},
+            connectorArea: {},
+            type: this.bloqData.output
+        };
+        this.connections.output.connectionPosition = {
+            x: this.bloqBody.x(),
+            y: this.bloqBody.y()
+        };
+        this.connections.output.connectorArea = {
+            x1: this.bloqBody.x() - connectionThreshold,
+            x2: this.bloqBody.x() + connectionThreshold,
+            y1: this.bloqBody.y(),
+            y2: this.bloqBody.y() + connectionThreshold
+        };
+        this.connections.output.UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
+            fill: '#FFCC33'
+        }).move(this.bloqBody.x() - connectionThreshold, this.bloqBody.y());
+    }
+    if (this.bloqData.up) {
+        this.connections.up = {
+            connectionPosition: {},
+            connectorArea: {}
+        };
+        this.connections.up.connectionPosition = {
+            x: this.bloqBody.x(),
+            y: this.bloqBody.y()
+        };
+        this.connections.up.connectorArea = {
+            x1: this.bloqBody.x(),
+            x2: this.bloqBody.x() + connectionThreshold,
+            y1: this.bloqBody.y() - connectionThreshold,
+            y2: this.bloqBody.y() + connectionThreshold
+        };
+        this.connections.up.UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
+            fill: '#FF0000'
+        }).move(this.bloqBody.x(), this.bloqBody.y() - connectionThreshold);
+    }
+    if (this.bloqData.down) {
+        this.connections.down = {
+            connectionPosition: {},
+            connectorArea: {}
+        };
+        this.connections.down.connectionPosition = {
+            x: this.bloqBody.x(),
+            y: this.bloqBody.y() + this.size.height
+        };
+        this.connections.down.connectorArea = {
+            x1: this.bloqBody.x(),
+            x2: this.bloqBody.x() + connectionThreshold,
+            y1: this.bloqBody.y() + this.size.height - connectionThreshold,
+            y2: this.bloqBody.y() + this.size.height + connectionThreshold
+        };
+        this.connections.down.UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
+            fill: '#FF0000'
+        }).move(this.bloqBody.x(), this.bloqBody.y() + this.size.height - connectionThreshold);
+    }
+};
+
+Bloq.prototype.addInput = function(posx, posy, type) {
+    var index = 0;
+    if (this.connections.inputs !== undefined) {
+        index = this.connections.inputs.length;
+    } else {
+        this.connections.inputs = [{}];
+    }
+    this.connections.inputs[index] = {
+        connectionPosition: {
+            x: posx,
+            y: posy
+        },
+        connectorArea: {
+            x1: posx - connectionThreshold,
+            x2: posx + connectionThreshold,
+            y1: posy,
+            y2: posy + connectionThreshold
+        },
+        type: type,
+        inline: true,
+        movedDown: false
+    };
+    if (posx !== undefined && posy !== undefined) {
+        this.connections.inputs[index].UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
+            fill: getRandomColor()
+        }).move(posx - connectionThreshold, posy);
+    }
+    this.inputsNumber = this.connections.inputs.length;
+};
+
+
+
+utils.pushElements = function(bloq, UIElement, delta) {
+    var elements = UIElement.elementsToPush;
+    for (var j in elements) {
+        elements[j].bloq.x(elements[j].bloq.x() + delta.x);
+        elements[j].bloq.y(elements[j].bloq.y() + delta.y);
+        var connector = elements[j].connector;
+        if (connector !== undefined) {
+            utils.moveConnector(bloq, connector, delta);
+        }
+    }
+};
+
+
+///// BLOQ UI
+Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
+    var text = this.bloqBody.foreignObject(100, 100).attr({
+        id: 'fobj',
+        color: '#FFCC33'
+    });
+    text.appendChild("input", {
+        id: id,
+        value: inputText,
+        color: '#FFCC33',
+    }).move(posx, posy);
+    this.UIElements.push({
+        element: text,
+        elementsToPush: undefined
+    });
+    var code;
+    if (type === 'number') {
+        code = document.getElementById(id).value;
+    } else {
+        code = '"' + document.getElementById(id).value + '"';
+    }
+    this.relations.inputChildren[id] = {
+        id: id,
+        bloq: 'userInput',
+        code: code
+    };
+    this.addInput(undefined, undefined, type);
+    document.getElementById(id).addEventListener("mousedown", function(e) {
+        e.stopPropagation();
+    }, false);
+    //Check that the input of the user is the one spected
+    document.getElementById(id).addEventListener("change", function() {
+        if (type === 'number') {
+            if (isNaN(parseFloat(document.getElementById(id).value))) {
+                //If type is number and input is not a number, remove user input. 
+                //ToDo : UX warning!
+                document.getElementById(id).value = '';
+            } else {
+                this.relations.inputChildren[id].code = document.getElementById(id).value;
+            }
+        } else {
+            this.relations.inputChildren[id].code = '"' + document.getElementById(id).value + '"';
+        }
+    }, false);
+};
+Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id) {
+    var dropdown = this.bloqBody.foreignObject(100, 100).attr({
+        id: id,
+        color: '#FFCC33'
+    });
+    var newList = document.createElement("select");
+    for (var i in dropdownText) {
+        var newListData = new Option(dropdownText[i].label, dropdownText[i].value);
+        //Here we append that text node to our drop down list.
+        newList.appendChild(newListData);
+    }
+    this.addInput(undefined, undefined, type);
+    //Append the list to dropdown foreignobject:
+    dropdown.appendChild(newList).move(posx, posy);
+    this.UIElements.push({
+        element: dropdown,
+        elementsToPush: undefined
+    });
+    this.relations.inputChildren[id] = {
+        id: id,
+        bloq: 'userInput',
+        code: newList.value
+    };
+    newList.onchange = function() {
+        this.relations.inputChildren[id].code = newList.value;
+    };
+    document.getElementById(id).addEventListener("mousedown", function(e) {
+        e.stopPropagation();
+    }, false);
+};
+
+
+Bloq.prototype.appendBloqInput = function(inputText, type, posx, posy, inputID) {
+    //draw white (ToDo: UX) rectangle
+    var bloqInput = utils.getOutputBloq(this.bloqBody, posx, this.bloqInput.width, this.bloqInput.height);
+    this.addInput(this.bloqBody.x() + posx, this.bloqBody.y() + posy, type); //bloq.x()+posx + width, bloq.x()+posy + i * connectionThreshold);
+    this.bloqBody.add(bloqInput);
+    
+    this.UIElements.push({
+        element: bloqInput,
+        elementsToPush: undefined,
+        id: inputID,
+        connector: this.connections.inputs[this.connections.inputs.length - 1]
+    });
+};
+Bloq.prototype.createBloqUI = function() {
+    var margin = 10;
+    var posx = margin;
+    var width = 0;
+    var posy = margin;
+    var inputID = 0;
+    this.UIElements = [{}];
+    var i = 0;
+    var j = 0;
+    for (j in this.bloqData.text) {
+        for (i in this.bloqData.text[j]) {
+            if (typeof(this.bloqData.text[j][i]) === typeof({})) {
+                if (this.bloqData.text[j][i].input === 'userInput') {
+                    console.log('userinput, id:', inputID);
+                    this.appendUserInput(this.bloqData.text[j][i].label, this.bloqData.text[j][i].type, posx, posy, this.id + '_' + inputID);
+                    inputID += 1;
+                    posx += 110;
+                } else if (this.bloqData.text[j][i].input === 'bloqInput') {
+                    console.log('bloqinput, id:', inputID);
+                    this.appendBloqInput(this.bloqData.text[j][i].label, this.bloqData.text[j][i].type, posx, posy - margin, inputID);
+                    inputID += 1;
+                    posx += 110;
+                } else if (this.bloqData.text[j][i].input === 'dropdown') {
+                    console.log('dropdown, id:', inputID);
+                    this.appendDropdownInput(this.bloqData.text[j][i].data, this.bloqData.text[j][i].type, posx, posy, this.id + '_' + inputID);
+                    inputID += 1;
+                    posx += 110;
+                }
+            } else {
+                var text = this.bloqBody.text(this.bloqData.text[j][i]).font({
+                    family: 'Helvetica',
+                    fill: '#000',
+                    size: 14
+                }).move(posx, posy);
+                posx += this.bloqData.text[j][i].length * 5 + 30;
+                this.UIElements.push({
+                    element: text,
+                    elementsToPush: undefined
+                });
+            }
+        }
+        if (posx > width) {
+            width = posx;
+        }
+        posx = margin;
+        posy += 40;
+    }
+    this.UIElements.shift();
+    //Add the elements that must be pushed
+    for (i in this.UIElements) {
+        this.UIElements[i].elementsToPush = [{}];
+        for (j in this.UIElements) {
+            if (j > i) {
+                this.UIElements[i].elementsToPush.push({
+                    bloq: this.UIElements[j].element,
+                    connector: this.UIElements[j].connector
+                });
+            }
+        }
+        this.UIElements[i].elementsToPush.shift();
+    }
+    //Update bloq's size
+    this.resize({
+        x: width - this.size.width,
+        y: posy - this.size.height
+    });
 };
 //----------------------------------------------------------------//
 // This file is part of the bloqs Project                         //
@@ -1083,11 +1099,13 @@ var getBasicBloqs = function(){
      */
     data.createBloq = function(bloqData, canvas, position) {
         var bloq;
-        if (bloqData.hasOwnProperty('output')) {
-            bloq = newOutputBloq(bloqData, canvas, position, data);
-        } else {
-            bloq = newStatementBloq(bloqData, canvas, position, data);
-        }
+        // if (bloqData.hasOwnProperty('output')) {
+        //     bloq = newOutputBloq(bloqData, canvas, position, data);
+        // } else {
+        //     bloq = newStatementBloq(bloqData, canvas, position, data);
+        // }
+
+        bloq = new Bloq(bloqData, canvas, position, data);
         data.bloqs.push(bloq);
         if (bloqData.label === 'loop') {
             data.bloqs.loop = bloq;

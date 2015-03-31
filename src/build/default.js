@@ -60,11 +60,13 @@
      */
     data.createBloq = function(bloqData, canvas, position) {
         var bloq;
-        if (bloqData.hasOwnProperty('output')) {
-            bloq = newOutputBloq(bloqData, canvas, position, data);
-        } else {
-            bloq = newStatementBloq(bloqData, canvas, position, data);
-        }
+        // if (bloqData.hasOwnProperty('output')) {
+        //     bloq = newOutputBloq(bloqData, canvas, position, data);
+        // } else {
+        //     bloq = newStatementBloq(bloqData, canvas, position, data);
+        // }
+
+        bloq = new Bloq(bloqData, canvas, position, data);
         data.bloqs.push(bloq);
         if (bloqData.label === 'loop') {
             data.bloqs.loop = bloq;
