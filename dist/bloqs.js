@@ -211,7 +211,7 @@ function Bloq(bloqData, canvas, position, data) {
         width: 100,
         height: 50
     };
-    this.delta = {
+    this.bloqBody.delta = {
         x: 0,
         y: 0,
         lastx: 0,
@@ -226,7 +226,7 @@ function Bloq(bloqData, canvas, position, data) {
      * We store relations here, using nodes
      * @type {{parent: undefined, children: Array}}
      */
-    this.relations = {
+    this.bloqBody.relations = {
         parent: undefined,
         children: [],
         codeChildren: [],
@@ -257,6 +257,7 @@ function Bloq(bloqData, canvas, position, data) {
     this.bloqBody.draggable();
 
     this.bloqBody.dragmove = Bloq.prototype.dragmove;
+    this.bloqBody.dragend = Bloq.prototype.dragend;
 }
 /**
  * Resize a bloq and update its down connector, if any
@@ -274,8 +275,8 @@ Bloq.prototype.resize = function(delta) {
     // this.border.size(this.size.width, this.size.height);
     // //this.selection.size(this.size.width, this.size.height);
     //update down connector:
-    if (this.connections.down !== undefined) {
-        utils.updateConnector(this.connections.down, {
+    if (this.bloqBody.connections.down !== undefined) {
+        utils.updateConnector(this.bloqBody.connections.down, {
             x: 0,
             y: delta.y
         });
@@ -285,8 +286,6 @@ Bloq.prototype.resize = function(delta) {
  * We start dragging
  */
 Bloq.prototype.dragmove = function(a) {
-    console.log('this', this, Bloq);
-    this = Bloq;
     this.dragmoveFlag = true;
     // remove parent of this and child in parent:
     if (this.relations.parent !== undefined) {
@@ -328,6 +327,10 @@ Bloq.prototype.dragmove = function(a) {
     // move child bloqs along with this one
     utils.moveChildren(this, this.delta);
 };
+
+Bloq.prototype.getParent = function (){
+    return this.relations.parent;
+}
 /**
  * We stop dragging
  */
@@ -390,9 +393,9 @@ Bloq.prototype.deleteChild = function(child) {
     var i = 0;
     //remove bloq from connection definition
     if (this.relations.children[child.node.id] !== undefined && this.relations.children[child.node.id].connection === 'output') {
-        for (i in this.connections.inputs) {
-            if (this.connections.inputs[i].bloq !== undefined && this.connections.inputs[i].this.id() === child.node.id) {
-                this.connections.inputs[i].bloq = undefined;
+        for (i in this.bloqBody.connections.inputs) {
+            if (this.bloqBody.connections.inputs[i].bloq !== undefined && this.bloqBody.connections.inputs[i].this.id() === child.node.id) {
+                this.bloqBody.connections.inputs[i].bloq = undefined;
                 break;
             }
         }
@@ -444,7 +447,7 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
     return true;
 };
 Bloq.prototype.setParent = function(parentId) {
-    this.relations.parent = parentId;
+    this.bloqBody.relations.parent = parentId;
     return true;
 };
 Bloq.prototype.getBloqById = function(nodeId) {
@@ -461,14 +464,14 @@ Bloq.prototype.getCode = function(_function) {
     var search = '';
     var replacement = '';
     var id;
-    for (var i in this.relations.inputChildren) {
-        id = this.relations.inputChildren[i].id;
+    for (var i in this.bloqBody.relations.inputChildren) {
+        id = this.bloqBody.relations.inputChildren[i].id;
         id = id.substr(id.indexOf('_') + 1, id.length);
         search = '{[' + id + ']}';
-        if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
-            replacement = this.relations.inputChildren[i].code;
+        if (this.bloqBody.relations.inputChildren[i].bloq === 'userInput' || this.bloqBody.relations.inputChildren[i].bloq === 'dropdown') {
+            replacement = this.bloqBody.relations.inputChildren[i].code;
         } else {
-            replacement = this.relations.inputChildren[i].this.getCode(_function);
+            replacement = this.bloqBody.relations.inputChildren[i].this.getCode(_function);
         }
         code = code.replace(new RegExp(search, 'g'), replacement);
     }
@@ -483,10 +486,10 @@ Bloq.prototype.getChildrenHeight = function(flag) {
         this.childrenHeight = 0;
     }
     var children;
-    for (var i in this.relations.codeChildren) {
-        children = this.relations.codeChildren[i];
+    for (var i in this.bloqBody.relations.codeChildren) {
+        children = this.bloqBody.relations.codeChildren[i];
         this.childrenHeight += this.getBloqById(children).size.height;
-        if (children.relations !== undefined && children.relations.codeChildren !== undefined) {
+        if (children.bloqBody.relations !== undefined && children.bloqBody.relations.codeChildren !== undefined) {
             children.getChildrenHeight();
         }
     }
@@ -506,13 +509,13 @@ Bloq.prototype.getChildrenHeight = function(flag) {
 // });
 Bloq.prototype.resizeStatementsInput = function() {};
 Bloq.prototype.resizeParents = function(direction) {
-    var parentBloq = this.getBloqById(this.relations.parent);
+    var parentBloq = this.getBloqById(this.bloqBody.relations.parent);
     console.log('this.childrenHeight', this.childrenHeight);
     if (this.childrenHeight === 0) {
         this.childrenHeight += this.size.height;
     }
-    while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined) {
-        parentBloq = this.getBloqById(parentBloq.relations.parent);
+    while (parentBloq.bloqBody.relations !== undefined && parentBloq.bloqBody.relations.parent !== undefined) {
+        parentBloq = this.getBloqById(parentBloq.bloqBody.relations.parent);
     }
     console.log('going up by : ', this.childrenHeight, direction, parentBloq);
     if (direction === 'up') {
@@ -530,93 +533,93 @@ Bloq.prototype.resizeParents = function(direction) {
 
 
 Bloq.prototype.createConnectors = function() {
-    this.connections = {};
+    this.bloqBody.connections = {};
     if (this.bloqData.inputs) {
-        this.connections.inputs = [{}];
+        this.bloqBody.connections.inputs = [{}];
         for (var i in this.bloqData.inputs) {
             i = parseInt(i, 10);
-            this.connections.inputs[i] = {
+            this.bloqBody.connections.inputs[i] = {
                 connectionPosition: {},
                 connectorArea: {},
                 type: ''
             };
-            this.connections.inputs[i].connectionPosition = {
+            this.bloqBody.connections.inputs[i].connectionPosition = {
                 x: this.bloqBody.x() + this.size.width,
                 y: this.bloqBody.y() + i * connectionThreshold
             };
-            this.connections.inputs[i].connectorArea = {
+            this.bloqBody.connections.inputs[i].connectorArea = {
                 x1: this.bloqBody.x() + this.size.width - connectionThreshold,
                 x2: this.bloqBody.x() + this.size.width + connectionThreshold,
                 y1: this.bloqBody.y() + i * connectionThreshold,
                 y2: this.bloqBody.y() + i * connectionThreshold + connectionThreshold
             };
-            this.connections.inputs[i].type = this.bloqData.inputs[i];
-            this.connections.inputs[i].movedDown = false;
+            this.bloqBody.connections.inputs[i].type = this.bloqData.inputs[i];
+            this.bloqBody.connections.inputs[i].movedDown = false;
             //Update bloq's size
             this.resize({
                 x: 0,
                 y: connectionThreshold
             });
-            this.connections.inputs[i].UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
+            this.bloqBody.connections.inputs[i].UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
                 fill: getRandomColor()
             }).move(this.bloqBody.x() + this.size.width - connectionThreshold, this.bloqBody.y() + i * connectionThreshold);
         }
     }
     if (this.bloqData.output) {
-        this.connections.output = {
+        this.bloqBody.connections.output = {
             connectionPosition: {},
             connectorArea: {},
             type: this.bloqData.output
         };
-        this.connections.output.connectionPosition = {
+        this.bloqBody.connections.output.connectionPosition = {
             x: this.bloqBody.x(),
             y: this.bloqBody.y()
         };
-        this.connections.output.connectorArea = {
+        this.bloqBody.connections.output.connectorArea = {
             x1: this.bloqBody.x() - connectionThreshold,
             x2: this.bloqBody.x() + connectionThreshold,
             y1: this.bloqBody.y(),
             y2: this.bloqBody.y() + connectionThreshold
         };
-        this.connections.output.UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
+        this.bloqBody.connections.output.UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
             fill: '#FFCC33'
         }).move(this.bloqBody.x() - connectionThreshold, this.bloqBody.y());
     }
     if (this.bloqData.up) {
-        this.connections.up = {
+        this.bloqBody.connections.up = {
             connectionPosition: {},
             connectorArea: {}
         };
-        this.connections.up.connectionPosition = {
+        this.bloqBody.connections.up.connectionPosition = {
             x: this.bloqBody.x(),
             y: this.bloqBody.y()
         };
-        this.connections.up.connectorArea = {
+        this.bloqBody.connections.up.connectorArea = {
             x1: this.bloqBody.x(),
             x2: this.bloqBody.x() + connectionThreshold,
             y1: this.bloqBody.y() - connectionThreshold,
             y2: this.bloqBody.y() + connectionThreshold
         };
-        this.connections.up.UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
+        this.bloqBody.connections.up.UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
             fill: '#FF0000'
         }).move(this.bloqBody.x(), this.bloqBody.y() - connectionThreshold);
     }
     if (this.bloqData.down) {
-        this.connections.down = {
+        this.bloqBody.connections.down = {
             connectionPosition: {},
             connectorArea: {}
         };
-        this.connections.down.connectionPosition = {
+        this.bloqBody.connections.down.connectionPosition = {
             x: this.bloqBody.x(),
             y: this.bloqBody.y() + this.size.height
         };
-        this.connections.down.connectorArea = {
+        this.bloqBody.connections.down.connectorArea = {
             x1: this.bloqBody.x(),
             x2: this.bloqBody.x() + connectionThreshold,
             y1: this.bloqBody.y() + this.size.height - connectionThreshold,
             y2: this.bloqBody.y() + this.size.height + connectionThreshold
         };
-        this.connections.down.UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
+        this.bloqBody.connections.down.UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
             fill: '#FF0000'
         }).move(this.bloqBody.x(), this.bloqBody.y() + this.size.height - connectionThreshold);
     }
@@ -624,12 +627,12 @@ Bloq.prototype.createConnectors = function() {
 
 Bloq.prototype.addInput = function(posx, posy, type) {
     var index = 0;
-    if (this.connections.inputs !== undefined) {
-        index = this.connections.inputs.length;
+    if (this.bloqBody.connections.inputs !== undefined) {
+        index = this.bloqBody.connections.inputs.length;
     } else {
-        this.connections.inputs = [{}];
+        this.bloqBody.connections.inputs = [{}];
     }
-    this.connections.inputs[index] = {
+    this.bloqBody.connections.inputs[index] = {
         connectionPosition: {
             x: posx,
             y: posy
@@ -645,11 +648,11 @@ Bloq.prototype.addInput = function(posx, posy, type) {
         movedDown: false
     };
     if (posx !== undefined && posy !== undefined) {
-        this.connections.inputs[index].UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
+        this.bloqBody.connections.inputs[index].UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
             fill: getRandomColor()
         }).move(posx - connectionThreshold, posy);
     }
-    this.inputsNumber = this.connections.inputs.length;
+    this.inputsNumber = this.bloqBody.connections.inputs.length;
 };
 
 
@@ -688,7 +691,7 @@ Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
     } else {
         code = '"' + document.getElementById(id).value + '"';
     }
-    this.relations.inputChildren[id] = {
+    this.bloqBody.relations.inputChildren[id] = {
         id: id,
         bloq: 'userInput',
         code: code
@@ -705,10 +708,10 @@ Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
                 //ToDo : UX warning!
                 document.getElementById(id).value = '';
             } else {
-                this.relations.inputChildren[id].code = document.getElementById(id).value;
+                this.bloqBody.relations.inputChildren[id].code = document.getElementById(id).value;
             }
         } else {
-            this.relations.inputChildren[id].code = '"' + document.getElementById(id).value + '"';
+            this.bloqBody.relations.inputChildren[id].code = '"' + document.getElementById(id).value + '"';
         }
     }, false);
 };
@@ -730,13 +733,13 @@ Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id
         element: dropdown,
         elementsToPush: undefined
     });
-    this.relations.inputChildren[id] = {
+    this.bloqBody.relations.inputChildren[id] = {
         id: id,
         bloq: 'userInput',
         code: newList.value
     };
     newList.onchange = function() {
-        this.relations.inputChildren[id].code = newList.value;
+        this.bloqBody.relations.inputChildren[id].code = newList.value;
     };
     document.getElementById(id).addEventListener("mousedown", function(e) {
         e.stopPropagation();
@@ -754,7 +757,7 @@ Bloq.prototype.appendBloqInput = function(inputText, type, posx, posy, inputID) 
         element: bloqInput,
         elementsToPush: undefined,
         id: inputID,
-        connector: this.connections.inputs[this.connections.inputs.length - 1]
+        connector: this.bloqBody.connections.inputs[this.bloqBody.connections.inputs.length - 1]
     });
 };
 Bloq.prototype.createBloqUI = function() {
