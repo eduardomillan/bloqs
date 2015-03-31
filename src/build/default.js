@@ -1,3 +1,8 @@
+/*global $:false */
+/*global document:false */
+/*global SVG:false */
+/*global Option:false */
+
 //----------------------------------------------------------------//
 // This file is part of the bloqs Project                         //
 //                                                                //
@@ -11,7 +16,6 @@
 // @include ../projectBloq.js
 // @include ../../res/basic_bloqs.js
 (function(root, undefined) {
-    "use strict";
     var data = {
         bloqs: [],
         code: {

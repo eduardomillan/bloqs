@@ -5,9 +5,7 @@
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
 var newStatementBloq = function(bloqData, canvas, position, data) {
-    "use strict";
-    var connectionThreshold = 20; // px
-    var bloq = newBloq(bloqData, canvas, position, data);
+    var bloq = new Bloq(bloqData, canvas, position, data);
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
         console.log('getConnectionPosition', connectionType);
         if (connectionType === 'up') {

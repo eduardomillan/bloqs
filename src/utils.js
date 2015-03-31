@@ -1,3 +1,4 @@
+"use strict";
 //----------------------------------------------------------------//
 // This file is part of the bloqs Project                         //
 //                                                                //
@@ -7,19 +8,16 @@
 var utils = utils || {};
 var connectionThreshold = 20; // px
 utils.moveBloq = function(bloq, location) {
-    "use strict";
     bloq.x(location.x);
     bloq.y(location.y);
 };
 utils.moveBloq2 = function(bloq, delta) {
-    "use strict";
     bloq.x(bloq.x() + delta.x);
     bloq.y(bloq.y() + delta.y);
     bloq.connections = utils.updateConnectors(bloq, delta);
 };
 
 function getRandomColor() {
-    "use strict";
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';
     for (var i = 0; i < 6; i++) {
@@ -28,7 +26,6 @@ function getRandomColor() {
     return color;
 }
 utils.addInput = function(bloq, posx, posy, type) {
-    "use strict";
     var index = 0;
     if (bloq.connections.inputs !== undefined) {
         index = bloq.connections.inputs.length;
@@ -51,14 +48,13 @@ utils.addInput = function(bloq, posx, posy, type) {
         movedDown: false
     };
     if (posx !== undefined && posy !== undefined) {
-        bloq.connections.inputs[index].UI = canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
+        bloq.connections.inputs[index].UI = bloq.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
             fill: getRandomColor()
         }).move(posx - connectionThreshold, posy);
     }
     bloq.inputsNumber = bloq.connections.inputs.length;
 };
 utils.createConnectors = function(bloq, bloqData) {
-    "use strict";
     bloq.connections = {};
     if (bloqData.inputs) {
         bloq.connections.inputs = [{}];
@@ -86,7 +82,7 @@ utils.createConnectors = function(bloq, bloqData) {
                 x: 0,
                 y: connectionThreshold
             });
-            bloq.connections.inputs[i].UI = canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
+            bloq.connections.inputs[i].UI = bloq.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
                 fill: getRandomColor()
             }).move(bloq.x() + bloq.size.width - connectionThreshold, bloq.y() + i * connectionThreshold);
         }
@@ -107,7 +103,7 @@ utils.createConnectors = function(bloq, bloqData) {
             y1: bloq.y(),
             y2: bloq.y() + connectionThreshold
         };
-        bloq.connections.output.UI = canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
+        bloq.connections.output.UI = bloq.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
             fill: '#FFCC33'
         }).move(bloq.x() - connectionThreshold, bloq.y());
     }
@@ -126,7 +122,7 @@ utils.createConnectors = function(bloq, bloqData) {
             y1: bloq.y() - connectionThreshold,
             y2: bloq.y() + connectionThreshold
         };
-        bloq.connections.up.UI = canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
+        bloq.connections.up.UI = bloq.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
             fill: '#FF0000'
         }).move(bloq.x(), bloq.y() - connectionThreshold);
     }
@@ -145,7 +141,7 @@ utils.createConnectors = function(bloq, bloqData) {
             y1: bloq.y() + bloq.size.height - connectionThreshold,
             y2: bloq.y() + bloq.size.height + connectionThreshold
         };
-        bloq.connections.down.UI = canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
+        bloq.connections.down.UI = bloq.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
             fill: '#FF0000'
         }).move(bloq.x(), bloq.y() + bloq.size.height - connectionThreshold);
     }
@@ -156,7 +152,6 @@ utils.createConnectors = function(bloq, bloqData) {
  * @param bloq
  */
 utils.updateConnectors = function(bloq, delta) {
-    "use strict";
     for (var type in bloq.connections) {
         if (bloq.connections[type] && type === 'inputs') {
             for (var i in bloq.connections[type]) {
@@ -169,7 +164,6 @@ utils.updateConnectors = function(bloq, delta) {
     return bloq.connections;
 };
 utils.updateConnector = function(connector, delta) {
-    "use strict";
     connector.connectionPosition.x += delta.x;
     connector.connectionPosition.y += delta.y;
     connector.connectorArea.x1 += delta.x;
@@ -188,7 +182,6 @@ utils.oppositeConnection = {
     down: 'up'
 };
 utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID) {
-    "use strict";
     if (bloq2Connection !== undefined && bloq1Connection !== undefined) {
         if (bloq1.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
             if (bloq1Connection.type === bloq2Connection.type) { // if the type is the same --> connect
@@ -235,7 +228,6 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
     return false;
 };
 utils.rejectBloq = function(bloq) {
-    "use strict";
     var rejectionLocation = {
         x: 50,
         y: 0
@@ -246,7 +238,6 @@ utils.rejectBloq = function(bloq) {
     });
 };
 utils.moveChildren = function(bloq, delta) {
-    "use strict";
     for (var i in bloq.relations.children) {
         var child = bloq.relations.children[i].bloq;
         utils.moveBloq2(child, delta);
@@ -256,7 +247,6 @@ utils.moveChildren = function(bloq, delta) {
     }
 };
 utils.moveConnector = function(bloq, connection, delta) {
-    "use strict";
     //Move connector 
     connection = utils.updateConnector(connection, delta);
     //If there is a bloq connected, move the bloq also
@@ -268,16 +258,14 @@ utils.moveConnector = function(bloq, connection, delta) {
     bloq.resize(delta);
 };
 utils.bloqOnTop = function(bloq) {
-    "use strict";
     bloq.node.parentNode.appendChild(bloq.node);
     var child = {};
     for (var i in bloq.relations.children) {
         child = bloq.relations.children[i].bloq;
-        utils.bloqOnTop(child);//.node.parentNode.appendChild(child.node);
+        utils.bloqOnTop(child); //.node.parentNode.appendChild(child.node);
     }
 };
 utils.pushElements = function(bloq, UIElement, delta) {
-    "use strict";
     var elements = UIElement.elementsToPush;
     for (var j in elements) {
         elements[j].bloq.x(elements[j].bloq.x() + delta.x);
@@ -289,7 +277,6 @@ utils.pushElements = function(bloq, UIElement, delta) {
     }
 };
 utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
-    "use strict";
     var text = bloq.foreignObject(100, 100).attr({
         id: 'fobj',
         color: '#FFCC33'
@@ -334,7 +321,6 @@ utils.appendUserInput = function(bloq, inputText, type, posx, posy, id) {
     }, false);
 };
 utils.appendDropdownInput = function(bloq, dropdownText, type, posx, posy, id) {
-    "use strict";
     var dropdown = bloq.foreignObject(100, 100).attr({
         id: id,
         color: '#FFCC33'
@@ -359,7 +345,7 @@ utils.appendDropdownInput = function(bloq, dropdownText, type, posx, posy, id) {
     };
     newList.onchange = function() {
         bloq.relations.inputChildren[id].code = newList.value;
-    }
+    };
     document.getElementById(id).addEventListener("mousedown", function(e) {
         e.stopPropagation();
     }, false);
@@ -370,7 +356,6 @@ utils.paths = {
     // connector_left: 'M28.000,50.000 C28.000,50.000 4.000,50.000 4.000,50.000 C1.791,50.000 -0.000,48.209 -0.000,46.000 C-0.000,46.000 -0.000,33.000 -0.000,33.000 C4.418,33.000 8.000,29.418 8.000,25.000 C8.000,20.582 4.418,17.000 -0.000,17.000 C-0.000,17.000 -0.000,4.000 -0.000,4.000 C-0.000,1.791 1.791,0.000 4.000,0.000 C4.000,0.000 28.000,0.000 28.000,0.000 C28.000,0.000 28.000,50.000 28.000,50.000 Z'
 };
 utils.getOutputBloq = function(bloq, posx, width, height) {
-    "use strict";
     var group = bloq.group();
     var connector = bloq.path(utils.paths.leftConnector).fill('#cccccc'); //.move(posx, posy);
     connector.x(posx);
@@ -380,7 +365,6 @@ utils.getOutputBloq = function(bloq, posx, width, height) {
     return group;
 };
 utils.appendBloqInput = function(bloq, inputText, type, posx, posy, inputID) {
-    "use strict";
     //draw white (ToDo: UX) rectangle
     var bloqInput = utils.getOutputBloq(bloq, posx, bloq.bloqInput.width, bloq.bloqInput.height);
     utils.addInput(bloq, bloq.x() + posx, bloq.y() + posy, type); //bloq.x()+posx + width, bloq.x()+posy + i * connectionThreshold);
@@ -392,15 +376,16 @@ utils.appendBloqInput = function(bloq, inputText, type, posx, posy, inputID) {
     });
 };
 utils.createBloqUI = function(bloq, bloqData) {
-    "use strict";
     var margin = 10;
     var posx = margin;
     var width = 0;
     var posy = margin;
     var inputID = 0;
     bloq.UIElements = [{}];
-    for (var j in bloqData.text) {
-        for (var i in bloqData.text[j]) {
+    var i = 0;
+    var j = 0;
+    for (j in bloqData.text) {
+        for (i in bloqData.text[j]) {
             if (typeof(bloqData.text[j][i]) === typeof({})) {
                 if (bloqData.text[j][i].input === 'userInput') {
                     console.log('userinput, id:', inputID);
@@ -439,9 +424,9 @@ utils.createBloqUI = function(bloq, bloqData) {
     }
     bloq.UIElements.shift();
     //Add the elements that must be pushed
-    for (var i in bloq.UIElements) {
+    for (i in bloq.UIElements) {
         bloq.UIElements[i].elementsToPush = [{}];
-        for (var j in bloq.UIElements) {
+        for (j in bloq.UIElements) {
             if (j > i) {
                 bloq.UIElements[i].elementsToPush.push({
                     bloq: bloq.UIElements[j].element,
@@ -458,7 +443,7 @@ utils.createBloqUI = function(bloq, bloqData) {
     });
 };
 // utils.getBloqPath = function(bloq, bloqData) {
-//     "use strict";
+//     
 //     var path = "m 0,8 A 8,8 0 0,1 8,0 H 15 l 6,4 3,0 6,-4 H 217.11582946777344 v 5 c 0,10 -8,-8 -8,7.5 s 8,-2.5 8,7.5 v 60 v 25 H 30 l -6,4 -3,0 -6,-4 H 8 a 8,8 0 0,1 -8,-8 z";
 //     if (bloqData.down) {
 //         // if it has a down connection, it has to have an up one

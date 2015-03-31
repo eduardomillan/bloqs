@@ -5,9 +5,7 @@
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
 var newProjectBloq = function(bloqData, canvas, position, data) {
-    "use strict";
-    var connectionThreshold = 20; // px
-    var bloq = newBloq(bloqData, canvas, position, data);
+    var bloq = new Bloq(bloqData, canvas, position, data);
     //Down connector x position : +20 px
     utils.updateConnector(bloq.connections.down, {
         x: 20,
@@ -33,16 +31,12 @@ var newProjectBloq = function(bloqData, canvas, position, data) {
      * @param delta
      */
     bloq.resizeStatementsInput = function(delta) {
-        "use strict";
         bloq.body.leftPart.size.height += delta.y;
-        console.log('resizeStatementsInput', bloq.body.leftPart.size.height);
-        console.log('resizeStatementsInput-->', bloq.body.leftPart.height());
         bloq.body.leftPart.height( bloq.body.leftPart.size.height );
-        console.log('resizeStatementsInput-->', bloq.body.leftPart.height());
         bloq.body.downPart.move(0, bloq.body.downPart.y() + delta.y);
     };
     // bloq.resize = bloq.resizeStatementsInput;
-    bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
+    bloq.getConnectionPosition = function(connectionType, bloqToConnect) {
         // bloqToConnect.getChildrenHeight(true);
         // bloqToConnect.childrenHeight+=bloqToConnect.size.height;
         // console.log('bloqToConnect', bloqToConnect.childrenHeight);
