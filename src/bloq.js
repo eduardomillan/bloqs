@@ -8,7 +8,8 @@ function Bloq(bloqData, canvas, position, data) {
     this.bloqBody = canvas.group().move(position[0], position[1]);
     this.bloqData = bloqData;
     this.canvas = canvas;
-    this.data = data;
+    this.bloqBody.data = data;
+    this.bloqBody.bloq = this;
     this.size = {
         width: 100,
         height: 50
@@ -36,7 +37,6 @@ function Bloq(bloqData, canvas, position, data) {
     };
     //Create the connectors using the bloq information
     this.createConnectors();
-
     // basic shape of the bloq
     this.body = this.bloqBody.rect(this.size.width, this.size.height).fill(bloqData.color).radius(4);
     this.id = this.body.node.id;
@@ -57,7 +57,6 @@ function Bloq(bloqData, canvas, position, data) {
      * Set this bloq as draggable
      */
     this.bloqBody.draggable();
-
     this.bloqBody.dragmove = Bloq.prototype.dragmove;
     this.bloqBody.dragend = Bloq.prototype.dragend;
 }
@@ -93,7 +92,7 @@ Bloq.prototype.dragmove = function(a) {
     if (this.relations.parent !== undefined) {
         //move dragged bloq on top
         utils.bloqOnTop(this.bloqBody);
-        var parentBloq = this.getBloqById(this.relations.parent);
+        var parentBloq = utils.getBloqById(this.relations.parent, this.data);
         if (parentBloq.relations.children[this.id()].connection === 'output') {
             for (var k in parentBloq.connections.inputs) {
                 if (parentBloq.connections.inputs[k].inline === true && k === parentBloq.relations.children[this.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
@@ -129,8 +128,7 @@ Bloq.prototype.dragmove = function(a) {
     // move child bloqs along with this one
     utils.moveChildren(this, this.delta);
 };
-
-Bloq.prototype.getParent = function (){
+Bloq.prototype.getParent = function() {
     return this.relations.parent;
 }
 /**
@@ -144,23 +142,29 @@ Bloq.prototype.dragend = function() {
         this.delta.lasty = 0;
         var flag = false;
         var a;
+        var thisBloq = this.bloq;
+        console.log('thisBloq', thisBloq);
         for (var j in this.connections) {
             if (flag === true) {
                 break;
             }
             console.log('Searching connection in bloqs connection:++++++++++++++++++++++++++++++++++', j);
+            console.log('this.data.bloqs', this.data.bloqs);
             for (var i in this.data.bloqs) {
-                if (this.data.bloqs[i].node.id !== this.node.id) {
+                if (this.data.bloqs[i].id !== this.node.id) {
                     if (j === 'inputs') {
                         for (var k in this.connections[j]) {
-                            a = utils.manageConnections(j, this.connections[j][k], this.data.bloqs[i].connections[utils.oppositeConnection[j]], this, this.data.bloqs[i], k);
+                            //type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID
+                            a = utils.manageConnections(j, this.connections[j][k], this.data.bloqs[i].bloqBody.connections[utils.oppositeConnection[j]], thisBloq, this.data.bloqs[i], k);
                         }
                     } else if (j === 'output') {
-                        for (var h in this.data.bloqs[i].connections[utils.oppositeConnection[j]]) {
-                            a = utils.manageConnections(j, this.connections[j], this.data.bloqs[i].connections[utils.oppositeConnection[j]][h], this, this.data.bloqs[i], h);
+                        for (var h in this.data.bloqs[i].bloqBody.connections[utils.oppositeConnection[j]]) {
+                            //type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID
+                            a = utils.manageConnections(j, this.connections[j], this.data.bloqs[i].bloqBody.connections[utils.oppositeConnection[j]][h], thisBloq, this.data.bloqs[i], h);
                         }
                     } else {
-                        a = utils.manageConnections(j, this.connections[j], this.data.bloqs[i].connections[utils.oppositeConnection[j]], this, this.data.bloqs[i]);
+                        //type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID
+                        a = utils.manageConnections(j, this.connections[j], this.data.bloqs[i].bloqBody.connections[utils.oppositeConnection[j]], thisBloq, this.data.bloqs[i]);
                     }
                 }
             }
@@ -170,23 +174,14 @@ Bloq.prototype.dragend = function() {
     }
 };
 Bloq.prototype.updateBloqs = function(parent, child, type, inputID) {
-    parent.setChildren(child.node.id, type, inputID);
-    child.setParent(parent.node.id);
-};
-Bloq.prototype.itsOver = function(dragRect, staticRect) {
-    if (dragRect !== undefined && staticRect !== undefined) {
-        // console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1);
-        // console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1 < staticRect.x2, dragRect.x2 > staticRect.x1, dragRect.y1 < staticRect.y2, dragRect.y2 > staticRect.y1);
-        // console.log('dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1', dragRect.x1, staticRect.x2, dragRect.x2, staticRect.x1, dragRect.y1, staticRect.y2, dragRect.y2, staticRect.y1);
-        return dragRect.x1 < staticRect.x2 && dragRect.x2 > staticRect.x1 && dragRect.y1 < staticRect.y2 && dragRect.y2 > staticRect.y1;
-    } else {
-        return false;
-    }
+    console.log('child', child);
+    parent.setChildren(child.id, type, inputID);
+    child.setParent(parent.id);
 };
 // utilities
 Bloq.prototype.deleteParent = function(cascade) {
     if (cascade !== false) {
-        var parentBloq = this.getBloqById(this.relations.parent);
+        var parentBloq = utils.getBloqById(this.relations.parent, this.bloqBody.data);
         parentBloq.relations.children = [];
     }
     this.relations.parent = undefined;
@@ -214,30 +209,29 @@ Bloq.prototype.deleteChild = function(child) {
     this.getChildrenHeight(true);
 };
 Bloq.prototype.setChildren = function(childrenId, location, inputID) {
-    for (var bloqIndex in this.relations.children) {
-        if (childrenId == this.relations.children[bloqIndex]) {
+    for (var bloqIndex in this.bloqBody.relations.children) {
+        if (childrenId == this.bloqBody.relations.children[bloqIndex]) {
             // it exists, do nothing
             return false;
         }
     }
-    console.log('childrenId', childrenId, this.data);
     // if we made it so far, add a new child
-    this.relations.children[childrenId] = {
-        bloq: this.getBloqById(childrenId),
+    this.bloqBody.relations.children[childrenId] = {
+        bloq: utils.getBloqById(childrenId, this.bloqBody.data),
         connection: location,
         inputID: inputID
     };
-    for (bloqIndex in this.relations.codeChildren) {
-        if (childrenId == this.relations.codeChildren[bloqIndex]) {
+    for (bloqIndex in this.bloqBody.relations.codeChildren) {
+        if (childrenId == this.bloqBody.relations.codeChildren[bloqIndex]) {
             // it exists, do nothing
             return false;
         }
     }
     if (location === 'up') {
-        this.relations.codeChildren.push(childrenId);
+        this.bloqBody.relations.codeChildren.push(childrenId);
     } else {
-        this.relations.inputChildren[childrenId] = {
-            bloq: this.getBloqById(childrenId),
+        this.bloqBody.relations.inputChildren[childrenId] = {
+            bloq: utils.getBloqById(childrenId, this.bloqBody.data),
             id: inputID
         };
     }
@@ -251,15 +245,6 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
 Bloq.prototype.setParent = function(parentId) {
     this.bloqBody.relations.parent = parentId;
     return true;
-};
-Bloq.prototype.getBloqById = function(nodeId) {
-    for (var bloqIndex in this.data.bloqs) {
-        var bloq = this.data.bloqs[bloqIndex];
-        if (this.node.id == nodeId) {
-            return bloq;
-        }
-    }
-    return null;
 };
 Bloq.prototype.getCode = function(_function) {
     var code = this.code[_function];
@@ -309,6 +294,47 @@ Bloq.prototype.getChildrenHeight = function(flag) {
 //     //     this.selection.show();
 //     // }
 // });
+
+ Bloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
+        if (connectionType === 'up') {
+            return {
+                x: this.bloqBody.connections[connectionType].connectionPosition.x,
+                y: this.bloqBody.connections[connectionType].connectionPosition.y - bloqToConnect.size.height
+            };
+        }
+        if (connectionType === 'output') {
+            return {
+                x: this.bloqBody.connections[connectionType].connectionPosition.x - bloqToConnect.size.width,
+                y: this.bloqBody.connections[connectionType].connectionPosition.y - inputID * connectionThreshold
+            };
+        }
+        if (connectionType === 'inputs') {
+            console.log('--------------------------------------------------> MOVING DOWN');
+            for (var k in this.bloqBody.connections[connectionType]) {
+                //If the input is inline and there is not a bloq connected still
+                if (this.bloqBody.connections[connectionType][k].inline === true && k === inputID && this.bloqBody.connections[connectionType][k].bloq === undefined) {
+                    var delta = {
+                        x: bloqToConnect.size.width - this.bloqInput.width,
+                        y: bloqToConnect.size.height - this.bloqInput.height
+                    };
+                    this.resize(delta);
+                    delta = {
+                        x: bloqToConnect.size.width - this.bloqInput.width,
+                        y: 0
+                    };
+                    for (var i in this.UIElements) {
+                        if (this.UIElements[i].id === parseInt(inputID, 10)) {
+                            console.log('here pushing', this.UIElements[i].elementsToPush);
+                            utils.pushElements(this, this.UIElements[i], delta);
+                            break;
+                        }
+                    }
+                }
+            }
+            return this.bloqBody.connections[connectionType][inputID].connectionPosition;
+        }
+        return this.bloqBody.connections[connectionType].connectionPosition;
+    };
 Bloq.prototype.resizeStatementsInput = function() {};
 Bloq.prototype.resizeParents = function(direction) {
     var parentBloq = this.getBloqById(this.bloqBody.relations.parent);
@@ -332,8 +358,6 @@ Bloq.prototype.resizeParents = function(direction) {
         });
     }
 };
-
-
 Bloq.prototype.createConnectors = function() {
     this.bloqBody.connections = {};
     if (this.bloqData.inputs) {
@@ -426,7 +450,6 @@ Bloq.prototype.createConnectors = function() {
         }).move(this.bloqBody.x(), this.bloqBody.y() + this.size.height - connectionThreshold);
     }
 };
-
 Bloq.prototype.addInput = function(posx, posy, type) {
     var index = 0;
     if (this.bloqBody.connections.inputs !== undefined) {
@@ -456,9 +479,6 @@ Bloq.prototype.addInput = function(posx, posy, type) {
     }
     this.inputsNumber = this.bloqBody.connections.inputs.length;
 };
-
-
-
 utils.pushElements = function(bloq, UIElement, delta) {
     var elements = UIElement.elementsToPush;
     for (var j in elements) {
@@ -470,8 +490,6 @@ utils.pushElements = function(bloq, UIElement, delta) {
         }
     }
 };
-
-
 ///// BLOQ UI
 Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
     var text = this.bloqBody.foreignObject(100, 100).attr({
@@ -547,14 +565,11 @@ Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id
         e.stopPropagation();
     }, false);
 };
-
-
 Bloq.prototype.appendBloqInput = function(inputText, type, posx, posy, inputID) {
     //draw white (ToDo: UX) rectangle
     var bloqInput = utils.getOutputBloq(this.bloqBody, posx, this.bloqInput.width, this.bloqInput.height);
     this.addInput(this.bloqBody.x() + posx, this.bloqBody.y() + posy, type); //bloq.x()+posx + width, bloq.x()+posy + i * connectionThreshold);
     this.bloqBody.add(bloqInput);
-    
     this.UIElements.push({
         element: bloqInput,
         elementsToPush: undefined,
@@ -575,17 +590,14 @@ Bloq.prototype.createBloqUI = function() {
         for (i in this.bloqData.text[j]) {
             if (typeof(this.bloqData.text[j][i]) === typeof({})) {
                 if (this.bloqData.text[j][i].input === 'userInput') {
-                    console.log('userinput, id:', inputID);
                     this.appendUserInput(this.bloqData.text[j][i].label, this.bloqData.text[j][i].type, posx, posy, this.id + '_' + inputID);
                     inputID += 1;
                     posx += 110;
                 } else if (this.bloqData.text[j][i].input === 'bloqInput') {
-                    console.log('bloqinput, id:', inputID);
                     this.appendBloqInput(this.bloqData.text[j][i].label, this.bloqData.text[j][i].type, posx, posy - margin, inputID);
                     inputID += 1;
                     posx += 110;
                 } else if (this.bloqData.text[j][i].input === 'dropdown') {
-                    console.log('dropdown, id:', inputID);
                     this.appendDropdownInput(this.bloqData.text[j][i].data, this.bloqData.text[j][i].type, posx, posy, this.id + '_' + inputID);
                     inputID += 1;
                     posx += 110;
@@ -629,3 +641,4 @@ Bloq.prototype.createBloqUI = function() {
         y: posy - this.size.height
     });
 };
+/// CONECTIONS BETWEEN BLOQS:
