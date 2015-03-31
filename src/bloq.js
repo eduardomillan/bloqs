@@ -207,8 +207,8 @@ var newBloq = function(bloqData, canvas, position, data) {
             }
         }
         delete this.relations.inputChildren[child.node.id];
+        bloq.getChildrenHeight(true);
     };
-
     bloq.setChildren = function(childrenId, location, inputID) {
         for (var bloqIndex in bloq.relations.children) {
             if (childrenId == bloq.relations.children[bloqIndex]) {
@@ -237,10 +237,11 @@ var newBloq = function(bloqData, canvas, position, data) {
                 id: inputID
             };
         }
-        bloq.resizeStatementsInput({
-            x: 0,
-            y: bloq.childrenHeight
-        });
+        // bloq.resizeStatementsInput({
+        //     x: 0,
+        //     y: bloq.childrenHeight
+        // });
+        bloq.getChildrenHeight(true);
         return true;
     };
     bloq.setParent = function(parentId) {
@@ -279,7 +280,7 @@ var newBloq = function(bloqData, canvas, position, data) {
         return code;
     };
     bloq.getChildrenHeight = function(flag) {
-        if (flag === true){
+        if (flag === true) {
             bloq.childrenHeight = 0;
         }
         var children;
@@ -305,5 +306,27 @@ var newBloq = function(bloqData, canvas, position, data) {
         // }
     });
     bloq.resizeStatementsInput = function() {};
+    bloq.resizeParents = function(direction) {
+        var parentBloq = bloq.getBloqById(bloq.relations.parent);
+        console.log('bloq.childrenHeight', bloq.childrenHeight);
+        if (bloq.childrenHeight === 0) {
+            bloq.childrenHeight += bloq.size.height;
+        }
+        while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined) {
+            parentBloq = bloq.getBloqById(parentBloq.relations.parent);
+        }
+        console.log('going up by : ', bloq.childrenHeight, direction, parentBloq);
+        if (direction === 'up') {
+            parentBloq.resizeStatementsInput({
+                x: 0,
+                y: -bloq.childrenHeight
+            });
+        } else {
+            parentBloq.resizeStatementsInput({
+                x: 0,
+                y: bloq.childrenHeight
+            });
+        }
+    }
     return bloq;
 };

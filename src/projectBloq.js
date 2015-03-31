@@ -35,16 +35,20 @@ var newProjectBloq = function(bloqData, canvas, position, data) {
     bloq.resizeStatementsInput = function(delta) {
         "use strict";
         bloq.body.leftPart.size.height += delta.y;
-        bloq.body.leftPart.size(bloq.body.leftPart.size.width, bloq.body.leftPart.size.height);
+        console.log('resizeStatementsInput', bloq.body.leftPart.size.height);
+        console.log('resizeStatementsInput-->', bloq.body.leftPart.height());
+        bloq.body.leftPart.height( bloq.body.leftPart.size.height );
+        console.log('resizeStatementsInput-->', bloq.body.leftPart.height());
         bloq.body.downPart.move(0, bloq.body.downPart.y() + delta.y);
     };
-    bloq.resize = bloq.resizeStatementsInput;
+    // bloq.resize = bloq.resizeStatementsInput;
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-        bloqToConnect.getChildrenHeight(true);
-        bloqToConnect.childrenHeight+=bloqToConnect.size.height;
-        console.log('bloqToConnect', bloqToConnect.childrenHeight);
-        bloq.resizeStatementsInput({x:0,y:bloqToConnect.childrenHeight});
-        bloqToConnect.childrenHeight=0;
+        // bloqToConnect.getChildrenHeight(true);
+        // bloqToConnect.childrenHeight+=bloqToConnect.size.height;
+        // console.log('bloqToConnect', bloqToConnect.childrenHeight);
+        // bloq.resizeStatementsInput({x:0,y:bloqToConnect.childrenHeight});
+
+        bloqToConnect.resizeParents('down');
 
         return {
             x: bloq.connections[connectionType].connectionPosition.x,

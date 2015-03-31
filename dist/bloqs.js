@@ -703,8 +703,8 @@ var newBloq = function(bloqData, canvas, position, data) {
             }
         }
         delete this.relations.inputChildren[child.node.id];
+        bloq.getChildrenHeight(true);
     };
-
     bloq.setChildren = function(childrenId, location, inputID) {
         for (var bloqIndex in bloq.relations.children) {
             if (childrenId == bloq.relations.children[bloqIndex]) {
@@ -733,10 +733,11 @@ var newBloq = function(bloqData, canvas, position, data) {
                 id: inputID
             };
         }
-        bloq.resizeStatementsInput({
-            x: 0,
-            y: bloq.childrenHeight
-        });
+        // bloq.resizeStatementsInput({
+        //     x: 0,
+        //     y: bloq.childrenHeight
+        // });
+        bloq.getChildrenHeight(true);
         return true;
     };
     bloq.setParent = function(parentId) {
@@ -775,7 +776,7 @@ var newBloq = function(bloqData, canvas, position, data) {
         return code;
     };
     bloq.getChildrenHeight = function(flag) {
-        if (flag === true){
+        if (flag === true) {
             bloq.childrenHeight = 0;
         }
         var children;
@@ -801,6 +802,28 @@ var newBloq = function(bloqData, canvas, position, data) {
         // }
     });
     bloq.resizeStatementsInput = function() {};
+    bloq.resizeParents = function(direction) {
+        var parentBloq = bloq.getBloqById(bloq.relations.parent);
+        console.log('bloq.childrenHeight', bloq.childrenHeight);
+        if (bloq.childrenHeight === 0) {
+            bloq.childrenHeight += bloq.size.height;
+        }
+        while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined) {
+            parentBloq = bloq.getBloqById(parentBloq.relations.parent);
+        }
+        console.log('going up by : ', bloq.childrenHeight, direction, parentBloq);
+        if (direction === 'up') {
+            parentBloq.resizeStatementsInput({
+                x: 0,
+                y: -bloq.childrenHeight
+            });
+        } else {
+            parentBloq.resizeStatementsInput({
+                x: 0,
+                y: bloq.childrenHeight
+            });
+        }
+    }
     return bloq;
 };
 //----------------------------------------------------------------//
@@ -852,8 +875,9 @@ var newOutputBloq = function(bloqData, canvas, position, data) {
 var newStatementBloq = function(bloqData, canvas, position, data) {
     "use strict";
     var connectionThreshold = 20; // px
-    var bloq = newBloq(bloqData, canvas, position, data); //canvas.group().move(position[0], position[1]);
+    var bloq = newBloq(bloqData, canvas, position, data);
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
+        console.log('getConnectionPosition', connectionType);
         if (connectionType === 'up') {
             return {
                 x: bloq.connections[connectionType].connectionPosition.x,
@@ -875,7 +899,6 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
                     };
                     for (var i in bloq.UIElements) {
                         if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
-                            console.log('here pushing', bloq.UIElements[i].elementsToPush);
                             utils.pushElements(bloq, bloq.UIElements[i], delta);
                             break;
                         }
@@ -883,6 +906,9 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
                 }
             }
             return bloq.connections[connectionType][inputID].connectionPosition;
+        }
+        if (connectionType === 'down') {
+            bloqToConnect.resizeParents('down');
         }
         return bloq.connections[connectionType].connectionPosition;
     };
@@ -897,13 +923,8 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
             utils.bloqOnTop(bloq);
             var parentBloq = bloq.getBloqById(bloq.relations.parent);
             if (parentBloq.relations.children[bloq.id()].connection === 'up') {
-                bloq.getChildrenHeight(true);
-                bloq.childrenHeight += bloq.size.height;
-                console.log('going up by : ', bloq.childrenHeight);
-                parentBloq.resizeStatementsInput({
-                    x: 0,
-                    y: -bloq.childrenHeight
-                });
+                console.log('uuuuuuuuuuuuuuuuuup');
+                bloq.resizeParents('up');
             } else if (parentBloq.relations.children[bloq.id()].connection === 'output') {
                 for (var k in parentBloq.connections.inputs) {
                     if (parentBloq.connections.inputs[k].inline === true && k === parentBloq.relations.children[bloq.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
@@ -978,16 +999,20 @@ var newProjectBloq = function(bloqData, canvas, position, data) {
     bloq.resizeStatementsInput = function(delta) {
         "use strict";
         bloq.body.leftPart.size.height += delta.y;
-        bloq.body.leftPart.size(bloq.body.leftPart.size.width, bloq.body.leftPart.size.height);
+        console.log('resizeStatementsInput', bloq.body.leftPart.size.height);
+        console.log('resizeStatementsInput-->', bloq.body.leftPart.height());
+        bloq.body.leftPart.height( bloq.body.leftPart.size.height );
+        console.log('resizeStatementsInput-->', bloq.body.leftPart.height());
         bloq.body.downPart.move(0, bloq.body.downPart.y() + delta.y);
     };
-    bloq.resize = bloq.resizeStatementsInput;
+    // bloq.resize = bloq.resizeStatementsInput;
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-        bloqToConnect.getChildrenHeight(true);
-        bloqToConnect.childrenHeight+=bloqToConnect.size.height;
-        console.log('bloqToConnect', bloqToConnect.childrenHeight);
-        bloq.resizeStatementsInput({x:0,y:bloqToConnect.childrenHeight});
-        bloqToConnect.childrenHeight=0;
+        // bloqToConnect.getChildrenHeight(true);
+        // bloqToConnect.childrenHeight+=bloqToConnect.size.height;
+        // console.log('bloqToConnect', bloqToConnect.childrenHeight);
+        // bloq.resizeStatementsInput({x:0,y:bloqToConnect.childrenHeight});
+
+        bloqToConnect.resizeParents('down');
 
         return {
             x: bloq.connections[connectionType].connectionPosition.x,
