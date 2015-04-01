@@ -336,7 +336,7 @@ Bloq.prototype.dragmove = function(a) {
                 }
             }
         }
-        parentBloq.deleteChild(this);
+        parentBloq.deleteChild(this.getBloqObject());
         this.getBloqObject().deleteParent(false);
     }
     //Update the deltaX and deltaY movements
@@ -409,23 +409,23 @@ Bloq.prototype.deleteParent = function(cascade) {
 Bloq.prototype.deleteChild = function(child) {
     var i = 0;
     //remove bloq from connection definition
-    if (this.bloqBody.relations.children[child.node.id] !== undefined && this.bloqBody.relations.children[child.node.id].connection === 'output') {
+    if (this.bloqBody.relations.children[child.id] !== undefined && this.bloqBody.relations.children[child.id].connection === 'output') {
         for (i in this.bloqBody.connections.inputs) {
-            if (this.bloqBody.connections.inputs[i].bloq !== undefined && this.bloqBody.connections.inputs[i].this.id() === child.node.id) {
+            if (this.bloqBody.connections.inputs[i].bloq !== undefined && this.bloqBody.connections.inputs[i].bloq.id === child.id) {
                 this.bloqBody.connections.inputs[i].bloq = undefined;
                 break;
             }
         }
     }
     //remove bloq from children 
-    delete this.bloqBody.relations.children[child.node.id];
+    delete this.bloqBody.relations.children[child.id];
     for (i in this.bloqBody.relations.codeChildren) {
-        if (this.bloqBody.relations.codeChildren[i] === child.node.id) {
+        if (this.bloqBody.relations.codeChildren[i] === child.id) {
             this.bloqBody.relations.codeChildren.splice(i, 1);
             break;
         }
     }
-    delete this.bloqBody.relations.inputChildren[child.node.id];
+    delete this.bloqBody.relations.inputChildren[child.id];
     this.getChildrenHeight(true);
 };
 Bloq.prototype.setChildren = function(childrenId, location, inputID) {
