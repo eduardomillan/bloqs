@@ -53,10 +53,7 @@ function Bloq(bloqData, canvas, position, data) {
     if (this.bloqData.hasOwnProperty('text')) {
         this.createBloqUI();
     }
-    /**
-     * Set this bloq as draggable
-     */
-    this.bloqBody.draggable();
+
     this.bloqBody.dragmove = Bloq.prototype.dragmove;
     this.bloqBody.dragend = Bloq.prototype.dragend;
     var that = this;
@@ -281,6 +278,7 @@ Bloq.prototype.getChildrenHeight = function(flag) {
         }
     }
     if (this.bloqBody.relations.codeChildren.length === 0) {
+        console.log('************************************************** CHIVATO *********************************************************');
         this.childrenHeight = this.size.height;
     }
 };

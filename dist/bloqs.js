@@ -271,10 +271,7 @@ function Bloq(bloqData, canvas, position, data) {
     if (this.bloqData.hasOwnProperty('text')) {
         this.createBloqUI();
     }
-    /**
-     * Set this bloq as draggable
-     */
-    this.bloqBody.draggable();
+
     this.bloqBody.dragmove = Bloq.prototype.dragmove;
     this.bloqBody.dragend = Bloq.prototype.dragend;
     var that = this;
@@ -499,6 +496,7 @@ Bloq.prototype.getChildrenHeight = function(flag) {
         }
     }
     if (this.bloqBody.relations.codeChildren.length === 0) {
+        console.log('************************************************** CHIVATO *********************************************************');
         this.childrenHeight = this.size.height;
     }
 };
@@ -869,6 +867,10 @@ Bloq.prototype.createBloqUI = function() {
 //----------------------------------------------------------------//
 function OutputBloq(bloqData, canvas, position, data) {
     Bloq.call(this, bloqData, canvas, position, data);
+        /**
+     * Set this bloq as draggable
+     */
+    this.bloqBody.draggable();
     //Add the connector to the bloq's UI:
     var path = 'm 36,32 c -4.418,0 -8,-2.582 -8,-7 0,-4.418 3.582,-7 8,-7 l 0,14 z';
     this.bloqBody.connector = this.bloqBody.path(path).fill('#cccccc'); //.move(posx, posy);
@@ -908,6 +910,10 @@ OutputBloq.prototype = Object.create(Bloq.prototype);
 //----------------------------------------------------------------//
 var StatementBloq = function(bloqData, canvas, position, data) {
     Bloq.call(this, bloqData, canvas, position, data);
+        /**
+     * Set this bloq as draggable
+     */
+    this.bloqBody.draggable();
     this.bloqBody.dragmove = StatementBloq.prototype.dragmove;
 };
 StatementBloq.prototype = Object.create(Bloq.prototype);
@@ -1095,10 +1101,11 @@ ProjectBloq.prototype.resizeStatementsInput = function(delta) {
 };
 // bloq.resize = bloq.resizeStatementsInput;
 ProjectBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect) {
-    // this.resizeStatementsInput({
-    //     x: 0,
-    //     y: bloqToConnect.childrenHeight
-    // });
+    // if (bloqToConnect.bloqBody.relations.codeChildren.length === 0) {
+    //     console.log('************************************************** CHIVATO *********************************************************')
+    //     bloqToConnect.childrenHeight = bloqToConnect.size.height;
+    // }
+
     bloqToConnect.resizeParents('down');
     return {
         x: this.bloqBody.connections[connectionType].connectionPosition.x,

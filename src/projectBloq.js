@@ -41,10 +41,11 @@ ProjectBloq.prototype.resizeStatementsInput = function(delta) {
 };
 // bloq.resize = bloq.resizeStatementsInput;
 ProjectBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect) {
-    // this.resizeStatementsInput({
-    //     x: 0,
-    //     y: bloqToConnect.childrenHeight
-    // });
+    // if (bloqToConnect.bloqBody.relations.codeChildren.length === 0) {
+    //     console.log('************************************************** CHIVATO *********************************************************')
+    //     bloqToConnect.childrenHeight = bloqToConnect.size.height;
+    // }
+
     bloqToConnect.resizeParents('down');
     return {
         x: this.bloqBody.connections[connectionType].connectionPosition.x,
