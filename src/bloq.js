@@ -558,8 +558,9 @@ Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id
         bloq: 'userInput',
         code: newList.value
     };
+    var that = this;
     newList.onchange = function() {
-        this.bloqBody.relations.inputChildren[id].code = newList.value;
+        that.bloqBody.relations.inputChildren[id].code = newList.value;
     };
     document.getElementById(id).addEventListener("mousedown", function(e) {
         e.stopPropagation();

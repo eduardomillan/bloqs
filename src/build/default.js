@@ -68,8 +68,7 @@
             bloq = new ProjectBloq(bloqData, canvas, position, data);
             data.bloqs.setup = bloq;
         } else {
-            // bloq = newStatementBloq(bloqData, canvas, position, data);
-            bloq = new Bloq(bloqData, canvas, position, data);
+            bloq = new StatementBloq(bloqData, canvas, position, data);
         }
         data.bloqs.push(bloq);
         return bloq;
