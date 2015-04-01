@@ -1,3 +1,7 @@
+/*global $:false */
+/*global document:false */
+/*global SVG:false */
+/*global Option:false */
 //----------------------------------------------------------------//
 // This file is part of the bloqs Project                         //
 //                                                                //
@@ -11,7 +15,6 @@
 // @include ../projectBloq.js
 // @include ../../res/basic_bloqs.js
 (function(root, undefined) {
-    "use strict";
     var data = {
         bloqs: [],
         code: {
@@ -39,8 +42,8 @@
         } else {
             data.code[_function] += '   ' + bloq.getCode(_function);
         }
-        if (bloq.relations.codeChildren.length > 0) {
-            data.functionCode(bloq.getBloqById(bloq.relations.codeChildren), _function);
+        if (bloq.bloqBody.relations.codeChildren.length > 0) {
+            data.functionCode(utils.getBloqById(bloq.bloqBody.relations.codeChildren, data), _function);
         } else {
             data.code[_function] += '\n}\n';
         }
@@ -57,16 +60,17 @@
     data.createBloq = function(bloqData, canvas, position) {
         var bloq;
         if (bloqData.hasOwnProperty('output')) {
-            bloq = newOutputBloq(bloqData, canvas, position, data);
-        } else {
-            bloq = newStatementBloq(bloqData, canvas, position, data);
-        }
-        data.bloqs.push(bloq);
-        if (bloqData.label === 'loop') {
+            bloq = new OutputBloq(bloqData, canvas, position, data);
+        } else if (bloqData.label === 'loop') {
+            bloq = new ProjectBloq(bloqData, canvas, position, data);
             data.bloqs.loop = bloq;
         } else if (bloqData.label === 'setup') {
+            bloq = new ProjectBloq(bloqData, canvas, position, data);
             data.bloqs.setup = bloq;
+        } else {
+            bloq = new StatementBloq(bloqData, canvas, position, data);
         }
+        data.bloqs.push(bloq);
         return bloq;
     };
     /**
@@ -80,7 +84,7 @@
         var bloqTypes = getBasicBloqs();
         var counter = 100;
         for (var i in bloqTypes) {
-            data.bloqs[i] = newProjectBloq(bloqTypes[i], canvas, [100, counter], data);
+            data.bloqs[i] = new ProjectBloq(bloqTypes[i], canvas, [100, counter], data);
             counter += 100;
         }
     };
