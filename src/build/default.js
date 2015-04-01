@@ -61,16 +61,17 @@
         var bloq;
         if (bloqData.hasOwnProperty('output')) {
             bloq = new OutputBloq(bloqData, canvas, position, data);
+        } else if (bloqData.label === 'loop') {
+            bloq = new ProjectBloq(bloqData, canvas, position, data);
+            data.bloqs.loop = bloq;
+        } else if (bloqData.label === 'setup') {
+            bloq = new ProjectBloq(bloqData, canvas, position, data);
+            data.bloqs.setup = bloq;
         } else {
             // bloq = newStatementBloq(bloqData, canvas, position, data);
             bloq = new Bloq(bloqData, canvas, position, data);
         }
         data.bloqs.push(bloq);
-        if (bloqData.label === 'loop') {
-            data.bloqs.loop = bloq;
-        } else if (bloqData.label === 'setup') {
-            data.bloqs.setup = bloq;
-        }
         return bloq;
     };
     /**

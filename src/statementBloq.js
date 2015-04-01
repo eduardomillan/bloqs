@@ -7,7 +7,6 @@
 var newStatementBloq = function(bloqData, canvas, position, data) {
     var bloq = new Bloq(bloqData, canvas, position, data);
     bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-        console.log('getConnectionPosition', connectionType);
         if (connectionType === 'up') {
             return {
                 x: bloq.connections[connectionType].connectionPosition.x,
@@ -53,7 +52,6 @@ var newStatementBloq = function(bloqData, canvas, position, data) {
             utils.bloqOnTop(bloq);
             var parentBloq = bloq.getBloqById(bloq.relations.parent);
             if (parentBloq.relations.children[bloq.id()].connection === 'up') {
-                console.log('uuuuuuuuuuuuuuuuuup');
                 bloq.resizeParents('up');
             } else if (parentBloq.relations.children[bloq.id()].connection === 'output') {
                 for (var k in parentBloq.connections.inputs) {
