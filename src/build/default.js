@@ -84,7 +84,7 @@
         var bloqTypes = getBasicBloqs();
         var counter = 100;
         for (var i in bloqTypes) {
-            data.bloqs[i] = newProjectBloq(bloqTypes[i], canvas, [100, counter], data);
+            data.bloqs[i] = new ProjectBloq(bloqTypes[i], canvas, [100, counter], data);
             counter += 100;
         }
     };

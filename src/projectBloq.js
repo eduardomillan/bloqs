@@ -12,7 +12,7 @@ function ProjectBloq(bloqData, canvas, position, data) {
         y: 0
     });
     //Add bloq's left and down UI parts
-    this.bloqBody.leftPart = this.bloqBody.rect(20, 60).fill(bloqData.color).radius(4);
+    this.bloqBody.leftPart = this.bloqBody.rect(20, 60).fill('#e2e2e2').radius(4);
     this.bloqBody.leftPart.size.width = 20;
     this.bloqBody.leftPart.size.height = 60;
     this.bloqBody.add(this.bloqBody.leftPart);
@@ -27,25 +27,27 @@ function ProjectBloq(bloqData, canvas, position, data) {
         size: 14
     }).move(20, 5);
 }
+ProjectBloq.prototype = Object.create(Bloq.prototype);
 /**
  * Resize a statements input bloq
  * @param delta
  */
 ProjectBloq.prototype.resizeStatementsInput = function(delta) {
+    console.log('delta:', delta.y);
     this.bloqBody.leftPart.size.height += delta.y;
+    console.log('resizeStatementsInput -->', this.bloqBody.leftPart.size.height);
     this.bloqBody.leftPart.height(this.bloqBody.leftPart.size.height);
     this.bloqBody.downPart.move(0, this.bloqBody.downPart.y() + delta.y);
 };
 // bloq.resize = bloq.resizeStatementsInput;
 ProjectBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect) {
-    // bloqToConnect.getChildrenHeight(true);
-    // bloqToConnect.childrenHeight+=bloqToConnect.size.height;
-    // console.log('bloqToConnect', bloqToConnect.childrenHeight);
-    // bloq.resizeStatementsInput({x:0,y:bloqToConnect.childrenHeight});
+    // this.resizeStatementsInput({
+    //     x: 0,
+    //     y: bloqToConnect.childrenHeight
+    // });
     bloqToConnect.resizeParents('down');
     return {
         x: this.bloqBody.connections[connectionType].connectionPosition.x,
         y: this.bloqBody.connections[connectionType].connectionPosition.y
     };
 };
-ProjectBloq.prototype = Object.create(Bloq.prototype);
