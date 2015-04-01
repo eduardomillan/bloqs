@@ -2,7 +2,6 @@
 /*global document:false */
 /*global SVG:false */
 /*global Option:false */
-
 //----------------------------------------------------------------//
 // This file is part of the bloqs Project                         //
 //                                                                //
@@ -228,7 +227,7 @@ function Bloq(bloqData, canvas, position, data) {
     this.bloqData = bloqData;
     this.canvas = canvas;
     this.bloqBody.data = data;
-    this.bloqBody.bloq = this;
+    this.bloqBody.bloqObject = this;
     this.size = {
         width: 100,
         height: 50
@@ -278,6 +277,10 @@ function Bloq(bloqData, canvas, position, data) {
     this.bloqBody.draggable();
     this.bloqBody.dragmove = Bloq.prototype.dragmove;
     this.bloqBody.dragend = Bloq.prototype.dragend;
+    var that = this;
+    this.bloqBody.getBloqObject = function (){
+        return that;
+    }
 }
 /**
  * Resize a bloq and update its down connector, if any
@@ -312,9 +315,10 @@ Bloq.prototype.dragmove = function(a) {
         //move dragged bloq on top
         utils.bloqOnTop(this.bloqBody);
         var parentBloq = utils.getBloqById(this.relations.parent, this.data);
-        if (parentBloq.relations.children[this.id()].connection === 'output') {
-            for (var k in parentBloq.connections.inputs) {
-                if (parentBloq.connections.inputs[k].inline === true && k === parentBloq.relations.children[this.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
+        console.log('parentBloq', parentBloq.bloqBody.relations.children,this.id());
+        if (parentBloq.bloqBody.relations.children[this.id()].connection === 'output') {
+            for (var k in parentBloq.bloqBody.connections.inputs) {
+                if (parentBloq.bloqBody.connections.inputs[k].inline === true && k === parentBloq.bloqBody.relations.children[this.id()].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                     var delta = {
                         x: -this.size.width + parentBloq.bloqInput.width,
                         y: -this.size.height + parentBloq.bloqInput.height
@@ -343,9 +347,9 @@ Bloq.prototype.dragmove = function(a) {
     this.delta.lastx = a.x;
     this.delta.lasty = a.y;
     //Update the bloq's connectors using the new deltas
-    this.connections = utils.updateConnectors(this.bloq, this.delta);
+    this.connections = utils.updateConnectors(this.getBloqObject(), this.delta);
     // move child bloqs along with this one
-    utils.moveChildren(this.bloq, this.delta);
+    utils.moveChildren(this.getBloqObject(), this.delta);
 };
 Bloq.prototype.getParent = function() {
     return this.relations.parent;
@@ -361,7 +365,7 @@ Bloq.prototype.dragend = function() {
         this.delta.lasty = 0;
         var flag = false;
         var a;
-        var thisBloq = this.bloq;
+        var thisBloq = this.getBloqObject();
         console.log('thisBloq', thisBloq);
         for (var j in this.connections) {
             if (flag === true) {
@@ -401,15 +405,15 @@ Bloq.prototype.updateBloqs = function(parent, child, type, inputID) {
 // utilities
 Bloq.prototype.deleteParent = function(cascade) {
     if (cascade !== false) {
-        var parentBloq = utils.getBloqById(this.relations.parent, this.bloqBody.data);
-        parentBloq.relations.children = [];
+        var parentBloq = utils.getBloqById(this.bloqBody.relations.parent, this.bloqBody.data);
+        parentBloq.bloqBody.relations.children = [];
     }
     this.relations.parent = undefined;
 };
 Bloq.prototype.deleteChild = function(child) {
     var i = 0;
     //remove bloq from connection definition
-    if (this.relations.children[child.node.id] !== undefined && this.relations.children[child.node.id].connection === 'output') {
+    if (this.bloqBody.relations.children[child.node.id] !== undefined && this.bloqBody.relations.children[child.node.id].connection === 'output') {
         for (i in this.bloqBody.connections.inputs) {
             if (this.bloqBody.connections.inputs[i].bloq !== undefined && this.bloqBody.connections.inputs[i].this.id() === child.node.id) {
                 this.bloqBody.connections.inputs[i].bloq = undefined;
@@ -418,14 +422,14 @@ Bloq.prototype.deleteChild = function(child) {
         }
     }
     //remove bloq from children 
-    delete this.relations.children[child.node.id];
-    for (i in this.relations.codeChildren) {
-        if (this.relations.codeChildren[i] === child.node.id) {
-            this.relations.codeChildren.splice(i, 1);
+    delete this.bloqBody.relations.children[child.node.id];
+    for (i in this.bloqBody.relations.codeChildren) {
+        if (this.bloqBody.relations.codeChildren[i] === child.node.id) {
+            this.bloqBody.relations.codeChildren.splice(i, 1);
             break;
         }
     }
-    delete this.relations.inputChildren[child.node.id];
+    delete this.bloqBody.relations.inputChildren[child.node.id];
     this.getChildrenHeight(true);
 };
 Bloq.prototype.setChildren = function(childrenId, location, inputID) {
@@ -489,17 +493,17 @@ Bloq.prototype.getCode = function(_function) {
     return code;
 };
 Bloq.prototype.getChildrenHeight = function(flag) {
-    if (flag === true) {
-        this.childrenHeight = 0;
-    }
-    var children;
-    for (var i in this.bloqBody.relations.codeChildren) {
-        children = this.bloqBody.relations.codeChildren[i];
-        this.childrenHeight += this.getBloqById(children).size.height;
-        if (children.bloqBody.relations !== undefined && children.bloqBody.relations.codeChildren !== undefined) {
-            children.getChildrenHeight();
-        }
-    }
+    // if (flag === true) {
+    //     this.childrenHeight = 0;
+    // }
+    // var children;
+    // for (var i in this.bloqBody.relations.codeChildren) {
+    //     children = this.bloqBody.relations.codeChildren[i];
+    //     this.childrenHeight += utils.getBloqById(children, this.data).size.height;
+    //     if (children.bloqBody.relations !== undefined && children.bloqBody.relations.codeChildren !== undefined) {
+    //         children.getChildrenHeight();
+    //     }
+    // }
 };
 // Bloq.prototype.on('click', function() {
 //     // if (this.label.toLowerCase() != 'loop' && this.label.toLowerCase() != 'setup') {
@@ -557,26 +561,26 @@ Bloq.prototype.getChildrenHeight = function(flag) {
     };
 Bloq.prototype.resizeStatementsInput = function() {};
 Bloq.prototype.resizeParents = function(direction) {
-    var parentBloq = this.getBloqById(this.bloqBody.relations.parent);
-    console.log('this.childrenHeight', this.childrenHeight);
-    if (this.childrenHeight === 0) {
-        this.childrenHeight += this.size.height;
-    }
-    while (parentBloq.bloqBody.relations !== undefined && parentBloq.bloqBody.relations.parent !== undefined) {
-        parentBloq = this.getBloqById(parentBloq.bloqBody.relations.parent);
-    }
-    console.log('going up by : ', this.childrenHeight, direction, parentBloq);
-    if (direction === 'up') {
-        parentBloq.resizeStatementsInput({
-            x: 0,
-            y: -this.childrenHeight
-        });
-    } else {
-        parentBloq.resizeStatementsInput({
-            x: 0,
-            y: this.childrenHeight
-        });
-    }
+    // var parentBloq = utils.getBloqById(this.bloqBody.relations.parent, this.data);
+    // console.log('this.childrenHeight', this.childrenHeight);
+    // if (this.childrenHeight === 0) {
+    //     this.childrenHeight += this.size.height;
+    // }
+    // while (parentBloq.bloqBody.relations !== undefined && parentBloq.bloqBody.relations.parent !== undefined) {
+    //     parentBloq = utils.getBloqById(parentBloq.bloqBody.relations.parent, this.data);
+    // }
+    // console.log('going up by : ', this.childrenHeight, direction, parentBloq);
+    // if (direction === 'up') {
+    //     parentBloq.resizeStatementsInput({
+    //         x: 0,
+    //         y: -this.childrenHeight
+    //     });
+    // } else {
+    //     parentBloq.resizeStatementsInput({
+    //         x: 0,
+    //         y: this.childrenHeight
+    //     });
+    // }
 };
 Bloq.prototype.createConnectors = function() {
     this.bloqBody.connections = {};
@@ -869,38 +873,39 @@ Bloq.prototype.createBloqUI = function() {
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-var newOutputBloq = function(bloqData, canvas, position, data) {
-    var bloq = new Bloq(bloqData, canvas, position, data); //canvas.group().move(position[0], position[1]);
+function OutputBloq(bloqData, canvas, position, data) {
+    Bloq.call(this, bloqData, canvas, position, data);
     //Add the connector to the bloq's UI:
-    bloq.body.connector = bloq.path(utils.paths.leftConnector).fill('#cccccc'); //.move(posx, posy);
-    bloq.body.connector.x(-8);
-    bloq.add(bloq.body.connector);
-    bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-        // connectionType === 'inputs's
-        for (var k in bloq.connections[connectionType]) {
-            //If the input is inline and there is not a bloq connected still
-            if (bloq.connections[connectionType][k].inline === true && k === inputID && bloq.connections[connectionType][k].bloq === undefined) {
-                var delta = {
-                    x: bloqToConnect.size.width - bloq.bloqInput.width,
-                    y: bloqToConnect.size.height - bloq.bloqInput.height
-                };
-                bloq.resize(delta);
-                delta = {
-                    x: bloqToConnect.size.width - bloq.bloqInput.width,
-                    y: 0
-                };
-                for (var i in bloq.UIElements) {
-                    if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
-                        utils.pushElements(bloq, bloq.UIElements[i], delta);
-                        break;
-                    }
-                }
-            }
-        }
-        return bloq.connections[connectionType][inputID].connectionPosition;
-    };
-    return bloq;
-};
+    var path = 'm 36,32 c -4.418,0 -8,-2.582 -8,-7 0,-4.418 3.582,-7 8,-7 l 0,14 z';
+    this.bloqBody.connector = this.bloqBody.path(path).fill('#cccccc'); //.move(posx, posy);
+    this.bloqBody.connector.x(-8);
+    this.bloqBody.add(this.bloqBody.connector);
+}
+OutputBloq.prototype = Object.create(Bloq.prototype);
+// OutputBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
+//     // connectionType === 'inputs's
+//     for (var k in bloq.connections[connectionType]) {
+//         //If the input is inline and there is not a bloq connected still
+//         if (bloq.connections[connectionType][k].inline === true && k === inputID && bloq.connections[connectionType][k].bloq === undefined) {
+//             var delta = {
+//                 x: bloqToConnect.size.width - bloq.bloqInput.width,
+//                 y: bloqToConnect.size.height - bloq.bloqInput.height
+//             };
+//             bloq.resize(delta);
+//             delta = {
+//                 x: bloqToConnect.size.width - bloq.bloqInput.width,
+//                 y: 0
+//             };
+//             for (var i in bloq.UIElements) {
+//                 if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
+//                     utils.pushElements(bloq, bloq.UIElements[i], delta);
+//                     break;
+//                 }
+//             }
+//         }
+//     }
+//     return bloq.connections[connectionType][inputID].connectionPosition;
+// };
 //----------------------------------------------------------------//
 // This file is part of the bloqs Project                         //
 //                                                                //
@@ -1121,8 +1126,8 @@ var getBasicBloqs = function(){
         } else {
             data.code[_function] += '   ' + bloq.getCode(_function);
         }
-        if (bloq.relations.codeChildren.length > 0) {
-            data.functionCode(bloq.getBloqById(bloq.relations.codeChildren), _function);
+        if (bloq.bloqBody.relations.codeChildren.length > 0) {
+            data.functionCode(utils.getBloqById(bloq.bloqBody.relations.codeChildren, data), _function);
         } else {
             data.code[_function] += '\n}\n';
         }
@@ -1138,13 +1143,12 @@ var getBasicBloqs = function(){
      */
     data.createBloq = function(bloqData, canvas, position) {
         var bloq;
-        // if (bloqData.hasOwnProperty('output')) {
-        //     bloq = newOutputBloq(bloqData, canvas, position, data);
-        // } else {
-        //     bloq = newStatementBloq(bloqData, canvas, position, data);
-        // }
-
-        bloq = new Bloq(bloqData, canvas, position, data);
+        if (bloqData.hasOwnProperty('output')) {
+            bloq = new OutputBloq(bloqData, canvas, position, data);
+        } else {
+            // bloq = newStatementBloq(bloqData, canvas, position, data);
+            bloq = new Bloq(bloqData, canvas, position, data);
+        }
         data.bloqs.push(bloq);
         if (bloqData.label === 'loop') {
             data.bloqs.loop = bloq;

@@ -2,7 +2,6 @@
 /*global document:false */
 /*global SVG:false */
 /*global Option:false */
-
 //----------------------------------------------------------------//
 // This file is part of the bloqs Project                         //
 //                                                                //
@@ -43,8 +42,8 @@
         } else {
             data.code[_function] += '   ' + bloq.getCode(_function);
         }
-        if (bloq.relations.codeChildren.length > 0) {
-            data.functionCode(bloq.getBloqById(bloq.relations.codeChildren), _function);
+        if (bloq.bloqBody.relations.codeChildren.length > 0) {
+            data.functionCode(utils.getBloqById(bloq.bloqBody.relations.codeChildren, data), _function);
         } else {
             data.code[_function] += '\n}\n';
         }
@@ -60,13 +59,12 @@
      */
     data.createBloq = function(bloqData, canvas, position) {
         var bloq;
-        // if (bloqData.hasOwnProperty('output')) {
-        //     bloq = newOutputBloq(bloqData, canvas, position, data);
-        // } else {
-        //     bloq = newStatementBloq(bloqData, canvas, position, data);
-        // }
-
-        bloq = new Bloq(bloqData, canvas, position, data);
+        if (bloqData.hasOwnProperty('output')) {
+            bloq = new OutputBloq(bloqData, canvas, position, data);
+        } else {
+            // bloq = newStatementBloq(bloqData, canvas, position, data);
+            bloq = new Bloq(bloqData, canvas, position, data);
+        }
         data.bloqs.push(bloq);
         if (bloqData.label === 'loop') {
             data.bloqs.loop = bloq;
