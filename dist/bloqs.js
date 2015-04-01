@@ -499,7 +499,6 @@ Bloq.prototype.getChildrenHeight = function(flag) {
         }
     }
     if (this.bloqBody.relations.codeChildren.length === 0) {
-        console.log('-------------------> adding height to childrenHeight');
         this.childrenHeight = this.size.height;
     }
 };
@@ -912,46 +911,55 @@ var StatementBloq = function(bloqData, canvas, position, data) {
     this.bloqBody.dragmove = StatementBloq.prototype.dragmove;
 };
 StatementBloq.prototype = Object.create(Bloq.prototype);
-// bloq.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-//     if (connectionType === 'up') {
-//         return {
-//             x: bloq.connections[connectionType].connectionPosition.x,
-//             y: bloq.connections[connectionType].connectionPosition.y - bloqToConnect.size.height
-//         };
-//     }
-//     if (connectionType === 'inputs') {
-//         for (var k in bloq.connections[connectionType]) {
-//             //If the input is inline and there is not a bloq connected still
-//             if (bloq.connections[connectionType][k].inline === true && k === inputID && bloq.connections[connectionType][k].bloq === undefined) {
-//                 var delta = {
-//                     x: bloqToConnect.size.width - bloq.bloqInput.width,
-//                     y: bloqToConnect.size.height - bloq.bloqInput.height
-//                 };
-//                 bloq.resize(delta);
-//                 delta = {
-//                     x: bloqToConnect.size.width - bloq.bloqInput.width,
-//                     y: 0
-//                 };
-//                 for (var i in bloq.UIElements) {
-//                     if (bloq.UIElements[i].id === parseInt(inputID, 10)) {
-//                         utils.pushElements(bloq, bloq.UIElements[i], delta);
-//                         break;
-//                     }
-//                 }
-//             }
-//         }
-//         return bloq.connections[connectionType][inputID].connectionPosition;
-//     }
-//     if (connectionType === 'down') {
-//         bloqToConnect.resizeParents('down');
-//     }
-//     return bloq.connections[connectionType].connectionPosition;
-// };
+
+StatementBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
+    if (connectionType === 'up') {
+        return {
+            x: this.bloqBody.connections[connectionType].connectionPosition.x,
+            y: this.bloqBody.connections[connectionType].connectionPosition.y - bloqToConnect.size.height
+        };
+    }
+    if (connectionType === 'output') {
+        return {
+            x: this.bloqBody.connections[connectionType].connectionPosition.x - bloqToConnect.size.width,
+            y: this.bloqBody.connections[connectionType].connectionPosition.y - inputID * connectionThreshold
+        };
+    }
+    if (connectionType === 'inputs') {
+        console.log('--------------------------------------------------> MOVING DOWN');
+        for (var k in this.bloqBody.connections[connectionType]) {
+            //If the input is inline and there is not a bloq connected still
+            if (this.bloqBody.connections[connectionType][k].inline === true && k === inputID && this.bloqBody.connections[connectionType][k].bloq === undefined) {
+                var delta = {
+                    x: bloqToConnect.size.width,
+                    y: 0
+                };
+                this.resize(delta);
+                delta = {
+                    x: bloqToConnect.size.width,
+                    y: 0
+                };
+                for (var i in this.UIElements) {
+                    if (this.UIElements[i].id === parseInt(inputID, 10)) {
+                        console.log('here pushing', this.UIElements[i].elementsToPush);
+                        utils.pushElements(this, this.UIElements[i], delta);
+                        break;
+                    }
+                }
+            }
+        }
+        return this.bloqBody.connections[connectionType][inputID].connectionPosition;
+    }
+        if (connectionType === 'down') {
+        bloqToConnect.resizeParents('down');
+    }
+    return this.bloqBody.connections[connectionType].connectionPosition;
+};
+
 /**
  * We start dragging
  */
 StatementBloq.prototype.dragmove = function(a) {
-    console.log('HEEEEEEEEEEEEEEEEEERE');
     this.dragmoveFlag = true;
     // remove parent of this and child in parent:
     if (this.relations.parent !== undefined) {
@@ -962,7 +970,7 @@ StatementBloq.prototype.dragmove = function(a) {
             console.log('resizing parents in StatementBloq', this.getBloqObject().childrenHeight);
             this.getBloqObject().resizeParents('up');
         }
-        if (parentBloq.bloqBody.relations.children[this.getBloqObject().id].connection === 'output') {
+        else if (parentBloq.bloqBody.relations.children[this.getBloqObject().id].connection === 'output') {
             for (var k in parentBloq.bloqBody.connections.inputs) {
                 if (parentBloq.bloqBody.connections.inputs[k].inline === true && k === parentBloq.bloqBody.relations.children[this.getBloqObject().id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                     var delta = {
@@ -1079,11 +1087,11 @@ ProjectBloq.prototype = Object.create(Bloq.prototype);
  * @param delta
  */
 ProjectBloq.prototype.resizeStatementsInput = function(delta) {
-    console.log('delta:', delta.y);
-    this.bloqBody.leftPart.size.height += delta.y;
-    console.log('resizeStatementsInput -->', this.bloqBody.leftPart.size.height);
+    // this.bloqBody.leftPart.size.height += delta.y;
     this.bloqBody.leftPart.height(this.bloqBody.leftPart.size.height);
     this.bloqBody.downPart.move(0, this.bloqBody.downPart.y() + delta.y);
+    var diff = this.bloqBody.downPart.y() - this.bloqBody.leftPart.y()
+    this.bloqBody.leftPart.height(diff);
 };
 // bloq.resize = bloq.resizeStatementsInput;
 ProjectBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect) {

@@ -281,7 +281,6 @@ Bloq.prototype.getChildrenHeight = function(flag) {
         }
     }
     if (this.bloqBody.relations.codeChildren.length === 0) {
-        console.log('-------------------> adding height to childrenHeight');
         this.childrenHeight = this.size.height;
     }
 };
