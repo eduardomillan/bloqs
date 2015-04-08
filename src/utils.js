@@ -7,8 +7,6 @@
 //----------------------------------------------------------------//
 var utils = utils || {};
 var connectionThreshold = 20; // px
-
-
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';
@@ -56,7 +54,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     bloq2.updateConnectors(deltaParent);
                     bloq1Connection.bloq = bloq2;
                     //move bloq's children
-                    utils.moveChildren(bloq2, deltaParent);
+                    bloq2.moveChildren(deltaParent);
                     //put child bloq on top if it is not already: 
                     utils.bloqOnTop(bloq2);
                 } else { //parent is bloq2
@@ -66,7 +64,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     bloq1.updateConnectors(deltaChild);
                     bloq2Connection.bloq = bloq1;
                     //move bloq's children
-                    utils.moveChildren(bloq1, deltaChild);
+                    bloq1.moveChildren(deltaChild);
                     //put child bloq on top if it is not already: 
                     utils.bloqOnTop(bloq1);
                 }
@@ -100,15 +98,7 @@ utils.rejectBloq = function(bloq) {
         y: rejectionLocation.y
     });
 };
-utils.moveChildren = function(bloq, delta) {
-    for (var i in bloq.relations.children) {
-        var child = bloq.relations.children[i].bloq;
-        child.move2(child, delta);
-        if (child.relations !== undefined && child.relations.children !== undefined) {
-            utils.moveChildren(child, delta);
-        }
-    }
-};
+
 utils.moveConnector = function(bloq, connection, delta) {
     //Move connector 
     connection = utils.updateConnector(connection, delta);

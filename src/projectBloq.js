@@ -45,7 +45,6 @@ ProjectBloq.prototype.getConnectionPosition = function(connectionType, bloqToCon
     //     console.log('************************************************** CHIVATO *********************************************************')
     //     bloqToConnect.childrenHeight = bloqToConnect.size.height;
     // }
-
     bloqToConnect.resizeParents('down');
     return {
         x: this.connections[connectionType].connectionPosition.x,

@@ -6,7 +6,7 @@
 //----------------------------------------------------------------//
 function OutputBloq(bloqData, canvas, position, data) {
     Bloq.call(this, bloqData, canvas, position, data);
-        /**
+    /**
      * Set this bloq as draggable
      */
     this.bloqBody.draggable();

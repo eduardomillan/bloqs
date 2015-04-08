@@ -96,7 +96,6 @@ Bloq.prototype.dragmove = function(a) {
     if (bloq.relations.parent !== undefined) {
         var parentBloq = utils.getBloqById(bloq.relations.parent, bloq.data);
         //resize UI if needed
-        console.log('parentBloq',parentBloq);
         parentBloq.resizeUI();
         //remove child from parent and parent from child
         parentBloq.deleteChild(this.getBloqObject());
@@ -107,7 +106,7 @@ Bloq.prototype.dragmove = function(a) {
     //Update the bloq's connectors using the new deltas
     bloq.updateConnectors(bloq.delta);
     // move child bloqs along with this one
-    utils.moveChildren(bloq, this.delta);
+    bloq.moveChildren({x:bloq.delta.x, y:bloq.delta.y});
 };
 /**
  * We stop dragging
@@ -124,7 +123,6 @@ Bloq.prototype.dragend = function() {
         this.dragmoveFlag = false;
     }
 };
-
 /**
  * Updates de position of the connectors of a bloq (used after modifying the bloq's position)
  * @param bloq
@@ -140,7 +138,6 @@ Bloq.prototype.updateConnectors = function(delta) {
         }
     }
 };
-
 Bloq.prototype.resizeUI = function() {
     // if (parentBloq.bloqBody.relations.children[this.getBloqObject().id].connection === 'output') {
     //     for (var k in parentBloq.bloqBody.connections.inputs) {
@@ -179,7 +176,6 @@ Bloq.prototype.resetLastDelta = function() {
     this.delta.lastx = 0;
     this.delta.lasty = 0;
 };
-
 Bloq.prototype.searchNewConnections = function() {
     var a;
     for (var j in this.connections) {
@@ -202,9 +198,6 @@ Bloq.prototype.searchNewConnections = function() {
     }
     console.log('-----------------------------------------------------------------------');
 };
-
-
-
 ///////////////////////// UTILITIES
 Bloq.prototype.updateBloqs = function(parent, child, type, inputID) {
     parent.setChildren(child.id, type, inputID);
@@ -248,7 +241,7 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
     }
     // if we made it so far, add a new child
     this.relations.children[childrenId] = {
-        bloq: utils.getBloqById(childrenId, this.bloqBody.data),
+        bloq: utils.getBloqById(childrenId, this.data),
         connection: location,
         inputID: inputID
     };
@@ -290,8 +283,6 @@ Bloq.prototype.getChildrenHeight = function(flag) {
     //     this.childrenHeight = this.size.height;
     // }
 };
-
-
 /////////// CODE FUNCTIONS
 Bloq.prototype.getCode = function(_function) {
     var code = this.code[_function];
@@ -316,7 +307,6 @@ Bloq.prototype.getCode = function(_function) {
     }
     return code;
 };
-
 // Bloq.prototype.on('click', function() {
 //     // if (this.label.toLowerCase() != 'loop' && this.label.toLowerCase() != 'setup') {
 //     //     // remove other borders
@@ -330,7 +320,6 @@ Bloq.prototype.getCode = function(_function) {
 //     //     this.selection.show();
 //     // }
 // });
-
 //////////////////////// CONNECTORS FUNCTIONS
 Bloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
     if (connectionType === 'up') {
@@ -678,7 +667,6 @@ Bloq.prototype.createBloqUI = function() {
     });
 };
 ////////////MOVE BLOQS:
-
 Bloq.prototype.move = function(location) {
     this.bloqBody.x(location.x);
     this.bloqBody.y(location.y);
@@ -687,4 +675,15 @@ Bloq.prototype.move2 = function(delta) {
     this.bloqBody.x(this.bloqBody.x() + delta.x);
     this.bloqBody.y(this.bloqBody.y() + delta.y);
     this.updateConnectors(delta);
+};
+
+
+Bloq.prototype.moveChildren = function(delta) {
+    for (var i in this.relations.children) {
+        var child = this.relations.children[i].bloq;
+        child.move2(delta);
+        if (child.relations !== undefined && child.relations.children !== undefined) {
+            child.moveChildren(delta);
+        }
+    }
 };

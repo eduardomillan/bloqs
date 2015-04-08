@@ -56,36 +56,34 @@ StatementBloq.prototype.getConnectionPosition = function(connectionType, bloqToC
     }
     return this.connections[connectionType].connectionPosition;
 };
-
 // StatementBloq.prototype.resizeUI = function(a) {};
-    //---------------------------------------------------------------------------
-    // // remove parent of this and child in parent:
-    //     var parentBloq = utils.getBloqById(this.relations.parent, this.data);
-    //     if (parentBloq.bloqBody.relations.children[this.getBloqObject().id].connection === 'up') {
-    //         console.log('resizing parents in StatementBloq', this.getBloqObject().childrenHeight);
-    //         this.getBloqObject().resizeParents('up');
-    //     } else if (parentBloq.bloqBody.relations.children[this.getBloqObject().id].connection === 'output') {
-    //         for (var k in parentBloq.bloqBody.connections.inputs) {
-    //             if (parentBloq.bloqBody.connections.inputs[k].inline === true && k === parentBloq.bloqBody.relations.children[this.getBloqObject().id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
-    //                 var delta = {
-    //                     x: +this.getBloqObject().size.width - parentBloq.size.width,
-    //                     y: +this.getBloqObject().size.height - parentBloq.size.height
-    //                 };
-    //                 parentBloq.resize(delta);
-    //                 delta = {
-    //                     x: this.getBloqObject().size.width - parentBloq.size.width,
-    //                     y: 0
-    //                 };
-    //                 for (var i in parentBloq.UIElements) {
-    //                     if (parentBloq.UIElements[i].id === parseInt(k, 10)) {
-    //                         utils.pushElements(parentBloq, parentBloq.UIElements[i], delta);
-    //                         break;
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-
+//---------------------------------------------------------------------------
+// // remove parent of this and child in parent:
+//     var parentBloq = utils.getBloqById(this.relations.parent, this.data);
+//     if (parentBloq.bloqBody.relations.children[this.getBloqObject().id].connection === 'up') {
+//         console.log('resizing parents in StatementBloq', this.getBloqObject().childrenHeight);
+//         this.getBloqObject().resizeParents('up');
+//     } else if (parentBloq.bloqBody.relations.children[this.getBloqObject().id].connection === 'output') {
+//         for (var k in parentBloq.bloqBody.connections.inputs) {
+//             if (parentBloq.bloqBody.connections.inputs[k].inline === true && k === parentBloq.bloqBody.relations.children[this.getBloqObject().id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
+//                 var delta = {
+//                     x: +this.getBloqObject().size.width - parentBloq.size.width,
+//                     y: +this.getBloqObject().size.height - parentBloq.size.height
+//                 };
+//                 parentBloq.resize(delta);
+//                 delta = {
+//                     x: this.getBloqObject().size.width - parentBloq.size.width,
+//                     y: 0
+//                 };
+//                 for (var i in parentBloq.UIElements) {
+//                     if (parentBloq.UIElements[i].id === parseInt(k, 10)) {
+//                         utils.pushElements(parentBloq, parentBloq.UIElements[i], delta);
+//                         break;
+//                     }
+//                 }
+//             }
+//         }
+//     }
 /**
  * We start dragging
  */
