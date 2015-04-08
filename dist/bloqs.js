@@ -60,7 +60,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 if (type === 'inputs' || type === 'down') { // parent is bloq1
                     //move bloq
                     bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID);
-                    bloq2.move(bloq1.getConnectionPosition(type, bloq2, inputID));
+                    bloq2.moveTo(bloq1.getConnectionPosition(type, bloq2, inputID));
                     bloq2.updateConnectors(deltaParent);
                     bloq1Connection.bloq = bloq2;
                     //move bloq's children
@@ -70,7 +70,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 } else { //parent is bloq2
                     //move bloq
                     bloq1.updateBloqs(bloq2, bloq1, type, inputID);
-                    bloq1.move(bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
+                    bloq1.moveTo(bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
                     bloq1.updateConnectors(deltaChild);
                     bloq2Connection.bloq = bloq1;
                     //move bloq's children
@@ -385,7 +385,7 @@ Bloq.prototype.updateBloqs = function(parent, child, type, inputID) {
 };
 Bloq.prototype.deleteParent = function(cascade) {
     if (cascade !== false) {
-        var parentBloq = utils.getBloqById(this.relations.parent, this.bloqBody.data);
+        var parentBloq = utils.getBloqById(this.relations.parent, this.data);
         parentBloq.bloqBody.relations.children = [];
     }
     this.relations.parent = undefined;
@@ -435,7 +435,7 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
         this.relations.codeChildren.push(childrenId);
     } else {
         this.relations.inputChildren[childrenId] = {
-            bloq: utils.getBloqById(childrenId, this.bloqBody.data),
+            bloq: utils.getBloqById(childrenId, this.data),
             id: inputID
         };
     }
@@ -453,7 +453,7 @@ Bloq.prototype.getChildrenHeight = function(flag) {
     // var child;
     // for (var i in this.relations.codeChildren) {
     //     child = this.relations.codeChildren[i];
-    //     child = utils.getBloqById(child, this.bloqBody.data);
+    //     child = utils.getBloqById(child, this.data);
     //     this.childrenHeight += child.size.height;
     //     if (child.bloqBody.relations !== undefined && child.bloqBody.relations.codeChildren !== undefined) {
     //         child.getChildrenHeight();
@@ -477,6 +477,7 @@ Bloq.prototype.getCode = function(_function) {
         if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
             replacement = this.relations.inputChildren[i].code;
         } else {
+            console.log('this.relations.inputChildren[i].bloq.',this.relations.inputChildren[i].bloq);
             replacement = this.relations.inputChildren[i].bloq.getCode(_function);
         }
         code = code.replace(new RegExp(search, 'g'), replacement);
@@ -846,8 +847,8 @@ Bloq.prototype.createBloqUI = function() {
         y: posy - this.size.height
     });
 };
-////////////MOVE BLOQS:
-Bloq.prototype.move = function(location) {
+////////////////////////    MOVE BLOQS    ////////////////////////
+Bloq.prototype.moveTo = function(location) {
     this.bloqBody.x(location.x);
     this.bloqBody.y(location.y);
 };
@@ -1169,8 +1170,8 @@ var getBasicBloqs = function(){
         } else {
             data.code[_function] += '   ' + bloq.getCode(_function);
         }
-        if (bloq.bloqBody.relations.codeChildren.length > 0) {
-            data.functionCode(utils.getBloqById(bloq.bloqBody.relations.codeChildren, data), _function);
+        if (bloq.relations.codeChildren.length > 0) {
+            data.functionCode(utils.getBloqById(bloq.relations.codeChildren, data), _function);
         } else {
             data.code[_function] += '\n}\n';
         }

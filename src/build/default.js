@@ -42,8 +42,8 @@
         } else {
             data.code[_function] += '   ' + bloq.getCode(_function);
         }
-        if (bloq.bloqBody.relations.codeChildren.length > 0) {
-            data.functionCode(utils.getBloqById(bloq.bloqBody.relations.codeChildren, data), _function);
+        if (bloq.relations.codeChildren.length > 0) {
+            data.functionCode(utils.getBloqById(bloq.relations.codeChildren, data), _function);
         } else {
             data.code[_function] += '\n}\n';
         }

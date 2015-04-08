@@ -50,7 +50,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 if (type === 'inputs' || type === 'down') { // parent is bloq1
                     //move bloq
                     bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID);
-                    bloq2.move(bloq1.getConnectionPosition(type, bloq2, inputID));
+                    bloq2.moveTo(bloq1.getConnectionPosition(type, bloq2, inputID));
                     bloq2.updateConnectors(deltaParent);
                     bloq1Connection.bloq = bloq2;
                     //move bloq's children
@@ -60,7 +60,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 } else { //parent is bloq2
                     //move bloq
                     bloq1.updateBloqs(bloq2, bloq1, type, inputID);
-                    bloq1.move(bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
+                    bloq1.moveTo(bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
                     bloq1.updateConnectors(deltaChild);
                     bloq2Connection.bloq = bloq1;
                     //move bloq's children

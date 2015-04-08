@@ -205,7 +205,7 @@ Bloq.prototype.updateBloqs = function(parent, child, type, inputID) {
 };
 Bloq.prototype.deleteParent = function(cascade) {
     if (cascade !== false) {
-        var parentBloq = utils.getBloqById(this.relations.parent, this.bloqBody.data);
+        var parentBloq = utils.getBloqById(this.relations.parent, this.data);
         parentBloq.bloqBody.relations.children = [];
     }
     this.relations.parent = undefined;
@@ -255,7 +255,7 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
         this.relations.codeChildren.push(childrenId);
     } else {
         this.relations.inputChildren[childrenId] = {
-            bloq: utils.getBloqById(childrenId, this.bloqBody.data),
+            bloq: utils.getBloqById(childrenId, this.data),
             id: inputID
         };
     }
@@ -273,7 +273,7 @@ Bloq.prototype.getChildrenHeight = function(flag) {
     // var child;
     // for (var i in this.relations.codeChildren) {
     //     child = this.relations.codeChildren[i];
-    //     child = utils.getBloqById(child, this.bloqBody.data);
+    //     child = utils.getBloqById(child, this.data);
     //     this.childrenHeight += child.size.height;
     //     if (child.bloqBody.relations !== undefined && child.bloqBody.relations.codeChildren !== undefined) {
     //         child.getChildrenHeight();
@@ -297,6 +297,7 @@ Bloq.prototype.getCode = function(_function) {
         if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
             replacement = this.relations.inputChildren[i].code;
         } else {
+            console.log('this.relations.inputChildren[i].bloq.',this.relations.inputChildren[i].bloq);
             replacement = this.relations.inputChildren[i].bloq.getCode(_function);
         }
         code = code.replace(new RegExp(search, 'g'), replacement);
@@ -666,8 +667,8 @@ Bloq.prototype.createBloqUI = function() {
         y: posy - this.size.height
     });
 };
-////////////MOVE BLOQS:
-Bloq.prototype.move = function(location) {
+////////////////////////    MOVE BLOQS    ////////////////////////
+Bloq.prototype.moveTo = function(location) {
     this.bloqBody.x(location.x);
     this.bloqBody.y(location.y);
 };
