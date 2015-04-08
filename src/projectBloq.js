@@ -36,7 +36,7 @@ ProjectBloq.prototype.resizeStatementsInput = function(delta) {
     // this.bloqBody.leftPart.size.height += delta.y;
     this.bloqBody.leftPart.height(this.bloqBody.leftPart.size.height);
     this.bloqBody.downPart.move(0, this.bloqBody.downPart.y() + delta.y);
-    var diff = this.bloqBody.downPart.y() - this.bloqBody.leftPart.y()
+    var diff = this.bloqBody.downPart.y() - this.bloqBody.leftPart.y();
     this.bloqBody.leftPart.height(diff);
 };
 // bloq.resize = bloq.resizeStatementsInput;

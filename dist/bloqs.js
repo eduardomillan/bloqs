@@ -253,6 +253,13 @@ function Bloq(bloqData, canvas, position, data) {
         codeChildren: [],
         inputChildren: []
     };
+    //delta:
+    this.delta={
+        x:0,
+        y:0,
+        lastx:0,
+        lasty:0
+    };
     //Create the connectors using the bloq information
     this.createConnectors();
     // basic shape of the bloq
@@ -271,7 +278,6 @@ function Bloq(bloqData, canvas, position, data) {
     if (this.bloqData.hasOwnProperty('text')) {
         this.createBloqUI();
     }
-
     this.bloqBody.dragmove = Bloq.prototype.dragmove;
     this.bloqBody.dragend = Bloq.prototype.dragend;
     var that = this;
@@ -306,49 +312,66 @@ Bloq.prototype.resize = function(delta) {
  * We start dragging
  */
 Bloq.prototype.dragmove = function(a) {
+    //Set the dragmove flag to true because we are dragging the bloq
     this.dragmoveFlag = true;
+    //Get the parent bloq to use its functions
+    var bloq = this.getBloqObject();
+    //move dragged bloq on top
+    utils.bloqOnTop(this.bloqBody);
     // remove parent of this and child in parent:
     if (this.relations.parent !== undefined) {
-        //move dragged bloq on top
-        utils.bloqOnTop(this.bloqBody);
         var parentBloq = utils.getBloqById(this.relations.parent, this.data);
-        if (parentBloq.bloqBody.relations.children[this.getBloqObject().id].connection === 'output') {
-            for (var k in parentBloq.bloqBody.connections.inputs) {
-                if (parentBloq.bloqBody.connections.inputs[k].inline === true && k === parentBloq.bloqBody.relations.children[this.getBloqObject().id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
-                    var delta = {
-                        x: +this.getBloqObject().size.width - parentBloq.size.width,
-                        y: +this.getBloqObject().size.height - parentBloq.size.height
-                    };
-                    parentBloq.resize(delta);
-                    delta = {
-                        x: this.getBloqObject().size.width - parentBloq.size.width,
-                        y: 0
-                    };
-                    for (var i in parentBloq.UIElements) {
-                        if (parentBloq.UIElements[i].id === parseInt(k, 10)) {
-                            utils.pushElements(parentBloq, parentBloq.UIElements[i], delta);
-                            break;
-                        }
-                    }
-                }
-            }
-        }
+        //resize UI if needed
+        parentBloq.resizeUI();
+        //remove child from parent and parent from child
         parentBloq.deleteChild(this.getBloqObject());
         this.getBloqObject().deleteParent(false);
     }
+    //update the deltas:
+    bloq.updateDeltas(a);
+    //Update the bloq's connectors using the new deltas
+    utils.updateConnectors(bloq, bloq.delta);
+    // move child bloqs along with this one
+    utils.moveChildren(bloq, this.delta);
+};
+
+Bloq.prototype.resizeUI = function() {
+    // if (parentBloq.bloqBody.relations.children[this.getBloqObject().id].connection === 'output') {
+    //     for (var k in parentBloq.bloqBody.connections.inputs) {
+    //         if (parentBloq.bloqBody.connections.inputs[k].inline === true && k === parentBloq.bloqBody.relations.children[this.getBloqObject().id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
+    //             var delta = {
+    //                 x: +this.getBloqObject().size.width - parentBloq.size.width,
+    //                 y: +this.getBloqObject().size.height - parentBloq.size.height
+    //             };
+    //             parentBloq.resize(delta);
+    //             delta = {
+    //                 x: this.getBloqObject().size.width - parentBloq.size.width,
+    //                 y: 0
+    //             };
+    //             for (var i in parentBloq.UIElements) {
+    //                 if (parentBloq.UIElements[i].id === parseInt(k, 10)) {
+    //                     utils.pushElements(parentBloq, parentBloq.UIElements[i], delta);
+    //                     break;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+};
+Bloq.prototype.updateDeltas = function(a) {
     //Update the deltaX and deltaY movements
     this.delta.x = a.x - this.delta.lastx;
     this.delta.y = a.y - this.delta.lasty;
     //Update the lastx and lasty variables
     this.delta.lastx = a.x;
     this.delta.lasty = a.y;
-    //Update the bloq's connectors using the new deltas
-    this.connections = utils.updateConnectors(this.getBloqObject(), this.delta);
-    // move child bloqs along with this one
-    utils.moveChildren(this.getBloqObject(), this.delta);
 };
 Bloq.prototype.getParent = function() {
     return this.relations.parent;
+};
+Bloq.prototype.resetLastDelta = function() {
+    this.delta.lastx = 0;
+    this.delta.lasty = 0;
 };
 /**
  * We stop dragging
@@ -356,16 +379,13 @@ Bloq.prototype.getParent = function() {
 Bloq.prototype.dragend = function() {
     //Flag used to prevent the execution of these functions when dragend is called after just a click on the bloq!
     if (this.dragmoveFlag) {
-        //Initialize lasx y laxy
-        this.delta.lastx = 0;
-        this.delta.lasty = 0;
-        var flag = false;
+        //Get the parent bloq to use its functions
+        var bloq = this.getBloqObject();
+        //Initialize lastx y lasty
+        bloq.resetLastDelta();
         var a;
         var thisBloq = this.getBloqObject();
         for (var j in this.connections) {
-            if (flag === true) {
-                break;
-            }
             console.log('Searching connection in bloqs connection:++++++++++++++++++++++++++++++++++', j);
             for (var i in this.data.bloqs) {
                 if (this.data.bloqs[i].id !== this.node.id) {
@@ -1096,7 +1116,7 @@ ProjectBloq.prototype.resizeStatementsInput = function(delta) {
     // this.bloqBody.leftPart.size.height += delta.y;
     this.bloqBody.leftPart.height(this.bloqBody.leftPart.size.height);
     this.bloqBody.downPart.move(0, this.bloqBody.downPart.y() + delta.y);
-    var diff = this.bloqBody.downPart.y() - this.bloqBody.leftPart.y()
+    var diff = this.bloqBody.downPart.y() - this.bloqBody.leftPart.y();
     this.bloqBody.leftPart.height(diff);
 };
 // bloq.resize = bloq.resizeStatementsInput;
