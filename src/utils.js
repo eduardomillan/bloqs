@@ -15,18 +15,6 @@ function getRandomColor() {
     }
     return color;
 }
-utils.updateConnector = function(connector, delta) {
-    connector.connectionPosition.x += delta.x;
-    connector.connectionPosition.y += delta.y;
-    connector.connectorArea.x1 += delta.x;
-    connector.connectorArea.x2 += delta.x;
-    connector.connectorArea.y1 += delta.y;
-    connector.connectorArea.y2 += delta.y;
-    if (connector.UI !== undefined) {
-        connector.UI.move(connector.UI.x() + delta.x, connector.UI.y() + delta.y);
-    }
-    return connector;
-};
 utils.oppositeConnection = {
     inputs: 'output',
     output: 'inputs',
@@ -46,7 +34,6 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     x: bloq2Connection.connectorArea.x1 - bloq1Connection.connectorArea.x1,
                     y: bloq2Connection.connectorArea.y1 - bloq1Connection.connectorArea.y1
                 };
-                console.log('bloq1, bloq2', bloq1, bloq2);
                 if (type === 'inputs' || type === 'down') { // parent is bloq1
                     //move bloq
                     bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID);
@@ -99,17 +86,6 @@ utils.rejectBloq = function(bloq) {
     });
 };
 
-utils.moveConnector = function(bloq, connection, delta) {
-    //Move connector 
-    connection = utils.updateConnector(connection, delta);
-    //If there is a bloq connected, move the bloq also
-    if (connection.bloq !== undefined) {
-        var bloqConnected = connection.bloq;
-        bloqConnected.move2(delta);
-    }
-    //Update bloq's size
-    bloq.resize(delta);
-};
 utils.bloqOnTop = function(bloq) {
     // bloq.bloqnode.parentNode.appendChild(bloq.node);
     // var child = {};

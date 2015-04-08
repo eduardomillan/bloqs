@@ -27,7 +27,6 @@ StatementBloq.prototype.getConnectionPosition = function(connectionType, bloqToC
         };
     }
     if (connectionType === 'inputs') {
-        console.log('--------------------------------------------------> MOVING DOWN');
         for (var k in this.connections[connectionType]) {
             //If the input is inline and there is not a bloq connected still
             if (this.connections[connectionType][k].inline === true && k === inputID && this.connections[connectionType][k].bloq === undefined) {
@@ -42,8 +41,7 @@ StatementBloq.prototype.getConnectionPosition = function(connectionType, bloqToC
                 };
                 for (var i in this.UIElements) {
                     if (this.UIElements[i].id === parseInt(inputID, 10)) {
-                        console.log('here pushing', this.UIElements[i].elementsToPush);
-                        utils.pushElements(this, this.UIElements[i], delta);
+                        this.pushElements(this.UIElements[i], delta);
                         break;
                     }
                 }
@@ -127,7 +125,7 @@ StatementBloq.prototype.getConnectionPosition = function(connectionType, bloqToC
 //     bloq.delta.lastx = a.x;
 //     bloq.delta.lasty = a.y;
 //     //Update the bloq's connectors using the new deltas
-//     bloq.connections = utils.updateConnectors(bloq, bloq.delta);
+//     bloq.connections = this.updateConnectors(bloq, bloq.delta);
 //     // move child bloqs along with this one
 //     utils.moveChildren(bloq, bloq.delta);
 // };

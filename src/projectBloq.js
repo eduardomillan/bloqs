@@ -7,7 +7,7 @@
 function ProjectBloq(bloqData, canvas, position, data) {
     Bloq.call(this, bloqData, canvas, position, data);
     //Down connector x position : +20 px
-    utils.updateConnector(this.connections.down, {
+    this.updateConnector(this.connections.down, {
         x: 20,
         y: 0
     });
