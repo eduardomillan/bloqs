@@ -7,15 +7,7 @@
 //----------------------------------------------------------------//
 var utils = utils || {};
 var connectionThreshold = 20; // px
-utils.moveBloq = function(bloq, location) {
-    bloq.bloqBody.x(location.x);
-    bloq.bloqBody.y(location.y);
-};
-utils.moveBloq2 = function(bloq, delta) {
-    bloq.bloqBody.x(bloq.bloqBody.x() + delta.x);
-    bloq.bloqBody.y(bloq.bloqBody.y() + delta.y);
-    bloq.bloqBody.connections = utils.updateConnectors(bloq, delta);
-};
+
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
@@ -25,22 +17,6 @@ function getRandomColor() {
     }
     return color;
 }
-/**
- * Updates de position of the connectors of a bloq (used after modifying the bloq's position)
- * @param bloq
- */
-utils.updateConnectors = function(bloq, delta) {
-    for (var type in bloq.bloqBody.connections) {
-        if (bloq.bloqBody.connections[type] && type === 'inputs') {
-            for (var i in bloq.bloqBody.connections[type]) {
-                utils.updateConnector(bloq.bloqBody.connections[type][i], delta);
-            }
-        } else if (bloq.bloqBody.connections[type]) {
-            utils.updateConnector(bloq.bloqBody.connections[type], delta);
-        }
-    }
-    return bloq.bloqBody.connections;
-};
 utils.updateConnector = function(connector, delta) {
     connector.connectionPosition.x += delta.x;
     connector.connectionPosition.y += delta.y;
@@ -72,13 +48,12 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     x: bloq2Connection.connectorArea.x1 - bloq1Connection.connectorArea.x1,
                     y: bloq2Connection.connectorArea.y1 - bloq1Connection.connectorArea.y1
                 };
-
                 console.log('bloq1, bloq2', bloq1, bloq2);
                 if (type === 'inputs' || type === 'down') { // parent is bloq1
                     //move bloq
                     bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID);
-                    utils.moveBloq(bloq2, bloq1.getConnectionPosition(type, bloq2, inputID));
-                    bloq2.connections = utils.updateConnectors(bloq2, deltaParent);
+                    bloq2.move(bloq1.getConnectionPosition(type, bloq2, inputID));
+                    bloq2.updateConnectors(deltaParent);
                     bloq1Connection.bloq = bloq2;
                     //move bloq's children
                     utils.moveChildren(bloq2, deltaParent);
@@ -87,21 +62,19 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 } else { //parent is bloq2
                     //move bloq
                     bloq1.updateBloqs(bloq2, bloq1, type, inputID);
-                    utils.moveBloq(bloq1, bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
-                    bloq1.connections = utils.updateConnectors(bloq1, deltaChild);
+                    bloq1.move(bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
+                    bloq1.updateConnectors(deltaChild);
                     bloq2Connection.bloq = bloq1;
                     //move bloq's children
                     utils.moveChildren(bloq1, deltaChild);
                     //put child bloq on top if it is not already: 
                     utils.bloqOnTop(bloq1);
                 }
-                bloq1.bloqBody.delta.lastx = 0;
-                bloq1.bloqBody.delta.lasty = 0;
+                bloq1.resetLastDelta();
                 return true;
             } else { //reject
                 utils.rejectBloq(bloq1);
-                bloq1.bloqBody.delta.lastx = 0;
-                bloq1.bloqBody.delta.lasty = 0;
+                bloq1.resetLastDelta();
             }
         } else {}
     }
@@ -122,16 +95,16 @@ utils.rejectBloq = function(bloq) {
         x: 50,
         y: 0
     };
-    utils.moveBloq2(bloq, {
+    bloq.move2({
         x: rejectionLocation.x,
         y: rejectionLocation.y
     });
 };
 utils.moveChildren = function(bloq, delta) {
-    for (var i in bloq.bloqBody.relations.children) {
-        var child = bloq.bloqBody.relations.children[i].bloq;
-        utils.moveBloq2(child, delta);
-        if (child.bloqBody.relations !== undefined && child.bloqBody.relations.children !== undefined) {
+    for (var i in bloq.relations.children) {
+        var child = bloq.relations.children[i].bloq;
+        child.move2(child, delta);
+        if (child.relations !== undefined && child.relations.children !== undefined) {
             utils.moveChildren(child, delta);
         }
     }
@@ -142,7 +115,7 @@ utils.moveConnector = function(bloq, connection, delta) {
     //If there is a bloq connected, move the bloq also
     if (connection.bloq !== undefined) {
         var bloqConnected = connection.bloq;
-        utils.moveBloq2(bloqConnected, delta);
+        bloqConnected.move2(delta);
     }
     //Update bloq's size
     bloq.resize(delta);
@@ -196,7 +169,6 @@ utils.getOutputBloq = function(bloq, posx, width, height) {
 //     }
 //     return path;
 // };
-
 utils.getBloqById = function(nodeId, data) {
     for (var bloqIndex in data.bloqs) {
         var bloq = data.bloqs[bloqIndex];

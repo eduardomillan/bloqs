@@ -7,7 +7,7 @@
 function ProjectBloq(bloqData, canvas, position, data) {
     Bloq.call(this, bloqData, canvas, position, data);
     //Down connector x position : +20 px
-    utils.updateConnector(this.bloqBody.connections.down, {
+    utils.updateConnector(this.connections.down, {
         x: 20,
         y: 0
     });
@@ -48,7 +48,7 @@ ProjectBloq.prototype.getConnectionPosition = function(connectionType, bloqToCon
 
     bloqToConnect.resizeParents('down');
     return {
-        x: this.bloqBody.connections[connectionType].connectionPosition.x,
-        y: this.bloqBody.connections[connectionType].connectionPosition.y
+        x: this.connections[connectionType].connectionPosition.x,
+        y: this.connections[connectionType].connectionPosition.y
     };
 };
