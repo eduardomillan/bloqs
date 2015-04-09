@@ -125,7 +125,7 @@ Bloq.prototype.searchNewConnections = function() {
                     for (var k in this.connections[j]) {
                         a = utils.manageConnections(j, this.connections[j][k], this.data.bloqs[i].connections[utils.oppositeConnection[j]], this, this.data.bloqs[i], k);
                     }
-                }  else if (j === 'up') {
+                } else if (j === 'up') {
                     for (var h in this.data.bloqs[i].connections[utils.oppositeConnection[j]]) {
                         a = utils.manageConnections(j, this.connections[j], this.data.bloqs[i].connections[utils.oppositeConnection[j]][h], this, this.data.bloqs[i], h);
                     }
@@ -164,7 +164,7 @@ Bloq.prototype.deleteChild = function(child) {
     for (i in this.relations.codeChildren) {
         if (this.relations.codeChildren[i] === child.id) {
             this.relations.codeChildren.splice(i, 1);
-            this.childrenHeight -= child.size.height;
+            this.childrenHeight -= child.childrenHeight;
             break;
         }
     }
@@ -189,11 +189,10 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
             return false;
         }
     }
-    if (location === 'up' && parseInt(inputID,10) === 0) {
+    if (location === 'up' && parseInt(inputID, 10) === 0) {
         this.relations.codeChildren.push(childrenId);
         //Add the height to childrenHeight
-        this.childrenHeight += utils.getBloqById(childrenId, this.data).size.height;
-
+        this.childrenHeight += utils.getBloqById(childrenId, this.data).childrenHeight;
         this.resizeParents('down', utils.getBloqById(childrenId, this.data));
     } else {
         this.relations.inputChildren[childrenId] = {
@@ -243,31 +242,30 @@ Bloq.prototype.getCode = function(_function) {
 //     //     this.selection.show();
 //     // }
 // });
-Bloq.prototype.resizeStatementsInput = function() {};
+// Bloq.prototype.resizeStatementsInput = function() {};
 Bloq.prototype.resizeParents = function(direction, child) {
-    var parentBloq = utils.getBloqById(this.relations.parent, this.data);
-    if (parentBloq === null) {
-        parentBloq = this;
-    }
-    if (child === undefined) {
-        child = this;
-    }
-    while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined) {
+    var parentBloq = this;
+    do {
+        if (parentBloq.resizeStatementsInput !== undefined) {
+            if (direction === 'up') {
+                console.log('RESIZING PARENTS:', direction, child.childrenHeight);
+                parentBloq.resizeStatementsInput({
+                    x: 0,
+                    y: -child.childrenHeight
+                });
+            } else {
+                console.log('RESIZING PARENTS:', direction, child.childrenHeight);
+                parentBloq.resizeStatementsInput({
+                    x: 0,
+                    y: child.childrenHeight
+                });
+            }
+        }
         parentBloq = utils.getBloqById(parentBloq.relations.parent, child.data);
-    }
-    if (direction === 'up') {
-        console.log('RESIZING PARENTS:', direction, child.childrenHeight);
-        parentBloq.resizeStatementsInput({
-            x: 0,
-            y: -child.childrenHeight
-        });
-    } else {
-        console.log('RESIZING PARENTS:', direction, child.size.height);
-        parentBloq.resizeStatementsInput({
-            x: 0,
-            y: child.size.height
-        });
-    }
+        if (parentBloq === null) {
+            break;
+        }
+    } while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined);
 };
 //////******    CONNECTORS    ******//////
 /**
@@ -353,7 +351,9 @@ Bloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, i
         }
         return this.connections[connectionType][inputID].connectionPosition;
     }
-    return this.connections[connectionType].connectionPosition;
+    if (connectionType === 'down') {
+        return this.connections[connectionType][inputID].connectionPosition;
+    }
 };
 Bloq.prototype.createConnectors = function() {
     this.connections = {};
@@ -519,8 +519,8 @@ Bloq.prototype.resizeUI = function(bloq) {
                 }
             }
         }
-    } else if (this.relations.children[bloq.id].connection === 'up' && parseInt(this.relations.children[bloq.id].inputID,10) === 0) { //upper connection
-        bloq.resizeParents('up');
+    } else if (this.relations.children[bloq.id].connection === 'up' && parseInt(this.relations.children[bloq.id].inputID, 10) === 0) { //upper connection
+        this.resizeParents('up', bloq);
     }
 };
 Bloq.prototype.pushElements = function(UIElement, delta) {

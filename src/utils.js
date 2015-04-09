@@ -51,6 +51,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 } else { //parent is bloq2
                     //move bloq
                     bloq1.updateBloqs(bloq2, bloq1, type, inputID);
+                    // console.log('MOVING TO : ', bloq2.getConnectionPosition(), bloq2);
                     bloq1.moveTo(bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
                     bloq1.updateConnectors(deltaChild);
                     bloq2Connection.bloq = bloq1;

@@ -61,6 +61,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                 } else { //parent is bloq2
                     //move bloq
                     bloq1.updateBloqs(bloq2, bloq1, type, inputID);
+                    // console.log('MOVING TO : ', bloq2.getConnectionPosition(), bloq2);
                     bloq1.moveTo(bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
                     bloq1.updateConnectors(deltaChild);
                     bloq2Connection.bloq = bloq1;
@@ -284,7 +285,7 @@ Bloq.prototype.searchNewConnections = function() {
                     for (var k in this.connections[j]) {
                         a = utils.manageConnections(j, this.connections[j][k], this.data.bloqs[i].connections[utils.oppositeConnection[j]], this, this.data.bloqs[i], k);
                     }
-                }  else if (j === 'up') {
+                } else if (j === 'up') {
                     for (var h in this.data.bloqs[i].connections[utils.oppositeConnection[j]]) {
                         a = utils.manageConnections(j, this.connections[j], this.data.bloqs[i].connections[utils.oppositeConnection[j]][h], this, this.data.bloqs[i], h);
                     }
@@ -323,7 +324,7 @@ Bloq.prototype.deleteChild = function(child) {
     for (i in this.relations.codeChildren) {
         if (this.relations.codeChildren[i] === child.id) {
             this.relations.codeChildren.splice(i, 1);
-            this.childrenHeight -= child.size.height;
+            this.childrenHeight -= child.childrenHeight;
             break;
         }
     }
@@ -348,11 +349,10 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
             return false;
         }
     }
-    if (location === 'up' && parseInt(inputID,10) === 0) {
+    if (location === 'up' && parseInt(inputID, 10) === 0) {
         this.relations.codeChildren.push(childrenId);
         //Add the height to childrenHeight
-        this.childrenHeight += utils.getBloqById(childrenId, this.data).size.height;
-
+        this.childrenHeight += utils.getBloqById(childrenId, this.data).childrenHeight;
         this.resizeParents('down', utils.getBloqById(childrenId, this.data));
     } else {
         this.relations.inputChildren[childrenId] = {
@@ -402,31 +402,30 @@ Bloq.prototype.getCode = function(_function) {
 //     //     this.selection.show();
 //     // }
 // });
-Bloq.prototype.resizeStatementsInput = function() {};
+// Bloq.prototype.resizeStatementsInput = function() {};
 Bloq.prototype.resizeParents = function(direction, child) {
-    var parentBloq = utils.getBloqById(this.relations.parent, this.data);
-    if (parentBloq === null) {
-        parentBloq = this;
-    }
-    if (child === undefined) {
-        child = this;
-    }
-    while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined) {
+    var parentBloq = this;
+    do {
+        if (parentBloq.resizeStatementsInput !== undefined) {
+            if (direction === 'up') {
+                console.log('RESIZING PARENTS:', direction, child.childrenHeight);
+                parentBloq.resizeStatementsInput({
+                    x: 0,
+                    y: -child.childrenHeight
+                });
+            } else {
+                console.log('RESIZING PARENTS:', direction, child.childrenHeight);
+                parentBloq.resizeStatementsInput({
+                    x: 0,
+                    y: child.childrenHeight
+                });
+            }
+        }
         parentBloq = utils.getBloqById(parentBloq.relations.parent, child.data);
-    }
-    if (direction === 'up') {
-        console.log('RESIZING PARENTS:', direction, child.childrenHeight);
-        parentBloq.resizeStatementsInput({
-            x: 0,
-            y: -child.childrenHeight
-        });
-    } else {
-        console.log('RESIZING PARENTS:', direction, child.size.height);
-        parentBloq.resizeStatementsInput({
-            x: 0,
-            y: child.size.height
-        });
-    }
+        if (parentBloq === null) {
+            break;
+        }
+    } while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined);
 };
 //////******    CONNECTORS    ******//////
 /**
@@ -512,7 +511,9 @@ Bloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, i
         }
         return this.connections[connectionType][inputID].connectionPosition;
     }
-    return this.connections[connectionType].connectionPosition;
+    if (connectionType === 'down') {
+        return this.connections[connectionType][inputID].connectionPosition;
+    }
 };
 Bloq.prototype.createConnectors = function() {
     this.connections = {};
@@ -678,8 +679,8 @@ Bloq.prototype.resizeUI = function(bloq) {
                 }
             }
         }
-    } else if (this.relations.children[bloq.id].connection === 'up' && parseInt(this.relations.children[bloq.id].inputID,10) === 0) { //upper connection
-        bloq.resizeParents('up');
+    } else if (this.relations.children[bloq.id].connection === 'up' && parseInt(this.relations.children[bloq.id].inputID, 10) === 0) { //upper connection
+        this.resizeParents('up', bloq);
     }
 };
 Bloq.prototype.pushElements = function(UIElement, delta) {
@@ -910,47 +911,47 @@ var StatementBloq = function(bloqData, canvas, position, data) {
     this.bloqBody.dragmove = StatementBloq.prototype.dragmove;
 };
 StatementBloq.prototype = Object.create(Bloq.prototype);
-StatementBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-    if (connectionType === 'up') {
-        return {
-            x: this.connections[connectionType].connectionPosition.x,
-            y: this.connections[connectionType].connectionPosition.y - bloqToConnect.size.height
-        };
-    }
-    if (connectionType === 'output') {
-        return {
-            x: this.connections[connectionType].connectionPosition.x - bloqToConnect.size.width,
-            y: this.connections[connectionType].connectionPosition.y - inputID * connectionThreshold
-        };
-    }
-    if (connectionType === 'inputs') {
-        for (var k in this.connections[connectionType]) {
-            //If the input is inline and there is not a bloq connected still
-            if (this.connections[connectionType][k].inline === true && k === inputID && this.connections[connectionType][k].bloq === undefined) {
-                var delta = {
-                    x: bloqToConnect.size.width,
-                    y: 0
-                };
-                this.resize(delta);
-                delta = {
-                    x: bloqToConnect.size.width,
-                    y: 0
-                };
-                for (var i in this.UIElements) {
-                    if (this.UIElements[i].id === parseInt(inputID, 10)) {
-                        this.pushElements(this.UIElements[i], delta);
-                        break;
-                    }
-                }
-            }
-        }
-        return this.connections[connectionType][inputID].connectionPosition;
-    }
-    if (connectionType === 'down') {
-        bloqToConnect.resizeParents('down');
-    }
-    return this.connections[connectionType].connectionPosition;
-};
+// StatementBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
+//     if (connectionType === 'up') {
+//         return {
+//             x: this.connections[connectionType].connectionPosition.x,
+//             y: this.connections[connectionType].connectionPosition.y - bloqToConnect.size.height
+//         };
+//     }
+//     if (connectionType === 'output') {
+//         return {
+//             x: this.connections[connectionType].connectionPosition.x - bloqToConnect.size.width,
+//             y: this.connections[connectionType].connectionPosition.y - inputID * connectionThreshold
+//         };
+//     }
+//     if (connectionType === 'inputs') {
+//         for (var k in this.connections[connectionType]) {
+//             //If the input is inline and there is not a bloq connected still
+//             if (this.connections[connectionType][k].inline === true && k === inputID && this.connections[connectionType][k].bloq === undefined) {
+//                 var delta = {
+//                     x: bloqToConnect.size.width,
+//                     y: 0
+//                 };
+//                 this.resize(delta);
+//                 delta = {
+//                     x: bloqToConnect.size.width,
+//                     y: 0
+//                 };
+//                 for (var i in this.UIElements) {
+//                     if (this.UIElements[i].id === parseInt(inputID, 10)) {
+//                         this.pushElements(this.UIElements[i], delta);
+//                         break;
+//                     }
+//                 }
+//             }
+//         }
+//         return this.connections[connectionType][inputID].connectionPosition;
+//     }
+//     if (connectionType === 'down') {
+//         bloqToConnect.resizeParents('down');
+//     }
+//     return this.connections[connectionType].connectionPosition;
+// };
 // StatementBloq.prototype.resizeUI = function(a) {};
 //---------------------------------------------------------------------------
 // // remove parent of this and child in parent:
@@ -1120,14 +1121,14 @@ StatementInputBloq.prototype.addDownConnector = function(posx, posy) {
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
 function ProjectBloq(bloqData, canvas, position, data) {
-    StatementInputBloq.call(this, bloqData, canvas, position, data, false);
+    Bloq.call(this, bloqData, canvas, position, data, false);
     this.bloqBody.text(bloqData.label.toUpperCase()).font({
         family: 'Helvetica',
         fill: '#fff',
         size: 14
     }).move(20, 5);
 }
-ProjectBloq.prototype = Object.create(StatementInputBloq.prototype);
+ProjectBloq.prototype = Object.create(Bloq.prototype);
 
 /**
  * Created by jesus on 30/03/15.
