@@ -239,8 +239,8 @@ Bloq.prototype.resizeParents = function(direction) {
     while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined) {
         parentBloq = utils.getBloqById(parentBloq.relations.parent, this.data);
     }
-    // console.log('RESIZE PARENTS: parentBloq', parentBloq);
-    // console.log('this.childrenHeight', this.childrenHeight);
+    console.log('RESIZE PARENTS: parentBloq', parentBloq);
+    console.log('this.childrenHeight', this.childrenHeight);
     if (direction === 'up') {
         parentBloq.resizeStatementsInput({
             x: 0,
@@ -249,7 +249,7 @@ Bloq.prototype.resizeParents = function(direction) {
     } else {
         parentBloq.resizeStatementsInput({
             x: 0,
-            y: this.childrenHeight
+            y: this.size.height
         });
     }
 };

@@ -356,23 +356,6 @@ Bloq.prototype.setParent = function(parentId) {
     this.relations.parent = parentId;
     return true;
 };
-Bloq.prototype.getChildrenHeight = function(flag) {
-    // if (flag === true) {
-    //     this.childrenHeight = 0;
-    // }
-    // var child;
-    // for (var i in this.relations.codeChildren) {
-    //     child = this.relations.codeChildren[i];
-    //     child = utils.getBloqById(child, this.data);
-    //     this.childrenHeight += child.size.height;
-    //     if (child.bloqBody.relations !== undefined && child.bloqBody.relations.codeChildren !== undefined) {
-    //         child.getChildrenHeight();
-    //     }
-    // }
-    // if (this.relations.codeChildren.length === 0) {
-    //     this.childrenHeight = this.size.height;
-    // }
-};
 //////******    CODE FUNCTIONS    ******//////
 Bloq.prototype.getCode = function(_function) {
     var code = this.code[_function];
@@ -415,8 +398,8 @@ Bloq.prototype.resizeParents = function(direction) {
     while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined) {
         parentBloq = utils.getBloqById(parentBloq.relations.parent, this.data);
     }
-    // console.log('RESIZE PARENTS: parentBloq', parentBloq);
-    // console.log('this.childrenHeight', this.childrenHeight);
+    console.log('RESIZE PARENTS: parentBloq', parentBloq);
+    console.log('this.childrenHeight', this.childrenHeight);
     if (direction === 'up') {
         parentBloq.resizeStatementsInput({
             x: 0,
@@ -425,7 +408,7 @@ Bloq.prototype.resizeParents = function(direction) {
     } else {
         parentBloq.resizeStatementsInput({
             x: 0,
-            y: this.childrenHeight
+            y: this.size.height
         });
     }
 };
