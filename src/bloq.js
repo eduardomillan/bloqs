@@ -34,6 +34,7 @@ function Bloq(bloqData, canvas, position, data) {
         codeChildren: [],
         inputChildren: []
     };
+    this.childrenNumber = 0;
     //Create the connectors using the bloq information
     this.createConnectors();
     // basic shape of the bloq
@@ -92,11 +93,12 @@ Bloq.prototype.dragmove = function(a) {
  * We stop dragging
  */
 Bloq.prototype.dragend = function() {
-    utils.triggerGlobalOnChange();
+    //Get the parent bloq to use its functions
+    var bloq = this.getBloqObject();
+    //Set childrenNumber to the current number of children
+    bloq.childrenNumber = bloq.relations.children.length;
     //Flag used to prevent the execution of these functions when dragend is called after just a click on the bloq!
     if (this.dragmoveFlag) {
-        //Get the parent bloq to use its functions
-        var bloq = this.getBloqObject();
         //Initialize lastx y lasty
         bloq.resetLastDelta();
         //Check for connections:
@@ -185,6 +187,7 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
         this.relations.codeChildren.push(childrenId);
         //Add the height to childrenHeight
         this.childrenHeight += utils.getBloqById(childrenId, this.data).size.height;
+        this.resizeParents('down');
     } else {
         this.relations.inputChildren[childrenId] = {
             bloq: utils.getBloqById(childrenId, this.data),
@@ -236,17 +239,20 @@ Bloq.prototype.getCode = function(_function) {
 Bloq.prototype.resizeStatementsInput = function() {};
 Bloq.prototype.resizeParents = function(direction) {
     var parentBloq = utils.getBloqById(this.relations.parent, this.data);
+    if (parentBloq === null) {
+        parentBloq = this;
+    }
     while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined) {
         parentBloq = utils.getBloqById(parentBloq.relations.parent, this.data);
     }
-    console.log('RESIZE PARENTS: parentBloq', parentBloq);
-    console.log('this.childrenHeight', this.childrenHeight);
     if (direction === 'up') {
+        console.log('RESIZING PARENTS:', direction, this.childrenHeight);
         parentBloq.resizeStatementsInput({
             x: 0,
             y: -this.childrenHeight
         });
     } else {
+        console.log('RESIZING PARENTS:', direction, this.size.height);
         parentBloq.resizeStatementsInput({
             x: 0,
             y: this.size.height

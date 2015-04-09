@@ -12,6 +12,7 @@
 // @include ../bloq.js
 // @include ../outputBloq.js
 // @include ../statementBloq.js
+// @include ../statementInputBloq.js
 // @include ../projectBloq.js
 // @include ../../res/basic_bloqs.js
 (function(root, undefined) {
@@ -64,7 +65,10 @@
      */
     data.createBloq = function(bloqData, canvas, position) {
         var bloq;
-        if (bloqData.hasOwnProperty('output')) {
+        if (bloqData.hasOwnProperty('statementInput')) {
+            bloq = new StatementInputBloq(bloqData, canvas, position, data, true);
+        }
+        else if (bloqData.hasOwnProperty('output')) {
             bloq = new OutputBloq(bloqData, canvas, position, data);
         } else if (bloqData.label === 'loop') {
             bloq = new ProjectBloq(bloqData, canvas, position, data);
