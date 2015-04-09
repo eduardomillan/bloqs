@@ -164,7 +164,8 @@ Bloq.prototype.deleteChild = function(child) {
     for (i in this.relations.codeChildren) {
         if (this.relations.codeChildren[i] === child.id) {
             this.relations.codeChildren.splice(i, 1);
-            this.childrenHeight -= child.childrenHeight;
+            this.decreaseChildrenHeight(child);
+            // this.childrenHeight -= child.childrenHeight;
             break;
         }
     }
@@ -192,7 +193,7 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
     if (location === 'up' && parseInt(inputID, 10) === 0) {
         this.relations.codeChildren.push(childrenId);
         //Add the height to childrenHeight
-        this.childrenHeight += utils.getBloqById(childrenId, this.data).childrenHeight;
+        this.increaseChildrenHeight(utils.getBloqById(childrenId, this.data));
         this.resizeParents('down', utils.getBloqById(childrenId, this.data));
     } else {
         this.relations.inputChildren[childrenId] = {
@@ -202,6 +203,21 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
     }
     return true;
 };
+Bloq.prototype.increaseChildrenHeight = function(child) {
+    // this.childrenHeight += child.childrenHeight;
+    this.childrenHeight += child.childrenHeight;
+    if (this.relations.parent !== undefined){
+        console.log('this.relations.parent',this.relations.parent);
+        utils.getBloqById(this.relations.parent, this.data).increaseChildrenHeight(child);
+    }
+}
+Bloq.prototype.decreaseChildrenHeight = function(child) {
+    var parent = child;
+    this.childrenHeight -= child.childrenHeight;
+    if (this.relations.parent !== undefined){
+        utils.getBloqById(this.relations.parent, this.data).decreaseChildrenHeight(child);
+    }
+}
 Bloq.prototype.setParent = function(parentId) {
     this.relations.parent = parentId;
     return true;
