@@ -29,7 +29,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
     if (bloq2Connection !== undefined && bloq1Connection !== undefined) {
         if (utils.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
             if (bloq1Connection.type === bloq2Connection.type) { // if the type is the same --> connect
-                console.log('CONNECT!');
+                console.log('CONNECT!');//, bloq1, bloq2, bloq1Connection, bloq2Connection);
                 var deltaParent = {
                     x: bloq1Connection.connectorArea.x1 - bloq2Connection.connectorArea.x1,
                     y: bloq1Connection.connectorArea.y1 - bloq2Connection.connectorArea.y1

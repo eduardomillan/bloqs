@@ -48,7 +48,7 @@ function Bloq(bloqData, canvas, position, data) {
         width: this.bloqBody.bbox().width,
         height: this.bloqBody.bbox().height
     };
-    this.childrenHeight = 0;
+    this.childrenHeight = this.size.height;
     if (this.bloqData.hasOwnProperty('text')) {
         this.createBloqUI();
     }
@@ -73,7 +73,7 @@ Bloq.prototype.dragmove = function(a) {
     if (bloq.relations.parent !== undefined) {
         var parentBloq = utils.getBloqById(bloq.relations.parent, bloq.data);
         //resize UI if needed
-        parentBloq.resizeUI();
+        parentBloq.resizeUI(bloq);
         //remove child from parent and parent from child
         parentBloq.deleteChild(this.getBloqObject());
         this.getBloqObject().deleteParent(false);
@@ -109,7 +109,8 @@ Bloq.prototype.searchNewConnections = function() {
     for (var j in this.connections) {
         console.log('Searching connection in bloqs connection:++++++++++++++++++++++++++++++++++', j);
         for (var i in this.data.bloqs) {
-            if (this.data.bloqs[i].id !== this.id) {
+            //If i is a number (not a string such as 'loop' or 'setup') and the id is different from the current bloq's
+            if (!isNaN(parseInt(i, 10)) && this.data.bloqs[i].id !== this.id) {
                 if (j === 'inputs') {
                     for (var k in this.connections[j]) {
                         a = utils.manageConnections(j, this.connections[j][k], this.data.bloqs[i].connections[utils.oppositeConnection[j]], this, this.data.bloqs[i], k);
@@ -123,6 +124,7 @@ Bloq.prototype.searchNewConnections = function() {
                 }
             }
         }
+        console.log('-------------');
     }
     console.log('-----------------------------------------------------------------------');
 };
@@ -154,11 +156,11 @@ Bloq.prototype.deleteChild = function(child) {
     for (i in this.relations.codeChildren) {
         if (this.relations.codeChildren[i] === child.id) {
             this.relations.codeChildren.splice(i, 1);
+            this.childrenHeight -= child.size.height;
             break;
         }
     }
     delete this.relations.inputChildren[child.id];
-    this.getChildrenHeight(true);
 };
 Bloq.prototype.setChildren = function(childrenId, location, inputID) {
     for (var bloqIndex in this.relations.children) {
@@ -181,35 +183,19 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
     }
     if (location === 'up') {
         this.relations.codeChildren.push(childrenId);
+        //Add the height to childrenHeight
+        this.childrenHeight += utils.getBloqById(childrenId, this.data).size.height;
     } else {
         this.relations.inputChildren[childrenId] = {
             bloq: utils.getBloqById(childrenId, this.data),
             id: inputID
         };
     }
-    this.getChildrenHeight(true);
     return true;
 };
 Bloq.prototype.setParent = function(parentId) {
     this.relations.parent = parentId;
     return true;
-};
-Bloq.prototype.getChildrenHeight = function(flag) {
-    // if (flag === true) {
-    //     this.childrenHeight = 0;
-    // }
-    // var child;
-    // for (var i in this.relations.codeChildren) {
-    //     child = this.relations.codeChildren[i];
-    //     child = utils.getBloqById(child, this.data);
-    //     this.childrenHeight += child.size.height;
-    //     if (child.bloqBody.relations !== undefined && child.bloqBody.relations.codeChildren !== undefined) {
-    //         child.getChildrenHeight();
-    //     }
-    // }
-    // if (this.relations.codeChildren.length === 0) {
-    //     this.childrenHeight = this.size.height;
-    // }
 };
 //////******    CODE FUNCTIONS    ******//////
 Bloq.prototype.getCode = function(_function) {
@@ -253,6 +239,8 @@ Bloq.prototype.resizeParents = function(direction) {
     while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined) {
         parentBloq = utils.getBloqById(parentBloq.relations.parent, this.data);
     }
+    // console.log('RESIZE PARENTS: parentBloq', parentBloq);
+    // console.log('this.childrenHeight', this.childrenHeight);
     if (direction === 'up') {
         parentBloq.resizeStatementsInput({
             x: 0,
@@ -477,6 +465,7 @@ Bloq.prototype.addInput = function(posx, posy, type) {
 Bloq.prototype.resize = function(delta) {
     this.size.width += delta.x;
     this.size.height += delta.y;
+    this.childrenHeight += delta.y;
     if (this.bloqBody.children !== undefined) {
         this.bloqBody.children()[0].size(this.size.width, this.size.height);
     } else {
@@ -492,28 +481,30 @@ Bloq.prototype.resize = function(delta) {
         });
     }
 };
-Bloq.prototype.resizeUI = function() {
-    // if (parentBloq.bloqBody.relations.children[this.getBloqObject().id].connection === 'output') {
-    //     for (var k in parentBloq.bloqBody.connections.inputs) {
-    //         if (parentBloq.bloqBody.connections.inputs[k].inline === true && k === parentBloq.bloqBody.relations.children[this.getBloqObject().id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
-    //             var delta = {
-    //                 x: +this.getBloqObject().size.width - parentBloq.size.width,
-    //                 y: +this.getBloqObject().size.height - parentBloq.size.height
-    //             };
-    //             parentBloq.resize(delta);
-    //             delta = {
-    //                 x: this.getBloqObject().size.width - parentBloq.size.width,
-    //                 y: 0
-    //             };
-    //             for (var i in parentBloq.UIElements) {
-    //                 if (parentBloq.UIElements[i].id === parseInt(k, 10)) {
-    //                     parentBloq.pushElements(parentBloq.UIElements[i], delta);
-    //                     break;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+Bloq.prototype.resizeUI = function(bloq) {
+    if (this.relations.children[bloq.id].connection === 'output') {
+        for (var k in this.connections.inputs) {
+            if (this.connections.inputs[k].inline === true && k === this.relations.children[bloq.id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
+                var delta = {
+                    x: +bloq.size.width - this.size.width,
+                    y: +bloq.size.height - this.size.height
+                };
+                this.resize(delta);
+                delta = {
+                    x: bloq.size.width - this.size.width,
+                    y: 0
+                };
+                for (var i in this.UIElements) {
+                    if (this.UIElements[i].id === parseInt(k, 10)) {
+                        this.pushElements(this.UIElements[i], delta);
+                        break;
+                    }
+                }
+            }
+        }
+    } else if (this.relations.children[bloq.id].connection === 'up') { //upper connection
+        bloq.resizeParents('up');
+    }
 };
 Bloq.prototype.pushElements = function(UIElement, delta) {
     var elements = UIElement.elementsToPush;
