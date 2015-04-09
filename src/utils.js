@@ -6,6 +6,10 @@
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
 var utils = utils || {};
+//ToDo : change this
+utils.triggerGlobalOnChange = function() {
+    $("field1").trigger("change");
+};
 var connectionThreshold = 20; // px
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
@@ -85,7 +89,6 @@ utils.rejectBloq = function(bloq) {
         y: rejectionLocation.y
     });
 };
-
 utils.bloqOnTop = function(bloq) {
     // bloq.bloqnode.parentNode.appendChild(bloq.node);
     // var child = {};

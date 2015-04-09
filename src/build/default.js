@@ -29,6 +29,11 @@
             field = SVG(element).size('100%', '100%');
             canvas = field.group().attr('class', 'bloqs-canvas');
         }
+        //LISTEN TO GLOBAL ONCHANGE
+        document.getElementById("field1").addEventListener('change', function() {
+            console.log('onchanging!!!');
+        }, false);
+
         return canvas;
     };
     data.bloqsToCode = function() {
