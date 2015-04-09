@@ -187,7 +187,7 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
         this.relations.codeChildren.push(childrenId);
         //Add the height to childrenHeight
         this.childrenHeight += utils.getBloqById(childrenId, this.data).size.height;
-        this.resizeParents('down');
+        this.resizeParents('down', utils.getBloqById(childrenId, this.data));
     } else {
         this.relations.inputChildren[childrenId] = {
             bloq: utils.getBloqById(childrenId, this.data),
@@ -237,25 +237,28 @@ Bloq.prototype.getCode = function(_function) {
 //     // }
 // });
 Bloq.prototype.resizeStatementsInput = function() {};
-Bloq.prototype.resizeParents = function(direction) {
+Bloq.prototype.resizeParents = function(direction, child) {
     var parentBloq = utils.getBloqById(this.relations.parent, this.data);
     if (parentBloq === null) {
         parentBloq = this;
     }
+    if (child === undefined) {
+        child = this;
+    }
     while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined) {
-        parentBloq = utils.getBloqById(parentBloq.relations.parent, this.data);
+        parentBloq = utils.getBloqById(parentBloq.relations.parent, child.data);
     }
     if (direction === 'up') {
-        console.log('RESIZING PARENTS:', direction, this.childrenHeight);
+        console.log('RESIZING PARENTS:', direction, child.childrenHeight);
         parentBloq.resizeStatementsInput({
             x: 0,
-            y: -this.childrenHeight
+            y: -child.childrenHeight
         });
     } else {
-        console.log('RESIZING PARENTS:', direction, this.size.height);
+        console.log('RESIZING PARENTS:', direction, child.size.height);
         parentBloq.resizeStatementsInput({
             x: 0,
-            y: this.size.height
+            y: child.size.height
         });
     }
 };

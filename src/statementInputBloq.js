@@ -42,18 +42,7 @@ StatementInputBloq.prototype.resizeStatementsInput = function(delta) {
     this.bloqBody.downPart.move(0, this.bloqBody.downPart.y() + delta.y);
     var diff = this.bloqBody.downPart.y() - this.bloqBody.leftPart.y() + 5;
     this.bloqBody.leftPart.height(diff);
-
-
-    // this.size.height = diff;
-    // this.childrenHeight =diff;
-    // console.log('resizeStatementsInput, diff:', diff, 'height:', this.size.height);
-    //update down connector:
-    // if (this.connections.down !== undefined) {
-    //     this.updateConnector(this.connections.down, {
-    //         x: 0,
-    //         y: delta.y
-    //     });
-    // }
+    this.size.height += delta.y;
 };
 StatementInputBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect) {
     //only if a new child has been added:
