@@ -10,7 +10,7 @@ function StatementInputBloq(bloqData, canvas, position, data, draggable) {
         this.bloqBody.draggable();
     }
     //Down connector x position : +20 px
-    this.updateConnector(this.connections.down, {
+    this.updateConnector(this.connections.down[0], {
         x: 20,
         y: 0
     });
@@ -30,6 +30,9 @@ function StatementInputBloq(bloqData, canvas, position, data, draggable) {
     this.childrenHeight = this.size.height;
     //Define bloqlabel and add the label on the bloq
     this.label = bloqData.label;
+    if (bloqData.statementInput) {
+        this.addDownConnector(this.bloqBody.x(), this.bloqBody.y() + this.size.height);
+    }
 }
 StatementInputBloq.prototype = Object.create(Bloq.prototype);
 /**
@@ -43,15 +46,42 @@ StatementInputBloq.prototype.resizeStatementsInput = function(delta) {
     var diff = this.bloqBody.downPart.y() - this.bloqBody.leftPart.y() + 5;
     this.bloqBody.leftPart.height(diff);
     this.size.height += delta.y;
+    //update down connector:
+    if (this.connections.down !== undefined && this.connections.down[1] !== undefined) {
+        this.updateConnector(this.connections.down[1], {
+            x: 0,
+            y: delta.y
+        });
+    }
 };
-StatementInputBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect) {
-    //only if a new child has been added:
-    // console.log('this.childrenNumber !== this.relations.children.length',this.childrenNumber, this.relations.children.length, this.childrenNumber !== this.relations.children.length);
-    // if (this.childrenNumber !== this.relations.children.length) {
-    // bloqToConnect.resizeParents('down');
-    // }
+StatementInputBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
     return {
-        x: this.connections[connectionType].connectionPosition.x,
-        y: this.connections[connectionType].connectionPosition.y
+        x: this.connections[connectionType][inputID].connectionPosition.x,
+        y: this.connections[connectionType][inputID].connectionPosition.y
     };
+};
+StatementInputBloq.prototype.addDownConnector = function(posx, posy) {
+    var index = 0;
+    if (this.connections.down !== undefined) {
+        index = this.connections.down.length;
+    } else {
+        this.connections.down = [{}];
+    }
+    this.connections.down[index] = {
+        connectionPosition: {
+            x: posx,
+            y: posy
+        },
+        connectorArea: {
+            x1: posx,
+            x2: posx + connectionThreshold,
+            y1: posy - connectionThreshold,
+            y2: posy + connectionThreshold
+        }
+    };
+    if (posx !== undefined && posy !== undefined) {
+        this.connections.down[index].UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
+            fill: getRandomColor()
+        }).move(posx, posy - connectionThreshold);
+    }
 };

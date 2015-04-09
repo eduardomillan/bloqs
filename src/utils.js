@@ -10,7 +10,7 @@ var utils = utils || {};
 utils.triggerGlobalOnChange = function() {
     $("field1").trigger("change");
 };
-var connectionThreshold = 20; // px
+var connectionThreshold = 10; // px
 function getRandomColor() {
     var letters = '0123456789ABCDEF'.split('');
     var color = '#';

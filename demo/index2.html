@@ -57,15 +57,16 @@ var loop = {
 var bloq2 = {
     up: true,
     down: true,
-    text : [ ["blablabla!"] ] ,
+    text : [ ["blablabla!", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
     color: '#045',
-    code: {setup:"blablabla();\n", loop:"aaa[];\n   aaa2[];\n"}
+    code: {setup:"blablabla({0},{1},{2});\n", loop:"aaa[];\n   aaa2[];\n"}
 };
 var bloq3 = {
     up: true,
     down: true,
     statementInput:true,
     color: '#e2e2e2',
+    text : [ ["if ", {input : 'bloqInput',type:"int",label:"INPUT"}] ],
     // text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "string", {input : 'bloqInput',type:"string",label:"INPUT"}] ] ,
     // text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}]],//, "number:", {input : 'bloqInput',type:"int",label:"INPUT"}, "userInput", {input:'userInput', type:"string",label:"userInput"}] ] ,
     // text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
