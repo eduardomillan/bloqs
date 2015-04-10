@@ -195,6 +195,8 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
         //Add the height to childrenHeight
         this.increaseChildrenHeight(utils.getBloqById(childrenId, this.data));
         this.resizeParents('down', utils.getBloqById(childrenId, this.data));
+    } else if (location === 'up' && parseInt(inputID, 10) === 1) {
+        utils.getBloqById(childrenId, this.data).stopSearchingParent = true;
     } else {
         this.relations.inputChildren[childrenId] = {
             bloq: utils.getBloqById(childrenId, this.data),
@@ -206,15 +208,14 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
 Bloq.prototype.increaseChildrenHeight = function(child) {
     // this.childrenHeight += child.childrenHeight;
     this.childrenHeight += child.childrenHeight;
-    if (this.relations.parent !== undefined){
-        console.log('this.relations.parent',this.relations.parent);
+    if (this.relations.parent !== undefined) {
         utils.getBloqById(this.relations.parent, this.data).increaseChildrenHeight(child);
     }
 }
 Bloq.prototype.decreaseChildrenHeight = function(child) {
     var parent = child;
     this.childrenHeight -= child.childrenHeight;
-    if (this.relations.parent !== undefined){
+    if (this.relations.parent !== undefined) {
         utils.getBloqById(this.relations.parent, this.data).decreaseChildrenHeight(child);
     }
 }
@@ -261,6 +262,9 @@ Bloq.prototype.getCode = function(_function) {
 // Bloq.prototype.resizeStatementsInput = function() {};
 Bloq.prototype.resizeParents = function(direction, child) {
     var parentBloq = this;
+    if (parentBloq.stopSearchingParent) {
+        return;
+    }
     do {
         if (parentBloq.resizeStatementsInput !== undefined) {
             if (direction === 'up') {
@@ -279,6 +283,9 @@ Bloq.prototype.resizeParents = function(direction, child) {
         }
         parentBloq = utils.getBloqById(parentBloq.relations.parent, child.data);
         if (parentBloq === null) {
+            break;
+        }
+        if (parentBloq.stopSearchingParent) {
             break;
         }
     } while (parentBloq.relations !== undefined && parentBloq.relations.parent !== undefined);
@@ -536,6 +543,8 @@ Bloq.prototype.resizeUI = function(bloq) {
             }
         }
     } else if (this.relations.children[bloq.id].connection === 'up' && parseInt(this.relations.children[bloq.id].inputID, 10) === 0) { //upper connection
+        //remove child from parent
+        this.deleteChild(bloq);
         this.resizeParents('up', bloq);
     }
 };
@@ -704,13 +713,32 @@ Bloq.prototype.createBloqUI = function() {
 };
 //////******    MOVE BLOQS    ******//////
 Bloq.prototype.moveTo = function(location) {
+    // console.log('location:', location.x, location.y);
+    // console.log('location init:', this.bloqBody.x(), this.bloqBody.y());
+    var init = {
+        x: this.bloqBody.x(),
+        y: this.bloqBody.y()
+    };
     this.bloqBody.x(location.x);
     this.bloqBody.y(location.y);
+    // console.log('location final:', this.bloqBody.x(), this.bloqBody.y());
+    var delta = {
+        x: 0,
+        y: 0
+    };
+    delta.x = this.bloqBody.x() - init.x;
+    delta.y = this.bloqBody.y() - init.y;
+    // console.log('delta:', delta);
+    this.updateConnectors(delta);
+    this.moveChildren(delta);
 };
-Bloq.prototype.move2 = function(delta) {
+Bloq.prototype.move2 = function(delta, moveChildren) {
     this.bloqBody.x(this.bloqBody.x() + delta.x);
     this.bloqBody.y(this.bloqBody.y() + delta.y);
     this.updateConnectors(delta);
+    if (moveChildren) {
+        this.moveChildren(delta);
+    }
 };
 Bloq.prototype.moveChildren = function(delta) {
     for (var i in this.relations.children) {

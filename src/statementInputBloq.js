@@ -15,13 +15,13 @@ function StatementInputBloq(bloqData, canvas, position, data, draggable) {
         y: 0
     });
     //Add bloq's left and down UI parts
-    this.bloqBody.leftPart = this.bloqBody.rect(20, 70).fill('#e2e2e2').radius(4);
-    this.bloqBody.leftPart.size.height = 70;
+    this.bloqBody.downPart = this.bloqBody.rect(this.size.width, 20).fill('#00CC00').radius(4);
+    this.bloqBody.downPart.y(80 - 20);
+    this.bloqBody.add(this.bloqBody.downPart);
+    this.bloqBody.leftPart = this.bloqBody.rect(20, 80).fill('#00CC00').radius(4);
+    this.bloqBody.leftPart.size.height = 80;
     this.bloqBody.leftPart.size.width = 20;
     this.bloqBody.add(this.bloqBody.leftPart);
-    this.bloqBody.downPart = this.bloqBody.rect(this.size.width, 20).fill(bloqData.color).radius(4);
-    this.bloqBody.downPart.y(70 - 5);
-    this.bloqBody.add(this.bloqBody.downPart);
     // Update size:
     this.size = {
         width: this.bloqBody.bbox().width,
@@ -43,16 +43,29 @@ StatementInputBloq.prototype.resizeStatementsInput = function(delta) {
     // this.bloqBody.leftPart.size.height += delta.y;
     this.bloqBody.leftPart.height(this.bloqBody.leftPart.size.height);
     this.bloqBody.downPart.move(0, this.bloqBody.downPart.y() + delta.y);
-    var diff = this.bloqBody.downPart.y() - this.bloqBody.leftPart.y() + 5;
+    var diff = this.bloqBody.downPart.y() - this.bloqBody.leftPart.y() + 20;
     this.bloqBody.leftPart.height(diff);
     this.size.height += delta.y;
     //update down connector:
     if (this.connections.down !== undefined && this.connections.down[1] !== undefined) {
-        this.updateConnector(this.connections.down[1], {
+        this.moveConnector(this.connections.down[1], {
             x: 0,
             y: delta.y
         });
     }
+    // this.moveChildren(delta);
+};
+
+
+StatementInputBloq.prototype.moveConnector = function(connection, delta) {
+    //Move connector 
+    connection = this.updateConnector(connection, delta);
+    //If there is a bloq connected, move the bloq also
+    if (connection.bloq !== undefined) {
+        var bloqConnected = connection.bloq;
+        bloqConnected.move2(delta, true);
+    }
+
 };
 StatementInputBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
     return {

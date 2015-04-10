@@ -42,21 +42,14 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     //move bloq
                     bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID);
                     bloq2.moveTo(bloq1.getConnectionPosition(type, bloq2, inputID));
-                    bloq2.updateConnectors(deltaParent);
                     bloq1Connection.bloq = bloq2;
-                    //move bloq's children
-                    bloq2.moveChildren(deltaParent);
                     //put child bloq on top if it is not already: 
                     utils.bloqOnTop(bloq2);
                 } else { //parent is bloq2
                     //move bloq
                     bloq1.updateBloqs(bloq2, bloq1, type, inputID);
-                    // console.log('MOVING TO : ', bloq2.getConnectionPosition(), bloq2);
                     bloq1.moveTo(bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
-                    bloq1.updateConnectors(deltaChild);
                     bloq2Connection.bloq = bloq1;
-                    //move bloq's children
-                    bloq1.moveChildren(deltaChild);
                     //put child bloq on top if it is not already: 
                     utils.bloqOnTop(bloq1);
                 }
