@@ -1402,6 +1402,10 @@ var getBasicBloqs = function() {
         data.bloqs.push(bloq);
         return bloq;
     };
+
+    data.getBloq = function(bloqName, canvas){
+        return data.createBloq(getBasicBloqs()[bloqName], canvas, [50,50]);
+    }
     /**
      * Create a set of bloqs and setup its properties and events.
      *
@@ -1422,10 +1426,11 @@ var getBasicBloqs = function() {
         var bloqTypes = getBasicBloqs();
         var counter = 20;
         for (var i in bloqTypes) {
-            data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter])); //i+2 due to setup & loop --> change this ASAP!!
+            data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter]));
             counter += 100;
         }
     };
+
     // Base function.
     var bloqs = function() {
         return data;
