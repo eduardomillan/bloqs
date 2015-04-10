@@ -30,22 +30,14 @@
         <script src="./../../svg.foreignobject.js/svg.foreignobject.js"></script>
         <script src="./../bower_components/svg.draggable/svg.draggable.js"></script>
         <script src="./../dist/bloqs.js"></script>
-        <div id="code" style="position: absolute; top: 30px; left: 710px; width: 700px; height: 700px; background-color: #E6E6FA;">    </div>
+        <div id="code" style="position: absolute; top: 30px; left: 900px; width: 200px; height: 700px; background-color: #E6E6FA;">    </div>
 <button  style="position: absolute; top: 10px; left: 710px; " onclick="document.getElementById('code').innerHTML ='<pre>'+bloqs.bloqsToCode()+'</pre>'">CODE</button>
 <script>
     /* begin demo script */
     var bloqs = bloqs();
     var canvas = bloqs.createCanvas("field1");
     bloqs.createProjectStructure();
-    var bloq5 = {
-    up: true,
-    down: true,
-    color: '#e2e2e2',
-    text:[["number",{input:'userInput', type:"number",label:"number"}]],
-    code: {setup:'{0}', loop:'{0}'}
-    };
-    var block5 = bloqs.createBloq(bloq5, canvas, [400,300]);
-    var block6 = bloqs.createBloq(bloq5, canvas, [400,300]);
+
     /* end demo script */
 </script>
 </svg>

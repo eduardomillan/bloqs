@@ -373,29 +373,30 @@ Bloq.prototype.getCode = function(_function) {
     var search = '';
     var replacement = '';
     var id;
-    for (var i in this.relations.inputChildren) {
-        id = this.relations.inputChildren[i].id;
-        id = id.substr(id.indexOf('_') + 1, id.length);
-        search = '{[' + id + ']}';
-        if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
-            replacement = this.relations.inputChildren[i].code;
-        } else {
-            replacement = this.relations.inputChildren[i].bloq.getCode(_function);
+    for (var k in code) {
+        for (var i in this.relations.inputChildren) {
+            id = this.relations.inputChildren[i].id;
+            id = id.substr(id.indexOf('_') + 1, id.length);
+            search = '{[' + id + ']}';
+            if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
+                replacement = this.relations.inputChildren[i].code;
+            } else {
+                replacement = this.relations.inputChildren[i].bloq.getCode(_function);
+            }
+            code[k] = code[k].replace(new RegExp(search, 'g'), replacement);
         }
-        code = code.replace(new RegExp(search, 'g'), replacement);
+        for (i = 0; i < this.inputsNumber; i++) {
+            search = '{[' + i + ']}';
+            code[k] = code[k].replace(new RegExp(search, 'g'), ' ');
+        }
     }
-    for (i = 0; i < this.inputsNumber; i++) {
-        search = '{[' + i + ']}';
-        code = code.replace(new RegExp(search, 'g'), ' ');
-    }
-    return code;
+    return code.join('');
 };
-
 Bloq.prototype.getStatementInputCode = function(child, code, _function) {
     code.value += child.getCode(_function);
     if (child.relations.codeChildren !== undefined && child.relations.codeChildren.length > 0) {
         var dummy = utils.getBloqById(child.relations.codeChildren, child.data);
-        console.log('dummy',dummy);
+        console.log('dummy', dummy);
         child.getStatementInputCode(dummy, code, _function);
     }
 };
@@ -1179,36 +1180,120 @@ ProjectBloq.prototype = Object.create(Bloq.prototype);
 /**
  * Created by jesus on 30/03/15.
  */
-
-var getBasicBloqs = function(){
-
+var getProjectBloqs = function() {
     var data = {
         setup: {
             label: 'setup',
             down: true,
             color: '#000',
-            code: {setup: "", loop: "void setup (){\n"}
+            code: {
+                setup: "",
+                loop: "void setup (){\n"
+            }
         },
         loop: {
             label: 'loop',
             down: true,
             color: '#000',
-            code: {setup: "", loop: "void loop (){\n"}
+            code: {
+                setup: "",
+                loop: "void loop (){\n"
+            }
+        }
+    };
+    return data;
+};
+var getBasicBloqs = function() {
+    var data = {
+        led: {
+            up: true,
+            down: true,
+            color: '#e2e2e2',
+            text: [
+                [{
+                    input: 'dropdown',
+                    type: "text",
+                    data: [{
+                        label: 'Encender',
+                        value: 'HIGH'
+                    }, {
+                        label: 'Apagar',
+                        value: 'LOW'
+                    }]
+                }, "el LED", {
+                    input: 'dropdown',
+                    type: "text",
+                    data: [{
+                        label: 'LED1',
+                        value: 'LED1'
+                    }, {
+                        label: 'LED2',
+                        value: 'LED2'
+                    }]
+                }]
+            ],
+            code: {
+                setup: ["digitalWrite({1},{0});\n"],
+                loop: ["digitalWrite({1},{0});\n"]
+            }
         },
-        // horizontal3Inputs: {
-        //     up: true,
-        //     down: true,
-        //     path: '',
-        //     color: '#e2e2e2',
-        //     text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "number:", {input : 'bloqInput',type:"int",label:"INPUT"}, "userInput", {input:'userInput', type:"string",label:"userInput"}] ] ,
-        //     code: {setup:"trial({0},{1},{2});\n", loop:"trial({0},{1},{2});\n"}
-        // },
-        // basicInputDropdown: {
-        //     output: 'int',
-        //     color: '#e2e2e2',
-        //     text:[[{input:'dropdown', type:"text",data:[{label:'ON',value:'HIGH'},{label:'OFF',value:'LOW'}]}]],
-        //     code: {setup:"{0}", loop:"{0}"}
-        // },
+        read: {
+            output: 'number',
+            color: '#e2e2e2',
+            text: [
+                ["Leer", {
+                    input: 'dropdown',
+                    type: "text",
+                    data: [{
+                        label: 'Sensor1',
+                        value: 'Sensor1'
+                    }, {
+                        label: 'Sensor2',
+                        value: 'Sensor2'
+                    }]
+                }]
+            ],
+            code: {
+                setup: ["digitalRead({0});\n"],
+                loop: ["digitalRead({0});\n"]
+            }
+        },
+        buzzer: {
+            up: true,
+            down: true,
+            color: '#e2e2e2',
+            text: [
+                ["Sonar el buzzer", {
+                    input: 'dropdown',
+                    type: "text",
+                    data: [{
+                        label: 'Buzzer1',
+                        value: 'Buzzer1'
+                    }, {
+                        label: 'Buzzer2',
+                        value: 'Buzzer2'
+                    }]
+                }, "con la nota", {
+                    input: 'dropdown',
+                    type: "text",
+                    data: [{
+                        label: 'Do',
+                        value: '200'
+                    }, {
+                        label: 'Re',
+                        value: '300'
+                    }]
+                }, "durante", {
+                    input: 'userInput',
+                    type: "number",
+                    label: "0"
+                }, "ms"]
+            ],
+            code: {
+                setup: ["tone({0},{1},{2});", "delay({2});\n"],
+                loop: ["tone({0},{1},{2});", "delay({2});\n"]
+            }
+        },
         // basicInputNumber: {
         //     output: 'int',
         //     color: '#e2e2e2',
@@ -1217,10 +1302,7 @@ var getBasicBloqs = function(){
         // }
     };
     return data;
-
-
 };
-
 (function(root, undefined) {
     var data = {
         bloqs: [],
@@ -1240,7 +1322,6 @@ var getBasicBloqs = function(){
         document.getElementById("field1").addEventListener('change', function() {
             console.log('onchanging!!!');
         }, false);
-
         return canvas;
     };
     data.bloqsToCode = function() {
@@ -1273,8 +1354,7 @@ var getBasicBloqs = function(){
         var bloq;
         if (bloqData.hasOwnProperty('statementInput')) {
             bloq = new StatementInputBloq(bloqData, canvas, position, data, true);
-        }
-        else if (bloqData.hasOwnProperty('output')) {
+        } else if (bloqData.hasOwnProperty('output')) {
             bloq = new OutputBloq(bloqData, canvas, position, data);
         } else if (bloqData.label === 'loop') {
             bloq = new ProjectBloq(bloqData, canvas, position, data);
@@ -1296,10 +1376,20 @@ var getBasicBloqs = function(){
      * @returns array of Object bloq
      */
     data.createProjectStructure = function() {
-        var bloqTypes = getBasicBloqs();
+        var bloqTypes = getProjectBloqs();
+        console.log('aaaaaaaaa', bloqTypes);
         var counter = 100;
         for (var i in bloqTypes) {
-            data.bloqs[i] = new ProjectBloq(bloqTypes[i], canvas, [100, counter], data);
+            data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter], data));
+            counter += 100;
+        }
+        this.createMenu();
+    };
+    data.createMenu = function() {
+        var bloqTypes = getBasicBloqs();
+        var counter = 20;
+        for (var i in bloqTypes) {
+            data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter])); //i+2 due to setup & loop --> change this ASAP!!
             counter += 100;
         }
     };

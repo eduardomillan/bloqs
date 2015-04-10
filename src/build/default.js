@@ -34,7 +34,6 @@
         document.getElementById("field1").addEventListener('change', function() {
             console.log('onchanging!!!');
         }, false);
-
         return canvas;
     };
     data.bloqsToCode = function() {
@@ -67,8 +66,7 @@
         var bloq;
         if (bloqData.hasOwnProperty('statementInput')) {
             bloq = new StatementInputBloq(bloqData, canvas, position, data, true);
-        }
-        else if (bloqData.hasOwnProperty('output')) {
+        } else if (bloqData.hasOwnProperty('output')) {
             bloq = new OutputBloq(bloqData, canvas, position, data);
         } else if (bloqData.label === 'loop') {
             bloq = new ProjectBloq(bloqData, canvas, position, data);
@@ -90,10 +88,20 @@
      * @returns array of Object bloq
      */
     data.createProjectStructure = function() {
-        var bloqTypes = getBasicBloqs();
+        var bloqTypes = getProjectBloqs();
+        console.log('aaaaaaaaa', bloqTypes);
         var counter = 100;
         for (var i in bloqTypes) {
-            data.bloqs[i] = new ProjectBloq(bloqTypes[i], canvas, [100, counter], data);
+            data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter], data));
+            counter += 100;
+        }
+        this.createMenu();
+    };
+    data.createMenu = function() {
+        var bloqTypes = getBasicBloqs();
+        var counter = 20;
+        for (var i in bloqTypes) {
+            data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter])); //i+2 due to setup & loop --> change this ASAP!!
             counter += 100;
         }
     };

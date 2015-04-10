@@ -228,29 +228,30 @@ Bloq.prototype.getCode = function(_function) {
     var search = '';
     var replacement = '';
     var id;
-    for (var i in this.relations.inputChildren) {
-        id = this.relations.inputChildren[i].id;
-        id = id.substr(id.indexOf('_') + 1, id.length);
-        search = '{[' + id + ']}';
-        if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
-            replacement = this.relations.inputChildren[i].code;
-        } else {
-            replacement = this.relations.inputChildren[i].bloq.getCode(_function);
+    for (var k in code) {
+        for (var i in this.relations.inputChildren) {
+            id = this.relations.inputChildren[i].id;
+            id = id.substr(id.indexOf('_') + 1, id.length);
+            search = '{[' + id + ']}';
+            if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
+                replacement = this.relations.inputChildren[i].code;
+            } else {
+                replacement = this.relations.inputChildren[i].bloq.getCode(_function);
+            }
+            code[k] = code[k].replace(new RegExp(search, 'g'), replacement);
         }
-        code = code.replace(new RegExp(search, 'g'), replacement);
+        for (i = 0; i < this.inputsNumber; i++) {
+            search = '{[' + i + ']}';
+            code[k] = code[k].replace(new RegExp(search, 'g'), ' ');
+        }
     }
-    for (i = 0; i < this.inputsNumber; i++) {
-        search = '{[' + i + ']}';
-        code = code.replace(new RegExp(search, 'g'), ' ');
-    }
-    return code;
+    return code.join('');
 };
-
 Bloq.prototype.getStatementInputCode = function(child, code, _function) {
     code.value += child.getCode(_function);
     if (child.relations.codeChildren !== undefined && child.relations.codeChildren.length > 0) {
         var dummy = utils.getBloqById(child.relations.codeChildren, child.data);
-        console.log('dummy',dummy);
+        console.log('dummy', dummy);
         child.getStatementInputCode(dummy, code, _function);
     }
 };

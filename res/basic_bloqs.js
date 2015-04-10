@@ -1,36 +1,120 @@
 /**
  * Created by jesus on 30/03/15.
  */
-
-var getBasicBloqs = function(){
-
+var getProjectBloqs = function() {
     var data = {
         setup: {
             label: 'setup',
             down: true,
             color: '#000',
-            code: {setup: "", loop: "void setup (){\n"}
+            code: {
+                setup: "",
+                loop: "void setup (){\n"
+            }
         },
         loop: {
             label: 'loop',
             down: true,
             color: '#000',
-            code: {setup: "", loop: "void loop (){\n"}
+            code: {
+                setup: "",
+                loop: "void loop (){\n"
+            }
+        }
+    };
+    return data;
+};
+var getBasicBloqs = function() {
+    var data = {
+        led: {
+            up: true,
+            down: true,
+            color: '#e2e2e2',
+            text: [
+                [{
+                    input: 'dropdown',
+                    type: "text",
+                    data: [{
+                        label: 'Encender',
+                        value: 'HIGH'
+                    }, {
+                        label: 'Apagar',
+                        value: 'LOW'
+                    }]
+                }, "el LED", {
+                    input: 'dropdown',
+                    type: "text",
+                    data: [{
+                        label: 'LED1',
+                        value: 'LED1'
+                    }, {
+                        label: 'LED2',
+                        value: 'LED2'
+                    }]
+                }]
+            ],
+            code: {
+                setup: ["digitalWrite({1},{0});\n"],
+                loop: ["digitalWrite({1},{0});\n"]
+            }
         },
-        // horizontal3Inputs: {
-        //     up: true,
-        //     down: true,
-        //     path: '',
-        //     color: '#e2e2e2',
-        //     text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "number:", {input : 'bloqInput',type:"int",label:"INPUT"}, "userInput", {input:'userInput', type:"string",label:"userInput"}] ] ,
-        //     code: {setup:"trial({0},{1},{2});\n", loop:"trial({0},{1},{2});\n"}
-        // },
-        // basicInputDropdown: {
-        //     output: 'int',
-        //     color: '#e2e2e2',
-        //     text:[[{input:'dropdown', type:"text",data:[{label:'ON',value:'HIGH'},{label:'OFF',value:'LOW'}]}]],
-        //     code: {setup:"{0}", loop:"{0}"}
-        // },
+        read: {
+            output: 'number',
+            color: '#e2e2e2',
+            text: [
+                ["Leer", {
+                    input: 'dropdown',
+                    type: "text",
+                    data: [{
+                        label: 'Sensor1',
+                        value: 'Sensor1'
+                    }, {
+                        label: 'Sensor2',
+                        value: 'Sensor2'
+                    }]
+                }]
+            ],
+            code: {
+                setup: ["digitalRead({0});\n"],
+                loop: ["digitalRead({0});\n"]
+            }
+        },
+        buzzer: {
+            up: true,
+            down: true,
+            color: '#e2e2e2',
+            text: [
+                ["Sonar el buzzer", {
+                    input: 'dropdown',
+                    type: "text",
+                    data: [{
+                        label: 'Buzzer1',
+                        value: 'Buzzer1'
+                    }, {
+                        label: 'Buzzer2',
+                        value: 'Buzzer2'
+                    }]
+                }, "con la nota", {
+                    input: 'dropdown',
+                    type: "text",
+                    data: [{
+                        label: 'Do',
+                        value: '200'
+                    }, {
+                        label: 'Re',
+                        value: '300'
+                    }]
+                }, "durante", {
+                    input: 'userInput',
+                    type: "number",
+                    label: "0"
+                }, "ms"]
+            ],
+            code: {
+                setup: ["tone({0},{1},{2});", "delay({2});\n"],
+                loop: ["tone({0},{1},{2});", "delay({2});\n"]
+            }
+        },
         // basicInputNumber: {
         //     output: 'int',
         //     color: '#e2e2e2',
@@ -39,6 +123,4 @@ var getBasicBloqs = function(){
         // }
     };
     return data;
-
-
 };
