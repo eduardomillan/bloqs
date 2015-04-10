@@ -34,7 +34,7 @@ function StatementInputBloq(bloqData, canvas, position, data, draggable) {
     //Define bloqlabel and add the label on the bloq
     this.label = bloqData.label;
     if (bloqData.statementInput) {
-        this.addDownConnector(this.bloqBody.x(), this.bloqBody.y() + this.size.height);
+        this.addDownConnector(this.bloqBody.x(), this.bloqBody.leftPart.size.height + this.bloqBody.y());
     }
 }
 StatementInputBloq.prototype = Object.create(Bloq.prototype);

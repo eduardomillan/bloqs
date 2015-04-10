@@ -509,12 +509,9 @@ Bloq.prototype.addInput = function(posx, posy, type) {
  */
 Bloq.prototype.resize = function(delta) {
     this.size.width += delta.x;
-    console.log('this.size.height', this.size.height);
     this.size.height += delta.y;
     this.childrenHeight += delta.y;
     if (this.bloqBody.children !== undefined) {
-        console.log('resizing bloq', delta);
-        console.log('this.size.height', this.size.height);
         this.bloqBody.children()[0].size(this.size.width, this.size.height);
     } else {
         this.bloqBody.size(this.size.width, this.size.height);

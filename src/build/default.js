@@ -81,8 +81,8 @@
         return bloq;
     };
 
-    data.getBloq = function(bloqName, canvas){
-        return data.createBloq(getBasicBloqs()[bloqName], canvas, [50,50]);
+    data.getBloq = function(bloqName, canvas, position){
+        return data.createBloq(getBasicBloqs()[bloqName], canvas, position);
     }
     /**
      * Create a set of bloqs and setup its properties and events.
@@ -98,7 +98,7 @@
             data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter], data));
             counter += 100;
         }
-        this.createMenu();
+        // this.createMenu();
     };
     data.createMenu = function() {
         var bloqTypes = getBasicBloqs();
