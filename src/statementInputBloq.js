@@ -29,6 +29,7 @@ function StatementInputBloq(bloqData, canvas, position, data, draggable) {
         width: this.bloqBody.bbox().width,
         height: this.bloqBody.bbox().height
     };
+
     this.childrenHeight = this.size.height;
     //Define bloqlabel and add the label on the bloq
     this.label = bloqData.label;
@@ -66,12 +67,12 @@ StatementInputBloq.prototype.moveConnector = function(connection, delta) {
         bloqConnected.move2(delta, true);
     }
 };
-StatementInputBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-    return {
-        x: this.connections[connectionType][inputID].connectionPosition.x,
-        y: this.connections[connectionType][inputID].connectionPosition.y
-    };
-};
+// StatementInputBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
+//     return {
+//         x: this.connections[connectionType][inputID].connectionPosition.x,
+//         y: this.connections[connectionType][inputID].connectionPosition.y
+//     };
+// };
 StatementInputBloq.prototype.addDownConnector = function(posx, posy) {
     var index = 0;
     if (this.connections.down !== undefined) {
@@ -207,4 +208,20 @@ StatementInputBloq.prototype.getCode = function(_function) {
         code[k] = code[k].replace(new RegExp(search, 'g'), replacement);
     }
     return code.join('');
+};
+
+/**
+ * Resize a bloq and update its down connector, if any
+ * @param bloq
+ * @param delta
+ */
+StatementInputBloq.prototype.resize = function(delta) {
+    this.size.width += delta.x;
+    this.size.height += delta.y;
+    this.childrenHeight += delta.y;
+    if (this.bloqBody.children !== undefined) {
+        this.bloqBody.children()[0].size(this.body.width()+delta.x, this.body.height()+delta.y);
+    } else {
+        this.bloqBody.size(this.body.width()+delta.x, this.body.height()+delta.y);
+    }
 };

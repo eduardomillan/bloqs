@@ -369,10 +369,6 @@ Bloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, i
                     y: 0
                 };
                 this.resize(delta);
-                delta = {
-                    x: bloqToConnect.size.width,
-                    y: 0
-                };
                 for (var i in this.UIElements) {
                     if (this.UIElements[i].id === parseInt(inputID, 10)) {
                         this.pushElements(this.UIElements[i], delta);
@@ -513,9 +509,12 @@ Bloq.prototype.addInput = function(posx, posy, type) {
  */
 Bloq.prototype.resize = function(delta) {
     this.size.width += delta.x;
+    console.log('this.size.height', this.size.height);
     this.size.height += delta.y;
     this.childrenHeight += delta.y;
     if (this.bloqBody.children !== undefined) {
+        console.log('resizing bloq', delta);
+        console.log('this.size.height', this.size.height);
         this.bloqBody.children()[0].size(this.size.width, this.size.height);
     } else {
         this.bloqBody.size(this.size.width, this.size.height);
@@ -535,8 +534,8 @@ Bloq.prototype.resizeUI = function(bloq) {
         for (var k in this.connections.inputs) {
             if (this.connections.inputs[k].inline === true && k === this.relations.children[bloq.id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                 var delta = {
-                    x: -bloq.size.width,// - this.size.width,
-                    y: 0//+bloq.size.height - this.size.height
+                    x: -bloq.size.width, // - this.size.width,
+                    y: 0 //+bloq.size.height - this.size.height
                 };
                 this.resize(delta);
                 delta = {

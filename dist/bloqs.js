@@ -514,10 +514,6 @@ Bloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, i
                     y: 0
                 };
                 this.resize(delta);
-                delta = {
-                    x: bloqToConnect.size.width,
-                    y: 0
-                };
                 for (var i in this.UIElements) {
                     if (this.UIElements[i].id === parseInt(inputID, 10)) {
                         this.pushElements(this.UIElements[i], delta);
@@ -658,9 +654,12 @@ Bloq.prototype.addInput = function(posx, posy, type) {
  */
 Bloq.prototype.resize = function(delta) {
     this.size.width += delta.x;
+    console.log('this.size.height', this.size.height);
     this.size.height += delta.y;
     this.childrenHeight += delta.y;
     if (this.bloqBody.children !== undefined) {
+        console.log('resizing bloq', delta);
+        console.log('this.size.height', this.size.height);
         this.bloqBody.children()[0].size(this.size.width, this.size.height);
     } else {
         this.bloqBody.size(this.size.width, this.size.height);
@@ -680,8 +679,8 @@ Bloq.prototype.resizeUI = function(bloq) {
         for (var k in this.connections.inputs) {
             if (this.connections.inputs[k].inline === true && k === this.relations.children[bloq.id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                 var delta = {
-                    x: -bloq.size.width,// - this.size.width,
-                    y: 0//+bloq.size.height - this.size.height
+                    x: -bloq.size.width, // - this.size.width,
+                    y: 0 //+bloq.size.height - this.size.height
                 };
                 this.resize(delta);
                 delta = {
@@ -981,6 +980,7 @@ function StatementInputBloq(bloqData, canvas, position, data, draggable) {
         width: this.bloqBody.bbox().width,
         height: this.bloqBody.bbox().height
     };
+
     this.childrenHeight = this.size.height;
     //Define bloqlabel and add the label on the bloq
     this.label = bloqData.label;
@@ -1018,12 +1018,12 @@ StatementInputBloq.prototype.moveConnector = function(connection, delta) {
         bloqConnected.move2(delta, true);
     }
 };
-StatementInputBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
-    return {
-        x: this.connections[connectionType][inputID].connectionPosition.x,
-        y: this.connections[connectionType][inputID].connectionPosition.y
-    };
-};
+// StatementInputBloq.prototype.getConnectionPosition = function(connectionType, bloqToConnect, inputID) {
+//     return {
+//         x: this.connections[connectionType][inputID].connectionPosition.x,
+//         y: this.connections[connectionType][inputID].connectionPosition.y
+//     };
+// };
 StatementInputBloq.prototype.addDownConnector = function(posx, posy) {
     var index = 0;
     if (this.connections.down !== undefined) {
@@ -1159,6 +1159,22 @@ StatementInputBloq.prototype.getCode = function(_function) {
         code[k] = code[k].replace(new RegExp(search, 'g'), replacement);
     }
     return code.join('');
+};
+
+/**
+ * Resize a bloq and update its down connector, if any
+ * @param bloq
+ * @param delta
+ */
+StatementInputBloq.prototype.resize = function(delta) {
+    this.size.width += delta.x;
+    this.size.height += delta.y;
+    this.childrenHeight += delta.y;
+    if (this.bloqBody.children !== undefined) {
+        this.bloqBody.children()[0].size(this.body.width()+delta.x, this.body.height()+delta.y);
+    } else {
+        this.bloqBody.size(this.body.width()+delta.x, this.body.height()+delta.y);
+    }
 };
 //----------------------------------------------------------------//
 // This file is part of the bloqs Project                         //
