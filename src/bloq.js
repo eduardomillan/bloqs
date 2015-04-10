@@ -224,7 +224,7 @@ Bloq.prototype.setParent = function(parentId) {
 };
 //////******    CODE FUNCTIONS    ******//////
 Bloq.prototype.getCode = function(_function) {
-    var code = this.code[_function];
+    var code = this.code[_function].slice();
     var search = '';
     var replacement = '';
     var id;
@@ -248,7 +248,7 @@ Bloq.prototype.getCode = function(_function) {
     return code.join('');
 };
 Bloq.prototype.getStatementInputCode = function(child, code, _function) {
-    code.value += '   '+child.getCode(_function);
+    code.value += '   ' + child.getCode(_function);
     if (child.relations.codeChildren !== undefined && child.relations.codeChildren.length > 0) {
         var dummy = utils.getBloqById(child.relations.codeChildren, child.data);
         console.log('dummy', dummy);
@@ -658,7 +658,7 @@ Bloq.prototype.appendBloqInput = function(inputText, type, posx, posy, inputID) 
 };
 Bloq.prototype.createBloqUI = function() {
     var margin = 10;
-    var posx = 20+ margin;
+    var posx = 20 + margin;
     var width = 0;
     var posy = margin;
     var inputID = 0;

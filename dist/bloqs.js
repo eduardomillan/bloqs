@@ -369,7 +369,7 @@ Bloq.prototype.setParent = function(parentId) {
 };
 //////******    CODE FUNCTIONS    ******//////
 Bloq.prototype.getCode = function(_function) {
-    var code = this.code[_function];
+    var code = this.code[_function].slice();
     var search = '';
     var replacement = '';
     var id;
@@ -393,7 +393,7 @@ Bloq.prototype.getCode = function(_function) {
     return code.join('');
 };
 Bloq.prototype.getStatementInputCode = function(child, code, _function) {
-    code.value += '   '+child.getCode(_function);
+    code.value += '   ' + child.getCode(_function);
     if (child.relations.codeChildren !== undefined && child.relations.codeChildren.length > 0) {
         var dummy = utils.getBloqById(child.relations.codeChildren, child.data);
         console.log('dummy', dummy);
@@ -803,7 +803,7 @@ Bloq.prototype.appendBloqInput = function(inputText, type, posx, posy, inputID) 
 };
 Bloq.prototype.createBloqUI = function() {
     var margin = 10;
-    var posx = 20+ margin;
+    var posx = 20 + margin;
     var width = 0;
     var posy = margin;
     var inputID = 0;
@@ -1124,11 +1124,10 @@ StatementInputBloq.prototype.deleteChild = function(child) {
 };
 //////******    CODE FUNCTIONS    ******//////
 StatementInputBloq.prototype.getCode = function(_function) {
-    var code = this.code[_function];
+    var code = this.code[_function].slice();
     var search = '';
     var replacement = '';
     var id;
-    console.log('getcoooooooooooooooode-->', this.relations.inputChildren);
     for (var k in code) {
         //Replace all inputs tags {x} with the getCode value of the bloqs connected to them
         for (var i in this.relations.inputChildren) {
@@ -1205,38 +1204,38 @@ var getProjectBloqs = function() {
 };
 var getBasicBloqs = function() {
     var data = {
-        led: {
-            up: true,
-            down: true,
-            color: '#e2e2e2',
-            text: [
-                [{
-                    input: 'dropdown',
-                    type: "text",
-                    data: [{
-                        label: 'Encender',
-                        value: 'HIGH'
-                    }, {
-                        label: 'Apagar',
-                        value: 'LOW'
-                    }]
-                }, "el LED", {
-                    input: 'dropdown',
-                    type: "text",
-                    data: [{
-                        label: 'LED1',
-                        value: 'LED1'
-                    }, {
-                        label: 'LED2',
-                        value: 'LED2'
-                    }]
-                }]
-            ],
-            code: {
-                setup: ["digitalWrite({1},{0});\n"],
-                loop: ["digitalWrite({1},{0});\n"]
-            }
-        },
+        // led: {
+        //     up: true,
+        //     down: true,
+        //     color: '#e2e2e2',
+        //     text: [
+        //         [{
+        //             input: 'dropdown',
+        //             type: "text",
+        //             data: [{
+        //                 label: 'Encender',
+        //                 value: 'HIGH'
+        //             }, {
+        //                 label: 'Apagar',
+        //                 value: 'LOW'
+        //             }]
+        //         }, "el LED", {
+        //             input: 'dropdown',
+        //             type: "text",
+        //             data: [{
+        //                 label: 'LED1',
+        //                 value: 'LED1'
+        //             }, {
+        //                 label: 'LED2',
+        //                 value: 'LED2'
+        //             }]
+        //         }]
+        //     ],
+        //     code: {
+        //         setup: ["digitalWrite({1},{0});\n"],
+        //         loop: ["digitalWrite({1},{0});\n"]
+        //     }
+        // },
         readSensor: {
             output: 'number',
             color: '#e2e2e2',
@@ -1254,46 +1253,46 @@ var getBasicBloqs = function() {
                 }]
             ],
             code: {
-                setup: ["digitalRead({0});\n"],
-                loop: ["digitalRead({0});\n"]
+                setup: ["digitalRead({0})"],
+                loop: ["digitalRead({0})"]
             }
         },
-        buzzer: {
-            up: true,
-            down: true,
-            color: '#e2e2e2',
-            text: [
-                ["Sonar el buzzer", {
-                    input: 'dropdown',
-                    type: "text",
-                    data: [{
-                        label: 'Buzzer1',
-                        value: 'Buzzer1'
-                    }, {
-                        label: 'Buzzer2',
-                        value: 'Buzzer2'
-                    }]
-                }, "con la nota", {
-                    input: 'dropdown',
-                    type: "text",
-                    data: [{
-                        label: 'Do',
-                        value: '200'
-                    }, {
-                        label: 'Re',
-                        value: '300'
-                    }]
-                }, "durante", {
-                    input: 'userInput',
-                    type: "number",
-                    label: "0"
-                }, "ms"]
-            ],
-            code: {
-                setup: ["tone({0},{1},{2});", "delay({2});\n"],
-                loop: ["tone({0},{1},{2});", "delay({2});\n"]
-            }
-        },
+        // buzzer: {
+        //     up: true,
+        //     down: true,
+        //     color: '#e2e2e2',
+        //     text: [
+        //         ["Sonar el buzzer", {
+        //             input: 'dropdown',
+        //             type: "text",
+        //             data: [{
+        //                 label: 'Buzzer1',
+        //                 value: 'Buzzer1'
+        //             }, {
+        //                 label: 'Buzzer2',
+        //                 value: 'Buzzer2'
+        //             }]
+        //         }, "con la nota", {
+        //             input: 'dropdown',
+        //             type: "text",
+        //             data: [{
+        //                 label: 'Do',
+        //                 value: '200'
+        //             }, {
+        //                 label: 'Re',
+        //                 value: '300'
+        //             }]
+        //         }, "durante", {
+        //             input: 'userInput',
+        //             type: "number",
+        //             label: "0"
+        //         }, "ms"]
+        //     ],
+        //     code: {
+        //         setup: ["tone({0},{1},{2});", "delay({2});\n"],
+        //         loop: ["tone({0},{1},{2});", "delay({2});\n"]
+        //     }
+        // },
         forLoop: {
             up: true,
             down: true,
@@ -1316,7 +1315,7 @@ var getBasicBloqs = function() {
             ],
             code: {
                 setup: ["for({0};{1};{2}){\n", "{StatementInput}", "\n"],
-                loop: ["triaaaaaaaaaaaal"]
+                loop: ["for({0};{1};{2}){\n", "{StatementInput}", "\n"]
             }
         },
     };

@@ -172,11 +172,10 @@ StatementInputBloq.prototype.deleteChild = function(child) {
 };
 //////******    CODE FUNCTIONS    ******//////
 StatementInputBloq.prototype.getCode = function(_function) {
-    var code = this.code[_function];
+    var code = this.code[_function].slice();
     var search = '';
     var replacement = '';
     var id;
-    console.log('getcoooooooooooooooode-->', this.relations.inputChildren);
     for (var k in code) {
         //Replace all inputs tags {x} with the getCode value of the bloqs connected to them
         for (var i in this.relations.inputChildren) {
