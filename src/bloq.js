@@ -535,12 +535,12 @@ Bloq.prototype.resizeUI = function(bloq) {
         for (var k in this.connections.inputs) {
             if (this.connections.inputs[k].inline === true && k === this.relations.children[bloq.id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                 var delta = {
-                    x: +bloq.size.width - this.size.width,
-                    y: +bloq.size.height - this.size.height
+                    x: -bloq.size.width,// - this.size.width,
+                    y: 0//+bloq.size.height - this.size.height
                 };
                 this.resize(delta);
                 delta = {
-                    x: bloq.size.width - this.size.width,
+                    x: -bloq.size.width, //- this.size.width,
                     y: 0
                 };
                 for (var i in this.UIElements) {
