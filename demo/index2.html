@@ -70,7 +70,7 @@ var bloq3 = {
     // text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}, "string", {input : 'bloqInput',type:"string",label:"INPUT"}] ] ,
     // text : [ ["int:", {input : 'bloqInput',type:"int",label:"INPUT"}]],//, "number:", {input : 'bloqInput',type:"int",label:"INPUT"}, "userInput", {input:'userInput', type:"string",label:"userInput"}] ] ,
     // text : [ ["if", {input:'userInput', type:"text",label:"INPUT"}, "==", {input:'userInput', type:"number",label:"aaa"}],["trial **********************", {input : 'bloqInput',type:"int",label:"INPUT"}] ] ,
-    code: {setup:"trial({0});\n", loop:"trial({0});\n"}
+    code: {setup:"if({0}){ {StatementInput} }\n", loop:"if({0}){ {StatementInput} }\n"}
 };
 var bloq4 = {
     up: true,

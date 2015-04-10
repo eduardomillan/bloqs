@@ -122,12 +122,12 @@ Bloq.prototype.searchNewConnections = function() {
                         a = utils.manageConnections(j, this.connections[j], this.data.bloqs[i].connections[utils.oppositeConnection[j]][h], this, this.data.bloqs[i], h);
                     }
                 } else if (j === 'down') {
-                    for (var k in this.connections[j]) {
-                        a = utils.manageConnections(j, this.connections[j][k], this.data.bloqs[i].connections[utils.oppositeConnection[j]], this, this.data.bloqs[i], k);
+                    for (var l in this.connections[j]) {
+                        a = utils.manageConnections(j, this.connections[j][l], this.data.bloqs[i].connections[utils.oppositeConnection[j]], this, this.data.bloqs[i], l);
                     }
                 } else if (j === 'up') {
-                    for (var h in this.data.bloqs[i].connections[utils.oppositeConnection[j]]) {
-                        a = utils.manageConnections(j, this.connections[j], this.data.bloqs[i].connections[utils.oppositeConnection[j]][h], this, this.data.bloqs[i], h);
+                    for (var m in this.data.bloqs[i].connections[utils.oppositeConnection[j]]) {
+                        a = utils.manageConnections(j, this.connections[j], this.data.bloqs[i].connections[utils.oppositeConnection[j]][m], this, this.data.bloqs[i], m);
                     }
                 }
             }
@@ -211,14 +211,13 @@ Bloq.prototype.increaseChildrenHeight = function(child) {
     if (this.relations.parent !== undefined) {
         utils.getBloqById(this.relations.parent, this.data).increaseChildrenHeight(child);
     }
-}
+};
 Bloq.prototype.decreaseChildrenHeight = function(child) {
-    var parent = child;
     this.childrenHeight -= child.childrenHeight;
     if (this.relations.parent !== undefined) {
         utils.getBloqById(this.relations.parent, this.data).decreaseChildrenHeight(child);
     }
-}
+};
 Bloq.prototype.setParent = function(parentId) {
     this.relations.parent = parentId;
     return true;
@@ -245,6 +244,15 @@ Bloq.prototype.getCode = function(_function) {
         code = code.replace(new RegExp(search, 'g'), ' ');
     }
     return code;
+};
+
+Bloq.prototype.getStatementInputCode = function(child, code, _function) {
+    code.value += child.getCode(_function);
+    if (child.relations.codeChildren !== undefined && child.relations.codeChildren.length > 0) {
+        var dummy = utils.getBloqById(child.relations.codeChildren, child.data);
+        console.log('dummy',dummy);
+        child.getStatementInputCode(dummy, code, _function);
+    }
 };
 // Bloq.prototype.on('click', function() {
 //     // if (this.label.toLowerCase() != 'loop' && this.label.toLowerCase() != 'setup') {
