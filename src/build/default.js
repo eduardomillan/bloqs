@@ -89,7 +89,6 @@
      */
     data.createProjectStructure = function() {
         var bloqTypes = getProjectBloqs();
-        console.log('aaaaaaaaa', bloqTypes);
         var counter = 100;
         for (var i in bloqTypes) {
             data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter], data));

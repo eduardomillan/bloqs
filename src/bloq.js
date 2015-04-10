@@ -69,7 +69,7 @@ Bloq.prototype.dragmove = function(a) {
     //Get the parent bloq to use its functions
     var bloq = this.getBloqObject();
     //move dragged bloq on top
-    utils.bloqOnTop(this.bloqBody);
+    utils.bloqOnTop(bloq);
     // remove parent of this and child in parent:
     if (bloq.relations.parent !== undefined) {
         var parentBloq = utils.getBloqById(bloq.relations.parent, bloq.data);
@@ -248,7 +248,7 @@ Bloq.prototype.getCode = function(_function) {
     return code.join('');
 };
 Bloq.prototype.getStatementInputCode = function(child, code, _function) {
-    code.value += child.getCode(_function);
+    code.value += '   '+child.getCode(_function);
     if (child.relations.codeChildren !== undefined && child.relations.codeChildren.length > 0) {
         var dummy = utils.getBloqById(child.relations.codeChildren, child.data);
         console.log('dummy', dummy);
@@ -658,7 +658,7 @@ Bloq.prototype.appendBloqInput = function(inputText, type, posx, posy, inputID) 
 };
 Bloq.prototype.createBloqUI = function() {
     var margin = 10;
-    var posx = margin;
+    var posx = 20+ margin;
     var width = 0;
     var posy = margin;
     var inputID = 0;

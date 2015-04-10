@@ -165,8 +165,8 @@ StatementInputBloq.prototype.deleteChild = function(child) {
     }
     delete this.relations.inputChildren[child.id];
     //remove codeStatementChildren
-    console.log('this.isNotEmpty(this.relations.codeStatementChildren) ',this.isNotEmpty(this.relations.codeStatementChildren) );
-    if ( this.isNotEmpty(this.relations.codeStatementChildren) && child.id === this.relations.codeStatementChildren.id) {
+    console.log('this.isNotEmpty(this.relations.codeStatementChildren) ', this.isNotEmpty(this.relations.codeStatementChildren));
+    if (this.isNotEmpty(this.relations.codeStatementChildren) && child.id === this.relations.codeStatementChildren.id) {
         this.relations.codeStatementChildren = {};
     }
 };
@@ -177,34 +177,35 @@ StatementInputBloq.prototype.getCode = function(_function) {
     var replacement = '';
     var id;
     console.log('getcoooooooooooooooode-->', this.relations.inputChildren);
-    //Replace all inputs tags {x} with the getCode value of the bloqs connected to them
-    for (var i in this.relations.inputChildren) {
-        id = this.relations.inputChildren[i].id;
-        id = id.substr(id.indexOf('_') + 1, id.length);
-        search = '{[' + id + ']}';
-        if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
-            replacement = this.relations.inputChildren[i].code;
-        } else {
-            replacement = this.relations.inputChildren[i].bloq.getCode(_function);
+    for (var k in code) {
+        //Replace all inputs tags {x} with the getCode value of the bloqs connected to them
+        for (var i in this.relations.inputChildren) {
+            id = this.relations.inputChildren[i].id;
+            id = id.substr(id.indexOf('_') + 1, id.length);
+            search = '{[' + id + ']}';
+            if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
+                replacement = this.relations.inputChildren[i].code;
+            } else {
+                replacement = this.relations.inputChildren[i].bloq.getCode(_function);
+            }
+            code[k] = code[k].replace(new RegExp(search, 'g'), replacement);
         }
-        code = code.replace(new RegExp(search, 'g'), replacement);
+        //Replace all missing inputs with ''
+        for (i = 0; i < this.inputsNumber; i++) {
+            search = '{[' + i + ']}';
+            code[k] = code[k].replace(new RegExp(search, 'g'), ' ');
+        }
+        //Replace the statment input tag with the contents of the codeStatementChildren
+        search = '{StatementInput}';
+        var dummy = {
+            value: ''
+        };
+        var child = this.relations.codeStatementChildren;
+        if (this.isNotEmpty(child)) {
+            this.getStatementInputCode(child, dummy, _function);
+        }
+        replacement = dummy.value;
+        code[k] = code[k].replace(new RegExp(search, 'g'), replacement);
     }
-    //Replace all missing inputs with ''
-    for (i = 0; i < this.inputsNumber; i++) {
-        search = '{[' + i + ']}';
-        code = code.replace(new RegExp(search, 'g'), ' ');
-    }
-    //Replace the statment input tag with the contents of the codeStatementChildren
-    search = '{StatementInput}';
-    var dummy = {
-        value: ''
-    };
-    var child = this.relations.codeStatementChildren;
-    console.log('child', child === {});
-    if (this.isNotEmpty(child)) {
-        this.getStatementInputCode(child, dummy, _function);
-    }
-    replacement = dummy.value;
-    code = code.replace(new RegExp(search, 'g'), replacement);
-    return code;
+    return code.join('');
 };

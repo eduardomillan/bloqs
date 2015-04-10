@@ -58,7 +58,7 @@ var getBasicBloqs = function() {
                 loop: ["digitalWrite({1},{0});\n"]
             }
         },
-        read: {
+        readSensor: {
             output: 'number',
             color: '#e2e2e2',
             text: [
@@ -115,12 +115,31 @@ var getBasicBloqs = function() {
                 loop: ["tone({0},{1},{2});", "delay({2});\n"]
             }
         },
-        // basicInputNumber: {
-        //     output: 'int',
-        //     color: '#e2e2e2',
-        //     text:[["number",{input:'userInput', type:"number",label:"number"}]],
-        //     code: {setup:'{0}', loop:'{0}'}
-        // }
+        forLoop: {
+            up: true,
+            down: true,
+            statementInput: true,
+            color: '#e2e2e2',
+            text: [
+                ["Contar con", {
+                    input: 'bloqInput',
+                    type: "number",
+                    label: "INPUT"
+                }, "desde", {
+                    input: 'bloqInput',
+                    type: "number",
+                    label: "INPUT"
+                }, "hasta", {
+                    input: 'bloqInput',
+                    type: "number",
+                    label: "INPUT"
+                }]
+            ],
+            code: {
+                setup: ["for({0};{1};{2}){\n", "{StatementInput}", "\n"],
+                loop: ["triaaaaaaaaaaaal"]
+            }
+        },
     };
     return data;
 };

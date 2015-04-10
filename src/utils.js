@@ -76,12 +76,12 @@ utils.rejectBloq = function(bloq) {
     });
 };
 utils.bloqOnTop = function(bloq) {
-    // bloq.bloqnode.parentNode.appendChild(bloq.node);
-    // var child = {};
-    // for (var i in bloq.relations.children) {
-    //     child = bloq.relations.children[i].bloq;
-    //     utils.bloqOnTop(child); //.node.parentNode.appendChild(child.node);
-    // }
+    bloq.bloqBody.node.parentNode.appendChild(bloq.bloqBody.node);
+    var child = {};
+    for (var i in bloq.relations.children) {
+        child = bloq.relations.children[i].bloq;
+        utils.bloqOnTop(child); //.node.parentNode.appendChild(child.node);
+    }
 };
 utils.getOutputBloq = function(bloq, posx, width, height) {
     var path = 'm 36,32 c -4.418,0 -8,-2.582 -8,-7 0,-4.418 3.582,-7 8,-7 l 0,14 z';

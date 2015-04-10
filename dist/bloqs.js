@@ -86,12 +86,12 @@ utils.rejectBloq = function(bloq) {
     });
 };
 utils.bloqOnTop = function(bloq) {
-    // bloq.bloqnode.parentNode.appendChild(bloq.node);
-    // var child = {};
-    // for (var i in bloq.relations.children) {
-    //     child = bloq.relations.children[i].bloq;
-    //     utils.bloqOnTop(child); //.node.parentNode.appendChild(child.node);
-    // }
+    bloq.bloqBody.node.parentNode.appendChild(bloq.bloqBody.node);
+    var child = {};
+    for (var i in bloq.relations.children) {
+        child = bloq.relations.children[i].bloq;
+        utils.bloqOnTop(child); //.node.parentNode.appendChild(child.node);
+    }
 };
 utils.getOutputBloq = function(bloq, posx, width, height) {
     var path = 'm 36,32 c -4.418,0 -8,-2.582 -8,-7 0,-4.418 3.582,-7 8,-7 l 0,14 z';
@@ -214,7 +214,7 @@ Bloq.prototype.dragmove = function(a) {
     //Get the parent bloq to use its functions
     var bloq = this.getBloqObject();
     //move dragged bloq on top
-    utils.bloqOnTop(this.bloqBody);
+    utils.bloqOnTop(bloq);
     // remove parent of this and child in parent:
     if (bloq.relations.parent !== undefined) {
         var parentBloq = utils.getBloqById(bloq.relations.parent, bloq.data);
@@ -393,7 +393,7 @@ Bloq.prototype.getCode = function(_function) {
     return code.join('');
 };
 Bloq.prototype.getStatementInputCode = function(child, code, _function) {
-    code.value += child.getCode(_function);
+    code.value += '   '+child.getCode(_function);
     if (child.relations.codeChildren !== undefined && child.relations.codeChildren.length > 0) {
         var dummy = utils.getBloqById(child.relations.codeChildren, child.data);
         console.log('dummy', dummy);
@@ -803,7 +803,7 @@ Bloq.prototype.appendBloqInput = function(inputText, type, posx, posy, inputID) 
 };
 Bloq.prototype.createBloqUI = function() {
     var margin = 10;
-    var posx = margin;
+    var posx = 20+ margin;
     var width = 0;
     var posy = margin;
     var inputID = 0;
@@ -1117,8 +1117,8 @@ StatementInputBloq.prototype.deleteChild = function(child) {
     }
     delete this.relations.inputChildren[child.id];
     //remove codeStatementChildren
-    console.log('this.isNotEmpty(this.relations.codeStatementChildren) ',this.isNotEmpty(this.relations.codeStatementChildren) );
-    if ( this.isNotEmpty(this.relations.codeStatementChildren) && child.id === this.relations.codeStatementChildren.id) {
+    console.log('this.isNotEmpty(this.relations.codeStatementChildren) ', this.isNotEmpty(this.relations.codeStatementChildren));
+    if (this.isNotEmpty(this.relations.codeStatementChildren) && child.id === this.relations.codeStatementChildren.id) {
         this.relations.codeStatementChildren = {};
     }
 };
@@ -1129,38 +1129,38 @@ StatementInputBloq.prototype.getCode = function(_function) {
     var replacement = '';
     var id;
     console.log('getcoooooooooooooooode-->', this.relations.inputChildren);
-    //Replace all inputs tags {x} with the getCode value of the bloqs connected to them
-    for (var i in this.relations.inputChildren) {
-        id = this.relations.inputChildren[i].id;
-        id = id.substr(id.indexOf('_') + 1, id.length);
-        search = '{[' + id + ']}';
-        if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
-            replacement = this.relations.inputChildren[i].code;
-        } else {
-            replacement = this.relations.inputChildren[i].bloq.getCode(_function);
+    for (var k in code) {
+        //Replace all inputs tags {x} with the getCode value of the bloqs connected to them
+        for (var i in this.relations.inputChildren) {
+            id = this.relations.inputChildren[i].id;
+            id = id.substr(id.indexOf('_') + 1, id.length);
+            search = '{[' + id + ']}';
+            if (this.relations.inputChildren[i].bloq === 'userInput' || this.relations.inputChildren[i].bloq === 'dropdown') {
+                replacement = this.relations.inputChildren[i].code;
+            } else {
+                replacement = this.relations.inputChildren[i].bloq.getCode(_function);
+            }
+            code[k] = code[k].replace(new RegExp(search, 'g'), replacement);
         }
-        code = code.replace(new RegExp(search, 'g'), replacement);
+        //Replace all missing inputs with ''
+        for (i = 0; i < this.inputsNumber; i++) {
+            search = '{[' + i + ']}';
+            code[k] = code[k].replace(new RegExp(search, 'g'), ' ');
+        }
+        //Replace the statment input tag with the contents of the codeStatementChildren
+        search = '{StatementInput}';
+        var dummy = {
+            value: ''
+        };
+        var child = this.relations.codeStatementChildren;
+        if (this.isNotEmpty(child)) {
+            this.getStatementInputCode(child, dummy, _function);
+        }
+        replacement = dummy.value;
+        code[k] = code[k].replace(new RegExp(search, 'g'), replacement);
     }
-    //Replace all missing inputs with ''
-    for (i = 0; i < this.inputsNumber; i++) {
-        search = '{[' + i + ']}';
-        code = code.replace(new RegExp(search, 'g'), ' ');
-    }
-    //Replace the statment input tag with the contents of the codeStatementChildren
-    search = '{StatementInput}';
-    var dummy = {
-        value: ''
-    };
-    var child = this.relations.codeStatementChildren;
-    console.log('child', child === {});
-    if (this.isNotEmpty(child)) {
-        this.getStatementInputCode(child, dummy, _function);
-    }
-    replacement = dummy.value;
-    code = code.replace(new RegExp(search, 'g'), replacement);
-    return code;
+    return code.join('');
 };
-
 //----------------------------------------------------------------//
 // This file is part of the bloqs Project                         //
 //                                                                //
@@ -1237,7 +1237,7 @@ var getBasicBloqs = function() {
                 loop: ["digitalWrite({1},{0});\n"]
             }
         },
-        read: {
+        readSensor: {
             output: 'number',
             color: '#e2e2e2',
             text: [
@@ -1294,12 +1294,31 @@ var getBasicBloqs = function() {
                 loop: ["tone({0},{1},{2});", "delay({2});\n"]
             }
         },
-        // basicInputNumber: {
-        //     output: 'int',
-        //     color: '#e2e2e2',
-        //     text:[["number",{input:'userInput', type:"number",label:"number"}]],
-        //     code: {setup:'{0}', loop:'{0}'}
-        // }
+        forLoop: {
+            up: true,
+            down: true,
+            statementInput: true,
+            color: '#e2e2e2',
+            text: [
+                ["Contar con", {
+                    input: 'bloqInput',
+                    type: "number",
+                    label: "INPUT"
+                }, "desde", {
+                    input: 'bloqInput',
+                    type: "number",
+                    label: "INPUT"
+                }, "hasta", {
+                    input: 'bloqInput',
+                    type: "number",
+                    label: "INPUT"
+                }]
+            ],
+            code: {
+                setup: ["for({0};{1};{2}){\n", "{StatementInput}", "\n"],
+                loop: ["triaaaaaaaaaaaal"]
+            }
+        },
     };
     return data;
 };
@@ -1377,7 +1396,6 @@ var getBasicBloqs = function() {
      */
     data.createProjectStructure = function() {
         var bloqTypes = getProjectBloqs();
-        console.log('aaaaaaaaa', bloqTypes);
         var counter = 100;
         for (var i in bloqTypes) {
             data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter], data));
