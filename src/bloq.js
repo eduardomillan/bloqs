@@ -7,6 +7,7 @@
 function Bloq(bloqData, canvas, position, data) {
     this.bloqBody = canvas.group().move(position[0], position[1]);
     this.bloqData = bloqData;
+    this.bloqName  = this.bloqData.label;
     this.canvas = canvas;
     this.data = data;
     this.size = {

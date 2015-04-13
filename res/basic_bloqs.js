@@ -27,6 +27,7 @@ var getProjectBloqs = function() {
 var getBasicBloqs = function(variables) {
     var data = {
         led: {
+            label: 'led',
             up: true,
             down: true,
             color: '#e2e2e2',
@@ -59,6 +60,7 @@ var getBasicBloqs = function(variables) {
             }
         },
         readSensor: {
+            label:'readSensor',
             output: 'number',
             color: '#e2e2e2',
             text: [
@@ -80,6 +82,7 @@ var getBasicBloqs = function(variables) {
             }
         },
         buzzer: {
+            label:'buzzer',
             up: true,
             down: true,
             color: '#e2e2e2',
@@ -116,6 +119,7 @@ var getBasicBloqs = function(variables) {
             }
         },
         forLoop: {
+            label:'forLoop',
             up: true,
             down: true,
             statementInput: true,
@@ -151,6 +155,7 @@ var getBasicBloqs = function(variables) {
             }
         },
         number: {
+            label:'number',
             output: 'number',
             color: '#e2e2e2',
             text: [
@@ -166,6 +171,7 @@ var getBasicBloqs = function(variables) {
             }
         },
         text: {
+            label:'text',
             output: 'text',
             color: '#e2e2e2',
             text: [
@@ -181,6 +187,7 @@ var getBasicBloqs = function(variables) {
             }
         },
         getVariable: {
+            label:'getVariable',
             output: 'number',
             color: '#e2e2e2',
             text: [
@@ -197,6 +204,7 @@ var getBasicBloqs = function(variables) {
             getVariable: true
         },
         newGlobalVar: {
+            label:'newGlobalVar',
             up: 'true',
             down: 'true',
             color: '#e2e2e2',

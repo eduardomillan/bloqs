@@ -19,13 +19,15 @@
     var data = {
         bloqs: [],
         element: '',
+        canvas: null,
         code: {
             setup: '',
             loop: ''
         },
         variables: [],
-        globalVariables : [],
-        localVariables:[]
+        globalVariables: [],
+        localVariables: [],
+        project: []
     };
     var field = {};
     var canvas = {};
@@ -38,7 +40,7 @@
         //LISTEN TO GLOBAL ONCHANGE
         // document.getElementById(element).addEventListener('change', function() {
         // }, false);
-        return canvas;
+        data.canvas = canvas;
     };
     data.bloqsToCode = function() {
         data.functionCode(data.bloqs.setup, 'setup');
@@ -84,9 +86,8 @@
         data.bloqs.push(bloq);
         return bloq;
     };
-
-    data.getBloq = function(bloqName, canvas, position){
-        return data.createBloq(getBasicBloqs(data.variables)[bloqName], canvas, position);
+    data.getBloq = function(bloqName, canvas, position) {
+        return data.createBloq(getBasicBloqs(data.variables)[bloqName], this.canvas, position);
     }
     /**
      * Create a set of bloqs and setup its properties and events.
@@ -112,7 +113,69 @@
             counter += 100;
         }
     };
-
+    data.saveProject = function() {
+        // data.getChildBloqs(data.bloqs.setup, data.project.setup);
+        data.getChildBloqs(data.bloqs.loop);
+        console.log('savingproject:', JSON.stringify(data.project));
+        data.project = [];
+    };
+    data.getChildBloqs = function(bloq) {
+        var bloqDescription = [];
+        if (bloq !== null) {
+            if (bloq.relations !== undefined) {
+                bloqDescription = this.getBloqData(bloq);
+                data.project.push({
+                    bloq: bloq.bloqName,
+                    inputs: bloqDescription,
+                    location: [bloq.bloqBody.x(), bloq.bloqBody.y()]
+                });
+                if (bloq.relations.codeChildren !== undefined) {
+                    var codeChild = utils.getBloqById(bloq.relations.codeChildren[0], this);
+                    this.getChildBloqs(codeChild, data.project);
+                }
+            }
+        }
+    };
+    data.getBloqData = function(bloq) {
+        var bloqDescription = [];
+        if (bloq.relations.inputChildren !== undefined) {
+            for (var i in bloq.relations.inputChildren) {
+                if (bloq.relations.inputChildren[i].bloq === 'userInput') {
+                    bloqDescription.push({
+                        userInput: bloq.relations.inputChildren[i].code
+                    });
+                }
+                if (bloq.relations.inputChildren[i].bloq === 'dropdown') {
+                    bloqDescription.push({
+                        dropdown: bloq.relations.inputChildren[i].code
+                    });
+                }
+                if (bloq.relations.inputChildren[i].bloq !== undefined && bloq.relations.inputChildren[i].bloq.bloqName !== undefined) {
+                    var child = bloq.relations.inputChildren[i].bloq;
+                    if (child.relations.inputChildren !== undefined) {
+                        console.log('this.getBloqData(child)', this.getBloqData(child));
+                        bloqDescription.push(this.getBloqData(child));
+                    } else {
+                        bloqDescription.push({
+                            bloq: bloq.relations.inputChildren[i].bloq.bloqName,
+                            location: [bloq.relations.inputChildren[i].bloq.bloqBody.x(), bloq.relations.inputChildren[i].bloq.bloqBody.y()]
+                        });
+                    }
+                }
+            }
+        }
+        return bloqDescription;
+    };
+    data.loadProject = function(project) {
+        console.log('project_JSON', project);
+        for (var i in project) {
+            if (project[i].bloq !== undefined && project[i].bloq !== 'loop' && project[i].bloq !== 'setup') {
+                console.log('project[i].bloq', project[i].bloq.location);
+                this.getBloq(project[i].bloq, this.canvas, project[i].location);
+            }
+            console.log('project[i]', project[i].bloq);
+        }
+    };
     // Base function.
     var bloqs = function() {
         return data;
