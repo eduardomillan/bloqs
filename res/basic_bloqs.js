@@ -195,7 +195,7 @@ var getBasicBloqs = function(variables) {
                 setup: ["{0}"],
                 loop: ["{0}"]
             },
-            getVariable : true
+            getVariable: true
         },
         newGlobalVar: {
             up: 'true',
@@ -206,11 +206,15 @@ var getBasicBloqs = function(variables) {
                     input: 'userInput',
                     type: "variable",
                     label: "varName"
+                }, "=", {
+                    input: 'bloqInput',
+                    type: "all",
+                    label: "INPUT"
                 }]
             ],
             code: {
-                setup: ["{0} = 0;"],
-                loop: ["{0} = 0;"]
+                setup: ["{0} = {1};\n"],
+                loop: ["{0} = {1};\n"]
             },
             variable: 'global'
         }

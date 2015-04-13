@@ -64,19 +64,20 @@ function Bloq(bloqData, canvas, position, data) {
         document.getElementById(this.data.element).addEventListener('change', function() {
             var childNodes = document.getElementById(that.dropdownInput).childNodes;
             var counter = 0;
-            for (var i in that.data.variables){
+            for (var i in that.data.variables) {
                 childNodes[0][counter].text = that.data.variables[i].label;
-                counter ++;
+                counter++;
             }
         }, false);
     }
 }
-Bloq.prototype.addVariable = function(id, varName) {
+Bloq.prototype.addVariable = function(id, varName, type) {
     //If bloq is creating a new variable, add it :
     if (this.bloqData.variable !== undefined) {
         this.data.variables[id] = {
             label: varName,
-            name: varName
+            name: varName,
+            type: type
         };
     }
 };
@@ -224,6 +225,10 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
         };
     }
     return true;
+};
+Bloq.prototype.setConnectionType = function(a, b) {
+    a.type = b.type;
+    // console.log('here', this.connections, this.bloqBody.node);
 };
 Bloq.prototype.increaseChildrenHeight = function(child) {
     // this.childrenHeight += child.childrenHeight;
@@ -550,6 +555,10 @@ Bloq.prototype.resizeUI = function(bloq) {
     if (this.relations.children[bloq.id].connection === 'output') {
         for (var k in this.connections.inputs) {
             if (this.connections.inputs[k].inline === true && k === this.relations.children[bloq.id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
+                //If the bloq is creating a variable & the value is disconected, set the connection type again to all
+                if (this.bloqData.variable !== undefined) {
+                    this.setConnectionType(this.connections.inputs[k], {type:'all'});
+                }
                 var delta = {
                     x: -bloq.size.width, // - this.size.width,
                     y: 0 //+bloq.size.height - this.size.height

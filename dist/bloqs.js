@@ -38,13 +38,16 @@ utils.oppositeConnection = {
 utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID) {
     if (bloq2Connection !== undefined && bloq1Connection !== undefined) {
         if (utils.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
-            if (bloq1Connection.type === bloq2Connection.type) { // if the type is the same --> connect
+            if (bloq1Connection.type === bloq2Connection.type || (bloq1Connection.type === 'all' || bloq2Connection.type === 'all')) { // if the type is the same --> connect
                 console.log('CONNECT!');
                 if (type === 'inputs' || type === 'down') { // parent is bloq1
                     //move bloq
                     bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID);
                     bloq2.moveTo(bloq1.getConnectionPosition(type, bloq2, inputID));
                     bloq1Connection.bloq = bloq2;
+                    if (bloq1Connection.type === 'all') {
+                        bloq1.setConnectionType(bloq1Connection, bloq2Connection);
+                    }
                     //put child bloq on top if it is not already: 
                     utils.bloqOnTop(bloq2);
                 } else { //parent is bloq2
@@ -52,6 +55,9 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     bloq1.updateBloqs(bloq2, bloq1, type, inputID);
                     bloq1.moveTo(bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
                     bloq2Connection.bloq = bloq1;
+                    if (bloq2Connection.type === 'all') {
+                        bloq2.setConnectionType(bloq2Connection, bloq1Connection);
+                    }
                     //put child bloq on top if it is not already: 
                     utils.bloqOnTop(bloq1);
                 }
@@ -209,19 +215,20 @@ function Bloq(bloqData, canvas, position, data) {
         document.getElementById(this.data.element).addEventListener('change', function() {
             var childNodes = document.getElementById(that.dropdownInput).childNodes;
             var counter = 0;
-            for (var i in that.data.variables){
+            for (var i in that.data.variables) {
                 childNodes[0][counter].text = that.data.variables[i].label;
-                counter ++;
+                counter++;
             }
         }, false);
     }
 }
-Bloq.prototype.addVariable = function(id, varName) {
+Bloq.prototype.addVariable = function(id, varName, type) {
     //If bloq is creating a new variable, add it :
     if (this.bloqData.variable !== undefined) {
         this.data.variables[id] = {
             label: varName,
-            name: varName
+            name: varName,
+            type: type
         };
     }
 };
@@ -369,6 +376,10 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
         };
     }
     return true;
+};
+Bloq.prototype.setConnectionType = function(a, b) {
+    a.type = b.type;
+    // console.log('here', this.connections, this.bloqBody.node);
 };
 Bloq.prototype.increaseChildrenHeight = function(child) {
     // this.childrenHeight += child.childrenHeight;
@@ -695,6 +706,10 @@ Bloq.prototype.resizeUI = function(bloq) {
     if (this.relations.children[bloq.id].connection === 'output') {
         for (var k in this.connections.inputs) {
             if (this.connections.inputs[k].inline === true && k === this.relations.children[bloq.id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
+                //If the bloq is creating a variable & the value is disconected, set the connection type again to all
+                if (this.bloqData.variable !== undefined) {
+                    this.setConnectionType(this.connections.inputs[k], {type:'all'});
+                }
                 var delta = {
                     x: -bloq.size.width, // - this.size.width,
                     y: 0 //+bloq.size.height - this.size.height
@@ -1417,7 +1432,7 @@ var getBasicBloqs = function(variables) {
                 setup: ["{0}"],
                 loop: ["{0}"]
             },
-            getVariable : true
+            getVariable: true
         },
         newGlobalVar: {
             up: 'true',
@@ -1428,11 +1443,15 @@ var getBasicBloqs = function(variables) {
                     input: 'userInput',
                     type: "variable",
                     label: "varName"
+                }, "=", {
+                    input: 'bloqInput',
+                    type: "all",
+                    label: "INPUT"
                 }]
             ],
             code: {
-                setup: ["{0} = 0;"],
-                loop: ["{0} = 0;"]
+                setup: ["{0} = {1};\n"],
+                loop: ["{0} = {1};\n"]
             },
             variable: 'global'
         }

@@ -28,13 +28,16 @@ utils.oppositeConnection = {
 utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID) {
     if (bloq2Connection !== undefined && bloq1Connection !== undefined) {
         if (utils.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
-            if (bloq1Connection.type === bloq2Connection.type) { // if the type is the same --> connect
+            if (bloq1Connection.type === bloq2Connection.type || (bloq1Connection.type === 'all' || bloq2Connection.type === 'all')) { // if the type is the same --> connect
                 console.log('CONNECT!');
                 if (type === 'inputs' || type === 'down') { // parent is bloq1
                     //move bloq
                     bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID);
                     bloq2.moveTo(bloq1.getConnectionPosition(type, bloq2, inputID));
                     bloq1Connection.bloq = bloq2;
+                    if (bloq1Connection.type === 'all') {
+                        bloq1.setConnectionType(bloq1Connection, bloq2Connection);
+                    }
                     //put child bloq on top if it is not already: 
                     utils.bloqOnTop(bloq2);
                 } else { //parent is bloq2
@@ -42,6 +45,9 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     bloq1.updateBloqs(bloq2, bloq1, type, inputID);
                     bloq1.moveTo(bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
                     bloq2Connection.bloq = bloq1;
+                    if (bloq2Connection.type === 'all') {
+                        bloq2.setConnectionType(bloq2Connection, bloq1Connection);
+                    }
                     //put child bloq on top if it is not already: 
                     utils.bloqOnTop(bloq1);
                 }
