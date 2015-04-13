@@ -18,6 +18,7 @@
 (function(root, undefined) {
     var data = {
         bloqs: [],
+        element: '',
         code: {
             setup: '',
             loop: ''
@@ -30,13 +31,13 @@
     var canvas = {};
     data.createCanvas = function(element) {
         if ($.isEmptyObject(canvas)) {
+            data.element = element;
             field = SVG(element).size('100%', '100%');
             canvas = field.group().attr('class', 'bloqs-canvas');
         }
         //LISTEN TO GLOBAL ONCHANGE
-        document.getElementById("field1").addEventListener('change', function() {
-            console.log('onchanging!!!');
-        }, false);
+        // document.getElementById(element).addEventListener('change', function() {
+        // }, false);
         return canvas;
     };
     data.bloqsToCode = function() {

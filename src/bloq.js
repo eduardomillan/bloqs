@@ -59,6 +59,17 @@ function Bloq(bloqData, canvas, position, data) {
     this.bloqBody.getBloqObject = function() {
         return that;
     };
+    if (this.bloqData.getVariable !== undefined) {
+        //Add onChange listener to detect changes in the variables' name!
+        document.getElementById(this.data.element).addEventListener('change', function() {
+            var childNodes = document.getElementById(that.dropdownInput).childNodes;
+            var counter = 0;
+            for (var i in that.data.variables){
+                childNodes[0][counter].text = that.data.variables[i].label;
+                counter ++;
+            }
+        }, false);
+    }
 }
 Bloq.prototype.addVariable = function(id, varName) {
     //If bloq is creating a new variable, add it :
@@ -609,7 +620,9 @@ Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
     document.getElementById(id).addEventListener("change", function() {
         //Add new variable with the value of the input
         that.addVariable(id, document.getElementById(id).value);
-        if (type === 'number') {
+        if (type === 'text') {
+            that.relations.inputChildren[id].code = '"' + document.getElementById(id).value + '"';
+        } else if (type === 'number') {
             if (isNaN(parseFloat(document.getElementById(id).value))) {
                 //If type is number and input is not a number, remove user input. 
                 //ToDo : UX warning!
@@ -618,7 +631,7 @@ Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
                 that.relations.inputChildren[id].code = document.getElementById(id).value;
             }
         } else {
-            that.relations.inputChildren[id].code = '"' + document.getElementById(id).value + '"';
+            that.relations.inputChildren[id].code = document.getElementById(id).value;
         }
     }, false);
 };
@@ -627,13 +640,7 @@ Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id
         id: id,
         color: '#FFCC33'
     });
-    var newList = document.createElement("select");
-    console.log('appending dropdown input: ', dropdownText);
-    for (var i in dropdownText) {
-        var newListData = new Option(dropdownText[i].label, dropdownText[i].value);
-        //Here we append that text node to our drop down list.
-        newList.appendChild(newListData);
-    }
+    var newList = this.populateDropDownList(dropdownText);
     this.addInput(undefined, undefined, type);
     //Append the list to dropdown foreignobject:
     dropdown.appendChild(newList).move(posx, posy);
@@ -646,6 +653,7 @@ Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id
         bloq: 'userInput',
         code: newList.value
     };
+    this.dropdownInput = id;
     var that = this;
     newList.onchange = function() {
         that.relations.inputChildren[id].code = newList.value;
@@ -653,6 +661,15 @@ Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id
     document.getElementById(id).addEventListener("mousedown", function(e) {
         e.stopPropagation();
     }, false);
+};
+Bloq.prototype.populateDropDownList = function(dropdownText) {
+    var newList = document.createElement("select");
+    for (var i in dropdownText) {
+        var newListData = new Option(dropdownText[i].label, dropdownText[i].value);
+        //Here we append that text node to our drop down list.
+        newList.appendChild(newListData);
+    }
+    return newList;
 };
 Bloq.prototype.appendBloqInput = function(inputText, type, posx, posy, inputID) {
     //draw white (ToDo: UX) rectangle

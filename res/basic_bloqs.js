@@ -194,7 +194,8 @@ var getBasicBloqs = function(variables) {
             code: {
                 setup: ["{0}"],
                 loop: ["{0}"]
-            }
+            },
+            getVariable : true
         },
         newGlobalVar: {
             up: 'true',
@@ -211,7 +212,7 @@ var getBasicBloqs = function(variables) {
                 setup: ["{0} = 0;"],
                 loop: ["{0} = 0;"]
             },
-            variable : 'global'
+            variable: 'global'
         }
     };
     return data;
