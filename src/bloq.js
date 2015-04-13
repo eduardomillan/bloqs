@@ -60,6 +60,15 @@ function Bloq(bloqData, canvas, position, data) {
         return that;
     };
 }
+Bloq.prototype.addVariable = function(id, varName) {
+    //If bloq is creating a new variable, add it :
+    if (this.bloqData.variable !== undefined) {
+        this.data.variables[id] = {
+            label: varName,
+            name: varName
+        };
+    }
+};
 /**
  * We start dragging
  */
@@ -579,10 +588,10 @@ Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
         elementsToPush: undefined
     });
     var code;
-    if (type === 'number') {
-        code = document.getElementById(id).value;
-    } else {
+    if (type === 'text') {
         code = '"' + document.getElementById(id).value + '"';
+    } else {
+        code = document.getElementById(id).value;
     }
     this.relations.inputChildren[id] = {
         id: id,
@@ -590,12 +599,16 @@ Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
         code: code
     };
     this.addInput(undefined, undefined, type);
+    //Add new variable with the value of the input
+    this.addVariable(id, document.getElementById(id).value);
     document.getElementById(id).addEventListener("mousedown", function(e) {
         e.stopPropagation();
     }, false);
     var that = this;
     //Check that the input of the user is the one spected
     document.getElementById(id).addEventListener("change", function() {
+        //Add new variable with the value of the input
+        that.addVariable(id, document.getElementById(id).value);
         if (type === 'number') {
             if (isNaN(parseFloat(document.getElementById(id).value))) {
                 //If type is number and input is not a number, remove user input. 
@@ -615,6 +628,7 @@ Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id
         color: '#FFCC33'
     });
     var newList = document.createElement("select");
+    console.log('appending dropdown input: ', dropdownText);
     for (var i in dropdownText) {
         var newListData = new Option(dropdownText[i].label, dropdownText[i].value);
         //Here we append that text node to our drop down list.

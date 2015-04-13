@@ -21,7 +21,10 @@
         code: {
             setup: '',
             loop: ''
-        }
+        },
+        variables: [],
+        globalVariables : [],
+        localVariables:[]
     };
     var field = {};
     var canvas = {};
@@ -82,7 +85,7 @@
     };
 
     data.getBloq = function(bloqName, canvas, position){
-        return data.createBloq(getBasicBloqs()[bloqName], canvas, position);
+        return data.createBloq(getBasicBloqs(data.variables)[bloqName], canvas, position);
     }
     /**
      * Create a set of bloqs and setup its properties and events.

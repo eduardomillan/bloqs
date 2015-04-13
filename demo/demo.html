@@ -31,16 +31,18 @@
         <script src="./../bower_components/svg.draggable/svg.draggable.js"></script>
         <script src="./../dist/bloqs.js"></script>
         <div id="code" style="position: absolute; top: 30px; left: 900px; width: 400px; height: 700px; background-color: #E6E6FA;">    </div>
-<button  style="position: absolute; top: 10px; left: 710px; " onclick="document.getElementById('code').innerHTML ='<pre>'+bloqs.bloqsToCode()+'</pre>'">CODE</button>
+<button  style="position: absolute; top: 10px; left: 710px; " onclick="document.getElementById('code').innerHTML ='<pre>'+bloqs.bloqsToCode()+'</pre>'; console.log('aaaaaaaaa', bloqs.variables);">CODE</button>
 <script>
     /* begin demo script */
     var bloqs = bloqs();
     var canvas = bloqs.createCanvas("field1");
     bloqs.createProjectStructure();
 
-    // bloqs.getBloq('readSensor', canvas, [200,50]);
+    bloqs.getBloq('newGlobalVar', canvas, [200,50]);
+    bloqs.getBloq('newGlobalVar', canvas, [200,200]);
+    bloqs.getBloq('getVariable', canvas, [200,200]);
     // bloqs.getBloq('readSensor', canvas, [200,150]);
-    bloqs.getBloq('forLoop', canvas, [200,200]);
+    // bloqs.getBloq('forLoop', canvas, [200,200]);
     // bloqs.getBloq('number', canvas, [200,250]);
     // bloqs.getBloq('number', canvas, [200,250]);
     // bloqs.getBloq('getVariable', canvas, [200,300]);

@@ -24,7 +24,8 @@ var getProjectBloqs = function() {
     };
     return data;
 };
-var getBasicBloqs = function() {
+var getBasicBloqs = function(variables) {
+    console.log('aaaaaaaa2', variables);
     var data = {
         led: {
             up: true,
@@ -133,7 +134,7 @@ var getBasicBloqs = function() {
                     input: 'bloqInput',
                     type: "number",
                     label: "INPUT"
-                },{
+                }, {
                     input: 'dropdown',
                     type: "text",
                     data: [{
@@ -187,13 +188,7 @@ var getBasicBloqs = function() {
                 ["Var", {
                     input: 'dropdown',
                     type: "text",
-                    data: [{
-                        label: 'variable1',
-                        value: 'variable1'
-                    }, {
-                        label: 'variable2',
-                        value: 'variable2'
-                    }]
+                    data: variables
                 }]
             ],
             code: {
@@ -201,6 +196,23 @@ var getBasicBloqs = function() {
                 loop: ["{0}"]
             }
         },
+        newGlobalVar: {
+            up: 'true',
+            down: 'true',
+            color: '#e2e2e2',
+            text: [
+                [{
+                    input: 'userInput',
+                    type: "variable",
+                    label: "varName"
+                }]
+            ],
+            code: {
+                setup: ["{0} = 0;"],
+                loop: ["{0} = 0;"]
+            },
+            variable : 'global'
+        }
     };
     return data;
 };

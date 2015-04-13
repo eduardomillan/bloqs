@@ -205,6 +205,15 @@ function Bloq(bloqData, canvas, position, data) {
         return that;
     };
 }
+Bloq.prototype.addVariable = function(id, varName) {
+    //If bloq is creating a new variable, add it :
+    if (this.bloqData.variable !== undefined) {
+        this.data.variables[id] = {
+            label: varName,
+            name: varName
+        };
+    }
+};
 /**
  * We start dragging
  */
@@ -724,10 +733,10 @@ Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
         elementsToPush: undefined
     });
     var code;
-    if (type === 'number') {
-        code = document.getElementById(id).value;
-    } else {
+    if (type === 'text') {
         code = '"' + document.getElementById(id).value + '"';
+    } else {
+        code = document.getElementById(id).value;
     }
     this.relations.inputChildren[id] = {
         id: id,
@@ -735,12 +744,16 @@ Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
         code: code
     };
     this.addInput(undefined, undefined, type);
+    //Add new variable with the value of the input
+    this.addVariable(id, document.getElementById(id).value);
     document.getElementById(id).addEventListener("mousedown", function(e) {
         e.stopPropagation();
     }, false);
     var that = this;
     //Check that the input of the user is the one spected
     document.getElementById(id).addEventListener("change", function() {
+        //Add new variable with the value of the input
+        that.addVariable(id, document.getElementById(id).value);
         if (type === 'number') {
             if (isNaN(parseFloat(document.getElementById(id).value))) {
                 //If type is number and input is not a number, remove user input. 
@@ -760,6 +773,7 @@ Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id
         color: '#FFCC33'
     });
     var newList = document.createElement("select");
+    console.log('appending dropdown input: ', dropdownText);
     for (var i in dropdownText) {
         var newListData = new Option(dropdownText[i].label, dropdownText[i].value);
         //Here we append that text node to our drop down list.
@@ -1215,7 +1229,8 @@ var getProjectBloqs = function() {
     };
     return data;
 };
-var getBasicBloqs = function() {
+var getBasicBloqs = function(variables) {
+    console.log('aaaaaaaa2', variables);
     var data = {
         led: {
             up: true,
@@ -1324,7 +1339,7 @@ var getBasicBloqs = function() {
                     input: 'bloqInput',
                     type: "number",
                     label: "INPUT"
-                },{
+                }, {
                     input: 'dropdown',
                     type: "text",
                     data: [{
@@ -1378,13 +1393,7 @@ var getBasicBloqs = function() {
                 ["Var", {
                     input: 'dropdown',
                     type: "text",
-                    data: [{
-                        label: 'variable1',
-                        value: 'variable1'
-                    }, {
-                        label: 'variable2',
-                        value: 'variable2'
-                    }]
+                    data: variables
                 }]
             ],
             code: {
@@ -1392,6 +1401,23 @@ var getBasicBloqs = function() {
                 loop: ["{0}"]
             }
         },
+        newGlobalVar: {
+            up: 'true',
+            down: 'true',
+            color: '#e2e2e2',
+            text: [
+                [{
+                    input: 'userInput',
+                    type: "variable",
+                    label: "varName"
+                }]
+            ],
+            code: {
+                setup: ["{0} = 0;"],
+                loop: ["{0} = 0;"]
+            },
+            variable : 'global'
+        }
     };
     return data;
 };
@@ -1401,7 +1427,10 @@ var getBasicBloqs = function() {
         code: {
             setup: '',
             loop: ''
-        }
+        },
+        variables: [],
+        globalVariables : [],
+        localVariables:[]
     };
     var field = {};
     var canvas = {};
@@ -1462,7 +1491,7 @@ var getBasicBloqs = function() {
     };
 
     data.getBloq = function(bloqName, canvas, position){
-        return data.createBloq(getBasicBloqs()[bloqName], canvas, position);
+        return data.createBloq(getBasicBloqs(data.variables)[bloqName], canvas, position);
     }
     /**
      * Create a set of bloqs and setup its properties and events.
