@@ -25,7 +25,6 @@ var getProjectBloqs = function() {
     return data;
 };
 var getBasicBloqs = function(variables) {
-    console.log('aaaaaaaa2', variables);
     var data = {
         led: {
             up: true,
@@ -213,8 +212,8 @@ var getBasicBloqs = function(variables) {
                 }]
             ],
             code: {
-                setup: ["{0} = {1};\n"],
-                loop: ["{0} = {1};\n"]
+                setup: ["{connectionType} {0} = {1};\n"],
+                loop: ["{connectionType} {0} = {1};\n"]
             },
             variable: 'global'
         }

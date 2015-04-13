@@ -35,14 +35,18 @@ utils.oppositeConnection = {
     up: 'down',
     down: 'up'
 };
+utils.getVariableType = {
+    text : 'string',
+    number : 'int'
+}
 utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1, bloq2, inputID) {
     if (bloq2Connection !== undefined && bloq1Connection !== undefined) {
         if (utils.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
             if (bloq1Connection.type === bloq2Connection.type || (bloq1Connection.type === 'all' || bloq2Connection.type === 'all')) { // if the type is the same --> connect
-                console.log('CONNECT!');
+                console.log('CONNECT!', bloq2Connection.type, bloq1Connection.type);
                 if (type === 'inputs' || type === 'down') { // parent is bloq1
                     //move bloq
-                    bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID);
+                    bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID, bloq2Connection.type);
                     bloq2.moveTo(bloq1.getConnectionPosition(type, bloq2, inputID));
                     bloq1Connection.bloq = bloq2;
                     if (bloq1Connection.type === 'all') {
@@ -52,7 +56,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
                     utils.bloqOnTop(bloq2);
                 } else { //parent is bloq2
                     //move bloq
-                    bloq1.updateBloqs(bloq2, bloq1, type, inputID);
+                    bloq1.updateBloqs(bloq2, bloq1, type, inputID, bloq1Connection.type);
                     bloq1.moveTo(bloq2.getConnectionPosition(utils.oppositeConnection[type], bloq1, inputID));
                     bloq2Connection.bloq = bloq1;
                     if (bloq2Connection.type === 'all') {
@@ -309,8 +313,8 @@ Bloq.prototype.searchNewConnections = function() {
     console.log('-----------------------------------------------------------------------');
 };
 //////******    BLOQ RELATIONS    ******//////
-Bloq.prototype.updateBloqs = function(parent, child, type, inputID) {
-    parent.setChildren(child.id, type, inputID);
+Bloq.prototype.updateBloqs = function(parent, child, type, inputID, connectionType) {
+    parent.setChildren(child.id, type, inputID, connectionType);
     child.setParent(parent.id);
 };
 Bloq.prototype.deleteParent = function(cascade) {
@@ -343,7 +347,7 @@ Bloq.prototype.deleteChild = function(child) {
     }
     delete this.relations.inputChildren[child.id];
 };
-Bloq.prototype.setChildren = function(childrenId, location, inputID) {
+Bloq.prototype.setChildren = function(childrenId, location, inputID, connectionType) {
     for (var bloqIndex in this.relations.children) {
         if (childrenId == this.relations.children[bloqIndex]) {
             // it exists, do nothing
@@ -372,7 +376,8 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
     } else {
         this.relations.inputChildren[childrenId] = {
             bloq: utils.getBloqById(childrenId, this.data),
-            id: inputID
+            id: inputID,
+            type: connectionType
         };
     }
     return true;
@@ -419,6 +424,16 @@ Bloq.prototype.getCode = function(_function) {
         for (i = 0; i < this.inputsNumber; i++) {
             search = '{[' + i + ']}';
             code[k] = code[k].replace(new RegExp(search, 'g'), ' ');
+        }
+        //Connection type replace with correct type:
+        for (var i in this.relations.inputChildren) {
+            if (typeof(this.relations.inputChildren[i].bloq) === typeof({})) {
+                search = '{connectionType}';
+                replacement = utils.getVariableType[this.relations.inputChildren[i].type];
+                console.log('this.relations.inputChildren[i].', this.relations.inputChildren[i]);
+                console.log('search , replacement:', search, replacement);
+                code[k] = code[k].replace(new RegExp(search, 'g'), replacement);
+            }
         }
     }
     return code.join('');
@@ -708,7 +723,9 @@ Bloq.prototype.resizeUI = function(bloq) {
             if (this.connections.inputs[k].inline === true && k === this.relations.children[bloq.id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                 //If the bloq is creating a variable & the value is disconected, set the connection type again to all
                 if (this.bloqData.variable !== undefined) {
-                    this.setConnectionType(this.connections.inputs[k], {type:'all'});
+                    this.setConnectionType(this.connections.inputs[k], {
+                        type: 'all'
+                    });
                 }
                 var delta = {
                     x: -bloq.size.width, // - this.size.width,
@@ -1262,7 +1279,6 @@ var getProjectBloqs = function() {
     return data;
 };
 var getBasicBloqs = function(variables) {
-    console.log('aaaaaaaa2', variables);
     var data = {
         led: {
             up: true,
@@ -1450,8 +1466,8 @@ var getBasicBloqs = function(variables) {
                 }]
             ],
             code: {
-                setup: ["{0} = {1};\n"],
-                loop: ["{0} = {1};\n"]
+                setup: ["{connectionType} {0} = {1};\n"],
+                loop: ["{connectionType} {0} = {1};\n"]
             },
             variable: 'global'
         }

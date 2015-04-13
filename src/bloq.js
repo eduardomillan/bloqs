@@ -158,8 +158,8 @@ Bloq.prototype.searchNewConnections = function() {
     console.log('-----------------------------------------------------------------------');
 };
 //////******    BLOQ RELATIONS    ******//////
-Bloq.prototype.updateBloqs = function(parent, child, type, inputID) {
-    parent.setChildren(child.id, type, inputID);
+Bloq.prototype.updateBloqs = function(parent, child, type, inputID, connectionType) {
+    parent.setChildren(child.id, type, inputID, connectionType);
     child.setParent(parent.id);
 };
 Bloq.prototype.deleteParent = function(cascade) {
@@ -192,7 +192,7 @@ Bloq.prototype.deleteChild = function(child) {
     }
     delete this.relations.inputChildren[child.id];
 };
-Bloq.prototype.setChildren = function(childrenId, location, inputID) {
+Bloq.prototype.setChildren = function(childrenId, location, inputID, connectionType) {
     for (var bloqIndex in this.relations.children) {
         if (childrenId == this.relations.children[bloqIndex]) {
             // it exists, do nothing
@@ -221,7 +221,8 @@ Bloq.prototype.setChildren = function(childrenId, location, inputID) {
     } else {
         this.relations.inputChildren[childrenId] = {
             bloq: utils.getBloqById(childrenId, this.data),
-            id: inputID
+            id: inputID,
+            type: connectionType
         };
     }
     return true;
@@ -268,6 +269,16 @@ Bloq.prototype.getCode = function(_function) {
         for (i = 0; i < this.inputsNumber; i++) {
             search = '{[' + i + ']}';
             code[k] = code[k].replace(new RegExp(search, 'g'), ' ');
+        }
+        //Connection type replace with correct type:
+        for (var i in this.relations.inputChildren) {
+            if (typeof(this.relations.inputChildren[i].bloq) === typeof({})) {
+                search = '{connectionType}';
+                replacement = utils.getVariableType[this.relations.inputChildren[i].type];
+                console.log('this.relations.inputChildren[i].', this.relations.inputChildren[i]);
+                console.log('search , replacement:', search, replacement);
+                code[k] = code[k].replace(new RegExp(search, 'g'), replacement);
+            }
         }
     }
     return code.join('');
@@ -557,7 +568,9 @@ Bloq.prototype.resizeUI = function(bloq) {
             if (this.connections.inputs[k].inline === true && k === this.relations.children[bloq.id].inputID) { //&& bloq.connections[connectionType][k].bloq === undefined) {
                 //If the bloq is creating a variable & the value is disconected, set the connection type again to all
                 if (this.bloqData.variable !== undefined) {
-                    this.setConnectionType(this.connections.inputs[k], {type:'all'});
+                    this.setConnectionType(this.connections.inputs[k], {
+                        type: 'all'
+                    });
                 }
                 var delta = {
                     x: -bloq.size.width, // - this.size.width,
