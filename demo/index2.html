@@ -27,12 +27,12 @@
         <p>Copyright 2015 bq</p>
         <script src="./../bower_components/jquery/dist/jquery.min.js"></script>
         <script src="./../bower_components/svg.js/dist/svg.js"></script>
-        <script src="./../../svg.foreignobject.js/svg.foreignobject.js"></script>
+        <script src="./../bower_components/svg.foreignobject/svg.foreignobject.js"></script>
         <script src="./../bower_components/svg.draggable/svg.draggable.js"></script>
         <script src="./../dist/bloqs.js"></script>
         <div id="code" style="position: absolute; top: 30px; left: 900px; width: 400px; height: 700px; background-color: #E6E6FA;">    </div>
 <button  style="position: absolute; top: 10px; left: 710px; " onclick="document.getElementById('code').innerHTML ='<pre>'+bloqs.bloqsToCode()+'</pre>'">CODE</button>
-<button  style="position: absolute; top: 10px; left: 600px; " onclick='bloqs.loadProject([{"bloq":"loop","inputs":[],"location":[50,200]},{"bloq":"newGlobalVar","inputs":[{"userInput":"hola"},{"bloq":"text","inputs":[{"userInput":"\"eyy\""}],"location":[225,250]}],"location":[50,250]}])'>LOAD</button>
+<button  style="position: absolute; top: 10px; left: 600px; " onclick='bloqs.loadProject([{"bloq":"loop","inputs":[],"location":[50,200]},{"bloq":"newGlobalVar","inputs":[{"userInput":"varString"},{"bloq":"text","inputs":[{"userInput":"\"hola\""}],"location":[225,250]}],"location":[50,250]},{"bloq":"newGlobalVar","inputs":[{"userInput":"varNumber"},{"bloq":"number","inputs":[{"userInput":"23"}],"location":[225,300]}],"location":[50,300]},{"bloq":"forLoop","inputs":[{"userInput":"++"}],"location":[50,350]}])'>LOAD</button>
 
 
 <script>
