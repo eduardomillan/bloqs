@@ -1582,24 +1582,19 @@ var getBasicBloqs = function(variables) {
         }
     };
     data.saveProject = function() {
-        // data.getChildBloqs(data.bloqs.setup, data.project.setup);
-        data.getChildBloqs(data.bloqs.loop);
+        data.saveChildBloqs(data.bloqs.loop);
         console.log('savingproject:', JSON.stringify(data.project));
         data.project = [];
     };
-    data.getChildBloqs = function(bloq) {
+    data.saveChildBloqs = function(bloq) {
         var bloqDescription = [];
         if (bloq !== null) {
             if (bloq.relations !== undefined) {
                 bloqDescription = this.getBloqData(bloq);
-                data.project.push({
-                    bloq: bloq.bloqName,
-                    inputs: bloqDescription,
-                    location: [bloq.bloqBody.x(), bloq.bloqBody.y()]
-                });
+                data.project.push(bloqDescription);
                 if (bloq.relations.codeChildren !== undefined) {
                     var codeChild = utils.getBloqById(bloq.relations.codeChildren[0], this);
-                    this.getChildBloqs(codeChild, data.project);
+                    this.saveChildBloqs(codeChild, data.project);
                 }
             }
         }
@@ -1632,18 +1627,35 @@ var getBasicBloqs = function(variables) {
                 }
             }
         }
-        return bloqDescription;
+        return {
+            bloq: bloq.bloqName,
+            inputs: bloqDescription,
+            location: [bloq.bloqBody.x(), bloq.bloqBody.y()]
+        };
     };
     data.loadProject = function(project) {
         console.log('project_JSON', project);
         for (var i in project) {
             if (project[i].bloq !== undefined && project[i].bloq !== 'loop' && project[i].bloq !== 'setup') {
-                console.log('project[i].bloq', project[i].bloq.location);
                 this.getBloq(project[i].bloq, this.canvas, project[i].location);
+                this.loadChildBloqs(project[i]);
             }
-            console.log('project[i]', project[i].bloq);
         }
     };
+    data.loadChildBloqs = function(bloq) {
+        console.log('bloq', bloq);
+        if (bloq.inputs.length > 0) {
+            for (var i in bloq.inputs) {
+                if (bloq.inputs[i] !== undefined) {
+                    console.log('bloq.inputs[i]', bloq.inputs[i]);
+                    if (bloq.inputs[i].bloq !== undefined) {
+                        this.getBloq(bloq.inputs[i].bloq, this.canvas, bloq.inputs[i].location);
+                    }
+                    //else set the dropdown & userinput values!! :)
+                }
+            }
+        }
+    }
     // Base function.
     var bloqs = function() {
         return data;
