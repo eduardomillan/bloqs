@@ -4,11 +4,11 @@
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-function Bloq(bloqData, canvas, position, data) {
-    this.bloqBody = canvas.group().move(position[0], position[1]);
+function Bloq(bloqData, position, data) {
+    this.canvas = data.canvas;
+    this.bloqBody = this.canvas.group().move(position[0], position[1]);
     this.bloqData = bloqData;
     this.bloqName  = this.bloqData.label;
-    this.canvas = canvas;
     this.data = data;
     this.size = {
         width: 100,

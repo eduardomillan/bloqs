@@ -4,8 +4,8 @@
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-function ProjectBloq(bloqData, canvas, position, data) {
-    Bloq.call(this, bloqData, canvas, position, data, false);
+function ProjectBloq(bloqData, position, data) {
+    Bloq.call(this, bloqData, position, data, false);
     this.bloqBody.text(bloqData.label.toUpperCase()).font({
         family: 'Helvetica',
         fill: '#fff',

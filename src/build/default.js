@@ -68,26 +68,26 @@
      *
      * @returns Object bloq
      */
-    data.createBloq = function(bloqData, canvas, position) {
+    data.createBloq = function(bloqData, position) {
         var bloq;
         if (bloqData.hasOwnProperty('statementInput')) {
-            bloq = new StatementInputBloq(bloqData, canvas, position, data, true);
+            bloq = new StatementInputBloq(bloqData, position, data, true);
         } else if (bloqData.hasOwnProperty('output')) {
-            bloq = new OutputBloq(bloqData, canvas, position, data);
+            bloq = new OutputBloq(bloqData, position, data);
         } else if (bloqData.label === 'loop') {
-            bloq = new ProjectBloq(bloqData, canvas, position, data);
+            bloq = new ProjectBloq(bloqData, position, data);
             data.bloqs.loop = bloq;
         } else if (bloqData.label === 'setup') {
-            bloq = new ProjectBloq(bloqData, canvas, position, data);
+            bloq = new ProjectBloq(bloqData, position, data);
             data.bloqs.setup = bloq;
         } else {
-            bloq = new StatementBloq(bloqData, canvas, position, data);
+            bloq = new StatementBloq(bloqData, position, data);
         }
         data.bloqs.push(bloq);
         return bloq;
     };
-    data.getBloq = function(bloqName, canvas, position) {
-        return data.createBloq(getBasicBloqs(data.variables)[bloqName], this.canvas, position);
+    data.getBloq = function(bloqName, position) {
+        return data.createBloq(getBasicBloqs(data.variables)[bloqName], position);
     }
     /**
      * Create a set of bloqs and setup its properties and events.
@@ -100,7 +100,7 @@
         var bloqTypes = getProjectBloqs();
         var counter = 100;
         for (var i in bloqTypes) {
-            data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter], data));
+            data.bloqs.push(this.createBloq(bloqTypes[i], [50, counter], data));
             counter += 100;
         }
         // this.createMenu();
@@ -109,7 +109,7 @@
         var bloqTypes = getBasicBloqs();
         var counter = 20;
         for (var i in bloqTypes) {
-            data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter]));
+            data.bloqs.push(this.createBloq(bloqTypes[i], [50, counter]));
             counter += 100;
         }
     };
@@ -169,7 +169,7 @@
         console.log('project_JSON', project);
         for (var i in project) {
             if (project[i].bloq !== undefined && project[i].bloq !== 'loop' && project[i].bloq !== 'setup') {
-                this.getBloq(project[i].bloq, this.canvas, project[i].location);
+                this.getBloq(project[i].bloq, project[i].location);
                 this.loadChildBloqs(project[i]);
             }
         }
@@ -181,7 +181,7 @@
                 if (bloq.inputs[i] !== undefined) {
                     console.log('bloq.inputs[i]', bloq.inputs[i]);
                     if (bloq.inputs[i].bloq !== undefined) {
-                        this.getBloq(bloq.inputs[i].bloq, this.canvas, bloq.inputs[i].location);
+                        this.getBloq(bloq.inputs[i].bloq, bloq.inputs[i].location);
                     }
                     //else set the dropdown & userinput values!! :)
                 }

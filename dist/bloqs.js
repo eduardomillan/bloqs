@@ -159,11 +159,11 @@ utils.getBloqById = function(nodeId, data) {
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-function Bloq(bloqData, canvas, position, data) {
-    this.bloqBody = canvas.group().move(position[0], position[1]);
+function Bloq(bloqData, position, data) {
+    this.canvas = data.canvas;
+    this.bloqBody = this.canvas.group().move(position[0], position[1]);
     this.bloqData = bloqData;
     this.bloqName  = this.bloqData.label;
-    this.canvas = canvas;
     this.data = data;
     this.size = {
         width: 100,
@@ -981,8 +981,8 @@ Bloq.prototype.resetLastDelta = function() {
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-function OutputBloq(bloqData, canvas, position, data) {
-    Bloq.call(this, bloqData, canvas, position, data);
+function OutputBloq(bloqData, position, data) {
+    Bloq.call(this, bloqData, position, data);
     /**
      * Set this bloq as draggable
      */
@@ -1000,8 +1000,8 @@ OutputBloq.prototype = Object.create(Bloq.prototype);
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-var StatementBloq = function(bloqData, canvas, position, data) {
-    Bloq.call(this, bloqData, canvas, position, data);
+var StatementBloq = function(bloqData, position, data) {
+    Bloq.call(this, bloqData, position, data);
     /**
      * Set this bloq as draggable
      */
@@ -1016,8 +1016,8 @@ StatementBloq.prototype = Object.create(Bloq.prototype);
 // Date: April 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-function StatementInputBloq(bloqData, canvas, position, data, draggable) {
-    Bloq.call(this, bloqData, canvas, position, data);
+function StatementInputBloq(bloqData, position, data, draggable) {
+    Bloq.call(this, bloqData, position, data);
     if (draggable) {
         this.bloqBody.draggable();
     }
@@ -1243,8 +1243,8 @@ StatementInputBloq.prototype.resize = function(delta) {
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-function ProjectBloq(bloqData, canvas, position, data) {
-    Bloq.call(this, bloqData, canvas, position, data, false);
+function ProjectBloq(bloqData, position, data) {
+    Bloq.call(this, bloqData, position, data, false);
     this.bloqBody.text(bloqData.label.toUpperCase()).font({
         family: 'Helvetica',
         fill: '#fff',
@@ -1536,26 +1536,26 @@ var getBasicBloqs = function(variables) {
      *
      * @returns Object bloq
      */
-    data.createBloq = function(bloqData, canvas, position) {
+    data.createBloq = function(bloqData, position) {
         var bloq;
         if (bloqData.hasOwnProperty('statementInput')) {
-            bloq = new StatementInputBloq(bloqData, canvas, position, data, true);
+            bloq = new StatementInputBloq(bloqData, position, data, true);
         } else if (bloqData.hasOwnProperty('output')) {
-            bloq = new OutputBloq(bloqData, canvas, position, data);
+            bloq = new OutputBloq(bloqData, position, data);
         } else if (bloqData.label === 'loop') {
-            bloq = new ProjectBloq(bloqData, canvas, position, data);
+            bloq = new ProjectBloq(bloqData, position, data);
             data.bloqs.loop = bloq;
         } else if (bloqData.label === 'setup') {
-            bloq = new ProjectBloq(bloqData, canvas, position, data);
+            bloq = new ProjectBloq(bloqData, position, data);
             data.bloqs.setup = bloq;
         } else {
-            bloq = new StatementBloq(bloqData, canvas, position, data);
+            bloq = new StatementBloq(bloqData, position, data);
         }
         data.bloqs.push(bloq);
         return bloq;
     };
-    data.getBloq = function(bloqName, canvas, position) {
-        return data.createBloq(getBasicBloqs(data.variables)[bloqName], this.canvas, position);
+    data.getBloq = function(bloqName, position) {
+        return data.createBloq(getBasicBloqs(data.variables)[bloqName], position);
     }
     /**
      * Create a set of bloqs and setup its properties and events.
@@ -1568,7 +1568,7 @@ var getBasicBloqs = function(variables) {
         var bloqTypes = getProjectBloqs();
         var counter = 100;
         for (var i in bloqTypes) {
-            data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter], data));
+            data.bloqs.push(this.createBloq(bloqTypes[i], [50, counter], data));
             counter += 100;
         }
         // this.createMenu();
@@ -1577,7 +1577,7 @@ var getBasicBloqs = function(variables) {
         var bloqTypes = getBasicBloqs();
         var counter = 20;
         for (var i in bloqTypes) {
-            data.bloqs.push(this.createBloq(bloqTypes[i], canvas, [50, counter]));
+            data.bloqs.push(this.createBloq(bloqTypes[i], [50, counter]));
             counter += 100;
         }
     };
@@ -1637,7 +1637,7 @@ var getBasicBloqs = function(variables) {
         console.log('project_JSON', project);
         for (var i in project) {
             if (project[i].bloq !== undefined && project[i].bloq !== 'loop' && project[i].bloq !== 'setup') {
-                this.getBloq(project[i].bloq, this.canvas, project[i].location);
+                this.getBloq(project[i].bloq, project[i].location);
                 this.loadChildBloqs(project[i]);
             }
         }
@@ -1649,7 +1649,7 @@ var getBasicBloqs = function(variables) {
                 if (bloq.inputs[i] !== undefined) {
                     console.log('bloq.inputs[i]', bloq.inputs[i]);
                     if (bloq.inputs[i].bloq !== undefined) {
-                        this.getBloq(bloq.inputs[i].bloq, this.canvas, bloq.inputs[i].location);
+                        this.getBloq(bloq.inputs[i].bloq, bloq.inputs[i].location);
                     }
                     //else set the dropdown & userinput values!! :)
                 }

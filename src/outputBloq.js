@@ -4,8 +4,8 @@
 // Date: March 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-function OutputBloq(bloqData, canvas, position, data) {
-    Bloq.call(this, bloqData, canvas, position, data);
+function OutputBloq(bloqData, position, data) {
+    Bloq.call(this, bloqData, position, data);
     /**
      * Set this bloq as draggable
      */

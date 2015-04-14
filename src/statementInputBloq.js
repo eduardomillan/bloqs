@@ -4,8 +4,8 @@
 // Date: April 2015                                               //
 // Author: Irene Sanz Nieto  <irene.sanz@bq.com>                  //
 //----------------------------------------------------------------//
-function StatementInputBloq(bloqData, canvas, position, data, draggable) {
-    Bloq.call(this, bloqData, canvas, position, data);
+function StatementInputBloq(bloqData, position, data, draggable) {
+    Bloq.call(this, bloqData, position, data);
     if (draggable) {
         this.bloqBody.draggable();
     }
