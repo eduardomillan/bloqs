@@ -813,6 +813,9 @@ Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
         }
     }, false);
 };
+Bloq.prototype.setUserInput = function (ID, text){
+    document.getElementById(this.id + '_' + ID).value=text;
+};
 Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id) {
     var dropdown = this.bloqBody.foreignObject(100, 100).attr({
         id: id,
@@ -1635,27 +1638,31 @@ var getBasicBloqs = function(variables) {
     };
     data.loadProject = function(project) {
         console.log('project_JSON', project);
+        var bloq;
         for (var i in project) {
             if (project[i].bloq !== undefined && project[i].bloq !== 'loop' && project[i].bloq !== 'setup') {
-                this.getBloq(project[i].bloq, project[i].location);
-                this.loadChildBloqs(project[i]);
+                bloq = this.getBloq(project[i].bloq, project[i].location);
+                this.loadChildBloqs(project[i], bloq);
             }
         }
     };
-    data.loadChildBloqs = function(bloq) {
-        console.log('bloq', bloq);
-        if (bloq.inputs.length > 0) {
-            for (var i in bloq.inputs) {
-                if (bloq.inputs[i] !== undefined) {
-                    console.log('bloq.inputs[i]', bloq.inputs[i]);
-                    if (bloq.inputs[i].bloq !== undefined) {
-                        this.getBloq(bloq.inputs[i].bloq, bloq.inputs[i].location);
+    data.loadChildBloqs = function(projectBloq, bloq) {
+        console.log('projectBloq', projectBloq);
+        if (projectBloq.inputs.length > 0) {
+            for (var i in projectBloq.inputs) {
+                if (projectBloq.inputs[i] !== undefined) {
+                    if (projectBloq.inputs[i].bloq !== undefined) {
+                        console.log('projectBloq.inputs[i].bloq',projectBloq.inputs[i].bloq);
+                        this.loadChildBloqs( projectBloq.inputs[i] ,this.getBloq(projectBloq.inputs[i].bloq, projectBloq.inputs[i].location));
+                    }
+                    if (projectBloq.inputs[i].userInput !== undefined) {
+                        bloq.setUserInput(i, projectBloq.inputs[i].userInput);
                     }
                     //else set the dropdown & userinput values!! :)
                 }
             }
         }
-    }
+    };
     // Base function.
     var bloqs = function() {
         return data;

@@ -658,6 +658,9 @@ Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
         }
     }, false);
 };
+Bloq.prototype.setUserInput = function (ID, text){
+    document.getElementById(this.id + '_' + ID).value=text;
+};
 Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id) {
     var dropdown = this.bloqBody.foreignObject(100, 100).attr({
         id: id,
