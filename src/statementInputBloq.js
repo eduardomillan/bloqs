@@ -20,10 +20,10 @@ function StatementInputBloq(bloqData, position, data, draggable) {
     });
     this.relations.codeStatementChildren = {};
     //Add bloq's left and down UI parts
-    this.bloqBody.downPart = this.bloqBody.rect(this.size.width, 20).fill('#00CC00').radius(4);
-    this.bloqBody.downPart.y(80 - 20);
+    this.bloqBody.downPart = this.bloqBody.rect(this.size.width, 20).fill('#ebebeb').radius(4);
+    this.bloqBody.downPart.y(80);
     this.bloqBody.add(this.bloqBody.downPart);
-    this.bloqBody.leftPart = this.bloqBody.rect(20, 80).fill('#00CC00').radius(4);
+    this.bloqBody.leftPart = this.bloqBody.rect(20, 80).size(20, 90).fill('#ebebeb').radius(4);
     this.bloqBody.leftPart.size.height = 80;
     this.bloqBody.leftPart.size.width = 20;
     this.bloqBody.add(this.bloqBody.leftPart);
@@ -97,7 +97,8 @@ StatementInputBloq.prototype.addDownConnector = function(posx, posy) {
     };
     if (posx !== undefined && posy !== undefined) {
         this.connections.down[index].UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
-            fill: getRandomColor()
+            fill: getRandomColor(),
+            'fill-opacity': 0
         }).move(posx, posy - connectionThreshold);
     }
 };

@@ -37,6 +37,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
         if (utils.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
             if (bloq1Connection.type === bloq2Connection.type || (bloq1Connection.type === 'all' || bloq2Connection.type === 'all')) { // if the type is the same --> connect
                 console.log('CONNECT!', bloq2Connection.type, bloq1Connection.type);
+                console.log('Bloq 1 Connection: ' + bloq1Connection, 'Bloq 1 Connection: ' + bloq2Connection, 'Bloq 1: ' + bloq1, 'Bloq 2 Connection: ' + bloq2, 'InputId: ' + inputID);
                 if (type === 'inputs' || type === 'down') { // parent is bloq1
                     //move bloq
                     bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID, bloq2Connection.type);
@@ -99,10 +100,10 @@ utils.bloqOnTop = function(bloq) {
 utils.getOutputBloq = function(bloq, posx, width, height) {
     var path = 'm 36,32 c -4.418,0 -8,-2.582 -8,-7 0,-4.418 3.582,-7 8,-7 l 0,14 z';
     var group = bloq.group();
-    var connector = bloq.path(path).fill('#cccccc'); //.move(posx, posy);
+    var connector = bloq.path(path).fill('#dadada'); //.move(posx, posy);
     connector.x(posx);
     group.add(connector);
-    var outputBloq = bloq.rect(width, height).fill('#cccccc').radius(4).move(posx + 8, 0);
+    var outputBloq = bloq.rect(width, height).fill('#dadada').radius(4).move(posx + 8, 0);
     group.add(outputBloq);
     return group;
 };
@@ -190,7 +191,7 @@ function Bloq(bloqData, position, data) {
     //Create the connectors using the bloq information
     this.createConnectors();
     // basic shape of the bloq
-    this.body = this.bloqBody.rect(this.size.width, this.size.height).fill(bloqData.color).radius(4);
+    this.body = this.bloqBody.rect(this.size.width, this.size.height).fill(bloqData.color).radius(4).addClass('bloq');
     this.id = this.body.node.id;
     // this.border = this.path(path).fill(bloqData.color).hide(); // give a hidden 'body' to the border path
     // this.border.stroke({
@@ -620,8 +621,9 @@ Bloq.prototype.createConnectors = function() {
             y1: this.bloqBody.y(),
             y2: this.bloqBody.y() + connectionThreshold
         };
-        this.connections.output.UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
-            fill: '#FFCC33'
+        this.connections.output.UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).addClass('bloq--__connector--left').attr({
+            fill: '#FFCC33',
+            'fill-opacity': 0
         }).move(this.bloqBody.x() - connectionThreshold, this.bloqBody.y());
     }
     if (this.bloqData.up) {
@@ -639,8 +641,9 @@ Bloq.prototype.createConnectors = function() {
             y1: this.bloqBody.y() - connectionThreshold,
             y2: this.bloqBody.y() + connectionThreshold
         };
-        this.connections.up.UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
-            fill: '#FF0000'
+        this.connections.up.UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).addClass('bloq__connector__top').attr({
+            fill: '#FF0000',
+            'fill-opacity': 0
         }).move(this.bloqBody.x(), this.bloqBody.y() - connectionThreshold);
     }
     if (this.bloqData.down) {
@@ -655,8 +658,9 @@ Bloq.prototype.createConnectors = function() {
             y1: this.bloqBody.y() + this.size.height - connectionThreshold,
             y2: this.bloqBody.y() + this.size.height + connectionThreshold
         };
-        this.connections.down[0].UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
-            fill: '#FF0000'
+        this.connections.down[0].UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).addClass('bloq__connector__bottom').attr({
+            fill: '#FF0000',
+            'fill-opacity': 0
         }).move(this.bloqBody.x(), this.bloqBody.y() + this.size.height - connectionThreshold);
     }
 };
@@ -683,8 +687,9 @@ Bloq.prototype.addInput = function(posx, posy, type) {
         movedDown: false
     };
     if (posx !== undefined && posy !== undefined) {
-        this.connections.inputs[index].UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).attr({
-            fill: getRandomColor()
+        this.connections.inputs[index].UI = this.canvas.group().rect(connectionThreshold * 2, connectionThreshold).addClass('bloq__connector__right').attr({
+            fill: getRandomColor(),
+            'fill-opacity': 0
         }).move(posx - connectionThreshold, posy);
     }
     this.inputsNumber = this.connections.inputs.length;
@@ -759,22 +764,33 @@ Bloq.prototype.pushElements = function(UIElement, delta) {
     }
 };
 Bloq.prototype.appendUserInput = function(inputText, type, posx, posy, id) {
-    var text = this.bloqBody.foreignObject(100, 100).attr({
+    var text = this.bloqBody.foreignObject(120, 32).attr({
         id: 'fobj',
         color: '#FFCC33'
     });
-    text.appendChild('input', {
+
+    var inputObj = {
         id: id,
         value: inputText,
-        color: '#FFCC33',
-    }).move(posx, posy);
+        color: '#FFCC33'
+    };
+
+    if (type === 'number') {
+        inputObj.type = 'number';
+    } else {
+        inputObj.type = 'text';
+    }
+
+    text.appendChild('input', inputObj).move(posx, posy);
     this.UIElements.push({
         element: text,
         elementsToPush: undefined
     });
     var code;
+
     if (type === 'text') {
         code = '"' + document.getElementById(id).value + '"';
+        text.size(120, 32);
     } else {
         code = document.getElementById(id).value;
     }
@@ -813,14 +829,14 @@ Bloq.prototype.setUserInput = function(ID, text) {
     document.getElementById(this.id + '_' + ID).value = text;
 };
 Bloq.prototype.appendDropdownInput = function(dropdownText, type, posx, posy, id) {
-    var dropdown = this.bloqBody.foreignObject(100, 100).attr({
+    var dropdown = this.bloqBody.foreignObject(150, 32).attr({
         id: id,
         color: '#FFCC33'
     });
     var newList = this.populateDropDownList(dropdownText);
     this.addInput(undefined, undefined, type);
     //Append the list to dropdown foreignobject:
-    dropdown.appendChild(newList).move(posx, posy);
+    dropdown.appendChild(newList).move(posx, posy - 2);
     this.UIElements.push({
         element: dropdown,
         elementsToPush: undefined
@@ -862,7 +878,7 @@ Bloq.prototype.appendBloqInput = function(inputText, type, posx, posy, inputID) 
 };
 Bloq.prototype.createBloqUI = function() {
     var margin = 10;
-    var posx = 20 + margin;
+    var posx = margin + 10;
     var width = 0;
     var posy = margin;
     var inputID = 0;
@@ -875,22 +891,22 @@ Bloq.prototype.createBloqUI = function() {
                 if (this.bloqData.text[j][i].input === 'userInput') {
                     this.appendUserInput(this.bloqData.text[j][i].label, this.bloqData.text[j][i].type, posx, posy, this.id + '_' + inputID);
                     inputID += 1;
-                    posx += 110;
+                    posx += 125;
                 } else if (this.bloqData.text[j][i].input === 'bloqInput') {
                     this.appendBloqInput(this.bloqData.text[j][i].label, this.bloqData.text[j][i].type, posx, posy - margin, inputID);
                     inputID += 1;
-                    posx += 110;
+                    posx += 95;
                 } else if (this.bloqData.text[j][i].input === 'dropdown') {
                     this.appendDropdownInput(this.bloqData.text[j][i].data, this.bloqData.text[j][i].type, posx, posy, this.id + '_' + inputID);
                     inputID += 1;
-                    posx += 110;
+                    posx += 165;
                 }
             } else {
                 var text = this.bloqBody.text(this.bloqData.text[j][i]).font({
                     family: 'Helvetica',
                     fill: '#000',
                     size: 14
-                }).move(posx, posy);
+                }).move(posx, posy + 5);
                 posx += this.bloqData.text[j][i].length * 5 + 30;
                 this.UIElements.push({
                     element: text,
@@ -991,7 +1007,7 @@ function OutputBloq(bloqData, position, data) {
     this.bloqBody.draggable();
     //Add the connector to the bloq's UI:
     var path = 'm 36,32 c -4.418,0 -8,-2.582 -8,-7 0,-4.418 3.582,-7 8,-7 l 0,14 z';
-    this.bloqBody.connector = this.bloqBody.path(path).fill('#cccccc'); //.move(posx, posy);
+    this.bloqBody.connector = this.bloqBody.path(path).fill('#ebebeb'); //.move(posx, posy);
     this.bloqBody.connector.x(-8);
     this.bloqBody.add(this.bloqBody.connector);
 }
@@ -1036,10 +1052,10 @@ function StatementInputBloq(bloqData, position, data, draggable) {
     });
     this.relations.codeStatementChildren = {};
     //Add bloq's left and down UI parts
-    this.bloqBody.downPart = this.bloqBody.rect(this.size.width, 20).fill('#00CC00').radius(4);
-    this.bloqBody.downPart.y(80 - 20);
+    this.bloqBody.downPart = this.bloqBody.rect(this.size.width, 20).fill('#ebebeb').radius(4);
+    this.bloqBody.downPart.y(80);
     this.bloqBody.add(this.bloqBody.downPart);
-    this.bloqBody.leftPart = this.bloqBody.rect(20, 80).fill('#00CC00').radius(4);
+    this.bloqBody.leftPart = this.bloqBody.rect(20, 80).size(20, 90).fill('#ebebeb').radius(4);
     this.bloqBody.leftPart.size.height = 80;
     this.bloqBody.leftPart.size.width = 20;
     this.bloqBody.add(this.bloqBody.leftPart);
@@ -1113,7 +1129,8 @@ StatementInputBloq.prototype.addDownConnector = function(posx, posy) {
     };
     if (posx !== undefined && posy !== undefined) {
         this.connections.down[index].UI = this.canvas.group().rect(connectionThreshold, connectionThreshold * 2).attr({
-            fill: getRandomColor()
+            fill: getRandomColor(),
+            'fill-opacity': 0
         }).move(posx, posy - connectionThreshold);
     }
 };
@@ -1321,7 +1338,7 @@ var getBasicBloqs = function(variables) {
             label: 'led',
             up: true,
             down: true,
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 [{
                     input: 'dropdown',
@@ -1353,7 +1370,7 @@ var getBasicBloqs = function(variables) {
         readSensor: {
             label: 'readSensor',
             output: 'number',
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 ['Leer', {
                     input: 'dropdown',
@@ -1376,7 +1393,7 @@ var getBasicBloqs = function(variables) {
             label: 'buzzer',
             up: true,
             down: true,
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 ['Sonar el buzzer', {
                     input: 'dropdown',
@@ -1414,7 +1431,7 @@ var getBasicBloqs = function(variables) {
             up: true,
             down: true,
             statementInput: true,
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 ['Contar con', {
                     input: 'bloqInput',
@@ -1448,7 +1465,7 @@ var getBasicBloqs = function(variables) {
         number: {
             label: 'number',
             output: 'number',
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 [{
                     input: 'userInput',
@@ -1464,7 +1481,7 @@ var getBasicBloqs = function(variables) {
         text: {
             label: 'text',
             output: 'text',
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 [{
                     input: 'userInput',
@@ -1480,7 +1497,7 @@ var getBasicBloqs = function(variables) {
         getVariable: {
             label: 'getVariable',
             output: 'number',
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 ['Var', {
                     input: 'dropdown',
@@ -1498,7 +1515,7 @@ var getBasicBloqs = function(variables) {
             label: 'newGlobalVar',
             up: 'true',
             down: 'true',
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 [{
                     input: 'userInput',

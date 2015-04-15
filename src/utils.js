@@ -36,6 +36,7 @@ utils.manageConnections = function(type, bloq1Connection, bloq2Connection, bloq1
         if (utils.itsOver(bloq1Connection.connectorArea, bloq2Connection.connectorArea)) {
             if (bloq1Connection.type === bloq2Connection.type || (bloq1Connection.type === 'all' || bloq2Connection.type === 'all')) { // if the type is the same --> connect
                 console.log('CONNECT!', bloq2Connection.type, bloq1Connection.type);
+                console.log('Bloq 1 Connection: ' + bloq1Connection, 'Bloq 1 Connection: ' + bloq2Connection, 'Bloq 1: ' + bloq1, 'Bloq 2 Connection: ' + bloq2, 'InputId: ' + inputID);
                 if (type === 'inputs' || type === 'down') { // parent is bloq1
                     //move bloq
                     bloq1.updateBloqs(bloq1, bloq2, utils.oppositeConnection[type], inputID, bloq2Connection.type);
@@ -98,10 +99,10 @@ utils.bloqOnTop = function(bloq) {
 utils.getOutputBloq = function(bloq, posx, width, height) {
     var path = 'm 36,32 c -4.418,0 -8,-2.582 -8,-7 0,-4.418 3.582,-7 8,-7 l 0,14 z';
     var group = bloq.group();
-    var connector = bloq.path(path).fill('#cccccc'); //.move(posx, posy);
+    var connector = bloq.path(path).fill('#dadada'); //.move(posx, posy);
     connector.x(posx);
     group.add(connector);
-    var outputBloq = bloq.rect(width, height).fill('#cccccc').radius(4).move(posx + 8, 0);
+    var outputBloq = bloq.rect(width, height).fill('#dadada').radius(4).move(posx + 8, 0);
     group.add(outputBloq);
     return group;
 };

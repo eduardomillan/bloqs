@@ -32,7 +32,7 @@ var getBasicBloqs = function(variables) {
             label: 'led',
             up: true,
             down: true,
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 [{
                     input: 'dropdown',
@@ -64,7 +64,7 @@ var getBasicBloqs = function(variables) {
         readSensor: {
             label: 'readSensor',
             output: 'number',
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 ['Leer', {
                     input: 'dropdown',
@@ -87,7 +87,7 @@ var getBasicBloqs = function(variables) {
             label: 'buzzer',
             up: true,
             down: true,
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 ['Sonar el buzzer', {
                     input: 'dropdown',
@@ -125,7 +125,7 @@ var getBasicBloqs = function(variables) {
             up: true,
             down: true,
             statementInput: true,
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 ['Contar con', {
                     input: 'bloqInput',
@@ -159,7 +159,7 @@ var getBasicBloqs = function(variables) {
         number: {
             label: 'number',
             output: 'number',
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 [{
                     input: 'userInput',
@@ -175,7 +175,7 @@ var getBasicBloqs = function(variables) {
         text: {
             label: 'text',
             output: 'text',
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 [{
                     input: 'userInput',
@@ -191,7 +191,7 @@ var getBasicBloqs = function(variables) {
         getVariable: {
             label: 'getVariable',
             output: 'number',
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 ['Var', {
                     input: 'dropdown',
@@ -209,7 +209,7 @@ var getBasicBloqs = function(variables) {
             label: 'newGlobalVar',
             up: 'true',
             down: 'true',
-            color: '#e2e2e2',
+            color: '#ebebeb',
             text: [
                 [{
                     input: 'userInput',
