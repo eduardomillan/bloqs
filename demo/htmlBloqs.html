@@ -21,6 +21,7 @@
     .bloq {
         margin: 1px;
         display: block;
+        position: absolute;
     }
     
     .bloq1 {
@@ -32,7 +33,6 @@
     .bloq2 {
         width: 100px;
         height: 100px;
-        top: 150px;
         background-color: #000;
     }
     
@@ -78,6 +78,7 @@
         var $bloq = $('<div>', {
             class: 'bloq'
         });
+        var field = $('#field');
         $bloq.addClass(bloqClass);
 
 
@@ -87,12 +88,28 @@
 
         interact('.' + bloqClass).draggable({
             restrict: {
-                restriction: 'parent'
+                restriction: '#field'
             },
-            onmove: dragMoveListener
+            onmove: dragMoveListener,
+            onstart: function(e) {
+                console.log('dragstart');
+                if (!$(e.target.parentElement).is(field)) {
+                    console.log('mi parent no es field');
+                    var $bloq = $(e.target);
+                    var x = $bloq.parent().position().left + $bloq.position().left;
+                    var y = $bloq.parent().position().top + $bloq.position().top;
+                    field.append(e.target);
+                    $bloq.css({
+                        webkitTransform: 'translate(' + x + 'px, ' + y + 'px)',
+                        transform: 'translate(' + x + 'px, ' + y + 'px)'
+                    });
+                    $bloq.data('x', x);
+                    $bloq.data('x', y);
+                }
+            }
         });
 
-        var field = $('#field');
+
         field.append($bloq);
 
         switch (bloqClass) {
@@ -124,6 +141,8 @@
                         $(event.target).append(event.relatedTarget);
                         event.relatedTarget.style.webkitTransform =
                             event.relatedTarget.style.transform = null;
+                        event.relatedTarget.setAttribute('data-x', 0);
+                        event.relatedTarget.setAttribute('data-y', 0);
                     },
                     ondropdeactivate: function(event) {
                         // remove active dropzone feedback
