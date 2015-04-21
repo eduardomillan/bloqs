@@ -27329,5 +27329,21 @@ var bloq1 = new Bloq({
 console.log(bloq1);
 $field.append(bloq1);
 
-},{"./bloq":4,"./bloqs/setVariableBloq":5,"./bloqs/statementBloq":6,"jquery":2}]},{},[4,5,6,7])
+},{"./bloq":4,"./bloqs/setVariableBloq":5,"./bloqs/statementBloq":6,"jquery":2}],8:[function(require,module,exports){
+/*jshint bitwise: false*/
+'use strict';
+
+var generateUUID = function() {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    return uuid;
+};
+
+
+module.exports.generateUUID = generateUUID;
+},{}]},{},[4,5,6,7,8])
 ;
