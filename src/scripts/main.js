@@ -1,18 +1,17 @@
-/*global require */
 'use strict';
 
 var $ = require('jquery');
 var Bloq = require('./bloq');
 
-var setVariableBloq = require('./bloqs/setVariableBloq');
+var VariableSetDeclare = require('./bloqs/VariableSetDeclare');
 
 var $field = $('#field');
 var bloq1 = new Bloq({
-    bloqData: setVariableBloq,
+    bloqData: VariableSetDeclare,
     dragRestrict: '#field'
 });
 var bloq2 = new Bloq({
-    bloqData: setVariableBloq,
+    bloqData: VariableSetDeclare,
     dragRestrict: '#field'
 });
 
