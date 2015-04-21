@@ -81,6 +81,7 @@ var drop = function(event) {
     console.log(event);
 };
 
+
 var Bloq = function Bloq(params) {
 
     this.uuid = utils.generateUUID();
@@ -90,13 +91,21 @@ var Bloq = function Bloq(params) {
 
     //creation
 
-    this.$bloq = $('<div tabIndex="0">');
-    this.$bloq.attr('data-bloq-id', this.uuid);
-    this.$bloq.attr('draggable', true);
+    this.$bloq = $('<div>');
+    this.$bloq.attr({
+        'data-bloq-id': this.uuid,
+        draggable: true,
+        tabIndex: 0
+    });
+
+    this.$bloq.addClass('bloq bloq--' + this.bloqData.type);
+
+    //this.$bloq.width(60);
 
     console.log('params.bloqData');
     console.log(params.bloqData);
 
+    //connectors
     var $tempConnector, tempUuid;
     for (var i = 0; i < params.bloqData.connectors.length; i++) {
         tempUuid = utils.generateUUID();
@@ -119,15 +128,24 @@ var Bloq = function Bloq(params) {
         this.$bloq.append($tempConnector);
     }
 
+    //content
+    var $tempElement;
+    for (var j = 0; j < this.bloqData.content.length; j++) {
+        for (var k = 0; k < this.bloqData.content[j].length; k++) {
+            $tempElement = utils.createBloqElement(this.bloqData.content[j][k]);
+            this.$bloq.append($tempElement);
+        }
+    }
+
+    this.$bloq.children().not('.connector').first().addClass('bloq__inner--first');
+    this.$bloq.children().not('.connector').last().addClass('bloq__inner--last');
 
 
-
-    this.$bloq.addClass('bloq');
-    this.$bloq.addClass('bloq--' + this.bloqData.type);
-    this.$bloq.width(60);
+    //binds
     this.$bloq.bind('dragstart', dragstart);
     this.$bloq.bind('drag', drag);
     this.$bloq.bind('dragend', dragend);
+
 
     bloqs[this.uuid] = this;
 

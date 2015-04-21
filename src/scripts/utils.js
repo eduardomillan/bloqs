@@ -1,5 +1,9 @@
 /*jshint bitwise: false*/
+/*global require */
 'use strict';
+
+var $ = require('jquery');
+
 
 var generateUUID = function() {
     var d = new Date().getTime();
@@ -42,7 +46,41 @@ var getMousePosition = function(element) {
     };
 };
 
+var createBloqElement = function(elementSchema) {
+    var $element = null;
+    switch (elementSchema.alias) {
+        case 'dropdown':
+            //component
+            $element = $('<select>');
+            $element.attr({
+                name: '',
+            });
+            //content
+            var $tempElement = null;
+            console.log('elementSchema.value.length');
+            console.log(elementSchema.value.length);
+            for (var i = 0; i < elementSchema.value.length; i++) {
+                $tempElement = $('<option>').html(elementSchema.value[i]);
+                $element.append($tempElement);
+            }
+            break;
+        case 'text':
+            $element = $('<span>').html(elementSchema.value);
+            break;
+        case 'numberInput':
+            $element = $('<input>').attr({
+                placeholder: elementSchema.placeholder
+            }).html(elementSchema.value);
+            break;
+        default:
+            throw 'elementSchema not defined: ' + elementSchema.alias;
+    }
+
+    return $element;
+};
+
 
 module.exports.generateUUID = generateUUID;
 module.exports.getNumericStyleProperty = getNumericStyleProperty;
 module.exports.getMousePosition = getMousePosition;
+module.exports.createBloqElement = createBloqElement;

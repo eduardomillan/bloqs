@@ -21457,6 +21457,7 @@ var drop = function(event) {
     console.log(event);
 };
 
+
 var Bloq = function Bloq(params) {
 
     this.uuid = utils.generateUUID();
@@ -21466,13 +21467,21 @@ var Bloq = function Bloq(params) {
 
     //creation
 
-    this.$bloq = $('<div tabIndex="0">');
-    this.$bloq.attr('data-bloq-id', this.uuid);
-    this.$bloq.attr('draggable', true);
+    this.$bloq = $('<div>');
+    this.$bloq.attr({
+        'data-bloq-id': this.uuid,
+        draggable: true,
+        tabIndex: 0
+    });
+
+    this.$bloq.addClass('bloq bloq--' + this.bloqData.type);
+
+    //this.$bloq.width(60);
 
     console.log('params.bloqData');
     console.log(params.bloqData);
 
+    //connectors
     var $tempConnector, tempUuid;
     for (var i = 0; i < params.bloqData.connectors.length; i++) {
         tempUuid = utils.generateUUID();
@@ -21495,15 +21504,24 @@ var Bloq = function Bloq(params) {
         this.$bloq.append($tempConnector);
     }
 
+    //content
+    var $tempElement;
+    for (var j = 0; j < this.bloqData.content.length; j++) {
+        for (var k = 0; k < this.bloqData.content[j].length; k++) {
+            $tempElement = utils.createBloqElement(this.bloqData.content[j][k]);
+            this.$bloq.append($tempElement);
+        }
+    }
+
+    this.$bloq.children().not('.connector').first().addClass('bloq__inner--first');
+    this.$bloq.children().not('.connector').last().addClass('bloq__inner--last');
 
 
-
-    this.$bloq.addClass('bloq');
-    this.$bloq.addClass('bloq--' + this.bloqData.type);
-    this.$bloq.width(60);
+    //binds
     this.$bloq.bind('dragstart', dragstart);
     this.$bloq.bind('drag', drag);
     this.$bloq.bind('dragend', dragend);
+
 
     bloqs[this.uuid] = this;
 
@@ -23047,13 +23065,13 @@ var bloq = _.merge(Object.create(StatementBloq), {
             value: 'Mover mini servo de'
         }, {
             alias: 'numberInput',
-            value: 0
+            placeholder: '0'
         }, {
             alias: 'text',
             value: 'a'
         }, {
             alias: 'numberInput',
-            value: 0
+            placeholder: '0'
         }, {
             alias: 'text',
             value: 'grados'
@@ -23066,7 +23084,6 @@ var bloq = _.merge(Object.create(StatementBloq), {
 });
 
 module.exports = bloq;
-
 },{"./basic/statementBloq":8,"lodash":2}],57:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -23360,20 +23377,25 @@ module.exports = bloq;
 var $ = require('jquery');
 var Bloq = require('./bloq');
 
-var VariableSetDeclare = require('./bloqs/variableSetDeclare');
+var ledSchema = require('./bloqs/led');
+var servoSchema = require('./bloqs/servo');
+var buzzerSchema = require('./bloqs/buzzer');
 
 var $field = $('#field');
 var bloq1 = new Bloq({
-    bloqData: VariableSetDeclare,
-    dragRestrict: '#field'
+    bloqData: ledSchema
 });
 var bloq2 = new Bloq({
-    bloqData: VariableSetDeclare,
-    dragRestrict: '#field'
+    bloqData: servoSchema
+});
+
+var bloq3 = new Bloq({
+    bloqData: buzzerSchema
 });
 
 $field.append(bloq1);
 $field.append(bloq2);
+$field.append(bloq3);
 
 console.log(bloq1);
 bloq1.css({
@@ -23381,9 +23403,17 @@ bloq1.css({
     left: '200px'
 });
 
-},{"./bloq":3,"./bloqs/variableSetDeclare":64,"jquery":1}],68:[function(require,module,exports){
+bloq1.css({
+    top: '300px',
+    left: '300px'
+});
+},{"./bloq":3,"./bloqs/buzzer":15,"./bloqs/led":34,"./bloqs/servo":56,"jquery":1}],68:[function(require,module,exports){
 /*jshint bitwise: false*/
+/*global require */
 'use strict';
+
+var $ = require('jquery');
+
 
 var generateUUID = function() {
     var d = new Date().getTime();
@@ -23426,9 +23456,43 @@ var getMousePosition = function(element) {
     };
 };
 
+var createBloqElement = function(elementSchema) {
+    var $element = null;
+    switch (elementSchema.alias) {
+        case 'dropdown':
+            //component
+            $element = $('<select>');
+            $element.attr({
+                name: '',
+            });
+            //content
+            var $tempElement = null;
+            console.log('elementSchema.value.length');
+            console.log(elementSchema.value.length);
+            for (var i = 0; i < elementSchema.value.length; i++) {
+                $tempElement = $('<option>').html(elementSchema.value[i]);
+                $element.append($tempElement);
+            }
+            break;
+        case 'text':
+            $element = $('<span>').html(elementSchema.value);
+            break;
+        case 'numberInput':
+            $element = $('<input>').attr({
+                placeholder: elementSchema.placeholder
+            }).html(elementSchema.value);
+            break;
+        default:
+            throw 'elementSchema not defined: ' + elementSchema.alias;
+    }
+
+    return $element;
+};
+
 
 module.exports.generateUUID = generateUUID;
 module.exports.getNumericStyleProperty = getNumericStyleProperty;
 module.exports.getMousePosition = getMousePosition;
-},{}]},{},[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,62,61,63,64,65,66,67,68])
+module.exports.createBloqElement = createBloqElement;
+},{"jquery":1}]},{},[3,5,4,7,6,10,8,9,11,12,13,15,14,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,47,46,48,49,50,51,52,53,54,55,56,58,57,59,60,64,61,62,63,65,66,67,68])
 ;

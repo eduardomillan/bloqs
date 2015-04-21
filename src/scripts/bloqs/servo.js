@@ -13,13 +13,13 @@ var bloq = _.merge(Object.create(StatementBloq), {
             value: 'Mover mini servo de'
         }, {
             alias: 'numberInput',
-            value: 0
+            placeholder: '0'
         }, {
             alias: 'text',
             value: 'a'
         }, {
             alias: 'numberInput',
-            value: 0
+            placeholder: '0'
         }, {
             alias: 'text',
             value: 'grados'
