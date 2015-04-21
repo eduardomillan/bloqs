@@ -4,16 +4,23 @@
 var $ = require('jquery');
 var Bloq = require('./bloq');
 
-var statementBloq = require('./bloqs/statementBloq');
 var setVariableBloq = require('./bloqs/setVariableBloq');
-
-console.log('hi');
-console.log(statementBloq);
-console.log(setVariableBloq);
 
 var $field = $('#field');
 var bloq1 = new Bloq({
-    bloqType: 'statementBloq'
+    bloqData: setVariableBloq,
+    dragRestrict: '#field'
 });
-console.log(bloq1);
+var bloq2 = new Bloq({
+    bloqData: setVariableBloq,
+    dragRestrict: '#field'
+});
+
 $field.append(bloq1);
+$field.append(bloq2);
+
+console.log(bloq1);
+bloq1.css({
+    top: '200px',
+    left: '200px'
+});
