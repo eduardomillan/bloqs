@@ -13,7 +13,7 @@ var dragstart = function(event) {
     console.log('dragstart');
 
     var bloq = bloqs[$(event.currentTarget).attr('data-bloq-id')];
-
+    $(event.currentTarget).attr('tabIndex', 0);
     console.log(bloq);
 
     //transparent
@@ -72,7 +72,7 @@ var drag = function(event) {
 
 var dragend = function() {
     console.log('dragend');
-
+    $(event.currentTarget).attr('tabIndex', false);
     $('.connector').removeClass('drop-active');
 };
 
@@ -90,7 +90,7 @@ var Bloq = function Bloq(params) {
 
     //creation
 
-    this.$bloq = $('<div>');
+    this.$bloq = $('<div tabIndex="0">');
     this.$bloq.attr('data-bloq-id', this.uuid);
     this.$bloq.attr('draggable', true);
 
@@ -123,7 +123,8 @@ var Bloq = function Bloq(params) {
 
 
     this.$bloq.addClass('bloq');
-    this.$bloq.addClass(this.bloqData.type);
+    this.$bloq.addClass('bloq--' + this.bloqData.type);
+    this.$bloq.width(60);
     this.$bloq.bind('dragstart', dragstart);
     this.$bloq.bind('drag', drag);
     this.$bloq.bind('dragend', dragend);
