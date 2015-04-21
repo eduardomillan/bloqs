@@ -3,7 +3,7 @@
 var $ = require('jquery');
 var Bloq = require('./bloq');
 
-var VariableSetDeclare = require('./bloqs/VariableSetDeclare');
+var VariableSetDeclare = require('./bloqs/variableSetDeclare');
 
 var $field = $('#field');
 var bloq1 = new Bloq({
