@@ -125,6 +125,11 @@ select {
     z-index: 1;
 }
 
+#empty {
+    height: 1px;
+    width: 1px;
+}
+
 // Last element of a bloq
 .bloq__inner--last {
     margin-right: 20px;
@@ -149,6 +154,7 @@ select {
 
 // Main bloq
 .bloq {
+    min-width: 50px;
     position: absolute;
     font-family: 'PT Sans', sans-serif;
     font-weight: bold;
@@ -280,8 +286,17 @@ select {
     }
 }
 
-#empty {
-    width: 0.5px;
-    height: 0.5px;
-    background-color: #FFF;
+// Connectors 
+.connector--top {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    top: 100%;
+}
+
+.connector--bottom {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    bottom: 100%;
 }

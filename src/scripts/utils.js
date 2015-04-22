@@ -80,7 +80,12 @@ var createBloqElement = function(elementSchema) {
 };
 
 
+var itsOver = function(dragConnector, dropConnector) {
+    return dragConnector.offset().left < (dropConnector.offset().left + dropConnector.width()) && (dragConnector.offset().left + dragConnector.width()) > dropConnector.offset().left && dragConnector.offset().top < (dropConnector.offset().top + dropConnector.height()) && (dragConnector.offset().top + dragConnector.height()) > dropConnector.offset().top;
+};
+
 module.exports.generateUUID = generateUUID;
 module.exports.getNumericStyleProperty = getNumericStyleProperty;
 module.exports.getMousePosition = getMousePosition;
 module.exports.createBloqElement = createBloqElement;
+module.exports.itsOver = itsOver;

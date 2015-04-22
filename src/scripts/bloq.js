@@ -7,14 +7,15 @@ var $ = require('jquery'),
 
 var connectors = {};
 var bloqs = {};
-
+var availableConnectors = [];
+var bloq;
 
 var dragstart = function(event) {
-    console.log('dragstart');
 
-    var bloq = bloqs[$(event.currentTarget).attr('data-bloq-id')];
-    $(event.currentTarget).attr('tabIndex', 0);
-    console.log(bloq);
+    // console.log('dragstart');
+    bloq = bloqs[$(event.currentTarget).attr('data-bloq-id')];
+
+    // console.log(bloq);
 
     //transparent
     event.originalEvent.dataTransfer.setDragImage(document.getElementById('empty'), 0, 0);
@@ -43,17 +44,34 @@ var dragstart = function(event) {
                     found = true;
 
                     $('[data-connector-id="' + connectorUuid + '"]').addClass('drop-active');
+                    availableConnectors.push(connectorUuid);
                 }
                 j++;
             }
         }
     }
+};
 
+var connectBloq = function(dragConnectors) {
+    var $dragConnector,
+        $dropConnector;
 
+    // For each dragConnector
+    dragConnectors.forEach(function(dragConnector) {
+        $dragConnector = $('[data-connector-id="' + dragConnector + '"]');
+        // For each available connector
+        availableConnectors.forEach(function(dropConnector) {
+            $dropConnector = $('[data-connector-id="' + dropConnector + '"]');
+
+            if (utils.itsOver($dragConnector, $dropConnector)) {
+                console.log('its Over!');
+            }
+
+        });
+    });
 };
 
 var drag = function(event) {
-
     if (event.originalEvent.clientX && event.originalEvent.clientY) {
 
         var target = event.target,
@@ -68,12 +86,12 @@ var drag = function(event) {
         target.setAttribute('data-x', x);
         target.setAttribute('data-y', y);
     }
+    connectBloq(bloq.connectors);
 };
 
 var dragend = function() {
-    console.log('dragend');
-    $(event.currentTarget).attr('tabIndex', false);
-    $('.connector').removeClass('drop-active');
+    $('.drop-active').removeClass('drop-active');
+    availableConnectors = [];
 };
 
 var drop = function(event) {
@@ -91,19 +109,15 @@ var Bloq = function Bloq(params) {
 
     //creation
 
-    this.$bloq = $('<div>');
+    this.$bloq = $('<div tabindex="0">');
+
+    this.$bloq.addClass('bloq bloq--' + this.bloqData.type);
+
     this.$bloq.attr({
         'data-bloq-id': this.uuid,
         draggable: true,
         tabIndex: 0
     });
-
-    this.$bloq.addClass('bloq bloq--' + this.bloqData.type);
-
-    //this.$bloq.width(60);
-
-    console.log('params.bloqData');
-    console.log(params.bloqData);
 
     //connectors
     var $tempConnector, tempUuid;
@@ -116,7 +130,6 @@ var Bloq = function Bloq(params) {
         $tempConnector.attr('data-connector-id', tempUuid);
         $tempConnector.attr('data-connector-type', params.bloqData.connectors[i].type);
         $tempConnector.bind('drop', drop);
-
         connectors[tempUuid] = {
             jqueryObject: $tempConnector,
             uuid: tempUuid,
@@ -142,10 +155,11 @@ var Bloq = function Bloq(params) {
 
 
     //binds
+    this.$bloq.addClass('bloq');
+    this.$bloq.addClass('bloq--' + this.bloqData.type);
     this.$bloq.bind('dragstart', dragstart);
     this.$bloq.bind('drag', drag);
     this.$bloq.bind('dragend', dragend);
-
 
     bloqs[this.uuid] = this;
 
