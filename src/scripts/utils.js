@@ -57,10 +57,8 @@ var createBloqElement = function(elementSchema) {
             });
             //content
             var $tempElement = null;
-            console.log('elementSchema.value.length');
-            console.log(elementSchema.value.length);
-            for (var i = 0; i < elementSchema.value.length; i++) {
-                $tempElement = $('<option>').html(elementSchema.value[i]);
+            for (var i = 0; i < elementSchema.options.length; i++) {
+                $tempElement = $('<option>').html(elementSchema.options[i]);
                 $element.append($tempElement);
             }
             break;
@@ -80,8 +78,9 @@ var createBloqElement = function(elementSchema) {
 };
 
 
-var itsOver = function(dragConnector, dropConnector) {
-    return dragConnector.offset().left < (dropConnector.offset().left + dropConnector.width()) && (dragConnector.offset().left + dragConnector.width()) > dropConnector.offset().left && dragConnector.offset().top < (dropConnector.offset().top + dropConnector.height()) && (dragConnector.offset().top + dragConnector.height()) > dropConnector.offset().top;
+var itsOver = function(dragConnector, dropConnector, margin) {
+    margin = margin || 0;
+    return dragConnector.offset().left < (dropConnector.offset().left + dropConnector.width() + margin) && (dragConnector.offset().left + dragConnector.width()) > (dropConnector.offset().left - margin) && dragConnector.offset().top < (dropConnector.offset().top + dropConnector.height() + margin) && (dragConnector.offset().top + dragConnector.height()) > (dropConnector.offset().top - margin);
 };
 
 module.exports.generateUUID = generateUUID;
