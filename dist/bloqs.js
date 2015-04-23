@@ -21384,9 +21384,12 @@ var $ = require('jquery'),
     bloqs = {},
     availableConnectors = [],
     dropToCoords = null,
-    bloq;
+    bloq,
+    $targetBloq,
+    $currentBloq;
 
 var dragstart = function(evt) {
+    $currentBloq = $(evt.currentTarget);
     $(evt.currentTarget).css('transition', 'none');
     // console.log('dragstart');
     bloq = bloqs[$(evt.currentTarget).attr('data-bloq-id')];
@@ -21443,17 +21446,19 @@ var connectBloq = function(dragConnectors) {
             $dragConnector = $('[data-connector-id="' + dragConnectors[i] + '"]');
             if ((connectors[dragConnectors[i]].data.type === connectors[dropConnectorUuid].data.accept) && utils.itsOver($dragConnector, $dropConnector, 20)) {
                 found = true;
-            } else {}
+            }
             i++;
         }
         if (found) {
             dropToCoords = $dropConnector.parent().offset();
             $dropConnector.addClass('avaliable');
+            $targetBloq = $dropConnector.parent();
             if ($dropConnector.hasClass('connector--top')) {
                 dropToCoords.top -= $dropConnector.parent().height() + 2;
-            } else {
+            } else if ($dropConnector.hasClass('connector--bottom')) {
                 dropToCoords.top += $dropConnector.parent().height() + 2;
             }
+
         } else {
             noMatchCounter++;
             $dropConnector.removeClass('avaliable');
@@ -21462,6 +21467,10 @@ var connectBloq = function(dragConnectors) {
 
     if (noMatchCounter === availableConnectors.length) {
         dropToCoords = null;
+        if ($currentBloq.children().hasClass('nested--bloq')) {
+            $currentBloq.children().removeClass('nested--bloq');
+            $currentBloq.children().closest('.bloq').appendTo($currentBloq.parent());
+        }
     }
 };
 
@@ -21488,8 +21497,26 @@ var drag = function(event) {
 };
 
 var dragend = function(evt) {
+    // If trying to connect a bloq
     if (dropToCoords) {
-        $(evt.currentTarget).css('transition', 'all .1s linear');
+        $currentBloq.css('width', $currentBloq.width());
+        $targetBloq.css('width', $targetBloq.width());
+        // Set transition effect
+        // Check bloq type
+        if ($(evt.currentTarget).hasClass('bloq--statement')) {
+            $currentBloq.addClass('nested--bloq');
+            // $currentBloq.find('.connector').remove();
+
+            $targetBloq.append($currentBloq);
+        } else if ($(evt.currentTarget).hasClass('bloq--output')) {
+
+        } else
+        if ($(evt.currentTarget).hasClass('bloq--statement-input')) {
+
+        }
+
+        // Move the bloq
+        // $(evt.currentTarget).css('transition', 'all .1s linear');
         $(evt.currentTarget).offset(dropToCoords);
     }
     $('.connector.avaliable').removeClass('avaliable');
@@ -23872,7 +23899,7 @@ var Bloq = require('./bloq');
 
 var ledSchema = require('./bloqs/components/led');
 var servoSchema = require('./bloqs/components/servo');
-var buzzerSchema = require('./bloqs/components/buzzer');
+// var buzzerSchema = require('./bloqs/components/buzzer');
 
 var $field = $('#field');
 var bloq1 = new Bloq({
@@ -23882,13 +23909,13 @@ var bloq2 = new Bloq({
     bloqData: servoSchema
 });
 
-var bloq3 = new Bloq({
-    bloqData: buzzerSchema
-});
+// var bloq3 = new Bloq({
+//     bloqData: buzzerSchema
+// });
 
 $field.append(bloq1);
 $field.append(bloq2);
-$field.append(bloq3);
+// $field.append(bloq3);
 
 console.log(bloq1);
 bloq1.css({
@@ -23900,8 +23927,7 @@ bloq1.css({
     top: '300px',
     left: '300px'
 });
-
-},{"./bloq":3,"./bloqs/components/buzzer":28,"./bloqs/components/led":33,"./bloqs/components/servo":38,"jquery":1}],82:[function(require,module,exports){
+},{"./bloq":3,"./bloqs/components/led":33,"./bloqs/components/servo":38,"jquery":1}],82:[function(require,module,exports){
 /*jshint bitwise: false*/
 /*global require */
 'use strict';

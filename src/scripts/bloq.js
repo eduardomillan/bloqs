@@ -8,9 +8,12 @@ var $ = require('jquery'),
     bloqs = {},
     availableConnectors = [],
     dropToCoords = null,
-    bloq;
+    bloq,
+    $targetBloq,
+    $currentBloq;
 
 var dragstart = function(evt) {
+    $currentBloq = $(evt.currentTarget);
     $(evt.currentTarget).css('transition', 'none');
     // console.log('dragstart');
     bloq = bloqs[$(evt.currentTarget).attr('data-bloq-id')];
@@ -67,17 +70,19 @@ var connectBloq = function(dragConnectors) {
             $dragConnector = $('[data-connector-id="' + dragConnectors[i] + '"]');
             if ((connectors[dragConnectors[i]].data.type === connectors[dropConnectorUuid].data.accept) && utils.itsOver($dragConnector, $dropConnector, 20)) {
                 found = true;
-            } else {}
+            }
             i++;
         }
         if (found) {
             dropToCoords = $dropConnector.parent().offset();
             $dropConnector.addClass('avaliable');
+            $targetBloq = $dropConnector.parent();
             if ($dropConnector.hasClass('connector--top')) {
                 dropToCoords.top -= $dropConnector.parent().height() + 2;
-            } else {
+            } else if ($dropConnector.hasClass('connector--bottom')) {
                 dropToCoords.top += $dropConnector.parent().height() + 2;
             }
+
         } else {
             noMatchCounter++;
             $dropConnector.removeClass('avaliable');
@@ -86,6 +91,10 @@ var connectBloq = function(dragConnectors) {
 
     if (noMatchCounter === availableConnectors.length) {
         dropToCoords = null;
+        if ($currentBloq.children().hasClass('nested--bloq')) {
+            $currentBloq.children().removeClass('nested--bloq');
+            $currentBloq.children().closest('.bloq').appendTo($currentBloq.parent());
+        }
     }
 };
 
@@ -112,8 +121,26 @@ var drag = function(event) {
 };
 
 var dragend = function(evt) {
+    // If trying to connect a bloq
     if (dropToCoords) {
-        $(evt.currentTarget).css('transition', 'all .1s linear');
+        $currentBloq.css('width', $currentBloq.width());
+        $targetBloq.css('width', $targetBloq.width());
+        // Set transition effect
+        // Check bloq type
+        if ($(evt.currentTarget).hasClass('bloq--statement')) {
+            $currentBloq.addClass('nested--bloq');
+            // $currentBloq.find('.connector').remove();
+
+            $targetBloq.append($currentBloq);
+        } else if ($(evt.currentTarget).hasClass('bloq--output')) {
+
+        } else
+        if ($(evt.currentTarget).hasClass('bloq--statement-input')) {
+
+        }
+
+        // Move the bloq
+        // $(evt.currentTarget).css('transition', 'all .1s linear');
         $(evt.currentTarget).offset(dropToCoords);
     }
     $('.connector.avaliable').removeClass('avaliable');

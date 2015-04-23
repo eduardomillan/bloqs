@@ -121,8 +121,9 @@ select {
 }
 
 .nested--bloq {
-    position: relative!important;
+    // position: relative!important;
     z-index: 1;
+    float: left;
 }
 
 #empty {
