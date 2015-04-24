@@ -67,6 +67,7 @@ var createBloqElement = function(elementSchema) {
             break;
         case 'numberInput':
             $element = $('<input>').attr({
+                type: 'number',
                 placeholder: elementSchema.placeholder
             }).html(elementSchema.value);
             break;
