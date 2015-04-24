@@ -125,12 +125,6 @@ select {
     left: 460px;
 }
 
-.nested--bloq {
-    // position: relative!important;
-    z-index: 1;
-    float: left;
-}
-
 #empty {
     height: 1px;
     width: 1px;
@@ -206,7 +200,7 @@ select {
         background-color: #ebebeb;
         top: 12px;
     }
-    .nested--bloq {
+    .nested-bloq {
         margin: 0;
         &:before {
             border: 2px solid lightgrey;
@@ -292,12 +286,21 @@ select {
     }
 }
 
+.nested-bloq {
+    position: relative;
+    z-index: 1;
+    float: left;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+
 .dragging {
     z-index: 10;
 }
 
 // Connectors
-.connector {
+.connector--offline {
     border-radius: .4em;
     width: 100%;
     height: 20%;
@@ -306,14 +309,30 @@ select {
 
 .connector--top {
     top: 0;
-    &.avaliable {
+    &.available {
         border-top: 3px solid #f1cb33;
     }
 }
 
 .connector--bottom {
     bottom: 0;
-    &.avaliable {
+    &.available {
         border-bottom: 3px solid #f1cb33;
+    }
+}
+
+.connector--input {
+    &.available {
+        &:after {
+            content: "";
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            left: -10px;
+            background-color: yellow;
+            border-radius: 100%;
+            top: 12px;
+            border: 1px solid #yellow;
+        }
     }
 }

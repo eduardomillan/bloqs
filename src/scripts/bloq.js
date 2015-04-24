@@ -6,14 +6,20 @@ var $ = require('jquery'),
     utils = require('./utils'),
     _ = require('lodash'),
     connectors = {},
+    IOConnectors = {},
     bloqs = {},
-    availableConnectors = [];
+    availableConnectors = [],
+    availableIOConnectors = [];
 
 
 var dragstart = function(evt) {
+
+
     //$(evt.currentTarget).css('transition', 'none');
     // console.log('dragstart');
     var bloq = bloqs[$(evt.currentTarget).attr('data-bloq-id')];
+    console.log('dragstart', bloq.uuid);
+    evt.stopPropagation();
 
     // console.log(bloq);
 
@@ -25,6 +31,21 @@ var dragstart = function(evt) {
     evt.currentTarget.setAttribute('data-drag-mouseX', (evt.originalEvent.pageX - mousePosition.x));
     evt.currentTarget.setAttribute('data-drag-mouseY', (evt.originalEvent.pageY - mousePosition.y));
 
+    switch (bloq.bloqData.type) {
+        case 'statement':
+            statementDragStart(bloq);
+            break;
+        case 'output':
+            outputDragStart(bloq);
+            console.log('output bloq');
+            break;
+        default:
+            throw 'Not defined bloq dragstart!!';
+    }
+
+};
+
+var statementDragStart = function(bloq) {
     var acceptTypes = [];
 
     //first connector
@@ -41,7 +62,7 @@ var dragstart = function(evt) {
 
     //console.log('height', getTreeHeight(bloq.uuid));
 
-    //store the avaliable connectors
+    //store the available connectors
     var notAvailableConnectors = getBranchsConnectors(bloq.uuid);
     var totalConectorsUuids = _.keys(connectors);
     availableConnectors = _.difference(totalConectorsUuids, notAvailableConnectors);
@@ -54,7 +75,28 @@ var dragstart = function(evt) {
 
     //console.log(availableConnectors);
     //console.log(notAvailableConnectors);
+};
 
+var outputDragStart = function(bloq) {
+    // les desconectamos de donde este
+    var outputConnector = getOutputConnector(bloq, IOConnectors);
+    if (outputConnector.connectedTo) {
+        bloq.$bloq.removeClass('nested-bloq');
+        IOConnectors[outputConnector.connectedTo].connectedTo = null;
+        outputConnector.connectedTo = null;
+        $('#field').append(bloq.$bloq);
+    }
+
+    //store the available connectors
+    var notAvailableConnectors = getInputsConnectors(bloqs[bloq.uuid]);
+    var totalConectorsUuids = _.keys(IOConnectors);
+    availableIOConnectors = _.difference(totalConectorsUuids, notAvailableConnectors);
+
+};
+
+var getInputsConnectors = function(bloq) {
+    //TODO:buscar entre sus hijos si tiene conectadas cosicas
+    return bloq.IOConnectors;
 };
 
 var getLastBottomConnectorUuid = function(bloqUuid) {
@@ -108,13 +150,20 @@ var drag = function(evt) {
         //console.log('deltaX', deltaX, 'deltaY', deltaY);
 
         //console.log('start move conected bloqs', connectors[bloq.connectors[1]].connectedTo);
-
-        moveTreeNodes(connectors[bloq.connectors[1]].connectedTo, deltaX, deltaY);
-
-
-        handleCollisions([bloq.connectors[0], getLastBottomConnectorUuid(bloq.uuid)], evt);
+        //console.log(bloq.bloqData.type);
+        switch (bloq.bloqData.type) {
+            case 'statement':
+                moveTreeNodes(connectors[bloq.connectors[1]].connectedTo, deltaX, deltaY);
+                handleCollisions([bloq.connectors[0], getLastBottomConnectorUuid(bloq.uuid)], evt);
+                break;
+            case 'output':
+                //console.log('output bloq drag');
+                handleIOCollisions(bloq, availableIOConnectors);
+                break;
+            default:
+                throw 'Not defined bloq drag!!';
+        }
     }
-
 };
 
 var moveTreeNodes = function(connectorUuid, deltaX, deltaY, goUp) {
@@ -129,15 +178,27 @@ var moveTreeNodes = function(connectorUuid, deltaX, deltaY, goUp) {
         } else {
             moveTreeNodes(connectors[bloq.connectors[1]].connectedTo, deltaX, deltaY, goUp);
         }
-
-
     }
 };
 
-var dragend = function() {
+var dragend = function(evt) {
 
     $('.bloq').removeClass('dragging');
-    var $dropConnector = $('.connector.avaliable');
+    var bloq = bloqs[$(evt.currentTarget).attr('data-bloq-id')];
+    switch (bloq.bloqData.type) {
+        case 'statement':
+            statementDragEnd();
+            break;
+        case 'output':
+            outputDragEnd(bloq);
+            break;
+        default:
+            throw 'Not defined bloq drag!!';
+    }
+};
+
+var statementDragEnd = function() {
+    var $dropConnector = $('.connector.available');
     if ($dropConnector[0]) {
         var dropConnectorUuid = $dropConnector.attr('data-connector-id');
         var dragConnectorUuid = $('[data-connector-id="' + dropConnectorUuid + '"]').attr('data-canconnectwith');
@@ -147,10 +208,27 @@ var dragend = function() {
         placeNestedBloq(dropConnectorUuid, dragConnectorUuid);
         setConnections(dropConnectorUuid, dragConnectorUuid);
     }
-    $('.connector.avaliable').removeClass('avaliable');
+    $('.connector.available').removeClass('available');
 
     availableConnectors = [];
     drawTree(bloqs, connectors);
+};
+
+var outputDragEnd = function(bloq) {
+    var $dropConnector = $('.connector.available');
+    if ($dropConnector[0]) {
+        var dropConnectorUuid = $dropConnector.attr('data-connector-id');
+        var dragConnectorUuid = getOutputConnector(bloq, IOConnectors).uuid;
+
+        $dropConnector.append(bloq.$bloq);
+        bloq.$bloq.addClass('nested-bloq').removeAttr('style');
+
+        IOConnectors[dropConnectorUuid].connectedTo = dragConnectorUuid;
+        IOConnectors[dragConnectorUuid].connectedTo = dropConnectorUuid;
+
+    }
+
+    $dropConnector.removeClass('available');
 };
 
 var handleCollisions = function(dragConnectors) {
@@ -174,11 +252,49 @@ var handleCollisions = function(dragConnectors) {
             }
         }
         if (found) {
-            $dropConnector.addClass('avaliable');
+            $dropConnector.addClass('available');
             $dropConnector.attr('data-canconnectwith', dragConnectors[i]);
         } else {
-            $dropConnector.removeClass('avaliable');
+            $dropConnector.removeClass('available');
             $dropConnector.removeAttr('data-canconnectwith');
+        }
+    });
+};
+
+var getOutputConnector = function(bloq, IOConnectors) {
+    var i = 0,
+        outputConnector = null;
+
+    while (!outputConnector && (i < bloq.IOConnectors.length)) {
+        if (IOConnectors[bloq.IOConnectors[i]].data.type === 'connector--output') {
+            outputConnector = IOConnectors[bloq.IOConnectors[i]];
+        }
+        i++;
+    }
+
+    if (!outputConnector) {
+        throw 'outputBloq has no connector-output';
+    } else {
+        return outputConnector;
+    }
+};
+
+var handleIOCollisions = function(bloq, availableIOConnectors) {
+    var dropConnector;
+
+    var dragConnector = getOutputConnector(bloq, IOConnectors);
+
+
+    availableIOConnectors.forEach(function(dropConnectorUuid) {
+        dropConnector = IOConnectors[dropConnectorUuid];
+
+        if (dragConnector.data.type === dropConnector.data.accept && utils.itsOver(dragConnector.jqueryObject, dropConnector.jqueryObject, 20)) {
+
+            dropConnector.jqueryObject.addClass('available');
+
+        } else {
+            dropConnector.jqueryObject.removeClass('available');
+
         }
     });
 };
@@ -309,11 +425,12 @@ var drawBranch = function(bloqs, connectors, topConnectorUuid) {
 
 // Block Constructor
 var Bloq = function Bloq(params) {
-
+    console.log(params.bloqData);
     this.uuid = utils.generateUUID();
 
     this.bloqData = params.bloqData;
     this.connectors = [];
+    this.IOConnectors = [];
 
     //creation
 
@@ -326,28 +443,6 @@ var Bloq = function Bloq(params) {
     this.$bloq.addClass('bloq bloq--' + this.bloqData.type);
 
 
-    //connectors
-    var $tempConnector, tempUuid;
-    for (var i = 0; i < params.bloqData.connectors.length; i++) {
-        tempUuid = utils.generateUUID();
-
-        $tempConnector = $('<div>').attr({
-            'data-connector-id': tempUuid
-        });
-        $tempConnector.addClass('connector ' + params.bloqData.connectors[i].type);
-
-        connectors[tempUuid] = {
-            jqueryObject: $tempConnector,
-            uuid: tempUuid,
-            data: params.bloqData.connectors[i],
-            bloqUuid: this.uuid,
-            connectedTo: null
-        };
-
-        this.connectors.push(tempUuid);
-        this.$bloq.append($tempConnector);
-    }
-
     //content
     var $tempElement;
     for (var j = 0; j < this.bloqData.content.length; j++) {
@@ -357,8 +452,66 @@ var Bloq = function Bloq(params) {
         }
     }
 
-    this.$bloq.children().not('.connector').first().addClass('bloq__inner--first');
-    this.$bloq.children().not('.connector').last().addClass('bloq__inner--last');
+    //connectors
+    var $connector, tempUuid, tempConnector;
+    for (var i = 0; i < params.bloqData.connectors.length; i++) {
+
+        tempUuid = utils.generateUUID();
+
+        tempConnector = {
+            uuid: tempUuid,
+            data: params.bloqData.connectors[i],
+            bloqUuid: this.uuid,
+            connectedTo: null
+        };
+
+        switch (params.bloqData.connectors[i].type) {
+            case 'connector--top':
+            case 'connector--bottom':
+                $connector = $('<div>').attr({
+                    'data-connector-id': tempUuid
+                });
+                $connector.addClass('connector connector--offline ' + params.bloqData.connectors[i].type);
+
+                this.$bloq.append($connector);
+
+                connectors[tempUuid] = tempConnector;
+
+                this.connectors.push(tempUuid);
+                break;
+            case 'connector--input':
+                $connector = $(this.$bloq.children('.bloqinput')[this.IOConnectors.length]);
+
+                $connector.attr({
+                    'data-connector-id': tempUuid
+                }).addClass('connector ' + params.bloqData.connectors[i].type);
+
+
+                IOConnectors[tempUuid] = tempConnector;
+
+                this.IOConnectors.push(tempUuid);
+                break;
+            case 'connector--output':
+                $connector = $('<div>').attr({
+                    'data-connector-id': tempUuid
+                }).addClass('connector connector--offline ' + params.bloqData.connectors[i].type);
+
+                this.$bloq.append($connector);
+
+                IOConnectors[tempUuid] = tempConnector;
+
+                this.IOConnectors.push(tempUuid);
+                break;
+
+
+            default:
+                throw 'Connector not defined to build';
+        }
+        tempConnector.jqueryObject = $connector;
+    }
+
+    this.$bloq.children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
+    this.$bloq.children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
 
 
     //binds

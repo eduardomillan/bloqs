@@ -4,14 +4,14 @@
 var _ = require('lodash');
 var StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(Object.create(StatementBloq), {
+var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'InvokeFunction',
     content: [
         [{
             alias: 'text',
             value: 'Ejecutar'
-        },{
+        }, {
             alias: 'dropdown',
             options: ['Seleccionar']
         }]

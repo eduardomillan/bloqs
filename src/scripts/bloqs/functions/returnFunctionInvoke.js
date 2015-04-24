@@ -4,14 +4,14 @@
 var _ = require('lodash');
 var OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(Object.create(OutputBloq), {
+var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'InvokeReturnFunction',
     content: [
         [{
             alias: 'text',
             value: 'ejecutar'
-        },{
+        }, {
             alias: 'dropdown',
             options: ['Seleccionar']
         }]

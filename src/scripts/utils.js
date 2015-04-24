@@ -77,6 +77,17 @@ var createBloqElement = function(elementSchema) {
                 placeholder: elementSchema.placeholder
             }).val(elementSchema.value);
             break;
+        case 'varInput':
+            $element = $('<input>').attr({
+                type: 'text',
+                placeholder: elementSchema.placeholder
+            }).html(elementSchema.value);
+            $element.addClass('var--input');
+            break;
+        case 'bloqInput':
+            $element = $('<div>');
+            $element.addClass('bloqinput');
+            break;
         default:
             throw 'elementSchema not defined: ' + elementSchema.alias;
     }

@@ -4,7 +4,7 @@
 var _ = require('lodash');
 var StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(Object.create(StatementInputBloq), {
+var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'for',
     content: [
