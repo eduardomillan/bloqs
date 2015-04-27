@@ -108,6 +108,22 @@ var getInputsConnectors = function(bloq) {
 };
 
 /**
+ * Get the extreme of the tree, the root or the leaf
+ * @param  bloqUuid
+ * @param  connectors
+ * @param  bloqs
+ * @param  connectorPosition 0: tipical position of the top-connector, 1: bottom-connector
+ * @return
+ */
+var getTreeExtreme = function(bloqUuid, connectors, bloqs, connectorPosition) {
+    if (connectors[bloqs[bloqUuid].connectors[connectorPosition]].connectedTo) {
+        return getTreeExtreme(connectors[connectors[bloqs[bloqUuid].connectors[connectorPosition]].connectedTo].bloqUuid, connectors, bloqs, connectorPosition);
+    } else {
+        return bloqs[bloqUuid].connectors[connectorPosition];
+    }
+};
+
+/**
  * From a bloq, this function get the bottom Connector of the branch.
  * @param  {[type]} bloqUuid   [description]
  * @param  {[type]} connectors [description]
@@ -130,22 +146,6 @@ var getFirstTopConnectorUuid = function(bloqUuid, connectors, bloqs) {
 };
 
 /**
- * Get the extreme of the tree, the root or the leaf
- * @param  bloqUuid
- * @param  connectors
- * @param  bloqs
- * @param  connectorPosition 0: tipical position of the top-connector, 1: bottom-connector
- * @return
- */
-var getTreeExtreme = function(bloqUuid, connectors, bloqs, connectorPosition) {
-    if (connectors[bloqs[bloqUuid].connectors[connectorPosition]].connectedTo) {
-        return getTreeExtreme(connectors[connectors[bloqs[bloqUuid].connectors[connectorPosition]].connectedTo].bloqUuid, connectors, bloqs, connectorPosition);
-    } else {
-        return bloqs[bloqUuid].connectors[connectorPosition];
-    }
-}
-
-/**
  * Get the output connector from a output bloq
  * @param  bloq
  * @param  IOConnectors
@@ -166,6 +166,29 @@ var getOutputConnector = function(bloq, IOConnectors) {
         throw 'outputBloq has no connector-output';
     } else {
         return outputConnector;
+    }
+};
+
+/**
+ * Receive a bloq, and if is top go to the bottom connector until the end, and gice the size
+ * @param  {[type]} bloqUuid   [description]
+ * @param  {[type]} bloqIsTop  [description]
+ * @param  {[type]} bloqs      [description]
+ * @param  {[type]} connectors [description]
+ * @return {[type]}            [description]
+ */
+var getNodesHeight = function(bloqUuid, bloqIsTop, bloqs, connectors) {
+    var bloq = bloqs[bloqUuid];
+    var connectorPosition;
+    if (bloqIsTop) {
+        connectorPosition = 1;
+    } else {
+        connectorPosition = 0;
+    }
+    if (connectors[bloq.connectors[connectorPosition]].connectedTo) {
+        return bloq.$bloq.outerHeight(true) + getNodesHeight(connectors[connectors[bloq.connectors[connectorPosition]].connectedTo].bloqUuid, bloqIsTop, bloqs, connectors);
+    } else {
+        return bloq.$bloq.outerHeight(true);
     }
 };
 
@@ -194,25 +217,19 @@ var getTreeHeight = function(bloqUuid, bloqs, connectors) {
 };
 
 /**
- * Receive a bloq, and if is top go to the bottom connector until the end, and gice the size
- * @param  {[type]} bloqUuid   [description]
- * @param  {[type]} bloqIsTop  [description]
- * @param  {[type]} bloqs      [description]
- * @param  {[type]} connectors [description]
- * @return {[type]}            [description]
+ * draw in console a branch
+ * @param  {[type]} bloqs            [description]
+ * @param  {[type]} connectors       [description]
+ * @param  {[type]} topConnectorUuid [description]
+ * @return {[type]}                  [description]
  */
-var getNodesHeight = function(bloqUuid, bloqIsTop, bloqs, connectors) {
-    var bloq = bloqs[bloqUuid];
-    var connectorPosition;
-    if (bloqIsTop) {
-        connectorPosition = 1;
-    } else {
-        connectorPosition = 0;
-    }
-    if (connectors[bloq.connectors[connectorPosition]].connectedTo) {
-        return bloq.$bloq.outerHeight(true) + getNodesHeight(connectors[connectors[bloq.connectors[connectorPosition]].connectedTo].bloqUuid, bloqIsTop, bloqs, connectors);
-    } else {
-        return bloq.$bloq.outerHeight(true);
+var drawBranch = function(bloqs, connectors, topConnectorUuid) {
+    var branchUuid = connectors[topConnectorUuid].bloqUuid;
+    console.log('          ******* - branch - *********', branchUuid);
+    console.log('          connector--top:', bloqs[branchUuid].connectors[0], 'connectedTo', connectors[bloqs[branchUuid].connectors[0]].connectedTo);
+    console.log('          connector--bottom:', bloqs[branchUuid].connectors[1], 'connectedTo', connectors[bloqs[branchUuid].connectors[1]].connectedTo);
+    if (connectors[bloqs[branchUuid].connectors[1]].connectedTo) {
+        drawBranch(bloqs, connectors, connectors[bloqs[branchUuid].connectors[1]].connectedTo);
     }
 };
 
@@ -239,23 +256,6 @@ var drawTree = function(bloqs, connectors) {
             }
         }
 
-    }
-};
-
-/**
- * draw in console a branch
- * @param  {[type]} bloqs            [description]
- * @param  {[type]} connectors       [description]
- * @param  {[type]} topConnectorUuid [description]
- * @return {[type]}                  [description]
- */
-var drawBranch = function(bloqs, connectors, topConnectorUuid) {
-    var branchUuid = connectors[topConnectorUuid].bloqUuid;
-    console.log('          ******* - branch - *********', branchUuid);
-    console.log('          connector--top:', bloqs[branchUuid].connectors[0], 'connectedTo', connectors[bloqs[branchUuid].connectors[0]].connectedTo);
-    console.log('          connector--bottom:', bloqs[branchUuid].connectors[1], 'connectedTo', connectors[bloqs[branchUuid].connectors[1]].connectedTo);
-    if (connectors[bloqs[branchUuid].connectors[1]].connectedTo) {
-        drawBranch(bloqs, connectors, connectors[bloqs[branchUuid].connectors[1]].connectedTo);
     }
 };
 
