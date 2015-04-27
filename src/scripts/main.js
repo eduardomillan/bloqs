@@ -10,6 +10,8 @@ var oscillatorStartSchema = require('./bloqs/components/oscillatorStart');
 var lcdWriteSchema = require('./bloqs/components/lcdWrite');
 var declareSchema = require('./bloqs/variables/declare');
 var selectSchema = require('./bloqs/variables/select');
+var arrayVariableSchema = require('./bloqs/variables/arrayVariable');
+
 
 
 var $field = $('#field');
@@ -63,7 +65,6 @@ bloq5.css({
     left: '200px'
 });
 
-
 var bloq6 = new Bloq({
     bloqData: declareSchema
 });
@@ -80,5 +81,14 @@ var bloq7 = new Bloq({
 $field.append(bloq7);
 bloq7.css({
     top: '500px',
+    left: '200px'
+});
+
+var bloq8 = new Bloq({
+    bloqData: arrayVariableSchema
+});
+$field.append(bloq8);
+bloq8.css({
+    top: '550px',
     left: '200px'
 });
