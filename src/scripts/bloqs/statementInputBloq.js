@@ -2,16 +2,16 @@
 
 var bloq = {
 
-    type: 'statementInput',
+    type: 'statement-input',
     connectors: [{
         type: 'connector--top',
-        accept: ['connector--bottom']
+        accept: 'connector--bottom'
     }, {
         type: 'connector--bottom',
-        accept: ['connector--top']
+        accept: 'connector--top'
     }, {
-        type: 'connector--bottom',
-        accept: ['connector--top']
+        type: 'connector--root',
+        accept: 'connector--top'
     }]
 };
 

@@ -169,15 +169,6 @@ var getOutputConnector = function(bloq, IOConnectors) {
     }
 };
 
-var getInputsConnectors = function(bloq, IOConnectors) {
-    //TODO:buscar entre sus hijos si tiene conectadas cosicas
-
-    //var outputConnector = getOutputConnector(bloq, IOConnectors);
-    console.log(IOConnectors);
-
-    return bloq.IOConnectors;
-};
-
 /**
  * Receive a bloq, and if is top go to the bottom connector until the end, and gice the size
  * @param  {[type]} bloqUuid   [description]
@@ -237,6 +228,15 @@ var drawBranch = function(bloqs, connectors, topConnectorUuid) {
     console.log('          ******* - branch - *********', branchUuid);
     console.log('          connector--top:', bloqs[branchUuid].connectors[0], 'connectedTo', connectors[bloqs[branchUuid].connectors[0]].connectedTo);
     console.log('          connector--bottom:', bloqs[branchUuid].connectors[1], 'connectedTo', connectors[bloqs[branchUuid].connectors[1]].connectedTo);
+    if (bloqs[branchUuid].connectors[2]) {
+        console.log('       connector--root:', bloqs[branchUuid].connectors[2], 'connectedTo', connectors[bloqs[branchUuid].connectors[2]].connectedTo);
+        console.log('                       ******* -  content **********');
+
+        if (connectors[bloqs[branchUuid].connectors[2]].connectedTo) {
+            drawBranch(bloqs, connectors, connectors[bloqs[branchUuid].connectors[2]].connectedTo);
+        }
+        console.log('                       ******* - end content **********');
+    }
     if (connectors[bloqs[branchUuid].connectors[1]].connectedTo) {
         drawBranch(bloqs, connectors, connectors[bloqs[branchUuid].connectors[1]].connectedTo);
     }
@@ -253,11 +253,22 @@ var drawTree = function(bloqs, connectors) {
     //buscamos los tipo statement q no tienen un top conectado
     for (var uuid in bloqs) {
 
-        if (bloqs[uuid].bloqData.type === 'statement') {
+        if (bloqs[uuid].bloqData.type === 'statement' || bloqs[uuid].bloqData.type === 'statement-input') {
             if (!connectors[bloqs[uuid].connectors[0]].connectedTo) {
                 console.log('******* - tree - *********', uuid);
                 console.log('connector--top:', bloqs[uuid].connectors[0], 'connectedTo', connectors[bloqs[uuid].connectors[0]].connectedTo);
                 console.log('connector--bottom:', bloqs[uuid].connectors[1], 'connectedTo', connectors[bloqs[uuid].connectors[1]].connectedTo);
+
+                if (bloqs[uuid].connectors[2]) {
+                    console.log('connector--root:', bloqs[uuid].connectors[2], 'connectedTo', connectors[bloqs[uuid].connectors[2]].connectedTo);
+                    console.log('           ******* -  content **********');
+
+                    if (connectors[bloqs[uuid].connectors[2]].connectedTo) {
+                        drawBranch(bloqs, connectors, connectors[bloqs[uuid].connectors[2]].connectedTo);
+                    }
+                    console.log('           ******* - end content **********');
+                }
+
                 if (connectors[bloqs[uuid].connectors[1]].connectedTo) {
                     drawBranch(bloqs, connectors, connectors[bloqs[uuid].connectors[1]].connectedTo);
                 }
@@ -302,12 +313,51 @@ var getBranchsConnectors = function(bloqUuid, connectors, bloqs) {
     }
 };
 
+var getConnectorsUuidByType = function(IOConnectors, type) {
+    var result = [];
+    for (var key in IOConnectors) {
+        if (IOConnectors[key].data.type === type) {
+            result.push(IOConnectors[key].uuid);
+        }
+    }
+    return result;
+};
+
+var getNotConnected = function(IOConnectors, uuids) {
+    var result = [];
+    for (var i = 0; i < uuids.length; i++) {
+        if (!IOConnectors[uuids[i]].connectedTo) {
+            result.push(uuids[i]);
+        }
+    }
+    return result;
+};
+
+var getInputsConnectorsFromBloq = function(IOConnectors, bloqs, bloq) {
+    var result = [];
+
+    var uuid,
+        connectedOutput,
+        connectedBloq;
+    for (var i = 0; i < bloq.IOConnectors.length; i++) {
+        uuid = bloq.IOConnectors[i];
+        if (IOConnectors[uuid].data.type === 'connector--input') {
+            result.push(uuid);
+            connectedOutput = IOConnectors[uuid].connectedTo;
+            if (connectedOutput) {
+                connectedBloq = bloqs[IOConnectors[connectedOutput].bloqUuid];
+                result = _.union(result, getInputsConnectorsFromBloq(IOConnectors, bloqs, connectedBloq));
+            }
+        }
+    }
+    return result;
+};
+
 module.exports.generateUUID = generateUUID;
 module.exports.getNumericStyleProperty = getNumericStyleProperty;
 module.exports.getMousePosition = getMousePosition;
 module.exports.createBloqElement = createBloqElement;
 module.exports.itsOver = itsOver;
-module.exports.getInputsConnectors = getInputsConnectors;
 module.exports.getLastBottomConnectorUuid = getLastBottomConnectorUuid;
 module.exports.getFirstTopConnectorUuid = getFirstTopConnectorUuid;
 module.exports.getOutputConnector = getOutputConnector;
@@ -317,3 +367,6 @@ module.exports.drawTree = drawTree;
 module.exports.drawBranch = drawBranch;
 module.exports.moveTreeNodes = moveTreeNodes;
 module.exports.getBranchsConnectors = getBranchsConnectors;
+module.exports.getConnectorsUuidByType = getConnectorsUuidByType;
+module.exports.getNotConnected = getNotConnected;
+module.exports.getInputsConnectorsFromBloq = getInputsConnectorsFromBloq;

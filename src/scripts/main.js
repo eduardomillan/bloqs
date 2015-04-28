@@ -12,6 +12,7 @@ var declareSchema = require('./bloqs/variables/declare');
 var selectSchema = require('./bloqs/variables/select');
 var arrayVariableSchema = require('./bloqs/variables/arrayVariable');
 var basicOperationsSchema = require('./bloqs/mathematics/basicOperations');
+var ifSchema = require('./bloqs/control/if');
 
 
 
@@ -95,6 +96,7 @@ bloq8.css({
     left: '200px'
 });
 
+
 var bloq9 = new Bloq({
     bloqData: basicOperationsSchema
 });
@@ -102,4 +104,13 @@ $field.append(bloq9);
 bloq9.css({
     top: '600px',
     left: '200px'
+});
+
+var bloq10 = new Bloq({
+    bloqData: ifSchema
+});
+$field.append(bloq10);
+bloq10.css({
+    top: '200px',
+    left: '900px'
 });

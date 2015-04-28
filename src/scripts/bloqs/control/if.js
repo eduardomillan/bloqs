@@ -13,7 +13,8 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: 'Si'
         }, {
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'all',
+            name: 'firstParameter'
         }, {
             alias: 'text',
             value: 'ejecutar:'
@@ -23,6 +24,13 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         setup: ['{0}'],
         loop: ['{0}']
     }
+});
+
+bloq.connectors.push({
+    type: 'connector--input',
+    accept: 'connector--output',
+    name: 'firstParameter'
+
 });
 
 module.exports = bloq;
