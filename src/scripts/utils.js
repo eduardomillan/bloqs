@@ -353,6 +353,23 @@ var getInputsConnectorsFromBloq = function(IOConnectors, bloqs, bloq) {
     return result;
 };
 
+var generateBloqInputConnectors = function(bloq) {
+    var uuid;
+    for (var i = 0; i < bloq.content.length; i++) {
+        for (var j = 0; j < bloq.content[i].length; j++) {
+            if (bloq.content[i][j].alias === 'bloqInput') {
+                uuid = generateUUID();
+                bloq.content[i][j].name = uuid;
+                bloq.connectors.push({
+                    type: 'connector--input',
+                    accept: 'connector--output',
+                    name: uuid
+                });
+            }
+        }
+    }
+};
+
 module.exports.generateUUID = generateUUID;
 module.exports.getNumericStyleProperty = getNumericStyleProperty;
 module.exports.getMousePosition = getMousePosition;
@@ -370,3 +387,4 @@ module.exports.getBranchsConnectors = getBranchsConnectors;
 module.exports.getConnectorsUuidByType = getConnectorsUuidByType;
 module.exports.getNotConnected = getNotConnected;
 module.exports.getInputsConnectorsFromBloq = getInputsConnectorsFromBloq;
+module.exports.generateBloqInputConnectors = generateBloqInputConnectors;

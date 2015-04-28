@@ -201,10 +201,10 @@ var connectorRootDragEnd = function(bloq, $dropConnector) {
 
     var dropBloq = bloqs[connectors[dropConnectorUuid].bloqUuid];
     dropBloq.$bloq.find('.bloq--extension__content').append(bloq.$bloq);
-    bloq.$bloq.addClass('nested-bloq').css('style');
+    bloq.$bloq.addClass('nested-bloq');
 
 
-    bloq.$bloq.offset({
+    bloq.$bloq.css({
         top: 0,
         left: 0
     });

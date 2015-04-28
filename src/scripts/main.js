@@ -13,6 +13,7 @@ var selectSchema = require('./bloqs/variables/select');
 var arrayVariableSchema = require('./bloqs/variables/arrayVariable');
 var basicOperationsSchema = require('./bloqs/mathematics/basicOperations');
 var ifSchema = require('./bloqs/control/if');
+console.log(basicOperationsSchema);
 
 
 
