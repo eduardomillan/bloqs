@@ -6,11 +6,11 @@ var Bloq = require('./bloq');
 var ledSchema = require('./bloqs/components/led');
 var servoSchema = require('./bloqs/components/servo');
 var buzzerSchema = require('./bloqs/components/buzzer');
-var oscillatorStartSchema = require('./bloqs/components/oscillatorStart');
+/*var oscillatorStartSchema = require('./bloqs/components/oscillatorStart');
 var lcdWriteSchema = require('./bloqs/components/lcdWrite');
 var declareSchema = require('./bloqs/variables/declare');
 var selectSchema = require('./bloqs/variables/select');
-var arrayVariableSchema = require('./bloqs/variables/arrayVariable');
+var arrayVariableSchema = require('./bloqs/variables/arrayVariable');*/
 var basicOperationsSchema = require('./bloqs/mathematics/basicOperations');
 var ifSchema = require('./bloqs/control/if');
 console.log(basicOperationsSchema);
@@ -49,7 +49,7 @@ bloq3.css({
     left: '200px'
 });
 
-
+/*
 var bloq4 = new Bloq({
     bloqData: oscillatorStartSchema
 });
@@ -96,7 +96,7 @@ bloq8.css({
     top: '550px',
     left: '200px'
 });
-
+*/
 
 var bloq9 = new Bloq({
     bloqData: basicOperationsSchema

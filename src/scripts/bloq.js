@@ -47,10 +47,29 @@ var dragstart = function(evt) {
 
 var statementDragStart = function(bloq) {
 
-    if (connectors[bloq.connectors[0]].connectedTo) {
-        connectors[connectors[bloq.connectors[0]].connectedTo].connectedTo = null;
+    //miramos si estaba enganchado a un connector-root para sacarlo
+    var previousConnector = connectors[bloq.connectors[0]].connectedTo;
+    if (previousConnector) {
+        if (connectors[previousConnector].data.type === 'connector--root') {
+            var oldBloqContainer = bloqs[connectors[previousConnector].bloqUuid].$bloq.find('.bloq--extension__content');
+            setTimeout(function() {
+                console.log('append');
+                bloq.$bloq.removeClass('nested-bloq');
+                $('#field').append(bloq.$bloq);
+                oldBloqContainer.css('width', '50px');
+                //another bug on chrome, we need to remove and add again the width, to force the browser to redraw
+                setTimeout(function() {
+                    oldBloqContainer.css('width', 'auto');
+                }, 100);
+            }, 0);
+
+        }
+
+        connectors[previousConnector].connectedTo = null;
         connectors[bloq.connectors[0]].connectedTo = null;
     }
+
+
 
     //store the available connectors
     var notAvailableConnectors = utils.getBranchsConnectors(bloq.uuid, connectors, bloqs);
@@ -195,24 +214,39 @@ var statementDragEnd = function(bloq, $dropConnector) {
     }
 };
 
-var connectorRootDragEnd = function(bloq, $dropConnector) {
+var connectorRootDragEnd = function(dragBloq, $dropConnector) {
     var dropConnectorUuid = $dropConnector.attr('data-connector-id');
     var dragConnectorUuid = $('[data-connector-id="' + dropConnectorUuid + '"]').attr('data-canconnectwith');
 
     var dropBloq = bloqs[connectors[dropConnectorUuid].bloqUuid];
-    dropBloq.$bloq.find('.bloq--extension__content').append(bloq.$bloq);
-    bloq.$bloq.addClass('nested-bloq');
+    var $dropContainer = dropBloq.$bloq.find('.bloq--extension__content');
 
+    $dropContainer.append(dragBloq.$bloq);
+    dragBloq.$bloq.addClass('nested-bloq');
 
-    bloq.$bloq.css({
+    dragBloq.$bloq.css({
         top: 0,
         left: 0
     });
 
     //si tiene una rama
-    // if(connectors[bloq.connectors[1]].connectedTo){
 
-    // }
+    //metemos a todos los hijos dentro
+    var somethingConnectedInBottomUuid = connectors[dragBloq.connectors[1]].connectedTo;
+    var branchBloq,
+        top = dragBloq.$bloq.outerHeight(true);
+    while (somethingConnectedInBottomUuid) {
+        branchBloq = bloqs[connectors[somethingConnectedInBottomUuid].bloqUuid];
+        $dropContainer.append(branchBloq.$bloq);
+        branchBloq.$bloq.addClass('nested-bloq');
+        branchBloq.$bloq.css({
+            top: top,
+            left: 0
+        });
+        top += branchBloq.$bloq.outerHeight(true);
+        somethingConnectedInBottomUuid = connectors[branchBloq.connectors[1]].connectedTo;
+
+    }
 
     //utils.moveTreeNodes(connectorsStart, finalLeft - originX, finalTop - originY, goUp, connectors, bloqs);
     //posicionar al bloq
