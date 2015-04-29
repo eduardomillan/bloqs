@@ -164,12 +164,21 @@ module.exports = function(grunt) {
         // },
 
         uglify: {
-            options: {
-                banner: '/* <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n /* Version: <%= pkg.version %> */\n'
-            },
             dist: {
+                options: {
+                    banner: '/* <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n /* Version: <%= pkg.version %> */\n'
+                },
                 files: {
                     'dist/<%= pkg.name %>.min.js': ['dist/<%= pkg.name %>.js']
+                }
+            },
+            distNG: {
+                options: {
+                    banner: '/* <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n /* Version: <%= pkg.version %> */\n angular.module("ngBloqs", []).constant("bloqs", null).config(["$provide",function ($provide) {',
+                    footer: '  }]);'
+                },
+                files: {
+                    'dist/ng-<%= pkg.name %>.min.js': ['dist/<%= pkg.name %>.js']
                 }
             }
         }
