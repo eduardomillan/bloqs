@@ -115,9 +115,9 @@ var itsOver = function(dragConnector, dropConnector, margin) {
  * @param  connectorPosition 0: tipical position of the top-connector, 1: bottom-connector
  * @return
  */
-var getTreeExtreme = function(bloqUuid, connectors, bloqs, connectorPosition) {
+var getTreeExtreme = function(bloqUuid, bloqs, connectors, connectorPosition) {
     if (connectors[bloqs[bloqUuid].connectors[connectorPosition]].connectedTo) {
-        return getTreeExtreme(connectors[connectors[bloqs[bloqUuid].connectors[connectorPosition]].connectedTo].bloqUuid, connectors, bloqs, connectorPosition);
+        return getTreeExtreme(connectors[connectors[bloqs[bloqUuid].connectors[connectorPosition]].connectedTo].bloqUuid, bloqs, connectors, connectorPosition);
     } else {
         return bloqs[bloqUuid].connectors[connectorPosition];
     }
@@ -130,8 +130,8 @@ var getTreeExtreme = function(bloqUuid, connectors, bloqs, connectorPosition) {
  * @param  {[type]} bloqs      [description]
  * @return {[type]}            [description]
  */
-var getLastBottomConnectorUuid = function(bloqUuid, connectors, bloqs) {
-    return getTreeExtreme(bloqUuid, connectors, bloqs, 1);
+var getLastBottomConnectorUuid = function(bloqUuid, bloqs, connectors) {
+    return getTreeExtreme(bloqUuid, bloqs, connectors, 1);
 };
 
 /**
@@ -141,8 +141,8 @@ var getLastBottomConnectorUuid = function(bloqUuid, connectors, bloqs) {
  * @param  {[type]} bloqs      [description]
  * @return {[type]}            [description]
  */
-var getFirstTopConnectorUuid = function(bloqUuid, connectors, bloqs) {
-    return getTreeExtreme(bloqUuid, connectors, bloqs, 0);
+var getFirstTopConnectorUuid = function(bloqUuid, bloqs, connectors) {
+    return getTreeExtreme(bloqUuid, bloqs, connectors, 0);
 };
 
 /**
@@ -261,12 +261,12 @@ var drawTree = function(bloqs, connectors) {
 
                 if (bloqs[uuid].connectors[2]) {
                     console.log('connector--root:', bloqs[uuid].connectors[2], 'connectedTo', connectors[bloqs[uuid].connectors[2]].connectedTo);
-                    console.log('           ******* -  content **********');
+                    console.log('           ccccccc -  content ccccccc');
 
                     if (connectors[bloqs[uuid].connectors[2]].connectedTo) {
                         drawBranch(bloqs, connectors, connectors[bloqs[uuid].connectors[2]].connectedTo);
                     }
-                    console.log('           ******* - end content **********');
+                    console.log('           ccccccc - end content ccccccc');
                 }
 
                 if (connectors[bloqs[uuid].connectors[1]].connectedTo) {
@@ -370,6 +370,31 @@ var generateBloqInputConnectors = function(bloq) {
     }
 };
 
+var getBloqByConnectorUuid = function(connectorUuid, bloqs, connectors) {
+    return bloqs[connectors[connectorUuid].bloqUuid];
+};
+
+var redrawTree = function(bloq, bloqs, connectors) {
+    var rootBloq = getBloqByConnectorUuid(getFirstTopConnectorUuid(bloq.uuid, bloqs, connectors), bloqs, connectors);
+    console.log('rootBloq', rootBloq.uuid);
+
+    var somethingConnectedInBottomUuid = connectors[rootBloq.connectors[1]].connectedTo;
+    var branchBloq,
+        top = rootBloq.$bloq.position().top + rootBloq.$bloq.outerHeight(true),
+        left = rootBloq.$bloq.position().left;
+    while (somethingConnectedInBottomUuid) {
+        branchBloq = bloqs[connectors[somethingConnectedInBottomUuid].bloqUuid];
+        branchBloq.$bloq.css({
+            top: top,
+            left: left
+        });
+        top += branchBloq.$bloq.outerHeight(true);
+        somethingConnectedInBottomUuid = connectors[branchBloq.connectors[1]].connectedTo;
+    }
+
+};
+
+
 module.exports.generateUUID = generateUUID;
 module.exports.getNumericStyleProperty = getNumericStyleProperty;
 module.exports.getMousePosition = getMousePosition;
@@ -388,3 +413,4 @@ module.exports.getConnectorsUuidByType = getConnectorsUuidByType;
 module.exports.getNotConnected = getNotConnected;
 module.exports.getInputsConnectorsFromBloq = getInputsConnectorsFromBloq;
 module.exports.generateBloqInputConnectors = generateBloqInputConnectors;
+module.exports.redrawTree = redrawTree;
