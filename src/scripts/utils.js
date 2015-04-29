@@ -280,13 +280,19 @@ var moveTreeNodes = function(connectorUuid, deltaX, deltaY, goUp, connectors, bl
  */
 var getBranchsConnectors = function(bloqUuid, connectors, bloqs) {
     var bloq = bloqs[bloqUuid];
+    var result = [];
+    result = result.concat(bloq.connectors);
     //console.log('tiene un hijo', connectors[bloq.connectors[1]].connectedTo);
-    if (!connectors[bloq.connectors[1]].connectedTo) {
-        return bloq.connectors;
-    } else {
+    if (connectors[bloq.connectors[1]].connectedTo) {
         var bloqBranchUuid = connectors[connectors[bloq.connectors[1]].connectedTo].bloqUuid;
-        return _.uniq(bloq.connectors.concat(getBranchsConnectors(bloqBranchUuid, connectors, bloqs)));
+        result = result.concat(getBranchsConnectors(bloqBranchUuid, connectors, bloqs));
     }
+    //si tiene hijos
+    if (bloq.connectors[2] && connectors[bloq.connectors[2]].connectedTo) {
+        var bloqChildUuid = connectors[connectors[bloq.connectors[2]].connectedTo].bloqUuid;
+        result = result.concat(getBranchsConnectors(bloqChildUuid, connectors, bloqs));
+    }
+    return result;
 };
 var getConnectorsUuidByType = function(IOConnectors, type) {
     var result = [];
@@ -364,6 +370,37 @@ var redrawTree = function(bloq, bloqs, connectors) {
 
 };
 
+var itsARootConnector = function(connector) {
+    return connector.data.type === 'connector--root';
+};
+
+var itsInsideAConnectorRoot = function(bloq, bloqs, connectors) {
+
+    var topConnector = connectors[bloq.connectors[0]];
+    if (connectors[topConnector.connectedTo]) {
+        var connectedWithTopConnector = connectors[topConnector.connectedTo];
+        return itsARootConnector(connectedWithTopConnector) || itsInsideAConnectorRoot(getBloqByConnectorUuid(connectedWithTopConnector.uuid, bloqs, connectors), bloqs, connectors);
+
+    } else {
+        return false;
+    }
+};
+
+var jqueryObjectsArrayToHtmlToInsert = function(arrayToTransform) {
+    var rawArray = $.map(
+        arrayToTransform,
+        function(value) {
+
+            // Return the unwrapped version. This will return
+            // the underlying DOM nodes contained within each
+            // jQuery value.
+            return (value.get());
+
+        }
+    );
+    return rawArray;
+};
+
 module.exports.generateUUID = generateUUID;
 module.exports.getNumericStyleProperty = getNumericStyleProperty;
 module.exports.getMousePosition = getMousePosition;
@@ -384,3 +421,6 @@ module.exports.getInputsConnectorsFromBloq = getInputsConnectorsFromBloq;
 module.exports.generateBloqInputConnectors = generateBloqInputConnectors;
 module.exports.getBloqByConnectorUuid = getBloqByConnectorUuid;
 module.exports.redrawTree = redrawTree;
+module.exports.itsARootConnector = itsARootConnector;
+module.exports.itsInsideAConnectorRoot = itsInsideAConnectorRoot;
+module.exports.jqueryObjectsArrayToHtmlToInsert = jqueryObjectsArrayToHtmlToInsert;
