@@ -9,14 +9,12 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     name: 'number',
     content: [
         [{
+            id:'VALUE',
             alias: 'numberInput',
             value: 0
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: '{VALUE}'
 });
 
 module.exports = bloq;
