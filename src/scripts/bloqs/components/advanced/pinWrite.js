@@ -1,8 +1,9 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var StatementBloq = require('./../../statementBloq');
+var _ = require('lodash'),
+    utils = require('./../../../utils'),
+    StatementBloq = require('./../../statementBloq');
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
@@ -12,20 +13,23 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'Escribir en el pin'
         }, {
+            bloqInputId: 'PIN',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: 'el dato'
         }, {
+            bloqInputId: 'DATA',
             alias: 'bloqInput',
             acceptType: 'all'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code:'\'{PIN}\'.indexOf(\'A\') === 0 ? \'analogWrite({PIN},{DATA});\' : \'digitalWrite({PIN},{DATA});\''
+
 });
+
+utils.generateBloqInputConnectors(bloq);
+
 
 module.exports = bloq;

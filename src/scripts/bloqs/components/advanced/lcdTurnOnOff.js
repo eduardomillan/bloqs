@@ -1,28 +1,30 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var StatementBloq = require('./../../statementBloq');
+var _ = require('lodash'),
+    utils = require('./../../../utils'),
+    StatementBloq = require('./../../statementBloq');
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'lcdTurnOnOffAdvanced',
     content: [
         [{
+            bloqInputId:'STATE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'Encender la luz del LCD'
+            value: 'la luz del LCD'
         }, {
+            bloqInputId:'LCD',
             alias: 'bloqInput',
             acceptType: 'all'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: '{LCD}.setBacklight({STATE});'
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;

@@ -6,12 +6,15 @@ var OutputBloq = require('./../../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'turnOnOffAdvanced',
+    name: 'variablesComponents',
     content: [
         [{
+            alias: 'text',
+            value: 'Variable (software)'
+        }, {
             id: 'VALUE',
             alias: 'dropdown',
-            options: [{label:'Encender',value:'HIGH'}, {label:'Apagar', value: 'LOW'}]
+            options: 'varSoftware'
         }]
     ],
     code: '{VALUE}'
