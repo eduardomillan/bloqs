@@ -1,8 +1,9 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var OutputBloq = require('./../outputBloq');
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    OutputBloq = require('./../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
@@ -12,14 +13,15 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'text',
             value: 'longitud'
         }, {
+            bloqInputId:'TEXT',
             alias: 'bloqInput',
             acceptType: 'all'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: '{TEXT}.length()',
+    returnType: 'float'
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;

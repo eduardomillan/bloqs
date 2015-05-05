@@ -6,20 +6,18 @@ var OutputBloq = require('./../../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'SwVariableAdvanced',
+    name: 'variablesComponents',
     content: [
         [{
             alias: 'text',
             value: 'Variable (software)'
         }, {
+            id: 'VALUE',
             alias: 'dropdown',
-            options: ['Seleccionar']
+            options: 'varSoftware'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: '{VALUE}'
 });
 
 module.exports = bloq;

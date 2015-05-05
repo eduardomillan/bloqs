@@ -10,22 +10,21 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     name: 'basicOperations',
     content: [
         [{
+            bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            name: 'firstParameter',
             acceptType: 'all'
         }, {
+            id: 'OPERATOR',
             alias: 'dropdown',
-            options: ['+', '-', '×', '÷', '^']
+            options: [{label:'+',value:'+'},{label:'-',value:'-'},{label:'x',value:'*'},{label:'/',value:'/'},{label:'^',value:'^'}]//'+', '-', '×', '÷', '^']
         }, {
+            bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            name: 'secondParameter',
             acceptType: 'all'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: '{ARG1} {OPERATOR} {ARG2}',
+    returnType : 'float'
 });
 
 utils.generateBloqInputConnectors(bloq);

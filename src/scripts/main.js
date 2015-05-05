@@ -34,7 +34,7 @@ var createBloq = function(bloqType, posX, posY){
 createBloq(require('./bloqs/mathematics/number'), '100px','1000px');
 createBloq(require('./bloqs/mathematics/number'), '100px','1000px');
 createBloq(require('./bloqs/components/led'), '200px','900px');
-var bloq=createBloq(require('./bloqs/logic/not'), '300px','200px');
+var bloq=createBloq(require('./bloqs/variables/select'), '300px','200px');
 
 $field.on('dragend', function() {
 	console.log('bloq', bloq.getCode());

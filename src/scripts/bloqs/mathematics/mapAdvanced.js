@@ -1,41 +1,47 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var OutputBloq = require('./../outputBloq');
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    OutputBloq = require('./../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'mapArray',
+    name: 'mapAdvanced',
     content: [
         [{
             alias: 'text',
             value: 'Mapear'
         }, {
+            bloqInputId:'VAR',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: 'de ['
         }, {
+            bloqInputId:'INITMIN',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: '-'
         }, {
+            bloqInputId:'INITMAX',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: '] a ['
         }, {
+            bloqInputId:'FINMIN',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: '-'
         }, {
+            bloqInputId:'FINMAX',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
@@ -43,10 +49,9 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             value: ']'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: 'map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX});'
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;

@@ -1,8 +1,9 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var OutputBloq = require('./../outputBloq');
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    OutputBloq = require('./../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
@@ -12,19 +13,25 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'text',
             value: 'Variable'
         }, {
+            id: 'VAR',
             alias: 'dropdown',
-            options: ['Seleccionar']
+            options: 'variables'
         }, {
             alias: 'text',
             value: '['
         }, {
+            id: 'POSITION',
             alias: 'numberInput',
             value: 0
         }, {
             alias: 'text',
             value: ']'
         }]
-    ]
+    ],
+    code: '{VAR}[{POSITION}]',
+    returnType: '{VAR.connectionType}'
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;

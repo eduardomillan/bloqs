@@ -6,20 +6,18 @@ var OutputBloq = require('./../../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'HwVariableAdvanced',
+    name: 'variablesComponents',
     content: [
         [{
             alias: 'text',
             value: 'Variable (componentes)'
         }, {
+            id: 'VALUE',
             alias: 'dropdown',
-            options: ['Seleccionar']
+            options: 'varComponents'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: '{VALUE}'
 });
 
 module.exports = bloq;

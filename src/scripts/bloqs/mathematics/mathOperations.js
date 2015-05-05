@@ -1,25 +1,29 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var OutputBloq = require('./../outputBloq');
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    OutputBloq = require('./../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'mathOperations',
     content: [
         [{
+            id: 'OPERATOR',
             alias: 'dropdown',
-            options: ['Raíz cuadrada', 'Valor absoluto', '-', 'ln', 'log10', 'e^', '10^']
+            //'Raíz cuadrada', 'Valor absoluto', '-', 'ln', 'log10', 'e^', '10^']
+            options: [{label:'Raíz cuadrada',value:'sqrt'},{label:'Valor absoluto',value:'abs'},{label:'ln',value:'log'},{label:'log10',value:'log10'},{label:'e^',value:'exp'}]
         }, {
+            bloqInputId: 'ARG',
             alias: 'bloqInput',
             acceptType: 'all'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: '{OPERATOR}({ARG})',
+    returnType: 'float'
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
