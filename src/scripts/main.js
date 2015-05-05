@@ -32,11 +32,9 @@ var createBloq = function(bloqType, posX, posY){
 };
 //Irene's trials with getCode()
 createBloq(require('./bloqs/mathematics/number'), '100px','1000px');
+createBloq(require('./bloqs/mathematics/number'), '100px','1000px');
 createBloq(require('./bloqs/components/led'), '200px','900px');
-// createBloq(require('./bloqs/components/led'), '300px','900px');
-// createBloq(require('./bloqs/components/led'), '400px','900px');
-// createBloq(numberSchema, '200px','1000px');
-var bloq=createBloq(require('./bloqs/control/while'), '300px','200px');
+var bloq=createBloq(require('./bloqs/logic/not'), '300px','200px');
 
 $field.on('dragend', function() {
 	console.log('bloq', bloq.getCode());

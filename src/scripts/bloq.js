@@ -534,7 +534,7 @@ var Bloq = function Bloq(params) {
         var elementTags = _.without(_.pluck(this.bloqData.content[0], 'id'), undefined);
         var childrenTags = _.without(_.pluck(this.bloqData.content[0], 'bloqInputId'), undefined);
         // console.log('bloq:', this.$bloq[0], 'TAGS:', elementTags);
-        var value = '';
+        var value = '', type='';
         for (i in elementTags){
             value = this.$bloq.find('[data-content-id="'+elementTags[i]+'"]').val() ||'';
             code = code.replace(new RegExp('{'+elementTags[i]+'}', 'g'), value);
@@ -556,7 +556,9 @@ var Bloq = function Bloq(params) {
                 if (childConnectorId !== null) {
                     childBloq = utils.getBloqByConnectorUuid(childConnectorId, bloqs, IOConnectors);
                     value = childBloq.getCode();
+                    type =  childBloq.bloqData.returnType;
                 }
+                code = code.replace(new RegExp('{' + childrenTags[j] + '.connectionType}', 'g'), type);
                 code = code.replace(new RegExp('{' + childrenTags[j] + '}', 'g'), value);
             }
         }
@@ -576,7 +578,6 @@ var Bloq = function Bloq(params) {
                     }
                 }
             }
-            console.log('children', children);
             for (i in children){
                 value += bloqs[children[i]].getCode();
             }

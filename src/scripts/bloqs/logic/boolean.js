@@ -1,22 +1,25 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var OutputBloq = require('./../outputBloq');
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    OutputBloq = require('./../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'boolean',
     content: [
         [{
+            id: 'STATE',
             alias: 'dropdown',
-            options: ['verdadero', 'falso']
+            options: [{label:'verdadero',value:'true'} , {label:'falso', value:'false'}]
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: '{STATE}',
+    returnType : 'bool'
+
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;

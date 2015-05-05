@@ -1,8 +1,9 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var OutputBloq = require('./../outputBloq');
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    OutputBloq = require('./../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
@@ -12,14 +13,15 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'text',
             value: 'ejecutar'
         }, {
+            id: 'FUNCTION',
             alias: 'dropdown',
-            options: ['Seleccionar']
+            options: 'ReturnFunctions'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: '{FUNCTION}({FUNCTION.args});',
+    returnType: '{FUNCTION.connectionType}'
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
