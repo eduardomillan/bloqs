@@ -1,8 +1,9 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var StatementInputBloq = require('./../statementInputBloq');
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    StatementInputBloq = require('./../statementInputBloq');
 
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
@@ -12,6 +13,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             alias: 'text',
             value: 'en cambio, si'
         }, {
+            bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
@@ -19,10 +21,9 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: 'ejecutar:'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: 'else if ({VAR}){{STATEMENTS}}'
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;

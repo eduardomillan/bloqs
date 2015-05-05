@@ -227,6 +227,7 @@ var drawBranch = function(bloqs, connectors, topConnectorUuid) {
         drawBranch(bloqs, connectors, connectors[bloqs[branchUuid].connectors[1]].connectedTo);
     }
 };
+
 /**
  * Draw in console the tree
  * @param  {[type]} bloqs      [description]
@@ -257,6 +258,7 @@ var drawTree = function(bloqs, connectors) {
         }
     }
 };
+
 var moveTreeNodes = function(connectorUuid, deltaX, deltaY, goUp, connectors, bloqs) {
     if (connectorUuid) {
         var bloq = bloqs[connectors[connectorUuid].bloqUuid];
@@ -294,6 +296,19 @@ var getBranchsConnectors = function(bloqUuid, connectors, bloqs) {
     }
     return result;
 };
+
+var getBranchsConnectorsNoChildren = function(bloqUuid, connectors, bloqs) {
+    var bloq = bloqs[bloqUuid];
+    var result = [];
+    result = result.concat(bloq.connectors);
+    //console.log('tiene un hijo', connectors[bloq.connectors[1]].connectedTo);
+    if (connectors[bloq.connectors[1]].connectedTo) {
+        var bloqBranchUuid = connectors[connectors[bloq.connectors[1]].connectedTo].bloqUuid;
+        result = result.concat(getBranchsConnectorsNoChildren(bloqBranchUuid, connectors, bloqs));
+    }
+    return result;
+};
+
 var getConnectorsUuidByType = function(IOConnectors, type) {
     var result = [];
     for (var key in IOConnectors) {
@@ -424,3 +439,6 @@ module.exports.redrawTree = redrawTree;
 module.exports.itsARootConnector = itsARootConnector;
 module.exports.itsInsideAConnectorRoot = itsInsideAConnectorRoot;
 module.exports.jqueryObjectsArrayToHtmlToInsert = jqueryObjectsArrayToHtmlToInsert;
+module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
+
+

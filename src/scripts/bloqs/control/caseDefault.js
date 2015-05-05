@@ -1,22 +1,23 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var StatementInputBloq = require('./../statementInputBloq');
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    StatementInputBloq = require('./../statementInputBloq');
 
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'caseDefault',
     content: [
-        [{
-            alias: 'text',
-            value: 'en otro caso, ejecutar:'
-        }]
+    [{
+        alias: 'text',
+        value: 'en otro caso, ejecutar:'
+    }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: 'default:{{STATEMENTS}break;}'
+
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;

@@ -13,6 +13,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             alias: 'text',
             value: 'Si'
         }, {
+            bloqInputId: 'CONDITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
@@ -20,10 +21,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: 'ejecutar:'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: 'if({CONDITION}){{STATEMENTS}}'
 });
 
 utils.generateBloqInputConnectors(bloq);

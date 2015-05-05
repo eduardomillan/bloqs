@@ -1,17 +1,19 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var StatementInputBloq = require('./../statementInputBloq');
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    StatementInputBloq = require('./../statementInputBloq');
 
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'while',
     content: [
         [{
-            alias: 'dropdown',
-            options: ['mientras', 'hasta']
+            alias: 'text',
+            value: 'Mientras'
         }, {
+            bloqInputId:'CONDITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
@@ -19,10 +21,9 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: 'ejecutar:'
         }]
     ],
-    code: {
-        setup: ['{0}'],
-        loop: ['{0}']
-    }
+    code: 'while ({CONDITION}){{STATEMENTS}}'
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
