@@ -103,7 +103,7 @@ module.exports = function(grunt) {
         watchify: {
             compile: {
                 src: './src/scripts/**/*.js',
-                dest: 'dist/<%= pkg.name %>.js'
+                dest: '.tmp/<%= pkg.name %>.js'
             }
 
         },
@@ -116,52 +116,12 @@ module.exports = function(grunt) {
             }
         },
 
-        // Reads HTML for usemin blocks to enable smart builds that automatically
-        // concat, minify and revision files. Creates configurations in memory so
-        // additional tasks can operate on them
-        // useminPrepare: {
-        //     html: '<%= yeoman.app %>/index.html',
-        //     options: {
-        //         dest: '<%= yeoman.dist %>',
-        //         flow: {
-        //             html: {
-        //                 steps: {
-        //                     js: ['concat', 'uglify'],
-        //                     css: ['cssmin']
-        //                 },
-        //                 post: {}
-        //             }
-        //         }
-        //     }
-        // },
-
-        // // Performs rewrites based on filerev and the useminPrepare configuration
-        // usemin: {
-        //     html: ['<%= yeoman.dist %>/{,*/}*.html'],
-        //     css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-        //     options: {
-        //         assetsDirs: [
-        //             '<%= yeoman.dist %>',
-        //             '<%= yeoman.dist %>/images/{,**}',
-        //             '<%= yeoman.dist %>/styles'
-        //         ]
-        //     }
-        // },
-
-
-        // The following *-min tasks will produce minified files in the dist folder
-        // By default, your `index.html`'s <!-- Usemin block --> will take care of
-        // minification. These next options are pre-configured if you do not wish
-        // to use the Usemin blocks.
-        // cssmin: {
-        //   dist: {
-        //     files: {
-        //       '<%= yeoman.dist %>/styles/main.css': [
-        //         '.tmp/styles/{,*/}*.css'
-        //       ]
-        //     }
-        //   }
-        // },
+        copy: {
+            dist: {
+                src: '.tmp/<%= pkg.name %>.js', // Actual pattern(s) to match.
+                dest: 'dist/<%= pkg.name %>.js' // Destination path prefix.
+            }
+        },
 
         uglify: {
             dist: {
@@ -169,7 +129,7 @@ module.exports = function(grunt) {
                     banner: '/* <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n /* Version: <%= pkg.version %> */\n'
                 },
                 files: {
-                    'dist/<%= pkg.name %>.min.js': ['dist/<%= pkg.name %>.js']
+                    'dist/<%= pkg.name %>.min.js': ['.tmp/<%= pkg.name %>.js']
                 }
             },
             distNG: {
@@ -181,20 +141,73 @@ module.exports = function(grunt) {
                     'dist/ng-<%= pkg.name %>.min.js': ['dist/<%= pkg.name %>.js']
                 }
             }
+        },
+
+        release: {
+            /* For more options: https://github.com/geddski/grunt-release#options */
+            options: {
+                additionalFiles: ['bower.json'],
+                indentation: '\t', //default: '  ' (two spaces)
+                commitMessage: 'Release v<%= version %>', //default: 'release <%= version %>'
+                tagMessage: 'v<%= version %>', //default: 'Version <%= version %>',
+                tagName: 'v<%= version %>'
+            }
+        },
+        jsonGenerator: {
+            all: {
+                options: {
+                    cwd: 'src/scripts/bloqs/', // Src matches are relative to this path.
+                    src: '{,*/}*.js', // Actual pattern(s) to match.
+                    dest: 'dist/json/', // Destination path prefix.
+                    ext: '.json',
+                    filter: 'isFile'
+                }
+            }
         }
 
     });
 
-    grunt.registerTask('compile', ['jshint:all', 'watchify']);
-    grunt.registerTask('server', ['clean', 'compile', 'sass:dev', 'connect:livereload', 'watch']);
+    grunt.registerMultiTask('jsonGenerator', 'Generate bloqs code into JSON format', function() {
 
-    grunt.registerTask('dist', ['clean', 'compile', 'uglify', 'sass:dist']);
+        var opts = this.options();
 
-    grunt.registerTask('test', [
-        'clean',
-        'compile',
-        'karma'
-    ]);
+        if (!this.files.length && ('cwd' in opts) && ('src' in opts) && ('dest' in opts)) {
+            this.files = grunt.file.expandMapping(opts.src, opts.dest, opts);
+        }
+
+        var generate = function(source, destination) {
+            var tmpObj = require('./' + source),
+                obj = {};
+            try {
+                obj = JSON.parse(JSON.stringify(tmpObj));
+            } catch (e) {
+                grunt.log.error(e);
+                grunt.fail.warn('Error parsing json the data.', 3);
+            }
+            // Write joined contents to destination filepath.
+            grunt.file.write(destination, JSON.stringify(obj, null, 2));
+            grunt.log.writeln('File "' + destination + '" created.');
+        };
+
+        this.files.forEach(function(file) {
+            if (typeof(file.src) !== 'string') {
+                file.src.forEach(function(source) {
+                    generate(source, file.dest);
+                });
+            } else {
+                generate(file.src, file.dest);
+            }
+        });
+
+    });
+
+    grunt.registerTask('bloqDist', ['jsonGenerator']);
+
+    grunt.registerTask('server', ['clean', 'jshint:all', 'watchify', 'sass:dev', 'connect:livereload', 'watch']);
+
+    grunt.registerTask('dist', ['clean', 'jshint:all', 'jsonGenerator', 'watchify', 'copy:dist', 'uglify', 'sass:dist']);
+
+    grunt.registerTask('test', ['clean', 'jshint:all', 'watchify', 'karma']);
 
     grunt.registerTask('default', ['dist']);
 
