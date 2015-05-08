@@ -184,25 +184,32 @@ module.exports = function(grunt) {
                 grunt.log.error(e);
                 grunt.fail.warn('Error parsing json the data.', 3);
             }
+            var content = JSON.stringify(obj, null, 2);
             // Write joined contents to destination filepath.
-            grunt.file.write(destination, JSON.stringify(obj, null, 2));
+            grunt.file.write(destination, content);
             grunt.log.writeln('File "' + destination + '" created.');
+            return content;
         };
 
         var resume = [];
+        var script = '';
+        var content = null;
         this.files.forEach(function(file) {
             if (typeof(file.src) !== 'string') {
                 file.src.forEach(function(source) {
-                    generate(source, file.dest);
+                    content = generate(source, file.dest);
+                    script += 'db.bitbloq_Bloqs.insert(' + content + ');\n';
                 });
             } else {
-                generate(file.src, file.dest);
+                content = generate(file.src, file.dest);
+                script += 'db.bitbloq_Bloqs.insert(' + content + ');\n';
             }
             resume.push(file.dest);
         });
         grunt.file.write('dist/resume.json', JSON.stringify(resume));
         grunt.log.writeln('Bloqs Resume Write in ' + 'dist/resume.json').ok();
-
+        grunt.file.write('dist/script.json', script);
+        grunt.log.writeln('Bloqs script Write in ' + 'dist/script.json').ok();
 
     });
 
