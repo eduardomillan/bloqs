@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "oscillator",
+  "name": "advancedOscillator",
   "connectors": [
     {
       "type": "connector--top",
@@ -13,17 +13,22 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "ee3a7865-e335-4a62-a845-a4aa29cf590a"
+      "name": "67978b04-741f-4d14-a35a-5115110ac499"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "dea98995-6ff3-4800-9e04-f0a22e017b60"
+      "name": "27f09024-5bab-4461-857f-d60f7a2c6886"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "f3008087-c548-4cc6-a74e-99ac3424091e"
+      "name": "ff489e8d-d695-46a1-805f-c0c195f42b19"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "464e49c9-c29f-4a7a-8876-73011a95d602"
     }
   ],
   "content": [
@@ -33,9 +38,10 @@
         "value": "Oscilar servo"
       },
       {
-        "id": "OSCILLATOR",
-        "alias": "dynamicDropdown",
-        "options": "oscillators"
+        "bloqInputId": "OSCILLATOR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "67978b04-741f-4d14-a35a-5115110ac499"
       },
       {
         "alias": "text",
@@ -45,7 +51,7 @@
         "bloqInputId": "PHASE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "ee3a7865-e335-4a62-a845-a4aa29cf590a"
+        "name": "27f09024-5bab-4461-857f-d60f7a2c6886"
       },
       {
         "alias": "text",
@@ -55,7 +61,7 @@
         "bloqInputId": "AMPLITUDE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "dea98995-6ff3-4800-9e04-f0a22e017b60"
+        "name": "ff489e8d-d695-46a1-805f-c0c195f42b19"
       },
       {
         "alias": "text",
@@ -65,7 +71,7 @@
         "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "f3008087-c548-4cc6-a74e-99ac3424091e"
+        "name": "464e49c9-c29f-4a7a-8876-73011a95d602"
       }
     ]
   ],

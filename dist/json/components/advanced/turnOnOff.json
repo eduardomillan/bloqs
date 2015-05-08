@@ -1,0 +1,29 @@
+{
+  "type": "output",
+  "name": "advancedturnOnOff",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "content": [
+    [
+      {
+        "id": "VALUE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Encender",
+            "value": "HIGH"
+          },
+          {
+            "label": "Apagar",
+            "value": "LOW"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "{VALUE}"
+}

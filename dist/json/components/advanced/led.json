@@ -1,0 +1,45 @@
+{
+  "type": "statement",
+  "name": "advancedLed",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "3b0ce4fa-3f6c-447b-a150-51fb9a86a8c8"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "70cdf834-5f14-466a-9a1b-8e60d30d94fd"
+    }
+  ],
+  "content": [
+    [
+      {
+        "bloqInputId": "STATE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "3b0ce4fa-3f6c-447b-a150-51fb9a86a8c8"
+      },
+      {
+        "alias": "text",
+        "value": "el LED"
+      },
+      {
+        "bloqInputId": "LED",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "70cdf834-5f14-466a-9a1b-8e60d30d94fd"
+      }
+    ]
+  ],
+  "code": "digitalWrite({LED},{STATE});"
+}

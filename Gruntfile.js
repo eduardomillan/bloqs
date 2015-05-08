@@ -157,7 +157,7 @@ module.exports = function(grunt) {
             all: {
                 options: {
                     cwd: 'src/scripts/bloqs/', // Src matches are relative to this path.
-                    src: '{,*/}*.js', // Actual pattern(s) to match.
+                    src: '**/*.js', // Actual pattern(s) to match.
                     dest: 'dist/json/', // Destination path prefix.
                     ext: '.json',
                     filter: 'isFile'

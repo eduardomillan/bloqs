@@ -1,0 +1,24 @@
+{
+  "type": "output",
+  "name": "swVariable",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Variable (software)"
+      },
+      {
+        "id": "VALUE",
+        "alias": "dynamicDropdown",
+        "options": "varSoftware"
+      }
+    ]
+  ],
+  "code": "{VALUE}"
+}

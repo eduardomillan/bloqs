@@ -1,6 +1,6 @@
 {
-  "type": "statement-input",
-  "name": "case",
+  "type": "statement",
+  "name": "advancedContinuousServoStop",
   "connectors": [
     {
       "type": "connector--top",
@@ -11,32 +11,24 @@
       "accept": "connector--top"
     },
     {
-      "type": "connector--root",
-      "accept": "connector--top"
-    },
-    {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "a3269408-72fe-4457-86d4-2bff0f666dc6"
+      "name": "8808a851-5f25-45d1-86b3-ece8da55b98e"
     }
   ],
   "content": [
     [
       {
         "alias": "text",
-        "value": "si es igual a"
+        "value": "Parar servo"
       },
       {
-        "bloqInputId": "VAR",
+        "bloqInputId": "SERVO",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "a3269408-72fe-4457-86d4-2bff0f666dc6"
-      },
-      {
-        "alias": "text",
-        "value": "ejecutar:"
+        "name": "8808a851-5f25-45d1-86b3-ece8da55b98e"
       }
     ]
   ],
-  "code": "case {VAR}:{{STATEMENTS}break;}"
+  "code": "{SERVO}.write(90);"
 }

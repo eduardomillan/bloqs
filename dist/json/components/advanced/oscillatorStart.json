@@ -1,6 +1,6 @@
 {
-  "type": "statement-input",
-  "name": "case",
+  "type": "statement",
+  "name": "advancedOscillatorStart",
   "connectors": [
     {
       "type": "connector--top",
@@ -11,32 +11,24 @@
       "accept": "connector--top"
     },
     {
-      "type": "connector--root",
-      "accept": "connector--top"
-    },
-    {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "a3269408-72fe-4457-86d4-2bff0f666dc6"
+      "name": "cfbc77f4-1551-451e-ba64-4678a82cddaf"
     }
   ],
   "content": [
     [
       {
         "alias": "text",
-        "value": "si es igual a"
+        "value": "Reproducir oscilador"
       },
       {
-        "bloqInputId": "VAR",
+        "bloqInputId": "OSCILLATOR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "a3269408-72fe-4457-86d4-2bff0f666dc6"
-      },
-      {
-        "alias": "text",
-        "value": "ejecutar:"
+        "name": "cfbc77f4-1551-451e-ba64-4678a82cddaf"
       }
     ]
   ],
-  "code": "case {VAR}:{{STATEMENTS}break;}"
+  "code": "{OSCILLATOR}.start()"
 }

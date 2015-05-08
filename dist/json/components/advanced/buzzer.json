@@ -1,0 +1,68 @@
+{
+  "type": "statement",
+  "name": "advancedBuzzer",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "6c8e8880-b9a3-412c-b8c8-3a3a1fb2a11b"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "79dc154c-33c3-4776-aab8-619371468075"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "7b1e12a9-96f0-473f-bf06-740abaee266d"
+    }
+  ],
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Sonar el buzzer"
+      },
+      {
+        "bloqInputId": "BUZZER",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "6c8e8880-b9a3-412c-b8c8-3a3a1fb2a11b"
+      },
+      {
+        "alias": "text",
+        "value": "con la nota"
+      },
+      {
+        "bloqInputId": "NOTE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "79dc154c-33c3-4776-aab8-619371468075"
+      },
+      {
+        "alias": "text",
+        "value": "durante"
+      },
+      {
+        "bloqInputId": "SECONDS",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "7b1e12a9-96f0-473f-bf06-740abaee266d"
+      },
+      {
+        "alias": "text",
+        "value": "ms"
+      }
+    ]
+  ],
+  "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+}

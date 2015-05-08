@@ -1,6 +1,6 @@
 {
   "type": "output",
-  "name": "not",
+  "name": "advancedRead",
   "connectors": [
     {
       "type": "connector--output",
@@ -9,22 +9,22 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "8519edfe-30e5-4475-9835-81572d50d189"
+      "name": "56f131b2-f313-44f2-b4f4-478f5221d0ed"
     }
   ],
   "content": [
     [
       {
         "alias": "text",
-        "value": "no"
+        "value": "Leer"
       },
       {
-        "bloqInputId": "CONDITION",
+        "bloqInputId": "PIN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "8519edfe-30e5-4475-9835-81572d50d189"
+        "name": "56f131b2-f313-44f2-b4f4-478f5221d0ed"
       }
     ]
   ],
-  "code": "!{CONDITION}"
+  "code": "'{PIN}'.indexOf('A') === 0 ? 'analogRead({PIN})' : 'digitalRead({PIN})'"
 }

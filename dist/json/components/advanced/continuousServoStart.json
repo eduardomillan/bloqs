@@ -1,0 +1,49 @@
+{
+  "type": "statement",
+  "name": "advancedContinuousServoStart",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "8d4072e2-f5c5-4c62-a7f3-ed60b33a8362"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "a6f667d8-e81c-480d-af42-204b300641b0"
+    }
+  ],
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Girar servo"
+      },
+      {
+        "bloqInputId": "SERVO",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "8d4072e2-f5c5-4c62-a7f3-ed60b33a8362"
+      },
+      {
+        "alias": "text",
+        "value": "en sentido"
+      },
+      {
+        "bloqInputId": "DIRECTION",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "a6f667d8-e81c-480d-af42-204b300641b0"
+      }
+    ]
+  ],
+  "code": "{SERVO}.write({DIRECTION});"
+}
