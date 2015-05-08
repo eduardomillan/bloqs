@@ -1,0 +1,86 @@
+{
+  "type": "statement-input",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "e2ada380-116a-4e04-9b43-5761a020043f"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "d7e7ebc6-76ac-411f-8898-a8524a2af33c"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "344ee5d0-224a-405d-ad85-2044de7c4046"
+    }
+  ],
+  "name": "for",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Contar con"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "e2ada380-116a-4e04-9b43-5761a020043f"
+      },
+      {
+        "alias": "text",
+        "value": "desde"
+      },
+      {
+        "bloqInputId": "INIT",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "d7e7ebc6-76ac-411f-8898-a8524a2af33c"
+      },
+      {
+        "alias": "text",
+        "value": "hasta"
+      },
+      {
+        "bloqInputId": "FINAL",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "344ee5d0-224a-405d-ad85-2044de7c4046"
+      },
+      {
+        "id": "MODE",
+        "alias": "dropdown",
+        "options": [
+          {
+            "label": "sumando",
+            "value": "++"
+          },
+          {
+            "label": "restando",
+            "value": "--"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "ejecutar:"
+      }
+    ]
+  ],
+  "code": "for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}"
+}

@@ -1,0 +1,62 @@
+{
+  "type": "statement-input",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "37454612-a2b2-4be8-ab2c-16a905ffceba"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "c14068db-b64c-4c7e-9259-bd2b3f9f6666"
+    }
+  ],
+  "name": "ReturnFunctionWithArguments",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Declarar función"
+      },
+      {
+        "id": "FUNCNAME",
+        "alias": "stringInput",
+        "value": "nombreFuncion"
+      },
+      {
+        "alias": "text",
+        "value": "contando con"
+      },
+      {
+        "bloqInputId": "ARGS",
+        "alias": "bloqInput",
+        "acceptType": "var",
+        "name": "37454612-a2b2-4be8-ab2c-16a905ffceba"
+      },
+      {
+        "alias": "text",
+        "value": "devuelve"
+      },
+      {
+        "bloqInputId": "RETURN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c14068db-b64c-4c7e-9259-bd2b3f9f6666"
+      }
+    ]
+  ],
+  "code": "{RETURN.connectionType} function {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
+}

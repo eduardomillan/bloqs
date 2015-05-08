@@ -1,0 +1,53 @@
+{
+  "type": "output",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "087e35c2-44b3-438f-bba6-8e7f5cb37e9b"
+    }
+  ],
+  "name": "mathOperations",
+  "content": [
+    [
+      {
+        "id": "OPERATOR",
+        "alias": "dropdown",
+        "options": [
+          {
+            "label": "Raíz cuadrada",
+            "value": "sqrt"
+          },
+          {
+            "label": "Valor absoluto",
+            "value": "abs"
+          },
+          {
+            "label": "ln",
+            "value": "log"
+          },
+          {
+            "label": "log10",
+            "value": "log10"
+          },
+          {
+            "label": "e^",
+            "value": "exp"
+          }
+        ]
+      },
+      {
+        "bloqInputId": "ARG",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "087e35c2-44b3-438f-bba6-8e7f5cb37e9b"
+      }
+    ]
+  ],
+  "code": "{OPERATOR}({ARG})",
+  "returnType": "float"
+}

@@ -1,0 +1,94 @@
+{
+  "type": "output",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "c56b1038-18c1-4db0-93af-c10f53bdddd7"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "872f545b-4165-44de-9c32-040523621584"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "4d5b775c-1e94-46c5-ab6f-c6dfcf988a7c"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "4fbe99bb-592a-4cc1-8b28-0b62da2d6934"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "fb933c3f-7f4b-466e-bd94-8cfed8dffa03"
+    }
+  ],
+  "name": "mapAdvanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Mapear"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c56b1038-18c1-4db0-93af-c10f53bdddd7"
+      },
+      {
+        "alias": "text",
+        "value": "de ["
+      },
+      {
+        "bloqInputId": "INITMIN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "872f545b-4165-44de-9c32-040523621584"
+      },
+      {
+        "alias": "text",
+        "value": "-"
+      },
+      {
+        "bloqInputId": "INITMAX",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "4d5b775c-1e94-46c5-ab6f-c6dfcf988a7c"
+      },
+      {
+        "alias": "text",
+        "value": "] a ["
+      },
+      {
+        "bloqInputId": "FINMIN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "4fbe99bb-592a-4cc1-8b28-0b62da2d6934"
+      },
+      {
+        "alias": "text",
+        "value": "-"
+      },
+      {
+        "bloqInputId": "FINMAX",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "fb933c3f-7f4b-466e-bd94-8cfed8dffa03"
+      },
+      {
+        "alias": "text",
+        "value": "]"
+      }
+    ]
+  ],
+  "code": "map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX});"
+}

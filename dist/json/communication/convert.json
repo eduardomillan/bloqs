@@ -1,0 +1,56 @@
+{
+  "type": "output",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "a50b9d8c-ba28-4c21-84b4-519ddc41bbfc"
+    }
+  ],
+  "name": "convert",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Convertir"
+      },
+      {
+        "bloqInputId": "NUMBER",
+        "alias": "bloqInput",
+        "acceptType": "number",
+        "name": "a50b9d8c-ba28-4c21-84b4-519ddc41bbfc"
+      },
+      {
+        "alias": "text",
+        "value": "a"
+      },
+      {
+        "id": "TYPE",
+        "alias": "dropdown",
+        "options": [
+          {
+            "label": "Decimal",
+            "value": "DEC"
+          },
+          {
+            "label": "Hexadecimal",
+            "value": "HEX"
+          },
+          {
+            "label": "Octal",
+            "value": "OCT"
+          },
+          {
+            "label": "Binario",
+            "value": "BIN"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "({NUMBER},{TYPE});"
+}

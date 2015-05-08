@@ -1,0 +1,52 @@
+{
+  "type": "output",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "1b6a6a20-3518-4e28-8ac4-c88c937eade4"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "b3cbd321-88d9-4a63-8f9d-8845cf22b058"
+    }
+  ],
+  "name": "logicOperations",
+  "content": [
+    [
+      {
+        "bloqInputId": "ARG1",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "1b6a6a20-3518-4e28-8ac4-c88c937eade4"
+      },
+      {
+        "id": "OPERATOR",
+        "alias": "dropdown",
+        "options": [
+          {
+            "label": "y",
+            "value": "&&"
+          },
+          {
+            "label": "o",
+            "value": "||"
+          }
+        ]
+      },
+      {
+        "bloqInputId": "ARG2",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "b3cbd321-88d9-4a63-8f9d-8845cf22b058"
+      }
+    ]
+  ],
+  "code": "{ARG1} {OPERATOR} {ARG2}",
+  "returnType": "bool"
+}

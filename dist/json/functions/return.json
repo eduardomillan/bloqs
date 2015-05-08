@@ -1,0 +1,30 @@
+{
+  "type": "output",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "1dc6d129-65e6-4e33-9b98-236d19d73b0c"
+    }
+  ],
+  "name": "Return",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "devuelve"
+      },
+      {
+        "bloqInputId": "RETURN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "1dc6d129-65e6-4e33-9b98-236d19d73b0c"
+      }
+    ]
+  ],
+  "code": "return {RETURN};"
+}

@@ -1,0 +1,43 @@
+{
+  "type": "statement",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "1e09ca62-7618-4995-97e2-1ee4745762ed"
+    }
+  ],
+  "name": "DeclareVariable",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Declarar variable"
+      },
+      {
+        "id": "NAME",
+        "alias": "varInput",
+        "value": "Nombre"
+      },
+      {
+        "alias": "text",
+        "value": "="
+      },
+      {
+        "bloqInputId": "VALUE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "1e09ca62-7618-4995-97e2-1ee4745762ed"
+      }
+    ]
+  ],
+  "code": "{VALUE.connectionType} {NAME} = {VALUE};"
+}

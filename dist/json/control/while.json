@@ -1,0 +1,42 @@
+{
+  "type": "statement-input",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "474c9dad-bda2-41cb-bfc5-3e9b84b4a7a1"
+    }
+  ],
+  "name": "while",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Mientras"
+      },
+      {
+        "bloqInputId": "CONDITION",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "474c9dad-bda2-41cb-bfc5-3e9b84b4a7a1"
+      },
+      {
+        "alias": "text",
+        "value": "ejecutar:"
+      }
+    ]
+  ],
+  "code": "while ({CONDITION}){{STATEMENTS}}"
+}

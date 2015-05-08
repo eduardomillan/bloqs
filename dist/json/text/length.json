@@ -1,0 +1,31 @@
+{
+  "type": "output",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "name": "96147a5a-3eb7-4a96-9ab8-a89d3cea76e9"
+    }
+  ],
+  "name": "length",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "longitud"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "96147a5a-3eb7-4a96-9ab8-a89d3cea76e9"
+      }
+    ]
+  ],
+  "code": "{TEXT}.length()",
+  "returnType": "float"
+}
