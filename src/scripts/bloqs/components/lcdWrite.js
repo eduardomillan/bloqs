@@ -20,9 +20,9 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'en el LCD'
         }, {
-            id:'LCD',
-            alias: 'dropdown',
-            options: 'LCDs'
+            id: 'LCD',
+            alias: 'dynamicDropdown',
+            options: 'lcds'
         }]
     ],
     code: '{LCD}.write("{TEXT}");'

@@ -11,12 +11,18 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             id: 'STATE',
-            alias: 'dropdown',
-            options: [{label:'verdadero',value:'true'} , {label:'falso', value:'false'}]
+            alias: 'staticDropdown',
+            options: [{
+                label: 'verdadero',
+                value: 'true'
+            }, {
+                label: 'falso',
+                value: 'false'
+            }]
         }]
     ],
     code: '{STATE}',
-    returnType : 'bool'
+    returnType: 'bool'
 
 });
 

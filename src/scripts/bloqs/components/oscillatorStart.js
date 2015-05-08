@@ -13,9 +13,9 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'Reproducir oscilador'
         }, {
-            id:'OSCILLATOR',
-            alias: 'dropdown',
-            options: 'Oscillator'
+            id: 'OSCILLATOR',
+            alias: 'dynamicDropdown',
+            options: 'oscillator'
         }]
     ],
     code: '{OSCILLATOR}.start()'

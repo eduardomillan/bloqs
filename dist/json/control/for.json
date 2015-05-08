@@ -16,17 +16,17 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "e2ada380-116a-4e04-9b43-5761a020043f"
+      "name": "9063d5ee-b87a-467c-8477-4aeb53772971"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "d7e7ebc6-76ac-411f-8898-a8524a2af33c"
+      "name": "b4942f7f-d9b1-402e-a159-24c199b5de96"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "344ee5d0-224a-405d-ad85-2044de7c4046"
+      "name": "425d8905-915a-4617-8d4a-9801e79fd0f7"
     }
   ],
   "name": "for",
@@ -40,7 +40,7 @@
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e2ada380-116a-4e04-9b43-5761a020043f"
+        "name": "9063d5ee-b87a-467c-8477-4aeb53772971"
       },
       {
         "alias": "text",
@@ -50,7 +50,7 @@
         "bloqInputId": "INIT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "d7e7ebc6-76ac-411f-8898-a8524a2af33c"
+        "name": "b4942f7f-d9b1-402e-a159-24c199b5de96"
       },
       {
         "alias": "text",
@@ -60,11 +60,11 @@
         "bloqInputId": "FINAL",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "344ee5d0-224a-405d-ad85-2044de7c4046"
+        "name": "425d8905-915a-4617-8d4a-9801e79fd0f7"
       },
       {
         "id": "MODE",
-        "alias": "dropdown",
+        "alias": "staticDropdown",
         "options": [
           {
             "label": "sumando",

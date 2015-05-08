@@ -10,16 +10,22 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     name: 'lcdTurnOnOff',
     content: [
         [{
-            id:'STATE',
-            alias: 'dropdown',
-            options: [{label:'Encender', value: 'HIGH'}, {label:'Apagar', value:'LOW'}]
+            id: 'STATE',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'Encender',
+                value: 'HIGH'
+            }, {
+                label: 'Apagar',
+                value: 'LOW'
+            }]
         }, {
             alias: 'text',
             value: 'Encender la luz del LCD'
         }, {
-            id:'LCD',
-            alias: 'dropdown',
-            options: 'LCDs'
+            id: 'LCD',
+            alias: 'dynamicDropdown',
+            options: 'lcds'
         }]
     ],
     code: '{LCD}.setBacklight({STATE});'

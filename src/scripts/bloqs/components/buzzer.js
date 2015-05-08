@@ -14,14 +14,14 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'Sonar el buzzer'
         }, {
             id: 'BUZZER',
-            alias: 'dropdown',
+            alias: 'dynamicDropdown',
             options: 'buzzers'
         }, {
             alias: 'text',
             value: 'con la nota'
         }, {
             id: 'NOTE',
-            alias: 'dropdown',
+            alias: 'staticDropdown',
             options: [{label:'Do',value:'261'}, {label:'Re',value:'293'}, {label:'Mi',value:'329'}, {label:'Fa',value:'349'}, {label:'Sol',value:'392'}, {label:'La',value:'440'}, {label:'Si',value:'494'}]
         }, {
             alias: 'text',

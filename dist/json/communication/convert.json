@@ -8,7 +8,7 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "a50b9d8c-ba28-4c21-84b4-519ddc41bbfc"
+      "name": "1e7f3baa-5c86-4db6-9083-bcbc75154ae3"
     }
   ],
   "name": "convert",
@@ -22,7 +22,7 @@
         "bloqInputId": "NUMBER",
         "alias": "bloqInput",
         "acceptType": "number",
-        "name": "a50b9d8c-ba28-4c21-84b4-519ddc41bbfc"
+        "name": "1e7f3baa-5c86-4db6-9083-bcbc75154ae3"
       },
       {
         "alias": "text",
@@ -30,7 +30,7 @@
       },
       {
         "id": "TYPE",
-        "alias": "dropdown",
+        "alias": "staticDropdown",
         "options": [
           {
             "label": "Decimal",

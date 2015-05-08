@@ -14,13 +14,13 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'Mover'
         }, {
             id: 'SERVO',
-            alias: 'dropdown',
-            options: 'Servos'
+            alias: 'dynamicDropdown',
+            options: 'servos'
         }, {
             alias: 'text',
             value: 'a'
         }, {
-            id:'POSITION',
+            id: 'POSITION',
             alias: 'numberInput',
             value: 0
         }, {

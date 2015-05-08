@@ -14,15 +14,24 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             value: 'variable'
         }, {
             id: 'TYPE',
-            alias: 'dropdown',
-            options: [{label:'float',value:'float'},{label:'String',value:'String'},{label:'bool',value:'bool'}]
+            alias: 'staticDropdown',
+            options: [{
+                label: 'float',
+                value: 'float'
+            }, {
+                label: 'String',
+                value: 'String'
+            }, {
+                label: 'bool',
+                value: 'bool'
+            }]
         }, {
-            id:'VARNAME',
+            id: 'VARNAME',
             alias: 'varInput',
             value: 'x'
         }]
     ],
-    code:'{TYPE} {VARNAME}'
+    code: '{TYPE} {VARNAME}'
 });
 
 utils.generateBloqInputConnectors(bloq);

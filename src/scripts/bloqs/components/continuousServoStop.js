@@ -14,7 +14,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'Parar servo'
         }, {
             id: 'SERVO',
-            alias: 'dropdown',
+            alias: 'dynamicDropdown',
             options: 'contServos'
         }]
     ],

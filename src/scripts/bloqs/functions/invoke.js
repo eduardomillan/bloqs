@@ -14,8 +14,8 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'Ejecutar'
         }, {
             id: 'FUNCTION',
-            alias: 'dropdown',
-            options: 'VoidFunctions'
+            alias: 'dynamicDropdown',
+            options: 'voidFunctions'
         }]
     ],
     code: '{FUNCTION}({FUNCTION.args});'

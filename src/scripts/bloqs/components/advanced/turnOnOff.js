@@ -10,8 +10,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             id: 'VALUE',
-            alias: 'dropdown',
-            options: [{label:'Encender',value:'HIGH'}, {label:'Apagar', value: 'LOW'}]
+            alias: 'staticDropdown',
+            options: [{
+                label: 'Encender',
+                value: 'HIGH'
+            }, {
+                label: 'Apagar',
+                value: 'LOW'
+            }]
         }]
     ],
     code: '{VALUE}'

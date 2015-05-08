@@ -32,8 +32,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             acceptType: 'all'
         }, {
             id: 'MODE',
-            alias: 'dropdown',
-            options: [{label:'sumando', value:'++'}, {label:'restando', value:'--'}]
+            alias: 'staticDropdown',
+            options: [{
+                label: 'sumando',
+                value: '++'
+            }, {
+                label: 'restando',
+                value: '--'
+            }]
         }, {
             alias: 'text',
             value: 'ejecutar:'

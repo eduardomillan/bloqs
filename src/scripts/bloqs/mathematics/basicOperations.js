@@ -15,8 +15,23 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'all'
         }, {
             id: 'OPERATOR',
-            alias: 'dropdown',
-            options: [{label:'+',value:'+'},{label:'-',value:'-'},{label:'x',value:'*'},{label:'/',value:'/'},{label:'^',value:'^'}]//'+', '-', '×', '÷', '^']
+            alias: 'staticDropdown',
+            options: [{
+                    label: '+',
+                    value: '+'
+                }, {
+                    label: '-',
+                    value: '-'
+                }, {
+                    label: 'x',
+                    value: '*'
+                }, {
+                    label: '/',
+                    value: '/'
+                }, {
+                    label: '^',
+                    value: '^'
+                }] //'+', '-', '×', '÷', '^']
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
@@ -24,7 +39,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{ARG1} {OPERATOR} {ARG2}',
-    returnType : 'float'
+    returnType: 'float'
 });
 
 utils.generateBloqInputConnectors(bloq);

@@ -12,7 +12,7 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "815ad5bb-9c69-485e-8630-2017f84e4357"
+      "name": "d8d180a9-f389-4f54-9647-638f1a46d6c1"
     }
   ],
   "name": "serialSend",
@@ -20,7 +20,7 @@
     [
       {
         "id": "SERIAL",
-        "alias": "dropdown",
+        "alias": "dynamicDropdown",
         "options": "serialElements"
       },
       {
@@ -31,11 +31,11 @@
         "bloqInputId": "DATA",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "815ad5bb-9c69-485e-8630-2017f84e4357"
+        "name": "d8d180a9-f389-4f54-9647-638f1a46d6c1"
       },
       {
         "id": "FUNCTION",
-        "alias": "dropdown",
+        "alias": "staticDropdown",
         "options": [
           {
             "label": "sin salto de línea",

@@ -11,9 +11,24 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             id: 'OPERATOR',
-            alias: 'dropdown',
+            alias: 'staticDropdown',
             //'Raíz cuadrada', 'Valor absoluto', '-', 'ln', 'log10', 'e^', '10^']
-            options: [{label:'Raíz cuadrada',value:'sqrt'},{label:'Valor absoluto',value:'abs'},{label:'ln',value:'log'},{label:'log10',value:'log10'},{label:'e^',value:'exp'}]
+            options: [{
+                label: 'Raíz cuadrada',
+                value: 'sqrt'
+            }, {
+                label: 'Valor absoluto',
+                value: 'abs'
+            }, {
+                label: 'ln',
+                value: 'log'
+            }, {
+                label: 'log10',
+                value: 'log10'
+            }, {
+                label: 'e^',
+                value: 'exp'
+            }]
         }, {
             bloqInputId: 'ARG',
             alias: 'bloqInput',

@@ -14,14 +14,14 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'Girar servo'
         }, {
             id: 'SERVO',
-            alias: 'dropdown',
+            alias: 'dynamicDropdown',
             options: 'contServos'
         }, {
             alias: 'text',
             value: 'en sentido'
         }, {
             id: 'DIRECTION',
-            alias: 'dropdown',
+            alias: 'staticDropdown',
             options: [{label : 'horario', value :'0'}, {label :'antihorario', value : '180'}]
         }]
     ],

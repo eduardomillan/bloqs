@@ -10,8 +10,8 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     name: 'serialSend',
     content: [
         [{
-            id:'SERIAL',
-            alias: 'dropdown',
+            id: 'SERIAL',
+            alias: 'dynamicDropdown',
             options: 'serialElements'
         }, {
             alias: 'text',
@@ -21,9 +21,15 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
-            id:'FUNCTION',
-            alias: 'dropdown',
-            options: [{label: 'sin salto de línea', value: 'print'},{label: 'con salto de línea', value: 'println'}]
+            id: 'FUNCTION',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'sin salto de línea',
+                value: 'print'
+            }, {
+                label: 'con salto de línea',
+                value: 'println'
+            }]
         }]
     ],
     code: '{SERIAL}.{FUNCTION}({DATA});'

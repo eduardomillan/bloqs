@@ -10,8 +10,8 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     name: 'serialReceive',
     content: [
         [{
-            id:'SERIAL',
-            alias: 'dropdown',
+            id: 'SERIAL',
+            alias: 'dynamicDropdown',
             options: 'serialElements'
         }, {
             alias: 'text',

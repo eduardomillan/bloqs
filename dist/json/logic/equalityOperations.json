@@ -8,12 +8,12 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "c2d4d2c4-21f4-4bd6-b4b8-7dff35c8cb7f"
+      "name": "da9ed240-0265-42da-a2e1-84d37e8a9e2a"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "8f0a97e6-5209-44f3-901b-254a4b407bc4"
+      "name": "be6ae425-c8d1-40ee-9afd-d64a9eeb01af"
     }
   ],
   "name": "equalityOperations",
@@ -23,11 +23,11 @@
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "c2d4d2c4-21f4-4bd6-b4b8-7dff35c8cb7f"
+        "name": "da9ed240-0265-42da-a2e1-84d37e8a9e2a"
       },
       {
         "id": "OPERATOR",
-        "alias": "dropdown",
+        "alias": "staticDropdown",
         "options": [
           {
             "label": "=",
@@ -59,7 +59,7 @@
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "8f0a97e6-5209-44f3-901b-254a4b407bc4"
+        "name": "be6ae425-c8d1-40ee-9afd-d64a9eeb01af"
       }
     ]
   ],

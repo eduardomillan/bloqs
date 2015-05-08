@@ -11,15 +11,21 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             id: 'STATE',
-            alias: 'dropdown',
-            options: [{label:'Encender', value:'HIGH'}, {label:'Apagar', value:'LOW'}]
+            alias: 'staticDropdown',
+            options: [{
+                label: 'Encender',
+                value: 'HIGH'
+            }, {
+                label: 'Apagar',
+                value: 'LOW'
+            }]
         }, {
             alias: 'text',
             value: 'el LED'
         }, {
             id: 'LED',
-            alias: 'dropdown',
-            options: 'LEDs'
+            alias: 'dynamicDropdown',
+            options: 'leds'
         }]
     ],
     code: 'digitalWrite({LED},{STATE});'

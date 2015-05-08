@@ -14,9 +14,27 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
-            id:'OPERATOR',
-            alias: 'dropdown',
-            options: [{label:'=',value:'='}, {label:'!=',value:'!='}, {label:'>',value:'>'}, {label:'>=',value:'>='},{label:'<',value:'<'}, {label:'<=',value:'<='}]//'=', '≠', '>', '≥', '<', '≤']
+            id: 'OPERATOR',
+            alias: 'staticDropdown',
+            options: [{
+                    label: '=',
+                    value: '='
+                }, {
+                    label: '!=',
+                    value: '!='
+                }, {
+                    label: '>',
+                    value: '>'
+                }, {
+                    label: '>=',
+                    value: '>='
+                }, {
+                    label: '<',
+                    value: '<'
+                }, {
+                    label: '<=',
+                    value: '<='
+                }] //'=', '≠', '>', '≥', '<', '≤']
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
@@ -24,7 +42,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{ARG1} {OPERATOR} {ARG2}',
-    returnType : 'float'
+    returnType: 'float'
 
 });
 

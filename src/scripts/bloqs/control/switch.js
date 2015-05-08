@@ -10,17 +10,17 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     name: 'switch',
     content: [
         [{
-            alias: 'text',
-            value: 'Comprobar cuál es el valor de '
-        }, {
-            id: 'VAR',
-            alias: 'dropdown',
-            options: 'Variables'
-        }
-        // , {
-        //     alias: 'text',
-        //     value: 'ejecutar:'
-        // }
+                alias: 'text',
+                value: 'Comprobar cuál es el valor de '
+            }, {
+                id: 'VAR',
+                alias: 'dynamicDropdown',
+                options: 'variables'
+            }
+            // , {
+            //     alias: 'text',
+            //     value: 'ejecutar:'
+            // }
         ]
     ],
     code: 'switch ({VAR}):{{STATEMENTS}}'
