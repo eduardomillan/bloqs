@@ -25,7 +25,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'all'
         }]
     ],
-    code: 'random({ARG1},{ARG2})'
+    code: 'random({ARG1},{ARG2}+1)'
 });
 
 utils.generateBloqInputConnectors(bloq);

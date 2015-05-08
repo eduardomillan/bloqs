@@ -11,7 +11,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Leer el pin'
+            value: 'Leer'
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
