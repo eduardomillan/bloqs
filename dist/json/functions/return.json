@@ -1,5 +1,6 @@
 {
   "type": "output",
+  "name": "return",
   "connectors": [
     {
       "type": "connector--output",
@@ -8,10 +9,9 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "3bd652e6-edd0-40cf-ac94-0e0eb83e32a5"
+      "name": "3884a705-facf-4380-a676-f0fb9ff7b6a3"
     }
   ],
-  "name": "Return",
   "content": [
     [
       {
@@ -22,7 +22,7 @@
         "bloqInputId": "RETURN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "3bd652e6-edd0-40cf-ac94-0e0eb83e32a5"
+        "name": "3884a705-facf-4380-a676-f0fb9ff7b6a3"
       }
     ]
   ],

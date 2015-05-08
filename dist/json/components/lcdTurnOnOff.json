@@ -1,5 +1,6 @@
 {
   "type": "statement",
+  "name": "lcdTurnOnOff",
   "connectors": [
     {
       "type": "connector--top",
@@ -10,7 +11,6 @@
       "accept": "connector--top"
     }
   ],
-  "name": "lcdTurnOnOff",
   "content": [
     [
       {

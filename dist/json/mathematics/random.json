@@ -1,5 +1,6 @@
 {
   "type": "output",
+  "name": "random",
   "connectors": [
     {
       "type": "connector--output",
@@ -8,15 +9,14 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "e1b876dc-fd69-42c8-b45f-c58c04cab9f1"
+      "name": "7aa2704c-1414-4554-a6b1-577e62f7e4e9"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "2b9559af-8ed1-4f42-b744-34e41aee8304"
+      "name": "d9758e1e-0640-4c45-bdac-f4ef9bae2aaa"
     }
   ],
-  "name": "random",
   "content": [
     [
       {
@@ -27,7 +27,7 @@
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e1b876dc-fd69-42c8-b45f-c58c04cab9f1"
+        "name": "7aa2704c-1414-4554-a6b1-577e62f7e4e9"
       },
       {
         "alias": "text",
@@ -37,9 +37,9 @@
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "2b9559af-8ed1-4f42-b744-34e41aee8304"
+        "name": "d9758e1e-0640-4c45-bdac-f4ef9bae2aaa"
       }
     ]
   ],
-  "code": "random({ARG1},{ARG2})"
+  "code": "random({ARG1},{ARG2}+1)"
 }

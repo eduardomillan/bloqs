@@ -1,5 +1,6 @@
 {
   "type": "output",
+  "name": "arguments",
   "connectors": [
     {
       "type": "connector--output",
@@ -8,22 +9,21 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "6cbd6926-15a5-425d-b55b-1fbc4ba20eb3"
+      "name": "1477483a-45e3-4fe8-8243-57de9dd0cc1e"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "2e6bfd68-f473-4d91-8d12-6e72165d89c6"
+      "name": "18d33e9a-6347-456a-9e9c-7848977f4a7b"
     }
   ],
-  "name": "Arguments",
   "content": [
     [
       {
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "6cbd6926-15a5-425d-b55b-1fbc4ba20eb3"
+        "name": "1477483a-45e3-4fe8-8243-57de9dd0cc1e"
       },
       {
         "alias": "text",
@@ -33,7 +33,7 @@
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "2e6bfd68-f473-4d91-8d12-6e72165d89c6"
+        "name": "18d33e9a-6347-456a-9e9c-7848977f4a7b"
       }
     ]
   ],

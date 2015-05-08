@@ -1,5 +1,6 @@
 {
   "type": "statement",
+  "name": "declareVariable",
   "connectors": [
     {
       "type": "connector--top",
@@ -12,10 +13,9 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "718b6c16-72ea-485c-8167-d0b86ad0dd3b"
+      "name": "70f0f762-d3c9-4b4a-882f-b098ed754b0a"
     }
   ],
-  "name": "DeclareVariable",
   "content": [
     [
       {
@@ -35,7 +35,7 @@
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "718b6c16-72ea-485c-8167-d0b86ad0dd3b"
+        "name": "70f0f762-d3c9-4b4a-882f-b098ed754b0a"
       }
     ]
   ],

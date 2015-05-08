@@ -1,12 +1,12 @@
 {
   "type": "output",
+  "name": "serialReceive",
   "connectors": [
     {
       "type": "connector--output",
       "accept": "connector--input"
     }
   ],
-  "name": "serialReceive",
   "content": [
     [
       {

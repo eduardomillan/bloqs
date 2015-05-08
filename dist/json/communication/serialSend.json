@@ -1,5 +1,6 @@
 {
   "type": "statement",
+  "name": "serialSend",
   "connectors": [
     {
       "type": "connector--top",
@@ -12,10 +13,9 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "fc763c50-b387-4b3d-8dd9-d81b5b5f1f27"
+      "name": "2e3bdede-e9cd-4c7e-b521-1d7b1119b4dc"
     }
   ],
-  "name": "serialSend",
   "content": [
     [
       {
@@ -31,7 +31,7 @@
         "bloqInputId": "DATA",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "fc763c50-b387-4b3d-8dd9-d81b5b5f1f27"
+        "name": "2e3bdede-e9cd-4c7e-b521-1d7b1119b4dc"
       },
       {
         "id": "FUNCTION",

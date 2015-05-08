@@ -1,5 +1,6 @@
 {
   "type": "output",
+  "name": "length",
   "connectors": [
     {
       "type": "connector--output",
@@ -8,10 +9,9 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "35872dd7-7761-4f05-8152-2f0e115828e3"
+      "name": "b324a89e-b5ce-4492-9630-10281469ea54"
     }
   ],
-  "name": "length",
   "content": [
     [
       {
@@ -22,7 +22,7 @@
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "35872dd7-7761-4f05-8152-2f0e115828e3"
+        "name": "b324a89e-b5ce-4492-9630-10281469ea54"
       }
     ]
   ],

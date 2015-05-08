@@ -1,5 +1,6 @@
 {
   "type": "output",
+  "name": "convert",
   "connectors": [
     {
       "type": "connector--output",
@@ -8,10 +9,9 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "860a0122-8c16-449b-b81a-9c949d1e9053"
+      "name": "96d71afe-a62f-4ed8-9870-8a7b58206f37"
     }
   ],
-  "name": "convert",
   "content": [
     [
       {
@@ -22,7 +22,7 @@
         "bloqInputId": "NUMBER",
         "alias": "bloqInput",
         "acceptType": "number",
-        "name": "860a0122-8c16-449b-b81a-9c949d1e9053"
+        "name": "96d71afe-a62f-4ed8-9870-8a7b58206f37"
       },
       {
         "alias": "text",
