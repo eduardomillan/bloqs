@@ -13,12 +13,14 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "5f0f0d16-56fd-4306-baf6-8513ce4eb9e5"
+      "acceptType": "all",
+      "name": "2f915e33-bbf1-4256-8341-2f4a81dc10b0"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "a3620538-c675-4885-b232-bba664139265"
+      "acceptType": "all",
+      "name": "35bb0cfd-8944-4e83-97c0-dd7d66aff7c6"
     }
   ],
   "content": [
@@ -27,7 +29,7 @@
         "bloqInputId": "STATE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "5f0f0d16-56fd-4306-baf6-8513ce4eb9e5"
+        "name": "2f915e33-bbf1-4256-8341-2f4a81dc10b0"
       },
       {
         "alias": "text",
@@ -37,7 +39,7 @@
         "bloqInputId": "LCD",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "a3620538-c675-4885-b232-bba664139265"
+        "name": "35bb0cfd-8944-4e83-97c0-dd7d66aff7c6"
       }
     ]
   ],

@@ -13,22 +13,26 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "67978b04-741f-4d14-a35a-5115110ac499"
+      "acceptType": "all",
+      "name": "fffed5fa-69e2-46e8-8559-3eedacb8211f"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "27f09024-5bab-4461-857f-d60f7a2c6886"
+      "acceptType": "all",
+      "name": "6dc34ff9-31d4-4ef0-96ea-8a11ed0b853d"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "ff489e8d-d695-46a1-805f-c0c195f42b19"
+      "acceptType": "all",
+      "name": "84c9df28-2f0f-41ee-b888-d3aa298034a0"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "name": "464e49c9-c29f-4a7a-8876-73011a95d602"
+      "acceptType": "all",
+      "name": "6f49a195-ca23-412c-bd9f-105473beebce"
     }
   ],
   "content": [
@@ -41,7 +45,7 @@
         "bloqInputId": "OSCILLATOR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "67978b04-741f-4d14-a35a-5115110ac499"
+        "name": "fffed5fa-69e2-46e8-8559-3eedacb8211f"
       },
       {
         "alias": "text",
@@ -51,7 +55,7 @@
         "bloqInputId": "PHASE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "27f09024-5bab-4461-857f-d60f7a2c6886"
+        "name": "6dc34ff9-31d4-4ef0-96ea-8a11ed0b853d"
       },
       {
         "alias": "text",
@@ -61,7 +65,7 @@
         "bloqInputId": "AMPLITUDE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "ff489e8d-d695-46a1-805f-c0c195f42b19"
+        "name": "84c9df28-2f0f-41ee-b888-d3aa298034a0"
       },
       {
         "alias": "text",
@@ -71,7 +75,7 @@
         "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "464e49c9-c29f-4a7a-8876-73011a95d602"
+        "name": "6f49a195-ca23-412c-bd9f-105473beebce"
       }
     ]
   ],

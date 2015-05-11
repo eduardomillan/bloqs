@@ -193,7 +193,7 @@ module.exports = function(grunt) {
         };
 
         var resume = [];
-        var script = '';
+        var script = 'db.bitbloq_Bloqs.remove({});\n';
         var content = null;
         this.files.forEach(function(file) {
             if (typeof(file.src) !== 'string') {
