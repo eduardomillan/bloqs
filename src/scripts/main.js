@@ -1,7 +1,7 @@
 'use strict';
 
 var $ = require('jquery');
-var Bloq = require('./bloq');
+var Bloq = require('./bloq').Bloq;
 
 
 // var oscillatorSchema = require('./bloqs/components/oscillator');
@@ -17,11 +17,106 @@ var Bloq = require('./bloq');
 // var buzzerSchema = require('./bloqs/components/buzzer');
 // var oscillatorStartSchema = require('./bloqs/components/oscillatorStart');
 // console.log(basicOperationsSchema);
+var componentsArray = {
+    leds: [{
+        value: '1',
+        label: 'Led_1'
+    }, {
+        value: '2',
+        label: 'Led_2'
+    }],
+    sensors: [{
+        value: '1',
+        label: 'Sensor_1'
+    }, {
+        value: '2',
+        label: 'Sensor_2'
+    }],
+    buzzers: [{
+        value: '18',
+        label: 'buzzer_001'
+    }, {
+        value: '19',
+        label: 'buzzer_002'
+    }],
+    servos: [{
+        value: '1',
+        label: 'servo_001'
+    }, {
+        value: '2',
+        label: 'servo_002'
+    }],
+    contServos: [{
+        value: '1',
+        label: 'contServo_001'
+    }, {
+        value: '2',
+        label: 'contServo_002'
+    }],
+    oscillators: [{
+        value: '1',
+        label: 'Oscillator_1'
+    }, {
+        value: '2',
+        label: 'Oscillator_2'
+    }],
+    lcds: [{
+        value: '1',
+        label: 'lcd_001'
+    }, {
+        value: '2',
+        label: 'lcd_002'
+    }],
+    variables: [{
+        value: 'var1',
+        label: 'var1'
+    }, {
+        value: 'var2',
+        label: 'var2'
+    }],
+    serialElements: [{
+        value: '1',
+        label: 'serialElement_1'
+    }, {
+        value: '2',
+        label: 'serialElement_2'
+    }],
+    voidFunctions: [{
+        value: '1',
+        label: 'voidFunctions_1'
+    }, {
+        value: '2',
+        label: 'voidFunctions_2'
+    }],
+    returnFunctions: [{
+        value: '1',
+        label: 'returnFunctions_1'
+    }, {
+        value: '2',
+        label: 'returnFunctions_2'
+    }],
+    varComponents: [{
+        value: '1',
+        label: 'varComponents_1'
+    }, {
+        value: '2',
+        label: 'varComponents_2'
+    }],
+    varSoftware: [{
+        value: '1',
+        label: 'varSoftware_1'
+    }, {
+        value: '2',
+        label: 'varSoftware_2'
+    }]
+};
 
 var $field = $('#field');
 var createBloq = function(bloqType, posX, posY) {
     var bloq1 = new Bloq({
-        bloqData: bloqType
+        bloqData: bloqType,
+        componentsArray: componentsArray,
+        $field: $field
     });
     $field.append(bloq1.$bloq);
     bloq1.$bloq.css({

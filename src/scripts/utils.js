@@ -102,10 +102,12 @@ var getMousePosition = function(element) {
         y: y
     };
 };
-var createBloqElement = function(elementSchema) {
-    var $element = null;
+var createBloqElement = function(elementSchema, componentsArray) {
+    var i,
+        $tempElement,
+        $element = null;
     switch (elementSchema.alias) {
-        case 'dropdown':
+        case 'staticDropdown':
             //component
             $element = $('<select>');
             $element.attr({
@@ -113,11 +115,28 @@ var createBloqElement = function(elementSchema) {
                 'data-content-id': elementSchema.id
             });
             //content
-            var $tempElement = null;
-            for (var i = 0; i < elementSchema.options.length; i++) {
+
+            for (i = 0; i < elementSchema.options.length; i++) {
                 $tempElement = $('<option>').attr({
                     value: elementSchema.options[i].value
                 }).html(elementSchema.options[i].label);
+                $element.append($tempElement);
+            }
+            break;
+        case 'dynamicDropdown':
+            $element = $('<select>');
+            $element.attr({
+                name: '',
+                'data-content-id': elementSchema.id
+            });
+            if (!componentsArray[elementSchema.options]) {
+                throw 'Dropdowns not defined in components array ' + elementSchema.options;
+            }
+            //content
+            for (i = 0; i < componentsArray[elementSchema.options].length; i++) {
+                $tempElement = $('<option>').attr({
+                    value: componentsArray[elementSchema.options][i].value
+                }).html(componentsArray[elementSchema.options][i].label);
                 $element.append($tempElement);
             }
             break;
@@ -162,6 +181,14 @@ var createBloqElement = function(elementSchema) {
                 'data-content-id': elementSchema.id,
             });
             $element.addClass('bloqinput');
+            break;
+        case 'headerText':
+            $element = $('<h3>').html(elementSchema.value);
+            $element.addClass('headerText');
+            break;
+        case 'descriptionText':
+            $element = $('<p>').html(elementSchema.value);
+            $element.addClass('descriptionText');
             break;
         default:
             throw 'elementSchema not defined: ' + elementSchema.alias;
@@ -305,7 +332,6 @@ var drawBranch = function(bloqs, connectors, topConnectorUuid) {
         drawBranch(bloqs, connectors, connectors[bloqs[branchUuid].connectors[1]].connectedTo);
     }
 };
-
 /**
  * Draw in console the tree
  * @param  {[type]} bloqs      [description]
@@ -316,38 +342,35 @@ var drawTree = function(bloqs, connectors) {
     console.log('drawtree');
     //buscamos los tipo statement q no tienen un top conectado
     for (var uuid in bloqs) {
-        if (bloqs[uuid].bloqData.type === 'statement' || bloqs[uuid].bloqData.type === 'statement-input') {
-            if (!connectors[bloqs[uuid].connectors[0]].connectedTo) {
-                console.log('******* - tree - *********', uuid);
-                console.log('connector--top:', bloqs[uuid].connectors[0], 'connectedTo', connectors[bloqs[uuid].connectors[0]].connectedTo);
-                console.log('connector--bottom:', bloqs[uuid].connectors[1], 'connectedTo', connectors[bloqs[uuid].connectors[1]].connectedTo);
-                if (bloqs[uuid].connectors[2]) {
+        if (bloqs[uuid].droppable && !connectors[bloqs[uuid].connectors[0]].connectedTo) {
+            switch (bloqs[uuid].bloqData.type) {
+                case 'statement':
+                case 'statement-input':
+                    console.log('******* - tree - *********', uuid);
+                    console.log('connector--top:', bloqs[uuid].connectors[0], 'connectedTo', connectors[bloqs[uuid].connectors[0]].connectedTo);
+                    console.log('connector--bottom:', bloqs[uuid].connectors[1], 'connectedTo', connectors[bloqs[uuid].connectors[1]].connectedTo);
+                    if (bloqs[uuid].connectors[2]) {
+                        console.log('connector--root:', bloqs[uuid].connectors[2], 'connectedTo', connectors[bloqs[uuid].connectors[2]].connectedTo);
+                        console.log('           ccccccc -  content ccccccc');
+                        if (connectors[bloqs[uuid].connectors[2]].connectedTo) {
+                            drawBranch(bloqs, connectors, connectors[bloqs[uuid].connectors[2]].connectedTo);
+                        }
+                        console.log('           ccccccc - end content ccccccc');
+                    }
+                    if (connectors[bloqs[uuid].connectors[1]].connectedTo) {
+                        drawBranch(bloqs, connectors, connectors[bloqs[uuid].connectors[1]].connectedTo);
+                    }
+                    break;
+                case 'group':
+                    console.log('******* - Group - *********', uuid);
                     console.log('connector--root:', bloqs[uuid].connectors[2], 'connectedTo', connectors[bloqs[uuid].connectors[2]].connectedTo);
                     console.log('           ccccccc -  content ccccccc');
                     if (connectors[bloqs[uuid].connectors[2]].connectedTo) {
                         drawBranch(bloqs, connectors, connectors[bloqs[uuid].connectors[2]].connectedTo);
                     }
                     console.log('           ccccccc - end content ccccccc');
-                }
-                if (connectors[bloqs[uuid].connectors[1]].connectedTo) {
-                    drawBranch(bloqs, connectors, connectors[bloqs[uuid].connectors[1]].connectedTo);
-                }
+                    break;
             }
-        }
-    }
-};
-
-var moveTreeNodes = function(connectorUuid, deltaX, deltaY, goUp, connectors, bloqs) {
-    if (connectorUuid) {
-        var bloq = bloqs[connectors[connectorUuid].bloqUuid];
-        bloq.$bloq.offset({
-            top: bloq.$bloq.offset().top + deltaY,
-            left: bloq.$bloq.offset().left + deltaX
-        });
-        if (goUp) {
-            moveTreeNodes(connectors[bloq.connectors[0]].connectedTo, deltaX, deltaY, goUp, connectors, bloqs);
-        } else {
-            moveTreeNodes(connectors[bloq.connectors[1]].connectedTo, deltaX, deltaY, goUp, connectors, bloqs);
         }
     }
 };
@@ -358,7 +381,7 @@ var moveTreeNodes = function(connectorUuid, deltaX, deltaY, goUp, connectors, bl
  * @param  {[type]} bloqs      [description]
  * @return {[type]}            [description]
  */
-var getBranchsConnectors = function(bloqUuid, connectors, bloqs) {
+var getBranchsConnectors = function(bloqUuid, bloqs, connectors) {
     var bloq = bloqs[bloqUuid];
     var result = [];
     result = result.concat(bloq.connectors);
@@ -457,18 +480,16 @@ var getBloqByConnectorUuid = function(connectorUuid, bloqs, connectors) {
 
 var redrawTree = function(bloq, bloqs, connectors) {
     var rootBloq = getBloqByConnectorUuid(getFirstTopConnectorUuid(bloq.uuid, bloqs, connectors), bloqs, connectors);
-    console.log('rootBloq', rootBloq.uuid);
 
     var somethingConnectedInBottomUuid = connectors[rootBloq.connectors[1]].connectedTo;
     var branchBloq,
-        top = rootBloq.$bloq.position().top + rootBloq.$bloq.outerHeight(true),
-        left = rootBloq.$bloq.position().left;
+        top = (parseInt(rootBloq.$bloq[0].style.top) || rootBloq.$bloq.position().top) + rootBloq.$bloq.outerHeight(true),
+        left = parseInt(rootBloq.$bloq[0].style.left) || rootBloq.$bloq.position().left;
+
     while (somethingConnectedInBottomUuid) {
         branchBloq = bloqs[connectors[somethingConnectedInBottomUuid].bloqUuid];
-        branchBloq.$bloq.css({
-            top: top,
-            left: left
-        });
+        branchBloq.$bloq[0].style.top = top + 'px';
+        branchBloq.$bloq[0].style.left = left + 'px';
         top += branchBloq.$bloq.outerHeight(true);
         somethingConnectedInBottomUuid = connectors[branchBloq.connectors[1]].connectedTo;
     }
@@ -506,6 +527,41 @@ var jqueryObjectsArrayToHtmlToInsert = function(arrayToTransform) {
     return rawArray;
 };
 
+var connectorIsDroppable = function(connectorUuid, bloqs, connectors) {
+    return getBloqByConnectorUuid(connectorUuid, bloqs, connectors).droppable;
+};
+
+var connectorIsInBranch = function(connectorUuid, topBloqUuid, bloqs, connectors) {
+    var isInBloq = false;
+    var i = 0;
+    //miro si es uno de mis conectores
+    while (!isInBloq && (i < bloqs[topBloqUuid].connectors.length)) {
+        if (bloqs[topBloqUuid].connectors[i] === connectorUuid) {
+            isInBloq = true;
+        } else {
+            i++;
+        }
+    }
+    //si tengo hijos miro en ellos
+    if (!isInBloq && bloqs[topBloqUuid].connectors[2] && connectors[bloqs[topBloqUuid].connectors[2]].connectedTo) {
+        isInBloq = connectorIsInBranch(connectorUuid, connectors[connectors[bloqs[topBloqUuid].connectors[2]].connectedTo].bloqUuid, bloqs, connectors);
+    }
+    //si tengo enganchado algo abajo miro en ellos
+    if (!isInBloq && connectors[bloqs[topBloqUuid].connectors[1]].connectedTo) {
+        isInBloq = connectorIsInBranch(connectorUuid, connectors[connectors[bloqs[topBloqUuid].connectors[1]].connectedTo].bloqUuid, bloqs, connectors);
+    }
+    return isInBloq;
+};
+
+var hasClass = function(el, selector) {
+    var className = ' ' + selector + ' ';
+
+    if ((' ' + el.className + ' ').replace(/[\n\t]/g, ' ').indexOf(className) > -1) {
+        return true;
+    }
+
+    return false;
+};
 
 module.exports.validString = validString;
 module.exports.generateUUID = generateUUID;
@@ -521,7 +577,6 @@ module.exports.getTreeHeight = getTreeHeight;
 module.exports.getNodesHeight = getNodesHeight;
 module.exports.drawTree = drawTree;
 module.exports.drawBranch = drawBranch;
-module.exports.moveTreeNodes = moveTreeNodes;
 module.exports.getBranchsConnectors = getBranchsConnectors;
 module.exports.getConnectorsUuidByType = getConnectorsUuidByType;
 module.exports.getConnectorsUuidByAcceptType = getConnectorsUuidByAcceptType;
@@ -533,6 +588,9 @@ module.exports.redrawTree = redrawTree;
 module.exports.itsARootConnector = itsARootConnector;
 module.exports.itsInsideAConnectorRoot = itsInsideAConnectorRoot;
 module.exports.jqueryObjectsArrayToHtmlToInsert = jqueryObjectsArrayToHtmlToInsert;
+module.exports.connectorIsDroppable = connectorIsDroppable;
+module.exports.connectorIsInBranch = connectorIsInBranch;
+module.exports.hasClass = hasClass;
 module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
