@@ -159,11 +159,11 @@ var outputDragStart = function(bloq) {
     bloq.$bloq.addClass('dragging');
 
     //store the available connectors
-    var totalConectorsUuids = utils.getConnectorsUuidByType(IOConnectors, 'connector--input');
+    var totalConectorsUuids = utils.getConnectorsUuidByType(IOConnectors, 'connector--input', outputConnector.returnType);
     var freeInputs = utils.getNotConnected(IOConnectors, totalConectorsUuids);
     var childInputsConnectorsUuids = utils.getInputsConnectorsFromBloq(IOConnectors, bloqs, bloq);
-
     availableIOConnectors = _.difference(freeInputs, childInputsConnectorsUuids);
+
 };
 
 
@@ -343,10 +343,8 @@ var handleIOCollisions = function(bloq, availableIOConnectors) {
 
     var dragConnector = utils.getOutputConnector(bloq, IOConnectors);
 
-
     availableIOConnectors.forEach(function(dropConnectorUuid) {
         dropConnector = IOConnectors[dropConnectorUuid];
-
         if (dragConnector.data.type === dropConnector.data.accept && utils.itsOver(dragConnector.jqueryObject, dropConnector.jqueryObject, 20)) {
 
             dropConnector.jqueryObject.addClass('available');
@@ -458,13 +456,11 @@ var Bloq = function Bloq(params) {
             this.$contentContainer.append($tempElement);
         }
     }
-
     //connectors
     var $connector, tempUuid, tempConnector;
     for (var i = 0; i < params.bloqData.connectors.length; i++) {
 
         tempUuid = 'connector:' + utils.generateUUID();
-
         tempConnector = {
             uuid: tempUuid,
             data: params.bloqData.connectors[i],
@@ -507,6 +503,7 @@ var Bloq = function Bloq(params) {
 
             this.$bloq.append($connector);
 
+            tempConnector.returnType = params.bloqData.returnType;
             IOConnectors[tempUuid] = tempConnector;
 
             this.IOConnectors.push(tempUuid);

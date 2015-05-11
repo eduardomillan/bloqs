@@ -176,6 +176,13 @@ var itsOver = function(dragConnector, dropConnector, margin) {
     }
     return dragConnector.offset().left < (dropConnector.offset().left + dropConnector.width() + margin) && (dragConnector.offset().left + dragConnector.width()) > (dropConnector.offset().left - margin) && dragConnector.offset().top < (dropConnector.offset().top + dropConnector.height() + margin) && (dragConnector.offset().top + dragConnector.height()) > (dropConnector.offset().top - margin);
 };
+
+var sameConnectionType = function (dragConnectorType, dropConnectorType){
+    if (dragConnectorType === 'all' || dropConnectorType === 'all' || dragConnectorType === dropConnectorType){
+        return true;
+    }
+    return false;
+};
 /**
  * Get the extreme of the tree, the root or the leaf
  * @param  bloqUuid
@@ -380,15 +387,26 @@ var getBranchsConnectorsNoChildren = function(bloqUuid, connectors, bloqs) {
     return result;
 };
 
-var getConnectorsUuidByType = function(IOConnectors, type) {
+var getConnectorsUuidByType = function(IOConnectors, type, acceptType) {
     var result = [];
     for (var key in IOConnectors) {
-        if (IOConnectors[key].data.type === type) {
+        if (IOConnectors[key].data.type === type && sameConnectionType(IOConnectors[key].data.acceptType, acceptType)) {
             result.push(IOConnectors[key].uuid);
         }
     }
     return result;
 };
+
+var getConnectorsUuidByAcceptType = function(IOConnectors, type) {
+    var result = [];
+    for (var key in IOConnectors) {
+        if (IOConnectors[key].data.acceptType === type) {
+            result.push(IOConnectors[key].uuid);
+        }
+    }
+    return result;
+};
+
 var getNotConnected = function(IOConnectors, uuids) {
     var result = [];
     for (var i = 0; i < uuids.length; i++) {
@@ -426,6 +444,7 @@ var generateBloqInputConnectors = function(bloq) {
                 bloq.connectors.push({
                     type: 'connector--input',
                     accept: 'connector--output',
+                    acceptType : bloq.content[i][j].acceptType,
                     name: uuid
                 });
             }
@@ -494,6 +513,7 @@ module.exports.getNumericStyleProperty = getNumericStyleProperty;
 module.exports.getMousePosition = getMousePosition;
 module.exports.createBloqElement = createBloqElement;
 module.exports.itsOver = itsOver;
+module.exports.sameConnectionType = sameConnectionType;
 module.exports.getLastBottomConnectorUuid = getLastBottomConnectorUuid;
 module.exports.getFirstTopConnectorUuid = getFirstTopConnectorUuid;
 module.exports.getOutputConnector = getOutputConnector;
@@ -504,6 +524,7 @@ module.exports.drawBranch = drawBranch;
 module.exports.moveTreeNodes = moveTreeNodes;
 module.exports.getBranchsConnectors = getBranchsConnectors;
 module.exports.getConnectorsUuidByType = getConnectorsUuidByType;
+module.exports.getConnectorsUuidByAcceptType = getConnectorsUuidByAcceptType;
 module.exports.getNotConnected = getNotConnected;
 module.exports.getInputsConnectorsFromBloq = getInputsConnectorsFromBloq;
 module.exports.generateBloqInputConnectors = generateBloqInputConnectors;
