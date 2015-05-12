@@ -23349,7 +23349,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             }, {
                 id: 'VAR',
                 alias: 'dynamicDropdown',
-                options: 'softwareVar'
+                options: 'softwareVars'
             }
             // , {
             //     alias: 'text',
@@ -23363,7 +23363,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../utils":81,"./../statementInputBloq":70,"lodash":2}],43:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -23455,6 +23454,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             value: 'x'
         }]
     ],
+    createDynamicContent: 'softwareVars',
     code: '{TYPE} {VARNAME}'
 });
 
@@ -23591,7 +23591,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: 'Declarar función'
         }, {
             id: 'FUNCNAME',
-            alias: 'stringInput',
+            alias: 'varInput',
             value: 'nombreFuncion'
         }, {
             alias: 'text',
@@ -23602,6 +23602,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             acceptType: 'all'
         }]
     ],
+    createDynamicContent: 'returnFunctions',
     code: '{RETURN.connectionType} function {FUNCNAME} () {{STATEMENTS}return {RETURN};}'
 });
 
@@ -23625,7 +23626,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: 'Declarar función'
         }, {
             id: 'FUNCNAME',
-            alias: 'stringInput',
+            alias: 'varInput',
             value: 'nombreFuncion'
         }, {
             alias: 'text',
@@ -23643,6 +23644,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             acceptType: 'all'
         }]
     ],
+    createDynamicContent: 'returnFunctions',
     code: '{RETURN.connectionType} function {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}'
 });
 
@@ -23666,10 +23668,11 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: 'Declarar función'
         }, {
             id: 'FUNCNAME',
-            alias: 'stringInput',
+            alias: 'varInput',
             value: 'nombreFuncion'
         }]
     ],
+    createDynamicContent: 'voidFunction',
     code: 'void {FUNCNAME} (){{STATEMENTS}}'
 });
 
@@ -23693,7 +23696,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: 'Declarar función'
         }, {
             id: 'FUNCNAME',
-            alias: 'stringInput',
+            alias: 'varInput',
             value: 'nombreFuncion'
         }, {
             alias: 'text',
@@ -23704,6 +23707,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             acceptType: 'var'
         }]
     ],
+    createDynamicContent: 'voidFunctions',
     code: 'void {FUNCNAME} ({ARGS}){{STATEMENTS}}'
 });
 
@@ -24375,7 +24379,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             id: 'VALUE',
             alias: 'dynamicDropdown',
-            options: 'softwareVar'
+            options: 'softwareVars'
         }]
     ],
     code: '{VALUE}'
@@ -24400,7 +24404,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             id: 'VAR',
             alias: 'dynamicDropdown',
-            options: 'softwareVar'
+            options: 'softwareVars'
         }, {
             alias: 'text',
             value: '['
@@ -24447,6 +24451,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             acceptType: 'all',
         }]
     ],
+    createDynamicContent: 'softwareVars',
     code: '{VALUE.connectionType} {NAME} = {VALUE};'
 });
 
@@ -24471,7 +24476,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             id: 'VAR',
             alias: 'dynamicDropdown',
-            options: 'softwareVar'
+            options: 'softwareVars'
         }]
     ],
     code: '{VAR}',
@@ -24500,7 +24505,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'NAME',
             alias: 'dynamicDropdown',
-            options: 'softwareVar'
+            options: 'softwareVars'
         }, {
             alias: 'text',
             value: '='
@@ -25275,5 +25280,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,6,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81])
+},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,11,10,12,14,13,15,16,17,19,18,20,21,22,23,25,24,26,27,29,28,30,31,32,33,35,34,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,57,59,60,61,62,63,64,65,66,67,68,69,71,70,72,73,74,75,76,78,77,79,80,81])
 ;
