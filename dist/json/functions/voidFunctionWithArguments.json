@@ -18,7 +18,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "var",
-      "name": "a24b1da1-7a1a-44e2-b9c6-d80d5d3fef17"
+      "name": "f02705af-1c66-4eb2-bbbd-7f8715d46981"
     }
   ],
   "content": [
@@ -40,10 +40,14 @@
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "var",
-        "name": "a24b1da1-7a1a-44e2-b9c6-d80d5d3fef17"
+        "name": "f02705af-1c66-4eb2-bbbd-7f8715d46981"
       }
     ]
   ],
   "createDynamicContent": "voidFunctions",
+  "returnType": {
+    "type": "simple",
+    "value": "void"
+  },
   "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}"
 }

@@ -19,6 +19,10 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }]
     ],
     createDynamicContent: 'voidFunction',
+    returnType: {
+        type: 'simple',
+        value: 'void'
+    },
     code: 'void {FUNCNAME} (){{STATEMENTS}}'
 });
 
