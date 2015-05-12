@@ -32,6 +32,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             acceptType: 'all'
         }]
     ],
+    createDynamicContent: 'returnFunction',
     code: '{RETURN.connectionType} function {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}'
 });
 

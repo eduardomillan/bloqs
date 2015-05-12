@@ -24,6 +24,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             acceptType: 'all',
         }]
     ],
+    createDynamicContent:'softwareVar',
     code: '{VALUE.connectionType} {NAME} = {VALUE};'
 });
 

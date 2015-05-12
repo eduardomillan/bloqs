@@ -18,6 +18,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: 'nombreFuncion'
         }]
     ],
+    createDynamicContent: 'voidFunction',
     code: 'void {FUNCNAME} (){{STATEMENTS}}'
 });
 
