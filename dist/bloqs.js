@@ -23891,13 +23891,16 @@ module.exports = bloq;
      name: 'loopBloq',
      headerText: 'Loop',
      descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
-     content: []
+     content: [],
+     code: 'void loop(){{STATEMENTS}}'
+
  });
 
  utils.generateBloqInputConnectors(bloq);
 
 
  module.exports = bloq;
+
 },{"./../../utils":81,"./../groupBloq":54,"lodash":2}],60:[function(require,module,exports){
  /*global require */
  'use strict';
@@ -23911,13 +23914,15 @@ module.exports = bloq;
      name: 'setupBloq',
      headerText: 'Setup',
      descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
-     content: []
+     content: [],
+     code: 'void setup(){{STATEMENTS}}'
  });
 
  utils.generateBloqInputConnectors(bloq);
 
 
  module.exports = bloq;
+
 },{"./../../utils":81,"./../groupBloq":54,"lodash":2}],61:[function(require,module,exports){
  /*global require */
  'use strict';
@@ -23931,7 +23936,8 @@ module.exports = bloq;
      name: 'varsBloq',
      headerText: 'Variables globales y funciones',
      descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
-     content: []
+     content: [],
+     code: '{STATEMENTS}'
  });
 
  utils.generateBloqInputConnectors(bloq);
@@ -25269,5 +25275,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,43,45,47,46,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,72,73,71,74,75,77,76,78,80,79,81])
+},{"jquery":1,"lodash":2}]},{},[3,4,6,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81])
 ;

@@ -17,7 +17,8 @@ module.exports = function(grunt) {
         // Watches files for changes and runs tasks based on the changed files
         watch: {
             options: {
-                livereload: true
+                livereload: true,
+                spawn: false
             },
             app: {
                 files: ['Gruntfile.js', 'dist/<%= pkg.name %>.js'],

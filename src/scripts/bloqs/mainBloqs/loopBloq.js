@@ -10,7 +10,9 @@
      name: 'loopBloq',
      headerText: 'Loop',
      descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
-     content: []
+     content: [],
+     code: 'void loop(){{STATEMENTS}}'
+
  });
 
  utils.generateBloqInputConnectors(bloq);

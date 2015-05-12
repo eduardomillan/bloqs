@@ -28,7 +28,8 @@
         "**/.*",
         "node_modules",
         "bower_components",
-        "test"
+        "test",
+        "bower_components"
     ],
     "dependencies": {
         "jquery": ">= 2.1.0",
@@ -36,6 +37,6 @@
         "lodash": "~3.7.0"
     },
     "moduleType": [
-        "amd"
+        "node"
     ]
 }
