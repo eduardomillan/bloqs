@@ -14,7 +14,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "cc754f3b-8de7-40ee-a510-cc87748efdce"
+      "name": "a947bcee-e5f1-4b56-b615-b7c786fd8b13"
     }
   ],
   "content": [
@@ -36,10 +36,14 @@
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "cc754f3b-8de7-40ee-a510-cc87748efdce"
+        "name": "a947bcee-e5f1-4b56-b615-b7c786fd8b13"
       }
     ]
   ],
+  "returnType": {
+    "type": "fromInput",
+    "bloqInputId": "VALUE"
+  },
   "createDynamicContent": "softwareVars",
   "code": "{VALUE.connectionType} {NAME} = {VALUE};"
 }

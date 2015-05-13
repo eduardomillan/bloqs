@@ -13,7 +13,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'text',
             value: '"'
         }, {
-            id:'TEXT',
+            id: 'TEXT',
             alias: 'stringInput',
             value: 'Texto'
         }, {
@@ -22,7 +22,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{TEXT}',
-    returnType: 'string'
+    returnType: {
+        type: 'simple',
+        value: 'string'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);

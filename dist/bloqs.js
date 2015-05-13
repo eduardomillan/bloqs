@@ -24156,17 +24156,19 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
-	name: 'number',
-	content: [
-	[{
-		id:'VALUE',
-		alias: 'numberInput',
-		value: 0
-	}]
-	],
-	code: '{VALUE}',
-	returnType : 'float'
-
+    name: 'number',
+    content: [
+        [{
+            id: 'VALUE',
+            alias: 'numberInput',
+            value: 0
+        }]
+    ],
+    code: '{VALUE}',
+    returnType: {
+        type: 'simple',
+        value: 'float'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -24303,7 +24305,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'text',
             value: '"'
         }, {
-            id:'TEXT',
+            id: 'TEXT',
             alias: 'stringInput',
             value: 'Texto'
         }, {
@@ -24312,7 +24314,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{TEXT}',
-    returnType: 'string'
+    returnType: {
+        type: 'simple',
+        value: 'string'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -24459,6 +24464,10 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             acceptType: 'all',
         }]
     ],
+    returnType: {
+        type: 'fromInput',
+        bloqInputId: 'VALUE'
+    },
     createDynamicContent: 'softwareVars',
     code: '{VALUE.connectionType} {NAME} = {VALUE};'
 });
@@ -24488,8 +24497,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{VAR}',
-    returnType: '{VAR.connectionType}'
-
+    returnType: {
+        type: 'fromDynamicDropdown',
+        idDropdown: 'VAR',
+        options: 'softwareVars'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -25288,5 +25300,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,5,6,8,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,26,27,25,28,29,30,31,32,33,34,35,37,36,38,39,40,43,41,42,44,46,47,45,49,48,50,52,53,51,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,71,70,72,73,74,75,76,79,78,77,80,81])
+},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,12,13,15,14,16,17,18,19,20,21,22,23,24,25,26,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,28,46,47,29,27,48,49,50,51,52,53,54,55,56,57,58,60,59,61,62,63,64,65,66,67,69,68,70,72,71,73,75,74,76,77,79,78,80,81])
 ;

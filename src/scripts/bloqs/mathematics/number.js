@@ -7,17 +7,19 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
-	name: 'number',
-	content: [
-	[{
-		id:'VALUE',
-		alias: 'numberInput',
-		value: 0
-	}]
-	],
-	code: '{VALUE}',
-	returnType : 'float'
-
+    name: 'number',
+    content: [
+        [{
+            id: 'VALUE',
+            alias: 'numberInput',
+            value: 0
+        }]
+    ],
+    code: '{VALUE}',
+    returnType: {
+        type: 'simple',
+        value: 'float'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
