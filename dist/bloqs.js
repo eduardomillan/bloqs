@@ -23518,7 +23518,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             id: 'VARNAME',
             alias: 'varInput',
-            value: 'x'
+            value: ''
         }]
     ],
     createDynamicContent: 'softwareVars',
@@ -23664,7 +23664,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
-            value: 'nombreFuncion'
+            value: ''
         }, {
             alias: 'text',
             value: 'devuelve'
@@ -23700,7 +23700,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
-            value: 'nombreFuncion'
+            value: ''
         }, {
             alias: 'text',
             value: 'contando con'
@@ -23743,7 +23743,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
-            value: 'nombreFuncion'
+            value: ''
         }]
     ],
     createDynamicContent: 'voidFunction',
@@ -24546,7 +24546,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'NAME',
             alias: 'varInput',
-            value: 'Nombre'
+            value: ''
         }, {
             alias: 'text',
             value: '='
@@ -25394,5 +25394,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,6,5,7,8,9,11,10,12,13,14,15,16,19,17,20,18,21,23,22,24,25,26,27,28,29,30,33,31,32,34,35,36,37,39,40,38,41,42,44,43,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,63,62,64,65,66,67,68,69,71,70,72,73,74,76,75,77,78,79,80,81])
+},{"jquery":1,"lodash":2}]},{},[3,4,5,7,6,8,9,10,11,13,12,14,16,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,36,35,37,38,39,40,41,42,43,44,46,45,47,48,49,50,51,52,54,53,55,56,57,58,59,60,61,62,63,64,65,66,68,67,69,70,71,72,73,74,75,76,78,77,79,80,81])
 ;

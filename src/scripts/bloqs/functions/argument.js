@@ -29,7 +29,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             id: 'VARNAME',
             alias: 'varInput',
-            value: 'x'
+            value: ''
         }]
     ],
     createDynamicContent: 'softwareVars',

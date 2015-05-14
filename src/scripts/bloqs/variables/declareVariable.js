@@ -15,7 +15,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'NAME',
             alias: 'varInput',
-            value: 'Nombre'
+            value: ''
         }, {
             alias: 'text',
             value: '='

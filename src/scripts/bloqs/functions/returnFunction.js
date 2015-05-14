@@ -16,7 +16,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
-            value: 'nombreFuncion'
+            value: ''
         }, {
             alias: 'text',
             value: 'devuelve'
