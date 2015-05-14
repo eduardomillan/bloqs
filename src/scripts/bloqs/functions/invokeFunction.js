@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'invokeFunction',
+    bloqClass: 'bloq-invoke-function',
     content: [
         [{
             alias: 'text',

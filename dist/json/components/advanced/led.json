@@ -14,22 +14,23 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "0368e657-1625-434e-bfa0-5d220f31f1c7"
+      "name": "4cf136ad-dbdf-4012-8909-4909e847114a"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e8f111a6-e6fc-4959-b934-4bc5365d13d4"
+      "name": "8da4d693-f4b9-4ab5-8469-72f5423362f9"
     }
   ],
+  "bloqClass": "bloq-led-advanced",
   "content": [
     [
       {
         "bloqInputId": "STATE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "0368e657-1625-434e-bfa0-5d220f31f1c7"
+        "name": "4cf136ad-dbdf-4012-8909-4909e847114a"
       },
       {
         "alias": "text",
@@ -39,7 +40,7 @@
         "bloqInputId": "LED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e8f111a6-e6fc-4959-b934-4bc5365d13d4"
+        "name": "8da4d693-f4b9-4ab5-8469-72f5423362f9"
       }
     ]
   ],

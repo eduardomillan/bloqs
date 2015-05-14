@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedContinuousServoStop',
+    bloqClass: 'bloq-continuous-servo-stop-advanced',
     content: [
         [{
             alias: 'text',

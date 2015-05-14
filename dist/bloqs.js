@@ -22104,6 +22104,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'code',
+    bloqClass: 'bloq-code',
     content: [
         [{
             id:'CODE',
@@ -22116,6 +22117,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 });
 utils.generateBloqInputConnectors(bloq);
 module.exports = bloq;
+
 },{"./../../utils":81,"./../statementBloq":69,"lodash":2}],5:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22126,6 +22128,7 @@ var StatementBloq = require('./../statementBloq');
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'comment',
+    bloqClass: 'bloq-comment',
     content: [
         [{
             alias: 'text',
@@ -22151,6 +22154,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'convert',
+    bloqClass: 'bloq-convert',
     content: [
         [{
             alias: 'text',
@@ -22196,6 +22200,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'serialReceive',
+    bloqClass: 'bloq-serial-receiver',
     content: [
         [{
             id: 'SERIAL',
@@ -22222,6 +22227,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'serialSend',
+    bloqClass: 'bloq-serial-send',
     content: [
         [{
             id: 'SERIAL',
@@ -22262,6 +22268,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedBuzzer',
+    bloqClass: 'bloq-buzzer-advance',
     content: [
         [{
             alias: 'text',
@@ -22305,6 +22312,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedContinuousServoStart',
+    bloqClass: 'bloq-continuous-servo-start-advanced',
     content: [
         [{
             alias: 'text',
@@ -22340,6 +22348,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedContinuousServoStop',
+    bloqClass: 'bloq-continuous-servo-stop-advanced',
     content: [
         [{
             alias: 'text',
@@ -22368,6 +22377,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedLcdTurnOnOff',
+    bloqClass: 'bloq-lcd-turn-on-on-advanced',
     content: [
         [{
             bloqInputId: 'STATE',
@@ -22399,6 +22409,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedLcdWrite',
+    bloqClass: 'bloq-lcd-writte-advanced',
     content: [
         [{
             alias: 'text',
@@ -22434,6 +22445,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedLed',
+    bloqClass: 'bloq-led-advanced',
     content: [
         [{
             bloqInputId: 'STATE',
@@ -22465,6 +22477,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedOscillator',
+    bloqClass: 'bloq-oscillator-advanced',
     content: [
         [{
             alias: 'text',
@@ -22513,6 +22526,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedOscillatorStart',
+    bloqClass: 'bloq-oscillator-start-advanced',
     content: [
         [{
             alias: 'text',
@@ -22540,6 +22554,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedOscillatorStop',
+    bloqClass: 'bloq-oscillator-stop-advanced',
     content: [
         [{
             alias: 'text',
@@ -22567,6 +22582,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'advancedPinRead',
+    bloqClass: 'bloq-pin-read-advanced',
     content: [
         [{
             alias: 'text',
@@ -22594,6 +22610,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedPinWrite',
+    bloqClass: 'bloq-pin-writte-advanced',
     content: [
         [{
             alias: 'text',
@@ -22630,6 +22647,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'advancedRead',
+    bloqClass: 'bloq-read-advanced',
     content: [
         [{
             alias: 'text',
@@ -22657,6 +22675,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedServo',
+    bloqClass: 'bloq-servo-advanced',
     content: [
         [{
             alias: 'text',
@@ -22693,6 +22712,7 @@ var OutputBloq = require('./../../outputBloq');
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'advancedturnOnOff',
+    bloqClass: 'bloq-turn-on-off-advanced',
     content: [
         [{
             id: 'VALUE',
@@ -22721,6 +22741,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'buzzer',
+    bloqClass: 'bloq-buzzer',
     content: [
         [{
             alias: 'text',
@@ -22735,7 +22756,28 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'NOTE',
             alias: 'staticDropdown',
-            options: [{label:'Do',value:'261'}, {label:'Re',value:'293'}, {label:'Mi',value:'329'}, {label:'Fa',value:'349'}, {label:'Sol',value:'392'}, {label:'La',value:'440'}, {label:'Si',value:'494'}]
+            options: [{
+                label: 'Do',
+                value: '261'
+            }, {
+                label: 'Re',
+                value: '293'
+            }, {
+                label: 'Mi',
+                value: '329'
+            }, {
+                label: 'Fa',
+                value: '349'
+            }, {
+                label: 'Sol',
+                value: '392'
+            }, {
+                label: 'La',
+                value: '440'
+            }, {
+                label: 'Si',
+                value: '494'
+            }]
         }, {
             alias: 'text',
             value: 'durante'
@@ -22753,7 +22795,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../utils":81,"./../statementBloq":69,"lodash":2}],24:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22765,6 +22806,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'continuousServoStart',
+    bloqClass: 'bloq-continuous-servo-start',
     content: [
         [{
             alias: 'text',
@@ -22779,7 +22821,13 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'DIRECTION',
             alias: 'staticDropdown',
-            options: [{label : 'horario', value :'0'}, {label :'antihorario', value : '180'}]
+            options: [{
+                label: 'horario',
+                value: '0'
+            }, {
+                label: 'antihorario',
+                value: '180'
+            }]
         }]
     ],
     code: '{SERVO}.write({DIRECTION});'
@@ -22789,7 +22837,6 @@ utils.generateBloqInputConnectors(bloq);
 
 
 module.exports = bloq;
-
 },{"./../../utils":81,"./../statementBloq":69,"lodash":2}],25:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22801,6 +22848,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'continuousServoStop',
+    bloqClass: 'bloq-continuous-servo-stop',
     content: [
         [{
             alias: 'text',
@@ -22829,6 +22877,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'lcdTurnOnOff',
+    bloqClass: 'bloq-lcd-turn-on-off',
     content: [
         [{
             id: 'STATE',
@@ -22866,6 +22915,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'lcdWrite',
+    bloqClass: 'bloq-lcd-writte',
     content: [
         [{
             alias: 'text',
@@ -22901,6 +22951,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'led',
+    bloqClass: 'bloq-led',
     content: [
         [{
             id: 'STATE',
@@ -22938,6 +22989,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'oscillator',
+    bloqClass: 'bloq-oscillator',
     content: [
         [{
             alias: 'text',
@@ -22986,6 +23038,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'oscillatorStart',
+    bloqClass: 'bloq-oscillator-start',
     content: [
         [{
             alias: 'text',
@@ -23013,6 +23066,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'oscillatorStop',
+    bloqClass: 'bloq-oscillator-stop',
     content: [
         [{
             alias: 'text',
@@ -23040,6 +23094,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'readDropdown',
+    bloqClass: 'bloq-read-dropdown',
     content: [
         [{
             alias: 'text',
@@ -23068,6 +23123,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'servo',
+    bloqClass: 'bloq-servo',
     content: [
         [{
             alias: 'text',
@@ -23105,6 +23161,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'break',
+    bloqClass: 'bloq-break',
     content: [
         [{
             alias: 'text',
@@ -23127,6 +23184,7 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
     name: 'case',
+    bloqClass: 'bloq-case',
     content: [
         [{
             alias: 'text',
@@ -23138,8 +23196,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             alias: 'text',
             value: 'ejecutar:'
-        }
-        ]
+        }]
     ],
     code: 'case {VAR}:{{STATEMENTS}break;}'
 });
@@ -23158,11 +23215,12 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'caseDefault',
+    bloqClass: 'bloq-case-default',
     content: [
-    [{
-        alias: 'text',
-        value: 'en otro caso, ejecutar:'
-    }]
+        [{
+            alias: 'text',
+            value: 'en otro caso, ejecutar:'
+        }]
     ],
     code: 'default:{{STATEMENTS}break;}'
 
@@ -23182,6 +23240,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'continue',
+    bloqClass: 'bloq-continue',
     content: [
         [{
             alias: 'text',
@@ -23205,6 +23264,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'else',
+    bloqClass: 'bloq-else',
     content: [
         [{
             alias: 'text',
@@ -23228,6 +23288,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'elseif',
+    bloqClass: 'bloq-else-if',
     content: [
         [{
             alias: 'text',
@@ -23258,6 +23319,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'for',
+    bloqClass: 'bloq-for',
     content: [
         [{
             alias: 'text',
@@ -23312,6 +23374,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'if',
+    bloqClass: 'bloq-if',
     content: [
         [{
             alias: 'text',
@@ -23342,6 +23405,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'switch',
+    bloqClass: 'bloq-switch',
     content: [
         [{
                 alias: 'text',
@@ -23374,6 +23438,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'wait',
+    bloqClass: 'bloq-wait',
     content: [
         [{
             alias: 'text',
@@ -23401,12 +23466,13 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'while',
+    bloqClass: 'bloq-while',
     content: [
         [{
             alias: 'text',
             value: 'Mientras'
         }, {
-            bloqInputId:'CONDITION',
+            bloqInputId: 'CONDITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
@@ -23431,6 +23497,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'argument',
+    bloqClass: 'bloq-argument',
     content: [
         [{
             alias: 'text',
@@ -23472,6 +23539,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'arguments',
+    bloqClass: 'bloq-arguments',
     content: [
         [{
             bloqInputId: 'ARG1',
@@ -23503,6 +23571,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'invokeFunction',
+    bloqClass: 'bloq-invoke-function',
     content: [
         [{
             alias: 'text',
@@ -23530,6 +23599,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'invokeReturnFunction',
+    bloqClass: 'bloq-invoke-return-function',
     content: [
         [{
             alias: 'text',
@@ -23558,6 +23628,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'return',
+    bloqClass: 'bloq-return',
     content: [
         [{
             alias: 'text',
@@ -23585,6 +23656,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'returnFunction',
+    bloqClass: 'bloq-return-function',
     content: [
         [{
             alias: 'text',
@@ -23620,6 +23692,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'returnFunctionWithArguments',
+    bloqClass: 'bloq-return-function-with-arguments',
     content: [
         [{
             alias: 'text',
@@ -23662,6 +23735,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'voidFunction',
+    bloqClass: 'bloq-void-function',
     content: [
         [{
             alias: 'text',
@@ -23694,6 +23768,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'voidFunctionWithArguments',
+    bloqClass: 'bloq-void-function-with-arguments',
     content: [
         [{
             alias: 'text',
@@ -23751,6 +23826,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'boolean',
+    bloqClass: 'bloq-boolean',
     content: [
         [{
             id: 'STATE',
@@ -23783,6 +23859,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'equalityOperations',
+    bloqClass: 'bloq-equality-operations',
     content: [
         [{
             bloqInputId: 'ARG1',
@@ -23835,6 +23912,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'logicOperations',
+    bloqClass: 'bloq-logic-operations',
     content: [
         [{
             bloqInputId: 'ARG1',
@@ -23874,6 +23952,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'not',
+    bloqClass: 'bloq-not',
     content: [
         [{
             alias: 'text',
@@ -23901,6 +23980,7 @@ module.exports = bloq;
  var bloq = _.merge(_.clone(GroupBloq, true), {
 
      name: 'loopBloq',
+     bloqClass: 'bloq-loop',
      headerText: 'Loop',
      descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
      content: [],
@@ -23912,7 +23992,6 @@ module.exports = bloq;
 
 
  module.exports = bloq;
-
 },{"./../../utils":81,"./../groupBloq":54,"lodash":2}],60:[function(require,module,exports){
  /*global require */
  'use strict';
@@ -23924,6 +24003,7 @@ module.exports = bloq;
  var bloq = _.merge(_.clone(GroupBloq, true), {
 
      name: 'setupBloq',
+     bloqClass: 'bloq-setup',
      headerText: 'Setup',
      descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
      content: [],
@@ -23934,7 +24014,6 @@ module.exports = bloq;
 
 
  module.exports = bloq;
-
 },{"./../../utils":81,"./../groupBloq":54,"lodash":2}],61:[function(require,module,exports){
  /*global require */
  'use strict';
@@ -23946,6 +24025,7 @@ module.exports = bloq;
  var bloq = _.merge(_.clone(GroupBloq, true), {
 
      name: 'varsBloq',
+     bloqClass: 'bloq-vars',
      headerText: 'Variables globales y funciones',
      descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
      content: [],
@@ -23956,7 +24036,6 @@ module.exports = bloq;
 
 
  module.exports = bloq;
-
 },{"./../../utils":81,"./../groupBloq":54,"lodash":2}],62:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -23968,6 +24047,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'basicOperations',
+    bloqClass: 'bloq-basic-operations',
     content: [
         [{
             bloqInputId: 'ARG1',
@@ -24017,6 +24097,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'map',
+    bloqClass: 'bloq-map',
     content: [
         [{
             alias: 'text',
@@ -24054,40 +24135,41 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'mapAdvanced',
+    bloqClass: 'bloq-map-advanced',
     content: [
         [{
             alias: 'text',
             value: 'Mapear'
         }, {
-            bloqInputId:'VAR',
+            bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: 'de ['
         }, {
-            bloqInputId:'INITMIN',
+            bloqInputId: 'INITMIN',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: '-'
         }, {
-            bloqInputId:'INITMAX',
+            bloqInputId: 'INITMAX',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: '] a ['
         }, {
-            bloqInputId:'FINMIN',
+            bloqInputId: 'FINMIN',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: '-'
         }, {
-            bloqInputId:'FINMAX',
+            bloqInputId: 'FINMAX',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
@@ -24112,6 +24194,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'mathOperations',
+    bloqClass: 'bloq-math-operations',
     content: [
         [{
             id: 'OPERATOR',
@@ -24157,6 +24240,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'number',
+    bloqClass: 'bloq-number',
     content: [
         [{
             id: 'VALUE',
@@ -24185,19 +24269,20 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'random',
+    bloqClass: 'bloq-random',
     content: [
         [{
             alias: 'text',
             value: 'Aleatorio entre'
         }, {
-            bloqInputId:'ARG1',
+            bloqInputId: 'ARG1',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: 'y'
         }, {
-            bloqInputId:'ARG2',
+            bloqInputId: 'ARG2',
             alias: 'bloqInput',
             acceptType: 'all'
         }]
@@ -24272,12 +24357,13 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'length',
+    bloqClass: 'bloq-length',
     content: [
         [{
             alias: 'text',
             value: 'longitud'
         }, {
-            bloqInputId:'TEXT',
+            bloqInputId: 'TEXT',
             alias: 'bloqInput',
             acceptType: 'all'
         }]
@@ -24300,6 +24386,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'string',
+    bloqClass: 'bloq-string',
     content: [
         [{
             alias: 'text',
@@ -24334,6 +24421,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'stringCreate',
+    bloqClass: 'bloq-string-create',
     content: [
         [{
             alias: 'text',
@@ -24345,7 +24433,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     code: 'String({TEXT})',
-    returnType:'String'
+    returnType: 'String'
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -24361,6 +24449,7 @@ var OutputBloq = require('./../../outputBloq');
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'hwVariable',
+    bloqClass: 'bloq-hw-variable-advanced',
     content: [
         [{
             alias: 'text',
@@ -24385,6 +24474,7 @@ var OutputBloq = require('./../../outputBloq');
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'swVariable',
+    bloqClass: 'bloq-sw-variable-advanced',
     content: [
         [{
             alias: 'text',
@@ -24410,6 +24500,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'arrayVariable',
+    bloqClass: 'bloq-array-variable',
     content: [
         [{
             alias: 'text',
@@ -24447,6 +24538,7 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
     name: 'declareVariable',
+    bloqClass: 'bloq-declare-variable',
     content: [
         [{
             alias: 'text',
@@ -24486,6 +24578,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'selectVariable',
+    bloqClass: 'bloq-select-variable',
     content: [
         [{
             alias: 'text',
@@ -24518,6 +24611,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'setVariable',
+    bloqClass: 'bloq-set-variable',
     content: [
         [{
             alias: 'text',
@@ -25300,5 +25394,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,12,13,15,14,16,17,18,19,20,21,22,23,24,25,26,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,28,46,47,29,27,48,49,50,51,52,53,54,55,56,57,58,60,59,61,62,63,64,65,66,67,69,68,70,72,71,73,75,74,76,77,79,78,80,81])
+},{"jquery":1,"lodash":2}]},{},[3,4,6,5,7,8,9,11,10,12,13,14,15,16,19,17,20,18,21,23,22,24,25,26,27,28,29,30,33,31,32,34,35,36,37,39,40,38,41,42,44,43,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,63,62,64,65,66,67,68,69,71,70,72,73,74,76,75,77,78,79,80,81])
 ;

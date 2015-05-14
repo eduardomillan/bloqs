@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'advancedOscillatorStart',
+    bloqClass: 'bloq-oscillator-start-advanced',
     content: [
         [{
             alias: 'text',

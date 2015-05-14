@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'returnFunction',
+    bloqClass: 'bloq-return-function',
     content: [
         [{
             alias: 'text',

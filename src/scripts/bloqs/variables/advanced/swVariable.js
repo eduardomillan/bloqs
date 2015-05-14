@@ -7,6 +7,7 @@ var OutputBloq = require('./../../outputBloq');
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'swVariable',
+    bloqClass: 'bloq-sw-variable-advanced',
     content: [
         [{
             alias: 'text',

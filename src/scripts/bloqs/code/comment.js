@@ -7,6 +7,7 @@ var StatementBloq = require('./../statementBloq');
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'comment',
+    bloqClass: 'bloq-comment',
     content: [
         [{
             alias: 'text',

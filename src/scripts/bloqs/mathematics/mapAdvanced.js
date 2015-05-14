@@ -8,40 +8,41 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'mapAdvanced',
+    bloqClass: 'bloq-map-advanced',
     content: [
         [{
             alias: 'text',
             value: 'Mapear'
         }, {
-            bloqInputId:'VAR',
+            bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: 'de ['
         }, {
-            bloqInputId:'INITMIN',
+            bloqInputId: 'INITMIN',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: '-'
         }, {
-            bloqInputId:'INITMAX',
+            bloqInputId: 'INITMAX',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: '] a ['
         }, {
-            bloqInputId:'FINMIN',
+            bloqInputId: 'FINMIN',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
             value: '-'
         }, {
-            bloqInputId:'FINMAX',
+            bloqInputId: 'FINMAX',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {

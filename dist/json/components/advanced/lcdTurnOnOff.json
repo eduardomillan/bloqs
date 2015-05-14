@@ -14,22 +14,23 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "d41ac6a4-fac9-4e8d-9e20-9e4ab1682419"
+      "name": "a5403f0e-8bcb-4be3-abaf-60fb7e133d5f"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "024f24c9-95e8-4eeb-956c-144aacd54bb4"
+      "name": "a6df21c7-5082-43cd-bc6c-6a381c94b849"
     }
   ],
+  "bloqClass": "bloq-lcd-turn-on-on-advanced",
   "content": [
     [
       {
         "bloqInputId": "STATE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "d41ac6a4-fac9-4e8d-9e20-9e4ab1682419"
+        "name": "a5403f0e-8bcb-4be3-abaf-60fb7e133d5f"
       },
       {
         "alias": "text",
@@ -39,7 +40,7 @@
         "bloqInputId": "LCD",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "024f24c9-95e8-4eeb-956c-144aacd54bb4"
+        "name": "a6df21c7-5082-43cd-bc6c-6a381c94b849"
       }
     ]
   ],

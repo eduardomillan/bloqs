@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'not',
+    bloqClass: 'bloq-not',
     content: [
         [{
             alias: 'text',

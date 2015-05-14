@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'arguments',
+    bloqClass: 'bloq-arguments',
     content: [
         [{
             bloqInputId: 'ARG1',

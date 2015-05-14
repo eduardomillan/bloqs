@@ -14,27 +14,28 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "a4a38eb4-2cfe-4ffb-9761-15b71501bb3a"
+      "name": "89a03750-e96b-4c06-8c88-2741593699db"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e14da6c1-11c1-4e5e-89d5-29b09ea73290"
+      "name": "afb4615d-9497-4a07-b34f-e47480a90ebf"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "5be6f585-b405-4495-948f-5eabdec54eda"
+      "name": "706628c3-4f91-4720-af6e-f0e7eb459290"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "ae672859-6cb0-4c97-83e0-9a5df979528b"
+      "name": "fc521c29-6e39-4a74-85f2-953d0b924e8e"
     }
   ],
+  "bloqClass": "bloq-oscillator-advanced",
   "content": [
     [
       {
@@ -45,7 +46,7 @@
         "bloqInputId": "OSCILLATOR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "a4a38eb4-2cfe-4ffb-9761-15b71501bb3a"
+        "name": "89a03750-e96b-4c06-8c88-2741593699db"
       },
       {
         "alias": "text",
@@ -55,7 +56,7 @@
         "bloqInputId": "PHASE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e14da6c1-11c1-4e5e-89d5-29b09ea73290"
+        "name": "afb4615d-9497-4a07-b34f-e47480a90ebf"
       },
       {
         "alias": "text",
@@ -65,7 +66,7 @@
         "bloqInputId": "AMPLITUDE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "5be6f585-b405-4495-948f-5eabdec54eda"
+        "name": "706628c3-4f91-4720-af6e-f0e7eb459290"
       },
       {
         "alias": "text",
@@ -75,7 +76,7 @@
         "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "ae672859-6cb0-4c97-83e0-9a5df979528b"
+        "name": "fc521c29-6e39-4a74-85f2-953d0b924e8e"
       }
     ]
   ],

@@ -8,12 +8,13 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'length',
+    bloqClass: 'bloq-length',
     content: [
         [{
             alias: 'text',
             value: 'longitud'
         }, {
-            bloqInputId:'TEXT',
+            bloqInputId: 'TEXT',
             alias: 'bloqInput',
             acceptType: 'all'
         }]

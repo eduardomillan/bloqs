@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'serialReceive',
+    bloqClass: 'bloq-serial-receiver',
     content: [
         [{
             id: 'SERIAL',

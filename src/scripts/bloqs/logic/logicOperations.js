@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'logicOperations',
+    bloqClass: 'bloq-logic-operations',
     content: [
         [{
             bloqInputId: 'ARG1',

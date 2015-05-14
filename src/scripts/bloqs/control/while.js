@@ -8,12 +8,13 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'while',
+    bloqClass: 'bloq-while',
     content: [
         [{
             alias: 'text',
             value: 'Mientras'
         }, {
-            bloqInputId:'CONDITION',
+            bloqInputId: 'CONDITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {

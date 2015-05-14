@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'mathOperations',
+    bloqClass: 'bloq-math-operations',
     content: [
         [{
             id: 'OPERATOR',

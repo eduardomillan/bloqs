@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'equalityOperations',
+    bloqClass: 'bloq-equality-operations',
     content: [
         [{
             bloqInputId: 'ARG1',

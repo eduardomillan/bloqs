@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'code',
+    bloqClass: 'bloq-code',
     content: [
         [{
             id:'CODE',

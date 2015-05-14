@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'continuousServoStart',
+    bloqClass: 'bloq-continuous-servo-start',
     content: [
         [{
             alias: 'text',
@@ -22,7 +23,13 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'DIRECTION',
             alias: 'staticDropdown',
-            options: [{label : 'horario', value :'0'}, {label :'antihorario', value : '180'}]
+            options: [{
+                label: 'horario',
+                value: '0'
+            }, {
+                label: 'antihorario',
+                value: '180'
+            }]
         }]
     ],
     code: '{SERVO}.write({DIRECTION});'

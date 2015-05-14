@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'setVariable',
+    bloqClass: 'bloq-set-variable',
     content: [
         [{
             alias: 'text',

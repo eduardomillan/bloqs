@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'stringCreate',
+    bloqClass: 'bloq-string-create',
     content: [
         [{
             alias: 'text',
@@ -19,7 +20,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     code: 'String({TEXT})',
-    returnType:'String'
+    returnType: 'String'
 });
 
 utils.generateBloqInputConnectors(bloq);

@@ -8,6 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'buzzer',
+    bloqClass: 'bloq-buzzer',
     content: [
         [{
             alias: 'text',
@@ -22,7 +23,28 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'NOTE',
             alias: 'staticDropdown',
-            options: [{label:'Do',value:'261'}, {label:'Re',value:'293'}, {label:'Mi',value:'329'}, {label:'Fa',value:'349'}, {label:'Sol',value:'392'}, {label:'La',value:'440'}, {label:'Si',value:'494'}]
+            options: [{
+                label: 'Do',
+                value: '261'
+            }, {
+                label: 'Re',
+                value: '293'
+            }, {
+                label: 'Mi',
+                value: '329'
+            }, {
+                label: 'Fa',
+                value: '349'
+            }, {
+                label: 'Sol',
+                value: '392'
+            }, {
+                label: 'La',
+                value: '440'
+            }, {
+                label: 'Si',
+                value: '494'
+            }]
         }, {
             alias: 'text',
             value: 'durante'
