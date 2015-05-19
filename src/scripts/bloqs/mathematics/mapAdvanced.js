@@ -16,35 +16,35 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: 'de ['
         }, {
             bloqInputId: 'INITMIN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: '-'
         }, {
             bloqInputId: 'INITMAX',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: '] a ['
         }, {
             bloqInputId: 'FINMIN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: '-'
         }, {
             bloqInputId: 'FINMAX',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: ']'

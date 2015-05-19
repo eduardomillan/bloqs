@@ -16,14 +16,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: 'y'
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }]
     ],
     code: 'random({ARG1},{ARG2}+1)'

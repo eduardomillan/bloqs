@@ -10,7 +10,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "7e7e75cc-bb03-4576-bdf6-d547d7a31a5c"
+      "name": "ec4b10a3-4fee-4803-96c9-17690c246570"
     }
   ],
   "bloqClass": "bloq-math-operations",
@@ -46,10 +46,13 @@
         "bloqInputId": "ARG",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "7e7e75cc-bb03-4576-bdf6-d547d7a31a5c"
+        "name": "ec4b10a3-4fee-4803-96c9-17690c246570"
       }
     ]
   ],
   "code": "{OPERATOR}({ARG})",
-  "returnType": "float"
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
 }

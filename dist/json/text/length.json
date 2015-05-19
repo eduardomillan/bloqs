@@ -9,8 +9,8 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "b5131aee-101a-4598-b384-40bf4060823c"
+      "acceptType": "string",
+      "name": "6ff513b7-ba8d-4f9e-a671-4bfefd15fb43"
     }
   ],
   "bloqClass": "bloq-length",
@@ -23,11 +23,14 @@
       {
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "b5131aee-101a-4598-b384-40bf4060823c"
+        "acceptType": "string",
+        "name": "6ff513b7-ba8d-4f9e-a671-4bfefd15fb43"
       }
     ]
   ],
   "code": "{TEXT}.length()",
-  "returnType": "float"
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
 }

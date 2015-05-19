@@ -24056,7 +24056,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         [{
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             id: 'OPERATOR',
             alias: 'staticDropdown',
@@ -24079,11 +24079,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }]
     ],
     code: '{ARG1} {OPERATOR} {ARG2}',
-    returnType: 'float'
+    returnType: {
+        type: 'simple',
+        value: 'float'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -24109,14 +24112,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: 'valor entre [0-'
         }, {
             bloqInputId: 'MAXVAL',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: ']'
@@ -24147,35 +24150,35 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: 'de ['
         }, {
             bloqInputId: 'INITMIN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: '-'
         }, {
             bloqInputId: 'INITMAX',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: '] a ['
         }, {
             bloqInputId: 'FINMIN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: '-'
         }, {
             bloqInputId: 'FINMAX',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: ']'
@@ -24227,7 +24230,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{OPERATOR}({ARG})',
-    returnType: 'float'
+    returnType: {
+        type: 'simple',
+        value: 'float'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -24281,14 +24287,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: 'y'
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }]
     ],
     code: 'random({ARG1},{ARG2}+1)'
@@ -24369,11 +24375,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'string'
         }]
     ],
     code: '{TEXT}.length()',
-    returnType: 'float'
+    returnType: {
+        type: 'simple',
+        value: 'float'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -24433,11 +24442,14 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'string'
         }]
     ],
     code: 'String({TEXT})',
-    returnType: 'String'
+    returnType: {
+        type: 'simple',
+        value: 'string'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -25398,5 +25410,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,43,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81])
+},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,12,11,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,31,30,32,33,35,34,36,37,38,39,40,41,42,43,44,45,47,46,48,49,50,51,53,52,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81])
 ;

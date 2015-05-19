@@ -16,11 +16,14 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'string'
         }]
     ],
     code: 'String({TEXT})',
-    returnType: 'String'
+    returnType: {
+        type: 'simple',
+        value: 'string'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);

@@ -13,8 +13,8 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "e5544d5f-8781-4073-88b0-6d8aabd14c09"
+      "acceptType": "string",
+      "name": "e79a2cb1-44fd-4544-a79c-0ac47bbcb193"
     }
   ],
   "bloqClass": "bloq-string-create",
@@ -27,11 +27,14 @@
       {
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "e5544d5f-8781-4073-88b0-6d8aabd14c09"
+        "acceptType": "string",
+        "name": "e79a2cb1-44fd-4544-a79c-0ac47bbcb193"
       }
     ]
   ],
   "code": "String({TEXT})",
-  "returnType": "String"
+  "returnType": {
+    "type": "simple",
+    "value": "string"
+  }
 }

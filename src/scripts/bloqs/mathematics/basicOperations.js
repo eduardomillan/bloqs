@@ -13,7 +13,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         [{
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             id: 'OPERATOR',
             alias: 'staticDropdown',
@@ -36,11 +36,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }]
     ],
     code: '{ARG1} {OPERATOR} {ARG2}',
-    returnType: 'float'
+    returnType: {
+        type: 'simple',
+        value: 'float'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);

@@ -16,14 +16,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: 'valor entre [0-'
         }, {
             bloqInputId: 'MAXVAL',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }, {
             alias: 'text',
             value: ']'
