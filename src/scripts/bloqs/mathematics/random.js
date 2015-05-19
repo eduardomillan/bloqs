@@ -26,7 +26,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'float'
         }]
     ],
-    code: 'random({ARG1},{ARG2}+1)'
+    code: 'random({ARG1},{ARG2}+1)',
+    returnType: {
+        type: 'simple',
+        value: 'float'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
