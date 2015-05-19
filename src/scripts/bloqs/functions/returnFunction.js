@@ -18,9 +18,11 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             alias: 'varInput',
             value: ''
         }, {
+            position: 'DOWN',
             alias: 'text',
             value: 'devuelve'
         }, {
+            position: 'DOWN',
             bloqInputId: 'RETURN',
             alias: 'bloqInput',
             acceptType: 'all'
