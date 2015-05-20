@@ -27,10 +27,20 @@ var componentsArray = {
     }],
     sensors: [{
         value: '1',
-        label: 'Sensor_1'
+        label: 'Sensor_1',
+        type: 'analog'
+    }, {
+        value: 'A0',
+        label: 'Sensor_2',
+        type: 'digital'
     }, {
         value: '2',
-        label: 'Sensor_2'
+        label: 'Sensor_1',
+        type: 'us'
+    }, {
+        value: '3',
+        label: 'Sensor_2',
+        type: 'joystick'
     }],
     buzzers: [{
         value: '18',
@@ -102,7 +112,7 @@ var componentsArray = {
         value: '2',
         label: 'varComponents_2'
     }],
-    varSoftware: [{
+    softwareVars: [{
         value: '1',
         label: 'varSoftware_1'
     }, {
@@ -126,13 +136,11 @@ var createBloq = function(bloqType, posX, posY) {
     return bloq1;
 };
 //Irene's trials with getCode()
-createBloq(require('./bloqs/mathematics/number'), '100px', '1000px');
-createBloq(require('./bloqs/mathematics/number'), '100px', '1000px');
-createBloq(require('./bloqs/components/led'), '200px', '900px');
-var bloq = createBloq(require('./bloqs/variables/selectVariable'), '300px', '200px');
+// var bloq = createBloq(require('./bloqs/mathematics/number'), '100px', '100px');
+var bloq = createBloq(require('./bloqs/code/comment'), '300px', '200px');
 
 $field.on('dragend', function() {
-    console.log('bloq', bloq.getCode());
+    console.log('bloq CODE -->', bloq.getCode());
 });
 
 //Tom's trials

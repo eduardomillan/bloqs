@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             id:'CODE',
-            alias: 'stringInput',
+            alias: 'codeInput',
             value: '',
             placeholder: 'Escribe tu propio código'
         }]

@@ -1,6 +1,6 @@
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /*!
- * jQuery JavaScript Library v2.1.3
+ * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -10,7 +10,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-12-18T15:11Z
+ * Date: 2015-04-28T16:01Z
  */
 
 (function( global, factory ) {
@@ -68,7 +68,7 @@ var
 	// Use the correct document accordingly with window argument (sandbox)
 	document = window.document,
 
-	version = "2.1.3",
+	version = "2.1.4",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -532,7 +532,12 @@ jQuery.each("Boolean Number String Function Array Date RegExp Object Error".spli
 });
 
 function isArraylike( obj ) {
-	var length = obj.length,
+
+	// Support: iOS 8.2 (not reproducible in simulator)
+	// `in` check used to prevent JIT error (gh-2145)
+	// hasOwn isn't used here due to false negatives
+	// regarding Nodelist length in IE
+	var length = "length" in obj && obj.length,
 		type = jQuery.type( obj );
 
 	if ( type === "function" || jQuery.isWindow( obj ) ) {
@@ -22025,14 +22030,15 @@ var Bloq = function Bloq(params) {
         var childBloq, childConnectorId;
         var elementTags = _.without(_.pluck(this.bloqData.content[0], 'id'), undefined);
         var childrenTags = _.without(_.pluck(this.bloqData.content[0], 'bloqInputId'), undefined);
-        console.log('bloqData', this.bloqData);
-        // utils.validString('a');
         var value = '',
             type = '',
             i, j;
         for (i in elementTags) {
-            value = this.$bloq.find('[data-content-id="' + elementTags[i] + '"]').val() || '';
-            if (this.$bloq.find('[data-content-type = "stringInput"]')) {
+            var element = this.$bloq.find('[data-content-id="' + elementTags[i] + '"]');
+            value = element.val() || '';
+            console.log('------------------->',element[0].type);
+            if (element[0].type === 'stringInput') {
+                console.log('stringInput');
                 value = utils.validString(value);
             }
             code = code.replace(new RegExp('{' + elementTags[i] + '}', 'g'), value);
@@ -22108,7 +22114,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             id:'CODE',
-            alias: 'stringInput',
+            alias: 'codeInput',
             value: '',
             placeholder: 'Escribe tu propio código'
         }]
@@ -22135,7 +22141,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'Comentario //'
         }, {
             id: 'COMMENT',
-            alias: 'stringInput',
+            alias: 'codeInput',
             value: ''
         }]
     ],
@@ -23105,6 +23111,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             options: 'sensors' //[{label:'ANALOG', value:'A0'}, {label:'DIGIT', value:'1'}]
         }]
     ],
+    // code: '\'{SENSOR}\'.indexOf(\'A\') === 0 ? \'analogRead({SENSOR})\' : \'digitalRead({SENSOR})\'',
     code: '\'{SENSOR}\'.indexOf(\'A\') === 0 ? \'analogRead({SENSOR})\' : \'digitalRead({SENSOR})\'',
     returnType: 'float'
 });
@@ -24685,10 +24692,20 @@ var componentsArray = {
     }],
     sensors: [{
         value: '1',
-        label: 'Sensor_1'
+        label: 'Sensor_1',
+        type: 'analog'
+    }, {
+        value: 'A0',
+        label: 'Sensor_2',
+        type: 'digital'
     }, {
         value: '2',
-        label: 'Sensor_2'
+        label: 'Sensor_1',
+        type: 'us'
+    }, {
+        value: '3',
+        label: 'Sensor_2',
+        type: 'joystick'
     }],
     buzzers: [{
         value: '18',
@@ -24760,7 +24777,7 @@ var componentsArray = {
         value: '2',
         label: 'varComponents_2'
     }],
-    varSoftware: [{
+    softwareVars: [{
         value: '1',
         label: 'varSoftware_1'
     }, {
@@ -24784,13 +24801,11 @@ var createBloq = function(bloqType, posX, posY) {
     return bloq1;
 };
 //Irene's trials with getCode()
-createBloq(require('./bloqs/mathematics/number'), '100px', '1000px');
-createBloq(require('./bloqs/mathematics/number'), '100px', '1000px');
-createBloq(require('./bloqs/components/led'), '200px', '900px');
-var bloq = createBloq(require('./bloqs/variables/selectVariable'), '300px', '200px');
+// var bloq = createBloq(require('./bloqs/mathematics/number'), '100px', '100px');
+var bloq = createBloq(require('./bloqs/code/comment'), '300px', '200px');
 
 $field.on('dragend', function() {
-    console.log('bloq', bloq.getCode());
+    console.log('bloq CODE -->', bloq.getCode());
 });
 
 //Tom's trials
@@ -24816,7 +24831,7 @@ $field.on('dragend', function() {
 // createBloq(numberSchema, '600px','200px');
 // // var bloq10 =
 // createBloq(ifSchema, '250px','900px');
-},{"./bloq":3,"./bloqs/components/led":28,"./bloqs/mathematics/number":66,"./bloqs/variables/selectVariable":78,"jquery":1}],81:[function(require,module,exports){
+},{"./bloq":3,"./bloqs/code/comment":5,"jquery":1}],81:[function(require,module,exports){
 /*jshint bitwise: false*/
 /*global require */
 'use strict';
@@ -24972,7 +24987,13 @@ var createBloqElement = function(elementSchema, componentsArray) {
             $element.bind('input', function() {
                 $(this).val(validNumber($(this).val()));
             });
-
+            break;
+        case 'codeInput':
+            $element = $('<input>').attr({
+                type: 'text',
+                'data-content-id': elementSchema.id,
+                placeholder: elementSchema.placeholder,
+            }).html(elementSchema.value);
             break;
         case 'stringInput':
             $element = $('<input>').attr({
@@ -25414,5 +25435,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,5,8,7,6,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,40,39,41,42,43,44,45,46,47,48,52,51,50,49,53,54,55,56,57,58,59,60,61,62,63,64,65,66,68,67,69,70,72,71,73,74,75,76,77,78,79,80,81])
+},{"jquery":1,"lodash":2}]},{},[3,4,5,7,6,9,8,10,11,12,14,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,36,35,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,57,59,60,61,63,62,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81])
 ;

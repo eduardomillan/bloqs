@@ -649,14 +649,15 @@ var Bloq = function Bloq(params) {
         var childBloq, childConnectorId;
         var elementTags = _.without(_.pluck(this.bloqData.content[0], 'id'), undefined);
         var childrenTags = _.without(_.pluck(this.bloqData.content[0], 'bloqInputId'), undefined);
-        console.log('bloqData', this.bloqData);
-        // utils.validString('a');
         var value = '',
             type = '',
             i, j;
         for (i in elementTags) {
-            value = this.$bloq.find('[data-content-id="' + elementTags[i] + '"]').val() || '';
-            if (this.$bloq.find('[data-content-type = "stringInput"]')) {
+            var element = this.$bloq.find('[data-content-id="' + elementTags[i] + '"]');
+            value = element.val() || '';
+            console.log('------------------->',element[0].type);
+            if (element[0].type === 'stringInput') {
+                console.log('stringInput');
                 value = utils.validString(value);
             }
             code = code.replace(new RegExp('{' + elementTags[i] + '}', 'g'), value);

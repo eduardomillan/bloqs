@@ -19,6 +19,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             options: 'sensors' //[{label:'ANALOG', value:'A0'}, {label:'DIGIT', value:'1'}]
         }]
     ],
+    // code: '\'{SENSOR}\'.indexOf(\'A\') === 0 ? \'analogRead({SENSOR})\' : \'digitalRead({SENSOR})\'',
     code: '\'{SENSOR}\'.indexOf(\'A\') === 0 ? \'analogRead({SENSOR})\' : \'digitalRead({SENSOR})\'',
     returnType: 'float'
 });

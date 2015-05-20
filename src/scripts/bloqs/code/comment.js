@@ -14,7 +14,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'Comentario //'
         }, {
             id: 'COMMENT',
-            alias: 'stringInput',
+            alias: 'codeInput',
             value: ''
         }]
     ],

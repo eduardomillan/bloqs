@@ -153,7 +153,13 @@ var createBloqElement = function(elementSchema, componentsArray) {
             $element.bind('input', function() {
                 $(this).val(validNumber($(this).val()));
             });
-
+            break;
+        case 'codeInput':
+            $element = $('<input>').attr({
+                type: 'text',
+                'data-content-id': elementSchema.id,
+                placeholder: elementSchema.placeholder,
+            }).html(elementSchema.value);
             break;
         case 'stringInput':
             $element = $('<input>').attr({
