@@ -23,7 +23,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{STATE}',
-    returnType: 'bool'
+    returnType: {
+        type: 'simple',
+        value: 'bool'
+    }
 
 });
 

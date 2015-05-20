@@ -38,7 +38,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             }]
         }]
     ],
-    code: '({NUMBER},{TYPE});'
+    code: '({NUMBER},{TYPE});',
+    returnType: {
+        type: 'simple',
+        value: 'float'
+    }
 });
 utils.generateBloqInputConnectors(bloq);
 

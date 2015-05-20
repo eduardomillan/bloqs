@@ -31,7 +31,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{ARG1} {OPERATOR} {ARG2}',
-    returnType: 'bool'
+    returnType: {
+        type: 'simple',
+        value: 'bool'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);

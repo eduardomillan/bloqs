@@ -27,5 +27,8 @@
     ]
   ],
   "code": "{STATE}",
-  "returnType": "bool"
+  "returnType": {
+    "type": "simple",
+    "value": "bool"
+  }
 }
