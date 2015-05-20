@@ -136,8 +136,9 @@ var createBloq = function(bloqType, posX, posY) {
     return bloq1;
 };
 //Irene's trials with getCode()
-// var bloq = createBloq(require('./bloqs/mathematics/number'), '100px', '100px');
-var bloq = createBloq(require('./bloqs/text/stringCreate'), '300px', '200px');
+createBloq(require('./bloqs/mathematics/number'), '100px', '100px');
+createBloq(require('./bloqs/mathematics/map'), '100px', '100px');
+var bloq = createBloq(require('./bloqs/mathematics/basicOperations'), '300px', '200px');
 
 $field.on('dragend', function() {
     console.log('bloq CODE -->', bloq.getCode());

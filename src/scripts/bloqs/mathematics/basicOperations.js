@@ -39,7 +39,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'float'
         }]
     ],
-    code: '{ARG1} {OPERATOR} {ARG2}',
+    code: '\'{OPERATOR}\' === \'^\'? \'pow({ARG1},{ARG2})\' : \'{ARG1} {OPERATOR} {ARG2}\'',
     returnType: {
         type: 'simple',
         value: 'float'

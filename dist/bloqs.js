@@ -24089,7 +24089,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'float'
         }]
     ],
-    code: '{ARG1} {OPERATOR} {ARG2}',
+    code: '\'{OPERATOR}\' === \'^\'? \'pow({ARG1},{ARG2})\' : \'{ARG1} {OPERATOR} {ARG2}\'',
     returnType: {
         type: 'simple',
         value: 'float'
@@ -24801,8 +24801,9 @@ var createBloq = function(bloqType, posX, posY) {
     return bloq1;
 };
 //Irene's trials with getCode()
-// var bloq = createBloq(require('./bloqs/mathematics/number'), '100px', '100px');
-var bloq = createBloq(require('./bloqs/text/stringCreate'), '300px', '200px');
+createBloq(require('./bloqs/mathematics/number'), '100px', '100px');
+createBloq(require('./bloqs/mathematics/map'), '100px', '100px');
+var bloq = createBloq(require('./bloqs/mathematics/basicOperations'), '300px', '200px');
 
 $field.on('dragend', function() {
     console.log('bloq CODE -->', bloq.getCode());
@@ -24831,7 +24832,7 @@ $field.on('dragend', function() {
 // createBloq(numberSchema, '600px','200px');
 // // var bloq10 =
 // createBloq(ifSchema, '250px','900px');
-},{"./bloq":3,"./bloqs/text/stringCreate":73,"jquery":1}],81:[function(require,module,exports){
+},{"./bloq":3,"./bloqs/mathematics/basicOperations":62,"./bloqs/mathematics/map":63,"./bloqs/mathematics/number":66,"jquery":1}],81:[function(require,module,exports){
 /*jshint bitwise: false*/
 /*global require */
 'use strict';
