@@ -15,10 +15,10 @@
       "accept": "connector--output",
       "acceptType": {
         "type": "fromDynamicDropdown",
-        "id": "NAME",
+        "idDropdown": "NAME",
         "options": "softwareVars"
       },
-      "name": "cecf25ee-fed3-470e-a934-35392456dcd3"
+      "name": "baee2108-dea2-44eb-b03b-db1ece0b50da"
     }
   ],
   "bloqClass": "bloq-set-variable",
@@ -42,10 +42,10 @@
         "alias": "bloqInput",
         "acceptType": {
           "type": "fromDynamicDropdown",
-          "id": "NAME",
+          "idDropdown": "NAME",
           "options": "softwareVars"
         },
-        "name": "cecf25ee-fed3-470e-a934-35392456dcd3"
+        "name": "baee2108-dea2-44eb-b03b-db1ece0b50da"
       }
     ]
   ],
