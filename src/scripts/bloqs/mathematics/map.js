@@ -29,7 +29,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             value: ']'
         }]
     ],
-    code: 'map({VAR},0,1023,0,{MAXVAL});'
+    code: 'map({VAR},0,1023,0,{MAXVAL})',
+    returnType: {
+        type: 'simple',
+        value: 'float'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);

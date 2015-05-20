@@ -19,7 +19,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             value: 'recibir'
         }]
     ],
-    code: '{SERIAL}.read()'
+    code: '{SERIAL}.read()',
+    returnType: {
+        type: 'simple',
+        value: 'string'
+    }
 });
 utils.generateBloqInputConnectors(bloq);
 

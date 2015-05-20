@@ -50,7 +50,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             value: ']'
         }]
     ],
-    code: 'map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX});'
+    code: 'map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX})',
+    returnType: {
+        type: 'simple',
+        value: 'float'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
