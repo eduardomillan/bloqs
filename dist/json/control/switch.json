@@ -29,5 +29,5 @@
       }
     ]
   ],
-  "code": "switch ({VAR}):{{STATEMENTS}}"
+  "code": "switch (int({VAR})) {{STATEMENTS}}"
 }

@@ -18,13 +18,9 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
                 alias: 'dynamicDropdown',
                 options: 'softwareVars'
             }
-            // , {
-            //     alias: 'text',
-            //     value: 'ejecutar:'
-            // }
         ]
     ],
-    code: 'switch ({VAR}):{{STATEMENTS}}'
+    code: 'switch (int({VAR})) {{STATEMENTS}}'
 });
 
 utils.generateBloqInputConnectors(bloq);

@@ -15,7 +15,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'Interrumpir el bucle'
         }]
     ],
-    code: 'break'
+    code: 'break;'
 });
 
 utils.generateBloqInputConnectors(bloq);
