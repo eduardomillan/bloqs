@@ -1,20 +1,16 @@
 {
-  "type": "statement",
+  "type": "output",
   "name": "stringCreate",
   "connectors": [
     {
-      "type": "connector--top",
-      "accept": "connector--bottom"
-    },
-    {
-      "type": "connector--bottom",
-      "accept": "connector--top"
+      "type": "connector--output",
+      "accept": "connector--input"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "string",
-      "name": "17c7f351-a607-4f08-abf5-c3907f6cddbf"
+      "name": "10897059-6071-4302-ae4c-645d09d0904d"
     }
   ],
   "bloqClass": "bloq-string-create",
@@ -28,7 +24,7 @@
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
         "acceptType": "string",
-        "name": "17c7f351-a607-4f08-abf5-c3907f6cddbf"
+        "name": "10897059-6071-4302-ae4c-645d09d0904d"
       }
     ]
   ],

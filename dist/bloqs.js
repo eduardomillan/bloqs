@@ -24440,9 +24440,9 @@ module.exports = bloq;
 
 var _ = require('lodash'),
     utils = require('./../../utils'),
-    StatementBloq = require('./../statementBloq');
+    OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'stringCreate',
     bloqClass: 'bloq-string-create',
@@ -24466,7 +24466,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":81,"./../statementBloq":69,"lodash":2}],74:[function(require,module,exports){
+},{"./../../utils":81,"./../outputBloq":68,"lodash":2}],74:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24802,7 +24802,7 @@ var createBloq = function(bloqType, posX, posY) {
 };
 //Irene's trials with getCode()
 // var bloq = createBloq(require('./bloqs/mathematics/number'), '100px', '100px');
-var bloq = createBloq(require('./bloqs/code/comment'), '300px', '200px');
+var bloq = createBloq(require('./bloqs/text/stringCreate'), '300px', '200px');
 
 $field.on('dragend', function() {
     console.log('bloq CODE -->', bloq.getCode());
@@ -24831,7 +24831,7 @@ $field.on('dragend', function() {
 // createBloq(numberSchema, '600px','200px');
 // // var bloq10 =
 // createBloq(ifSchema, '250px','900px');
-},{"./bloq":3,"./bloqs/code/comment":5,"jquery":1}],81:[function(require,module,exports){
+},{"./bloq":3,"./bloqs/text/stringCreate":73,"jquery":1}],81:[function(require,module,exports){
 /*jshint bitwise: false*/
 /*global require */
 'use strict';
@@ -25435,5 +25435,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,5,7,6,9,8,10,11,12,14,13,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,36,35,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,57,59,60,61,63,62,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81])
+},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81])
 ;

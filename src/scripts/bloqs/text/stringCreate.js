@@ -3,9 +3,9 @@
 
 var _ = require('lodash'),
     utils = require('./../../utils'),
-    StatementBloq = require('./../statementBloq');
+    OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'stringCreate',
     bloqClass: 'bloq-string-create',
