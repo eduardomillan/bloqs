@@ -23,7 +23,11 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: {
+                type: 'fromDynamicDropdown',
+                id: 'NAME',
+                options: 'softwareVars'
+            }
         }]
     ],
     code: '{NAME} = {VALUE};'

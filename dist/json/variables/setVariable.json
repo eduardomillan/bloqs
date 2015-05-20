@@ -13,8 +13,12 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "69bda812-bfea-4396-ba19-b582a180ec93"
+      "acceptType": {
+        "type": "fromDynamicDropdown",
+        "id": "NAME",
+        "options": "softwareVars"
+      },
+      "name": "ef07c72b-56b9-4433-97ed-368f863180e7"
     }
   ],
   "bloqClass": "bloq-set-variable",
@@ -36,8 +40,12 @@
       {
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "69bda812-bfea-4396-ba19-b582a180ec93"
+        "acceptType": {
+          "type": "fromDynamicDropdown",
+          "id": "NAME",
+          "options": "softwareVars"
+        },
+        "name": "ef07c72b-56b9-4433-97ed-368f863180e7"
       }
     ]
   ],
