@@ -18,7 +18,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "15674415-5c0f-421a-abd4-b3135a79401e"
+      "name": "21f7046c-0417-4ffe-bfc1-fcbe0f8eff33"
     }
   ],
   "bloqClass": "bloq-return-function",
@@ -43,10 +43,14 @@
         "bloqInputId": "RETURN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "15674415-5c0f-421a-abd4-b3135a79401e"
+        "name": "21f7046c-0417-4ffe-bfc1-fcbe0f8eff33"
       }
     ]
   ],
   "createDynamicContent": "returnFunctions",
+  "returnType": {
+    "type": "fromInput",
+    "bloqInputId": "RETURN"
+  },
   "code": "{RETURN.connectionType} function {FUNCNAME} () {{STATEMENTS}return {RETURN};}"
 }

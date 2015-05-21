@@ -25,5 +25,10 @@
       }
     ]
   ],
-  "code": "{FUNCTION}({FUNCTION.args});"
+  "code": "{FUNCTION}({FUNCTION.args});",
+  "returnType": {
+    "type": "fromDynamicDropdown",
+    "idDropdown": "FUNCTION",
+    "options": "voidFunctions"
+  }
 }
