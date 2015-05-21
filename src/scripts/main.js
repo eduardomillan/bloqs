@@ -98,13 +98,7 @@ var componentsArray = {
         value: '2',
         label: 'voidFunctions_2'
     }],
-    returnFunctions: [{
-        value: '1',
-        label: 'returnFunctions_1'
-    }, {
-        value: '2',
-        label: 'returnFunctions_2'
-    }],
+    returnFunctions: [],
     varComponents: [{
         value: '1',
         label: 'varComponents_1'
@@ -137,11 +131,12 @@ var createBloq = function(bloqType, posX, posY) {
 };
 //Irene's trials with getCode()
 createBloq(require('./bloqs/mathematics/number'), '100px', '100px');
-createBloq(require('./bloqs/mathematics/map'), '100px', '100px');
-var bloq = createBloq(require('./bloqs/mathematics/basicOperations'), '300px', '200px');
+createBloq(require('./bloqs/functions/returnFunction'), '100px', '100px');
+var bloq = createBloq(require('./bloqs/functions/invokeReturnFunction'), '300px', '200px');
 
 $field.on('dragend', function() {
     console.log('bloq CODE -->', bloq.getCode());
+    console.log('componentsArray',componentsArray.returnFunctions);
 });
 
 //Tom's trials

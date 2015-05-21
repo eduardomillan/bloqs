@@ -20,7 +20,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{FUNCTION}({FUNCTION.args});',
-    returnType: '{FUNCTION.connectionType}'
+    returnType: {
+        type: 'fromDynamicDropdown',
+        idDropdown: 'FUNCTION',
+        options: 'returnFunctions'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);

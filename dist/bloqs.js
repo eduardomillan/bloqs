@@ -1,6 +1,6 @@
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /*!
- * jQuery JavaScript Library v2.1.3
+ * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -10,7 +10,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-12-18T15:11Z
+ * Date: 2015-04-28T16:01Z
  */
 
 (function( global, factory ) {
@@ -68,7 +68,7 @@ var
 	// Use the correct document accordingly with window argument (sandbox)
 	document = window.document,
 
-	version = "2.1.3",
+	version = "2.1.4",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -532,7 +532,12 @@ jQuery.each("Boolean Number String Function Array Date RegExp Object Error".spli
 });
 
 function isArraylike( obj ) {
-	var length = obj.length,
+
+	// Support: iOS 8.2 (not reproducible in simulator)
+	// `in` check used to prevent JIT error (gh-2145)
+	// hasOwn isn't used here due to false negatives
+	// regarding Nodelist length in IE
+	var length = "length" in obj && obj.length,
 		type = jQuery.type( obj );
 
 	if ( type === "function" || jQuery.isWindow( obj ) ) {
@@ -22900,7 +22905,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             }]
         }, {
             alias: 'text',
-            value: 'Encender la luz del LCD'
+            value: 'la luz del LCD'
         }, {
             id: 'LCD',
             alias: 'dynamicDropdown',
@@ -22942,7 +22947,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             options: 'lcds'
         }]
     ],
-    code: '{LCD}.write("{TEXT}");'
+    code: '{LCD}.write({TEXT});'
 
 });
 
@@ -23030,7 +23035,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             acceptType: 'all'
         }]
     ],
-    code: '{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();'
+    code: '{OSCILLATOR}.SetO({PHASE});{OSCILLATOR}.SetA({AMPLITUDE});{OSCILLATOR}.SetT({SPEED});{OSCILLATOR}.refresh();'
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -23058,7 +23063,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             options: 'oscillators'
         }]
     ],
-    code: '{OSCILLATOR}.start()'
+    code: '{OSCILLATOR}.start();'
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -23086,7 +23091,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             options: 'oscillators'
         }]
     ],
-    code: '{OSCILLATOR}.stop()'
+    code: '{OSCILLATOR}.stop();'
 
 });
 utils.generateBloqInputConnectors(bloq);
@@ -23617,7 +23622,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{FUNCTION}({FUNCTION.args});',
-    returnType: '{FUNCTION.connectionType}'
+    returnType: {
+        type: 'fromDynamicDropdown',
+        idDropdown: 'FUNCTION',
+        options: 'returnFunctions'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -24787,13 +24796,7 @@ var componentsArray = {
         value: '2',
         label: 'voidFunctions_2'
     }],
-    returnFunctions: [{
-        value: '1',
-        label: 'returnFunctions_1'
-    }, {
-        value: '2',
-        label: 'returnFunctions_2'
-    }],
+    returnFunctions: [],
     varComponents: [{
         value: '1',
         label: 'varComponents_1'
@@ -24826,11 +24829,12 @@ var createBloq = function(bloqType, posX, posY) {
 };
 //Irene's trials with getCode()
 createBloq(require('./bloqs/mathematics/number'), '100px', '100px');
-createBloq(require('./bloqs/mathematics/map'), '100px', '100px');
-var bloq = createBloq(require('./bloqs/mathematics/basicOperations'), '300px', '200px');
+createBloq(require('./bloqs/functions/returnFunction'), '100px', '100px');
+var bloq = createBloq(require('./bloqs/functions/invokeReturnFunction'), '300px', '200px');
 
 $field.on('dragend', function() {
     console.log('bloq CODE -->', bloq.getCode());
+    console.log('componentsArray',componentsArray.returnFunctions);
 });
 
 //Tom's trials
@@ -24856,7 +24860,7 @@ $field.on('dragend', function() {
 // createBloq(numberSchema, '600px','200px');
 // // var bloq10 =
 // createBloq(ifSchema, '250px','900px');
-},{"./bloq":3,"./bloqs/mathematics/basicOperations":62,"./bloqs/mathematics/map":63,"./bloqs/mathematics/number":66,"jquery":1}],81:[function(require,module,exports){
+},{"./bloq":3,"./bloqs/functions/invokeReturnFunction":48,"./bloqs/functions/returnFunction":50,"./bloqs/mathematics/number":66,"jquery":1}],81:[function(require,module,exports){
 /*jshint bitwise: false*/
 /*global require */
 'use strict';
@@ -25460,5 +25464,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,13,12,15,14,16,17,18,19,20,21,23,22,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,61,60,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81])
+},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81])
 ;

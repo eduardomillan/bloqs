@@ -22,7 +22,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             }]
         }, {
             alias: 'text',
-            value: 'Encender la luz del LCD'
+            value: 'la luz del LCD'
         }, {
             id: 'LCD',
             alias: 'dynamicDropdown',
