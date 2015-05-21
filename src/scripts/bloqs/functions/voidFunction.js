@@ -19,7 +19,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: ''
         }]
     ],
-    createDynamicContent: 'voidFunction',
+    createDynamicContent: 'voidFunctions',
     returnType: {
         type: 'simple',
         value: 'void'
