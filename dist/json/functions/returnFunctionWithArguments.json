@@ -18,13 +18,13 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "var",
-      "name": "349592a4-9d7d-48b5-ab35-b446e58ea534"
+      "name": "ef79e8ce-906c-4fc1-b7b8-671734081d32"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "c122665a-14d1-4667-9d06-7a3cdbd6dd85"
+      "name": "54a61e78-14b4-443f-bfe9-aa9675812717"
     }
   ],
   "bloqClass": "bloq-return-function-with-arguments",
@@ -47,7 +47,7 @@
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "var",
-        "name": "349592a4-9d7d-48b5-ab35-b446e58ea534"
+        "name": "ef79e8ce-906c-4fc1-b7b8-671734081d32"
       },
       {
         "position": "DOWN",
@@ -59,7 +59,7 @@
         "bloqInputId": "RETURN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "c122665a-14d1-4667-9d06-7a3cdbd6dd85"
+        "name": "54a61e78-14b4-443f-bfe9-aa9675812717"
       }
     ]
   ],
@@ -67,6 +67,10 @@
   "returnType": {
     "type": "fromInput",
     "bloqInputId": "RETURN"
+  },
+  "arguments": {
+    "type": "fromInput",
+    "bloqInputId": "ARGS"
   },
   "code": "{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
 }

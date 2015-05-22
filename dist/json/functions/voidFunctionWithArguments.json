@@ -18,7 +18,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "var",
-      "name": "666b5531-cdd6-42af-835c-0b34e0d44692"
+      "name": "4c3f7f45-dbbe-42ca-a2b0-710186f8c122"
     }
   ],
   "bloqClass": "bloq-void-function-with-arguments",
@@ -41,7 +41,7 @@
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "var",
-        "name": "666b5531-cdd6-42af-835c-0b34e0d44692"
+        "name": "4c3f7f45-dbbe-42ca-a2b0-710186f8c122"
       }
     ]
   ],
@@ -49,6 +49,10 @@
   "returnType": {
     "type": "simple",
     "value": "void"
+  },
+  "arguments": {
+    "type": "fromInput",
+    "bloqInputId": "ARGS"
   },
   "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}"
 }

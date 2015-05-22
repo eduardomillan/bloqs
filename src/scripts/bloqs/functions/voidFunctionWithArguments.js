@@ -31,6 +31,10 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         type: 'simple',
         value: 'void'
     },
+    arguments:{
+        type: 'fromInput',
+        bloqInputId: 'ARGS'
+    },
     code: 'void {FUNCNAME} ({ARGS}){{STATEMENTS}}'
 });
 

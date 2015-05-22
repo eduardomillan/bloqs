@@ -23,6 +23,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'all'
         }]
     ],
+    createDynamicContent: 'softwareVars',
     code: '{ARG1},{ARG2}',
     returnType: {
         type: 'simple',

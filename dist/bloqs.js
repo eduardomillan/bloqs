@@ -23569,6 +23569,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'all'
         }]
     ],
+    createDynamicContent: 'softwareVars',
     code: '{ARG1},{ARG2}',
     returnType: {
         type: 'simple',
@@ -23758,6 +23759,10 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         type: 'fromInput',
         bloqInputId: 'RETURN'
     },
+    arguments:{
+        type: 'fromInput',
+        bloqInputId: 'ARGS'
+    },
     code: '{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}'
 });
 
@@ -23830,6 +23835,10 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'void'
+    },
+    arguments:{
+        type: 'fromInput',
+        bloqInputId: 'ARGS'
     },
     code: 'void {FUNCNAME} ({ARGS}){{STATEMENTS}}'
 });
