@@ -23,7 +23,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'all'
         }]
     ],
-    code: '{ARG1},{ARG2}'
+    code: '{ARG1},{ARG2}',
+    returnType: {
+        type: 'simple',
+        value: 'var'
+    },
 });
 
 utils.generateBloqInputConnectors(bloq);

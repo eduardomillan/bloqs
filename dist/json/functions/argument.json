@@ -40,5 +40,9 @@
     ]
   ],
   "createDynamicContent": "softwareVars",
-  "code": "{TYPE} {VARNAME}"
+  "code": "{TYPE} {VARNAME}",
+  "returnType": {
+    "type": "simple",
+    "value": "var"
+  }
 }

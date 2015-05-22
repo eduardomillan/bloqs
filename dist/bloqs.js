@@ -1,6 +1,6 @@
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /*!
- * jQuery JavaScript Library v2.1.3
+ * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -10,7 +10,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2014-12-18T15:11Z
+ * Date: 2015-04-28T16:01Z
  */
 
 (function( global, factory ) {
@@ -68,7 +68,7 @@ var
 	// Use the correct document accordingly with window argument (sandbox)
 	document = window.document,
 
-	version = "2.1.3",
+	version = "2.1.4",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -532,7 +532,12 @@ jQuery.each("Boolean Number String Function Array Date RegExp Object Error".spli
 });
 
 function isArraylike( obj ) {
-	var length = obj.length,
+
+	// Support: iOS 8.2 (not reproducible in simulator)
+	// `in` check used to prevent JIT error (gh-2145)
+	// hasOwn isn't used here due to false negatives
+	// regarding Nodelist length in IE
+	var length = "length" in obj && obj.length,
 		type = jQuery.type( obj );
 
 	if ( type === "function" || jQuery.isWindow( obj ) ) {
@@ -23528,7 +23533,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     createDynamicContent: 'softwareVars',
-    code: '{TYPE} {VARNAME}'
+    code: '{TYPE} {VARNAME}',
+    returnType: {
+        type: 'simple',
+        value: 'var'
+    },
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -23560,7 +23569,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'all'
         }]
     ],
-    code: '{ARG1},{ARG2}'
+    code: '{ARG1},{ARG2}',
+    returnType: {
+        type: 'simple',
+        value: 'var'
+    },
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -23638,9 +23651,9 @@ module.exports = bloq;
 
 var _ = require('lodash'),
     utils = require('./../../utils'),
-    OutputBloq = require('./../outputBloq');
+    StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'return',
     bloqClass: 'bloq-return',
@@ -23660,7 +23673,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":81,"./../outputBloq":68,"lodash":2}],50:[function(require,module,exports){
+},{"./../../utils":81,"./../statementBloq":69,"lodash":2}],50:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23696,7 +23709,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         type: 'fromInput',
         bloqInputId: 'RETURN'
     },
-    code: '{RETURN.connectionType} function {FUNCNAME} () {{STATEMENTS}return {RETURN};}'
+    code: '{RETURN.connectionType} {FUNCNAME} () {{STATEMENTS}return {RETURN};}'
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -23745,7 +23758,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         type: 'fromInput',
         bloqInputId: 'RETURN'
     },
-    code: '{RETURN.connectionType} function {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}'
+    code: '{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}'
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -23803,7 +23816,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
-            value: 'nombreFuncion'
+            value: ''
         }, {
             alias: 'text',
             value: 'contando con'
@@ -25472,5 +25485,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,9,8,11,10,12,13,14,15,16,17,18,19,20,21,22,23,24,26,28,29,30,27,31,32,33,34,25,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81])
+},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81])
 ;

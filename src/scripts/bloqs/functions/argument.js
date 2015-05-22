@@ -33,7 +33,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     createDynamicContent: 'softwareVars',
-    code: '{TYPE} {VARNAME}'
+    code: '{TYPE} {VARNAME}',
+    returnType: {
+        type: 'simple',
+        value: 'var'
+    },
 });
 
 utils.generateBloqInputConnectors(bloq);

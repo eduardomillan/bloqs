@@ -18,13 +18,13 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "var",
-      "name": "0fd45dca-f49b-47bd-b0d6-c088edd63bb1"
+      "name": "349592a4-9d7d-48b5-ab35-b446e58ea534"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "ad911b35-21af-4b30-9335-f5e1450456a7"
+      "name": "c122665a-14d1-4667-9d06-7a3cdbd6dd85"
     }
   ],
   "bloqClass": "bloq-return-function-with-arguments",
@@ -47,7 +47,7 @@
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "var",
-        "name": "0fd45dca-f49b-47bd-b0d6-c088edd63bb1"
+        "name": "349592a4-9d7d-48b5-ab35-b446e58ea534"
       },
       {
         "position": "DOWN",
@@ -59,7 +59,7 @@
         "bloqInputId": "RETURN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "ad911b35-21af-4b30-9335-f5e1450456a7"
+        "name": "c122665a-14d1-4667-9d06-7a3cdbd6dd85"
       }
     ]
   ],
@@ -68,5 +68,5 @@
     "type": "fromInput",
     "bloqInputId": "RETURN"
   },
-  "code": "{RETURN.connectionType} function {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
+  "code": "{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
 }

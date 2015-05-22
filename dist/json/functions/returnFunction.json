@@ -18,7 +18,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "21f7046c-0417-4ffe-bfc1-fcbe0f8eff33"
+      "name": "01132a9a-781c-495a-abc0-38422187ef64"
     }
   ],
   "bloqClass": "bloq-return-function",
@@ -43,7 +43,7 @@
         "bloqInputId": "RETURN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "21f7046c-0417-4ffe-bfc1-fcbe0f8eff33"
+        "name": "01132a9a-781c-495a-abc0-38422187ef64"
       }
     ]
   ],
@@ -52,5 +52,5 @@
     "type": "fromInput",
     "bloqInputId": "RETURN"
   },
-  "code": "{RETURN.connectionType} function {FUNCNAME} () {{STATEMENTS}return {RETURN};}"
+  "code": "{RETURN.connectionType} {FUNCNAME} () {{STATEMENTS}return {RETURN};}"
 }
