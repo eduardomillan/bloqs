@@ -21,9 +21,15 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'en sentido'
         }, {
-            bloqInputId: 'DIRECTION',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'DIRECTION',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'horario',
+                value: '0'
+            }, {
+                label: 'antihorario',
+                value: '180'
+            }]
         }]
     ],
     code: '{SERVO}.write({DIRECTION});'

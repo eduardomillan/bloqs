@@ -11,10 +11,16 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-led-advanced',
     content: [
         [{
-            bloqInputId: 'STATE',
-            alias: 'bloqInput',
-            acceptType: 'all'
-        }, {
+            id: 'STATE',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'Encender',
+                value: 'HIGH'
+            }, {
+                label: 'Apagar',
+                value: 'LOW'
+            }]
+        },  {
             alias: 'text',
             value: 'el LED'
         }, {

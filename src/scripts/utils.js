@@ -56,7 +56,7 @@ var validString = function (value){
         }
         for (var j in reservedWords) {
             if (name === reservedWords[j]) {
-                name = '';
+                name += '_';
                 break;
             }
         }

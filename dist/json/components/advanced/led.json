@@ -14,23 +14,25 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "50059f4e-ee4f-4e25-aba9-ae265fda947b"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": "all",
-      "name": "f63f2812-0848-46f5-a1eb-51d94ac7579a"
+      "name": "40a14696-bf5f-4006-9eb9-c3ee7599833f"
     }
   ],
   "bloqClass": "bloq-led-advanced",
   "content": [
     [
       {
-        "bloqInputId": "STATE",
-        "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "50059f4e-ee4f-4e25-aba9-ae265fda947b"
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Encender",
+            "value": "HIGH"
+          },
+          {
+            "label": "Apagar",
+            "value": "LOW"
+          }
+        ]
       },
       {
         "alias": "text",
@@ -40,7 +42,7 @@
         "bloqInputId": "LED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "f63f2812-0848-46f5-a1eb-51d94ac7579a"
+        "name": "40a14696-bf5f-4006-9eb9-c3ee7599833f"
       }
     ]
   ],

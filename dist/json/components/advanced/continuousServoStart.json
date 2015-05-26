@@ -14,13 +14,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "5098b6c0-51d3-4f27-a2ac-40d1b4589e67"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": "all",
-      "name": "abe26127-14f0-4f91-8ec7-bcf7d0ab2a04"
+      "name": "bb655643-14dd-4997-9c9b-e1a058bd6f67"
     }
   ],
   "bloqClass": "bloq-continuous-servo-start-advanced",
@@ -34,17 +28,25 @@
         "bloqInputId": "SERVO",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "5098b6c0-51d3-4f27-a2ac-40d1b4589e67"
+        "name": "bb655643-14dd-4997-9c9b-e1a058bd6f67"
       },
       {
         "alias": "text",
         "value": "en sentido"
       },
       {
-        "bloqInputId": "DIRECTION",
-        "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "abe26127-14f0-4f91-8ec7-bcf7d0ab2a04"
+        "id": "DIRECTION",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "horario",
+            "value": "0"
+          },
+          {
+            "label": "antihorario",
+            "value": "180"
+          }
+        ]
       }
     ]
   ],

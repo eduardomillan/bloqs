@@ -18,7 +18,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             options: 'varComponents'
         }]
     ],
-    code: '{VALUE}'
+    code: '{VALUE}',
+    returnType: {
+        type: 'simple',
+        value: 'var'
+    }
 });
 
 module.exports = bloq;

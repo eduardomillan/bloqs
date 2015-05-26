@@ -22339,9 +22339,15 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'en sentido'
         }, {
-            bloqInputId: 'DIRECTION',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'DIRECTION',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'horario',
+                value: '0'
+            }, {
+                label: 'antihorario',
+                value: '180'
+            }]
         }]
     ],
     code: '{SERVO}.write({DIRECTION});'
@@ -22462,10 +22468,16 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-led-advanced',
     content: [
         [{
-            bloqInputId: 'STATE',
-            alias: 'bloqInput',
-            acceptType: 'all'
-        }, {
+            id: 'STATE',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'Encender',
+                value: 'HIGH'
+            }, {
+                label: 'Apagar',
+                value: 'LOW'
+            }]
+        },  {
             alias: 'text',
             value: 'el LED'
         }, {
@@ -24546,7 +24558,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             options: 'varComponents'
         }]
     ],
-    code: '{VALUE}'
+    code: '{VALUE}',
+    returnType: {
+        type: 'simple',
+        value: 'var'
+    }
 });
 
 module.exports = bloq;
@@ -24571,7 +24587,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             options: 'softwareVars'
         }]
     ],
-    code: '{VALUE}'
+    code: '{VALUE}',
+    returnType: {
+        type: 'simple',
+        value: 'var'
+    }
 });
 
 module.exports = bloq;
@@ -24949,7 +24969,7 @@ var validString = function (value){
         }
         for (var j in reservedWords) {
             if (name === reservedWords[j]) {
-                name = '';
+                name += '_';
                 break;
             }
         }
