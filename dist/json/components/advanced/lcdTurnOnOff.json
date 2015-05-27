@@ -14,23 +14,25 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "1cd9e1ff-1456-4b40-841b-ca72af928c60"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": "all",
-      "name": "5fdcb0df-ffe9-4eb7-9996-4b96d8b2f873"
+      "name": "b4166e23-036c-45f1-ad0e-71c3273fb773"
     }
   ],
   "bloqClass": "bloq-lcd-turn-on-on-advanced",
   "content": [
     [
       {
-        "bloqInputId": "STATE",
-        "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "1cd9e1ff-1456-4b40-841b-ca72af928c60"
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Encender",
+            "value": "HIGH"
+          },
+          {
+            "label": "Apagar",
+            "value": "LOW"
+          }
+        ]
       },
       {
         "alias": "text",
@@ -40,7 +42,7 @@
         "bloqInputId": "LCD",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "5fdcb0df-ffe9-4eb7-9996-4b96d8b2f873"
+        "name": "b4166e23-036c-45f1-ad0e-71c3273fb773"
       }
     ]
   ],

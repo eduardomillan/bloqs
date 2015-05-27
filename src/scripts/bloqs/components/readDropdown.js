@@ -20,8 +20,12 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     // code: '\'{SENSOR}\'.indexOf(\'A\') === 0 ? \'analogRead({SENSOR})\' : \'digitalRead({SENSOR})\'',
-    code: '\'{SENSOR}\'.indexOf(\'A\') === 0 ? \'analogRead({SENSOR})\' : \'digitalRead({SENSOR})\'',
-    returnType: 'float'
+    code: '{SENSOR.type}',
+    returnType: {
+        type: 'fromDynamicDropdown',
+        idDropdown: 'SENSOR',
+        options: 'sensors'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);

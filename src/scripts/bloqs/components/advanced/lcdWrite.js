@@ -26,7 +26,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             acceptType: 'all'
         }]
     ],
-    code: '{LCD}.write({TEXT});'
+    code: '{LCD}.print({TEXT});'
 
 });
 
