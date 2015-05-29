@@ -1,0 +1,50 @@
+{
+  "type": "statement",
+  "name": "ledAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "01b97fc2-5b04-409c-aa7d-2e34fba6498e"
+    }
+  ],
+  "bloqClass": "bloq-led-advanced",
+  "content": [
+    [
+      {
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Encender",
+            "value": "HIGH"
+          },
+          {
+            "label": "Apagar",
+            "value": "LOW"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "el LED"
+      },
+      {
+        "bloqInputId": "LED",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "01b97fc2-5b04-409c-aa7d-2e34fba6498e"
+      }
+    ]
+  ],
+  "code": "digitalWrite({LED},{STATE});"
+}

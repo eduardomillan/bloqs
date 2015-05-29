@@ -1,0 +1,52 @@
+{
+  "type": "statement",
+  "name": "lcdWriteAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "165e17a9-fd74-4414-b1ce-b5414296e0fd"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "a23b2eee-6838-4a04-b928-8d52c4315a61"
+    }
+  ],
+  "bloqClass": "bloq-lcd-writte-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Escribir"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "165e17a9-fd74-4414-b1ce-b5414296e0fd"
+      },
+      {
+        "alias": "text",
+        "value": "en el LCD"
+      },
+      {
+        "bloqInputId": "LCD",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "a23b2eee-6838-4a04-b928-8d52c4315a61"
+      }
+    ]
+  ],
+  "code": "{LCD}.print({TEXT});"
+}

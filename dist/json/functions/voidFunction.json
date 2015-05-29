@@ -1,0 +1,38 @@
+{
+  "type": "statement-input",
+  "name": "voidFunction",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-void-function",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Declarar función"
+      },
+      {
+        "id": "FUNCNAME",
+        "alias": "varInput",
+        "value": ""
+      }
+    ]
+  ],
+  "createDynamicContent": "voidFunctions",
+  "returnType": {
+    "type": "simple",
+    "value": "void"
+  },
+  "code": "void {FUNCNAME} (){{STATEMENTS}}"
+}

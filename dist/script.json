@@ -1,0 +1,3248 @@
+db.bitbloq_Bloqs.remove({});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "code",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-code",
+  "content": [
+    [
+      {
+        "id": "CODE",
+        "alias": "multilineCodeInput",
+        "value": "",
+        "placeholder": "Escribe tu propio código"
+      }
+    ]
+  ],
+  "code": "{CODE}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "comment",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-comment",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Comentario //"
+      },
+      {
+        "id": "COMMENT",
+        "alias": "multilineCodeInput",
+        "value": ""
+      }
+    ]
+  ],
+  "code": "/*\n{COMMENT}\n*/"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "convert",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "number",
+      "name": "e83e0aaf-99e7-4deb-86be-cc838f4708a5"
+    }
+  ],
+  "bloqClass": "bloq-convert",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Convertir"
+      },
+      {
+        "bloqInputId": "NUMBER",
+        "alias": "bloqInput",
+        "acceptType": "number",
+        "name": "e83e0aaf-99e7-4deb-86be-cc838f4708a5"
+      },
+      {
+        "alias": "text",
+        "value": "a"
+      },
+      {
+        "id": "TYPE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Decimal",
+            "value": "DEC"
+          },
+          {
+            "label": "Hexadecimal",
+            "value": "HEX"
+          },
+          {
+            "label": "Octal",
+            "value": "OCT"
+          },
+          {
+            "label": "Binario",
+            "value": "BIN"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "({NUMBER},{TYPE});",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "serialReceive",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-serial-receiver",
+  "content": [
+    [
+      {
+        "id": "SERIAL",
+        "alias": "dynamicDropdown",
+        "options": "serialElements"
+      },
+      {
+        "alias": "text",
+        "value": "recibir"
+      }
+    ]
+  ],
+  "code": "{SERIAL}.read()",
+  "returnType": {
+    "type": "simple",
+    "value": "string"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "serialSend",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "20a0fb8c-e27a-496d-846a-622147de48d7"
+    }
+  ],
+  "bloqClass": "bloq-serial-send",
+  "content": [
+    [
+      {
+        "id": "SERIAL",
+        "alias": "dynamicDropdown",
+        "options": "serialElements"
+      },
+      {
+        "alias": "text",
+        "value": "enviar "
+      },
+      {
+        "bloqInputId": "DATA",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "20a0fb8c-e27a-496d-846a-622147de48d7"
+      },
+      {
+        "id": "FUNCTION",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "sin salto de línea",
+            "value": "print"
+          },
+          {
+            "label": "con salto de línea",
+            "value": "println"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "{SERIAL}.{FUNCTION}({DATA});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "buzzerAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "cd5c633a-1218-4556-af01-fff003ca874d"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "de20b27f-d8df-4a14-924d-5f13ec580cf9"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "24982fe3-a590-4a8d-97f9-f6b98add37b2"
+    }
+  ],
+  "bloqClass": "bloq-buzzer-advance",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Sonar el buzzer"
+      },
+      {
+        "bloqInputId": "BUZZER",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "cd5c633a-1218-4556-af01-fff003ca874d"
+      },
+      {
+        "alias": "text",
+        "value": "con la nota"
+      },
+      {
+        "bloqInputId": "NOTE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "de20b27f-d8df-4a14-924d-5f13ec580cf9"
+      },
+      {
+        "alias": "text",
+        "value": "durante"
+      },
+      {
+        "bloqInputId": "SECONDS",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "24982fe3-a590-4a8d-97f9-f6b98add37b2"
+      },
+      {
+        "alias": "text",
+        "value": "ms"
+      }
+    ]
+  ],
+  "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "continuousServoStartAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "c707bcc4-2341-4bf8-9134-2d6d955e7c1f"
+    }
+  ],
+  "bloqClass": "bloq-continuous-servo-start-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Girar servo"
+      },
+      {
+        "bloqInputId": "SERVO",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c707bcc4-2341-4bf8-9134-2d6d955e7c1f"
+      },
+      {
+        "alias": "text",
+        "value": "en sentido"
+      },
+      {
+        "id": "DIRECTION",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "horario",
+            "value": "0"
+          },
+          {
+            "label": "antihorario",
+            "value": "180"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "{SERVO}.write({DIRECTION});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "continuousServoStopAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "c76b9cd7-202a-4541-96c0-9f48fa649acf"
+    }
+  ],
+  "bloqClass": "bloq-continuous-servo-stop-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Parar servo"
+      },
+      {
+        "bloqInputId": "SERVO",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c76b9cd7-202a-4541-96c0-9f48fa649acf"
+      }
+    ]
+  ],
+  "code": "{SERVO}.write(90);"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "lcdTurnOnOffAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "e136870c-e605-48bc-927a-3c77ec5ef282"
+    }
+  ],
+  "bloqClass": "bloq-lcd-turn-on-on-advanced",
+  "content": [
+    [
+      {
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Encender",
+            "value": "HIGH"
+          },
+          {
+            "label": "Apagar",
+            "value": "LOW"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "la luz del LCD"
+      },
+      {
+        "bloqInputId": "LCD",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "e136870c-e605-48bc-927a-3c77ec5ef282"
+      }
+    ]
+  ],
+  "code": "{LCD}.setBacklight({STATE});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "lcdWriteAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "165e17a9-fd74-4414-b1ce-b5414296e0fd"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "a23b2eee-6838-4a04-b928-8d52c4315a61"
+    }
+  ],
+  "bloqClass": "bloq-lcd-writte-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Escribir"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "165e17a9-fd74-4414-b1ce-b5414296e0fd"
+      },
+      {
+        "alias": "text",
+        "value": "en el LCD"
+      },
+      {
+        "bloqInputId": "LCD",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "a23b2eee-6838-4a04-b928-8d52c4315a61"
+      }
+    ]
+  ],
+  "code": "{LCD}.print({TEXT});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "ledAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "01b97fc2-5b04-409c-aa7d-2e34fba6498e"
+    }
+  ],
+  "bloqClass": "bloq-led-advanced",
+  "content": [
+    [
+      {
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Encender",
+            "value": "HIGH"
+          },
+          {
+            "label": "Apagar",
+            "value": "LOW"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "el LED"
+      },
+      {
+        "bloqInputId": "LED",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "01b97fc2-5b04-409c-aa7d-2e34fba6498e"
+      }
+    ]
+  ],
+  "code": "digitalWrite({LED},{STATE});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "oscillatorAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "b886e12e-e8c8-41f0-96c9-62715d3a7f07"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "afdda42b-b0fd-4093-8e94-a84c5a6f29cb"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "31e1cb05-db33-4f11-beb0-fd6797cb5f86"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "9814a690-07d1-4be7-9848-a8156f97d4cb"
+    }
+  ],
+  "bloqClass": "bloq-oscillator-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Oscilar servo"
+      },
+      {
+        "bloqInputId": "OSCILLATOR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "b886e12e-e8c8-41f0-96c9-62715d3a7f07"
+      },
+      {
+        "alias": "text",
+        "value": "alrededor de"
+      },
+      {
+        "bloqInputId": "PHASE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "afdda42b-b0fd-4093-8e94-a84c5a6f29cb"
+      },
+      {
+        "alias": "text",
+        "value": "con amplitud"
+      },
+      {
+        "bloqInputId": "AMPLITUDE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "31e1cb05-db33-4f11-beb0-fd6797cb5f86"
+      },
+      {
+        "alias": "text",
+        "value": "con velocidad"
+      },
+      {
+        "bloqInputId": "SPEED",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "9814a690-07d1-4be7-9848-a8156f97d4cb"
+      }
+    ]
+  ],
+  "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "oscillatorStartAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "bca46550-ed0a-4942-b444-d67386e33d3e"
+    }
+  ],
+  "bloqClass": "bloq-oscillator-start-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Reproducir oscilador"
+      },
+      {
+        "bloqInputId": "OSCILLATOR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "bca46550-ed0a-4942-b444-d67386e33d3e"
+      }
+    ]
+  ],
+  "code": "{OSCILLATOR}.start()"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "oscillatorStopAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "04c83079-34ce-459a-9367-4980acf43faf"
+    }
+  ],
+  "bloqClass": "bloq-oscillator-stop-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Parar oscilador"
+      },
+      {
+        "bloqInputId": "OSCILLATOR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "04c83079-34ce-459a-9367-4980acf43faf"
+      }
+    ]
+  ],
+  "code": "{OSCILLATOR}.stop()"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "pinReadAdvanced",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "64e923b6-101b-4c2a-8724-338371984d9d"
+    }
+  ],
+  "bloqClass": "bloq-pin-read-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Leer el pin"
+      },
+      {
+        "bloqInputId": "PIN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "64e923b6-101b-4c2a-8724-338371984d9d"
+      }
+    ]
+  ],
+  "code": "'{PIN}'.indexOf('A') === 0 ? 'analogRead({PIN})' : 'digitalRead({PIN})'"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "pinWriteAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "617c6fab-5cc6-41c9-bbe5-30cf9b08f3ca"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "b4f8bd1c-3d06-4bd9-b4e2-c2988eea5650"
+    }
+  ],
+  "bloqClass": "bloq-pin-writte-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Escribir en el pin"
+      },
+      {
+        "bloqInputId": "PIN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "617c6fab-5cc6-41c9-bbe5-30cf9b08f3ca"
+      },
+      {
+        "alias": "text",
+        "value": "el dato"
+      },
+      {
+        "bloqInputId": "DATA",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "b4f8bd1c-3d06-4bd9-b4e2-c2988eea5650"
+      }
+    ]
+  ],
+  "code": "'{PIN}'.indexOf('A') === 0 ? 'analogWrite({PIN},{DATA});' : 'digitalWrite({PIN},{DATA});'"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "readSensorAdvanced",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "a907dbad-cd57-4339-809b-a931578a133d"
+    }
+  ],
+  "bloqClass": "bloq-read-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Leer"
+      },
+      {
+        "bloqInputId": "PIN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "a907dbad-cd57-4339-809b-a931578a133d"
+      }
+    ]
+  ],
+  "code": "'{PIN}'.indexOf('A') === 0 ? 'analogRead({PIN})' : 'digitalRead({PIN})'"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "servoAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "036c279b-6eb1-4b99-8c3f-d8683d337c17"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "b6421d0f-6ab2-4231-9e00-4a3fa592de58"
+    }
+  ],
+  "bloqClass": "bloq-servo-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Mover"
+      },
+      {
+        "bloqInputId": "SERVO",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "036c279b-6eb1-4b99-8c3f-d8683d337c17"
+      },
+      {
+        "alias": "text",
+        "value": "a"
+      },
+      {
+        "bloqInputId": "POSITION",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "b6421d0f-6ab2-4231-9e00-4a3fa592de58"
+      },
+      {
+        "alias": "text",
+        "value": "grados"
+      }
+    ]
+  ],
+  "code": "{SERVO}.write({POSITION})"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "turnOnOffAdvanced",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-turn-on-off-advanced",
+  "content": [
+    [
+      {
+        "id": "VALUE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Encender",
+            "value": "HIGH"
+          },
+          {
+            "label": "Apagar",
+            "value": "LOW"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "{VALUE}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "buzzer",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-buzzer",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Sonar el buzzer"
+      },
+      {
+        "id": "BUZZER",
+        "alias": "dynamicDropdown",
+        "options": "buzzers"
+      },
+      {
+        "alias": "text",
+        "value": "con la nota"
+      },
+      {
+        "id": "NOTE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Do",
+            "value": "261"
+          },
+          {
+            "label": "Re",
+            "value": "293"
+          },
+          {
+            "label": "Mi",
+            "value": "329"
+          },
+          {
+            "label": "Fa",
+            "value": "349"
+          },
+          {
+            "label": "Sol",
+            "value": "392"
+          },
+          {
+            "label": "La",
+            "value": "440"
+          },
+          {
+            "label": "Si",
+            "value": "494"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "durante"
+      },
+      {
+        "id": "SECONDS",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "alias": "text",
+        "value": "ms"
+      }
+    ]
+  ],
+  "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "continuousServoStart",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-continuous-servo-start",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Girar servo"
+      },
+      {
+        "id": "SERVO",
+        "alias": "dynamicDropdown",
+        "options": "continuousServos"
+      },
+      {
+        "alias": "text",
+        "value": "en sentido"
+      },
+      {
+        "id": "DIRECTION",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "horario",
+            "value": "0"
+          },
+          {
+            "label": "antihorario",
+            "value": "180"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "{SERVO}.write({DIRECTION});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "continuousServoStop",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-continuous-servo-stop",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Parar servo"
+      },
+      {
+        "id": "SERVO",
+        "alias": "dynamicDropdown",
+        "options": "continuousServos"
+      }
+    ]
+  ],
+  "code": "{SERVO}.write(90);"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "lcdTurnOnOff",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-lcd-turn-on-off",
+  "content": [
+    [
+      {
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Encender",
+            "value": "HIGH"
+          },
+          {
+            "label": "Apagar",
+            "value": "LOW"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "la luz del LCD"
+      },
+      {
+        "id": "LCD",
+        "alias": "dynamicDropdown",
+        "options": "lcds"
+      }
+    ]
+  ],
+  "code": "{LCD}.setBacklight({STATE});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "lcdWrite",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-lcd-writte",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Escribir"
+      },
+      {
+        "id": "TEXT",
+        "alias": "stringInput",
+        "value": ""
+      },
+      {
+        "alias": "text",
+        "value": "en el LCD"
+      },
+      {
+        "id": "LCD",
+        "alias": "dynamicDropdown",
+        "options": "lcds"
+      }
+    ]
+  ],
+  "code": "{LCD}.print({TEXT});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "led",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-led",
+  "content": [
+    [
+      {
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Encender",
+            "value": "HIGH"
+          },
+          {
+            "label": "Apagar",
+            "value": "LOW"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "el LED"
+      },
+      {
+        "id": "LED",
+        "alias": "dynamicDropdown",
+        "options": "leds"
+      }
+    ]
+  ],
+  "code": "digitalWrite({LED},{STATE});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "oscillator",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "06688001-dc22-4cf5-929e-039552bd79b9"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "08b4a39e-2076-4946-94b3-232c247d1c7b"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "3baa51e2-f35d-48d5-a972-43b71caf30ed"
+    }
+  ],
+  "bloqClass": "bloq-oscillator",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Oscilar servo"
+      },
+      {
+        "id": "OSCILLATOR",
+        "alias": "dynamicDropdown",
+        "options": "oscillators"
+      },
+      {
+        "alias": "text",
+        "value": "alrededor de"
+      },
+      {
+        "bloqInputId": "PHASE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "06688001-dc22-4cf5-929e-039552bd79b9"
+      },
+      {
+        "alias": "text",
+        "value": "con amplitud"
+      },
+      {
+        "bloqInputId": "AMPLITUDE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "08b4a39e-2076-4946-94b3-232c247d1c7b"
+      },
+      {
+        "alias": "text",
+        "value": "con velocidad"
+      },
+      {
+        "bloqInputId": "SPEED",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "3baa51e2-f35d-48d5-a972-43b71caf30ed"
+      }
+    ]
+  ],
+  "code": "{OSCILLATOR}.SetO({PHASE});{OSCILLATOR}.SetA({AMPLITUDE});{OSCILLATOR}.SetT({SPEED});{OSCILLATOR}.refresh();"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "oscillatorStart",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-oscillator-start",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Reproducir oscilador"
+      },
+      {
+        "id": "OSCILLATOR",
+        "alias": "dynamicDropdown",
+        "options": "oscillators"
+      }
+    ]
+  ],
+  "code": "{OSCILLATOR}.start();"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "oscillatorStop",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-oscillator-stop",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Parar oscilador"
+      },
+      {
+        "id": "OSCILLATOR",
+        "alias": "dynamicDropdown",
+        "options": "oscillators"
+      }
+    ]
+  ],
+  "code": "{OSCILLATOR}.stop();"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "readSensor",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-read-dropdown",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Leer"
+      },
+      {
+        "id": "SENSOR",
+        "alias": "dynamicDropdown",
+        "options": "sensors"
+      }
+    ]
+  ],
+  "code": "{SENSOR.type}",
+  "returnType": {
+    "type": "fromDynamicDropdown",
+    "idDropdown": "SENSOR",
+    "options": "sensors"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "servo",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-servo",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Mover"
+      },
+      {
+        "id": "SERVO",
+        "alias": "dynamicDropdown",
+        "options": "servos"
+      },
+      {
+        "alias": "text",
+        "value": "a"
+      },
+      {
+        "id": "POSITION",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "alias": "text",
+        "value": "grados"
+      }
+    ]
+  ],
+  "code": "{SERVO}.write({POSITION})"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "break",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-break",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Interrumpir el bucle"
+      }
+    ]
+  ],
+  "code": "break;"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "case",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "bce358eb-cbba-4b18-9754-f313a8315583"
+    }
+  ],
+  "bloqClass": "bloq-case",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "si es igual a"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "bce358eb-cbba-4b18-9754-f313a8315583"
+      },
+      {
+        "alias": "text",
+        "value": "ejecutar:"
+      }
+    ]
+  ],
+  "code": "case {VAR}:{{STATEMENTS}break;}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "caseDefault",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-case-default",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "en otro caso, ejecutar:"
+      }
+    ]
+  ],
+  "code": "default:{{STATEMENTS}break;}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "continue",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-continue",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Continuar con la siguiente iteracción del bucle"
+      }
+    ]
+  ],
+  "code": "continue;"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "else",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-else",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "de lo contrario, ejecutar:"
+      }
+    ]
+  ],
+  "code": "else {{STATEMENTS}}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "elseif",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "2483677e-a81e-4d41-9798-ddb8aedf5f9f"
+    }
+  ],
+  "bloqClass": "bloq-else-if",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "en cambio, si"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "2483677e-a81e-4d41-9798-ddb8aedf5f9f"
+      },
+      {
+        "alias": "text",
+        "value": "ejecutar:"
+      }
+    ]
+  ],
+  "code": "else if ({VAR}){{STATEMENTS}}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "for",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "16a9da2e-7342-422e-9065-2eba7d9e21e5"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "bd5ba63c-c4f8-464a-b6f4-f132f6b015eb"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "a35fbac9-eab4-43a7-a2fa-f32d514b55a8"
+    }
+  ],
+  "bloqClass": "bloq-for",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Contar con"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "16a9da2e-7342-422e-9065-2eba7d9e21e5"
+      },
+      {
+        "alias": "text",
+        "value": "desde"
+      },
+      {
+        "bloqInputId": "INIT",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "bd5ba63c-c4f8-464a-b6f4-f132f6b015eb"
+      },
+      {
+        "alias": "text",
+        "value": "hasta"
+      },
+      {
+        "bloqInputId": "FINAL",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "a35fbac9-eab4-43a7-a2fa-f32d514b55a8"
+      },
+      {
+        "id": "MODE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "sumando",
+            "value": "++"
+          },
+          {
+            "label": "restando",
+            "value": "--"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "ejecutar:"
+      }
+    ]
+  ],
+  "code": "for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "if",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "620ddbff-542d-4c96-ab7b-8b69d5f8823b"
+    }
+  ],
+  "bloqClass": "bloq-if",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Si"
+      },
+      {
+        "bloqInputId": "CONDITION",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "620ddbff-542d-4c96-ab7b-8b69d5f8823b"
+      },
+      {
+        "alias": "text",
+        "value": "ejecutar:"
+      }
+    ]
+  ],
+  "code": "if({CONDITION}){{STATEMENTS}}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "switch",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-switch",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Comprobar cuál es el valor de "
+      },
+      {
+        "id": "VAR",
+        "alias": "dynamicDropdown",
+        "options": "softwareVars"
+      }
+    ]
+  ],
+  "code": "switch (int({VAR})) {{STATEMENTS}}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "wait",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "2092cd30-7177-4617-bd97-7673b19d43d2"
+    }
+  ],
+  "bloqClass": "bloq-wait",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Esperar"
+      },
+      {
+        "bloqInputId": "TIME",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "2092cd30-7177-4617-bd97-7673b19d43d2"
+      }
+    ]
+  ],
+  "code": "delay({TIME});"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "while",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "28925d9c-2275-4a7a-a3a4-4d7ddc94d827"
+    }
+  ],
+  "bloqClass": "bloq-while",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Mientras"
+      },
+      {
+        "bloqInputId": "CONDITION",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "28925d9c-2275-4a7a-a3a4-4d7ddc94d827"
+      },
+      {
+        "alias": "text",
+        "value": "ejecutar:"
+      }
+    ]
+  ],
+  "code": "while ({CONDITION}){{STATEMENTS}}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "argument",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-argument",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "variable"
+      },
+      {
+        "id": "TYPE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "float",
+            "value": "float"
+          },
+          {
+            "label": "String",
+            "value": "String"
+          },
+          {
+            "label": "bool",
+            "value": "bool"
+          }
+        ]
+      },
+      {
+        "id": "VARNAME",
+        "alias": "varInput",
+        "value": ""
+      }
+    ]
+  ],
+  "createDynamicContent": "softwareVars",
+  "code": "{TYPE} {VARNAME}",
+  "returnType": {
+    "type": "simple",
+    "value": "var"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "arguments",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "e2b0da49-1426-4eb2-9aeb-90e1b4c6b40e"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "7932a32a-a77e-4bb5-a9e3-3f00a5af03c7"
+    }
+  ],
+  "bloqClass": "bloq-arguments",
+  "content": [
+    [
+      {
+        "bloqInputId": "ARG1",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "e2b0da49-1426-4eb2-9aeb-90e1b4c6b40e"
+      },
+      {
+        "alias": "text",
+        "value": ","
+      },
+      {
+        "bloqInputId": "ARG2",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "7932a32a-a77e-4bb5-a9e3-3f00a5af03c7"
+      }
+    ]
+  ],
+  "createDynamicContent": "softwareVars",
+  "code": "{ARG1},{ARG2}",
+  "returnType": {
+    "type": "simple",
+    "value": "var"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "invokeFunction",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-invoke-function",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Ejecutar"
+      },
+      {
+        "id": "FUNCTION",
+        "alias": "dynamicDropdown",
+        "options": "voidFunctions"
+      }
+    ]
+  ],
+  "code": "{FUNCTION}({FUNCTION.args});",
+  "returnType": {
+    "type": "fromDynamicDropdown",
+    "idDropdown": "FUNCTION",
+    "options": "voidFunctions"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "invokeReturnFunction",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-invoke-return-function",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "ejecutar"
+      },
+      {
+        "id": "FUNCTION",
+        "alias": "dynamicDropdown",
+        "options": "returnFunctions"
+      }
+    ]
+  ],
+  "code": "{FUNCTION}({FUNCTION.args});",
+  "returnType": {
+    "type": "fromDynamicDropdown",
+    "idDropdown": "FUNCTION",
+    "options": "returnFunctions"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "return",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "c0bfeffa-3fce-412b-9301-35e1adf8c264"
+    }
+  ],
+  "bloqClass": "bloq-return",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "devuelve"
+      },
+      {
+        "bloqInputId": "RETURN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c0bfeffa-3fce-412b-9301-35e1adf8c264"
+      }
+    ]
+  ],
+  "code": "return {RETURN};"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "returnFunction",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "b60f6519-97d4-45b3-aee7-9c7eacbde6d1"
+    }
+  ],
+  "bloqClass": "bloq-return-function",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Declarar función"
+      },
+      {
+        "id": "FUNCNAME",
+        "alias": "varInput",
+        "value": ""
+      },
+      {
+        "position": "DOWN",
+        "alias": "text",
+        "value": "devuelve"
+      },
+      {
+        "position": "DOWN",
+        "bloqInputId": "RETURN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "b60f6519-97d4-45b3-aee7-9c7eacbde6d1"
+      }
+    ]
+  ],
+  "createDynamicContent": "returnFunctions",
+  "returnType": {
+    "type": "fromInput",
+    "bloqInputId": "RETURN"
+  },
+  "code": "{RETURN.connectionType} {FUNCNAME} () {{STATEMENTS}return {RETURN};}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "returnFunctionWithArguments",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "var",
+      "name": "d52eb00f-08ee-45ef-baa7-bbf9a3c27e53"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "c914df06-459e-485b-ab38-8ce42c63fdab"
+    }
+  ],
+  "bloqClass": "bloq-return-function-with-arguments",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Declarar función"
+      },
+      {
+        "id": "FUNCNAME",
+        "alias": "varInput",
+        "value": ""
+      },
+      {
+        "alias": "text",
+        "value": "contando con"
+      },
+      {
+        "bloqInputId": "ARGS",
+        "alias": "bloqInput",
+        "acceptType": "var",
+        "name": "d52eb00f-08ee-45ef-baa7-bbf9a3c27e53"
+      },
+      {
+        "position": "DOWN",
+        "alias": "text",
+        "value": "devuelve"
+      },
+      {
+        "position": "DOWN",
+        "bloqInputId": "RETURN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c914df06-459e-485b-ab38-8ce42c63fdab"
+      }
+    ]
+  ],
+  "createDynamicContent": "returnFunctions",
+  "returnType": {
+    "type": "fromInput",
+    "bloqInputId": "RETURN"
+  },
+  "arguments": {
+    "type": "fromInput",
+    "bloqInputId": "ARGS"
+  },
+  "code": "{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "voidFunction",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-void-function",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Declarar función"
+      },
+      {
+        "id": "FUNCNAME",
+        "alias": "varInput",
+        "value": ""
+      }
+    ]
+  ],
+  "createDynamicContent": "voidFunctions",
+  "returnType": {
+    "type": "simple",
+    "value": "void"
+  },
+  "code": "void {FUNCNAME} (){{STATEMENTS}}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "voidFunctionWithArguments",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "var",
+      "name": "158352db-579a-466b-aa9a-93596e62a565"
+    }
+  ],
+  "bloqClass": "bloq-void-function-with-arguments",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Declarar función"
+      },
+      {
+        "id": "FUNCNAME",
+        "alias": "varInput",
+        "value": ""
+      },
+      {
+        "alias": "text",
+        "value": "contando con"
+      },
+      {
+        "bloqInputId": "ARGS",
+        "alias": "bloqInput",
+        "acceptType": "var",
+        "name": "158352db-579a-466b-aa9a-93596e62a565"
+      }
+    ]
+  ],
+  "createDynamicContent": "voidFunctions",
+  "returnType": {
+    "type": "simple",
+    "value": "void"
+  },
+  "arguments": {
+    "type": "fromInput",
+    "bloqInputId": "ARGS"
+  },
+  "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}"
+});
+db.bitbloq_Bloqs.insert({
+  "name": "group",
+  "type": "group",
+  "connectors": [
+    {
+      "type": "connector--empty"
+    },
+    {
+      "type": "connector--empty"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ]
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "boolean",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-boolean",
+  "content": [
+    [
+      {
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "verdadero",
+            "value": "true"
+          },
+          {
+            "label": "falso",
+            "value": "false"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "{STATE}",
+  "returnType": {
+    "type": "simple",
+    "value": "bool"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "equalityOperations",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "4713e9f4-71b8-461d-a0d3-952fb14f22a8"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "594818a9-487d-422e-bc1e-7e2f4fcade6c"
+    }
+  ],
+  "bloqClass": "bloq-equality-operations",
+  "content": [
+    [
+      {
+        "bloqInputId": "ARG1",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "4713e9f4-71b8-461d-a0d3-952fb14f22a8"
+      },
+      {
+        "id": "OPERATOR",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "=",
+            "value": "="
+          },
+          {
+            "label": "!=",
+            "value": "!="
+          },
+          {
+            "label": ">",
+            "value": ">"
+          },
+          {
+            "label": ">=",
+            "value": ">="
+          },
+          {
+            "label": "<",
+            "value": "<"
+          },
+          {
+            "label": "<=",
+            "value": "<="
+          }
+        ]
+      },
+      {
+        "bloqInputId": "ARG2",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "594818a9-487d-422e-bc1e-7e2f4fcade6c"
+      }
+    ]
+  ],
+  "code": "{ARG1} {OPERATOR} {ARG2}",
+  "returnType": {
+    "type": "simple",
+    "value": "bool"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "logicOperations",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "86f81e31-c76d-41c0-9df2-c0d4c93f2c08"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "19242986-8884-4169-88e8-c79816e22625"
+    }
+  ],
+  "bloqClass": "bloq-logic-operations",
+  "content": [
+    [
+      {
+        "bloqInputId": "ARG1",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "86f81e31-c76d-41c0-9df2-c0d4c93f2c08"
+      },
+      {
+        "id": "OPERATOR",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "y",
+            "value": "&&"
+          },
+          {
+            "label": "o",
+            "value": "||"
+          }
+        ]
+      },
+      {
+        "bloqInputId": "ARG2",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "19242986-8884-4169-88e8-c79816e22625"
+      }
+    ]
+  ],
+  "code": "{ARG1} {OPERATOR} {ARG2}",
+  "returnType": {
+    "type": "simple",
+    "value": "bool"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "not",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "d5ae0a14-e60f-47e1-9913-91eb790fbc52"
+    }
+  ],
+  "bloqClass": "bloq-not",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "no"
+      },
+      {
+        "bloqInputId": "CONDITION",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "d5ae0a14-e60f-47e1-9913-91eb790fbc52"
+      }
+    ]
+  ],
+  "code": "!{CONDITION}",
+  "returnType": {
+    "type": "simple",
+    "value": "bool"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "name": "loopBloq",
+  "type": "group",
+  "connectors": [
+    {
+      "type": "connector--empty"
+    },
+    {
+      "type": "connector--empty"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-loop",
+  "headerText": "Loop",
+  "descriptionText": "Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques",
+  "content": [],
+  "code": "void loop(){{STATEMENTS}}"
+});
+db.bitbloq_Bloqs.insert({
+  "name": "setupBloq",
+  "type": "group",
+  "connectors": [
+    {
+      "type": "connector--empty"
+    },
+    {
+      "type": "connector--empty"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-setup",
+  "headerText": "Setup",
+  "descriptionText": "Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques",
+  "content": [],
+  "code": "void setup(){{STATEMENTS}}"
+});
+db.bitbloq_Bloqs.insert({
+  "name": "varsBloq",
+  "type": "group",
+  "connectors": [
+    {
+      "type": "connector--empty"
+    },
+    {
+      "type": "connector--empty"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-vars",
+  "headerText": "Variables globales y funciones",
+  "descriptionText": "Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques",
+  "content": [],
+  "code": "{STATEMENTS}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "basicOperations",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "56631b53-e7dc-448f-9b46-de34f2b4786b"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "679580bd-278c-4ef1-9d3e-316fb2b553df"
+    }
+  ],
+  "bloqClass": "bloq-basic-operations",
+  "content": [
+    [
+      {
+        "bloqInputId": "ARG1",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "56631b53-e7dc-448f-9b46-de34f2b4786b"
+      },
+      {
+        "id": "OPERATOR",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "+",
+            "value": "+"
+          },
+          {
+            "label": "-",
+            "value": "-"
+          },
+          {
+            "label": "x",
+            "value": "*"
+          },
+          {
+            "label": "/",
+            "value": "/"
+          },
+          {
+            "label": "^",
+            "value": "^"
+          }
+        ]
+      },
+      {
+        "bloqInputId": "ARG2",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "679580bd-278c-4ef1-9d3e-316fb2b553df"
+      }
+    ]
+  ],
+  "code": "'{OPERATOR}' === '^'? 'pow({ARG1},{ARG2})' : '{ARG1} {OPERATOR} {ARG2}'",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "map",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "542f9f60-29fa-4593-bddf-0a3cc05fac61"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "86e9f6f5-daa5-44d9-aae6-4cad0b45985f"
+    }
+  ],
+  "bloqClass": "bloq-map",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Mapear"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "542f9f60-29fa-4593-bddf-0a3cc05fac61"
+      },
+      {
+        "alias": "text",
+        "value": "valor entre [0-"
+      },
+      {
+        "bloqInputId": "MAXVAL",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "86e9f6f5-daa5-44d9-aae6-4cad0b45985f"
+      },
+      {
+        "alias": "text",
+        "value": "]"
+      }
+    ]
+  ],
+  "code": "map({VAR},0,1023,0,{MAXVAL})",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "mapAdvanced",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "ec724a5b-63b7-4969-91a6-ae450c035304"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "d2edd935-983b-4288-9312-37203e30e937"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "fcbfbdd1-6081-4179-8c8d-2f8f6d68174f"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "21e86976-a120-48af-b3f2-94e29856cb03"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "eb26ed37-ce07-4a09-94f4-08dc8bbcc39a"
+    }
+  ],
+  "bloqClass": "bloq-map-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Mapear"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "ec724a5b-63b7-4969-91a6-ae450c035304"
+      },
+      {
+        "alias": "text",
+        "value": "de ["
+      },
+      {
+        "bloqInputId": "INITMIN",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "d2edd935-983b-4288-9312-37203e30e937"
+      },
+      {
+        "alias": "text",
+        "value": "-"
+      },
+      {
+        "bloqInputId": "INITMAX",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "fcbfbdd1-6081-4179-8c8d-2f8f6d68174f"
+      },
+      {
+        "alias": "text",
+        "value": "] a ["
+      },
+      {
+        "bloqInputId": "FINMIN",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "21e86976-a120-48af-b3f2-94e29856cb03"
+      },
+      {
+        "alias": "text",
+        "value": "-"
+      },
+      {
+        "bloqInputId": "FINMAX",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "eb26ed37-ce07-4a09-94f4-08dc8bbcc39a"
+      },
+      {
+        "alias": "text",
+        "value": "]"
+      }
+    ]
+  ],
+  "code": "map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX})",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "mathOperations",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "61d6b332-da2c-4a64-9d46-8cac5dc3f08e"
+    }
+  ],
+  "bloqClass": "bloq-math-operations",
+  "content": [
+    [
+      {
+        "id": "OPERATOR",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Raíz cuadrada",
+            "value": "sqrt"
+          },
+          {
+            "label": "Valor absoluto",
+            "value": "abs"
+          },
+          {
+            "label": "ln",
+            "value": "log"
+          },
+          {
+            "label": "log10",
+            "value": "log10"
+          },
+          {
+            "label": "e^",
+            "value": "exp"
+          }
+        ]
+      },
+      {
+        "bloqInputId": "ARG",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "61d6b332-da2c-4a64-9d46-8cac5dc3f08e"
+      }
+    ]
+  ],
+  "code": "{OPERATOR}({ARG})",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "number",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-number",
+  "content": [
+    [
+      {
+        "id": "VALUE",
+        "alias": "numberInput",
+        "value": 0
+      }
+    ]
+  ],
+  "code": "{VALUE}",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "random",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "fcbbbb38-bbee-4b73-a0d4-0239d0d9d1ad"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "5dd86cf3-6c1a-47ce-8baa-ca05dd2dcfda"
+    }
+  ],
+  "bloqClass": "bloq-random",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Aleatorio entre"
+      },
+      {
+        "bloqInputId": "ARG1",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "fcbbbb38-bbee-4b73-a0d4-0239d0d9d1ad"
+      },
+      {
+        "alias": "text",
+        "value": "y"
+      },
+      {
+        "bloqInputId": "ARG2",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "5dd86cf3-6c1a-47ce-8baa-ca05dd2dcfda"
+      }
+    ]
+  ],
+  "code": "random({ARG1},{ARG2}+1)",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "output",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ]
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "statement",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ]
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement-input",
+  "name": "statement-input",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ]
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "length",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "string",
+      "name": "dca368b9-c97b-4dd7-b434-c1b1ffd40181"
+    }
+  ],
+  "bloqClass": "bloq-length",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "longitud"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": "string",
+        "name": "dca368b9-c97b-4dd7-b434-c1b1ffd40181"
+      }
+    ]
+  ],
+  "code": "{TEXT}.length()",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "string",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-string",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "\""
+      },
+      {
+        "id": "TEXT",
+        "alias": "stringInput",
+        "value": "Texto"
+      },
+      {
+        "alias": "text",
+        "value": "\""
+      }
+    ]
+  ],
+  "code": "{TEXT}",
+  "returnType": {
+    "type": "simple",
+    "value": "string"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "stringCreate",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "string",
+      "name": "d1ff53a1-f84c-42b2-9fbf-370912a1bd8a"
+    }
+  ],
+  "bloqClass": "bloq-string-create",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "crear texto con"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": "string",
+        "name": "d1ff53a1-f84c-42b2-9fbf-370912a1bd8a"
+      }
+    ]
+  ],
+  "code": "String({TEXT})",
+  "returnType": {
+    "type": "simple",
+    "value": "string"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "hwVariable",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-hw-variable-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Variable (componentes)"
+      },
+      {
+        "id": "VALUE",
+        "alias": "dynamicDropdown",
+        "options": "varComponents"
+      }
+    ]
+  ],
+  "code": "{VALUE}",
+  "returnType": {
+    "type": "simple",
+    "value": "var"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "swVariable",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-sw-variable-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Variable (software)"
+      },
+      {
+        "id": "VALUE",
+        "alias": "dynamicDropdown",
+        "options": "softwareVars"
+      }
+    ]
+  ],
+  "code": "{VALUE}",
+  "returnType": {
+    "type": "simple",
+    "value": "var"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "arrayVariable",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-array-variable",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Variable"
+      },
+      {
+        "id": "VAR",
+        "alias": "dynamicDropdown",
+        "options": "softwareVars"
+      },
+      {
+        "alias": "text",
+        "value": "["
+      },
+      {
+        "id": "POSITION",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "alias": "text",
+        "value": "]"
+      }
+    ]
+  ],
+  "code": "{VAR}[{POSITION}]",
+  "returnType": "{VAR.connectionType}"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "declareVariable",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "d1dceac1-b7b0-4e13-8fd3-30e8574f3178"
+    }
+  ],
+  "bloqClass": "bloq-declare-variable",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Declarar variable"
+      },
+      {
+        "id": "NAME",
+        "alias": "varInput",
+        "value": ""
+      },
+      {
+        "alias": "text",
+        "value": "="
+      },
+      {
+        "bloqInputId": "VALUE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "d1dceac1-b7b0-4e13-8fd3-30e8574f3178"
+      }
+    ]
+  ],
+  "returnType": {
+    "type": "fromInput",
+    "bloqInputId": "VALUE"
+  },
+  "createDynamicContent": "softwareVars",
+  "code": "{VALUE.connectionType} {NAME} = {VALUE};"
+});
+db.bitbloq_Bloqs.insert({
+  "type": "output",
+  "name": "selectVariable",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-select-variable",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Variable"
+      },
+      {
+        "id": "VAR",
+        "alias": "dynamicDropdown",
+        "options": "softwareVars"
+      }
+    ]
+  ],
+  "code": "{VAR}",
+  "returnType": {
+    "type": "fromDynamicDropdown",
+    "idDropdown": "VAR",
+    "options": "softwareVars"
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "setVariable",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "NAME",
+        "options": "softwareVars"
+      },
+      "name": "1320a06f-ef3d-4b2a-bda8-3b86e781b5f1"
+    }
+  ],
+  "bloqClass": "bloq-set-variable",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Variable"
+      },
+      {
+        "id": "NAME",
+        "alias": "dynamicDropdown",
+        "options": "softwareVars"
+      },
+      {
+        "alias": "text",
+        "value": "="
+      },
+      {
+        "bloqInputId": "VALUE",
+        "alias": "bloqInput",
+        "acceptType": {
+          "type": "fromDynamicDropdown",
+          "idDropdown": "NAME",
+          "options": "softwareVars"
+        },
+        "name": "1320a06f-ef3d-4b2a-bda8-3b86e781b5f1"
+      }
+    ]
+  ],
+  "code": "{NAME} = {VALUE};"
+});

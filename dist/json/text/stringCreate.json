@@ -1,0 +1,36 @@
+{
+  "type": "output",
+  "name": "stringCreate",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "string",
+      "name": "d1ff53a1-f84c-42b2-9fbf-370912a1bd8a"
+    }
+  ],
+  "bloqClass": "bloq-string-create",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "crear texto con"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": "string",
+        "name": "d1ff53a1-f84c-42b2-9fbf-370912a1bd8a"
+      }
+    ]
+  ],
+  "code": "String({TEXT})",
+  "returnType": {
+    "type": "simple",
+    "value": "string"
+  }
+}

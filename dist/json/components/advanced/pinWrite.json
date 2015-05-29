@@ -1,0 +1,52 @@
+{
+  "type": "statement",
+  "name": "pinWriteAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "617c6fab-5cc6-41c9-bbe5-30cf9b08f3ca"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "b4f8bd1c-3d06-4bd9-b4e2-c2988eea5650"
+    }
+  ],
+  "bloqClass": "bloq-pin-writte-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Escribir en el pin"
+      },
+      {
+        "bloqInputId": "PIN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "617c6fab-5cc6-41c9-bbe5-30cf9b08f3ca"
+      },
+      {
+        "alias": "text",
+        "value": "el dato"
+      },
+      {
+        "bloqInputId": "DATA",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "b4f8bd1c-3d06-4bd9-b4e2-c2988eea5650"
+      }
+    ]
+  ],
+  "code": "'{PIN}'.indexOf('A') === 0 ? 'analogWrite({PIN},{DATA});' : 'digitalWrite({PIN},{DATA});'"
+}

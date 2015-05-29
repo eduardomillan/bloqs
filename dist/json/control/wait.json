@@ -1,0 +1,36 @@
+{
+  "type": "statement",
+  "name": "wait",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "2092cd30-7177-4617-bd97-7673b19d43d2"
+    }
+  ],
+  "bloqClass": "bloq-wait",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Esperar"
+      },
+      {
+        "bloqInputId": "TIME",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "2092cd30-7177-4617-bd97-7673b19d43d2"
+      }
+    ]
+  ],
+  "code": "delay({TIME});"
+}

@@ -1,0 +1,84 @@
+{
+  "type": "statement",
+  "name": "oscillatorAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "b886e12e-e8c8-41f0-96c9-62715d3a7f07"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "afdda42b-b0fd-4093-8e94-a84c5a6f29cb"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "31e1cb05-db33-4f11-beb0-fd6797cb5f86"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "9814a690-07d1-4be7-9848-a8156f97d4cb"
+    }
+  ],
+  "bloqClass": "bloq-oscillator-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Oscilar servo"
+      },
+      {
+        "bloqInputId": "OSCILLATOR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "b886e12e-e8c8-41f0-96c9-62715d3a7f07"
+      },
+      {
+        "alias": "text",
+        "value": "alrededor de"
+      },
+      {
+        "bloqInputId": "PHASE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "afdda42b-b0fd-4093-8e94-a84c5a6f29cb"
+      },
+      {
+        "alias": "text",
+        "value": "con amplitud"
+      },
+      {
+        "bloqInputId": "AMPLITUDE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "31e1cb05-db33-4f11-beb0-fd6797cb5f86"
+      },
+      {
+        "alias": "text",
+        "value": "con velocidad"
+      },
+      {
+        "bloqInputId": "SPEED",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "9814a690-07d1-4be7-9848-a8156f97d4cb"
+      }
+    ]
+  ],
+  "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();"
+}

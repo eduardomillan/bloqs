@@ -1,0 +1,29 @@
+{
+  "type": "output",
+  "name": "swVariable",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-sw-variable-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Variable (software)"
+      },
+      {
+        "id": "VALUE",
+        "alias": "dynamicDropdown",
+        "options": "softwareVars"
+      }
+    ]
+  ],
+  "code": "{VALUE}",
+  "returnType": {
+    "type": "simple",
+    "value": "var"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "type": "statement",
+  "name": "servoAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "036c279b-6eb1-4b99-8c3f-d8683d337c17"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "b6421d0f-6ab2-4231-9e00-4a3fa592de58"
+    }
+  ],
+  "bloqClass": "bloq-servo-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Mover"
+      },
+      {
+        "bloqInputId": "SERVO",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "036c279b-6eb1-4b99-8c3f-d8683d337c17"
+      },
+      {
+        "alias": "text",
+        "value": "a"
+      },
+      {
+        "bloqInputId": "POSITION",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "b6421d0f-6ab2-4231-9e00-4a3fa592de58"
+      },
+      {
+        "alias": "text",
+        "value": "grados"
+      }
+    ]
+  ],
+  "code": "{SERVO}.write({POSITION})"
+}

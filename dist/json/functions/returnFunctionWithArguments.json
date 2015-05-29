@@ -1,0 +1,76 @@
+{
+  "type": "statement-input",
+  "name": "returnFunctionWithArguments",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "var",
+      "name": "d52eb00f-08ee-45ef-baa7-bbf9a3c27e53"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "c914df06-459e-485b-ab38-8ce42c63fdab"
+    }
+  ],
+  "bloqClass": "bloq-return-function-with-arguments",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Declarar función"
+      },
+      {
+        "id": "FUNCNAME",
+        "alias": "varInput",
+        "value": ""
+      },
+      {
+        "alias": "text",
+        "value": "contando con"
+      },
+      {
+        "bloqInputId": "ARGS",
+        "alias": "bloqInput",
+        "acceptType": "var",
+        "name": "d52eb00f-08ee-45ef-baa7-bbf9a3c27e53"
+      },
+      {
+        "position": "DOWN",
+        "alias": "text",
+        "value": "devuelve"
+      },
+      {
+        "position": "DOWN",
+        "bloqInputId": "RETURN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c914df06-459e-485b-ab38-8ce42c63fdab"
+      }
+    ]
+  ],
+  "createDynamicContent": "returnFunctions",
+  "returnType": {
+    "type": "fromInput",
+    "bloqInputId": "RETURN"
+  },
+  "arguments": {
+    "type": "fromInput",
+    "bloqInputId": "ARGS"
+  },
+  "code": "{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
+}

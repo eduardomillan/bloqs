@@ -1,0 +1,50 @@
+{
+  "type": "statement",
+  "name": "lcdTurnOnOffAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "e136870c-e605-48bc-927a-3c77ec5ef282"
+    }
+  ],
+  "bloqClass": "bloq-lcd-turn-on-on-advanced",
+  "content": [
+    [
+      {
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Encender",
+            "value": "HIGH"
+          },
+          {
+            "label": "Apagar",
+            "value": "LOW"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "la luz del LCD"
+      },
+      {
+        "bloqInputId": "LCD",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "e136870c-e605-48bc-927a-3c77ec5ef282"
+      }
+    ]
+  ],
+  "code": "{LCD}.setBacklight({STATE});"
+}

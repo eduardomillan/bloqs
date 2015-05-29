@@ -1,0 +1,44 @@
+{
+  "type": "statement-input",
+  "name": "case",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "bce358eb-cbba-4b18-9754-f313a8315583"
+    }
+  ],
+  "bloqClass": "bloq-case",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "si es igual a"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "bce358eb-cbba-4b18-9754-f313a8315583"
+      },
+      {
+        "alias": "text",
+        "value": "ejecutar:"
+      }
+    ]
+  ],
+  "code": "case {VAR}:{{STATEMENTS}break;}"
+}

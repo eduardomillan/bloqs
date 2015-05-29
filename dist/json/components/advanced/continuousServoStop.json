@@ -1,0 +1,36 @@
+{
+  "type": "statement",
+  "name": "continuousServoStopAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "c76b9cd7-202a-4541-96c0-9f48fa649acf"
+    }
+  ],
+  "bloqClass": "bloq-continuous-servo-stop-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Parar servo"
+      },
+      {
+        "bloqInputId": "SERVO",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c76b9cd7-202a-4541-96c0-9f48fa649acf"
+      }
+    ]
+  ],
+  "code": "{SERVO}.write(90);"
+}

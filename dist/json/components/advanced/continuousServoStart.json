@@ -1,0 +1,54 @@
+{
+  "type": "statement",
+  "name": "continuousServoStartAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "c707bcc4-2341-4bf8-9134-2d6d955e7c1f"
+    }
+  ],
+  "bloqClass": "bloq-continuous-servo-start-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Girar servo"
+      },
+      {
+        "bloqInputId": "SERVO",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c707bcc4-2341-4bf8-9134-2d6d955e7c1f"
+      },
+      {
+        "alias": "text",
+        "value": "en sentido"
+      },
+      {
+        "id": "DIRECTION",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "horario",
+            "value": "0"
+          },
+          {
+            "label": "antihorario",
+            "value": "180"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "{SERVO}.write({DIRECTION});"
+}
