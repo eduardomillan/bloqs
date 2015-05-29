@@ -19,7 +19,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             options: 'oscillators'
         }]
     ],
-    code: '{OSCILLATOR}.start();'
+    code: '{OSCILLATOR}.Play();'
 });
 
 utils.generateBloqInputConnectors(bloq);

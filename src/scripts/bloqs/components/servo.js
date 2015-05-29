@@ -29,7 +29,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'grados'
         }]
     ],
-    code: '{SERVO}.write({POSITION})'
+    code: '{SERVO}.write({POSITION});'
 });
 
 utils.generateBloqInputConnectors(bloq);

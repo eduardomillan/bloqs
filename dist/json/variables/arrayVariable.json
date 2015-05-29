@@ -35,5 +35,9 @@
     ]
   ],
   "code": "{VAR}[{POSITION}]",
-  "returnType": "{VAR.connectionType}"
+  "returnType": {
+    "type": "fromDynamicDropdown",
+    "idDropdown": "VAR",
+    "options": "softwareVars"
+  }
 }

@@ -23050,23 +23050,23 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'alrededor de'
         }, {
-            bloqInputId: 'PHASE',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'PHASE',
+            alias: 'numberInput',
+            value: 0,
         }, {
             alias: 'text',
             value: 'con amplitud'
         }, {
-            bloqInputId: 'AMPLITUDE',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'AMPLITUDE',
+            alias: 'numberInput',
+            value: 0,
         }, {
             alias: 'text',
             value: 'con velocidad'
         }, {
-            bloqInputId: 'SPEED',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'SPEED',
+            alias: 'numberInput',
+            value: 0,
         }]
     ],
     code: '{OSCILLATOR}.SetO({PHASE});{OSCILLATOR}.SetA({AMPLITUDE});{OSCILLATOR}.SetT({SPEED});{OSCILLATOR}.refresh();'
@@ -23097,7 +23097,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             options: 'oscillators'
         }]
     ],
-    code: '{OSCILLATOR}.start();'
+    code: '{OSCILLATOR}.Play();'
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -23125,7 +23125,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             options: 'oscillators'
         }]
     ],
-    code: '{OSCILLATOR}.stop();'
+    code: '{OSCILLATOR}.Stop();'
 
 });
 utils.generateBloqInputConnectors(bloq);
@@ -23198,7 +23198,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'grados'
         }]
     ],
-    code: '{SERVO}.write({POSITION})'
+    code: '{SERVO}.write({POSITION});'
 });
 
 utils.generateBloqInputConnectors(bloq);
@@ -24655,7 +24655,11 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{VAR}[{POSITION}]',
-    returnType: '{VAR.connectionType}'
+    returnType: {
+        type: 'fromDynamicDropdown',
+        idDropdown: 'VAR',
+        options: 'softwareVars'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
