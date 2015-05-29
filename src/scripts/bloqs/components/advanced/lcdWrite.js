@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'advancedLcdWrite',
+    name: 'lcdWriteAdvanced',
     bloqClass: 'bloq-lcd-writte-advanced',
     content: [
         [{

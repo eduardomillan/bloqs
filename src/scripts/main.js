@@ -56,7 +56,7 @@ var componentsArray = {
         value: '2',
         label: 'servo_002'
     }],
-    contServos: [{
+    continuousServos: [{
         value: '1',
         label: 'contServo_001'
     }, {

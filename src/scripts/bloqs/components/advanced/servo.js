@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'advancedServo',
+    name: 'servoAdvanced',
     bloqClass: 'bloq-servo-advanced',
     content: [
         [{

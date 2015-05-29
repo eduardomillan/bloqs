@@ -16,7 +16,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'SERVO',
             alias: 'dynamicDropdown',
-            options: 'contServos'
+            options: 'continuousServos'
         }]
     ],
     code: '{SERVO}.write(90);'

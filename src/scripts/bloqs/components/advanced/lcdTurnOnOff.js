@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'advancedLcdTurnOnOff',
+    name: 'lcdTurnOnOffAdvanced',
     bloqClass: 'bloq-lcd-turn-on-on-advanced',
     content: [
         [{

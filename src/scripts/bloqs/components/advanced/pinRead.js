@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'advancedPinRead',
+    name: 'pinReadAdvanced',
     bloqClass: 'bloq-pin-read-advanced',
     content: [
         [{

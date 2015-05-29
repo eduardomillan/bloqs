@@ -6,7 +6,7 @@ var OutputBloq = require('./../../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'advancedturnOnOff',
+    name: 'turnOnOffAdvanced',
     bloqClass: 'bloq-turn-on-off-advanced',
     content: [
         [{
