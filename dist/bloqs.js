@@ -22036,7 +22036,7 @@ module.exports.Bloq = Bloq;
 module.exports.connectors = connectors;
 module.exports.bloqs = bloqs;
 module.exports.removeBloq = removeBloq;
-},{"./utils":86,"jquery":1,"lodash":2}],4:[function(require,module,exports){
+},{"./utils":87,"jquery":1,"lodash":2}],4:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22061,7 +22061,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 module.exports = bloq;
 
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],5:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],5:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22086,7 +22086,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 });
 
 module.exports = bloq;
-},{"./../statementBloq":71,"lodash":2}],6:[function(require,module,exports){
+},{"./../statementBloq":72,"lodash":2}],6:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22136,7 +22136,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],7:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],7:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22158,7 +22158,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             value: 'recibir'
         }]
     ],
-    code: '{SERIAL}.read()',
+    code: '{SERIAL}.readString()',
     returnType: {
         type: 'simple',
         value: 'string'
@@ -22167,7 +22167,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],8:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],8:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22208,7 +22208,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],9:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],9:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22253,7 +22253,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../statementBloq":71,"lodash":2}],10:[function(require,module,exports){
+},{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],10:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22296,7 +22296,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../statementBloq":71,"lodash":2}],11:[function(require,module,exports){
+},{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],11:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22326,7 +22326,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../statementBloq":71,"lodash":2}],12:[function(require,module,exports){
+},{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],12:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22365,7 +22365,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../statementBloq":71,"lodash":2}],13:[function(require,module,exports){
+},{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],13:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22402,7 +22402,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../statementBloq":71,"lodash":2}],14:[function(require,module,exports){
+},{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],14:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22441,7 +22441,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../statementBloq":71,"lodash":2}],15:[function(require,module,exports){
+},{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],15:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22491,7 +22491,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../statementBloq":71,"lodash":2}],16:[function(require,module,exports){
+},{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],16:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22520,7 +22520,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../statementBloq":71,"lodash":2}],17:[function(require,module,exports){
+},{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],17:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22549,7 +22549,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../statementBloq":71,"lodash":2}],18:[function(require,module,exports){
+},{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],18:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22578,7 +22578,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../outputBloq":70,"lodash":2}],19:[function(require,module,exports){
+},{"./../../../utils":87,"./../../outputBloq":71,"lodash":2}],19:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22616,7 +22616,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../statementBloq":71,"lodash":2}],20:[function(require,module,exports){
+},{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],20:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22645,7 +22645,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../outputBloq":70,"lodash":2}],21:[function(require,module,exports){
+},{"./../../../utils":87,"./../../outputBloq":71,"lodash":2}],21:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22684,7 +22684,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../../utils":86,"./../../statementBloq":71,"lodash":2}],22:[function(require,module,exports){
+},{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],22:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22749,7 +22749,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],23:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],23:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22792,7 +22792,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],24:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],24:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22822,7 +22822,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],25:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],25:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22860,7 +22860,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],26:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],26:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22896,7 +22896,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],27:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],27:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22934,7 +22934,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],28:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],28:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -22983,7 +22983,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],29:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],29:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23011,7 +23011,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],30:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],30:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23039,7 +23039,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],31:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],31:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23050,7 +23050,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'readSensor',
-    bloqClass: 'bloq-read-dropdown',
+    bloqClass: 'bloq-read-sensor',
     content: [
         [{
             alias: 'text',
@@ -23074,7 +23074,7 @@ utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
 
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],32:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],32:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23112,7 +23112,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],33:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],33:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23136,7 +23136,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],34:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],34:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23166,7 +23166,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],35:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],35:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23191,7 +23191,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],36:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],36:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23215,7 +23215,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],37:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],37:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23239,7 +23239,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],38:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],38:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23270,7 +23270,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],39:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],39:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23325,7 +23325,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],40:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],40:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23356,7 +23356,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],41:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],41:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23385,7 +23385,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],42:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],42:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23413,7 +23413,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],43:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],43:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23444,7 +23444,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],44:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],44:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23490,7 +23490,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],45:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],45:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23527,7 +23527,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],46:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],46:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23560,7 +23560,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],47:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],47:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23593,7 +23593,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],48:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],48:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23621,7 +23621,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],49:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],49:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23663,7 +23663,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],50:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],50:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23716,7 +23716,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],51:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],51:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23749,7 +23749,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],52:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],52:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23793,7 +23793,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementInputBloq":72,"lodash":2}],53:[function(require,module,exports){
+},{"./../../utils":87,"./../statementInputBloq":73,"lodash":2}],53:[function(require,module,exports){
 'use strict';
 
 var bloq = {
@@ -23812,6 +23812,41 @@ var bloq = {
 
 module.exports = bloq;
 },{}],54:[function(require,module,exports){
+/*global require */
+'use strict';
+
+var _ = require('lodash'),
+    utils = require('./../../../utils'),
+    OutputBloq = require('./../../outputBloq');
+
+var bloq = _.merge(_.clone(OutputBloq, true), {
+
+    name: 'boolArrayAdvanced',
+    bloqClass: 'bloq-number',
+    content: [
+        [{
+            alias: 'text',
+            value: 'array con tamaño'
+        }, {
+            bloqInputId: 'VALUE',
+            alias: 'bloqInput',
+            acceptType: 'all'
+        }, {
+            alias: 'text',
+            value: 'y tipo bool'
+        }]
+    ],
+    code:  '(bool *)malloc({VALUE}*sizeof(bool))',
+    returnType: {
+        type: 'simple',
+        value: 'bool *'
+    }
+});
+
+utils.generateBloqInputConnectors(bloq);
+
+module.exports = bloq;
+},{"./../../../utils":87,"./../../outputBloq":71,"lodash":2}],55:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23846,7 +23881,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],55:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],56:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23882,7 +23917,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],56:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],57:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23938,7 +23973,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],57:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],58:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -23981,7 +24016,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],58:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],59:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24013,7 +24048,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],59:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],60:[function(require,module,exports){
  /*global require */
  'use strict';
 
@@ -24026,7 +24061,7 @@ module.exports = bloq;
      name: 'loopBloq',
      bloqClass: 'bloq-loop',
      headerText: 'Loop',
-     descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
+     descriptionText: 'Crea el programa que se va a ejecutar continuamente después del Setup.',
      content: [],
      code: 'void loop(){{STATEMENTS}}'
 
@@ -24036,7 +24071,7 @@ module.exports = bloq;
 
 
  module.exports = bloq;
-},{"./../../utils":86,"./../groupBloq":53,"lodash":2}],60:[function(require,module,exports){
+},{"./../../utils":87,"./../groupBloq":53,"lodash":2}],61:[function(require,module,exports){
  /*global require */
  'use strict';
 
@@ -24049,7 +24084,7 @@ module.exports = bloq;
      name: 'setupBloq',
      bloqClass: 'bloq-setup',
      headerText: 'Setup',
-     descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
+     descriptionText: 'Indica lo que quieres que se ejecute al inicio del programa y sólo una única vez.',
      content: [],
      code: 'void setup(){{STATEMENTS}}'
  });
@@ -24058,7 +24093,7 @@ module.exports = bloq;
 
 
  module.exports = bloq;
-},{"./../../utils":86,"./../groupBloq":53,"lodash":2}],61:[function(require,module,exports){
+},{"./../../utils":87,"./../groupBloq":53,"lodash":2}],62:[function(require,module,exports){
  /*global require */
  'use strict';
 
@@ -24080,7 +24115,7 @@ module.exports = bloq;
 
 
  module.exports = bloq;
-},{"./../../utils":86,"./../groupBloq":53,"lodash":2}],62:[function(require,module,exports){
+},{"./../../utils":87,"./../groupBloq":53,"lodash":2}],63:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24097,9 +24132,9 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'text',
             value: 'array con tamaño'
         }, {
-            id: 'VALUE',
-            alias: 'numberInput',
-            value: 0
+            bloqInputId: 'VALUE',
+            alias: 'bloqInput',
+            acceptType: 'all'
         }, {
             alias: 'text',
             value: 'y tipo'
@@ -24126,7 +24161,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../../utils":86,"./../../outputBloq":70,"lodash":2}],63:[function(require,module,exports){
+},{"./../../../utils":87,"./../../outputBloq":71,"lodash":2}],64:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24179,7 +24214,7 @@ utils.generateBloqInputConnectors(bloq);
 
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],64:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],65:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24221,7 +24256,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],65:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],66:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24284,7 +24319,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],66:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],67:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24333,7 +24368,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],67:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],68:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24362,7 +24397,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],68:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],69:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24397,7 +24432,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],69:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],70:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24436,7 +24471,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],70:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],71:[function(require,module,exports){
 'use strict';
 
 var bloq = {
@@ -24450,7 +24485,7 @@ var bloq = {
 };
 
 module.exports = bloq;
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 'use strict';
 
 var bloq = {
@@ -24469,7 +24504,7 @@ var bloq = {
 };
 
 module.exports = bloq;
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 'use strict';
 
 var bloq = {
@@ -24489,7 +24524,7 @@ var bloq = {
 };
 
 module.exports = bloq;
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24506,9 +24541,9 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'text',
             value: 'array con tamaño'
         }, {
-            id: 'VALUE',
-            alias: 'numberInput',
-            value: 0
+            bloqInputId: 'VALUE',
+            alias: 'bloqInput',
+            acceptType: 'all'
         }, {
             alias: 'text',
             value: 'y tipo'
@@ -24535,7 +24570,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../../utils":86,"./../../outputBloq":70,"lodash":2}],74:[function(require,module,exports){
+},{"./../../../utils":87,"./../../outputBloq":71,"lodash":2}],75:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24567,7 +24602,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],75:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],76:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24602,7 +24637,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],76:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],77:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24637,7 +24672,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],77:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],78:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24669,7 +24704,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],78:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],79:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24698,7 +24733,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 });
 
 module.exports = bloq;
-},{"./../../outputBloq":70,"lodash":2}],79:[function(require,module,exports){
+},{"./../../outputBloq":71,"lodash":2}],80:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24727,7 +24762,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 });
 
 module.exports = bloq;
-},{"./../../outputBloq":70,"lodash":2}],80:[function(require,module,exports){
+},{"./../../outputBloq":71,"lodash":2}],81:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24771,7 +24806,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],81:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],82:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24810,7 +24845,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],82:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],83:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24843,7 +24878,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../outputBloq":70,"lodash":2}],83:[function(require,module,exports){
+},{"./../../utils":87,"./../outputBloq":71,"lodash":2}],84:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24893,7 +24928,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],84:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],85:[function(require,module,exports){
 /*global require */
 'use strict';
 
@@ -24932,7 +24967,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-},{"./../../utils":86,"./../statementBloq":71,"lodash":2}],85:[function(require,module,exports){
+},{"./../../utils":87,"./../statementBloq":72,"lodash":2}],86:[function(require,module,exports){
 'use strict';
 
 var $ = require('jquery');
@@ -25097,7 +25132,7 @@ $field.on('dragend', function() {
 // // var bloq10 =
 // createBloq(ifSchema, '250px','900px');
 
-},{"./bloq":3,"./bloqs/mathematics/advanced/numberArrayAdvanced":62,"./bloqs/variables/declareVariable":81,"jquery":1}],86:[function(require,module,exports){
+},{"./bloq":3,"./bloqs/mathematics/advanced/numberArrayAdvanced":63,"./bloqs/variables/declareVariable":82,"jquery":1}],87:[function(require,module,exports){
 /*jshint bitwise: false*/
 /*global require */
 'use strict';
@@ -25701,5 +25736,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86])
+},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,28,24,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87])
 ;

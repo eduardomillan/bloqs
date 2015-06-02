@@ -10,7 +10,7 @@
      name: 'loopBloq',
      bloqClass: 'bloq-loop',
      headerText: 'Loop',
-     descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
+     descriptionText: 'Crea el programa que se va a ejecutar continuamente después del Setup.',
      content: [],
      code: 'void loop(){{STATEMENTS}}'
 

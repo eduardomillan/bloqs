@@ -19,7 +19,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             value: 'recibir'
         }]
     ],
-    code: '{SERIAL}.read()',
+    code: '{SERIAL}.readString()',
     returnType: {
         type: 'simple',
         value: 'string'

@@ -1,6 +1,6 @@
 {
   "type": "output",
-  "name": "not",
+  "name": "boolArrayAdvanced",
   "connectors": [
     {
       "type": "connector--output",
@@ -10,27 +10,31 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "c240b6e3-9cf7-4176-8877-e4ea721d2355"
+      "name": "235c4e83-5414-4761-a4dc-1e58b2a83ba4"
     }
   ],
-  "bloqClass": "bloq-not",
+  "bloqClass": "bloq-number",
   "content": [
     [
       {
         "alias": "text",
-        "value": "no"
+        "value": "array con tamaño"
       },
       {
-        "bloqInputId": "CONDITION",
+        "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "c240b6e3-9cf7-4176-8877-e4ea721d2355"
+        "name": "235c4e83-5414-4761-a4dc-1e58b2a83ba4"
+      },
+      {
+        "alias": "text",
+        "value": "y tipo bool"
       }
     ]
   ],
-  "code": "!{CONDITION}",
+  "code": "(bool *)malloc({VALUE}*sizeof(bool))",
   "returnType": {
     "type": "simple",
-    "value": "bool"
+    "value": "bool *"
   }
 }

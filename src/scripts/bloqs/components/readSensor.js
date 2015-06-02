@@ -8,7 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'readSensor',
-    bloqClass: 'bloq-read-dropdown',
+    bloqClass: 'bloq-read-sensor',
     content: [
         [{
             alias: 'text',

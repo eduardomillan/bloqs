@@ -5,6 +5,12 @@
     {
       "type": "connector--output",
       "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "6d364901-9c5a-4b6c-a3a2-23363779920a"
     }
   ],
   "bloqClass": "bloq-number",
@@ -15,9 +21,10 @@
         "value": "array con tamaño"
       },
       {
-        "id": "VALUE",
-        "alias": "numberInput",
-        "value": 0
+        "bloqInputId": "VALUE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "6d364901-9c5a-4b6c-a3a2-23363779920a"
       },
       {
         "alias": "text",
