@@ -1,33 +1,33 @@
 {
   "type": "output",
-  "name": "string",
+  "name": "boolArray",
   "connectors": [
     {
       "type": "connector--output",
       "accept": "connector--input"
     }
   ],
-  "bloqClass": "bloq-string",
+  "bloqClass": "bloq-number",
   "content": [
     [
       {
         "alias": "text",
-        "value": "\""
+        "value": "array con tamaño"
       },
       {
-        "id": "TEXT",
-        "alias": "stringInput",
-        "value": "Texto"
+        "id": "VALUE",
+        "alias": "numberInput",
+        "value": 0
       },
       {
         "alias": "text",
-        "value": "\""
+        "value": "y tipo bool"
       }
     ]
   ],
-  "code": "{TEXT}",
+  "code": "(bool *)malloc({VALUE}*sizeof(bool))",
   "returnType": {
     "type": "simple",
-    "value": "String"
+    "value": "bool *"
   }
 }

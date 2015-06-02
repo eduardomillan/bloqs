@@ -7,25 +7,25 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'string',
-    bloqClass: 'bloq-string',
+    name: 'boolArray',
+    bloqClass: 'bloq-number',
     content: [
         [{
             alias: 'text',
-            value: '"'
+            value: 'array con tamaño'
         }, {
-            id: 'TEXT',
-            alias: 'stringInput',
-            value: 'Texto'
+            id: 'VALUE',
+            alias: 'numberInput',
+            value: 0
         }, {
             alias: 'text',
-            value: '"'
+            value: 'y tipo bool'
         }]
     ],
-    code: '{TEXT}',
+    code:  '(bool *)malloc({VALUE}*sizeof(bool))',
     returnType: {
         type: 'simple',
-        value: 'String'
+        value: 'bool *'
     }
 });
 

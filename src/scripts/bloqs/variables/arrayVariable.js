@@ -33,6 +33,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'fromDynamicDropdown',
         idDropdown: 'VAR',
+        pointer: 'true',
         options: 'softwareVars'
     }
 });

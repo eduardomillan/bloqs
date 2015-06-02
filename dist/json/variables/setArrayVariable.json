@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "setVariable",
+  "name": "setArrayVariable",
   "connectors": [
     {
       "type": "connector--top",
@@ -16,9 +16,10 @@
       "acceptType": {
         "type": "fromDynamicDropdown",
         "idDropdown": "NAME",
+        "pointer": "true",
         "options": "softwareVars"
       },
-      "name": "fed53edc-933b-4d2b-9639-5fa6dbd135a2"
+      "name": "a6c0c449-a014-4b37-bbbb-788e2a5ae5dc"
     }
   ],
   "bloqClass": "bloq-set-variable",
@@ -35,6 +36,19 @@
       },
       {
         "alias": "text",
+        "value": "["
+      },
+      {
+        "id": "ITERATOR",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "alias": "text",
+        "value": "]"
+      },
+      {
+        "alias": "text",
         "value": "="
       },
       {
@@ -43,11 +57,12 @@
         "acceptType": {
           "type": "fromDynamicDropdown",
           "idDropdown": "NAME",
+          "pointer": "true",
           "options": "softwareVars"
         },
-        "name": "fed53edc-933b-4d2b-9639-5fa6dbd135a2"
+        "name": "a6c0c449-a014-4b37-bbbb-788e2a5ae5dc"
       }
     ]
   ],
-  "code": "{NAME} = {VALUE};"
+  "code": "{NAME}[{ITERATOR}] = {VALUE};"
 }

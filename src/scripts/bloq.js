@@ -644,70 +644,7 @@ var Bloq = function Bloq(params) {
      * Get the bloq's code, substituting each input's value
      * @return {[type]} code            [description]
      */
-    this.getCode = function() {
-        var code = this.bloqData.code;
-        var childBloq, childConnectorId;
-        var elementTags = _.without(_.pluck(this.bloqData.content[0], 'id'), undefined);
-        var childrenTags = _.without(_.pluck(this.bloqData.content[0], 'bloqInputId'), undefined);
-        var value = '',
-            type = '',
-            i, j;
-        for (i in elementTags) {
-            var element = this.$bloq.find('[data-content-id="' + elementTags[i] + '"]');
-            value = element.val() || '';
-            console.log('------------------->',element[0].type);
-            if (element[0].type === 'stringInput') {
-                console.log('stringInput');
-                value = utils.validString(value);
-            }
-            code = code.replace(new RegExp('{' + elementTags[i] + '}', 'g'), value);
-        }
 
-        //search for regular expressions:
-        var reg = /(.*)\?(.*):(.*)/g;
-        if (reg.test(code)) {
-            code = eval(code); // jshint ignore:line
-        }
-
-        var bloqInputConnectors = utils.getInputsConnectorsFromBloq(IOConnectors, bloqs, this);
-        if (childrenTags.length > 0) {
-            // search for child bloqs:
-            for (j in bloqInputConnectors) {
-                value = '';
-                var a = IOConnectors[bloqInputConnectors[j]];
-                childConnectorId = a.connectedTo;
-                if (childConnectorId !== null) {
-                    childBloq = utils.getBloqByConnectorUuid(childConnectorId, bloqs, IOConnectors);
-                    value = childBloq.getCode();
-                    type = childBloq.bloqData.returnType;
-                }
-                code = code.replace(new RegExp('{' + childrenTags[j] + '.connectionType}', 'g'), type);
-                code = code.replace(new RegExp('{' + childrenTags[j] + '}', 'g'), value);
-            }
-        }
-        var children = [];
-        if (this.connectors[2]) {
-            value = '';
-            childConnectorId = connectors[this.connectors[2]].connectedTo;
-            if (childConnectorId) {
-                childBloq = utils.getBloqByConnectorUuid(childConnectorId, bloqs, connectors);
-                var branchConnectors = utils.getBranchsConnectorsNoChildren(childBloq.uuid, connectors, bloqs);
-                for (i in branchConnectors) {
-                    if (utils.itsInsideAConnectorRoot(bloqs[connectors[branchConnectors[i]].bloqUuid], bloqs, connectors)) {
-                        var bloqId = connectors[branchConnectors[i]].bloqUuid;
-                        if (bloqId !== children[children.length - 1]) {
-                            children.push(bloqId);
-                        }
-                    }
-                }
-            }
-            for (i in children) {
-                value += bloqs[children[i]].getCode();
-            }
-            code = code.replace(new RegExp('{STATEMENTS}', 'g'), value);
-        }
-        return code;
-    };
 
 
     bloqs[this.uuid] = this;

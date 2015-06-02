@@ -23,21 +23,21 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'PHASE',
             alias: 'numberInput',
-            value: 0,
+            value: 90,
         }, {
             alias: 'text',
             value: 'con amplitud'
         }, {
             id: 'AMPLITUDE',
             alias: 'numberInput',
-            value: 0,
+            value: 90,
         }, {
             alias: 'text',
             value: 'con velocidad'
         }, {
             id: 'SPEED',
             alias: 'numberInput',
-            value: 0,
+            value: 2000,
         }]
     ],
     code: '{OSCILLATOR}.SetO({PHASE});{OSCILLATOR}.SetA({AMPLITUDE});{OSCILLATOR}.SetT({SPEED});{OSCILLATOR}.refresh();'

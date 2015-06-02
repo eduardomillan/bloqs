@@ -1,0 +1,48 @@
+{
+  "type": "output",
+  "name": "stringArrayAdvanced",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-number",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "array con tamaño"
+      },
+      {
+        "id": "VALUE",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "alias": "text",
+        "value": "y tipo"
+      },
+      {
+        "id": "TYPE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "String",
+            "value": "String *"
+          },
+          {
+            "label": "char",
+            "value": "char *"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))",
+  "returnType": {
+    "type": "fromDropdown",
+    "idDropdown": "TYPE",
+    "options": "softwareVars"
+  }
+}
