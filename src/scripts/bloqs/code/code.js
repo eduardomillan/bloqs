@@ -14,7 +14,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             id: 'CODE',
             alias: 'multilineCodeInput',
             value: '',
-            placeholder: 'bloqs-code-writeYourCode'
+            placeholder: 'bloq-code-writeYourCode'
         }]
     ],
     code: '{CODE}'
