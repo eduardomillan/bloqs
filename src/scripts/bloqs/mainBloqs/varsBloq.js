@@ -9,7 +9,7 @@
 
      name: 'varsBloq',
      bloqClass: 'bloq-vars',
-     headerText: 'Variables globales y funciones',
+     headerText: 'bloq-var-header',
      descriptionText: 'bloq-var-description',
      content: [],
      code: '{STATEMENTS}'

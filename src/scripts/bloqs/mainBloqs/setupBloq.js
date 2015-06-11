@@ -9,7 +9,7 @@
 
      name: 'setupBloq',
      bloqClass: 'bloq-setup',
-     headerText: 'Setup',
+     headerText: 'bloq-setup-header',
      descriptionText: 'bloq-setup-description',
      content: [],
      code: 'void setup(){{STATEMENTS}}'

@@ -9,7 +9,7 @@
 
      name: 'loopBloq',
      bloqClass: 'bloq-loop',
-     headerText: 'Loop',
+     headerText: 'bloq-loop-header',
      descriptionText: 'bloq-loop-description',
      content: [],
      code: 'void loop(){{STATEMENTS}}'
