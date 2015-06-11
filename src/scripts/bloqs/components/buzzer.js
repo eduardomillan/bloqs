@@ -12,49 +12,49 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Sonar el buzzer'
+            value: 'bloq-buzzer-sound'
         }, {
             id: 'BUZZER',
             alias: 'dynamicDropdown',
             options: 'buzzers'
         }, {
             alias: 'text',
-            value: 'con la nota'
+            value: 'bloq-buzzer-note'
         }, {
             id: 'NOTE',
             alias: 'staticDropdown',
             options: [{
-                label: 'Do',
+                label: 'bloq-buzzer-do',
                 value: '261'
             }, {
-                label: 'Re',
+                label: 'bloq-buzzer-re',
                 value: '293'
             }, {
-                label: 'Mi',
+                label: 'bloq-buzzer-mi',
                 value: '329'
             }, {
-                label: 'Fa',
+                label: 'bloq-buzzer-fa',
                 value: '349'
             }, {
-                label: 'Sol',
+                label: 'bloq-buzzer-sol',
                 value: '392'
             }, {
-                label: 'La',
+                label: 'bloq-buzzer-la',
                 value: '440'
             }, {
-                label: 'Si',
+                label: 'bloq-buzzer-si',
                 value: '494'
             }]
         }, {
             alias: 'text',
-            value: 'durante'
+            value: 'bloq-buzzer-for'
         }, {
             id: 'SECONDS',
             alias: 'numberInput',
             value: 0
         }, {
             alias: 'text',
-            value: 'ms'
+            value: 'bloq-buzzer-ms'
         }]
     ],
     code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'

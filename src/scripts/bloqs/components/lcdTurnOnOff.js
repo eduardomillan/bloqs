@@ -14,15 +14,15 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             id: 'STATE',
             alias: 'staticDropdown',
             options: [{
-                label: 'Encender',
+                label: 'bloq-lcd-turn-on-off-turnon',
                 value: 'HIGH'
             }, {
-                label: 'Apagar',
+                label: 'bloq-lcd-turn-on-off-turnoff',
                 value: 'LOW'
             }]
         }, {
             alias: 'text',
-            value: 'la luz del LCD'
+            value: 'bloq-lcd-turn-on-off-lcdLigth'
         }, {
             id: 'LCD',
             alias: 'dynamicDropdown',

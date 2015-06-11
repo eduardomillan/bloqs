@@ -10,7 +10,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "3662886b-6c37-4136-afd8-3ed7bdb7c885"
+      "name": "783c08cc-9807-4367-83bf-c7d31730b765"
     }
   ],
   "bloqClass": "bloq-math-operations",
@@ -21,11 +21,11 @@
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "Raíz cuadrada",
+            "label": "bloq-math-operations-sqrt",
             "value": "sqrt"
           },
           {
-            "label": "Valor absoluto",
+            "label": "bloq-math-operations-abs",
             "value": "abs"
           },
           {
@@ -46,7 +46,7 @@
         "bloqInputId": "ARG",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "3662886b-6c37-4136-afd8-3ed7bdb7c885"
+        "name": "783c08cc-9807-4367-83bf-c7d31730b765"
       }
     ]
   ],

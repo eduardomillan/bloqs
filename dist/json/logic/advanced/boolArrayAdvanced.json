@@ -10,25 +10,25 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "235c4e83-5414-4761-a4dc-1e58b2a83ba4"
+      "name": "b19d3f28-ffa9-482a-ba2e-9fb5e6547c67"
     }
   ],
-  "bloqClass": "bloq-number",
+  "bloqClass": "bloq-boolArray-advanced",
   "content": [
     [
       {
         "alias": "text",
-        "value": "array con tamaño"
+        "value": "bloq-boolArray-advanced-arraySize"
       },
       {
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "235c4e83-5414-4761-a4dc-1e58b2a83ba4"
+        "name": "b19d3f28-ffa9-482a-ba2e-9fb5e6547c67"
       },
       {
         "alias": "text",
-        "value": "y tipo bool"
+        "value": "bloq-boolArray-advanced-boolType"
       }
     ]
   ],

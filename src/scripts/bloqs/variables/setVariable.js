@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Variable'
+            value: 'bloq-set-variable-variable'
         }, {
             id: 'NAME',
             alias: 'dynamicDropdown',

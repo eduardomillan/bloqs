@@ -10,36 +10,36 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "4556ff17-74ad-4b3b-8b21-d8f6fa4ee155"
+      "name": "70f17f12-296d-4d28-95c8-69a760f0d5ed"
     }
   ],
-  "bloqClass": "bloq-number",
+  "bloqClass": "bloq-stringArray-advanced",
   "content": [
     [
       {
         "alias": "text",
-        "value": "array con tamaño"
+        "value": "bloq-stringArray-advanced-arraySize"
       },
       {
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "4556ff17-74ad-4b3b-8b21-d8f6fa4ee155"
+        "name": "70f17f12-296d-4d28-95c8-69a760f0d5ed"
       },
       {
         "alias": "text",
-        "value": "y tipo"
+        "value": "bloq-stringArray-advanced-type"
       },
       {
         "id": "TYPE",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "String",
+            "label": "bloq-stringArray-advanced-string",
             "value": "String *"
           },
           {
-            "label": "char",
+            "label": "bloq-stringArray-advanced-char",
             "value": "char *"
           }
         ]

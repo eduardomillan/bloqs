@@ -11,10 +11,10 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-code',
     content: [
         [{
-            id:'CODE',
+            id: 'CODE',
             alias: 'multilineCodeInput',
             value: '',
-            placeholder: 'Escribe tu propio código'
+            placeholder: 'bloqs-code-writeYourCode'
         }]
     ],
     code: '{CODE}'

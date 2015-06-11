@@ -12,28 +12,28 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Sonar el buzzer'
+            value: 'bloq-buzzer-advance-sound'
         }, {
             bloqInputId: 'BUZZER',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'con la nota'
+            value: 'bloq-buzzer-advance-note'
         }, {
             bloqInputId: 'NOTE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'durante'
+            value: 'bloq-buzzer-advance-for'
         }, {
             bloqInputId: 'SECONDS',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'ms'
+            value: 'bloq-buzzer-advance-ms'
         }]
     ],
     code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'

@@ -14,15 +14,15 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             id: 'STATE',
             alias: 'staticDropdown',
             options: [{
-                label: 'Encender',
+                label: 'bloq-led-advanced-turnon',
                 value: 'HIGH'
             }, {
-                label: 'Apagar',
+                label: 'bloq-led-advanced-turnoff',
                 value: 'LOW'
             }]
-        },  {
+        }, {
             alias: 'text',
-            value: 'el LED'
+            value: 'bloq-led-advanced-theLED'
         }, {
             bloqInputId: 'LED',
             alias: 'bloqInput',

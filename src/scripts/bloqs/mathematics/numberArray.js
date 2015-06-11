@@ -8,21 +8,21 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'numberArray',
-    bloqClass: 'bloq-number',
+    bloqClass: 'bloq-numberArray',
     content: [
         [{
             alias: 'text',
-            value: 'array con tamaño'
+            value: 'bloq-numberArray-arraySize'
         }, {
             id: 'VALUE',
             alias: 'numberInput',
             value: 0
         }, {
             alias: 'text',
-            value: 'y tipo float'
+            value: 'bloq-numberArray-floatType'
         }]
     ],
-    code:  '(float*)malloc({VALUE}*sizeof(float))',
+    code: '(float*)malloc({VALUE}*sizeof(float))',
     returnType: {
         type: 'simple',
         value: 'float *'

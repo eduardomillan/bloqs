@@ -12,14 +12,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mapear'
+            value: 'bloq-map-map'
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'float'
         }, {
             alias: 'text',
-            value: 'valor entre [0-'
+            value: 'bloq-map-value'
         }, {
             bloqInputId: 'MAXVAL',
             alias: 'bloqInput',

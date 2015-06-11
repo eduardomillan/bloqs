@@ -18,7 +18,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "02d46b07-e42d-4990-86ca-a5eae82590bb"
+      "name": "1ad0320a-44bd-4fdd-9c01-75b837557cc2"
     }
   ],
   "bloqClass": "bloq-return-function",
@@ -26,7 +26,7 @@
     [
       {
         "alias": "text",
-        "value": "Declarar función"
+        "value": "bloq-return-function-declare"
       },
       {
         "id": "FUNCNAME",
@@ -36,14 +36,14 @@
       {
         "position": "DOWN",
         "alias": "text",
-        "value": "devuelve"
+        "value": "bloq-return-function-return"
       },
       {
         "position": "DOWN",
         "bloqInputId": "RETURN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "02d46b07-e42d-4990-86ca-a5eae82590bb"
+        "name": "1ad0320a-44bd-4fdd-9c01-75b837557cc2"
       }
     ]
   ],

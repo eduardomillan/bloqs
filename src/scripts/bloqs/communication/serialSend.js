@@ -16,7 +16,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             options: 'serialElements'
         }, {
             alias: 'text',
-            value: 'enviar '
+            value: 'bloq-serial-send-send'
         }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',
@@ -25,10 +25,10 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             id: 'FUNCTION',
             alias: 'staticDropdown',
             options: [{
-                label: 'sin salto de línea',
+                label: 'bloq-serial-send-print',
                 value: 'print'
             }, {
-                label: 'con salto de línea',
+                label: 'bloq-serial-send-println',
                 value: 'println'
             }]
         }]

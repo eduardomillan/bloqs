@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'devuelve'
+            value: 'bloq-return-return'
         }, {
             bloqInputId: 'RETURN',
             alias: 'bloqInput',

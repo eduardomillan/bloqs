@@ -14,10 +14,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             id: 'STATE',
             alias: 'staticDropdown',
             options: [{
-                label: 'verdadero',
+                label: 'bloq-boolean-true',
                 value: 'true'
             }, {
-                label: 'falso',
+                label: 'bloq-boolean-false',
                 value: 'false'
             }]
         }]

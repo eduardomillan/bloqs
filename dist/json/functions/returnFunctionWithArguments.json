@@ -18,13 +18,13 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "var",
-      "name": "0e0f2040-9f19-4f88-8acf-09c6c33d6d30"
+      "name": "4b85a709-ad72-4234-ae9d-ef6a1044f3a1"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "5a16df08-d5e6-4fd8-a4d3-4187bea2e740"
+      "name": "8d2a6dcc-084d-4c2f-9ec2-d269a0956a57"
     }
   ],
   "bloqClass": "bloq-return-function-with-arguments",
@@ -32,7 +32,7 @@
     [
       {
         "alias": "text",
-        "value": "Declarar función"
+        "value": "bloq-return-function-with-arguments-declare"
       },
       {
         "id": "FUNCNAME",
@@ -41,25 +41,25 @@
       },
       {
         "alias": "text",
-        "value": "contando con"
+        "value": "bloq-return-function-with-arguments-count"
       },
       {
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "var",
-        "name": "0e0f2040-9f19-4f88-8acf-09c6c33d6d30"
+        "name": "4b85a709-ad72-4234-ae9d-ef6a1044f3a1"
       },
       {
         "position": "DOWN",
         "alias": "text",
-        "value": "devuelve"
+        "value": "bloq-return-function-with-arguments-return"
       },
       {
         "position": "DOWN",
         "bloqInputId": "RETURN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "5a16df08-d5e6-4fd8-a4d3-4187bea2e740"
+        "name": "8d2a6dcc-084d-4c2f-9ec2-d269a0956a57"
       }
     ]
   ],

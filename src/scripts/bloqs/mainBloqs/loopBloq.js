@@ -10,7 +10,7 @@
      name: 'loopBloq',
      bloqClass: 'bloq-loop',
      headerText: 'Loop',
-     descriptionText: 'Crea el programa que se va a ejecutar continuamente después del Setup.',
+     descriptionText: 'bloq-loop-description',
      content: [],
      code: 'void loop(){{STATEMENTS}}'
 

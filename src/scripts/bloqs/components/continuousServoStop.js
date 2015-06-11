@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Parar servo'
+            value: 'bloq-continuous-servo-stop-stop'
         }, {
             id: 'SERVO',
             alias: 'dynamicDropdown',

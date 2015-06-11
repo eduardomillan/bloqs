@@ -14,19 +14,19 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "0a5fbfca-2d26-4203-860f-b932f2272ba3"
+      "name": "a1d353ba-f89a-4f52-b3f0-a97e6a9bb350"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "5ba056cb-aa6d-4518-b69f-cf3b6b5fbcbf"
+      "name": "4a8aee79-2a84-4dd5-9fc3-e2f81b4caf94"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "30140077-bf14-4efe-9922-81b4d4775b3d"
+      "name": "00a6ac27-8a1d-4dad-a3e3-10451525d05b"
     }
   ],
   "bloqClass": "bloq-buzzer-advance",
@@ -34,37 +34,37 @@
     [
       {
         "alias": "text",
-        "value": "Sonar el buzzer"
+        "value": "bloq-buzzer-advance-sound"
       },
       {
         "bloqInputId": "BUZZER",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "0a5fbfca-2d26-4203-860f-b932f2272ba3"
+        "name": "a1d353ba-f89a-4f52-b3f0-a97e6a9bb350"
       },
       {
         "alias": "text",
-        "value": "con la nota"
+        "value": "bloq-buzzer-advance-note"
       },
       {
         "bloqInputId": "NOTE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "5ba056cb-aa6d-4518-b69f-cf3b6b5fbcbf"
+        "name": "4a8aee79-2a84-4dd5-9fc3-e2f81b4caf94"
       },
       {
         "alias": "text",
-        "value": "durante"
+        "value": "bloq-buzzer-advance-for"
       },
       {
         "bloqInputId": "SECONDS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "30140077-bf14-4efe-9922-81b4d4775b3d"
+        "name": "00a6ac27-8a1d-4dad-a3e3-10451525d05b"
       },
       {
         "alias": "text",
-        "value": "ms"
+        "value": "bloq-buzzer-advance-ms"
       }
     ]
   ],

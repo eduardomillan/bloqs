@@ -12,14 +12,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Si'
+            value: 'bloq-if-if'
         }, {
             bloqInputId: 'CONDITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'ejecutar:'
+            value: 'bloq-if-exec'
         }]
     ],
     code: 'if({CONDITION}){{STATEMENTS}}'

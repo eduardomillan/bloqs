@@ -12,14 +12,14 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Escribir'
+            value: 'bloq-lcd-writte-advanced-write'
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'en el LCD'
+            value: 'bloq-lcd-writte-advanced-inLCD'
         }, {
             bloqInputId: 'LCD',
             alias: 'bloqInput',

@@ -12,18 +12,18 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'variable'
+            value: 'bloq-argument-var'
         }, {
             id: 'TYPE',
             alias: 'staticDropdown',
             options: [{
-                label: 'float',
+                label: 'bloq-argument-float',
                 value: 'float'
             }, {
-                label: 'String',
+                label: 'bloq-argument-string',
                 value: 'String'
             }, {
-                label: 'bool',
+                label: 'bloq-argument-bool',
                 value: 'bool'
             }]
         }, {

@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Parar oscilador'
+            value: 'bloq-oscillator-stop-advanced-stop'
         }, {
             bloqInputId: 'OSCILLATOR',
             alias: 'bloqInput',

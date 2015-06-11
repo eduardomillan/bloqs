@@ -11,14 +11,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'si es igual a'
+            value: 'bloq-case-ifSameTo'
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'ejecutar:'
+            value: 'bloq-case-exec'
         }]
     ],
     code: 'case {VAR}:{{STATEMENTS}break;}'

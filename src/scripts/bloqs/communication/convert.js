@@ -12,28 +12,28 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Convertir'
+            value: 'bloq-convert-convert'
         }, {
             bloqInputId: 'NUMBER',
             alias: 'bloqInput',
             acceptType: 'number'
         }, {
             alias: 'text',
-            value: 'a'
+            value: 'bloq-convert-to'
         }, {
             id: 'TYPE',
             alias: 'staticDropdown',
             options: [{
-                label: 'Decimal',
+                label: 'bloq-convert-dec',
                 value: 'DEC'
             }, {
-                label: 'Hexadecimal',
+                label: 'bloq-convert-hex',
                 value: 'HEX'
             }, {
-                label: 'Octal',
+                label: 'bloq-convert-oct',
                 value: 'OCT'
             }, {
-                label: 'Binario',
+                label: 'bloq-convert-bin',
                 value: 'BIN'
             }]
         }]

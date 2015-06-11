@@ -12,14 +12,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mientras'
+            value: 'bloq-while-while'
         }, {
             bloqInputId: 'CONDITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'ejecutar:'
+            value: 'bloq-while-exec'
         }]
     ],
     code: 'while ({CONDITION}){{STATEMENTS}}'

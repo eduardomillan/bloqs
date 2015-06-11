@@ -14,7 +14,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "c126f1d7-b4a6-43d9-bdc7-b8d808f1fb23"
+      "name": "11597820-7510-4e49-9019-a9fb3cb3d676"
     }
   ],
   "bloqClass": "bloq-continuous-servo-start-advanced",
@@ -22,28 +22,28 @@
     [
       {
         "alias": "text",
-        "value": "Girar servo"
+        "value": "bloq-continuous-servo-start-advanced-turn"
       },
       {
         "bloqInputId": "SERVO",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "c126f1d7-b4a6-43d9-bdc7-b8d808f1fb23"
+        "name": "11597820-7510-4e49-9019-a9fb3cb3d676"
       },
       {
         "alias": "text",
-        "value": "en sentido"
+        "value": "bloq-continuous-servo-start-advanced-direction"
       },
       {
         "id": "DIRECTION",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "horario",
+            "label": "bloq-continuous-servo-start-advanced-clockwise",
             "value": "0"
           },
           {
-            "label": "antihorario",
+            "label": "bloq-continuous-servo-start-advanced-counterclockwise",
             "value": "180"
           }
         ]

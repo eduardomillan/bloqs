@@ -8,31 +8,31 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'numberArrayAdvanced',
-    bloqClass: 'bloq-number',
+    bloqClass: 'bloq-numberArray-advanced',
     content: [
         [{
             alias: 'text',
-            value: 'array con tamaño'
+            value: 'bloq-numberArray-advanced-arraySize'
         }, {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'y tipo'
-        },{
+            value: 'bloq-numberArray-advanced-type'
+        }, {
             id: 'TYPE',
             alias: 'staticDropdown',
             options: [{
-                label: 'float',
+                label: 'bloq-numberArray-advanced-float',
                 value: 'float *'
             }, {
-                label: 'int',
+                label: 'bloq-numberArray-advanced-int',
                 value: 'int *'
             }]
         }]
     ],
-    code:  '({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))',
+    code: '({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))',
     returnType: {
         type: 'fromDropdown',
         idDropdown: 'TYPE',

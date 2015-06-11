@@ -10,7 +10,7 @@
      name: 'setupBloq',
      bloqClass: 'bloq-setup',
      headerText: 'Setup',
-     descriptionText: 'Indica lo que quieres que se ejecute al inicio del programa y sólo una única vez.',
+     descriptionText: 'bloq-setup-description',
      content: [],
      code: 'void setup(){{STATEMENTS}}'
  });

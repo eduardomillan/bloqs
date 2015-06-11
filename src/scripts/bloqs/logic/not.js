@@ -12,14 +12,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'no'
+            value: 'bloq-not-not'
         }, {
             bloqInputId: 'CONDITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }]
     ],
-    code: '!{CONDITION}', 
+    code: '!{CONDITION}',
     returnType: {
         type: 'simple',
         value: 'bool'

@@ -12,21 +12,21 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Contar con'
+            value: 'bloq-for-count'
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'desde'
+            value: 'bloq-for-from'
         }, {
             bloqInputId: 'INIT',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'hasta'
+            value: 'bloq-for-to'
         }, {
             bloqInputId: 'FINAL',
             alias: 'bloqInput',
@@ -35,15 +35,15 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             id: 'MODE',
             alias: 'staticDropdown',
             options: [{
-                label: 'sumando',
+                label: 'bloq-for-add',
                 value: '++'
             }, {
-                label: 'restando',
+                label: 'bloq-for-subtract',
                 value: '--'
             }]
         }, {
             alias: 'text',
-            value: 'ejecutar:'
+            value: 'bloq-for-exec'
         }]
     ],
     code: 'for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}'

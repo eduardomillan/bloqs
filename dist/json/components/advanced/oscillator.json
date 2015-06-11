@@ -14,25 +14,25 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "770eddf4-4ead-4f21-a3f0-e45344fff2eb"
+      "name": "851f5e56-0c3e-4f64-9c44-06ad05b20089"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "68a56f4e-99d7-4084-a5ee-caad846ad0ca"
+      "name": "b4308c37-e4a3-448c-99fa-51fbb2f4a47e"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "85d5c7db-34e2-4a60-9b5c-7c2206308886"
+      "name": "8da5fd00-d57a-4d14-8f14-d33052ec27a4"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "5ac6ab4f-8bdd-4bba-b375-a873f56c25d5"
+      "name": "3bf5a517-9381-4e2f-937c-b2a4a07a0bdd"
     }
   ],
   "bloqClass": "bloq-oscillator-advanced",
@@ -40,43 +40,43 @@
     [
       {
         "alias": "text",
-        "value": "Oscilar servo"
+        "value": "bloq-oscillator-advanced-oscillate"
       },
       {
         "bloqInputId": "OSCILLATOR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "770eddf4-4ead-4f21-a3f0-e45344fff2eb"
+        "name": "851f5e56-0c3e-4f64-9c44-06ad05b20089"
       },
       {
         "alias": "text",
-        "value": "alrededor de"
+        "value": "bloq-oscillator-advanced-around"
       },
       {
         "bloqInputId": "PHASE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "68a56f4e-99d7-4084-a5ee-caad846ad0ca"
+        "name": "b4308c37-e4a3-448c-99fa-51fbb2f4a47e"
       },
       {
         "alias": "text",
-        "value": "con amplitud"
+        "value": "bloq-oscillator-advanced-amplitude"
       },
       {
         "bloqInputId": "AMPLITUDE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "85d5c7db-34e2-4a60-9b5c-7c2206308886"
+        "name": "8da5fd00-d57a-4d14-8f14-d33052ec27a4"
       },
       {
         "alias": "text",
-        "value": "con velocidad"
+        "value": "bloq-oscillator-advanced-speed"
       },
       {
         "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "5ac6ab4f-8bdd-4bba-b375-a873f56c25d5"
+        "name": "3bf5a517-9381-4e2f-937c-b2a4a07a0bdd"
       }
     ]
   ],

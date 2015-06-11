@@ -10,13 +10,13 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "c20747dd-b8a2-450b-947a-a18e851cab45"
+      "name": "f796ce12-b8d2-45ed-b821-819e4fb9b00a"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "0a7d924a-f7cb-4801-bf85-b5fa1548a472"
+      "name": "0b91b824-a3ad-4ffb-9894-e7acae470263"
     }
   ],
   "bloqClass": "bloq-random",
@@ -24,23 +24,23 @@
     [
       {
         "alias": "text",
-        "value": "Aleatorio entre"
+        "value": "bloq-random-random"
       },
       {
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "c20747dd-b8a2-450b-947a-a18e851cab45"
+        "name": "f796ce12-b8d2-45ed-b821-819e4fb9b00a"
       },
       {
         "alias": "text",
-        "value": "y"
+        "value": "bloq-random-and"
       },
       {
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "0a7d924a-f7cb-4801-bf85-b5fa1548a472"
+        "name": "0b91b824-a3ad-4ffb-9894-e7acae470263"
       }
     ]
   ],

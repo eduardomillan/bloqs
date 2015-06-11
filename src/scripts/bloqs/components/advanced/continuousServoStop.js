@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Parar servo'
+            value: 'bloq-continuous-servo-stop-advanced-stop'
         }, {
             bloqInputId: 'SERVO',
             alias: 'bloqInput',

@@ -12,21 +12,21 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mover'
+            value: 'bloq-servo-advanced-move'
         }, {
             bloqInputId: 'SERVO',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'a'
+            value: 'bloq-servo-advanced-to'
         }, {
             bloqInputId: 'POSITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'grados'
+            value: 'bloq-servo-advanced-degrees'
         }]
     ],
     code: '{SERVO}.write({POSITION})'

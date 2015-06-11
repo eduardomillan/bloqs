@@ -12,14 +12,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Aleatorio entre'
+            value: 'bloq-random-random'
         }, {
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
             acceptType: 'float'
         }, {
             alias: 'text',
-            value: 'y'
+            value: 'bloq-random-and'
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',

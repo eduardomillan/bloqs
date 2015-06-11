@@ -14,10 +14,10 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "7f296854-6a5c-412b-8ccb-9413121ea219"
+      "name": "a73507e3-b888-455c-bbfa-7f3309c02c4c"
     }
   ],
-  "bloqClass": "bloq-lcd-turn-on-on-advanced",
+  "bloqClass": "bloq-lcd-turn-on-off-advanced",
   "content": [
     [
       {
@@ -25,24 +25,24 @@
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "Encender",
+            "label": "bloq-lcd-turn-on-off-advanced-turnon",
             "value": "HIGH"
           },
           {
-            "label": "Apagar",
+            "label": "bloq-lcd-turn-on-off-advanced-turnoff",
             "value": "LOW"
           }
         ]
       },
       {
         "alias": "text",
-        "value": "la luz del LCD"
+        "value": "bloq-lcd-turn-on-off-advanced-lcdLigth"
       },
       {
         "bloqInputId": "LCD",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "7f296854-6a5c-412b-8ccb-9413121ea219"
+        "name": "a73507e3-b888-455c-bbfa-7f3309c02c4c"
       }
     ]
   ],

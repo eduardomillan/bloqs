@@ -10,7 +10,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "number",
-      "name": "84d4c269-5aac-477d-912d-1335e349d435"
+      "name": "5f3a5b8a-4c9d-47fd-a283-ba01aa736cb5"
     }
   ],
   "bloqClass": "bloq-convert",
@@ -18,36 +18,36 @@
     [
       {
         "alias": "text",
-        "value": "Convertir"
+        "value": "bloq-convert-convert"
       },
       {
         "bloqInputId": "NUMBER",
         "alias": "bloqInput",
         "acceptType": "number",
-        "name": "84d4c269-5aac-477d-912d-1335e349d435"
+        "name": "5f3a5b8a-4c9d-47fd-a283-ba01aa736cb5"
       },
       {
         "alias": "text",
-        "value": "a"
+        "value": "bloq-convert-to"
       },
       {
         "id": "TYPE",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "Decimal",
+            "label": "bloq-convert-dec",
             "value": "DEC"
           },
           {
-            "label": "Hexadecimal",
+            "label": "bloq-convert-hex",
             "value": "HEX"
           },
           {
-            "label": "Octal",
+            "label": "bloq-convert-oct",
             "value": "OCT"
           },
           {
-            "label": "Binario",
+            "label": "bloq-convert-bin",
             "value": "BIN"
           }
         ]

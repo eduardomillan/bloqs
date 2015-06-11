@@ -8,21 +8,21 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'lcdTurnOnOffAdvanced',
-    bloqClass: 'bloq-lcd-turn-on-on-advanced',
+    bloqClass: 'bloq-lcd-turn-on-off-advanced',
     content: [
         [{
             id: 'STATE',
             alias: 'staticDropdown',
             options: [{
-                label: 'Encender',
+                label: 'bloq-lcd-turn-on-off-advanced-turnon',
                 value: 'HIGH'
             }, {
-                label: 'Apagar',
+                label: 'bloq-lcd-turn-on-off-advanced-turnoff',
                 value: 'LOW'
             }]
         }, {
             alias: 'text',
-            value: 'la luz del LCD'
+            value: 'bloq-lcd-turn-on-off-advanced-lcdLigth'
         }, {
             bloqInputId: 'LCD',
             alias: 'bloqInput',

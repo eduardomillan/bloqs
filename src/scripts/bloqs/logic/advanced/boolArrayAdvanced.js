@@ -8,21 +8,21 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'boolArrayAdvanced',
-    bloqClass: 'bloq-number',
+    bloqClass: 'bloq-boolArray-advanced',
     content: [
         [{
             alias: 'text',
-            value: 'array con tamaño'
+            value: 'bloq-boolArray-advanced-arraySize'
         }, {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'y tipo bool'
+            value: 'bloq-boolArray-advanced-boolType'
         }]
     ],
-    code:  '(bool *)malloc({VALUE}*sizeof(bool))',
+    code: '(bool *)malloc({VALUE}*sizeof(bool))',
     returnType: {
         type: 'simple',
         value: 'bool *'

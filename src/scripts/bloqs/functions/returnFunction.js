@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Declarar función'
+            value: 'bloq-return-function-declare'
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
@@ -20,7 +20,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             position: 'DOWN',
             alias: 'text',
-            value: 'devuelve'
+            value: 'bloq-return-function-return'
         }, {
             position: 'DOWN',
             bloqInputId: 'RETURN',

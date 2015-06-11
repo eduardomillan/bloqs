@@ -15,10 +15,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'staticDropdown',
             //'Raíz cuadrada', 'Valor absoluto', '-', 'ln', 'log10', 'e^', '10^']
             options: [{
-                label: 'Raíz cuadrada',
+                label: 'bloq-math-operations-sqrt',
                 value: 'sqrt'
             }, {
-                label: 'Valor absoluto',
+                label: 'bloq-math-operations-abs',
                 value: 'abs'
             }, {
                 label: 'ln',

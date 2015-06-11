@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Continuar con la siguiente iteracción del bucle'
+            value: 'bloq-continue-continue'
         }]
     ],
     code: 'continue;'

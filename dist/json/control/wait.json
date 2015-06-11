@@ -14,7 +14,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "befe1eb3-b5de-420c-9239-e8e470da8279"
+      "name": "04438e09-4ce3-41e3-ac04-c069330536cc"
     }
   ],
   "bloqClass": "bloq-wait",
@@ -22,13 +22,13 @@
     [
       {
         "alias": "text",
-        "value": "Esperar"
+        "value": "bloq-wait-wait"
       },
       {
         "bloqInputId": "TIME",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "befe1eb3-b5de-420c-9239-e8e470da8279"
+        "name": "04438e09-4ce3-41e3-ac04-c069330536cc"
       }
     ]
   ],

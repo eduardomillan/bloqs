@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'de lo contrario, ejecutar:'
+            value: 'bloq-else-else'
         }]
     ],
     code: 'else {{STATEMENTS}}'

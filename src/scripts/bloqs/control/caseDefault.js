@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'en otro caso, ejecutar:'
+            value: 'bloq-case-default-inOtherCase'
         }]
     ],
     code: 'default:{{STATEMENTS}break;}'

@@ -18,19 +18,19 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "53f39d9d-a06b-4516-ace3-c7177e3cdcd6"
+      "name": "f30a37ad-b71d-4630-a792-e78efc43645e"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "7572f6d6-b6cb-4e61-a360-6b589410dae2"
+      "name": "aa579f9d-7871-4e95-a149-c1c48f21e13b"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "d1388a43-1e03-4e29-941c-d2bc9fac172d"
+      "name": "5733c508-0a29-4d35-9a45-48230f3644f7"
     }
   ],
   "bloqClass": "bloq-for",
@@ -38,51 +38,51 @@
     [
       {
         "alias": "text",
-        "value": "Contar con"
+        "value": "bloq-for-count"
       },
       {
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "53f39d9d-a06b-4516-ace3-c7177e3cdcd6"
+        "name": "f30a37ad-b71d-4630-a792-e78efc43645e"
       },
       {
         "alias": "text",
-        "value": "desde"
+        "value": "bloq-for-from"
       },
       {
         "bloqInputId": "INIT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "7572f6d6-b6cb-4e61-a360-6b589410dae2"
+        "name": "aa579f9d-7871-4e95-a149-c1c48f21e13b"
       },
       {
         "alias": "text",
-        "value": "hasta"
+        "value": "bloq-for-to"
       },
       {
         "bloqInputId": "FINAL",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "d1388a43-1e03-4e29-941c-d2bc9fac172d"
+        "name": "5733c508-0a29-4d35-9a45-48230f3644f7"
       },
       {
         "id": "MODE",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "sumando",
+            "label": "bloq-for-add",
             "value": "++"
           },
           {
-            "label": "restando",
+            "label": "bloq-for-subtract",
             "value": "--"
           }
         ]
       },
       {
         "alias": "text",
-        "value": "ejecutar:"
+        "value": "bloq-for-exec"
       }
     ]
   ],

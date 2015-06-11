@@ -14,13 +14,13 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "c3019f43-f99a-4a41-a153-febdc4c8eeb8"
+      "name": "64b6a623-a366-431f-bb2e-52a9d6e28a2b"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "bcd012c3-3d9d-4fae-b77d-156c66b47ab7"
+      "name": "1e513467-2b87-4152-a9de-23ae848123dc"
     }
   ],
   "bloqClass": "bloq-lcd-writte-advanced",
@@ -28,23 +28,23 @@
     [
       {
         "alias": "text",
-        "value": "Escribir"
+        "value": "bloq-lcd-writte-advanced-write"
       },
       {
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "c3019f43-f99a-4a41-a153-febdc4c8eeb8"
+        "name": "64b6a623-a366-431f-bb2e-52a9d6e28a2b"
       },
       {
         "alias": "text",
-        "value": "en el LCD"
+        "value": "bloq-lcd-writte-advanced-inLCD"
       },
       {
         "bloqInputId": "LCD",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "bcd012c3-3d9d-4fae-b77d-156c66b47ab7"
+        "name": "1e513467-2b87-4152-a9de-23ae848123dc"
       }
     ]
   ],

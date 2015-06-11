@@ -18,10 +18,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             id: 'OPERATOR',
             alias: 'staticDropdown',
             options: [{
-                label: 'y',
+                label: 'bloq-logic-operations-and',
                 value: '&&'
             }, {
-                label: 'o',
+                label: 'bloq-logic-operations-or',
                 value: '||'
             }]
         }, {

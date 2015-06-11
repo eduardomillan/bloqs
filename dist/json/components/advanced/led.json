@@ -14,7 +14,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "a85c3e8e-6247-4dfe-aa41-15ca7d346e15"
+      "name": "4b91f1f7-b972-4730-be7d-a033e1c0dbe0"
     }
   ],
   "bloqClass": "bloq-led-advanced",
@@ -25,24 +25,24 @@
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "Encender",
+            "label": "bloq-led-advanced-turnon",
             "value": "HIGH"
           },
           {
-            "label": "Apagar",
+            "label": "bloq-led-advanced-turnoff",
             "value": "LOW"
           }
         ]
       },
       {
         "alias": "text",
-        "value": "el LED"
+        "value": "bloq-led-advanced-theLED"
       },
       {
         "bloqInputId": "LED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "a85c3e8e-6247-4dfe-aa41-15ca7d346e15"
+        "name": "4b91f1f7-b972-4730-be7d-a033e1c0dbe0"
       }
     ]
   ],

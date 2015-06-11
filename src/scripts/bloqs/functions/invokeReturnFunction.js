@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'ejecutar'
+            value: 'bloq-invoke-return-function-exec'
         }, {
             id: 'FUNCTION',
             alias: 'dynamicDropdown',

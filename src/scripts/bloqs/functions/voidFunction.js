@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Declarar función'
+            value: 'bloq-void-function-declare'
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',

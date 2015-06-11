@@ -7,12 +7,12 @@
       "accept": "connector--input"
     }
   ],
-  "bloqClass": "bloq-number",
+  "bloqClass": "bloq-numberArray",
   "content": [
     [
       {
         "alias": "text",
-        "value": "array con tamaño"
+        "value": "bloq-numberArray-arraySize"
       },
       {
         "id": "VALUE",
@@ -21,7 +21,7 @@
       },
       {
         "alias": "text",
-        "value": "y tipo float"
+        "value": "bloq-numberArray-floatType"
       }
     ]
   ],

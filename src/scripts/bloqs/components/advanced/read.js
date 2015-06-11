@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Leer'
+            value: 'bloq-read-advanced-read'
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',

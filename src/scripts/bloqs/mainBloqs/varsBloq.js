@@ -10,7 +10,7 @@
      name: 'varsBloq',
      bloqClass: 'bloq-vars',
      headerText: 'Variables globales y funciones',
-     descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
+     descriptionText: 'bloq-var-description',
      content: [],
      code: '{STATEMENTS}'
  });

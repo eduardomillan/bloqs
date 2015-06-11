@@ -12,14 +12,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mapear'
+            value: 'bloq-map-advanced-map'
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'float'
         }, {
             alias: 'text',
-            value: 'de ['
+            value: 'bloq-map-advanced-value'
         }, {
             bloqInputId: 'INITMIN',
             alias: 'bloqInput',
@@ -33,7 +33,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'float'
         }, {
             alias: 'text',
-            value: '] a ['
+            value: 'bloq-map-advanced-and'
         }, {
             bloqInputId: 'FINMIN',
             alias: 'bloqInput',

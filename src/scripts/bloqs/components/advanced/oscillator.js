@@ -12,28 +12,28 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Oscilar servo'
+            value: 'bloq-oscillator-advanced-oscillate'
         }, {
             bloqInputId: 'OSCILLATOR',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'alrededor de'
+            value: 'bloq-oscillator-advanced-around'
         }, {
             bloqInputId: 'PHASE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'con amplitud'
+            value: 'bloq-oscillator-advanced-amplitude'
         }, {
             bloqInputId: 'AMPLITUDE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'con velocidad'
+            value: 'bloq-oscillator-advanced-speed'
         }, {
             bloqInputId: 'SPEED',
             alias: 'bloqInput',

@@ -12,14 +12,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Declarar función'
+            value: 'bloq-void-function-with-arguments-declare'
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
             value: ''
         }, {
             alias: 'text',
-            value: 'contando con'
+            value: 'bloq-void-function-with-arguments-count'
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
@@ -31,7 +31,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         type: 'simple',
         value: 'void'
     },
-    arguments:{
+    arguments: {
         type: 'fromInput',
         bloqInputId: 'ARGS'
     },

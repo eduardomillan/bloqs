@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'longitud'
+            value: 'bloq-length-length'
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',

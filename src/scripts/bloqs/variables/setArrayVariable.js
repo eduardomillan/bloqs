@@ -8,11 +8,11 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'setArrayVariable',
-    bloqClass: 'bloq-set-variable',
+    bloqClass: 'bloq-set-variableArray',
     content: [
         [{
             alias: 'text',
-            value: 'Variable'
+            value: 'bloq-set-variableArray-variable'
         }, {
             id: 'NAME',
             alias: 'dynamicDropdown',
@@ -27,7 +27,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             alias: 'text',
             value: ']'
-        },{
+        }, {
             alias: 'text',
             value: '='
         }, {

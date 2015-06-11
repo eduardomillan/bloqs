@@ -11,14 +11,13 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     bloqClass: 'bloq-switch',
     content: [
         [{
-                alias: 'text',
-                value: 'Comprobar cuál es el valor de '
-            }, {
-                id: 'VAR',
-                alias: 'dynamicDropdown',
-                options: 'softwareVars'
-            }
-        ]
+            alias: 'text',
+            value: 'bloq-switch-check'
+        }, {
+            id: 'VAR',
+            alias: 'dynamicDropdown',
+            options: 'softwareVars'
+        }]
     ],
     code: 'switch (int({VAR})) {{STATEMENTS}}'
 });

@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Esperar'
+            value: 'bloq-wait-wait'
         }, {
             bloqInputId: 'TIME',
             alias: 'bloqInput',

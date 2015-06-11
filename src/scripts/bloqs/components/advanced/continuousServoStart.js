@@ -12,22 +12,22 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Girar servo'
+            value: 'bloq-continuous-servo-start-advanced-turn'
         }, {
             bloqInputId: 'SERVO',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'en sentido'
+            value: 'bloq-continuous-servo-start-advanced-direction'
         }, {
             id: 'DIRECTION',
             alias: 'staticDropdown',
             options: [{
-                label: 'horario',
+                label: 'bloq-continuous-servo-start-advanced-clockwise',
                 value: '0'
             }, {
-                label: 'antihorario',
+                label: 'bloq-continuous-servo-start-advanced-counterclockwise',
                 value: '180'
             }]
         }]

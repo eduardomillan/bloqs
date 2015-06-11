@@ -18,7 +18,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "bdb5cd0f-3902-4ce9-b311-6735d9a46957"
+      "name": "81a505e1-8584-40bf-a63a-1cb59de6ec60"
     }
   ],
   "bloqClass": "bloq-else-if",
@@ -26,17 +26,17 @@
     [
       {
         "alias": "text",
-        "value": "en cambio, si"
+        "value": "bloq-else-if-if"
       },
       {
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "bdb5cd0f-3902-4ce9-b311-6735d9a46957"
+        "name": "81a505e1-8584-40bf-a63a-1cb59de6ec60"
       },
       {
         "alias": "text",
-        "value": "ejecutar:"
+        "value": "bloq-else-if-else"
       }
     ]
   ],

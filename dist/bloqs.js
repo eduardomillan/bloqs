@@ -1,6 +1,6 @@
 ;(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /*!
- * jQuery JavaScript Library v2.1.4
+ * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -10,7 +10,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2015-04-28T16:01Z
+ * Date: 2014-12-18T15:11Z
  */
 
 (function( global, factory ) {
@@ -68,7 +68,7 @@ var
 	// Use the correct document accordingly with window argument (sandbox)
 	document = window.document,
 
-	version = "2.1.4",
+	version = "2.1.3",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -532,12 +532,7 @@ jQuery.each("Boolean Number String Function Array Date RegExp Object Error".spli
 });
 
 function isArraylike( obj ) {
-
-	// Support: iOS 8.2 (not reproducible in simulator)
-	// `in` check used to prevent JIT error (gh-2145)
-	// hasOwn isn't used here due to false negatives
-	// regarding Nodelist length in IE
-	var length = "length" in obj && obj.length,
+	var length = obj.length,
 		type = jQuery.type( obj );
 
 	if ( type === "function" || jQuery.isWindow( obj ) ) {
@@ -22050,17 +22045,16 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-code',
     content: [
         [{
-            id:'CODE',
+            id: 'CODE',
             alias: 'multilineCodeInput',
             value: '',
-            placeholder: 'Escribe tu propio código'
+            placeholder: 'bloqs-code-writeYourCode'
         }]
     ],
     code: '{CODE}'
 });
 utils.generateBloqInputConnectors(bloq);
 module.exports = bloq;
-
 },{"./../../utils":87,"./../statementBloq":72,"lodash":2}],5:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22075,7 +22069,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Comentario //'
+            value: 'bloq-comment-comment'
         }, {
             id: 'COMMENT',
             alias: 'multilineCodeInput',
@@ -22101,28 +22095,28 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Convertir'
+            value: 'bloq-convert-convert'
         }, {
             bloqInputId: 'NUMBER',
             alias: 'bloqInput',
             acceptType: 'number'
         }, {
             alias: 'text',
-            value: 'a'
+            value: 'bloq-convert-to'
         }, {
             id: 'TYPE',
             alias: 'staticDropdown',
             options: [{
-                label: 'Decimal',
+                label: 'bloq-convert-dec',
                 value: 'DEC'
             }, {
-                label: 'Hexadecimal',
+                label: 'bloq-convert-hex',
                 value: 'HEX'
             }, {
-                label: 'Octal',
+                label: 'bloq-convert-oct',
                 value: 'OCT'
             }, {
-                label: 'Binario',
+                label: 'bloq-convert-bin',
                 value: 'BIN'
             }]
         }]
@@ -22155,7 +22149,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             options: 'serialElements'
         }, {
             alias: 'text',
-            value: 'recibir'
+            value: 'bloq-serial-receiver-receive'
         }]
     ],
     code: '{SERIAL}.readString()',
@@ -22186,7 +22180,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             options: 'serialElements'
         }, {
             alias: 'text',
-            value: 'enviar '
+            value: 'bloq-serial-send-send'
         }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',
@@ -22195,10 +22189,10 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             id: 'FUNCTION',
             alias: 'staticDropdown',
             options: [{
-                label: 'sin salto de línea',
+                label: 'bloq-serial-send-print',
                 value: 'print'
             }, {
-                label: 'con salto de línea',
+                label: 'bloq-serial-send-println',
                 value: 'println'
             }]
         }]
@@ -22223,28 +22217,28 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Sonar el buzzer'
+            value: 'bloq-buzzer-advance-sound'
         }, {
             bloqInputId: 'BUZZER',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'con la nota'
+            value: 'bloq-buzzer-advance-note'
         }, {
             bloqInputId: 'NOTE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'durante'
+            value: 'bloq-buzzer-advance-for'
         }, {
             bloqInputId: 'SECONDS',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'ms'
+            value: 'bloq-buzzer-advance-ms'
         }]
     ],
     code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'
@@ -22252,7 +22246,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],10:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22268,22 +22261,22 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Girar servo'
+            value: 'bloq-continuous-servo-start-advanced-turn'
         }, {
             bloqInputId: 'SERVO',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'en sentido'
+            value: 'bloq-continuous-servo-start-advanced-direction'
         }, {
             id: 'DIRECTION',
             alias: 'staticDropdown',
             options: [{
-                label: 'horario',
+                label: 'bloq-continuous-servo-start-advanced-clockwise',
                 value: '0'
             }, {
-                label: 'antihorario',
+                label: 'bloq-continuous-servo-start-advanced-counterclockwise',
                 value: '180'
             }]
         }]
@@ -22295,7 +22288,6 @@ utils.generateBloqInputConnectors(bloq);
 
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],11:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22311,7 +22303,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Parar servo'
+            value: 'bloq-continuous-servo-stop-advanced-stop'
         }, {
             bloqInputId: 'SERVO',
             alias: 'bloqInput',
@@ -22325,7 +22317,6 @@ utils.generateBloqInputConnectors(bloq);
 
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],12:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22337,21 +22328,21 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'lcdTurnOnOffAdvanced',
-    bloqClass: 'bloq-lcd-turn-on-on-advanced',
+    bloqClass: 'bloq-lcd-turn-on-off-advanced',
     content: [
         [{
             id: 'STATE',
             alias: 'staticDropdown',
             options: [{
-                label: 'Encender',
+                label: 'bloq-lcd-turn-on-off-advanced-turnon',
                 value: 'HIGH'
             }, {
-                label: 'Apagar',
+                label: 'bloq-lcd-turn-on-off-advanced-turnoff',
                 value: 'LOW'
             }]
         }, {
             alias: 'text',
-            value: 'la luz del LCD'
+            value: 'bloq-lcd-turn-on-off-advanced-lcdLigth'
         }, {
             bloqInputId: 'LCD',
             alias: 'bloqInput',
@@ -22364,7 +22355,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],13:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22380,14 +22370,14 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Escribir'
+            value: 'bloq-lcd-writte-advanced-write'
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'en el LCD'
+            value: 'bloq-lcd-writte-advanced-inLCD'
         }, {
             bloqInputId: 'LCD',
             alias: 'bloqInput',
@@ -22401,7 +22391,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],14:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22419,15 +22408,15 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             id: 'STATE',
             alias: 'staticDropdown',
             options: [{
-                label: 'Encender',
+                label: 'bloq-led-advanced-turnon',
                 value: 'HIGH'
             }, {
-                label: 'Apagar',
+                label: 'bloq-led-advanced-turnoff',
                 value: 'LOW'
             }]
-        },  {
+        }, {
             alias: 'text',
-            value: 'el LED'
+            value: 'bloq-led-advanced-theLED'
         }, {
             bloqInputId: 'LED',
             alias: 'bloqInput',
@@ -22440,7 +22429,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],15:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22456,28 +22444,28 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Oscilar servo'
+            value: 'bloq-oscillator-advanced-oscillate'
         }, {
             bloqInputId: 'OSCILLATOR',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'alrededor de'
+            value: 'bloq-oscillator-advanced-around'
         }, {
             bloqInputId: 'PHASE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'con amplitud'
+            value: 'bloq-oscillator-advanced-amplitude'
         }, {
             bloqInputId: 'AMPLITUDE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'con velocidad'
+            value: 'bloq-oscillator-advanced-speed'
         }, {
             bloqInputId: 'SPEED',
             alias: 'bloqInput',
@@ -22490,7 +22478,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],16:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22506,7 +22493,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Reproducir oscilador'
+            value: 'bloq-oscillator-start-advanced-oscillator'
         }, {
             bloqInputId: 'OSCILLATOR',
             alias: 'bloqInput',
@@ -22519,7 +22506,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],17:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22535,7 +22521,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Parar oscilador'
+            value: 'bloq-oscillator-stop-advanced-stop'
         }, {
             bloqInputId: 'OSCILLATOR',
             alias: 'bloqInput',
@@ -22548,7 +22534,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],18:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22564,7 +22549,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Leer el pin'
+            value: 'bloq-pin-read-advanced-readpin'
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
@@ -22577,7 +22562,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../outputBloq":71,"lodash":2}],19:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22593,14 +22577,14 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Escribir en el pin'
+            value: 'bloq-pin-writte-advanced-writepin'
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'el dato'
+            value: 'bloq-pin-writte-advanced-data'
         }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',
@@ -22615,7 +22599,6 @@ utils.generateBloqInputConnectors(bloq);
 
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],20:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22631,7 +22614,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Leer'
+            value: 'bloq-read-advanced-read'
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
@@ -22644,7 +22627,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../outputBloq":71,"lodash":2}],21:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22660,21 +22642,21 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mover'
+            value: 'bloq-servo-advanced-move'
         }, {
             bloqInputId: 'SERVO',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'a'
+            value: 'bloq-servo-advanced-to'
         }, {
             bloqInputId: 'POSITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'grados'
+            value: 'bloq-servo-advanced-degrees'
         }]
     ],
     code: '{SERVO}.write({POSITION})'
@@ -22683,7 +22665,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../../utils":87,"./../../statementBloq":72,"lodash":2}],22:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22699,49 +22680,49 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Sonar el buzzer'
+            value: 'bloq-buzzer-sound'
         }, {
             id: 'BUZZER',
             alias: 'dynamicDropdown',
             options: 'buzzers'
         }, {
             alias: 'text',
-            value: 'con la nota'
+            value: 'bloq-buzzer-note'
         }, {
             id: 'NOTE',
             alias: 'staticDropdown',
             options: [{
-                label: 'Do',
+                label: 'bloq-buzzer-do',
                 value: '261'
             }, {
-                label: 'Re',
+                label: 'bloq-buzzer-re',
                 value: '293'
             }, {
-                label: 'Mi',
+                label: 'bloq-buzzer-mi',
                 value: '329'
             }, {
-                label: 'Fa',
+                label: 'bloq-buzzer-fa',
                 value: '349'
             }, {
-                label: 'Sol',
+                label: 'bloq-buzzer-sol',
                 value: '392'
             }, {
-                label: 'La',
+                label: 'bloq-buzzer-la',
                 value: '440'
             }, {
-                label: 'Si',
+                label: 'bloq-buzzer-si',
                 value: '494'
             }]
         }, {
             alias: 'text',
-            value: 'durante'
+            value: 'bloq-buzzer-for'
         }, {
             id: 'SECONDS',
             alias: 'numberInput',
             value: 0
         }, {
             alias: 'text',
-            value: 'ms'
+            value: 'bloq-buzzer-ms'
         }]
     ],
     code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'
@@ -22764,22 +22745,22 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Girar servo'
+            value: 'bloq-continuous-servo-start-turn'
         }, {
             id: 'SERVO',
             alias: 'dynamicDropdown',
             options: 'continuousServos'
         }, {
             alias: 'text',
-            value: 'en sentido'
+            value: 'bloq-continuous-servo-start-direction'
         }, {
             id: 'DIRECTION',
             alias: 'staticDropdown',
             options: [{
-                label: 'horario',
+                label: 'bloq-continuous-servo-start-clockwise',
                 value: '0'
             }, {
-                label: 'antihorario',
+                label: 'bloq-continuous-servo-start-counterclockwise',
                 value: '180'
             }]
         }]
@@ -22791,7 +22772,6 @@ utils.generateBloqInputConnectors(bloq);
 
 
 module.exports = bloq;
-
 },{"./../../utils":87,"./../statementBloq":72,"lodash":2}],24:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22807,7 +22787,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Parar servo'
+            value: 'bloq-continuous-servo-stop-stop'
         }, {
             id: 'SERVO',
             alias: 'dynamicDropdown',
@@ -22821,7 +22801,6 @@ utils.generateBloqInputConnectors(bloq);
 
 
 module.exports = bloq;
-
 },{"./../../utils":87,"./../statementBloq":72,"lodash":2}],25:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -22839,15 +22818,15 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             id: 'STATE',
             alias: 'staticDropdown',
             options: [{
-                label: 'Encender',
+                label: 'bloq-lcd-turn-on-off-turnon',
                 value: 'HIGH'
             }, {
-                label: 'Apagar',
+                label: 'bloq-lcd-turn-on-off-turnoff',
                 value: 'LOW'
             }]
         }, {
             alias: 'text',
-            value: 'la luz del LCD'
+            value: 'bloq-lcd-turn-on-off-lcdLigth'
         }, {
             id: 'LCD',
             alias: 'dynamicDropdown',
@@ -22875,14 +22854,14 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Escribir'
+            value: 'bloq-lcd-writte-write'
         }, {
             id: 'TEXT',
             alias: 'stringInput',
             value: ''
         }, {
             alias: 'text',
-            value: 'en el LCD'
+            value: 'bloq-lcd-writte-inLCD'
         }, {
             id: 'LCD',
             alias: 'dynamicDropdown',
@@ -22913,15 +22892,15 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             id: 'STATE',
             alias: 'staticDropdown',
             options: [{
-                label: 'Encender',
+                label: 'bloq-led-turnon',
                 value: 'HIGH'
             }, {
-                label: 'Apagar',
+                label: 'bloq-led-turnoff',
                 value: 'LOW'
             }]
         }, {
             alias: 'text',
-            value: 'el LED'
+            value: 'bloq-led-theLED'
         }, {
             id: 'LED',
             alias: 'dynamicDropdown',
@@ -22949,28 +22928,28 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Oscilar servo'
+            value: 'bloq-oscillator-oscillate'
         }, {
             id: 'OSCILLATOR',
             alias: 'dynamicDropdown',
             options: 'oscillators'
         }, {
             alias: 'text',
-            value: 'alrededor de'
+            value: 'bloq-oscillator-around'
         }, {
             id: 'PHASE',
             alias: 'numberInput',
             value: 90,
         }, {
             alias: 'text',
-            value: 'con amplitud'
+            value: 'bloq-oscillator-amplitude'
         }, {
             id: 'AMPLITUDE',
             alias: 'numberInput',
             value: 90,
         }, {
             alias: 'text',
-            value: 'con velocidad'
+            value: 'bloq-oscillator-speed'
         }, {
             id: 'SPEED',
             alias: 'numberInput',
@@ -22998,7 +22977,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Reproducir oscilador'
+            value: 'bloq-oscillator-start-oscillator'
         }, {
             id: 'OSCILLATOR',
             alias: 'dynamicDropdown',
@@ -23026,7 +23005,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Parar oscilador'
+            value: 'bloq-oscillator-stop-stop'
         }, {
             id: 'OSCILLATOR',
             alias: 'dynamicDropdown',
@@ -23054,7 +23033,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Leer'
+            value: 'bloq-read-read'
         }, {
             id: 'SENSOR',
             alias: 'dynamicDropdown',
@@ -23073,7 +23052,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
 },{"./../../utils":87,"./../outputBloq":71,"lodash":2}],32:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -23089,21 +23067,21 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mover'
+            value: 'bloq-servo-move'
         }, {
             id: 'SERVO',
             alias: 'dynamicDropdown',
             options: 'servos'
         }, {
             alias: 'text',
-            value: 'a'
+            value: 'bloq-servo-to'
         }, {
             id: 'POSITION',
             alias: 'numberInput',
             value: 0
         }, {
             alias: 'text',
-            value: 'grados'
+            value: 'bloq-servo-degrees'
         }]
     ],
     code: '{SERVO}.write({POSITION});'
@@ -23127,7 +23105,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Interrumpir el bucle'
+            value: 'bloqs-break-stopLoop'
         }]
     ],
     code: 'break;'
@@ -23150,14 +23128,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'si es igual a'
+            value: 'bloq-case-ifSameTo'
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'ejecutar:'
+            value: 'bloq-case-exec'
         }]
     ],
     code: 'case {VAR}:{{STATEMENTS}break;}'
@@ -23181,7 +23159,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'en otro caso, ejecutar:'
+            value: 'bloq-case-default-inOtherCase'
         }]
     ],
     code: 'default:{{STATEMENTS}break;}'
@@ -23206,7 +23184,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Continuar con la siguiente iteracción del bucle'
+            value: 'bloq-continue-continue'
         }]
     ],
     code: 'continue;'
@@ -23230,7 +23208,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'de lo contrario, ejecutar:'
+            value: 'bloq-else-else'
         }]
     ],
     code: 'else {{STATEMENTS}}'
@@ -23254,14 +23232,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'en cambio, si'
+            value: 'bloq-else-if-if'
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'ejecutar:'
+            value: 'bloq-else-if-else'
         }]
     ],
     code: 'else if ({VAR}){{STATEMENTS}}'
@@ -23285,21 +23263,21 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Contar con'
+            value: 'bloq-for-count'
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'desde'
+            value: 'bloq-for-from'
         }, {
             bloqInputId: 'INIT',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'hasta'
+            value: 'bloq-for-to'
         }, {
             bloqInputId: 'FINAL',
             alias: 'bloqInput',
@@ -23308,15 +23286,15 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             id: 'MODE',
             alias: 'staticDropdown',
             options: [{
-                label: 'sumando',
+                label: 'bloq-for-add',
                 value: '++'
             }, {
-                label: 'restando',
+                label: 'bloq-for-subtract',
                 value: '--'
             }]
         }, {
             alias: 'text',
-            value: 'ejecutar:'
+            value: 'bloq-for-exec'
         }]
     ],
     code: 'for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}'
@@ -23340,14 +23318,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Si'
+            value: 'bloq-if-if'
         }, {
             bloqInputId: 'CONDITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'ejecutar:'
+            value: 'bloq-if-exec'
         }]
     ],
     code: 'if({CONDITION}){{STATEMENTS}}'
@@ -23370,14 +23348,13 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     bloqClass: 'bloq-switch',
     content: [
         [{
-                alias: 'text',
-                value: 'Comprobar cuál es el valor de '
-            }, {
-                id: 'VAR',
-                alias: 'dynamicDropdown',
-                options: 'softwareVars'
-            }
-        ]
+            alias: 'text',
+            value: 'bloq-switch-check'
+        }, {
+            id: 'VAR',
+            alias: 'dynamicDropdown',
+            options: 'softwareVars'
+        }]
     ],
     code: 'switch (int({VAR})) {{STATEMENTS}}'
 });
@@ -23400,7 +23377,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Esperar'
+            value: 'bloq-wait-wait'
         }, {
             bloqInputId: 'TIME',
             alias: 'bloqInput',
@@ -23428,14 +23405,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mientras'
+            value: 'bloq-while-while'
         }, {
             bloqInputId: 'CONDITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'ejecutar:'
+            value: 'bloq-while-exec'
         }]
     ],
     code: 'while ({CONDITION}){{STATEMENTS}}'
@@ -23459,18 +23436,18 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'variable'
+            value: 'bloq-argument-var'
         }, {
             id: 'TYPE',
             alias: 'staticDropdown',
             options: [{
-                label: 'float',
+                label: 'bloq-argument-float',
                 value: 'float'
             }, {
-                label: 'String',
+                label: 'bloq-argument-string',
                 value: 'String'
             }, {
-                label: 'bool',
+                label: 'bloq-argument-bool',
                 value: 'bool'
             }]
         }, {
@@ -23542,7 +23519,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Ejecutar'
+            value: 'bloq-invoke-function-exec'
         }, {
             id: 'FUNCTION',
             alias: 'dynamicDropdown',
@@ -23575,7 +23552,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'ejecutar'
+            value: 'bloq-invoke-return-function-exec'
         }, {
             id: 'FUNCTION',
             alias: 'dynamicDropdown',
@@ -23608,7 +23585,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'devuelve'
+            value: 'bloq-return-return'
         }, {
             bloqInputId: 'RETURN',
             alias: 'bloqInput',
@@ -23636,7 +23613,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Declarar función'
+            value: 'bloq-return-function-declare'
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
@@ -23644,7 +23621,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             position: 'DOWN',
             alias: 'text',
-            value: 'devuelve'
+            value: 'bloq-return-function-return'
         }, {
             position: 'DOWN',
             bloqInputId: 'RETURN',
@@ -23678,14 +23655,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Declarar función'
+            value: 'bloq-return-function-with-arguments-declare'
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
             value: ''
         }, {
             alias: 'text',
-            value: 'contando con'
+            value: 'bloq-return-function-with-arguments-count'
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
@@ -23693,7 +23670,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             position: 'DOWN',
             alias: 'text',
-            value: 'devuelve'
+            value: 'bloq-return-function-with-arguments-return'
         }, {
             position: 'DOWN',
             bloqInputId: 'RETURN',
@@ -23706,7 +23683,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         type: 'fromInput',
         bloqInputId: 'RETURN'
     },
-    arguments:{
+    arguments: {
         type: 'fromInput',
         bloqInputId: 'ARGS'
     },
@@ -23731,7 +23708,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Declarar función'
+            value: 'bloq-void-function-declare'
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
@@ -23764,14 +23741,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Declarar función'
+            value: 'bloq-void-function-with-arguments-declare'
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
             value: ''
         }, {
             alias: 'text',
-            value: 'contando con'
+            value: 'bloq-void-function-with-arguments-count'
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
@@ -23783,7 +23760,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         type: 'simple',
         value: 'void'
     },
-    arguments:{
+    arguments: {
         type: 'fromInput',
         bloqInputId: 'ARGS'
     },
@@ -23822,21 +23799,21 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'boolArrayAdvanced',
-    bloqClass: 'bloq-number',
+    bloqClass: 'bloq-boolArray-advanced',
     content: [
         [{
             alias: 'text',
-            value: 'array con tamaño'
+            value: 'bloq-boolArray-advanced-arraySize'
         }, {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'y tipo bool'
+            value: 'bloq-boolArray-advanced-boolType'
         }]
     ],
-    code:  '(bool *)malloc({VALUE}*sizeof(bool))',
+    code: '(bool *)malloc({VALUE}*sizeof(bool))',
     returnType: {
         type: 'simple',
         value: 'bool *'
@@ -23857,21 +23834,21 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'boolArray',
-    bloqClass: 'bloq-number',
+    bloqClass: 'bloq-boolArray',
     content: [
         [{
             alias: 'text',
-            value: 'array con tamaño'
+            value: 'bloq-boolArray-arraySize'
         }, {
             id: 'VALUE',
             alias: 'numberInput',
             value: 0
         }, {
             alias: 'text',
-            value: 'y tipo bool'
+            value: 'bloq-boolArray-boolType'
         }]
     ],
-    code:  '(bool *)malloc({VALUE}*sizeof(bool))',
+    code: '(bool *)malloc({VALUE}*sizeof(bool))',
     returnType: {
         type: 'simple',
         value: 'bool *'
@@ -23898,10 +23875,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             id: 'STATE',
             alias: 'staticDropdown',
             options: [{
-                label: 'verdadero',
+                label: 'bloq-boolean-true',
                 value: 'true'
             }, {
-                label: 'falso',
+                label: 'bloq-boolean-false',
                 value: 'false'
             }]
         }]
@@ -23994,10 +23971,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             id: 'OPERATOR',
             alias: 'staticDropdown',
             options: [{
-                label: 'y',
+                label: 'bloq-logic-operations-and',
                 value: '&&'
             }, {
-                label: 'o',
+                label: 'bloq-logic-operations-or',
                 value: '||'
             }]
         }, {
@@ -24031,14 +24008,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'no'
+            value: 'bloq-not-not'
         }, {
             bloqInputId: 'CONDITION',
             alias: 'bloqInput',
             acceptType: 'all'
         }]
     ],
-    code: '!{CONDITION}', 
+    code: '!{CONDITION}',
     returnType: {
         type: 'simple',
         value: 'bool'
@@ -24061,7 +24038,7 @@ module.exports = bloq;
      name: 'loopBloq',
      bloqClass: 'bloq-loop',
      headerText: 'Loop',
-     descriptionText: 'Crea el programa que se va a ejecutar continuamente después del Setup.',
+     descriptionText: 'bloq-loop-description',
      content: [],
      code: 'void loop(){{STATEMENTS}}'
 
@@ -24084,7 +24061,7 @@ module.exports = bloq;
      name: 'setupBloq',
      bloqClass: 'bloq-setup',
      headerText: 'Setup',
-     descriptionText: 'Indica lo que quieres que se ejecute al inicio del programa y sólo una única vez.',
+     descriptionText: 'bloq-setup-description',
      content: [],
      code: 'void setup(){{STATEMENTS}}'
  });
@@ -24106,7 +24083,7 @@ module.exports = bloq;
      name: 'varsBloq',
      bloqClass: 'bloq-vars',
      headerText: 'Variables globales y funciones',
-     descriptionText: 'Define los valores que vas a utilizar en Setup y Loop, también puedes hacer funciones para agrupar bloques',
+     descriptionText: 'bloq-var-description',
      content: [],
      code: '{STATEMENTS}'
  });
@@ -24126,31 +24103,31 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'numberArrayAdvanced',
-    bloqClass: 'bloq-number',
+    bloqClass: 'bloq-numberArray-advanced',
     content: [
         [{
             alias: 'text',
-            value: 'array con tamaño'
+            value: 'bloq-numberArray-advanced-arraySize'
         }, {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'y tipo'
-        },{
+            value: 'bloq-numberArray-advanced-type'
+        }, {
             id: 'TYPE',
             alias: 'staticDropdown',
             options: [{
-                label: 'float',
+                label: 'bloq-numberArray-advanced-float',
                 value: 'float *'
             }, {
-                label: 'int',
+                label: 'bloq-numberArray-advanced-int',
                 value: 'int *'
             }]
         }]
     ],
-    code:  '({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))',
+    code: '({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))',
     returnType: {
         type: 'fromDropdown',
         idDropdown: 'TYPE',
@@ -24229,14 +24206,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mapear'
+            value: 'bloq-map-map'
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'float'
         }, {
             alias: 'text',
-            value: 'valor entre [0-'
+            value: 'bloq-map-value'
         }, {
             bloqInputId: 'MAXVAL',
             alias: 'bloqInput',
@@ -24271,14 +24248,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mapear'
+            value: 'bloq-map-advanced-map'
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: 'float'
         }, {
             alias: 'text',
-            value: 'de ['
+            value: 'bloq-map-advanced-value'
         }, {
             bloqInputId: 'INITMIN',
             alias: 'bloqInput',
@@ -24292,7 +24269,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'float'
         }, {
             alias: 'text',
-            value: '] a ['
+            value: 'bloq-map-advanced-and'
         }, {
             bloqInputId: 'FINMIN',
             alias: 'bloqInput',
@@ -24337,10 +24314,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'staticDropdown',
             //'Raíz cuadrada', 'Valor absoluto', '-', 'ln', 'log10', 'e^', '10^']
             options: [{
-                label: 'Raíz cuadrada',
+                label: 'bloq-math-operations-sqrt',
                 value: 'sqrt'
             }, {
-                label: 'Valor absoluto',
+                label: 'bloq-math-operations-abs',
                 value: 'abs'
             }, {
                 label: 'ln',
@@ -24408,21 +24385,21 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'numberArray',
-    bloqClass: 'bloq-number',
+    bloqClass: 'bloq-numberArray',
     content: [
         [{
             alias: 'text',
-            value: 'array con tamaño'
+            value: 'bloq-numberArray-arraySize'
         }, {
             id: 'VALUE',
             alias: 'numberInput',
             value: 0
         }, {
             alias: 'text',
-            value: 'y tipo float'
+            value: 'bloq-numberArray-floatType'
         }]
     ],
-    code:  '(float*)malloc({VALUE}*sizeof(float))',
+    code: '(float*)malloc({VALUE}*sizeof(float))',
     returnType: {
         type: 'simple',
         value: 'float *'
@@ -24447,14 +24424,14 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Aleatorio entre'
+            value: 'bloq-random-random'
         }, {
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
             acceptType: 'float'
         }, {
             alias: 'text',
-            value: 'y'
+            value: 'bloq-random-and'
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
@@ -24535,31 +24512,31 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'stringArrayAdvanced',
-    bloqClass: 'bloq-number',
+    bloqClass: 'bloq-stringArray-advanced',
     content: [
         [{
             alias: 'text',
-            value: 'array con tamaño'
+            value: 'bloq-stringArray-advanced-arraySize'
         }, {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'y tipo'
-        },{
+            value: 'bloq-stringArray-advanced-type'
+        }, {
             id: 'TYPE',
             alias: 'staticDropdown',
             options: [{
-                label: 'String',
+                label: 'bloq-stringArray-advanced-string',
                 value: 'String *'
             }, {
-                label: 'char',
+                label: 'bloq-stringArray-advanced-char',
                 value: 'char *'
             }]
         }]
     ],
-    code:  '({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))',
+    code: '({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))',
     returnType: {
         type: 'fromDropdown',
         idDropdown: 'TYPE',
@@ -24585,7 +24562,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'longitud'
+            value: 'bloq-length-length'
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
@@ -24621,7 +24598,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             id: 'TEXT',
             alias: 'stringInput',
-            value: 'Texto'
+            value: 'bloq-string-string'
         }, {
             alias: 'text',
             value: '"'
@@ -24648,21 +24625,21 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'stringArray',
-    bloqClass: 'bloq-number',
+    bloqClass: 'bloq-stringArray',
     content: [
         [{
             alias: 'text',
-            value: 'array con tamaño'
+            value: 'bloq-stringArray-arraySize'
         }, {
             id: 'VALUE',
             alias: 'numberInput',
             value: 0
         }, {
             alias: 'text',
-            value: 'y tipo string'
+            value: 'bloq-stringArray-stringType'
         }]
     ],
-    code:  '(String *)malloc({VALUE}*sizeof(String))',
+    code: '(String *)malloc({VALUE}*sizeof(String))',
     returnType: {
         type: 'simple',
         value: 'String *'
@@ -24687,7 +24664,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'crear texto con'
+            value: 'bloq-string-create-create'
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
@@ -24718,7 +24695,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Variable (componentes)'
+            value: 'bloq-hw-variable-advanced-variable'
         }, {
             id: 'VALUE',
             alias: 'dynamicDropdown',
@@ -24747,7 +24724,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Variable (software)'
+            value: 'bloq-sw-variable-advanced-variable'
         }, {
             id: 'VALUE',
             alias: 'dynamicDropdown',
@@ -24777,7 +24754,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Variable'
+            value: 'bloq-array-variable-variable'
         }, {
             id: 'VAR',
             alias: 'dynamicDropdown',
@@ -24820,7 +24797,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Declarar variable'
+            value: 'bloq-declare-variable-declare'
         }, {
             id: 'NAME',
             alias: 'varInput',
@@ -24860,7 +24837,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Variable'
+            value: 'bloq-select-variable-variable'
         }, {
             id: 'VAR',
             alias: 'dynamicDropdown',
@@ -24889,11 +24866,11 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'setArrayVariable',
-    bloqClass: 'bloq-set-variable',
+    bloqClass: 'bloq-set-variableArray',
     content: [
         [{
             alias: 'text',
-            value: 'Variable'
+            value: 'bloq-set-variableArray-variable'
         }, {
             id: 'NAME',
             alias: 'dynamicDropdown',
@@ -24908,7 +24885,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             alias: 'text',
             value: ']'
-        },{
+        }, {
             alias: 'text',
             value: '='
         }, {
@@ -24943,7 +24920,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Variable'
+            value: 'bloq-set-variable-variable'
         }, {
             id: 'NAME',
             alias: 'dynamicDropdown',
@@ -25736,5 +25713,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,26,27,28,24,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87])
+},{"jquery":1,"lodash":2}]},{},[3,5,4,6,7,8,9,11,10,14,13,15,12,17,16,18,20,19,21,22,23,24,25,27,26,28,29,30,32,31,34,33,35,36,37,39,40,38,41,42,43,45,44,46,47,49,48,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,67,66,68,69,70,72,71,73,74,75,77,76,78,79,80,81,82,83,85,84,86,87])
 ;

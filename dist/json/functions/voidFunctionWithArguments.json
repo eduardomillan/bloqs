@@ -18,7 +18,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "var",
-      "name": "37f4fff4-12bb-40bd-86c5-a22172eb936d"
+      "name": "25f237c9-dae0-47a5-bcd7-ac41ef79da11"
     }
   ],
   "bloqClass": "bloq-void-function-with-arguments",
@@ -26,7 +26,7 @@
     [
       {
         "alias": "text",
-        "value": "Declarar función"
+        "value": "bloq-void-function-with-arguments-declare"
       },
       {
         "id": "FUNCNAME",
@@ -35,13 +35,13 @@
       },
       {
         "alias": "text",
-        "value": "contando con"
+        "value": "bloq-void-function-with-arguments-count"
       },
       {
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "var",
-        "name": "37f4fff4-12bb-40bd-86c5-a22172eb936d"
+        "name": "25f237c9-dae0-47a5-bcd7-ac41ef79da11"
       }
     ]
   ],

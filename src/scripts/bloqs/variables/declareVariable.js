@@ -11,7 +11,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Declarar variable'
+            value: 'bloq-declare-variable-declare'
         }, {
             id: 'NAME',
             alias: 'varInput',

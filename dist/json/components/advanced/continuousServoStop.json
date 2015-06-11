@@ -14,7 +14,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "fc19ccb7-1660-4521-af2f-3a8a1dc61f0e"
+      "name": "3e035d5e-ae91-434c-b9f1-18b1a5c5b749"
     }
   ],
   "bloqClass": "bloq-continuous-servo-stop-advanced",
@@ -22,13 +22,13 @@
     [
       {
         "alias": "text",
-        "value": "Parar servo"
+        "value": "bloq-continuous-servo-stop-advanced-stop"
       },
       {
         "bloqInputId": "SERVO",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "fc19ccb7-1660-4521-af2f-3a8a1dc61f0e"
+        "name": "3e035d5e-ae91-434c-b9f1-18b1a5c5b749"
       }
     ]
   ],

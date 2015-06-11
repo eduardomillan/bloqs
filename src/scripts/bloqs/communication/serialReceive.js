@@ -16,7 +16,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             options: 'serialElements'
         }, {
             alias: 'text',
-            value: 'recibir'
+            value: 'bloq-serial-receiver-receive'
         }]
     ],
     code: '{SERIAL}.readString()',

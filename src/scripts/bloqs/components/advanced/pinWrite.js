@@ -12,14 +12,14 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Escribir en el pin'
+            value: 'bloq-pin-writte-advanced-writepin'
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'el dato'
+            value: 'bloq-pin-writte-advanced-data'
         }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',

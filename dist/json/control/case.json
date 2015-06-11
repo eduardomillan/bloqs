@@ -18,7 +18,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "5955eb1e-ceef-4e39-9e0b-a47e6a4bbccb"
+      "name": "af191d83-64e9-405e-84d0-f79a3cb16243"
     }
   ],
   "bloqClass": "bloq-case",
@@ -26,17 +26,17 @@
     [
       {
         "alias": "text",
-        "value": "si es igual a"
+        "value": "bloq-case-ifSameTo"
       },
       {
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "5955eb1e-ceef-4e39-9e0b-a47e6a4bbccb"
+        "name": "af191d83-64e9-405e-84d0-f79a3cb16243"
       },
       {
         "alias": "text",
-        "value": "ejecutar:"
+        "value": "bloq-case-exec"
       }
     ]
   ],
