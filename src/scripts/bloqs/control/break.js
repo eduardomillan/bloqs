@@ -12,7 +12,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloqs-break-stopLoop'
+            value: 'bloq-break-stopLoop'
         }]
     ],
     code: 'break;'
