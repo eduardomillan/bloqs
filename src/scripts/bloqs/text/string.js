@@ -16,7 +16,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             id: 'TEXT',
             alias: 'stringInput',
-            value: 'bloq-string-string'
+            placeholder: 'bloq-string-string'
         }, {
             alias: 'text',
             value: '"'

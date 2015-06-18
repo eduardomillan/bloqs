@@ -24598,7 +24598,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             id: 'TEXT',
             alias: 'stringInput',
-            value: 'bloq-string-string'
+            placeholder: 'bloq-string-string'
         }, {
             alias: 'text',
             value: '"'
@@ -24614,6 +24614,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
+
 },{"./../../utils":87,"./../outputBloq":71,"lodash":2}],77:[function(require,module,exports){
 /*global require */
 'use strict';
@@ -25713,5 +25714,5 @@ module.exports.getBranchsConnectorsNoChildren = getBranchsConnectorsNoChildren;
 
 
 
-},{"jquery":1,"lodash":2}]},{},[3,4,5,6,7,8,9,10,11,12,13,14,15,17,16,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,63,62,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,84,83,82,85,86,87])
+},{"jquery":1,"lodash":2}]},{},[3,4,7,6,5,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,32,31,33,34,36,35,37,38,40,39,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,58,57,59,60,61,62,63,64,65,66,67,68,69,70,72,71,73,74,75,76,77,78,79,80,81,82,83,85,84,86,87])
 ;
