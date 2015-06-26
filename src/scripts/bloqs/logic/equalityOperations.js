@@ -19,7 +19,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'staticDropdown',
             options: [{
                     label: '=',
-                    value: '='
+                    value: '=='
                 }, {
                     label: '!=',
                     value: '!='

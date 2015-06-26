@@ -25,10 +25,10 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'staticDropdown',
             options: [{
                 label: 'bloq-continuous-servo-start-clockwise',
-                value: '0'
+                value: '180'
             }, {
                 label: 'bloq-continuous-servo-start-counterclockwise',
-                value: '180'
+                value: '0'
             }]
         }]
     ],
