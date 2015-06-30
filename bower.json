@@ -33,8 +33,11 @@
     ],
     "dependencies": {
         "jquery": ">= 2.1.0",
-        "interact": "~1.2.4",
         "lodash": "~3.7.0"
+    },
+    "resolutions": {
+        "lodash": "3.7.0",
+        "jquery": "2.1.0"
     },
     "moduleType": [
         "node"
