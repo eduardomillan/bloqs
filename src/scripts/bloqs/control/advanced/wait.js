@@ -2,21 +2,21 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../../utils'),
+    StatementBloq = require('./../../statementBloq');
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'wait',
+    name: 'waitAdvanced',
     bloqClass: 'bloq-wait',
     content: [
         [{
             alias: 'text',
             value: 'bloq-wait-wait'
         }, {
-            id: 'TIME',
-            alias: 'numberInput',
-            value: 0,
+            bloqInputId: 'TIME',
+            alias: 'bloqInput',
+            acceptType: 'all'
         }]
     ],
     code: 'delay({TIME});'

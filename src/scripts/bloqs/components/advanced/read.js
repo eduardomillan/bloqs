@@ -19,7 +19,13 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'all'
         }]
     ],
-    code: '\'{PIN}\'.indexOf(\'A\') === 0 ? \'analogRead({PIN})\' : \'digitalRead({PIN})\''
+    // code: '\'{PIN}\'.indexOf(\'A\') === 0 ? \'analogRead({PIN})\' : \'digitalRead({PIN})\''
+    code: '{SENSOR.type}',
+    returnType: {
+        type: 'fromDynamicDropdown',
+        idDropdown: 'SENSOR',
+        options: 'sensors'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
