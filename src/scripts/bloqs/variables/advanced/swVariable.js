@@ -1,8 +1,9 @@
-/*global require */
+/*global require */ 
 'use strict';
 
-var _ = require('lodash');
-var OutputBloq = require('./../../outputBloq');
+var _ = require('lodash'),
+    utils = require('./../../../utils'),
+    OutputBloq = require('./../../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
@@ -20,9 +21,12 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     ],
     code: '{VALUE}',
     returnType: {
-        type: 'simple',
-        value: 'var'
+        type: 'fromDynamicDropdown',
+        idDropdown: 'VAR',
+        options: 'softwareVars'
     }
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;

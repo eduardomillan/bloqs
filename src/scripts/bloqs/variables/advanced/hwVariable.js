@@ -1,8 +1,9 @@
 /*global require */
 'use strict';
 
-var _ = require('lodash');
-var OutputBloq = require('./../../outputBloq');
+var _ = require('lodash'),
+    utils = require('./../../../utils'),
+    OutputBloq = require('./../../outputBloq');
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
@@ -13,16 +14,19 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'text',
             value: 'bloq-hw-variable-advanced-variable'
         }, {
-            id: 'VALUE',
+            id: 'COMPONENT',
             alias: 'dynamicDropdown',
             options: 'varComponents'
         }]
     ],
-    code: '{VALUE}',
+    code: '{COMPONENT.type}',
     returnType: {
-        type: 'simple',
-        value: 'var'
+        type: 'fromDynamicDropdown',
+        idDropdown: 'COMPONENT',
+        options: 'varComponents'
     }
 });
+
+utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
