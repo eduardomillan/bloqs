@@ -19,7 +19,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             options: 'varComponents'
         }]
     ],
-    code: '{COMPONENT.type}',
+    code: '{COMPONENT}',
     returnType: {
         type: 'fromDynamicDropdown',
         idDropdown: 'COMPONENT',
