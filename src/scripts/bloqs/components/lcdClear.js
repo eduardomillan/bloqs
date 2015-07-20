@@ -7,19 +7,20 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'return',
-    bloqClass: 'bloq-return',
+    name: 'lcdClear',
+    bloqClass: 'bloq-lcd-clear',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-return-return'
+            value: 'bloq-lcd-clear'
         }, {
-            bloqInputId: 'RETURN',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'LCD',
+            alias: 'dynamicDropdown',
+            options: 'lcds'
         }]
     ],
-    code: 'return {RETURN};'
+    code: '{LCD}.clear();'
+
 });
 
 utils.generateBloqInputConnectors(bloq);
