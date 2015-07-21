@@ -19,12 +19,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             options: 'voidFunctions'
         }]
     ],
-    code: '{FUNCTION}({FUNCTION.args});',
-    returnType: {
-        type: 'fromDynamicDropdown',
-        idDropdown: 'FUNCTION',
-        options: 'voidFunctions'
-    }
+    code: '{FUNCTION}({FUNCTION.args});'
 });
 
 utils.generateBloqInputConnectors(bloq);
