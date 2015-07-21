@@ -16,7 +16,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
-            acceptType: 'string'
+            acceptType: 'all'
         }]
     ],
     code: 'String({TEXT})',
