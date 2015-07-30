@@ -2,12 +2,12 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../../utils'),
+    StatementBloq = require('./../../statementBloq');
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'invokeFunction',
+    name: 'invokeFunctionWithArguments',
     bloqClass: 'bloq-invoke-function',
     content: [
         [{
@@ -17,9 +17,16 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             id: 'FUNCTION',
             alias: 'dynamicDropdown',
             options: 'voidFunctions'
+        }, {
+            alias: 'text',
+            value: 'bloq-invoke-function-args'
+        }, {
+            bloqInputId: 'ARGS',
+            alias: 'bloqInput',
+            acceptType: 'all'
         }]
     ],
-    code: '{FUNCTION}({FUNCTION.args});',
+    code: '{FUNCTION}({ARGS});',
     dynamicDropdown : {
         idDropdown: 'FUNCTION',
         options: 'voidFunctions'
@@ -29,3 +36,5 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
+
+
