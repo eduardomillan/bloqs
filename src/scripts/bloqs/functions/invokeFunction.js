@@ -19,7 +19,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             options: 'voidFunctions'
         }]
     ],
-    code: '{FUNCTION}({FUNCTION.args});',
+    code: '{FUNCTION}();',
     dynamicDropdown : {
         idDropdown: 'FUNCTION',
         options: 'voidFunctions'

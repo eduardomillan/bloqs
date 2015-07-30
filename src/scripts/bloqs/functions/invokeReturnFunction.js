@@ -19,7 +19,8 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             options: 'returnFunctions'
         }]
     ],
-    code: '{FUNCTION}({FUNCTION.args});',
+
+    code: '{FUNCTION}()',
     returnType: {
         type: 'fromDynamicDropdown',
         idDropdown: 'FUNCTION',
