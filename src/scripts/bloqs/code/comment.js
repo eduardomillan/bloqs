@@ -15,7 +15,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'COMMENT',
             alias: 'multilineCodeInput',
-            value: ''
+            placeholder:'bloq-comment-default'
         }]
     ],
     code: '/*\n{COMMENT}\n*/'

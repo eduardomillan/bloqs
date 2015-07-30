@@ -16,7 +16,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             id: 'VALUE',
             alias: 'numberInput',
-            value: 0
+            value: 3
         }, {
             alias: 'text',
             value: 'bloq-stringArray-stringType'

@@ -51,7 +51,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'SECONDS',
             alias: 'numberInput',
-            value: 0
+            value: 2000
         }, {
             alias: 'text',
             value: 'bloq-buzzer-ms'

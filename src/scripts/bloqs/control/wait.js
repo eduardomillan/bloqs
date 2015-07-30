@@ -16,7 +16,10 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'TIME',
             alias: 'numberInput',
-            value: 0,
+            value: 2000,
+        }, {
+            alias: 'text',
+            value: 'bloq-wait-ms'
         }]
     ],
     code: 'delay({TIME});'

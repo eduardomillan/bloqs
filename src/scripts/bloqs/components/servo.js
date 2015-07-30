@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'servo',
+    name: 'servoNormal',
     bloqClass: 'bloq-servo',
     content: [
         [{
@@ -23,7 +23,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'POSITION',
             alias: 'numberInput',
-            value: 0
+            value: 90
         }, {
             alias: 'text',
             value: 'bloq-servo-degrees'
