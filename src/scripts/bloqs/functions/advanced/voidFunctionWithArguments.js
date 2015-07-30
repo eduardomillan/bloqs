@@ -16,7 +16,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
-            value: ''
+            placeholder:'bloq-functions-default'
         }, {
             alias: 'text',
             value: 'bloq-void-function-with-arguments-count'
