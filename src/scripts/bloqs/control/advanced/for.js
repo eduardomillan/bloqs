@@ -2,35 +2,35 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    StatementInputBloq = require('./../statementInputBloq');
+    utils = require('./../../../utils'),
+    StatementInputBloq = require('./../../statementInputBloq');
 
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
-    name: 'for',
+    name: 'forAdvanced',
     bloqClass: 'bloq-for',
     content: [
         [{
             alias: 'text',
             value: 'bloq-for-count'
         }, {
-            id: 'VAR',
-            alias: 'dynamicDropdown',
-            options: 'softwareVars'
+            bloqInputId: 'VAR',
+            alias: 'bloqInput',
+            acceptType: 'all'
         }, {
             alias: 'text',
             value: 'bloq-for-from'
         }, {
-            id: 'INIT',
-            alias: 'numberInput',
-            value: 0
+            bloqInputId: 'INIT',
+            alias: 'bloqInput',
+            acceptType: 'all'
         }, {
             alias: 'text',
             value: 'bloq-for-to'
         }, {
-            id: 'FINAL',
-            alias: 'numberInput',
-            value: 10
+            bloqInputId: 'FINAL',
+            alias: 'bloqInput',
+            acceptType: 'all'
         }, {
             id: 'MODE',
             alias: 'staticDropdown',

@@ -14,7 +14,33 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             alias: 'text',
             value: 'bloq-else-if-if'
         }, {
-            bloqInputId: 'VAR',
+            bloqInputId: 'ARG1',
+            alias: 'bloqInput',
+            acceptType: 'all'
+        }, {
+            id: 'OPERATOR',
+            alias: 'staticDropdown',
+            options: [{
+                    label: '=',
+                    value: '=='
+                }, {
+                    label: '!=',
+                    value: '!='
+                }, {
+                    label: '>',
+                    value: '>'
+                }, {
+                    label: '>=',
+                    value: '>='
+                }, {
+                    label: '<',
+                    value: '<'
+                }, {
+                    label: '<=',
+                    value: '<='
+                }] //'=', '≠', '>', '≥', '<', '≤']
+        }, {
+            bloqInputId: 'ARG2',
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
@@ -22,7 +48,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-else-if-else'
         }]
     ],
-    code: 'else if ({VAR}){{STATEMENTS}}'
+    code: 'else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}'
 });
 
 utils.generateBloqInputConnectors(bloq);

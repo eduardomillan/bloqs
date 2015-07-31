@@ -13,9 +13,9 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             alias: 'text',
             value: 'bloq-case-ifSameTo'
         }, {
-            bloqInputId: 'VAR',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'VAR',
+            alias: 'numberInput',
+            value: 0
         }, {
             alias: 'text',
             value: 'bloq-case-exec'
