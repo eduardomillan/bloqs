@@ -7,22 +7,22 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'pinReadAdvanced',
-    bloqClass: 'bloq-pin-read-advanced',
+    name: 'digitalReadAdvanced',
+    bloqClass: 'bloq-digital-read-advanced',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-pin-read-advanced-readpin'
+            value: 'bloq-digital-read-advanced-readpin'
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: 'float'
         }]
     ],
-    code: '\'{PIN}\'.indexOf(\'A\') !== -1 ? \'analogRead({PIN})\' : \'digitalRead({PIN})\'',
+    code: 'digitalRead({PIN})',
     returnType: {
         type: 'simple',
-        value: 'bool'
+        value: 'float'
     }
 });
 
