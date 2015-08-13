@@ -16,7 +16,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
-            acceptType: 'float'
+            acceptType: 'all'
         }]
     ],
     code: 'digitalRead({PIN})',
