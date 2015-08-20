@@ -7,8 +7,8 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'lcdWritePositionAdvanced-v1',
-    bloqClass: 'bloq-lcd-writte',
+    name: 'lcdWritePositionAdvanced',
+    bloqClass: 'bloq-lcd-writte deprecated',
     content: [
         [{
             alias: 'text',
@@ -28,13 +28,13 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'bloq-lcd-writte-advanced-inPosition'
         }, {
-            bloqInputId: 'COLUMN',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'COLUMN',
+            alias: 'numberInput',
+            value: 0
         }, {
-            bloqInputId: 'ROW',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'ROW',
+            alias: 'numberInput',
+            value: 0
         }]
     ],
     code: '{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});'
