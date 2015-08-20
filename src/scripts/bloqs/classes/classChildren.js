@@ -7,8 +7,8 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
-    name: 'class',
-    bloqClass: 'bloq-class',
+    name: 'classChildren',
+    bloqClass: 'bloq-class-children',
     content: [
         [{
             alias: 'text',
@@ -45,7 +45,11 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     createDynamicContent: 'classes',
     code: 'class {NAME} : public {PARENT}{{STATEMENTS}};',
     hCode: 'class {NAME}: public {PARENT}{{STATEMENTS}};',
-    cppCode: ''
+    cppCode: '',
+    returnType: {
+        type: 'simple',
+        value: 'class'
+    }
 
 });
 

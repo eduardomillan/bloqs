@@ -7,22 +7,17 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
-    name: 'class',
-    bloqClass: 'bloq-class',
+    name: 'constructorClass',
+    bloqClass: 'bloq-constructor',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-class'
-        }, {
-            id: 'NAME',
-            alias: 'varInput',
-            placeholder:'bloq-class-default'
+            value: 'bloq-constructor'
         }]
     ],
-    createDynamicContent: 'classes',
-    code: 'class {NAME}{{STATEMENTS}};',
-    hCode: 'class {NAME}{{STATEMENTS}};',
-    cppCode: ''
+    code: '{CLASS-OUTSIDE}(){{STATEMENTS}};',
+    hCode: '{CLASS-OUTSIDE} ();',
+    cppCode: '{CLASS-OUTSIDE} :: {CLASS-OUTSIDE} (){{STATEMENTS}};'
 
 });
 

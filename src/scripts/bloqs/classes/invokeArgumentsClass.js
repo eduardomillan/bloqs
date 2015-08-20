@@ -3,9 +3,9 @@
 
 var _ = require('lodash'),
     utils = require('./../../utils'),
-    OutputBloq = require('./../outputBloq');
+    StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'invokeArgumentsClass',
     bloqClass: 'bloq-invoke-arguments-class',
@@ -19,6 +19,13 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             options: 'classes'
         }, {
             alias: 'text',
+            value: 'bloq-invoke-arguments-class-name'
+        }, {
+            id: 'NAME',
+            alias: 'varInput',
+            value: ''
+        }, {
+            alias: 'text',
             value: 'bloq-invoke-arguments-args'
         }, {
             bloqInputId: 'ARGS',
@@ -26,7 +33,9 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'all'
         }]
     ],
-    code: '{CLASS}({ARGS});',
+    createDynamicContent: 'objects',
+
+    code: '{CLASS} {NAME}({ARGS});',
     returnType: {
         type: 'simple',
         value: 'var'
