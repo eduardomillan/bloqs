@@ -22,7 +22,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     code: 'String({TEXT})',
     returnType: {
         type: 'simple',
-        value: 'string'
+        value: 'String'
     }
 });
 

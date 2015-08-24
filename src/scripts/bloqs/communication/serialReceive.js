@@ -22,7 +22,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     code: '{SERIAL}.readString()',
     returnType: {
         type: 'simple',
-        value: 'string'
+        value: 'String'
     }
 });
 utils.generateBloqInputConnectors(bloq);
