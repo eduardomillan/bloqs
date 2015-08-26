@@ -19,8 +19,8 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'all'
         }]
     ],
-    code: '\'{PIN}\'.indexOf(\'A\') !== -1 ? \'analogRead({PIN})\'.replace(/"/g, \'\') : \'analogRead({PIN})\'',
-    returnType: {
+   code: '\'{PIN}\'.indexOf(\'A\') !== -1 ? \'analogRead({PIN})\'.replace(/"/g, \'\') : \'analogRead({PIN})\'',
+       returnType: {
         type: 'simple',
         value: 'float'
     }
