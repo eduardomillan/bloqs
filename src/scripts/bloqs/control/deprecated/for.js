@@ -7,50 +7,46 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
-    name: 'forAdvanced-v1',
-    bloqClass: 'bloq-for',
+    name: 'for',
+    bloqClass: 'bloq-for deprecated',
     content: [
         [{
             alias: 'text',
             value: 'bloq-for-count'
         }, {
-            bloqInputId: 'VAR',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'VAR',
+            alias: 'dynamicDropdown',
+            options: 'softwareVars'
         }, {
             alias: 'text',
             value: 'bloq-for-from'
         }, {
-            bloqInputId: 'INIT',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'INIT',
+            alias: 'numberInput',
+            value: 0
         }, {
             alias: 'text',
             value: 'bloq-for-to'
         }, {
-            bloqInputId: 'FINAL',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'FINAL',
+            alias: 'numberInput',
+            value: 10
         }, {
             id: 'MODE',
             alias: 'staticDropdown',
             options: [{
                 label: 'bloq-for-add',
-                value: '+'
+                value: '++'
             }, {
                 label: 'bloq-for-subtract',
-                value: '-'
+                value: '--'
             }]
-        }, {
-            id: 'ADD',
-            alias: 'numberInput',
-            value: 1
         }, {
             alias: 'text',
             value: 'bloq-for-exec'
         }]
     ],
-    code: 'for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}'
+    code: 'for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}'
 });
 
 utils.generateBloqInputConnectors(bloq);

@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
-    name: 'for',
+    name: 'for-v1',
     bloqClass: 'bloq-for',
     content: [
         [{
@@ -36,17 +36,21 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             alias: 'staticDropdown',
             options: [{
                 label: 'bloq-for-add',
-                value: '++'
+                value: '+'
             }, {
                 label: 'bloq-for-subtract',
-                value: '--'
+                value: '-'
             }]
+        }, {
+            id: 'ADD',
+            alias: 'numberInput',
+            value: 1
         }, {
             alias: 'text',
             value: 'bloq-for-exec'
         }]
     ],
-    code: 'for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}'
+    code: 'for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}'
 });
 
 utils.generateBloqInputConnectors(bloq);
