@@ -32,6 +32,9 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
                 }, {
                     label: '^',
                     value: '^'
+                }, {
+                    label: '%',
+                    value: '%'
                 }] //'+', '-', '×', '÷', '^']
         }, {
             bloqInputId: 'ARG2',
