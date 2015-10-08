@@ -7,7 +7,7 @@ var _ = require('lodash'),
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'continuousServoStartAdvanced-v1',
+    name: 'continuousServoStartAdvanced',
     bloqClass: 'bloq-continuous-servo-start-advanced',
     content: [
         [{
@@ -21,9 +21,15 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'bloq-continuous-servo-start-advanced-direction'
         }, {
-            bloqInputId: 'DIRECTION',
-            alias: 'bloqInput',
-            acceptType: 'all'
+            id: 'DIRECTION',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'bloq-continuous-servo-start-advanced-clockwise',
+                value: '0'
+            }, {
+                label: 'bloq-continuous-servo-start-advanced-counterclockwise',
+                value: '180'
+            }]
         }]
     ],
     code: '{SERVO}.write({DIRECTION});'
@@ -33,3 +39,6 @@ utils.generateBloqInputConnectors(bloq);
 
 
 module.exports = bloq;
+
+
+
