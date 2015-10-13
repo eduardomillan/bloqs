@@ -16,14 +16,14 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             id: 'FUNCNAME',
             alias: 'varInput',
-            placeholder:'bloq-functions-default'
+            placeholder: 'bloq-functions-default'
         }, {
             alias: 'text',
             value: 'bloq-return-function-with-arguments-count'
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: 'var'
+            acceptType: 'all'
         }, {
             position: 'DOWN',
             alias: 'text',

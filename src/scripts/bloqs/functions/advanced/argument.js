@@ -35,9 +35,10 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     createDynamicContent: 'softwareVars',
     code: '{TYPE} {VARNAME}',
     returnType: {
-        type: 'simple',
-        value: 'var'
-    },
+        type: 'fromDropdown',
+        idDropdown: 'TYPE',
+        options: 'softwareVars'
+    }
 });
 
 utils.generateBloqInputConnectors(bloq);
