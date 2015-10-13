@@ -2,12 +2,12 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../../utils'),
+    StatementBloq = require('./../../statementBloq');
 
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'serialSend-v1',
+    name: 'serialSend',
     bloqClass: 'bloq-serial-send',
     content: [
         [{
@@ -22,7 +22,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
-            id: 'LN',
+            id: 'FUNCTION',
             alias: 'staticDropdown',
             options: [{
                 label: 'bloq-serial-send-println',
@@ -33,7 +33,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             }]
         }]
     ],
-    code: '{SERIAL}.{LN}({DATA});'
+    code: '{SERIAL}.{FUNCTION}({DATA});'
 });
 utils.generateBloqInputConnectors(bloq);
 
