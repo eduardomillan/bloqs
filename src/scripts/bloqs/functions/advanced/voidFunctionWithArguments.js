@@ -23,7 +23,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: 'var'
+            acceptType: 'all'
         }]
     ],
     createDynamicContent: 'voidFunctions',
