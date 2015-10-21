@@ -50,7 +50,7 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-for-exec'
         }]
     ],
-    code: 'for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}'
+    code: '\'for({VAR}={INIT};{VAR}\' + (\'{MODE}\' === \'+\'?\'<\':\'>\' ) + \'{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}\''
 });
 
 utils.generateBloqInputConnectors(bloq);
