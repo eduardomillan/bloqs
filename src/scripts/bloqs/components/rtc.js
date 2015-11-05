@@ -13,7 +13,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             alias: 'text',
             value: 'bloq-rtc'
         },{
-            id: 'FUNCTION',
+            id: 'RTC_FUNC',
             alias: 'staticDropdown',
              options: [{
                 label: 'bloq-rtc-date',
@@ -31,7 +31,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             options: 'clocks'
         }]
     ],
-    code: '{RTC}.{FUNCTION}()',
+    code: '{RTC}.{RTC_FUNC}()',
     returnType: {
         type: 'simple',
         value: 'String'
