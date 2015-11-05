@@ -44,23 +44,32 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-zowi-movements-no-dir-speed'
         }, {
             id: 'SPEED',
-            alias: 'numberInput',
-            value: 2000
+            alias: 'staticDropdown',
+            options: [{
+                label: 'bloq-zowi-movements-speed-small',
+                value: 'LOW_SPEED'
+            }, {
+                label: 'bloq-zowi-movements-speed-medium',
+                value: 'MEDIUM_SPEED'
+            }, {
+                label: 'bloq-zowi-movements-speed-high',
+                value: 'HIGH_SPEED'
+            }]
         }, {
             alias: 'text',
             value: 'bloq-zowi-movements-no-dir-height'
         }, {
             id: 'HEIGHT',
             alias: 'staticDropdown',
-            options: [{
-                label: 'bloq-zowi-movements-no-dir-big',
-                value: 'BIG'
+            options: [ {
+                label: 'bloq-zowi-movements-height-small',
+                value: 'SMALL_HEIGHT'
             }, {
-                label: 'bloq-zowi-movements-no-dir-medium',
-                value: 'MEDIUM'
-            }, {
-                label: 'bloq-zowi-movements-no-dir-small',
-                value: 'SMALL'
+                label: 'bloq-zowi-movements-height-medium',
+                value: 'MEDIUM_HEIGHT'
+            },{
+                label: 'bloq-zowi-movements-height-big',
+                value: 'BIG_HEIGHT'
             }]
         }]
     ],

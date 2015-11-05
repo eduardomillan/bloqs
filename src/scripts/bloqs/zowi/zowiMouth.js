@@ -25,13 +25,22 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             }, {
                 label: 'bloq-zowi-mouth-happy',
                 value: 'happyOpenMouth_code'
+            }, {
+                label: 'bloq-zowi-mouth-confused',
+                value: 'confused_code'
+            }, {
+                label: 'bloq-zowi-mouth-bigSurprise',
+                value: 'bigSurprise_code'
+            }, {
+                label: 'bloq-zowi-mouth-tongueOut',
+                value: 'tongueOut_code'
             }]
         }, {
             alias: 'text',
             value: 'bloq-zowi-mouth-mouth'
         }]
     ],
-    code: 'ledmatrix.writeFull(mouth[{GESTURE}]);'
+    code: 'zowi.putMouth({GESTURE}, false);'
 });
 utils.generateBloqInputConnectors(bloq);
 

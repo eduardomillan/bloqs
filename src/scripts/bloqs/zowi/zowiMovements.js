@@ -23,8 +23,8 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
                 label: 'bloq-zowi-movements-turn',
                 value: 'turn'
             }, {
-                label: 'bloq-zowi-movements-shakeleg',
-                value: 'shakeleg'
+                label: 'bloq-zowi-movements-shakeLeg',
+                value: 'shakeLeg'
             }, {
                 label: 'bloq-zowi-movements-bend',
                 value: 'bend'
@@ -54,8 +54,17 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-zowi-movements-speed'
         }, {
             id: 'SPEED',
-            alias: 'numberInput',
-            value: 2000
+            alias: 'staticDropdown',
+            options: [{
+                label: 'bloq-zowi-movements-speed-small',
+                value: 'LOW_SPEED'
+            }, {
+                label: 'bloq-zowi-movements-speed-medium',
+                value: 'MEDIUM_SPEED'
+            }, {
+                label: 'bloq-zowi-movements-speed-high',
+                value: 'HIGH_SPEED'
+            }]
         }]
     ],
     code: 'zowi.{MOVEMENT}({STEPS},{SPEED},{DIR});'

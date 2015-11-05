@@ -45,29 +45,38 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'STEPS',
             alias: 'numberInput',
-            value: 4
+            value: 1
         }, {
             alias: 'text',
             value: 'bloq-zowi-movements-height-speed'
         }, {
             id: 'SPEED',
-            alias: 'numberInput',
-            value: 2000
+            alias: 'staticDropdown',
+            options: [{
+                label: 'bloq-zowi-movements-speed-small',
+                value: 'LOW_SPEED'
+            }, {
+                label: 'bloq-zowi-movements-speed-medium',
+                value: 'MEDIUM_SPEED'
+            }, {
+                label: 'bloq-zowi-movements-speed-high',
+                value: 'HIGH_SPEED'
+            }]
         }, {
             alias: 'text',
             value: 'bloq-zowi-movements-height-height'
         }, {
             id: 'HEIGHT',
             alias: 'staticDropdown',
-            options: [{
-                label: 'bloq-zowi-movements-height-big',
-                value: 'BIG'
+            options: [ {
+                label: 'bloq-zowi-movements-height-small',
+                value: 'SMALL_HEIGHT'
             }, {
                 label: 'bloq-zowi-movements-height-medium',
-                value: 'MEDIUM'
-            }, {
-                label: 'bloq-zowi-movements-height-small',
-                value: 'SMALL'
+                value: 'MEDIUM_HEIGHT'
+            },{
+                label: 'bloq-zowi-movements-height-big',
+                value: 'BIG_HEIGHT'
             }]
         }]
     ],
