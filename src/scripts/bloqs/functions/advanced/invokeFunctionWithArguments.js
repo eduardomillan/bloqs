@@ -8,7 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(StatementBloq, true), {
 
     name: 'invokeFunctionWithArguments',
-    bloqClass: 'bloq-invoke-function',
+    bloqClass: 'bloq-invoke-function-with-arguments',
     content: [
         [{
             alias: 'text',
@@ -27,7 +27,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     code: '{FUNCTION}({ARGS});',
-    dynamicDropdown : {
+    dynamicDropdown: {
         idDropdown: 'FUNCTION',
         options: 'voidFunctions'
     }
@@ -36,5 +36,3 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 utils.generateBloqInputConnectors(bloq);
 
 module.exports = bloq;
-
-

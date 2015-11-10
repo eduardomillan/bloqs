@@ -8,7 +8,7 @@ var _ = require('lodash'),
 var bloq = _.merge(_.clone(OutputBloq, true), {
 
     name: 'invokeReturnFunctionWithArguments',
-    bloqClass: 'bloq-invoke-return-function',
+    bloqClass: 'bloq-invoke-return-function-with-arguments',
     content: [
         [{
             alias: 'text',
