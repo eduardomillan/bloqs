@@ -16,7 +16,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'LED',
             alias: 'dynamicDropdown',
-            options: 'leds'
+            options: 'rgbs'
         }, {
             alias: 'text',
             value: 'bloq-rgbLed-fade-red'

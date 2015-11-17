@@ -16,7 +16,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'LED',
             alias: 'dynamicDropdown',
-            options: 'leds'
+            options: 'rgbs'
         }, {
             alias: 'text',
             value: 'bloq-rgbLed-simple-color'
@@ -24,7 +24,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             id: 'COLOR',
             alias: 'staticDropdown',
             //'Raíz cuadrada', 'Valor absoluto', '-', 'ln', 'log10', 'e^', '10^']
-            options: [ {
+            options: [{
                 label: 'bloq-rgbLed-simple-white',
                 value: '255,255,255'
             }, {
