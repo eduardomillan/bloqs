@@ -31,9 +31,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             }, {
                 label: 'bloq-zowi-movements-no-dir-ascendingTurn',
                 value: 'ascendingTurn'
-            }, {
-                label: 'bloq-zowi-movements-no-dir-jump',
-                value: 'jump'
             }]
         }, {
             id: 'STEPS',
