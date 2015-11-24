@@ -24,7 +24,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
                 value: 'sad_code'
             }, {
                 label: 'bloq-zowi-mouth-happy',
-                value: 'happyOpenMouth_code'
+                value: 'happyOpen_code'
             }, {
                 label: 'bloq-zowi-mouth-confused',
                 value: 'confused_code'
