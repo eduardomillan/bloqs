@@ -213,7 +213,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "8095eb50-48f3-4054-a524-bc763fdf00eb"
+      "name": "45431aa1-294f-49d0-a6aa-d5b8f132100a"
     }
   ],
   "bloqClass": "bloq-constructor-arguments",
@@ -227,7 +227,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "8095eb50-48f3-4054-a524-bc763fdf00eb"
+        "name": "45431aa1-294f-49d0-a6aa-d5b8f132100a"
       }
     ]
   ],
@@ -280,7 +280,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "bdf852ff-f347-4cda-8237-38030e391913"
+      "name": "e8af04f9-af7e-4a4c-9fdb-c54b39bd0ecf"
     }
   ],
   "bloqClass": "bloq-invoke-arguments-class",
@@ -312,7 +312,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "bdf852ff-f347-4cda-8237-38030e391913"
+        "name": "e8af04f9-af7e-4a4c-9fdb-c54b39bd0ecf"
       }
     ]
   ],
@@ -433,7 +433,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "b1116179-6b97-406d-ab37-8997ecc0b1c4"
+      "name": "3c46fd53-af2d-4309-8c76-56b36367c42f"
     }
   ],
   "bloqClass": "bloq-invoke-class-function-args",
@@ -465,7 +465,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "b1116179-6b97-406d-ab37-8997ecc0b1c4"
+        "name": "3c46fd53-af2d-4309-8c76-56b36367c42f"
       }
     ]
   ],
@@ -526,7 +526,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "c06d39f5-a71f-4bbe-aaaf-e266729aa27d"
+      "name": "43a7f651-ec1a-46db-8ed2-3318ceda126a"
     }
   ],
   "bloqClass": "bloq-invoke-class-return-function",
@@ -558,7 +558,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "c06d39f5-a71f-4bbe-aaaf-e266729aa27d"
+        "name": "43a7f651-ec1a-46db-8ed2-3318ceda126a"
       }
     ]
   ],
@@ -719,7 +719,7 @@ db.bitbloq_Bloqs.insert({
         "pointer": "true",
         "options": "softwareVars"
       },
-      "name": "8b5c4a65-2785-4e82-b9f6-99c892bbba84"
+      "name": "d0b7ca4e-8328-4a32-adc5-955ea0935c04"
     }
   ],
   "bloqClass": "bloq-set-class-variableArray",
@@ -769,7 +769,7 @@ db.bitbloq_Bloqs.insert({
           "pointer": "true",
           "options": "softwareVars"
         },
-        "name": "8b5c4a65-2785-4e82-b9f6-99c892bbba84"
+        "name": "d0b7ca4e-8328-4a32-adc5-955ea0935c04"
       }
     ]
   ],
@@ -795,7 +795,7 @@ db.bitbloq_Bloqs.insert({
         "idDropdown": "NAME",
         "options": "softwareVars"
       },
-      "name": "71c706e5-13f4-4bca-a040-9fd3dafb0c6a"
+      "name": "218f16da-5d67-4959-8405-f86fcf34e337"
     }
   ],
   "bloqClass": "bloq-set-class-variable",
@@ -831,7 +831,7 @@ db.bitbloq_Bloqs.insert({
           "idDropdown": "NAME",
           "options": "softwareVars"
         },
-        "name": "71c706e5-13f4-4bca-a040-9fd3dafb0c6a"
+        "name": "218f16da-5d67-4959-8405-f86fcf34e337"
       }
     ]
   ],
@@ -885,7 +885,7 @@ db.bitbloq_Bloqs.insert({
       },
       {
         "id": "COMMENT",
-        "alias": "multilineCodeInput",
+        "alias": "multilineCommentInput",
         "placeholder": "bloq-comment-default"
       }
     ]
@@ -960,7 +960,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "number",
-      "name": "143a4c6f-a628-47cc-a957-a768a0dfa938"
+      "name": "379f3c78-e9dd-43a9-8f20-ff36896d10a6"
     }
   ],
   "bloqClass": "bloq-convert",
@@ -974,7 +974,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "NUMBER",
         "alias": "bloqInput",
         "acceptType": "number",
-        "name": "143a4c6f-a628-47cc-a957-a768a0dfa938"
+        "name": "379f3c78-e9dd-43a9-8f20-ff36896d10a6"
       },
       {
         "alias": "text",
@@ -1026,7 +1026,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "07ed4baa-fdbe-4e1f-9199-0d69a1071b8d"
+      "name": "0846d885-e898-463a-b31f-ec4a985ef83c"
     }
   ],
   "bloqClass": "bloq-serial-send",
@@ -1045,7 +1045,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "DATA",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "07ed4baa-fdbe-4e1f-9199-0d69a1071b8d"
+        "name": "0846d885-e898-463a-b31f-ec4a985ef83c"
       },
       {
         "id": "FUNCTION",
@@ -1110,7 +1110,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "c0dac382-90af-4dcc-9af2-4de4feff3235"
+      "name": "c2fdc13c-5b5d-462d-814c-9d0e74935fe7"
     }
   ],
   "bloqClass": "bloq-serial-send",
@@ -1129,7 +1129,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "DATA",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "c0dac382-90af-4dcc-9af2-4de4feff3235"
+        "name": "c2fdc13c-5b5d-462d-814c-9d0e74935fe7"
       },
       {
         "id": "LN",
@@ -1352,19 +1352,19 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "366c5dd0-1851-4e2b-ae25-b10121bfed76"
+      "name": "68e2eece-7cfb-4788-a4e0-03584df9cc2b"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "a0c4443d-37e1-4f3c-bbdc-2b6a969cfffe"
+      "name": "e81402e5-f0cb-4d05-9f5e-f04ca488b80c"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "53dcf14f-9c49-410f-a26a-9ae90dbba05c"
+      "name": "17194212-a18b-4e37-98e8-afa307046abd"
     }
   ],
   "bloqClass": "bloq-rgbLed-advanced",
@@ -1387,7 +1387,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "RED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "366c5dd0-1851-4e2b-ae25-b10121bfed76"
+        "name": "68e2eece-7cfb-4788-a4e0-03584df9cc2b"
       },
       {
         "alias": "text",
@@ -1397,7 +1397,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "GREEN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "a0c4443d-37e1-4f3c-bbdc-2b6a969cfffe"
+        "name": "e81402e5-f0cb-4d05-9f5e-f04ca488b80c"
       },
       {
         "alias": "text",
@@ -1407,7 +1407,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "BLUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "53dcf14f-9c49-410f-a26a-9ae90dbba05c"
+        "name": "17194212-a18b-4e37-98e8-afa307046abd"
       }
     ]
   ],
@@ -1425,7 +1425,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "bcf0fda8-7240-4d31-b9e8-931d65a0cea4"
+      "name": "fee8836c-58e9-45a9-90a8-faa61acc6b8c"
     }
   ],
   "bloqClass": "bloq-analog-read-advanced",
@@ -1439,7 +1439,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "PIN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "bcf0fda8-7240-4d31-b9e8-931d65a0cea4"
+        "name": "fee8836c-58e9-45a9-90a8-faa61acc6b8c"
       }
     ]
   ],
@@ -1465,13 +1465,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "fe0e4055-fee8-4eb3-9a0e-aaed83189796"
+      "name": "23db7ac6-99fa-4f88-9a80-a1744737e45e"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "3929c1fa-6334-45f2-96c4-7e7615c78fbf"
+      "name": "68e496d5-536a-4b93-9c81-b76ff5b4c749"
     }
   ],
   "bloqClass": "bloq-pin-writte-advanced",
@@ -1485,7 +1485,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "PIN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "fe0e4055-fee8-4eb3-9a0e-aaed83189796"
+        "name": "23db7ac6-99fa-4f88-9a80-a1744737e45e"
       },
       {
         "alias": "text",
@@ -1495,7 +1495,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "DATA",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "3929c1fa-6334-45f2-96c4-7e7615c78fbf"
+        "name": "68e496d5-536a-4b93-9c81-b76ff5b4c749"
       }
     ]
   ],
@@ -1517,19 +1517,19 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "f48103f8-4935-40a8-bf75-0df5828b7741"
+      "name": "e0d72bd5-6723-4e0e-83bf-ae1ba3b2d77b"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "163d2e21-805d-48a5-8e42-1d2bb3d98d74"
+      "name": "e01bfee3-ea5a-45c0-a412-ac87c267adfc"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "00fb3c49-0992-4615-aa43-312f23045015"
+      "name": "fc5506ce-9267-43e7-a059-c2d581f81625"
     }
   ],
   "bloqClass": "bloq-buzzer-advance",
@@ -1543,7 +1543,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "BUZZER",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "f48103f8-4935-40a8-bf75-0df5828b7741"
+        "name": "e0d72bd5-6723-4e0e-83bf-ae1ba3b2d77b"
       },
       {
         "alias": "text",
@@ -1553,7 +1553,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "NOTE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "163d2e21-805d-48a5-8e42-1d2bb3d98d74"
+        "name": "e01bfee3-ea5a-45c0-a412-ac87c267adfc"
       },
       {
         "alias": "text",
@@ -1563,7 +1563,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "SECONDS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "00fb3c49-0992-4615-aa43-312f23045015"
+        "name": "fc5506ce-9267-43e7-a059-c2d581f81625"
       },
       {
         "alias": "text",
@@ -1589,13 +1589,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "7e00f214-706e-4172-9a41-17ee6288c833"
+      "name": "9603ced0-1daa-4e20-b667-952b454ee3f3"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "d02e532d-4a89-4634-a80b-8597992e6027"
+      "name": "cb45d78b-2d35-4c7b-b706-dda060fc4089"
     }
   ],
   "bloqClass": "bloq-continuous-servo-start-advanced",
@@ -1609,7 +1609,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "SERVO",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "7e00f214-706e-4172-9a41-17ee6288c833"
+        "name": "9603ced0-1daa-4e20-b667-952b454ee3f3"
       },
       {
         "alias": "text",
@@ -1619,7 +1619,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "DIRECTION",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "d02e532d-4a89-4634-a80b-8597992e6027"
+        "name": "cb45d78b-2d35-4c7b-b706-dda060fc4089"
       }
     ]
   ],
@@ -1641,7 +1641,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e0d05ef2-c29c-47aa-b7de-535ba68ac652"
+      "name": "8d693cb1-df6d-42ed-9cfc-e8160c09f15b"
     }
   ],
   "bloqClass": "bloq-continuous-servo-stop-advanced",
@@ -1655,7 +1655,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "SERVO",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e0d05ef2-c29c-47aa-b7de-535ba68ac652"
+        "name": "8d693cb1-df6d-42ed-9cfc-e8160c09f15b"
       }
     ]
   ],
@@ -1673,7 +1673,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "666ef223-6011-432c-9d67-5989eb5d92d1"
+      "name": "ad8bfea3-aba0-408e-bf9b-9b9877bf28dc"
     }
   ],
   "bloqClass": "bloq-digital-read-advanced",
@@ -1687,7 +1687,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "PIN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "666ef223-6011-432c-9d67-5989eb5d92d1"
+        "name": "ad8bfea3-aba0-408e-bf9b-9b9877bf28dc"
       }
     ]
   ],
@@ -1713,13 +1713,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "3e49cff8-4a10-41ee-ae11-8dc87b6ac8b0"
+      "name": "7078f4f1-8f6e-47ef-b1c8-a9a1d91d6efa"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e2935fe8-b052-419d-bbef-ebceb9c38c32"
+      "name": "2d45b709-2b71-4591-b563-e13867ae4cf4"
     }
   ],
   "bloqClass": "bloq-pin-writte-advanced",
@@ -1733,7 +1733,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "PIN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "3e49cff8-4a10-41ee-ae11-8dc87b6ac8b0"
+        "name": "7078f4f1-8f6e-47ef-b1c8-a9a1d91d6efa"
       },
       {
         "alias": "text",
@@ -1743,7 +1743,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "DATA",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e2935fe8-b052-419d-bbef-ebceb9c38c32"
+        "name": "2d45b709-2b71-4591-b563-e13867ae4cf4"
       }
     ]
   ],
@@ -1765,7 +1765,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "42a46649-2b80-4cb0-be78-4d7952c67c3c"
+      "name": "9d5d767a-31be-4d91-a50a-1a33e6cef21a"
     }
   ],
   "bloqClass": "bloq-lcd-turn-on-off-advanced",
@@ -1793,7 +1793,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "LCD",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "42a46649-2b80-4cb0-be78-4d7952c67c3c"
+        "name": "9d5d767a-31be-4d91-a50a-1a33e6cef21a"
       }
     ]
   ],
@@ -1815,13 +1815,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "44532703-c763-481d-8d51-aefa299e5af2"
+      "name": "1ba7f121-5388-49d9-95cc-1b4fb127c1f5"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "8409f517-bbb2-458f-b88d-3578cd517889"
+      "name": "ec59fffc-0cc9-4893-9ad6-158b8dd579e5"
     }
   ],
   "bloqClass": "bloq-lcd-writte-advanced",
@@ -1835,7 +1835,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "44532703-c763-481d-8d51-aefa299e5af2"
+        "name": "1ba7f121-5388-49d9-95cc-1b4fb127c1f5"
       },
       {
         "alias": "text",
@@ -1845,7 +1845,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "LCD",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "8409f517-bbb2-458f-b88d-3578cd517889"
+        "name": "ec59fffc-0cc9-4893-9ad6-158b8dd579e5"
       }
     ]
   ],
@@ -1867,25 +1867,25 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "3c9d5400-40a0-4cf3-9440-7d00bcf4c572"
+      "name": "539d3b11-8fac-4afe-bd24-944ebecce865"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "6c608755-f2a8-4d61-833c-a8f394cc7b1f"
+      "name": "c7a96d2c-8f8e-42dc-bda2-5f7ba2b41d4d"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e09cf1b6-17be-484b-83cc-5f65cb270097"
+      "name": "7b48f5bc-1cf6-4070-acdd-d1fef1dbc50d"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "f0681147-4d14-490b-b279-4e004d953ce0"
+      "name": "67154d62-f927-4751-ba15-5c3fdab05b75"
     }
   ],
   "bloqClass": "bloq-lcd-writte",
@@ -1899,7 +1899,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "3c9d5400-40a0-4cf3-9440-7d00bcf4c572"
+        "name": "539d3b11-8fac-4afe-bd24-944ebecce865"
       },
       {
         "alias": "text",
@@ -1909,7 +1909,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "LCD",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "6c608755-f2a8-4d61-833c-a8f394cc7b1f"
+        "name": "c7a96d2c-8f8e-42dc-bda2-5f7ba2b41d4d"
       },
       {
         "alias": "text",
@@ -1919,13 +1919,13 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "COLUMN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e09cf1b6-17be-484b-83cc-5f65cb270097"
+        "name": "7b48f5bc-1cf6-4070-acdd-d1fef1dbc50d"
       },
       {
         "bloqInputId": "ROW",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "f0681147-4d14-490b-b279-4e004d953ce0"
+        "name": "67154d62-f927-4751-ba15-5c3fdab05b75"
       }
     ]
   ],
@@ -1947,7 +1947,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "b249364b-da33-4678-908e-459094445f31"
+      "name": "b041de9f-6351-4126-b6b7-5de061a5f815"
     }
   ],
   "bloqClass": "bloq-led-advanced",
@@ -1975,7 +1975,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "LED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "b249364b-da33-4678-908e-459094445f31"
+        "name": "b041de9f-6351-4126-b6b7-5de061a5f815"
       }
     ]
   ],
@@ -1997,25 +1997,25 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "d5d756bf-64b2-4668-b5ee-1fdc59fc87f1"
+      "name": "331f3f1a-319d-4e86-b64f-b0cec0aae673"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "973aa07e-b46e-4186-8baf-1c71d64c4318"
+      "name": "ea86158d-c7fb-4376-adb9-95f1ea48b8f9"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "21459f98-44a7-4d0f-b298-1bb1c4873d43"
+      "name": "c29b1bd3-72ce-4ba1-a84a-b49298d26215"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "6b8b1532-aa45-4fdd-a710-c4bfa13c3524"
+      "name": "d430b90b-2a60-478f-a682-3578b9b63b1e"
     }
   ],
   "bloqClass": "bloq-oscillator-advanced",
@@ -2029,7 +2029,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "OSCILLATOR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "d5d756bf-64b2-4668-b5ee-1fdc59fc87f1"
+        "name": "331f3f1a-319d-4e86-b64f-b0cec0aae673"
       },
       {
         "alias": "text",
@@ -2039,7 +2039,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "PHASE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "973aa07e-b46e-4186-8baf-1c71d64c4318"
+        "name": "ea86158d-c7fb-4376-adb9-95f1ea48b8f9"
       },
       {
         "alias": "text",
@@ -2049,7 +2049,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "AMPLITUDE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "21459f98-44a7-4d0f-b298-1bb1c4873d43"
+        "name": "c29b1bd3-72ce-4ba1-a84a-b49298d26215"
       },
       {
         "alias": "text",
@@ -2059,7 +2059,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "6b8b1532-aa45-4fdd-a710-c4bfa13c3524"
+        "name": "d430b90b-2a60-478f-a682-3578b9b63b1e"
       }
     ]
   ],
@@ -2081,7 +2081,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e68251e9-e623-4b9e-9622-dcb7a7ab572b"
+      "name": "0466d387-cf2b-49a5-8d02-80e31d0e52aa"
     }
   ],
   "bloqClass": "bloq-oscillator-start-advanced",
@@ -2095,7 +2095,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "OSCILLATOR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e68251e9-e623-4b9e-9622-dcb7a7ab572b"
+        "name": "0466d387-cf2b-49a5-8d02-80e31d0e52aa"
       }
     ]
   ],
@@ -2117,7 +2117,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "774a8084-79a7-4535-b628-2fd970a7410a"
+      "name": "af45788c-d0b5-4933-b8a0-43ff6079bf58"
     }
   ],
   "bloqClass": "bloq-oscillator-stop-advanced",
@@ -2131,7 +2131,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "OSCILLATOR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "774a8084-79a7-4535-b628-2fd970a7410a"
+        "name": "af45788c-d0b5-4933-b8a0-43ff6079bf58"
       }
     ]
   ],
@@ -2149,7 +2149,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "5cdcd03e-8a14-42fc-b9fe-09bd9e3d5d62"
+      "name": "cc4ee3c7-dc40-4e10-8cdc-4789517f8418"
     }
   ],
   "bloqClass": "bloq-pin-read-advanced",
@@ -2163,7 +2163,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "PIN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "5cdcd03e-8a14-42fc-b9fe-09bd9e3d5d62"
+        "name": "cc4ee3c7-dc40-4e10-8cdc-4789517f8418"
       }
     ]
   ],
@@ -2185,7 +2185,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "7c72f3f1-8fd7-4f1e-b0cd-c91829dc7988"
+      "name": "59a90cc3-2d8b-497c-8af0-54c7d003f139"
     }
   ],
   "bloqClass": "bloq-read-advanced",
@@ -2199,7 +2199,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "PIN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "7c72f3f1-8fd7-4f1e-b0cd-c91829dc7988"
+        "name": "59a90cc3-2d8b-497c-8af0-54c7d003f139"
       }
     ]
   ],
@@ -2289,13 +2289,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "d8610e86-aac6-4bc0-a0fa-b9c31a127d35"
+      "name": "79b776aa-f2e6-4313-ac44-e5319045d9b7"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "2c73175f-87d7-4046-b72e-a8c22d069484"
+      "name": "f405981b-aec1-442d-822d-d6a8427e7a0a"
     }
   ],
   "bloqClass": "bloq-servo-advanced",
@@ -2309,7 +2309,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "SERVO",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "d8610e86-aac6-4bc0-a0fa-b9c31a127d35"
+        "name": "79b776aa-f2e6-4313-ac44-e5319045d9b7"
       },
       {
         "alias": "text",
@@ -2319,7 +2319,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "POSITION",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "2c73175f-87d7-4046-b72e-a8c22d069484"
+        "name": "f405981b-aec1-442d-822d-d6a8427e7a0a"
       },
       {
         "alias": "text",
@@ -2501,7 +2501,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e88efe88-c815-4fff-a242-2babb96fa276"
+      "name": "a8c90aa2-fb20-4d60-bc2d-cdda185c4853"
     }
   ],
   "bloqClass": "bloq-continuous-servo-start-advanced",
@@ -2515,7 +2515,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "SERVO",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e88efe88-c815-4fff-a242-2babb96fa276"
+        "name": "a8c90aa2-fb20-4d60-bc2d-cdda185c4853"
       },
       {
         "alias": "text",
@@ -2555,13 +2555,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "60aa63be-9a9e-411c-b9f5-9ab9f8c86085"
+      "name": "a0faf92d-f994-4984-aab5-c867f18becf2"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "6f1b32e6-ec82-4a56-bb3a-73520591b247"
+      "name": "3138baad-5734-479c-99df-4610d3b29035"
     }
   ],
   "bloqClass": "bloq-lcd-writte deprecated",
@@ -2575,7 +2575,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "60aa63be-9a9e-411c-b9f5-9ab9f8c86085"
+        "name": "a0faf92d-f994-4984-aab5-c867f18becf2"
       },
       {
         "alias": "text",
@@ -2585,7 +2585,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "LCD",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "6f1b32e6-ec82-4a56-bb3a-73520591b247"
+        "name": "3138baad-5734-479c-99df-4610d3b29035"
       },
       {
         "alias": "text",
@@ -2621,13 +2621,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "756c46d7-9bf4-4615-a0a7-f09eef3c2ff5"
+      "name": "210d4049-d21d-4226-99fb-1164db62c926"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "39b260c4-4006-4450-b33c-c5324e8e9142"
+      "name": "648c3219-0f7b-4828-80ea-d3421f44da0e"
     }
   ],
   "bloqClass": "bloq-pin-writte-advanced",
@@ -2641,7 +2641,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "PIN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "756c46d7-9bf4-4615-a0a7-f09eef3c2ff5"
+        "name": "210d4049-d21d-4226-99fb-1164db62c926"
       },
       {
         "alias": "text",
@@ -2651,7 +2651,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "DATA",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "39b260c4-4006-4450-b33c-c5324e8e9142"
+        "name": "648c3219-0f7b-4828-80ea-d3421f44da0e"
       }
     ]
   ],
@@ -3323,7 +3323,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "b894ce90-1891-4477-a996-34d6aa49d3d0"
+      "name": "20018a5c-31f5-4327-ad82-0af28d83be55"
     }
   ],
   "bloqClass": "bloq-else-if",
@@ -3337,7 +3337,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "b894ce90-1891-4477-a996-34d6aa49d3d0"
+        "name": "20018a5c-31f5-4327-ad82-0af28d83be55"
       },
       {
         "alias": "text",
@@ -3367,19 +3367,19 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e2da1e66-b85c-4378-aa2d-d56134498808"
+      "name": "fdf2665d-f427-48c7-8994-0c58c673cf97"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "67fc6924-9ce1-4e3d-a88a-2de3e0ecb2a7"
+      "name": "db9ff7e5-0068-44e4-abd9-fb72b62677b6"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "9bbec7f1-89ce-488f-8941-1f34991f2db9"
+      "name": "b4e78683-c6e1-4ebf-86d1-753e4dec46fe"
     }
   ],
   "bloqClass": "bloq-for",
@@ -3393,7 +3393,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e2da1e66-b85c-4378-aa2d-d56134498808"
+        "name": "fdf2665d-f427-48c7-8994-0c58c673cf97"
       },
       {
         "alias": "text",
@@ -3403,7 +3403,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "INIT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "67fc6924-9ce1-4e3d-a88a-2de3e0ecb2a7"
+        "name": "db9ff7e5-0068-44e4-abd9-fb72b62677b6"
       },
       {
         "alias": "text",
@@ -3413,7 +3413,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "FINAL",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "9bbec7f1-89ce-488f-8941-1f34991f2db9"
+        "name": "b4e78683-c6e1-4ebf-86d1-753e4dec46fe"
       },
       {
         "id": "MODE",
@@ -3440,7 +3440,7 @@ db.bitbloq_Bloqs.insert({
       }
     ]
   ],
-  "code": "'for({VAR}={INIT};{VAR}' + ('{MODE}' === '+'?'<':'>' ) + '{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}'"
+  "code": "'for({VAR}={INIT};{VAR}' + ('{MODE}' === '+'?'<=':'>=' ) + '{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}'"
 });
 db.bitbloq_Bloqs.insert({
   "type": "statement-input",
@@ -3462,7 +3462,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "bff3a14e-9bd5-4eca-ab73-bcf8e447e9da"
+      "name": "0d25b503-4fb7-4ac3-965b-607d134287b4"
     }
   ],
   "bloqClass": "bloq-if",
@@ -3476,7 +3476,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "CONDITION",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "bff3a14e-9bd5-4eca-ab73-bcf8e447e9da"
+        "name": "0d25b503-4fb7-4ac3-965b-607d134287b4"
       },
       {
         "alias": "text",
@@ -3506,7 +3506,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "9a5be7f4-0e1e-43e2-9098-9a5e368ceebf"
+      "name": "d643fdf2-da6f-4f04-af17-09c5ad387f18"
     }
   ],
   "bloqClass": "bloq-switch",
@@ -3520,7 +3520,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "9a5be7f4-0e1e-43e2-9098-9a5e368ceebf"
+        "name": "d643fdf2-da6f-4f04-af17-09c5ad387f18"
       }
     ]
   ],
@@ -3542,7 +3542,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "00032c46-6849-4cba-9472-6e8689af24ae"
+      "name": "f468b3ea-6a16-40f2-bfd3-05fd49d14084"
     }
   ],
   "bloqClass": "bloq-wait",
@@ -3556,7 +3556,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "TIME",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "00032c46-6849-4cba-9472-6e8689af24ae"
+        "name": "f468b3ea-6a16-40f2-bfd3-05fd49d14084"
       }
     ]
   ],
@@ -3582,7 +3582,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e4edddee-33a4-49cb-bf0b-ea35d3b17678"
+      "name": "42f8dc6d-f415-465a-9f6c-0101c36d4acc"
     }
   ],
   "bloqClass": "bloq-while",
@@ -3596,7 +3596,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "CONDITION",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e4edddee-33a4-49cb-bf0b-ea35d3b17678"
+        "name": "42f8dc6d-f415-465a-9f6c-0101c36d4acc"
       },
       {
         "alias": "text",
@@ -3808,19 +3808,19 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "900ee80e-50fa-4e7e-87b3-99905b3ce576"
+      "name": "84bff47b-e142-4e41-bc29-de4fd6591827"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e2a5964e-8d0b-4322-b81f-6b598b11d9e4"
+      "name": "a4ae1bfb-3048-451c-be53-b91928c31bb5"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "491b8849-f3e4-463e-8026-8b56dcb04ed8"
+      "name": "1a6c8e0a-642a-4ef1-b21c-f8fc8d4381b2"
     }
   ],
   "bloqClass": "bloq-for deprecated",
@@ -3834,7 +3834,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "900ee80e-50fa-4e7e-87b3-99905b3ce576"
+        "name": "84bff47b-e142-4e41-bc29-de4fd6591827"
       },
       {
         "alias": "text",
@@ -3844,7 +3844,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "INIT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e2a5964e-8d0b-4322-b81f-6b598b11d9e4"
+        "name": "a4ae1bfb-3048-451c-be53-b91928c31bb5"
       },
       {
         "alias": "text",
@@ -3854,7 +3854,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "FINAL",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "491b8849-f3e4-463e-8026-8b56dcb04ed8"
+        "name": "1a6c8e0a-642a-4ef1-b21c-f8fc8d4381b2"
       },
       {
         "id": "MODE",
@@ -3926,13 +3926,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "19cb54be-106c-421b-9224-22d8390a00bf"
+      "name": "7066780d-964a-48a5-afc8-8d718cfc8fbc"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "4d23890a-d3a6-430f-a272-b1e9f0599599"
+      "name": "19ec0e06-a25c-4051-a0f8-f47c43971f41"
     }
   ],
   "bloqClass": "bloq-else-if",
@@ -3946,7 +3946,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "19cb54be-106c-421b-9224-22d8390a00bf"
+        "name": "7066780d-964a-48a5-afc8-8d718cfc8fbc"
       },
       {
         "id": "OPERATOR",
@@ -3982,7 +3982,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "4d23890a-d3a6-430f-a272-b1e9f0599599"
+        "name": "19ec0e06-a25c-4051-a0f8-f47c43971f41"
       },
       {
         "alias": "text",
@@ -4064,7 +4064,7 @@ db.bitbloq_Bloqs.insert({
       }
     ]
   ],
-  "code": "'for({VAR}={INIT};{VAR}' + ('{MODE}' === '+'?'<':'>' ) + '{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}'"
+  "code": "'for({VAR}={INIT};{VAR}' + ('{MODE}' === '+'?'<=':'>=' ) + '{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}'"
 });
 db.bitbloq_Bloqs.insert({
   "type": "statement-input",
@@ -4086,13 +4086,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "cfe866f8-aeb8-41c9-b4d5-31afc722b573"
+      "name": "1ad08174-75bc-45ba-8f58-2247b0de5fbe"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "2ae2abd9-90bc-4a1c-bf09-05acb21a027d"
+      "name": "604cbbbd-f7d7-4fb9-9b10-9b03cd47a50b"
     }
   ],
   "bloqClass": "bloq-if",
@@ -4106,7 +4106,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "cfe866f8-aeb8-41c9-b4d5-31afc722b573"
+        "name": "1ad08174-75bc-45ba-8f58-2247b0de5fbe"
       },
       {
         "id": "OPERATOR",
@@ -4142,7 +4142,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "2ae2abd9-90bc-4a1c-bf09-05acb21a027d"
+        "name": "604cbbbd-f7d7-4fb9-9b10-9b03cd47a50b"
       },
       {
         "alias": "text",
@@ -4262,13 +4262,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "696a286b-e985-4f10-8590-ee1dcda562f6"
+      "name": "4c377931-24ce-43c3-bfb9-040be6e12120"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "fe6c3108-9428-4877-a6d7-d73638194a2b"
+      "name": "d6a849b8-cc12-4bd8-922a-4437c371ce84"
     }
   ],
   "bloqClass": "bloq-while",
@@ -4282,7 +4282,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "696a286b-e985-4f10-8590-ee1dcda562f6"
+        "name": "4c377931-24ce-43c3-bfb9-040be6e12120"
       },
       {
         "id": "OPERATOR",
@@ -4318,7 +4318,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "fe6c3108-9428-4877-a6d7-d73638194a2b"
+        "name": "d6a849b8-cc12-4bd8-922a-4437c371ce84"
       },
       {
         "alias": "text",
@@ -4340,7 +4340,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "int",
-      "name": "4bd6acbc-a2da-4fee-b501-51ebed7966a8"
+      "name": "5063dcbe-2d18-4539-a4e7-750bf40f4f8d"
     }
   ],
   "bloqClass": "bloq-int-2-float",
@@ -4354,7 +4354,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "NUMBER",
         "alias": "bloqInput",
         "acceptType": "int",
-        "name": "4bd6acbc-a2da-4fee-b501-51ebed7966a8"
+        "name": "5063dcbe-2d18-4539-a4e7-750bf40f4f8d"
       }
     ]
   ],
@@ -4376,7 +4376,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "String",
-      "name": "8666e4a2-b9f4-4bab-b41c-eb78cdf87dc6"
+      "name": "3452ff69-a18e-402f-b86b-5e296acc20bf"
     }
   ],
   "bloqClass": "bloq-string-to-int",
@@ -4390,7 +4390,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "String",
-        "name": "8666e4a2-b9f4-4bab-b41c-eb78cdf87dc6"
+        "name": "3452ff69-a18e-402f-b86b-5e296acc20bf"
       }
     ]
   ],
@@ -4461,13 +4461,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "f5575a63-204e-4a8c-abad-ea7fb85ddbe5"
+      "name": "b2429445-b268-40c9-81c8-6ec3de171428"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "b0b028b4-f6ef-418c-9a1b-f9186f3e32d0"
+      "name": "299d87a1-3002-47c5-a68e-e60f15ee857c"
     }
   ],
   "bloqClass": "bloq-arguments",
@@ -4477,7 +4477,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "f5575a63-204e-4a8c-abad-ea7fb85ddbe5"
+        "name": "b2429445-b268-40c9-81c8-6ec3de171428"
       },
       {
         "alias": "text",
@@ -4487,7 +4487,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "b0b028b4-f6ef-418c-9a1b-f9186f3e32d0"
+        "name": "299d87a1-3002-47c5-a68e-e60f15ee857c"
       }
     ]
   ],
@@ -4514,7 +4514,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e71acafe-1fb8-4a0f-92a3-68943867aa7f"
+      "name": "e453146d-884e-4e31-a440-8643c2fc1cba"
     }
   ],
   "bloqClass": "bloq-invoke-function-with-arguments",
@@ -4537,7 +4537,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e71acafe-1fb8-4a0f-92a3-68943867aa7f"
+        "name": "e453146d-884e-4e31-a440-8643c2fc1cba"
       }
     ]
   ],
@@ -4559,7 +4559,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "42449fb0-8ae7-4fd7-a279-31c0b6a95c74"
+      "name": "a8738f20-741e-4978-b3a5-91266df45c53"
     }
   ],
   "bloqClass": "bloq-invoke-return-function-with-arguments",
@@ -4582,7 +4582,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "42449fb0-8ae7-4fd7-a279-31c0b6a95c74"
+        "name": "a8738f20-741e-4978-b3a5-91266df45c53"
       }
     ]
   ],
@@ -4609,7 +4609,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "5fb07a23-f675-47db-96c4-9848fd852be4"
+      "name": "abe9824e-e388-4a30-b1c3-50c59f4cddee"
     }
   ],
   "bloqClass": "bloq-return",
@@ -4623,7 +4623,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "RETURN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "5fb07a23-f675-47db-96c4-9848fd852be4"
+        "name": "abe9824e-e388-4a30-b1c3-50c59f4cddee"
       }
     ]
   ],
@@ -4649,13 +4649,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "bd443790-da8d-4246-8a19-0faab98db35b"
+      "name": "9cd3e1f8-8892-420f-bb48-9726ba9c9d22"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "72987780-bd4e-47e6-a941-d8e54c20566e"
+      "name": "e4b7178a-bb3d-465c-8bb4-de75abc93c22"
     }
   ],
   "bloqClass": "bloq-return-function-with-arguments",
@@ -4678,7 +4678,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "bd443790-da8d-4246-8a19-0faab98db35b"
+        "name": "9cd3e1f8-8892-420f-bb48-9726ba9c9d22"
       },
       {
         "position": "DOWN",
@@ -4690,7 +4690,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "RETURN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "72987780-bd4e-47e6-a941-d8e54c20566e"
+        "name": "e4b7178a-bb3d-465c-8bb4-de75abc93c22"
       }
     ]
   ],
@@ -4725,7 +4725,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "ee887d15-46b3-49b5-b2cd-c60c8e64465a"
+      "name": "2a1c7bcc-806f-4dda-a0ba-c3945ef345f4"
     }
   ],
   "bloqClass": "bloq-void-function-with-arguments",
@@ -4748,7 +4748,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARGS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "ee887d15-46b3-49b5-b2cd-c60c8e64465a"
+        "name": "2a1c7bcc-806f-4dda-a0ba-c3945ef345f4"
       }
     ]
   ],
@@ -4846,7 +4846,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "54cfcf4c-d971-415e-aba5-52fc3631e430"
+      "name": "f0997b27-e51f-47c1-8a14-490b5bb6b6d3"
     }
   ],
   "bloqClass": "bloq-return-function",
@@ -4871,7 +4871,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "RETURN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "54cfcf4c-d971-415e-aba5-52fc3631e430"
+        "name": "f0997b27-e51f-47c1-8a14-490b5bb6b6d3"
       }
     ]
   ],
@@ -4948,7 +4948,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "8bc366ca-ad6d-4046-b28e-b65dbc88e2e0"
+      "name": "858b9c4d-5ab0-42c8-9300-e26e228d6822"
     }
   ],
   "bloqClass": "bloq-boolArray-advanced",
@@ -4962,7 +4962,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "8bc366ca-ad6d-4046-b28e-b65dbc88e2e0"
+        "name": "858b9c4d-5ab0-42c8-9300-e26e228d6822"
       },
       {
         "alias": "text",
@@ -5055,13 +5055,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "44aafae0-aa4d-4846-b7ce-9f00432c3627"
+      "name": "3054d8bf-743d-4d03-b34e-97939a13d5db"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "419b41ea-ef22-40dc-92b1-6bde8ce5d11a"
+      "name": "8d0664c9-3d0b-4584-a9be-64ccd21e2428"
     }
   ],
   "bloqClass": "bloq-equality-operations",
@@ -5071,7 +5071,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "44aafae0-aa4d-4846-b7ce-9f00432c3627"
+        "name": "3054d8bf-743d-4d03-b34e-97939a13d5db"
       },
       {
         "id": "OPERATOR",
@@ -5107,7 +5107,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "419b41ea-ef22-40dc-92b1-6bde8ce5d11a"
+        "name": "8d0664c9-3d0b-4584-a9be-64ccd21e2428"
       }
     ]
   ],
@@ -5129,13 +5129,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "e9c827af-caec-4caa-a35c-71927336c9b1"
+      "name": "63120bcd-ea6c-43b5-8a54-7d3f6d94316a"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "6890d601-de2a-458d-a14d-92bf12c6e522"
+      "name": "edcfafd8-4a42-41b0-a59d-d5bbfb8756ae"
     }
   ],
   "bloqClass": "bloq-logic-operations",
@@ -5145,7 +5145,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "e9c827af-caec-4caa-a35c-71927336c9b1"
+        "name": "63120bcd-ea6c-43b5-8a54-7d3f6d94316a"
       },
       {
         "id": "OPERATOR",
@@ -5165,7 +5165,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "6890d601-de2a-458d-a14d-92bf12c6e522"
+        "name": "edcfafd8-4a42-41b0-a59d-d5bbfb8756ae"
       }
     ]
   ],
@@ -5187,7 +5187,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "85fbcb2e-55ff-471f-961f-18f7aa2f8d0e"
+      "name": "49fddd78-c94f-484f-bf0f-6958b9de8692"
     }
   ],
   "bloqClass": "bloq-not",
@@ -5201,7 +5201,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "CONDITION",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "85fbcb2e-55ff-471f-961f-18f7aa2f8d0e"
+        "name": "49fddd78-c94f-484f-bf0f-6958b9de8692"
       }
     ]
   ],
@@ -5286,7 +5286,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "ed4ba7b4-99c3-47c1-97bc-33e0aa44b9b1"
+      "name": "9307000b-966b-42a0-beac-174b8628c438"
     }
   ],
   "bloqClass": "bloq-numberArray-advanced",
@@ -5300,7 +5300,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "ed4ba7b4-99c3-47c1-97bc-33e0aa44b9b1"
+        "name": "9307000b-966b-42a0-beac-174b8628c438"
       },
       {
         "alias": "text",
@@ -5341,13 +5341,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "e960d761-f039-46e3-8ef8-ca6956f4212a"
+      "name": "c2631a2f-c7e1-4ae6-b878-97696640ec4a"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "72d8b706-666b-414b-86a1-d1a2e4c339f7"
+      "name": "23a3c304-430e-4029-a41b-962475656352"
     }
   ],
   "bloqClass": "bloq-basic-operations",
@@ -5357,7 +5357,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "e960d761-f039-46e3-8ef8-ca6956f4212a"
+        "name": "c2631a2f-c7e1-4ae6-b878-97696640ec4a"
       },
       {
         "id": "OPERATOR",
@@ -5393,7 +5393,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "72d8b706-666b-414b-86a1-d1a2e4c339f7"
+        "name": "23a3c304-430e-4029-a41b-962475656352"
       }
     ]
   ],
@@ -5415,13 +5415,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "a1c58ca2-b761-44b7-a0c6-b2bbb1c41513"
+      "name": "2b0edae9-e603-404c-bf62-3f87940e2512"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "bde5f853-7763-4834-afb4-3d4a4aca4d65"
+      "name": "e3298d48-c003-4fd1-94dc-ce2dae9be0ff"
     }
   ],
   "bloqClass": "bloq-map",
@@ -5435,7 +5435,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "a1c58ca2-b761-44b7-a0c6-b2bbb1c41513"
+        "name": "2b0edae9-e603-404c-bf62-3f87940e2512"
       },
       {
         "alias": "text",
@@ -5445,7 +5445,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "MAXVAL",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "bde5f853-7763-4834-afb4-3d4a4aca4d65"
+        "name": "e3298d48-c003-4fd1-94dc-ce2dae9be0ff"
       },
       {
         "alias": "text",
@@ -5471,31 +5471,31 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "6ba5e786-f5ea-4e8c-b503-3299f8467e61"
+      "name": "5bf2728f-0972-43d7-8fd9-d4b1450bcb2c"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "8dd962dd-4e93-4cde-bd9d-3583fe5888ca"
+      "name": "da939efb-efb3-4e6a-aa09-08b33f3d77ec"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "d795ea37-9bf4-4710-bba3-ef38fa074d1d"
+      "name": "d45b7ffc-7813-459f-ab14-411afa7466f9"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "40be71cd-fe3c-4fff-9263-ee4f2ac994a3"
+      "name": "48f47678-214c-47a6-b8b7-aff62c76a925"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "c1189e48-37a0-4b71-a2ae-07b86692f560"
+      "name": "decd53c1-7af8-48b5-b6cc-da1163d6196b"
     }
   ],
   "bloqClass": "bloq-map-advanced",
@@ -5509,7 +5509,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "6ba5e786-f5ea-4e8c-b503-3299f8467e61"
+        "name": "5bf2728f-0972-43d7-8fd9-d4b1450bcb2c"
       },
       {
         "alias": "text",
@@ -5519,7 +5519,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "INITMIN",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "8dd962dd-4e93-4cde-bd9d-3583fe5888ca"
+        "name": "da939efb-efb3-4e6a-aa09-08b33f3d77ec"
       },
       {
         "alias": "text",
@@ -5529,7 +5529,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "INITMAX",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "d795ea37-9bf4-4710-bba3-ef38fa074d1d"
+        "name": "d45b7ffc-7813-459f-ab14-411afa7466f9"
       },
       {
         "alias": "text",
@@ -5539,7 +5539,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "FINMIN",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "40be71cd-fe3c-4fff-9263-ee4f2ac994a3"
+        "name": "48f47678-214c-47a6-b8b7-aff62c76a925"
       },
       {
         "alias": "text",
@@ -5549,7 +5549,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "FINMAX",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "c1189e48-37a0-4b71-a2ae-07b86692f560"
+        "name": "decd53c1-7af8-48b5-b6cc-da1163d6196b"
       },
       {
         "alias": "text",
@@ -5575,7 +5575,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "9c0f2e6c-a63a-46e4-a839-4f3ec1e98b35"
+      "name": "a4ddd1fa-5ea5-4ed9-8593-8a52d04d28cf"
     }
   ],
   "bloqClass": "bloq-math-operations",
@@ -5611,7 +5611,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "9c0f2e6c-a63a-46e4-a839-4f3ec1e98b35"
+        "name": "a4ddd1fa-5ea5-4ed9-8593-8a52d04d28cf"
       }
     ]
   ],
@@ -5691,13 +5691,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "24146c4e-7ed8-49ee-bb66-0e78f543e219"
+      "name": "7fc4fb9e-b53b-48dd-b557-47b9a2c523e9"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "float",
-      "name": "4f2279bf-2122-4f99-a448-3d8f96d4cd33"
+      "name": "c2401e77-b595-40c1-98cc-10ab50f3a2d0"
     }
   ],
   "bloqClass": "bloq-random",
@@ -5711,7 +5711,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "24146c4e-7ed8-49ee-bb66-0e78f543e219"
+        "name": "7fc4fb9e-b53b-48dd-b557-47b9a2c523e9"
       },
       {
         "alias": "text",
@@ -5721,7 +5721,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "float",
-        "name": "4f2279bf-2122-4f99-a448-3d8f96d4cd33"
+        "name": "c2401e77-b595-40c1-98cc-10ab50f3a2d0"
       }
     ]
   ],
@@ -5753,7 +5753,7 @@ db.bitbloq_Bloqs.insert({
       }
     ]
   ],
-  "code": "randomSeed(analogRead(0));",
+  "code": "randomSeed(micros());",
   "returnType": {
     "type": "simple",
     "value": "float"
@@ -5846,7 +5846,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "c35fa149-8595-4b87-9d72-a08b23884920"
+      "name": "2b748c22-a217-459f-bcb8-da9596dbc865"
     }
   ],
   "bloqClass": "bloq-stringArray-advanced",
@@ -5860,7 +5860,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "c35fa149-8595-4b87-9d72-a08b23884920"
+        "name": "2b748c22-a217-459f-bcb8-da9596dbc865"
       },
       {
         "alias": "text",
@@ -5901,7 +5901,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "String",
-      "name": "c309bf6a-826e-4569-89c2-55b30954b1b1"
+      "name": "b845bb37-8c28-4658-b3f9-127eae7b24f1"
     }
   ],
   "bloqClass": "bloq-length",
@@ -5915,7 +5915,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
         "acceptType": "String",
-        "name": "c309bf6a-826e-4569-89c2-55b30954b1b1"
+        "name": "b845bb37-8c28-4658-b3f9-127eae7b24f1"
       }
     ]
   ],
@@ -6003,7 +6003,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "7f2b36fb-e13e-4be2-b651-2b967face571"
+      "name": "38165fa0-3e75-4168-a418-873f3a7c278e"
     }
   ],
   "bloqClass": "bloq-string-create",
@@ -6017,7 +6017,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "7f2b36fb-e13e-4be2-b651-2b967face571"
+        "name": "38165fa0-3e75-4168-a418-873f3a7c278e"
       }
     ]
   ],
@@ -6039,13 +6039,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "String",
-      "name": "3450dcf7-3d6b-422c-bd97-b203eed83fe4"
+      "name": "1dafbbe5-98d3-4da0-8633-d3c84c28893c"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "String",
-      "name": "3bb8f671-d2dd-4410-9034-2a552e916316"
+      "name": "5e845d33-4576-421b-974b-08711f1396ac"
     }
   ],
   "bloqClass": "bloq-string-sum",
@@ -6055,7 +6055,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "String",
-        "name": "3450dcf7-3d6b-422c-bd97-b203eed83fe4"
+        "name": "1dafbbe5-98d3-4da0-8633-d3c84c28893c"
       },
       {
         "alias": "text",
@@ -6065,7 +6065,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "String",
-        "name": "3bb8f671-d2dd-4410-9034-2a552e916316"
+        "name": "5e845d33-4576-421b-974b-08711f1396ac"
       }
     ]
   ],
@@ -6087,7 +6087,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "4af46337-e63c-4ad8-8cdb-131e3e0771da"
+      "name": "dc424b31-9b93-42e7-b150-d1118486c3c0"
     }
   ],
   "bloqClass": "bloq-array-variable",
@@ -6110,7 +6110,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "POSITION",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "4af46337-e63c-4ad8-8cdb-131e3e0771da"
+        "name": "dc424b31-9b93-42e7-b150-d1118486c3c0"
       },
       {
         "alias": "text",
@@ -6142,7 +6142,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "42d82859-90dc-4d8a-87df-05d0425f69f1"
+      "name": "721a60cb-6cf9-4d57-83ef-18685ad14a6d"
     }
   ],
   "bloqClass": "bloq-declare-variable",
@@ -6195,7 +6195,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "42d82859-90dc-4d8a-87df-05d0425f69f1"
+        "name": "721a60cb-6cf9-4d57-83ef-18685ad14a6d"
       }
     ]
   ],
@@ -6252,13 +6252,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "b27268ba-cd5e-41d9-bfec-cc71e692e735"
+      "name": "34e36180-7331-42ea-9979-accf8896bb0e"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "45bcfec6-d076-4e43-9a30-b0631543b823"
+      "name": "a999288a-f531-40cd-b385-7ebe0e695f5f"
     }
   ],
   "bloqClass": "bloq-set-variableArray",
@@ -6281,7 +6281,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "ITERATOR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "b27268ba-cd5e-41d9-bfec-cc71e692e735"
+        "name": "34e36180-7331-42ea-9979-accf8896bb0e"
       },
       {
         "alias": "text",
@@ -6295,7 +6295,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "45bcfec6-d076-4e43-9a30-b0631543b823"
+        "name": "a999288a-f531-40cd-b385-7ebe0e695f5f"
       }
     ]
   ],
@@ -6391,7 +6391,7 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "85e36d17-80f8-46c1-a422-d744daf191c3"
+      "name": "e3b91f35-a6fa-4e0a-8971-113ca0294d6d"
     }
   ],
   "bloqClass": "bloq-declare-variable",
@@ -6414,7 +6414,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "85e36d17-80f8-46c1-a422-d744daf191c3"
+        "name": "e3b91f35-a6fa-4e0a-8971-113ca0294d6d"
       }
     ]
   ],
@@ -6476,7 +6476,7 @@ db.bitbloq_Bloqs.insert({
         "pointer": "true",
         "options": "softwareVars"
       },
-      "name": "cec4d16e-006c-4d69-8f11-3f64f8e6c288"
+      "name": "8c38e2b2-8066-4fff-b4f0-e155da9bad04"
     }
   ],
   "bloqClass": "bloq-set-variableArray",
@@ -6517,7 +6517,7 @@ db.bitbloq_Bloqs.insert({
           "pointer": "true",
           "options": "softwareVars"
         },
-        "name": "cec4d16e-006c-4d69-8f11-3f64f8e6c288"
+        "name": "8c38e2b2-8066-4fff-b4f0-e155da9bad04"
       }
     ]
   ],
@@ -6543,7 +6543,7 @@ db.bitbloq_Bloqs.insert({
         "idDropdown": "NAME",
         "options": "softwareVars"
       },
-      "name": "3a9683ac-b2a1-48bc-ba48-334263b125a2"
+      "name": "b0fc98ab-82d2-4056-bb3c-280a265dc7fd"
     }
   ],
   "bloqClass": "bloq-set-variable",
@@ -6570,7 +6570,7 @@ db.bitbloq_Bloqs.insert({
           "idDropdown": "NAME",
           "options": "softwareVars"
         },
-        "name": "3a9683ac-b2a1-48bc-ba48-334263b125a2"
+        "name": "b0fc98ab-82d2-4056-bb3c-280a265dc7fd"
       }
     ]
   ],
@@ -6592,13 +6592,13 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "d4e6f685-1575-45ab-a47e-31bfacd5efb5"
+      "name": "e708cb52-f06e-4a9f-8a98-a024188b808f"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "01bf4bf6-e3e5-4ebb-b0f2-2083c2d6e57e"
+      "name": "e6ab4dc0-2543-4193-a954-5862641d1d4f"
     }
   ],
   "bloqClass": "bloq-zowi-movements-advanced",
@@ -6656,7 +6656,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "STEPS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "d4e6f685-1575-45ab-a47e-31bfacd5efb5"
+        "name": "e708cb52-f06e-4a9f-8a98-a024188b808f"
       },
       {
         "alias": "text",
@@ -6666,7 +6666,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "01bf4bf6-e3e5-4ebb-b0f2-2083c2d6e57e"
+        "name": "e6ab4dc0-2543-4193-a954-5862641d1d4f"
       }
     ]
   ],
@@ -6688,19 +6688,19 @@ db.bitbloq_Bloqs.insert({
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "839520c3-4651-4e16-b7d1-b0bc87e1446c"
+      "name": "95390945-9a5d-4206-a08f-023334609834"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "24588e24-b601-42d7-b3c8-abb04fb55631"
+      "name": "8b30d1c0-6105-4766-89ea-834a1057c75d"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "82253250-5120-4c30-9734-59acab303206"
+      "name": "d6fb19af-71d1-465d-bad8-5178857286ee"
     }
   ],
   "bloqClass": "bloq-zowi-movements-height-advanced",
@@ -6754,7 +6754,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "STEPS",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "839520c3-4651-4e16-b7d1-b0bc87e1446c"
+        "name": "95390945-9a5d-4206-a08f-023334609834"
       },
       {
         "alias": "text",
@@ -6764,7 +6764,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "24588e24-b601-42d7-b3c8-abb04fb55631"
+        "name": "8b30d1c0-6105-4766-89ea-834a1057c75d"
       },
       {
         "alias": "text",
@@ -6774,7 +6774,7 @@ db.bitbloq_Bloqs.insert({
         "bloqInputId": "HEIGHT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "82253250-5120-4c30-9734-59acab303206"
+        "name": "d6fb19af-71d1-465d-bad8-5178857286ee"
       }
     ]
   ],
