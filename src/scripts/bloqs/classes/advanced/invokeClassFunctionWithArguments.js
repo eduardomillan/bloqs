@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../../utils'),
+    StatementBloq = require('./../../statementBloq');
 
 /**
 * Bloq name: invokeClassFunctionWithArguments

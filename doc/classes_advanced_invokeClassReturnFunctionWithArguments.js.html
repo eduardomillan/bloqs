@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: classes/advanced/invokeClassReturnFunctionWithArguments.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,75 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: classes/advanced/invokeClassReturnFunctionWithArguments.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*global require */
+'use strict';
 
+var _ = require('lodash'),
+    utils = require('./../../../utils'),
+    OutputBloq = require('./../../outputBloq');
 
-    <h3> </h3>
+/**
+* Bloq name: invokeClassReturnFunctionWithArguments
+* 
+* Bloq type: Output
+*
+* Description: It execute a function, selectable from a first drop-down,
+*              which does return an argument, of an specific object,
+*              selectable from a second drop-down, with the given arguments.
+* 
+* Return type: same type as the function's return
+*/
 
+var invokeClassReturnFunctionWithArguments = _.merge(_.clone(OutputBloq, true), {
 
+    name: 'invokeClassReturnFunctionWithArguments',
+    bloqClass: 'bloq-invoke-class-return-function',
+    content: [
+        [{
+            alias: 'text',
+            value: 'bloq-invoke-class-return-function-args-exec'
+        }, {
+            id: 'FUNCTION',
+            alias: 'dynamicDropdown',
+            options: 'returnFunctions'
+        }, {
+            alias: 'text',
+            value: 'bloq-invoke-class-return-function-args-class'
+        },  {
+            id: 'CLASS',
+            alias: 'dynamicDropdown',
+            options: 'objects'
+        }, {
+            alias: 'text',
+            value: 'bloq-invoke-class-return-function-args-args'
+        }, {
+            bloqInputId: 'ARGS',
+            alias: 'bloqInput',
+            acceptType: 'all'
+        }]
+    ],
+    code: '{CLASS}.{FUNCTION}({ARGS});',
+    returnType: {
+        type: 'fromDynamicDropdown',
+        idDropdown: 'FUNCTION',
+        options: 'returnFunctions'
+    }
+});
 
+utils.generateBloqInputConnectors(invokeClassReturnFunctionWithArguments);
 
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = invokeClassReturnFunctionWithArguments;</code></pre>
+        </article>
+    </section>
 
 
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: code/deprecated/enableInterrupt.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,79 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: code/deprecated/enableInterrupt.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*global require */
+'use strict';
 
+var _ = require('lodash'),
+    utils = require('./../../../utils'),
+    StatementBloq = require('./../../statementBloq');
 
-    <h3> </h3>
+/**
+* Bloq name: enableInterrupt
+* 
+* Bloq type: Statement
+*
+* Description: It enables the hardware interrupt of the board
+*              for rising, falling or both changes, assigning
+*              it a given function which would be executed when
+*              it happened.
+* 
+* Return type: none
+*/
 
+var enableInterrupt = _.merge(_.clone(StatementBloq, true), {
 
+    name: 'enableInterrupt',
+    bloqClass: 'bloq-enable-interrupt',
+    content: [
+        [{
+            alias: 'text',
+            value: 'bloq-enable-interrupt'
+        }, {
+            id: 'FUNC',
+            alias: 'dynamicDropdown',
+            options: 'voidFunctions'
+        }, {
+            alias: 'text',
+            value: 'bloq-enable-interrupt-pin'
+        }, {
+            id: 'PIN',
+            alias: 'dynamicDropdown',
+            options: 'varComponents'
+        }, {
 
-
-
-
-
-
-
-
+            id: 'STATE',
+            alias: 'staticDropdown',
+            options: [{
+                    label: 'bloq-enable-interrupt-rising',
+                    value: 'RISING'
+                }, {
+                    label: 'bloq-enable-interrupt-falling',
+                    value: 'FALLING'
+                }, {
+                    label: 'bloq-enable-interrupt-change',
+                    value: 'CHANGE'
+                }]
+        }]
+    ],
+    code: 'enableInterrupt({PIN}, {FUNC}, {STATE});'
     
+});
 
+utils.generateBloqInputConnectors(enableInterrupt);
 
-
-
-
+module.exports = enableInterrupt;</code></pre>
+        </article>
+    </section>
 
 
 

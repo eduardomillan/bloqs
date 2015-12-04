@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: classes/selectClassVariable.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,67 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: classes/selectClassVariable.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*global require */
+'use strict';
 
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    OutputBloq = require('./../outputBloq');
 
-    <h3> </h3>
+/**
+* Bloq name: selectClassVariable
+* 
+* Bloq type: Output
+*
+* Description: It returns a variable, selectable from a first drop-down,
+*              of an specific object, selectable from a second drop-down.
+* 
+* Return type: variable's type
+*/
 
+var selectClassVariable = _.merge(_.clone(OutputBloq, true), {
 
+    name: 'selectClassVariable',
+    bloqClass: 'bloq-select-class-variable',
+    content: [
+        [{
+            alias: 'text',
+            value: 'bloq-select-class-variable-variable'
+        }, {
+            id: 'VAR',
+            alias: 'dynamicDropdown',
+            options: 'softwareVars'
+        }, {
+            alias: 'text',
+            value: 'bloq-invoke-class-function-class'
+        },  {
+            id: 'CLASS',
+            alias: 'dynamicDropdown',
+            options: 'objects'
+        }]
+    ],
+    code: '{CLASS}.{VAR}',
+    returnType: {
+        type: 'fromDynamicDropdown',
+        idDropdown: 'VAR',
+        options: 'softwareVars'
+    }
+});
 
+utils.generateBloqInputConnectors(selectClassVariable);
 
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = selectClassVariable;</code></pre>
+        </article>
+    </section>
 
 
 

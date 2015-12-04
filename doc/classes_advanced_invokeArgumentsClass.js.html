@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: classes/advanced/invokeArgumentsClass.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,75 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: classes/advanced/invokeArgumentsClass.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*global require */
+'use strict';
 
+var _ = require('lodash'),
+    utils = require('./../../../utils'),
+    StatementBloq = require('./../../statementBloq');
 
-    <h3> </h3>
+/**
+* Bloq name: invokeArgumentsClass
+* 
+* Bloq type: Statement
+*
+* Description: It instance an object of a specific class, selectable
+*              from a drop-down, with a given name and arguments.
+* 
+* Return type: none
+*/
 
+var invokeArgumentsClass = _.merge(_.clone(StatementBloq, true), {
 
+    name: 'invokeArgumentsClass',
+    bloqClass: 'bloq-invoke-arguments-class',
+    content: [
+        [{
+            alias: 'text',
+            value: 'bloq-invoke-arguments-class'
+        }, {
+            id: 'CLASS',
+            alias: 'dynamicDropdown',
+            options: 'classes'
+        }, {
+            alias: 'text',
+            value: 'bloq-invoke-arguments-class-name'
+        }, {
+            id: 'NAME',
+            alias: 'varInput',
+            value: ''
+        }, {
+            alias: 'text',
+            value: 'bloq-invoke-arguments-args'
+        }, {
+            bloqInputId: 'ARGS',
+            alias: 'bloqInput',
+            acceptType: 'all'
+        }]
+    ],
+    createDynamicContent: 'objects',
 
+    code: '{CLASS} {NAME}({ARGS});',
+    returnType: {
+        type: 'simple',
+        value: 'var'
+    }
+});
 
+utils.generateBloqInputConnectors(invokeArgumentsClass);
 
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = invokeArgumentsClass;</code></pre>
+        </article>
+    </section>
 
 
 

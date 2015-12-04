@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    StatementInputBloq = require('./../statementInputBloq');
+    utils = require('./../../../utils'),
+    StatementInputBloq = require('./../../statementInputBloq');
 
 /**
 * Bloq name: constructorClassArguments

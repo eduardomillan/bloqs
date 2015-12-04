@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: classes/constructor.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,55 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: classes/constructor.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*global require */
+'use strict';
 
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    StatementInputBloq = require('./../statementInputBloq');
 
-    <h3> </h3>
+/**
+* Bloq name: constructorClass
+* 
+* Bloq type: Statement-Input
+*
+* Description: It defines de constructor of a class, which would be executed
+*              when the class was instanced into an object. It is used to
+*              initialize the variables of the class.
+* 
+* Return type: none
+*/
 
+var constructorClass = _.merge(_.clone(StatementInputBloq, true), {
 
+    name: 'constructorClass',
+    bloqClass: 'bloq-constructor',
+    content: [
+        [{
+            alias: 'text',
+            value: 'bloq-constructor'
+        }]
+    ],
+    code: '{CLASS-OUTSIDE}(){{STATEMENTS}};',
+    hCode: '{CLASS-OUTSIDE} ();',
+    cppCode: '{CLASS-OUTSIDE} :: {CLASS-OUTSIDE} (){{STATEMENTS}};'
 
+});
 
+utils.generateBloqInputConnectors(constructorClass);
 
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = constructorClass;</code></pre>
+        </article>
+    </section>
 
 
 

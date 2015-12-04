@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: code/code.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,50 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: code/code.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*global require */
+'use strict';
 
+var _ = require('lodash'),
+    utils = require('./../../utils'),
+    StatementBloq = require('./../statementBloq');
 
-    <h3> </h3>
+/**
+* Bloq name: code
+* 
+* Bloq type: Statement
+*
+* Description: It gives the space to write Arduino code.
+* 
+* Return type: none
+*/
 
+var code = _.merge(_.clone(StatementBloq, true), {
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    name: 'code',
+    bloqClass: 'bloq-code',
+    content: [
+        [{
+            id: 'CODE',
+            alias: 'multilineCodeInput',
+            value: '',
+            placeholder: 'bloq-code-writeYourCode'
+        }]
+    ],
+    code: '{CODE}\n'
+});
+utils.generateBloqInputConnectors(code);
+module.exports = code;</code></pre>
+        </article>
+    </section>
 
 
 

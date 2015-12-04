@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    OutputBloq = require('./../outputBloq');
+    utils = require('./../../../utils'),
+    OutputBloq = require('./../../outputBloq');
 
 /**
 * Bloq name: arrayClassVariable

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: classes/advanced/setClassArrayVariable.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,85 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: classes/advanced/setClassArrayVariable.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*global require */
+'use strict';
 
+var _ = require('lodash'),
+    utils = require('./../../../utils'),
+    StatementBloq = require('./../../statementBloq');
 
-    <h3> </h3>
+/**
+* Bloq name: setClassArrayVariable
+* 
+* Bloq type: Statement
+* 
+* Description: It sets an specific element of an array-type variable,
+*              selectable from a first drop-down, of an object, selectable
+*              from a second drop-down.
+* 
+* Return type: none
+*/
 
+var setClassArrayVariable = _.merge(_.clone(StatementBloq, true), {
 
+    name: 'setClassArrayVariable',
+    bloqClass: 'bloq-set-class-variableArray',
+    content: [
+        [{
+            alias: 'text',
+            value: 'bloq-set-class-variableArray-variable'
+        }, {
+            id: 'NAME',
+            alias: 'dynamicDropdown',
+            options: 'softwareVars'
+        }, {
+            alias: 'text',
+            value: '['
+        }, {
+            id: 'ITERATOR',
+            alias: 'numberInput',
+            value: 0
+        }, {
+            alias: 'text',
+            value: ']'
+        }, {
+            alias: 'text',
+            value: 'bloq-invoke-class-function-class'
+        },  {
+            id: 'CLASS',
+            alias: 'dynamicDropdown',
+            options: 'objects'
+        }, {
+            alias: 'text',
+            value: '='
+        }, {
+            bloqInputId: 'VALUE',
+            alias: 'bloqInput',
+            acceptType: {
+                type: 'fromDynamicDropdown',
+                idDropdown: 'NAME',
+                pointer: 'true',
+                options: 'softwareVars'
+            }
+        }]
+    ],
+    code: '{CLASS}.{NAME}[{ITERATOR}] = {VALUE};'
+});
 
+utils.generateBloqInputConnectors(setClassArrayVariable);
 
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = setClassArrayVariable;</code></pre>
+        </article>
+    </section>
 
 
 

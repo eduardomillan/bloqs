@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: code
+* 
+* Bloq type: Statement
+*
+* Description: It gives the space to write Arduino code.
+* 
+* Return type: none
+*/
+
+var code = _.merge(_.clone(StatementBloq, true), {
 
     name: 'code',
     bloqClass: 'bloq-code',
@@ -19,5 +29,5 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '{CODE}\n'
 });
-utils.generateBloqInputConnectors(bloq);
-module.exports = bloq;
+utils.generateBloqInputConnectors(code);
+module.exports = code;

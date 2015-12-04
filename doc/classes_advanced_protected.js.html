@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: classes/advanced/protected.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,54 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: classes/advanced/protected.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*global require */
+'use strict';
 
+var _ = require('lodash'),
+    utils = require('./../../../utils'),
+    StatementInputBloq = require('./../../statementInputBloq');
 
-    <h3> </h3>
+/**
+* Bloq name: bloqProtected
+* 
+* Bloq type: Statement-Input
+*
+* Description: It defines the protected variables and functions of a class,
+*              which would not be accessible or visible from outside the class,
+*              excepting derived classes.
+* 
+* Return type: none
+*/
 
+var bloqProtected = _.merge(_.clone(StatementInputBloq, true), {
 
+    name: 'protected',
+    bloqClass: 'bloq-protected',
+    content: [
+        [{
+            alias: 'text',
+            value: 'bloq-protected'
+        }]
+    ],
+    code: 'protected : {STATEMENTS}',
+    hCode: 'protected : {STATEMENTS}',
+    cppCode: ''
+});
 
+utils.generateBloqInputConnectors(bloqProtected);
 
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = bloqProtected;</code></pre>
+        </article>
+    </section>
 
 
 

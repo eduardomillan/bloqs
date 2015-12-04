@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: classes/advanced/arrayClassVariable.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,79 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: classes/advanced/arrayClassVariable.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*global require */
+'use strict';
 
+var _ = require('lodash'),
+    utils = require('./../../../utils'),
+    OutputBloq = require('./../../outputBloq');
 
-    <h3> </h3>
+/**
+* Bloq name: arrayClassVariable
+* 
+* Bloq type: Output
+*
+* Description: It returns an specific element of an array-type variable,
+*              selectable from a first drop-down, of an object, selectable
+*              from a second drop-down.
+* 
+* Return type: element's type of the array variable
+*/
 
+var arrayClassVariable = _.merge(_.clone(OutputBloq, true), {
 
+    name: 'arrayClassVariable',
+    bloqClass: 'bloq-array-class-variable',
+    content: [
+        [{
+            alias: 'text',
+            value: 'bloq-array-class-variable-variable'
+        }, {
+            id: 'VAR',
+            alias: 'dynamicDropdown',
+            options: 'softwareVars'
+        }, {
+            alias: 'text',
+            value: '['
+        }, {
+            id: 'POSITION',
+            alias: 'numberInput',
+            value: 0
+        }, {
+            alias: 'text',
+            value: ']'
+        }, {
+            alias: 'text',
+            value: 'bloq-invoke-class-function-class'
+        },  {
+            id: 'CLASS',
+            alias: 'dynamicDropdown',
+            options: 'objects'
+        }]
+    ],
+    code: '{CLASS}.{VAR}[{POSITION}]',
+    returnType: {
+        type: 'fromDynamicDropdown',
+        idDropdown: 'VAR',
+        pointer: 'true',
+        options: 'softwareVars'
+    }
+});
 
+utils.generateBloqInputConnectors(arrayClassVariable);
 
-
-
-
-
-
-
-    
-
-
-
-
-
+module.exports = arrayClassVariable;</code></pre>
+        </article>
+    </section>
 
 
 
