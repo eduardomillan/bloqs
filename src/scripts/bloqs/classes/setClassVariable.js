@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: setClassVariable
+* 
+* Bloq type: Statement
+*
+* Description: It sets a variable, selectable from a first drop-down,
+*              of an specific object, selectable from a second drop-down,
+*              with a given input.
+* 
+* Return type: none
+*/
+
+var setClassVariable = _.merge(_.clone(StatementBloq, true), {
 
     name: 'setClassVariable',
     bloqClass: 'bloq-set-class-variable',
@@ -40,6 +52,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '{CLASS}.{NAME} = {VALUE};'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(setClassVariable);
 
-module.exports = bloq;
+module.exports = setClassVariable;

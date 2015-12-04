@@ -5,7 +5,20 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: classChildren
+* 
+* Bloq type: Statement-Input
+*
+* Description: It defines a class which inherits, in a public, protected
+*              or private way, selectable from a first drop-down, the
+*              variables and functions from another class, selectable from
+*              a second drop-down.
+* 
+* Return type: none
+*/
+
+var classChildren = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'classChildren',
     bloqClass: 'bloq-class-children',
@@ -53,6 +66,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(classChildren);
 
-module.exports = bloq;
+module.exports = classChildren;

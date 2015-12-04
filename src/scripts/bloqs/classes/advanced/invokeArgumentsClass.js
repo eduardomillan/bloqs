@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: invokeArgumentsClass
+* 
+* Bloq type: Statement
+*
+* Description: It instance an object of a specific class, selectable
+*              from a drop-down, with a given name and arguments.
+* 
+* Return type: none
+*/
+
+var invokeArgumentsClass = _.merge(_.clone(StatementBloq, true), {
 
     name: 'invokeArgumentsClass',
     bloqClass: 'bloq-invoke-arguments-class',
@@ -42,6 +53,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(invokeArgumentsClass);
 
-module.exports = bloq;
+module.exports = invokeArgumentsClass;

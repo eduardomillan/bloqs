@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: constructorClass
+* 
+* Bloq type: Statement-Input
+*
+* Description: It defines de constructor of a class, which would be executed
+*              when the class was instanced into an object. It is used to
+*              initialize the variables of the class.
+* 
+* Return type: none
+*/
+
+var constructorClass = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'constructorClass',
     bloqClass: 'bloq-constructor',
@@ -21,6 +33,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(constructorClass);
 
-module.exports = bloq;
+module.exports = constructorClass;

@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: constructorClassArguments
+* 
+* Bloq type: Statement-Input
+*
+* Description: It defines de constructor with arguments of a class, which
+*              would be executed when the class was instanced into an object.
+*              It is used to initialize the variables of the class.
+* 
+* Return type: none
+*/
+
+var constructorClassArguments = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'constructorClassArguments',
     bloqClass: 'bloq-constructor-arguments',
@@ -24,6 +36,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     cppCode: '{CLASS-OUTSIDE} :: {CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(constructorClassArguments);
 
-module.exports = bloq;
+module.exports = constructorClassArguments;

@@ -155,6 +155,7 @@ module.exports = function(grunt) {
                 tagName: 'v<%= version %>'
             }
         },
+        
         jsonGenerator: {
             all: {
                 options: {
@@ -165,7 +166,16 @@ module.exports = function(grunt) {
                     filter: 'isFile'
                 }
             }
-        }
+        },
+        
+        jsdoc: {
+           dist: {
+               src: ['src/scripts/bloqs/**/*.js'],
+               options: {
+                   destination: 'doc'
+               }
+           }
+       }
 
     });
 

@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: arrayClassVariable
+* 
+* Bloq type: Output
+*
+* Description: It returns an specific element of an array-type variable,
+*              selectable from a first drop-down, of an object, selectable
+*              from a second drop-down.
+* 
+* Return type: element's type of the array variable
+*/
+
+var arrayClassVariable = _.merge(_.clone(OutputBloq, true), {
 
     name: 'arrayClassVariable',
     bloqClass: 'bloq-array-class-variable',
@@ -45,6 +57,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(arrayClassVariable);
 
-module.exports = bloq;
+module.exports = arrayClassVariable;

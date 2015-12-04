@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: bloqPrivate
+* 
+* Bloq type: Statement-Input
+*
+* Description: It defines the private variables and functions of a class,
+*              which would not be accessible or visible from outside the class.
+* 
+* Return type: none
+*/
+
+var bloqPrivate = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'private',
     bloqClass: 'bloq-private',
@@ -21,6 +32,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(bloqPrivate);
 
-module.exports = bloq;
+module.exports = bloqPrivate;
