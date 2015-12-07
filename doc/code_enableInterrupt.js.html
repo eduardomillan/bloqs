@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: classes/invokeClass.js</title>
+    <title>JSDoc: Source: code/enableInterrupt.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: classes/invokeClass.js</h1>
+    <h1 class="page-title">Source: code/enableInterrupt.js</h1>
 
     
 
@@ -26,7 +26,9 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*global require */
+            <pre class="prettyprint source linenums"><code>/*--IN PROGRESS--*/
+
+/*global require */
 'use strict';
 
 var _ = require('lodash'),
@@ -34,56 +36,60 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
-* Bloq name: invokeClass
+* Bloq name: enableInterrupt
 * 
 * Bloq type: Statement
 *
-* Description: It instance an object of a specific class, selectable
-*              from a drop-down, with a given name.
+* Description: It enables the hardware interrupt of the board
+*              for rising, falling or both changes, assigning
+*              it a given function which would be executed when
+*              it happened.
 * 
 * Return type: none
 */
 
-var invokeClass = _.merge(_.clone(StatementBloq, true), {
+var enableInterrupt = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'invokeClass',
-    bloqClass: 'bloq-invoke-class',
+    name: 'enableInterrupt',
+    bloqClass: 'bloq-enable-interrupt',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-invoke-class'
+            value: 'bloq-enable-interrupt'
         }, {
-            id: 'CLASS',
+            id: 'FUNC',
             alias: 'dynamicDropdown',
-            options: 'classes'
+            options: 'voidFunctions'
         }, {
             alias: 'text',
-            value: 'bloq-invoke-class-name'
+            value: 'bloq-enable-interrupt-pin'
         }, {
-            id: 'NAME',
-            alias: 'varInput',
-            value: ''
-        }, {
-            alias: 'text',
-            value: 'bloq-invoke-class-function-class'
-        },  {
-            id: 'CLASS',
+            id: 'PIN',
             alias: 'dynamicDropdown',
-            options: 'classes'
+            options: 'varComponents'
+        }, {
+
+            id: 'STATE',
+            alias: 'staticDropdown',
+            options: [{
+                    label: 'bloq-enable-interrupt-rising',
+                    value: 'RISING'
+                }, {
+                    label: 'bloq-enable-interrupt-falling',
+                    value: 'FALLING'
+                }, {
+                    label: 'bloq-enable-interrupt-change',
+                    value: 'CHANGE'
+                }]
         }]
     ],
-    createDynamicContent: 'objects',
-
-    code: '{CLASS} {NAME};',
-    returnType: {
-        type: 'simple',
-        value: 'var'
-    }
+    code: 'enableInterrupt({PIN}, {FUNC}, {STATE});'
+    
 });
 
-utils.generateBloqInputConnectors(invokeClass);
+utils.generateBloqInputConnectors(enableInterrupt);
 
-module.exports = invokeClass;</code></pre>
+module.exports = enableInterrupt;</code></pre>
         </article>
     </section>
 

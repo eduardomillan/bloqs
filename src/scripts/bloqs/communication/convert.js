@@ -1,3 +1,5 @@
+/*--IN PROGRESS--*/
+
 /*global require */
 'use strict';
 
@@ -5,7 +7,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: convert
+* 
+* Bloq type: Output
+*
+* Description: It converts a number in decimal base to
+*              binary, octal or hexadecimal.
+* 
+* Return type: float
+*/
+
+var convert = _.merge(_.clone(OutputBloq, true), {
 
     name: 'convert',
     bloqClass: 'bloq-convert',
@@ -44,6 +57,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     }
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(convert);
 
-module.exports = bloq;
+module.exports = convert;

@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementBloq = require('./../../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: serialSend
+* 
+* Bloq type: Statement
+*
+* Description: It sends by the serial port what is input with
+*              or without newline end.
+* 
+* Return type: none
+*/
+
+var serialSend = _.merge(_.clone(StatementBloq, true), {
 
     name: 'serialSend',
     bloqClass: 'bloq-serial-send',
@@ -35,6 +46,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '{SERIAL}.{FUNCTION}({DATA});'
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(serialSend);
 
-module.exports = bloq;
+module.exports = serialSend;

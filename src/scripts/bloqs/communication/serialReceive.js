@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: serialReceive
+* 
+* Bloq type: Output
+*
+* Description: It returns what is received by the serial port.
+* 
+* Return type: String
+*/
+
+var serialReceive = _.merge(_.clone(OutputBloq, true), {
 
     name: 'serialReceive',
     bloqClass: 'bloq-serial-receiver',
@@ -25,6 +35,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         value: 'String'
     }
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(serialReceive);
 
-module.exports = bloq;
+module.exports = serialReceive;

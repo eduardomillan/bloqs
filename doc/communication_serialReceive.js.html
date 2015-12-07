@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: classes/invokeClass.js</title>
+    <title>JSDoc: Source: communication/serialReceive.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: classes/invokeClass.js</h1>
+    <h1 class="page-title">Source: communication/serialReceive.js</h1>
 
     
 
@@ -31,59 +31,41 @@
 
 var _ = require('lodash'),
     utils = require('./../../utils'),
-    StatementBloq = require('./../statementBloq');
+    OutputBloq = require('./../outputBloq');
 
 /**
-* Bloq name: invokeClass
+* Bloq name: serialReceive
 * 
-* Bloq type: Statement
+* Bloq type: Output
 *
-* Description: It instance an object of a specific class, selectable
-*              from a drop-down, with a given name.
+* Description: It returns what is received by the serial port.
 * 
-* Return type: none
+* Return type: String
 */
 
-var invokeClass = _.merge(_.clone(StatementBloq, true), {
+var serialReceive = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'invokeClass',
-    bloqClass: 'bloq-invoke-class',
+    name: 'serialReceive',
+    bloqClass: 'bloq-serial-receiver',
     content: [
         [{
-            alias: 'text',
-            value: 'bloq-invoke-class'
-        }, {
-            id: 'CLASS',
+            id: 'SERIAL',
             alias: 'dynamicDropdown',
-            options: 'classes'
+            options: 'serialElements'
         }, {
             alias: 'text',
-            value: 'bloq-invoke-class-name'
-        }, {
-            id: 'NAME',
-            alias: 'varInput',
-            value: ''
-        }, {
-            alias: 'text',
-            value: 'bloq-invoke-class-function-class'
-        },  {
-            id: 'CLASS',
-            alias: 'dynamicDropdown',
-            options: 'classes'
+            value: 'bloq-serial-receiver-receive'
         }]
     ],
-    createDynamicContent: 'objects',
-
-    code: '{CLASS} {NAME};',
+    code: '{SERIAL}.readString()',
     returnType: {
         type: 'simple',
-        value: 'var'
+        value: 'String'
     }
 });
+utils.generateBloqInputConnectors(serialReceive);
 
-utils.generateBloqInputConnectors(invokeClass);
-
-module.exports = invokeClass;</code></pre>
+module.exports = serialReceive;</code></pre>
         </article>
     </section>
 

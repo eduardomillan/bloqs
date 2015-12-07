@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: classes/invokeClass.js</title>
+    <title>JSDoc: Source: communication/deprecated/serialSend.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: classes/invokeClass.js</h1>
+    <h1 class="page-title">Source: communication/deprecated/serialSend.js</h1>
 
     
 
@@ -30,60 +30,53 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../../utils'),
+    StatementBloq = require('./../../statementBloq');
 
 /**
-* Bloq name: invokeClass
+* Bloq name: serialSend
 * 
 * Bloq type: Statement
 *
-* Description: It instance an object of a specific class, selectable
-*              from a drop-down, with a given name.
+* Description: It sends by the serial port what is input with
+*              or without newline end.
 * 
 * Return type: none
 */
 
-var invokeClass = _.merge(_.clone(StatementBloq, true), {
+var serialSend = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'invokeClass',
-    bloqClass: 'bloq-invoke-class',
+    name: 'serialSend',
+    bloqClass: 'bloq-serial-send',
     content: [
         [{
-            alias: 'text',
-            value: 'bloq-invoke-class'
-        }, {
-            id: 'CLASS',
+            id: 'SERIAL',
             alias: 'dynamicDropdown',
-            options: 'classes'
+            options: 'serialElements'
         }, {
             alias: 'text',
-            value: 'bloq-invoke-class-name'
+            value: 'bloq-serial-send-send'
         }, {
-            id: 'NAME',
-            alias: 'varInput',
-            value: ''
+            bloqInputId: 'DATA',
+            alias: 'bloqInput',
+            acceptType: 'all'
         }, {
-            alias: 'text',
-            value: 'bloq-invoke-class-function-class'
-        },  {
-            id: 'CLASS',
-            alias: 'dynamicDropdown',
-            options: 'classes'
+            id: 'FUNCTION',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'bloq-serial-send-println',
+                value: 'println'
+            }, {
+                label: 'bloq-serial-send-print',
+                value: 'print'
+            }]
         }]
     ],
-    createDynamicContent: 'objects',
-
-    code: '{CLASS} {NAME};',
-    returnType: {
-        type: 'simple',
-        value: 'var'
-    }
+    code: '{SERIAL}.{FUNCTION}({DATA});'
 });
+utils.generateBloqInputConnectors(serialSend);
 
-utils.generateBloqInputConnectors(invokeClass);
-
-module.exports = invokeClass;</code></pre>
+module.exports = serialSend;</code></pre>
         </article>
     </section>
 

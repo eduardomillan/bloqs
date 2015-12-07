@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: classes/invokeClass.js</title>
+    <title>JSDoc: Source: classes/includeLib.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: classes/invokeClass.js</h1>
+    <h1 class="page-title">Source: classes/includeLib.js</h1>
 
     
 
@@ -26,7 +26,9 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*global require */
+            <pre class="prettyprint source linenums"><code>/*--IN PROGRESS--*/
+
+/*global require */
 'use strict';
 
 var _ = require('lodash'),
@@ -34,56 +36,37 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
-* Bloq name: invokeClass
+* Bloq name: includeLib
 * 
 * Bloq type: Statement
 *
-* Description: It instance an object of a specific class, selectable
-*              from a drop-down, with a given name.
+* Description: It includes a library to use its classes, constants,
+*              variables or functions.
 * 
 * Return type: none
 */
 
-var invokeClass = _.merge(_.clone(StatementBloq, true), {
+var includeLib = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'invokeClass',
-    bloqClass: 'bloq-invoke-class',
+    name: 'includeLib',
+    bloqClass: 'bloq-include-lib',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-invoke-class'
+            value: 'bloq-include-lib-exec'
         }, {
-            id: 'CLASS',
+            id: 'LIB',
             alias: 'dynamicDropdown',
-            options: 'classes'
-        }, {
-            alias: 'text',
-            value: 'bloq-invoke-class-name'
-        }, {
-            id: 'NAME',
-            alias: 'varInput',
-            value: ''
-        }, {
-            alias: 'text',
-            value: 'bloq-invoke-class-function-class'
-        },  {
-            id: 'CLASS',
-            alias: 'dynamicDropdown',
-            options: 'classes'
+            options: 'libraries'
         }]
     ],
-    createDynamicContent: 'objects',
-
-    code: '{CLASS} {NAME};',
-    returnType: {
-        type: 'simple',
-        value: 'var'
-    }
+    code: '#include "{LIB}";'
 });
 
-utils.generateBloqInputConnectors(invokeClass);
+utils.generateBloqInputConnectors(includeLib);
 
-module.exports = invokeClass;</code></pre>
+module.exports = includeLib;
+</code></pre>
         </article>
     </section>
 
