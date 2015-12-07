@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementBloq = require('./../../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: lcdTurnOnOffAdvanced
+* 
+* Bloq type: Statement
+*
+* Description: It switches on or off the background light of a
+*              specific LCD.
+* 
+* Return type: none
+*/
+
+var lcdTurnOnOffAdvanced = _.merge(_.clone(StatementBloq, true), {
 
     name: 'lcdTurnOnOffAdvanced',
     bloqClass: 'bloq-lcd-turn-on-off-advanced',
@@ -32,6 +43,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '{LCD}.setBacklight({STATE});'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(lcdTurnOnOffAdvanced);
 
-module.exports = bloq;
+module.exports = lcdTurnOnOffAdvanced;

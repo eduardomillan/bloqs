@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: clockRTCAdvanced
+* 
+* Bloq type: Output
+*
+* Description: It returns a determined data of the date or the time,
+*              selectable from a first drop-down, of a specific RTC,
+*              selectable from a second drop-down.
+* 
+* Return type: int
+*/
+
+var clockRTCAdvanced = _.merge(_.clone(OutputBloq, true), {
     name: 'clockRTCAdvanced',
     bloqClass: 'bloq-rtc-advanced',
     content: [
@@ -50,6 +62,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(clockRTCAdvanced);
 
-module.exports = bloq;
+module.exports = clockRTCAdvanced;

@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: servoNormal
+* 
+* Bloq type: Statement
+*
+* Description: It sets a specific servo, selectable from a
+*              drop-down, in a given position.
+* 
+* Return type: none
+*/
+
+var servoNormal = _.merge(_.clone(StatementBloq, true), {
 
     name: 'servoNormal',
     bloqClass: 'bloq-servo',
@@ -32,6 +43,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '{SERVO}.write({POSITION});'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(servoNormal);
 
-module.exports = bloq;
+module.exports = servoNormal;

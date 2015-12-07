@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: digitalReadAdvanced
+* 
+* Bloq type: Output
+*
+* Description: It returns the read of a digital pin.
+* 
+* Return type: float
+*/
+
+var digitalReadAdvanced = _.merge(_.clone(OutputBloq, true), {
 
     name: 'digitalReadAdvanced',
     bloqClass: 'bloq-digital-read-advanced',
@@ -26,6 +36,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(digitalReadAdvanced);
 
-module.exports = bloq;
+module.exports = digitalReadAdvanced;

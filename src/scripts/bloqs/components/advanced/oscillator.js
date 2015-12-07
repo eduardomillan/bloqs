@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementBloq = require('./../../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: oscillatorAdvanced
+* 
+* Bloq type: Statement
+*
+* Description: It sets a specific servo to oscillate around a given
+*              point with a certain amplitude and velocity.
+* 
+* Return type: none
+*/
+
+var oscillatorAdvanced = _.merge(_.clone(StatementBloq, true), {
 
     name: 'oscillatorAdvanced',
     bloqClass: 'bloq-oscillator-advanced',
@@ -43,6 +54,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(oscillatorAdvanced);
 
-module.exports = bloq;
+module.exports = oscillatorAdvanced;

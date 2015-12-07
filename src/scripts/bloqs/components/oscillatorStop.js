@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: oscillatorStop
+* 
+* Bloq type: Statement
+*
+* Description: It stops a specific servo, selectable from a 
+*              drop-down.
+* 
+* Return type: none
+*/
+
+var oscillatorStop = _.merge(_.clone(StatementBloq, true), {
 
     name: 'oscillatorStop',
     bloqClass: 'bloq-oscillator-stop',
@@ -22,6 +33,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '{OSCILLATOR}.Stop();'
 
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(oscillatorStop);
 
-module.exports = bloq;
+module.exports = oscillatorStop;

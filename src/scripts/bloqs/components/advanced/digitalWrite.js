@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementBloq = require('./../../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: digitalWrite
+* 
+* Bloq type: Statement
+*
+* Description: It sets a specific digital pin with a given value.
+* 
+* Return type: none
+*/
+
+var digitalWrite = _.merge(_.clone(StatementBloq, true), {
 
     name: 'digitalWrite',
     bloqClass: 'bloq-pin-writte-advanced',
@@ -30,7 +40,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(digitalWrite);
 
 
-module.exports = bloq;
+module.exports = digitalWrite;

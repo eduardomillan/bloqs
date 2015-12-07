@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: pinReadAdvanced
+* 
+* Bloq type: Output
+*
+* Description: It returns the read of a pin.
+* 
+* Return type: bool
+*/
+
+var pinReadAdvanced = _.merge(_.clone(OutputBloq, true), {
 
     name: 'pinReadAdvanced',
     bloqClass: 'bloq-pin-read-advanced',
@@ -26,6 +36,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(pinReadAdvanced);
 
-module.exports = bloq;
+module.exports = pinReadAdvanced;

@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: lcdClear
+* 
+* Bloq type: Statement
+*
+* Description: It clears the screen of a specific LCD,
+*              selectable from a drop-down.
+* 
+* Return type: none
+*/
+
+var lcdClear = _.merge(_.clone(StatementBloq, true), {
 
     name: 'lcdClear',
     bloqClass: 'bloq-lcd-clear',
@@ -23,6 +34,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(lcdClear);
 
-module.exports = bloq;
+module.exports = lcdClear;

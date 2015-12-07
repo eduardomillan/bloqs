@@ -5,7 +5,20 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: buzzer
+* 
+* Bloq type: Statement
+*
+* Description: It turns on a specific buzzer, selectable
+*              from a first drop-down, with a basic note, 
+*              selectable from a second drop-down, during
+*              a given period of time.
+* 
+* Return type: none
+*/
+
+var buzzer = _.merge(_.clone(StatementBloq, true), {
 
     name: 'buzzer',
     bloqClass: 'bloq-buzzer',
@@ -59,6 +72,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(buzzer);
 
-module.exports = bloq;
+module.exports = buzzer;
