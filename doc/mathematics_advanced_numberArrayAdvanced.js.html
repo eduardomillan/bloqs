@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/RGBled.js</title>
+    <title>JSDoc: Source: mathematics/advanced/numberArrayAdvanced.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/RGBled.js</h1>
+    <h1 class="page-title">Source: mathematics/advanced/numberArrayAdvanced.js</h1>
 
     
 
@@ -30,62 +30,58 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../../utils'),
+    OutputBloq = require('./../../outputBloq');
 
 /**
-* Bloq name: rgbLed
-* 
-* Bloq type: Statement
+* Bloq name: numberArrayAdvanced
 *
-* Description: It switches on a specific rgb led, selectable
-*              from a drop-down, with the given combination
-*              of each basic colour.
-* 
-* Return type: none
+* Bloq type: Output
+*
+* Description: It returns a float pointer an or int pointer, selectable
+*              from a dorp-down, to an array of the given size.
+*
+* Return type: selected type pointer
 */
 
-var rgbLed = _.merge(_.clone(StatementBloq, true), {
+var numberArrayAdvanced = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'rgbLed',
-    bloqClass: 'bloq-rgbLed',
+    name: 'numberArrayAdvanced',
+    bloqClass: 'bloq-numberArray-advanced',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-rgbLed'
+            value: 'bloq-numberArray-advanced-arraySize'
         }, {
-            id: 'LED',
-            alias: 'dynamicDropdown',
-            options: 'rgbs'
-        }, {
-            alias: 'text',
-            value: 'bloq-rgbLed-red'
-        }, {
-            id: 'RED',
-            alias: 'numberInput',
-            value: 0
+            bloqInputId: 'VALUE',
+            alias: 'bloqInput',
+            acceptType: 'all'
         }, {
             alias: 'text',
-            value: 'bloq-rgbLed-green'
+            value: 'bloq-numberArray-advanced-type'
         }, {
-            id: 'GREEN',
-            alias: 'numberInput',
-            value: 0
-        }, {
-            alias: 'text',
-            value: 'bloq-rgbLed-blue'
-        }, {
-            id: 'BLUE',
-            alias: 'numberInput',
-            value: 0
+            id: 'TYPE',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'bloq-numberArray-advanced-float',
+                value: 'float *'
+            }, {
+                label: 'bloq-numberArray-advanced-int',
+                value: 'int *'
+            }]
         }]
     ],
-    code: '{LED}.setRGBcolor({RED},{GREEN},{BLUE});'
+    code: '({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))',
+    returnType: {
+        type: 'fromDropdown',
+        idDropdown: 'TYPE',
+        options: 'softwareVars'
+    }
 });
 
-utils.generateBloqInputConnectors(rgbLed);
+utils.generateBloqInputConnectors(numberArrayAdvanced);
 
-module.exports = rgbLed;</code></pre>
+module.exports = numberArrayAdvanced;</code></pre>
         </article>
     </section>
 

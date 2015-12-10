@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: mapAdvanced
+*
+* Bloq type: Output
+*
+* Description: It returns the given value between two determined limits,
+*              mapped between other two different limits.
+*
+* Return type: float
+*/
+
+var mapAdvanced = _.merge(_.clone(OutputBloq, true), {
 
     name: 'mapAdvanced',
     bloqClass: 'bloq-map-advanced',
@@ -57,6 +68,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(mapAdvanced);
 
-module.exports = bloq;
+module.exports = mapAdvanced;

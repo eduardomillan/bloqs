@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: numberArrayAdvanced
+*
+* Bloq type: Output
+*
+* Description: It returns a float pointer an or int pointer, selectable
+*              from a dorp-down, to an array of the given size.
+*
+* Return type: selected type pointer
+*/
+
+var numberArrayAdvanced = _.merge(_.clone(OutputBloq, true), {
 
     name: 'numberArrayAdvanced',
     bloqClass: 'bloq-numberArray-advanced',
@@ -40,6 +51,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(numberArrayAdvanced);
 
-module.exports = bloq;
+module.exports = numberArrayAdvanced;

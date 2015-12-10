@@ -10,8 +10,8 @@ var _ = require('lodash'),
 *
 * Bloq type: Output
 *
-* Description: It returns a the given value mapped between 0
-*              and a given second value.
+* Description: It returns the given value between 0 and 1023,
+*              mapped between 0 and a given second value.
 *
 * Return type: float
 */
