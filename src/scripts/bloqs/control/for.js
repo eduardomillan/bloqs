@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: for-v1
+*
+* Bloq type: Statement-Input
+*
+* Description: It repeats the following code, iterating a specific variable,
+*              selectable from a drop-down, from and until two given values,
+*              adding or subtracting a determined quantity in each iteration.
+*
+* Return type: none
+*/
+
+var forV1 = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'for-v1',
     bloqClass: 'bloq-for',
@@ -53,6 +65,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     code: '\'for({VAR}={INIT};{VAR}\' + (\'{MODE}\' === \'+\'?\'<\':\'>\' ) + \'{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}\''
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(forV1);
 
-module.exports = bloq;
+module.exports = forV1;

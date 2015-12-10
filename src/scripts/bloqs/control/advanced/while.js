@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementInputBloq = require('./../../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: whileAdvanced
+*
+* Bloq type: Statement-Input
+*
+* Description: It repeats the following code until the condition is true.
+*
+* Return type: none
+*/
+
+var whileAdvanced = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'whileAdvanced',
     bloqClass: 'bloq-while',
@@ -25,6 +35,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     code: 'while ({CONDITION}){{STATEMENTS}}'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(whileAdvanced);
 
-module.exports = bloq;
+module.exports = whileAdvanced;

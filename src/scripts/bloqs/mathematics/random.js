@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: random
+*
+* Bloq type: Output
+*
+* Description: It returns a random value between two given values.
+*
+* Return type: float
+*/
+
+var random = _.merge(_.clone(OutputBloq, true), {
 
     name: 'random',
     bloqClass: 'bloq-random',
@@ -33,6 +43,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(random);
 
-module.exports = bloq;
+module.exports = random;

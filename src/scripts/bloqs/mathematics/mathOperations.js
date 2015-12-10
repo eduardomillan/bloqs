@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: mathOperations
+*
+* Bloq type: Output
+*
+* Description: It returns the result of the math operation over a single number.
+*
+* Return type: float
+*/
+
+var mathOperations = _.merge(_.clone(OutputBloq, true), {
 
     name: 'mathOperations',
     bloqClass: 'bloq-math-operations',
@@ -43,6 +53,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(mathOperations);
 
-module.exports = bloq;
+module.exports = mathOperations;

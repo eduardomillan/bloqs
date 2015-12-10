@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: boolean
+*
+* Bloq type: Output
+*
+* Description: It returns true os false, selectable from a drop-down.
+*
+* Return type: bool
+*/
+
+var boolean = _.merge(_.clone(OutputBloq, true), {
 
     name: 'boolean',
     bloqClass: 'bloq-boolean',
@@ -30,6 +40,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(boolean);
 
-module.exports = bloq;
+module.exports = boolean;

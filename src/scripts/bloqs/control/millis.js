@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: millis
+*
+* Bloq type: Output
+*
+* Description: It returns the time since the program began.
+*
+* Return type: float
+*/
+
+var millis = _.merge(_.clone(OutputBloq, true), {
 
     name: 'millis',
     bloqClass: 'bloq-millis',
@@ -22,6 +32,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(millis);
 
-module.exports = bloq;
+module.exports = millis;

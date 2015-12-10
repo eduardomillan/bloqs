@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: int2float-v1
+*
+* Bloq type: Output
+*
+* Description: It converts the given int type value to float type.
+*
+* Return type: float
+*/
+
+var int2floatV1 = _.merge(_.clone(OutputBloq, true), {
 
     name: 'int2float-v1',
     bloqClass: 'bloq-int-2-float',
@@ -26,6 +36,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(int2floatV1);
 
-module.exports = bloq;
+module.exports = int2floatV1;

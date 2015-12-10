@@ -2,18 +2,18 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../../utils'),
-    OutputBloq = require('./../../outputBloq');
+    utils = require('./../../utils'),
+    OutputBloq = require('./../outputBloq');
 
 /**
 * Bloq name: clockRTCAdvanced
-* 
+*
 * Bloq type: Output
 *
 * Description: It returns a determined data of the date or the time,
 *              selectable from a first drop-down, of a specific RTC,
 *              selectable from a second drop-down.
-* 
+*
 * Return type: int
 */
 

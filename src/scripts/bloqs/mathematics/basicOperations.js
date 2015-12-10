@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: basicOperations
+*
+* Bloq type: Output
+*
+* Description: It returns the result of the math operation between two given numbers.
+*
+* Return type: float
+*/
+
+var basicOperations = _.merge(_.clone(OutputBloq, true), {
 
     name: 'basicOperations',
     bloqClass: 'bloq-basic-operations',
@@ -49,7 +59,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(basicOperations);
 
 
-module.exports = bloq;
+module.exports = basicOperations;

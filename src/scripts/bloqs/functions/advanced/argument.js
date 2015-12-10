@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: argument
+*
+* Bloq type: Output
+*
+* Description: It declares a variable with a specific type,
+*              selectable from a drop-down, and with a given name
+*              to be used as argument in functions.
+*
+* Return type: var
+*/
+
+var argument = _.merge(_.clone(OutputBloq, true), {
 
     name: 'argument',
     bloqClass: 'bloq-argument',
@@ -41,6 +53,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(argument);
 
-module.exports = bloq;
+module.exports = argument;

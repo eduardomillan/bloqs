@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementInputBloq = require('./../../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: ifAdvanced
+*
+* Bloq type: Statement-Input
+*
+* Description: It executes the following code only if the condition
+*              is true.
+*
+* Return type: none
+*/
+
+var ifAdvanced = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'ifAdvanced',
     bloqClass: 'bloq-if',
@@ -25,6 +36,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     code: 'if({CONDITION}){{STATEMENTS}}'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(ifAdvanced);
 
-module.exports = bloq;
+module.exports = ifAdvanced;

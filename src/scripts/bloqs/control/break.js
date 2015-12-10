@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: break
+*
+* Bloq type: Statement
+*
+* Description: It skips the rest of the current loop.
+*
+* Return type: none
+*/
+
+var bloqBreak = _.merge(_.clone(StatementBloq, true), {
 
     name: 'break',
     bloqClass: 'bloq-break',
@@ -18,6 +28,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: 'break;'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(bloqBreak);
 
-module.exports = bloq;
+module.exports = bloqBreak;

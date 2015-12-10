@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: case
+*
+* Bloq type: Statement-Input
+*
+* Description: It executes the following code only if the variable
+*              compared in the switch bloq is equal to the given value.
+*
+* Return type: none
+*/
+
+var bloqCase = _.merge(_.clone(StatementInputBloq, true), {
     name: 'case',
     bloqClass: 'bloq-case',
     content: [
@@ -24,6 +35,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     code: 'case {VAR}:{{STATEMENTS}break;}'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(bloqCase);
 
-module.exports = bloq;
+module.exports = bloqCase;

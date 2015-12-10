@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: invokeFunction
+*
+* Bloq type: Statement
+*
+* Description: It executes a function, selectable from a drop-down,
+*              which does not return any value.
+*
+* Return type: none
+*/
+
+var invokeFunction = _.merge(_.clone(StatementBloq, true), {
 
     name: 'invokeFunction',
     bloqClass: 'bloq-invoke-function',
@@ -26,6 +37,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(invokeFunction);
 
-module.exports = bloq;
+module.exports = invokeFunction;

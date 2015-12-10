@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: elseif
+*
+* Bloq type: Statement-Input
+*
+* Description: It executes the following code only if the previous conditions
+*              are not met and the new one does.
+*
+* Return type: none
+*/
+
+var elseif = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'elseif',
     bloqClass: 'bloq-else-if',
@@ -51,6 +62,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     code: 'else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(elseif);
 
-module.exports = bloq;
+module.exports = elseif;

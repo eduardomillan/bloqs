@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: equalityOperations
+*
+* Bloq type: Output
+*
+* Description: It returns the result of a math comparison between two given values.
+*
+* Return type: bool
+*/
+
+var equalityOperations = _.merge(_.clone(OutputBloq, true), {
 
     name: 'equalityOperations',
     bloqClass: 'bloq-equality-operations',
@@ -50,6 +60,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(equalityOperations);
 
-module.exports = bloq;
+module.exports = equalityOperations;

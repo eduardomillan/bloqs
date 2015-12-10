@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: invokeReturnFunction
+*
+* Bloq type: Output
+*
+* Description: It executes a function, selectable from a drop-down,
+*              which does return a value.
+*
+* Return type: function's return type
+*/
+
+var invokeReturnFunction = _.merge(_.clone(OutputBloq, true), {
 
     name: 'invokeReturnFunction',
     bloqClass: 'bloq-invoke-return-function',
@@ -28,6 +39,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(invokeReturnFunction);
 
-module.exports = bloq;
+module.exports = invokeReturnFunction;
