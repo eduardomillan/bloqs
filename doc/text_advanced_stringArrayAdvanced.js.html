@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: classes/class.js</title>
+    <title>JSDoc: Source: text/advanced/stringArrayAdvanced.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: classes/class.js</h1>
+    <h1 class="page-title">Source: text/advanced/stringArrayAdvanced.js</h1>
 
     
 
@@ -30,48 +30,58 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    StatementInputBloq = require('./../statementInputBloq');
+    utils = require('./../../../utils'),
+    OutputBloq = require('./../../outputBloq');
 
 /**
-* Bloq name: class
-* 
-* Bloq type: Statement-Input
+* Bloq name: stringArrayAdvanced
 *
-* Description: It defines a class which could be later instanced into
-*              an object to use its public variables or functions.
-* 
-* Return type: none
+* Bloq type: Output
+*
+* Description: It returns a string pointer or a char pointer, selectable
+*              from a drop-down, to an array of the given size.
+*
+* Return type: string pointer
 */
 
-var bloqClass = _.merge(_.clone(StatementInputBloq, true), {
+var stringArrayAdvanced = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'class',
-    bloqClass: 'bloq-class',
+    name: 'stringArrayAdvanced',
+    bloqClass: 'bloq-stringArray-advanced',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-class'
+            value: 'bloq-stringArray-advanced-arraySize'
         }, {
-            id: 'NAME',
-            alias: 'varInput',
-            placeholder:'bloq-class-default'
+            bloqInputId: 'VALUE',
+            alias: 'bloqInput',
+            acceptType: 'all'
+        }, {
+            alias: 'text',
+            value: 'bloq-stringArray-advanced-type'
+        }, {
+            id: 'TYPE',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'bloq-stringArray-advanced-string',
+                value: 'String *'
+            }, {
+                label: 'bloq-stringArray-advanced-char',
+                value: 'char *'
+            }]
         }]
     ],
-    createDynamicContent: 'classes',
-    code: 'class {NAME}{{STATEMENTS}};',
-    hCode: 'class {NAME}{{STATEMENTS}};',
-    cppCode: '',
+    code: '({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))',
     returnType: {
-        type: 'simple',
-        value: 'class'
+        type: 'fromDropdown',
+        idDropdown: 'TYPE',
+        options: 'softwareVars'
     }
-
 });
 
-utils.generateBloqInputConnectors(bloqClass);
+utils.generateBloqInputConnectors(stringArrayAdvanced);
 
-module.exports = bloqClass;</code></pre>
+module.exports = stringArrayAdvanced;</code></pre>
         </article>
     </section>
 

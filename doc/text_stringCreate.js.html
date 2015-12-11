@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: classes/class.js</title>
+    <title>JSDoc: Source: text/stringCreate.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: classes/class.js</h1>
+    <h1 class="page-title">Source: text/stringCreate.js</h1>
 
     
 
@@ -31,47 +31,42 @@
 
 var _ = require('lodash'),
     utils = require('./../../utils'),
-    StatementInputBloq = require('./../statementInputBloq');
+    OutputBloq = require('./../outputBloq');
 
 /**
-* Bloq name: class
-* 
-* Bloq type: Statement-Input
+* Bloq name: stringCreate
 *
-* Description: It defines a class which could be later instanced into
-*              an object to use its public variables or functions.
-* 
-* Return type: none
+* Bloq type: Output
+*
+* Description: It returns the given input converted into string.
+*
+* Return type: string
 */
 
-var bloqClass = _.merge(_.clone(StatementInputBloq, true), {
+var stringCreate = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'class',
-    bloqClass: 'bloq-class',
+    name: 'stringCreate',
+    bloqClass: 'bloq-string-create',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-class'
+            value: 'bloq-string-create-create'
         }, {
-            id: 'NAME',
-            alias: 'varInput',
-            placeholder:'bloq-class-default'
+            bloqInputId: 'TEXT',
+            alias: 'bloqInput',
+            acceptType: 'all'
         }]
     ],
-    createDynamicContent: 'classes',
-    code: 'class {NAME}{{STATEMENTS}};',
-    hCode: 'class {NAME}{{STATEMENTS}};',
-    cppCode: '',
+    code: 'String({TEXT})',
     returnType: {
         type: 'simple',
-        value: 'class'
+        value: 'String'
     }
-
 });
 
-utils.generateBloqInputConnectors(bloqClass);
+utils.generateBloqInputConnectors(stringCreate);
 
-module.exports = bloqClass;</code></pre>
+module.exports = stringCreate;</code></pre>
         </article>
     </section>
 

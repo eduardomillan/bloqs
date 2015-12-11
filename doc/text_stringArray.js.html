@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: classes/class.js</title>
+    <title>JSDoc: Source: text/stringArray.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: classes/class.js</h1>
+    <h1 class="page-title">Source: text/stringArray.js</h1>
 
     
 
@@ -31,47 +31,45 @@
 
 var _ = require('lodash'),
     utils = require('./../../utils'),
-    StatementInputBloq = require('./../statementInputBloq');
+    OutputBloq = require('./../outputBloq');
 
 /**
-* Bloq name: class
-* 
-* Bloq type: Statement-Input
+* Bloq name: string
 *
-* Description: It defines a class which could be later instanced into
-*              an object to use its public variables or functions.
-* 
-* Return type: none
+* Bloq type: Output
+*
+* Description: It returns a string pointer to an array of the given size.
+*
+* Return type: string pointer
 */
 
-var bloqClass = _.merge(_.clone(StatementInputBloq, true), {
+var stringArray = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'class',
-    bloqClass: 'bloq-class',
+    name: 'stringArray',
+    bloqClass: 'bloq-stringArray',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-class'
+            value: 'bloq-stringArray-arraySize'
         }, {
-            id: 'NAME',
-            alias: 'varInput',
-            placeholder:'bloq-class-default'
+            id: 'VALUE',
+            alias: 'numberInput',
+            value: 3
+        }, {
+            alias: 'text',
+            value: 'bloq-stringArray-stringType'
         }]
     ],
-    createDynamicContent: 'classes',
-    code: 'class {NAME}{{STATEMENTS}};',
-    hCode: 'class {NAME}{{STATEMENTS}};',
-    cppCode: '',
+    code: '(String *)malloc({VALUE}*sizeof(String))',
     returnType: {
         type: 'simple',
-        value: 'class'
+        value: 'String *'
     }
-
 });
 
-utils.generateBloqInputConnectors(bloqClass);
+utils.generateBloqInputConnectors(stringArray);
 
-module.exports = bloqClass;</code></pre>
+module.exports = stringArray;</code></pre>
         </article>
     </section>
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: classes/class.js</title>
+    <title>JSDoc: Source: text/advanced/char.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: classes/class.js</h1>
+    <h1 class="page-title">Source: text/advanced/char.js</h1>
 
     
 
@@ -30,48 +30,47 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    StatementInputBloq = require('./../statementInputBloq');
+    utils = require('./../../../utils'),
+    OutputBloq = require('./../../outputBloq');
 
 /**
-* Bloq name: class
-* 
-* Bloq type: Statement-Input
+* Bloq name: char
 *
-* Description: It defines a class which could be later instanced into
-*              an object to use its public variables or functions.
-* 
-* Return type: none
+* Bloq type: Output
+*
+* Description: It returns the written char.
+*
+* Return type: char
 */
 
-var bloqClass = _.merge(_.clone(StatementInputBloq, true), {
+var bloqChar = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'class',
-    bloqClass: 'bloq-class',
+    name: 'char',
+    bloqClass: 'bloq-string',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-class'
+            value: '\''
         }, {
-            id: 'NAME',
-            alias: 'varInput',
-            placeholder:'bloq-class-default'
+            id: 'TEXT',
+            alias: 'charInput',
+            placeholder: 'bloq-char'
+        }, {
+            alias: 'text',
+            value: '\''
         }]
     ],
-    createDynamicContent: 'classes',
-    code: 'class {NAME}{{STATEMENTS}};',
-    hCode: 'class {NAME}{{STATEMENTS}};',
-    cppCode: '',
+    code: '{TEXT}',
     returnType: {
         type: 'simple',
-        value: 'class'
+        value: 'char'
     }
-
 });
 
-utils.generateBloqInputConnectors(bloqClass);
+utils.generateBloqInputConnectors(bloqChar);
 
-module.exports = bloqClass;</code></pre>
+module.exports = bloqChar;
+</code></pre>
         </article>
     </section>
 
