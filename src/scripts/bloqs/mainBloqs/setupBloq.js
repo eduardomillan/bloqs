@@ -5,7 +5,19 @@
      utils = require('./../../utils'),
      GroupBloq = require('./../groupBloq');
 
- var bloq = _.merge(_.clone(GroupBloq, true), {
+/**
+* Bloq name: setupBloq
+*
+* Bloq type: group
+*
+* Description: It is used to storage the bloqs wanted
+*              to be executed only once at the beginning
+*              of the program.
+*
+* Return type: none
+*/
+
+ var setupBloq = _.merge(_.clone(GroupBloq, true), {
 
      name: 'setupBloq',
      bloqClass: 'bloq-setup',
@@ -15,7 +27,7 @@
      code: 'void setup(){{STATEMENTS}}'
  });
 
- utils.generateBloqInputConnectors(bloq);
+ utils.generateBloqInputConnectors(setupBloq);
 
 
- module.exports = bloq;
+ module.exports = setupBloq;

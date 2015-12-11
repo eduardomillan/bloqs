@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: zowiMouth
+*
+* Bloq type: statement
+*
+* Description: It makes Zowi draw a specific expression,
+*              selectable from a drop-down, on his mouth.
+*
+* Return type: none
+*/
+
+var zowiMouth = _.merge(_.clone(StatementBloq, true), {
 
     name: 'zowiMouth',
     bloqClass: 'bloq-zowi-mouth',
@@ -42,6 +53,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'zowi.putMouth({GESTURE}, false);'
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(zowiMouth);
 
-module.exports = bloq;
+module.exports = zowiMouth;

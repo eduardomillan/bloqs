@@ -2,10 +2,23 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../../utils'),
+    StatementBloq = require('./../../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: zowiMovementsNoDir
+*
+* Bloq type: statement
+*
+* Description: It makes Zowi execute a specific movement, selectable
+*              from a first drop-down, the given number of times at
+*              a determined velocity, selectable from a second drop-down,
+*              until a limit height, selectable from a third drop-down.
+*
+* Return type: none
+*/
+
+var zowiMovementsNoDir = _.merge(_.clone(StatementBloq, true), {
 
     name: 'zowiMovementsNoDir',
     bloqClass: 'bloq-zowi-movements-no-dir',
@@ -72,6 +85,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT});'
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(zowiMovementsNoDir);
 
-module.exports = bloq;
+module.exports = zowiMovementsNoDir;

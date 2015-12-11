@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: zowiSound
+*
+* Bloq type: Output
+*
+* Description: It returns the noise that Zowi hears.
+*
+* Return type: float
+*/
+
+var zowiSound = _.merge(_.clone(OutputBloq, true), {
 
     name: 'zowiSound',
     bloqClass: 'bloq-zowi-sound',
@@ -21,6 +31,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     }
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(zowiSound);
 
-module.exports = bloq;
+module.exports = zowiSound;

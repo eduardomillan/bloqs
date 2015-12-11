@@ -5,7 +5,18 @@
      utils = require('./../../utils'),
      GroupBloq = require('./../groupBloq');
 
- var bloq = _.merge(_.clone(GroupBloq, true), {
+/**
+* Bloq name: loopBloq
+*
+* Bloq type: group
+*
+* Description: It is used to storage the bloqs wanted
+*              to be executed repeatedly infinitely.
+*
+* Return type: none
+*/
+
+ var loopBloq = _.merge(_.clone(GroupBloq, true), {
 
      name: 'loopBloq',
      bloqClass: 'bloq-loop',
@@ -16,7 +27,7 @@
 
  });
 
- utils.generateBloqInputConnectors(bloq);
+ utils.generateBloqInputConnectors(loopBloq);
 
 
- module.exports = bloq;
+ module.exports = loopBloq;

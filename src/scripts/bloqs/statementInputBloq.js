@@ -1,6 +1,17 @@
 'use strict';
 
-var bloq = {
+/**
+* Bloq name: statement-input
+*
+* Description: It is the statement-input bloq's structure.
+*              It has three connectors, one on top that accepts
+*              only bottom type connectors, other
+*              connector on the bottom that only accepts
+*              elements of top type and one root type
+*              connector that only accepts top type connectors.
+*/
+
+var statementInput = {
 
     type: 'statement-input',
     name: 'statement-input',
@@ -16,4 +27,4 @@ var bloq = {
     }]
 };
 
-module.exports = bloq;
+module.exports = statementInput;

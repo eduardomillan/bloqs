@@ -1,6 +1,16 @@
 'use strict';
 
-var bloq = {
+/**
+* Bloq name: statement
+*
+* Description: It is the statement bloq's structure.
+*              It has two connectors, one on top that accepts
+*              only bottom type connectors, and other
+*              connector on the bottom that only accepts
+*              elements of top type.
+*/
+
+var statement = {
 
     type: 'statement',
     name: 'statement',
@@ -15,4 +25,4 @@ var bloq = {
     }]
 };
 
-module.exports = bloq;
+module.exports = statement;

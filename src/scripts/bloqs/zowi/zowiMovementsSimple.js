@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: zowiMovementsSimple
+*
+* Bloq type: statement
+*
+* Description: It makes Zowi execute a specific movement,
+*              selectable from a drop-down, the given number of times.
+*
+* Return type: none
+*/
+
+var zowiMovementsSimple = _.merge(_.clone(StatementBloq, true), {
 
     name: 'zowiMovementsSimple',
     bloqClass: 'bloq-zowi-movements-simple',
@@ -67,6 +78,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'zowi.{MOVEMENT}({STEPS});'
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(zowiMovementsSimple);
 
-module.exports = bloq;
+module.exports = zowiMovementsSimple;
