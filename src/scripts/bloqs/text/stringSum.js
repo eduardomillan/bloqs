@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: stringSum
+*
+* Bloq type: Output
+*
+* Description: It returns a single string formed by two given inputs.
+*
+* Return type: string
+*/
+
+var stringSum = _.merge(_.clone(OutputBloq, true), {
 
     name: 'stringSum',
     bloqClass: 'bloq-string-sum',
@@ -30,7 +40,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(stringSum);
 
 
-module.exports = bloq;
+module.exports = stringSum;

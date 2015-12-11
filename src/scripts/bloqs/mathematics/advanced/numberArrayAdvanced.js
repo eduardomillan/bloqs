@@ -10,7 +10,7 @@ var _ = require('lodash'),
 *
 * Bloq type: Output
 *
-* Description: It returns a float pointer an or int pointer, selectable
+* Description: It returns a float pointer or an int pointer, selectable
 *              from a dorp-down, to an array of the given size.
 *
 * Return type: selected type pointer

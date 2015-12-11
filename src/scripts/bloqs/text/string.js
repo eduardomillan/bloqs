@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: string
+*
+* Bloq type: Output
+*
+* Description: It returns the written string.
+*
+* Return type: string
+*/
+
+var string = _.merge(_.clone(OutputBloq, true), {
 
     name: 'string',
     bloqClass: 'bloq-string',
@@ -29,6 +39,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(string);
 
-module.exports = bloq;
+module.exports = string;
