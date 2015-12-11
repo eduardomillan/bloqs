@@ -15,7 +15,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-random-seed'
         }]
     ],
-    code: 'randomSeed(analogRead(0));',
+    code: 'randomSeed(micros());',
     returnType: {
         type: 'simple',
         value: 'float'
