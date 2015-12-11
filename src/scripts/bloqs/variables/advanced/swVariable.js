@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: swVariable
+*
+* Bloq type: Output
+*
+* Description: It returns a specific variable, selectable from a drop-down.
+*
+* Return type: selected variable's type
+*/
+
+var swVariable = _.merge(_.clone(OutputBloq, true), {
 
     name: 'swVariable',
     bloqClass: 'bloq-sw-variable-advanced',
@@ -27,6 +37,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(swVariable);
 
-module.exports = bloq;
+module.exports = swVariable;

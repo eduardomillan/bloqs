@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementBloq = require('./../../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: declareVariableAdvanced
+*
+* Bloq type: Statement
+*
+* Description: It declares a new variable called with the given
+*              name with a specific type, selectable from a drop-down,
+*              and initializes it with the given value.
+*
+* Return type: none
+*/
+
+var declareVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
     name: 'declareVariableAdvanced',
     bloqClass: 'bloq-declare-variable',
     content: [
@@ -55,6 +67,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '{TYPE} {NAME} = {VALUE};'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(declareVariableAdvanced);
 
-module.exports = bloq;
+module.exports = declareVariableAdvanced;

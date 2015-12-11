@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: arrayVariableAdvanced
+*
+* Bloq type: Output
+*
+* Description: It returns the element of a specific array
+*              variable, selectable from a drop-down, of
+*              the given position.
+*
+* Return type: array's element type
+*/
+
+var arrayVariableAdvanced = _.merge(_.clone(OutputBloq, true), {
 
     name: 'arrayVariableAdvanced',
     bloqClass: 'bloq-array-variable',
@@ -38,6 +50,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(arrayVariableAdvanced);
 
-module.exports = bloq;
+module.exports = arrayVariableAdvanced;
