@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: hts221Humidity
+* 
+* Bloq type: Output
+*
+* Description: It returns the humidity measurement from a
+*              specific humidity & temperature sensor, selectable
+*              from a drop-down.
+* 
+* Return type: float
+*/
+
+var hts221Humidity = _.merge(_.clone(OutputBloq, true), {
 
     name: 'hts221Humidity',
     bloqClass: 'bloq-hts221-humidity',
@@ -27,6 +39,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(hts221Humidity);
 
-module.exports = bloq;
+module.exports = hts221Humidity;

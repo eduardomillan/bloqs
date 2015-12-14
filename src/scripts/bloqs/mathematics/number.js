@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: number
+*
+* Bloq type: Output
+*
+* Description: It returns the number given.
+*
+* Return type: float
+*/
+
+var number = _.merge(_.clone(OutputBloq, true), {
 
     name: 'number',
     bloqClass: 'bloq-number',
@@ -23,6 +33,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(number);
 
-module.exports = bloq;
+module.exports = number;

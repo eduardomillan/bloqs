@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: map
+*
+* Bloq type: Output
+*
+* Description: It returns the given value between 0 and 1023,
+*              mapped between 0 and a given second value.
+*
+* Return type: float
+*/
+
+var map = _.merge(_.clone(OutputBloq, true), {
 
     name: 'map',
     bloqClass: 'bloq-map',
@@ -36,6 +47,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(map);
 
-module.exports = bloq;
+module.exports = map;

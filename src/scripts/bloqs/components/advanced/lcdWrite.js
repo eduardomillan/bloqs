@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementBloq = require('./../../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: lcdWriteAdvanced
+* 
+* Bloq type: Statement
+*
+* Description: It writes the given input on a specific LCD.
+* 
+* Return type: none
+*/
+
+var lcdWriteAdvanced = _.merge(_.clone(StatementBloq, true), {
 
     name: 'lcdWriteAdvanced',
     bloqClass: 'bloq-lcd-writte-advanced',
@@ -30,6 +40,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(lcdWriteAdvanced);
 
-module.exports = bloq;
+module.exports = lcdWriteAdvanced;

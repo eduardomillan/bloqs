@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: zowiDistance
+*
+* Bloq type: Output
+*
+* Description: It returns the distance measurement that Zowi sees.
+*
+* Return type: float
+*/
+
+var zowiDistance = _.merge(_.clone(OutputBloq, true), {
 
     name: 'zowiDistance',
     bloqClass: 'bloq-zowi-distance',
@@ -21,6 +31,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     }
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(zowiDistance);
 
-module.exports = bloq;
+module.exports = zowiDistance;

@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: hwVariable
+*
+* Bloq type: Output
+*
+* Description: It returns the pin where a specific component,
+*              selectable from a drop down, is connected.
+*
+* Return type: selected component's type
+*/
+
+var hwVariable = _.merge(_.clone(OutputBloq, true), {
 
     name: 'hwVariable',
     bloqClass: 'bloq-hw-variable-advanced',
@@ -27,6 +38,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(hwVariable);
 
-module.exports = bloq;
+module.exports = hwVariable;

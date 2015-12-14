@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: setArrayVariable
+*
+* Bloq type: Statement
+*
+* Description: It assigns the given value to the element in the given
+*              position of a specific array variable, selectable from
+*              a drop-down.
+*
+* Return type: none
+*/
+
+var setArrayVariable = _.merge(_.clone(StatementBloq, true), {
 
     name: 'setArrayVariable',
     bloqClass: 'bloq-set-variableArray',
@@ -44,6 +56,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '{NAME}[{ITERATOR}] = {VALUE};'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(setArrayVariable);
 
-module.exports = bloq;
+module.exports = setArrayVariable;

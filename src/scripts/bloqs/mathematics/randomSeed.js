@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: randomSeed
+*
+* Bloq type: Statement
+*
+* Description: It inizializes the random number generator.
+*
+* Return type: none
+*/
+
+var randomSeed = _.merge(_.clone(StatementBloq, true), {
 
     name: 'randomSeed',
     bloqClass: 'bloq-random-seed',
@@ -22,6 +32,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(randomSeed);
 
-module.exports = bloq;
+module.exports = randomSeed;

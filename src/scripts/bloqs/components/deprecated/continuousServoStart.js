@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementBloq = require('./../../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: continuousServoStartAdvanced
+* 
+* Bloq type: Statement
+*
+* Description: It turns on a specific continuous servo in one of the two directions,
+*              selectable from a drop-down.
+* 
+* Return type: none
+*/
+
+var continuousServoStartAdvanced = _.merge(_.clone(StatementBloq, true), {
 
     name: 'continuousServoStartAdvanced',
     bloqClass: 'bloq-continuous-servo-start-advanced',
@@ -14,8 +25,8 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'bloq-continuous-servo-start-advanced-turn'
         }, {
-            bloqInputId: 'SERVO',
-            alias: 'bloqInput',
+            continuousServoStartAdvancedInputId: 'SERVO',
+            alias: 'continuousServoStartAdvancedInput',
             acceptType: 'all'
         }, {
             alias: 'text',
@@ -35,10 +46,10 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '{SERVO}.write({DIRECTION});'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(continuousServoStartAdvanced);
 
 
-module.exports = bloq;
+module.exports = continuousServoStartAdvanced;
 
 
 

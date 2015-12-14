@@ -4,7 +4,17 @@
 var _ = require('lodash');
 var StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: code
+* 
+* Bloq type: Statement
+*
+* Description: It gives the space to write a comment in the code.
+* 
+* Return type: none
+*/
+
+var comment = _.merge(_.clone(StatementBloq, true), {
 
     name: 'comment',
     bloqClass: 'bloq-comment',
@@ -21,4 +31,4 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '/*\n{COMMENT}\n*/'
 });
 
-module.exports = bloq;
+module.exports = comment;

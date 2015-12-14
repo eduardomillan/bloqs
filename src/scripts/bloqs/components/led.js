@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: led
+* 
+* Bloq type: Statement
+*
+* Description: It switches on or off aspecific led,
+*              selectable from a drop-down.
+* 
+* Return type: none
+*/
+
+var led = _.merge(_.clone(StatementBloq, true), {
 
     name: 'led',
     bloqClass: 'bloq-led',
@@ -32,6 +43,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: 'digitalWrite({LED},{STATE});'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(led);
 
-module.exports = bloq;
+module.exports = led;

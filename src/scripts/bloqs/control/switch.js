@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: switch
+*
+* Bloq type: Statement-Input
+*
+* Description: It establishes the variable with which compare,
+*              selectable from a drop-down.
+*
+* Return type: none
+*/
+
+var bloqSwitch = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'switch',
     bloqClass: 'bloq-switch',
@@ -22,6 +33,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     code: 'switch (int({VAR})) {{STATEMENTS}}'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(bloqSwitch);
 
-module.exports = bloq;
+module.exports = bloqSwitch;

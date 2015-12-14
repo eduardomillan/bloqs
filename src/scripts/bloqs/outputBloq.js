@@ -1,6 +1,14 @@
 'use strict';
 
-var bloq = {
+/**
+* Bloq name: output
+*
+* Description: It is the output bloq's structure.
+*              It has only one output type connector that accepts
+*              only input type connectors.
+*/
+
+var output = {
 
     type: 'output',
     name: 'output',
@@ -10,4 +18,4 @@ var bloq = {
     }]
 };
 
-module.exports = bloq;
+module.exports = output;

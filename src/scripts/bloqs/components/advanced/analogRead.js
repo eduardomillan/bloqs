@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: analogReadAdvanced
+* 
+* Bloq type: Output
+*
+* Description: It returns the read of an analog pin.
+* 
+* Return type: float
+*/
+
+var analogReadAdvanced = _.merge(_.clone(OutputBloq, true), {
 
     name: 'analogReadAdvanced',
     bloqClass: 'bloq-analog-read-advanced',
@@ -26,6 +36,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(analogReadAdvanced);
 
-module.exports = bloq;
+module.exports = analogReadAdvanced;

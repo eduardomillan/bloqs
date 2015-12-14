@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: wait
+*
+* Bloq type: Statement
+*
+* Description: It delays the progression of the program
+*              the given time.
+*
+* Return type: none
+*/
+
+var wait = _.merge(_.clone(StatementBloq, true), {
 
     name: 'wait',
     bloqClass: 'bloq-wait',
@@ -25,6 +36,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: 'delay({TIME});'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(wait);
 
-module.exports = bloq;
+module.exports = wait;

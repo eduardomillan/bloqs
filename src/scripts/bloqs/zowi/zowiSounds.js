@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: zowiSounds
+*
+* Bloq type: statement
+*
+* Description: It makes Zowi reproduce a specific sound,
+*              selectable from a drop-down.
+*
+* Return type: none
+*/
+
+var zowiSounds = _.merge(_.clone(StatementBloq, true), {
 
     name: 'zowiSounds',
     bloqClass: 'bloq-zowi-sounds',
@@ -45,6 +56,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'zowi.sing({SOUND});'
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(zowiSounds);
 
-module.exports = bloq;
+module.exports = zowiSounds;

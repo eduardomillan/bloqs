@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: numberArray
+*
+* Bloq type: Output
+*
+* Description: It returns a float pointer to an array of the given size.
+*
+* Return type: float pointer
+*/
+
+var numberArray = _.merge(_.clone(OutputBloq, true), {
 
     name: 'numberArray',
     bloqClass: 'bloq-numberArray',
@@ -29,6 +39,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(numberArray);
 
-module.exports = bloq;
+module.exports = numberArray;

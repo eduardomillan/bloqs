@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: class
+* 
+* Bloq type: Statement-Input
+*
+* Description: It defines a class which could be later instanced into
+*              an object to use its public variables or functions.
+* 
+* Return type: none
+*/
+
+var bloqClass = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'class',
     bloqClass: 'bloq-class',
@@ -30,6 +41,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(bloqClass);
 
-module.exports = bloq;
+module.exports = bloqClass;

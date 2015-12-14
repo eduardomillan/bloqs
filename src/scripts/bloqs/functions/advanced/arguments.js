@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: arguments
+*
+* Bloq type: Output
+*
+* Description: It allows to declare two arguments instead of one.
+*
+* Return type: var
+*/
+
+var bloqArguments = _.merge(_.clone(OutputBloq, true), {
 
     name: 'arguments',
     bloqClass: 'bloq-arguments',
@@ -31,6 +41,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     },
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(bloqArguments);
 
-module.exports = bloq;
+module.exports = bloqArguments;

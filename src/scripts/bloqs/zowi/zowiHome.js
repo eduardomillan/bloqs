@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: zowiHome
+*
+* Bloq type: statement
+*
+* Description: It makes Zowi rest in the defect position.
+*
+* Return type: none
+*/
+
+var zowiHome = _.merge(_.clone(StatementBloq, true), {
 
     name: 'zowiHome',
     bloqClass: 'bloq-zowi-rest',
@@ -17,6 +27,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'zowi.home();'
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(zowiHome);
 
-module.exports = bloq;
+module.exports = zowiHome;

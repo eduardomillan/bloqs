@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: clockRTCInit
+* 
+* Bloq type: Statement
+*
+* Description: It synchronizes a specific RTC, selectable
+*              from a second drop-down, with the time and date
+*              of the computer.
+* 
+* Return type: none
+*/
+
+var clockRTCInit = _.merge(_.clone(StatementBloq, true), {
 
     name: 'clockRTCInit',
     bloqClass: 'bloq-rtc-init',
@@ -22,6 +34,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '{RTC}.adjust(DateTime(__DATE__, __TIME__));'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(clockRTCInit);
 
-module.exports = bloq;
+module.exports = clockRTCInit;

@@ -5,7 +5,19 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementBloq = require('./../../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: rgbLedAdvanced
+* 
+* Bloq type: Statement
+*
+* Description: It switches on a specific rgb led, selectable
+*              from a drop-down, with the given combination
+*              of each basic colour.
+* 
+* Return type: none
+*/
+
+var rgbLedAdvanced = _.merge(_.clone(StatementBloq, true), {
 
     name: 'rgbLedAdvanced',
     bloqClass: 'bloq-rgbLed-advanced',
@@ -43,6 +55,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '{LED}.setRGBcolor({RED},{GREEN},{BLUE});'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(rgbLedAdvanced);
 
-module.exports = bloq;
+module.exports = rgbLedAdvanced;

@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: boolArray
+*
+* Bloq type: Output
+*
+* Description: It returns a boolean pointer to an array of the given size.
+*
+* Return type: bool pointer
+*/
+
+var boolArray = _.merge(_.clone(OutputBloq, true), {
 
     name: 'boolArray',
     bloqClass: 'bloq-boolArray',
@@ -29,6 +39,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(boolArray);
 
-module.exports = bloq;
+module.exports = boolArray;

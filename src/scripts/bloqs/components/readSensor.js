@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: readSensor
+* 
+* Bloq type: Output
+*
+* Description: It returns the measurement of a specific
+*              sensor, selectable from a drop-down.
+* 
+* Return type: sensor's return type
+*/
+
+var readSensor = _.merge(_.clone(OutputBloq, true), {
 
     name: 'readSensor',
     bloqClass: 'bloq-read-sensor',
@@ -28,6 +39,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(readSensor);
 
-module.exports = bloq;
+module.exports = readSensor;

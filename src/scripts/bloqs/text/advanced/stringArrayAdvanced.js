@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: stringArrayAdvanced
+*
+* Bloq type: Output
+*
+* Description: It returns a string pointer or a char pointer, selectable
+*              from a drop-down, to an array of the given size.
+*
+* Return type: string pointer
+*/
+
+var stringArrayAdvanced = _.merge(_.clone(OutputBloq, true), {
 
     name: 'stringArrayAdvanced',
     bloqClass: 'bloq-stringArray-advanced',
@@ -40,6 +51,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(stringArrayAdvanced);
 
-module.exports = bloq;
+module.exports = stringArrayAdvanced;

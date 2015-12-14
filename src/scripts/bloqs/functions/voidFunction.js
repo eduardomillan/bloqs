@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: voidFunction
+*
+* Bloq type: Statement-Input
+*
+* Description: It defines a function that could be later used and
+*              which does not return any value.
+*
+* Return type: none
+*/
+
+var voidFunction = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'voidFunction',
     bloqClass: 'bloq-void-function',
@@ -27,6 +38,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     code: 'void {FUNCNAME} (){{STATEMENTS}}'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(voidFunction);
 
-module.exports = bloq;
+module.exports = voidFunction;

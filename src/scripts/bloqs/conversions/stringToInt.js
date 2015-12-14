@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: stringToInt
+*
+* Bloq type: Output
+*
+* Description: It converts the given string type value to int type.
+*
+* Return type: int
+*/
+
+var stringToInt = _.merge(_.clone(OutputBloq, true), {
 
     name: 'stringToInt',
     bloqClass: 'bloq-string-to-int',
@@ -26,7 +36,7 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(stringToInt);
 
 
-module.exports = bloq;
+module.exports = stringToInt;

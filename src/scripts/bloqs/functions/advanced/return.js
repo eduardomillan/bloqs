@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementBloq = require('./../../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: return
+*
+* Bloq type: statement
+*
+* Description: It terminates the function making the function
+*              to return what is given.
+*
+* Return type: none
+*/
+
+var bloqReturn = _.merge(_.clone(StatementBloq, true), {
 
     name: 'return',
     bloqClass: 'bloq-return',
@@ -22,6 +33,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: 'return {RETURN};'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(bloqReturn);
 
-module.exports = bloq;
+module.exports = bloqReturn;

@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: length
+*
+* Bloq type: Output
+*
+* Description: It returns the length of the given string.
+*
+* Return type: float
+*/
+
+var bloqLength = _.merge(_.clone(OutputBloq, true), {
 
     name: 'length',
     bloqClass: 'bloq-length',
@@ -26,6 +36,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(bloqLength);
 
-module.exports = bloq;
+module.exports = bloqLength;

@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: string
+*
+* Bloq type: Output
+*
+* Description: It returns a string pointer to an array of the given size.
+*
+* Return type: string pointer
+*/
+
+var stringArray = _.merge(_.clone(OutputBloq, true), {
 
     name: 'stringArray',
     bloqClass: 'bloq-stringArray',
@@ -29,6 +39,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(stringArray);
 
-module.exports = bloq;
+module.exports = stringArray;

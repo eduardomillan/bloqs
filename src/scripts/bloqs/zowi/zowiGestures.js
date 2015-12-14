@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementBloq = require('./../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: zowiGestures
+*
+* Bloq type: statement
+*
+* Description: It makes Zowi express a specific emotion,
+*              selectable from a drop-down.
+*
+* Return type: none
+*/
+
+var zowiGestures = _.merge(_.clone(StatementBloq, true), {
 
     name: 'zowiGestures',
     bloqClass: 'bloq-zowi-gestures',
@@ -54,6 +65,6 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'zowi.playGesture({GESTURE});'
 });
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(zowiGestures);
 
-module.exports = bloq;
+module.exports = zowiGestures;

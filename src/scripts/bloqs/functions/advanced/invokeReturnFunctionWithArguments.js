@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     OutputBloq = require('./../../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: invokeReturnFunctionWithArguments
+*
+* Bloq type: Output
+*
+* Description: It executes a function, selectable from a drop-down,
+*              which does return a value with the given arguments.
+*
+* Return type: function's return type
+*/
+
+var invokeReturnFunctionWithArguments = _.merge(_.clone(OutputBloq, true), {
 
     name: 'invokeReturnFunctionWithArguments',
     bloqClass: 'bloq-invoke-return-function-with-arguments',
@@ -34,6 +45,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(invokeReturnFunctionWithArguments);
 
-module.exports = bloq;
+module.exports = invokeReturnFunctionWithArguments;

@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementInputBloq = require('./../../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: voidFunctionWithArguments
+*
+* Bloq type: Statement-Input
+*
+* Description: It defines a function with the given arguments that could be
+*              later used and which does not return any value.
+*
+* Return type: none
+*/
+
+var voidFunctionWithArguments = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'voidFunctionWithArguments',
     bloqClass: 'bloq-void-function-with-arguments',
@@ -38,6 +49,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     code: 'void {FUNCNAME} ({ARGS}){{STATEMENTS}}'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(voidFunctionWithArguments);
 
-module.exports = bloq;
+module.exports = voidFunctionWithArguments;

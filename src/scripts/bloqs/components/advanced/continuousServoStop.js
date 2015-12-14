@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementBloq = require('./../../statementBloq');
 
-var bloq = _.merge(_.clone(StatementBloq, true), {
+/**
+* Bloq name: continuousServoStopAdvanced
+* 
+* Bloq type: Statement
+*
+* Description: It stops a specific continuous servo.
+* 
+* Return type: none
+*/
+
+var continuousServoStopAdvanced = _.merge(_.clone(StatementBloq, true), {
 
     name: 'continuousServoStopAdvanced',
     bloqClass: 'bloq-continuous-servo-stop-advanced',
@@ -22,7 +32,7 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
     code: '{SERVO}.write(90);'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(continuousServoStopAdvanced);
 
 
-module.exports = bloq;
+module.exports = continuousServoStopAdvanced;

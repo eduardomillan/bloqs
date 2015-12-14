@@ -5,7 +5,17 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     OutputBloq = require('./../outputBloq');
 
-var bloq = _.merge(_.clone(OutputBloq, true), {
+/**
+* Bloq name: not
+*
+* Bloq type: Output
+*
+* Description: It returns the opposite of the boolean given.
+*
+* Return type: bool
+*/
+
+var not = _.merge(_.clone(OutputBloq, true), {
 
     name: 'not',
     bloqClass: 'bloq-not',
@@ -26,6 +36,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(not);
 
-module.exports = bloq;
+module.exports = not;

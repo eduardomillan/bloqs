@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../utils'),
     StatementInputBloq = require('./../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: returnFunction
+*
+* Bloq type: Statement-Input
+*
+* Description: It defines a function that could be later used and
+*              which does return a value.
+*
+* Return type: none
+*/
+
+var returnFunction = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'returnFunction',
     bloqClass: 'bloq-return-function',
@@ -36,6 +47,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     code: '{RETURN.connectionType} {FUNCNAME} () {{STATEMENTS}return {RETURN};}'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(returnFunction);
 
-module.exports = bloq;
+module.exports = returnFunction;

@@ -5,7 +5,18 @@ var _ = require('lodash'),
     utils = require('./../../../utils'),
     StatementInputBloq = require('./../../statementInputBloq');
 
-var bloq = _.merge(_.clone(StatementInputBloq, true), {
+/**
+* Bloq name: returnFunctionWithArguments
+*
+* Bloq type: Statement-Input
+*
+* Description: It defines a function with the given arguments that could be later
+*              used and which does return a value.
+*
+* Return type: none
+*/
+
+var returnFunctionWithArguments = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'returnFunctionWithArguments',
     bloqClass: 'bloq-return-function-with-arguments',
@@ -47,6 +58,6 @@ var bloq = _.merge(_.clone(StatementInputBloq, true), {
     code: '{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}'
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.generateBloqInputConnectors(returnFunctionWithArguments);
 
-module.exports = bloq;
+module.exports = returnFunctionWithArguments;
