@@ -17,11 +17,17 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
             id: 'TYPE',
             alias: 'staticDropdown',
             options: [{
+                label: 'bloq-argument-int',
+                value: 'int'
+            }, {
                 label: 'bloq-argument-float',
                 value: 'float'
             }, {
                 label: 'bloq-argument-string',
                 value: 'String'
+            }, {
+                label: 'bloq-argument-char',
+                value: 'char'
             }, {
                 label: 'bloq-argument-bool',
                 value: 'bool'

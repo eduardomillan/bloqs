@@ -48,8 +48,8 @@ var bloq = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     returnType: {
-        type: 'fromInput',
-        bloqInputId: 'VALUE'
+        type: 'fromDropdown',
+        idDropdown: 'TYPE',
     },
     createDynamicContent: 'softwareVars',
     code: '{TYPE} {NAME} = {VALUE};'
