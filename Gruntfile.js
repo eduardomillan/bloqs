@@ -186,12 +186,14 @@ module.exports = function(grunt) {
         if (!this.files.length && ('cwd' in opts) && ('src' in opts) && ('dest' in opts)) {
             this.files = grunt.file.expandMapping(opts.src, opts.dest, opts);
         }
+        var bloqsList = [];
 
         var generate = function(source, destination) {
             var tmpObj = require('./' + source),
                 obj = {};
             try {
                 obj = JSON.parse(JSON.stringify(tmpObj));
+                bloqsList.push(tmpObj);
             } catch (e) {
                 grunt.log.error(e);
                 grunt.fail.warn('Error parsing json the data.', 3);
@@ -204,6 +206,7 @@ module.exports = function(grunt) {
         };
 
         var resume = [];
+
         var script = 'db.bitbloq_Bloqs.remove({});\n';
         var content = null;
         this.files.forEach(function(file) {
@@ -222,6 +225,8 @@ module.exports = function(grunt) {
         grunt.log.writeln('Bloqs Resume Write in ' + 'dist/resume.json').ok();
         grunt.file.write('dist/script.json', script);
         grunt.log.writeln('Bloqs script Write in ' + 'dist/script.json').ok();
+        grunt.file.write('dist/list.json', JSON.stringify(bloqsList));
+        grunt.log.writeln('Bloqs JSON list Write in ' + 'dist/list.json').ok();
 
     });
 
