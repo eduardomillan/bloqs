@@ -29,9 +29,6 @@ var elseif = _.merge(_.clone(StatementInputBloq, true), {
             alias: 'bloqInput',
             acceptType: 'all'
         }, {
-            alias: 'text',
-            value: 'bloq-else-is'
-        }, {
             id: 'OPERATOR',
             alias: 'staticDropdown',
             options: [{
@@ -53,9 +50,6 @@ var elseif = _.merge(_.clone(StatementInputBloq, true), {
                     label: '<=',
                     value: '<='
                 }] //'=', '≠', '>', '≥', '<', '≤']
-        }, {
-            alias: 'text',
-            value: 'bloq-else-than'
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
