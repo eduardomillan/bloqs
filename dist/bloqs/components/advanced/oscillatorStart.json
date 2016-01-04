@@ -1,0 +1,36 @@
+{
+  "type": "statement",
+  "name": "oscillatorStartAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "414bb30b-a136-4f27-964b-b91b7aaa868b"
+    }
+  ],
+  "bloqClass": "bloq-oscillator-start-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-oscillator-start-advanced-oscillator"
+      },
+      {
+        "bloqInputId": "OSCILLATOR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "414bb30b-a136-4f27-964b-b91b7aaa868b"
+      }
+    ]
+  ],
+  "code": "{OSCILLATOR}.start()"
+}

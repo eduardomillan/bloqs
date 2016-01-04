@@ -208,7 +208,7 @@ $theme-color-conversions-color: #00CC11;
                 color: white;
             }
             select {
-                background-image: url(../../images/icons/flecha_abajo_blanca.svg);
+                background-image: url($whiteDownArrow);
                 background-repeat: no-repeat;
                 background-position: right 7px bottom 45%;
                 option {

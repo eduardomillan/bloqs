@@ -1,0 +1,74 @@
+{
+  "type": "output",
+  "name": "basicOperations",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "e3fb9514-9776-43a0-9d52-684a7aebe210"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "116001b8-a069-4d3c-a484-c0430462964b"
+    }
+  ],
+  "bloqClass": "bloq-basic-operations",
+  "content": [
+    [
+      {
+        "bloqInputId": "ARG1",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "e3fb9514-9776-43a0-9d52-684a7aebe210"
+      },
+      {
+        "id": "OPERATOR",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "+",
+            "value": "+"
+          },
+          {
+            "label": "-",
+            "value": "-"
+          },
+          {
+            "label": "x",
+            "value": "*"
+          },
+          {
+            "label": "/",
+            "value": "/"
+          },
+          {
+            "label": "^",
+            "value": "^"
+          },
+          {
+            "label": "%",
+            "value": "%"
+          }
+        ]
+      },
+      {
+        "bloqInputId": "ARG2",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "116001b8-a069-4d3c-a484-c0430462964b"
+      }
+    ]
+  ],
+  "code": "'{OPERATOR}' === '^'? 'pow({ARG1},{ARG2})' : '({ARG1} {OPERATOR} {ARG2})'",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+}

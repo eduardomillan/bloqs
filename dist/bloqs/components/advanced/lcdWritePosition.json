@@ -1,0 +1,80 @@
+{
+  "type": "statement",
+  "name": "lcdWritePositionAdvanced-v1",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "eac7a1e5-3660-4c48-a135-f9826dc19501"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "af4ba32a-58aa-4e4c-aa7e-2d6fb337d8ce"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "070ef023-c4ae-4d5d-9dfa-a43953d977f3"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "f424967f-f7b4-4d2e-8d01-d1875b1db1d1"
+    }
+  ],
+  "bloqClass": "bloq-lcd-writte",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-lcd-writte-write"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "eac7a1e5-3660-4c48-a135-f9826dc19501"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-lcd-writte-inLCD"
+      },
+      {
+        "bloqInputId": "LCD",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "af4ba32a-58aa-4e4c-aa7e-2d6fb337d8ce"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-lcd-writte-advanced-inPosition"
+      },
+      {
+        "bloqInputId": "COLUMN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "070ef023-c4ae-4d5d-9dfa-a43953d977f3"
+      },
+      {
+        "bloqInputId": "ROW",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "f424967f-f7b4-4d2e-8d01-d1875b1db1d1"
+      }
+    ]
+  ],
+  "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});"
+}

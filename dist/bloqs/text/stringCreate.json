@@ -1,0 +1,36 @@
+{
+  "type": "output",
+  "name": "stringCreate",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "f27a5826-5a05-450d-b023-99dc0c708627"
+    }
+  ],
+  "bloqClass": "bloq-string-create",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-string-create-create"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "f27a5826-5a05-450d-b023-99dc0c708627"
+      }
+    ]
+  ],
+  "code": "String({TEXT})",
+  "returnType": {
+    "type": "simple",
+    "value": "String"
+  }
+}

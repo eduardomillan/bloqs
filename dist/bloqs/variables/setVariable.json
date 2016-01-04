@@ -1,0 +1,53 @@
+{
+  "type": "statement",
+  "name": "setVariable",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "NAME",
+        "options": "softwareVars"
+      },
+      "name": "fb60426f-962e-4163-8367-5fa581148026"
+    }
+  ],
+  "bloqClass": "bloq-set-variable",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-set-variable-variable"
+      },
+      {
+        "id": "NAME",
+        "alias": "dynamicDropdown",
+        "options": "softwareVars"
+      },
+      {
+        "alias": "text",
+        "value": "="
+      },
+      {
+        "bloqInputId": "VALUE",
+        "alias": "bloqInput",
+        "acceptType": {
+          "type": "fromDynamicDropdown",
+          "idDropdown": "NAME",
+          "options": "softwareVars"
+        },
+        "name": "fb60426f-962e-4163-8367-5fa581148026"
+      }
+    ]
+  ],
+  "code": "{NAME} = {VALUE};"
+}

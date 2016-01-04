@@ -1,0 +1,49 @@
+{
+  "type": "statement",
+  "name": "invokeFunctionWithArguments",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "2404fb5e-1e92-4f13-9f63-b5963e9fd993"
+    }
+  ],
+  "bloqClass": "bloq-invoke-function-with-arguments",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-invoke-function-exec"
+      },
+      {
+        "id": "FUNCTION",
+        "alias": "dynamicDropdown",
+        "options": "voidFunctions"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-invoke-function-args"
+      },
+      {
+        "bloqInputId": "ARGS",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "2404fb5e-1e92-4f13-9f63-b5963e9fd993"
+      }
+    ]
+  ],
+  "code": "{FUNCTION}({ARGS});",
+  "dynamicDropdown": {
+    "idDropdown": "FUNCTION",
+    "options": "voidFunctions"
+  }
+}

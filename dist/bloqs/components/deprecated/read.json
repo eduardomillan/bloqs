@@ -1,0 +1,37 @@
+{
+  "type": "output",
+  "name": "readSensorAdvanced",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "b8edbb72-b81b-4da9-849d-b7f647c24d23"
+    }
+  ],
+  "bloqClass": "bloq-read-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-read-advanced-read"
+      },
+      {
+        "bloqInputId": "PIN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "b8edbb72-b81b-4da9-849d-b7f647c24d23"
+      }
+    ]
+  ],
+  "code": "{SENSOR.type}",
+  "returnType": {
+    "type": "fromDynamicDropdown",
+    "idDropdown": "SENSOR",
+    "options": "sensors"
+  }
+}

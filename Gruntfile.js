@@ -16,7 +16,7 @@ module.exports = function(grunt) {
             all: {
                 options: {
                     cwd: 'src/scripts/bloqs/', // Src matches are relative to this path.
-                    src: '**/*.js', // Actual pattern(s) to match.
+                    src: ['**/*.js', '!build-utils.js'], // Actual pattern(s) to match.
                     dest: 'dist/bloqs/', // Destination path prefix.
                     ext: '.json',
                     filter: 'isFile'
@@ -44,13 +44,13 @@ module.exports = function(grunt) {
                     spawn: false,
                 },
             },
-        },
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-sass');
 
     grunt.registerMultiTask('buildBloqs', 'Generate bloqs code into JSON format', function() {
 
@@ -59,7 +59,8 @@ module.exports = function(grunt) {
         if (!this.files.length && ('cwd' in opts) && ('src' in opts) && ('dest' in opts)) {
             this.files = grunt.file.expandMapping(opts.src, opts.dest, opts);
         }
-        var bloqsList = [];
+        var bloqsList = [],
+            bloqsMap = {};
 
         var generate = function(source, destination) {
 
@@ -68,6 +69,7 @@ module.exports = function(grunt) {
 
             try {
                 obj = JSON.parse(JSON.stringify(tmpObj));
+                bloqsMap[tmpObj.name] = tmpObj;
                 bloqsList.push(tmpObj);
             } catch (e) {
                 grunt.log.error(e);
@@ -81,6 +83,7 @@ module.exports = function(grunt) {
         };
 
         var resume = [];
+
 
         var script = 'db.bitbloq_Bloqs.remove({});\n';
         var content = null;
@@ -102,6 +105,8 @@ module.exports = function(grunt) {
         grunt.log.writeln('Bloqs script Write in ' + 'dist/script.json').ok();
         grunt.file.write('dist/list.json', JSON.stringify(bloqsList));
         grunt.log.writeln('Bloqs JSON list Write in ' + 'dist/list.json').ok();
+        grunt.file.write('dist/bloqsmap.json', JSON.stringify(bloqsMap));
+        grunt.log.writeln('Bloqs JSON MAP Write in ' + 'dist/bloqsmap.json').ok();
 
     });
 

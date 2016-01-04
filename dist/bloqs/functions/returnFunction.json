@@ -1,0 +1,56 @@
+{
+  "type": "statement-input",
+  "name": "returnFunction",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "b49de298-8883-4fba-952f-482e2f505b92"
+    }
+  ],
+  "bloqClass": "bloq-return-function",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-return-function-declare"
+      },
+      {
+        "id": "FUNCNAME",
+        "alias": "varInput",
+        "placeholder": "bloq-functions-default"
+      },
+      {
+        "position": "DOWN",
+        "alias": "text",
+        "value": "bloq-return-function-return"
+      },
+      {
+        "position": "DOWN",
+        "bloqInputId": "RETURN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "b49de298-8883-4fba-952f-482e2f505b92"
+      }
+    ]
+  ],
+  "createDynamicContent": "returnFunctions",
+  "returnType": {
+    "type": "fromInput",
+    "bloqInputId": "RETURN"
+  },
+  "code": "{RETURN.connectionType} {FUNCNAME} () {{STATEMENTS}return {RETURN};}"
+}

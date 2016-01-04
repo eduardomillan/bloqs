@@ -1,0 +1,90 @@
+{
+  "type": "statement-input",
+  "name": "forAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "027221b3-a58b-466e-b2bd-b862ad1676a2"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "62caedea-bf23-4a02-9a01-af7b927642f1"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "0c5051bc-7fa5-49e8-a3da-2fe8ba838fe1"
+    }
+  ],
+  "bloqClass": "bloq-for deprecated",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-for-count"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "027221b3-a58b-466e-b2bd-b862ad1676a2"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-for-from"
+      },
+      {
+        "bloqInputId": "INIT",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "62caedea-bf23-4a02-9a01-af7b927642f1"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-for-to"
+      },
+      {
+        "bloqInputId": "FINAL",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "0c5051bc-7fa5-49e8-a3da-2fe8ba838fe1"
+      },
+      {
+        "id": "MODE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-for-add",
+            "value": "++"
+          },
+          {
+            "label": "bloq-for-subtract",
+            "value": "--"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "bloq-for-exec"
+      }
+    ]
+  ],
+  "code": "for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}"
+}

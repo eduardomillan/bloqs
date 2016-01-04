@@ -1,0 +1,108 @@
+{
+  "type": "statement",
+  "name": "zowiMovementsHeightAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "fe3020cc-2bc2-433e-8246-7b3041fc4743"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "3ff1a88c-609a-43a3-834c-8e8c7fad6c5f"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "0d6d9086-4ddb-4370-9f18-85c6529d5847"
+    }
+  ],
+  "bloqClass": "bloq-zowi-movements-height-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-zowi-movements-height-advanced"
+      },
+      {
+        "id": "MOVEMENT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-zowi-movements-height-advanced-moonwalker",
+            "value": "moonwalker"
+          },
+          {
+            "label": "bloq-zowi-movements-height-advanced-crusaito",
+            "value": "crusaito"
+          },
+          {
+            "label": "bloq-zowi-movements-height-advanced-flapping",
+            "value": "flapping"
+          }
+        ]
+      },
+      {
+        "id": "DIR",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-zowi-movements-height-advanced-forward",
+            "value": "FORWARD"
+          },
+          {
+            "label": "bloq-zowi-movements-height-advanced-backward",
+            "value": "BACKWARD"
+          },
+          {
+            "label": "bloq-zowi-movements-height-advanced-left",
+            "value": "LEFT"
+          },
+          {
+            "label": "bloq-zowi-movements-height-advanced-right",
+            "value": "RIGHT"
+          }
+        ]
+      },
+      {
+        "bloqInputId": "STEPS",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "fe3020cc-2bc2-433e-8246-7b3041fc4743"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-zowi-movements-height-advanced-speed"
+      },
+      {
+        "bloqInputId": "SPEED",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "3ff1a88c-609a-43a3-834c-8e8c7fad6c5f"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-zowi-movements-height-advanced-height"
+      },
+      {
+        "bloqInputId": "HEIGHT",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "0d6d9086-4ddb-4370-9f18-85c6529d5847"
+      }
+    ]
+  ],
+  "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT},{DIR});"
+}

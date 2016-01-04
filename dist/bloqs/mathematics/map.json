@@ -1,0 +1,56 @@
+{
+  "type": "output",
+  "name": "map",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "87a99d97-14e9-46a4-8d60-65f853f741b8"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "9af1e1ee-6e7d-4e5c-a635-53bdfab12e23"
+    }
+  ],
+  "bloqClass": "bloq-map",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-map-map"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "87a99d97-14e9-46a4-8d60-65f853f741b8"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-map-value"
+      },
+      {
+        "bloqInputId": "MAXVAL",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "9af1e1ee-6e7d-4e5c-a635-53bdfab12e23"
+      },
+      {
+        "alias": "text",
+        "value": "]"
+      }
+    ]
+  ],
+  "code": "map({VAR},0,1023,0,{MAXVAL})",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+}

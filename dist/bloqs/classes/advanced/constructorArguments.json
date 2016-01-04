@@ -1,0 +1,42 @@
+{
+  "type": "statement-input",
+  "name": "constructorClassArguments",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "439362e3-91e1-4182-9f78-9853bdb79fff"
+    }
+  ],
+  "bloqClass": "bloq-constructor-arguments",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-constructor-arguments"
+      },
+      {
+        "bloqInputId": "ARGS",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "439362e3-91e1-4182-9f78-9853bdb79fff"
+      }
+    ]
+  ],
+  "code": "{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};",
+  "hCode": "{CLASS-OUTSIDE} ({ARGS});",
+  "cppCode": "{CLASS-OUTSIDE} :: {CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};"
+}

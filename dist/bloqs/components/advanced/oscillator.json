@@ -1,0 +1,84 @@
+{
+  "type": "statement",
+  "name": "oscillatorAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "a0e90b54-acfe-4508-bb73-ab24760b813e"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "c75d27b5-1b52-4c5c-9541-5c0ee35ac1f2"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "f730e190-9272-4c2f-a3df-5c0a8fffb0ed"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "e0c89184-9f9d-49e3-8644-d9e382f916b3"
+    }
+  ],
+  "bloqClass": "bloq-oscillator-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-oscillator-advanced-oscillate"
+      },
+      {
+        "bloqInputId": "OSCILLATOR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "a0e90b54-acfe-4508-bb73-ab24760b813e"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-oscillator-advanced-around"
+      },
+      {
+        "bloqInputId": "PHASE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c75d27b5-1b52-4c5c-9541-5c0ee35ac1f2"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-oscillator-advanced-amplitude"
+      },
+      {
+        "bloqInputId": "AMPLITUDE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "f730e190-9272-4c2f-a3df-5c0a8fffb0ed"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-oscillator-advanced-speed"
+      },
+      {
+        "bloqInputId": "SPEED",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "e0c89184-9f9d-49e3-8644-d9e382f916b3"
+      }
+    ]
+  ],
+  "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();"
+}

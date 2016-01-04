@@ -1,0 +1,76 @@
+{
+  "type": "statement-input",
+  "name": "returnFunctionWithArguments",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "6af8489d-4bb7-44c8-a261-5714daabcbc5"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "9aeebe16-ecb9-4e9e-8f9d-609542607f70"
+    }
+  ],
+  "bloqClass": "bloq-return-function-with-arguments",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-return-function-with-arguments-declare"
+      },
+      {
+        "id": "FUNCNAME",
+        "alias": "varInput",
+        "placeholder": "bloq-functions-default"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-return-function-with-arguments-count"
+      },
+      {
+        "bloqInputId": "ARGS",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "6af8489d-4bb7-44c8-a261-5714daabcbc5"
+      },
+      {
+        "position": "DOWN",
+        "alias": "text",
+        "value": "bloq-return-function-with-arguments-return"
+      },
+      {
+        "position": "DOWN",
+        "bloqInputId": "RETURN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "9aeebe16-ecb9-4e9e-8f9d-609542607f70"
+      }
+    ]
+  ],
+  "createDynamicContent": "returnFunctions",
+  "returnType": {
+    "type": "fromInput",
+    "bloqInputId": "RETURN"
+  },
+  "arguments": {
+    "type": "fromInput",
+    "bloqInputId": "ARGS"
+  },
+  "code": "{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
+}

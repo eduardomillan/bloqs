@@ -1,0 +1,86 @@
+{
+  "type": "statement-input",
+  "name": "if",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "eef31b37-a53f-4f34-862e-2e282c625b65"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "75d9dcfa-dbbb-4749-8d80-562c6f96d421"
+    }
+  ],
+  "bloqClass": "bloq-if",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-if-if"
+      },
+      {
+        "bloqInputId": "ARG1",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "eef31b37-a53f-4f34-862e-2e282c625b65"
+      },
+      {
+        "id": "OPERATOR",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "=",
+            "value": "=="
+          },
+          {
+            "label": "!=",
+            "value": "!="
+          },
+          {
+            "label": ">",
+            "value": ">"
+          },
+          {
+            "label": ">=",
+            "value": ">="
+          },
+          {
+            "label": "<",
+            "value": "<"
+          },
+          {
+            "label": "<=",
+            "value": "<="
+          }
+        ]
+      },
+      {
+        "bloqInputId": "ARG2",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "75d9dcfa-dbbb-4749-8d80-562c6f96d421"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-if-exec"
+      }
+    ]
+  ],
+  "code": "if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}"
+}

@@ -1,0 +1,58 @@
+{
+  "type": "statement-input",
+  "name": "voidFunctionWithArguments",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "4b97e58f-04ee-4ce7-8c75-edb0e8620317"
+    }
+  ],
+  "bloqClass": "bloq-void-function-with-arguments",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-void-function-with-arguments-declare"
+      },
+      {
+        "id": "FUNCNAME",
+        "alias": "varInput",
+        "placeholder": "bloq-functions-default"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-void-function-with-arguments-count"
+      },
+      {
+        "bloqInputId": "ARGS",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "4b97e58f-04ee-4ce7-8c75-edb0e8620317"
+      }
+    ]
+  ],
+  "createDynamicContent": "voidFunctions",
+  "returnType": {
+    "type": "simple",
+    "value": "void"
+  },
+  "arguments": {
+    "type": "fromInput",
+    "bloqInputId": "ARGS"
+  },
+  "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}"
+}

@@ -1,0 +1,55 @@
+{
+  "type": "output",
+  "name": "invokeClassReturnFunctionWithArguments",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "13392356-fbcb-4242-8aa7-f0f9b7c7c8ef"
+    }
+  ],
+  "bloqClass": "bloq-invoke-class-return-function",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-invoke-class-return-function-args-exec"
+      },
+      {
+        "id": "FUNCTION",
+        "alias": "dynamicDropdown",
+        "options": "returnFunctions"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-invoke-class-return-function-args-class"
+      },
+      {
+        "id": "CLASS",
+        "alias": "dynamicDropdown",
+        "options": "objects"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-invoke-class-return-function-args-args"
+      },
+      {
+        "bloqInputId": "ARGS",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "13392356-fbcb-4242-8aa7-f0f9b7c7c8ef"
+      }
+    ]
+  ],
+  "code": "{CLASS}.{FUNCTION}({ARGS});",
+  "returnType": {
+    "type": "fromDynamicDropdown",
+    "idDropdown": "FUNCTION",
+    "options": "returnFunctions"
+  }
+}

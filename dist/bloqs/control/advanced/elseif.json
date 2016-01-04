@@ -1,0 +1,44 @@
+{
+  "type": "statement-input",
+  "name": "elseifAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "44d60e56-bd22-44fc-8cfb-870cd388493a"
+    }
+  ],
+  "bloqClass": "bloq-else-if",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-else-if-if"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "44d60e56-bd22-44fc-8cfb-870cd388493a"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-else-if-else"
+      }
+    ]
+  ],
+  "code": "else if ({VAR}){{STATEMENTS}}"
+}
