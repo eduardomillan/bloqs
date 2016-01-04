@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Bloqs Simple Web</title>
+    <link rel="stylesheet" href="./../../dist/bloqs.css" />
+    <style type="text/css">
+    body {
+        margin: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <h1 class="header">bloqs demo</h1>
+    <!-- begin demo markup -->
+    <div id="bloqs--field" class="theme-colors"></div>
+    <!-- end demo markup -->
+    <p>See the <a href="http://bq.github.io/bloqs">project homepage</a>.</p>
+    <p>Check out the <a href="https://github.com/bq/bloqs">project repo</a>.</p>
+    <p>Copyright 2015 bq</p>
+    <!--Load Scripts-->
+    <script src="./../../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./../../bower_components/lodash/lodash.min.js"></script>
+    <!--<script src="./../../dist/bloqs.min.js"></script>-->
+    <script src="./../../src/scripts/bloqs-languages.js"></script>
+    <script src="./../../src/scripts/bloqs-utils.js"></script>
+    <script src="./../../src/scripts/bloqs.js"></script>
+    <script>
+    console.log(window.bloqs);
+    console.log(window.bloqsLanguages);
+    console.log(window.bloqsUtils);
+    window.bloqs.setOptions({
+        fieldOffsetLeft: 0,
+        //fieldOffsetTopSource: ['header'],
+        fieldOffsetTopForced: 0
+    });
+    //load Bloqs
+    $.getJSON('./../../dist/list.json', function(bloqSchemas) {
+        console.log(bloqSchemas);
+        var $field = $('#bloqs--field');
+        //firsttime set componentsArray
+        var tempBloq = new bloqs.Bloq({
+            bloqData: bloqSchemas[1],
+            componentsArray: window.bloqsUtils.getEmptyComponentsArray(),
+            $field: $field
+        });
+        $field.append(tempBloq.$bloq);
+        tempBloq.enable(true);
+        tempBloq.doConnectable();
+
+        var tempBloq2 = new bloqs.Bloq({
+            bloqData: bloqSchemas[94],
+            componentsArray: window.bloqsUtils.getEmptyComponentsArray(),
+            $field: $field
+        });
+        $field.append(tempBloq2.$bloq);
+        tempBloq2.enable(true);
+        tempBloq2.doConnectable();
+
+        var tempBloq3 = new bloqs.Bloq({
+            bloqData: bloqSchemas[92],
+            componentsArray: window.bloqsUtils.getEmptyComponentsArray(),
+            $field: $field
+        });
+        $field.append(tempBloq3.$bloq);
+        tempBloq3.enable(true);
+        tempBloq3.doConnectable();
+    });
+    </script>
+</body>
+
+</html>
