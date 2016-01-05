@@ -34,7 +34,8 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            dist: ['dist']
+            dist: ['dist'],
+            i18n: ['i18n']
         },
         watch: {
             scripts: {
@@ -56,6 +57,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-sass');
+
+    grunt.loadTasks('tasks');
 
     grunt.registerMultiTask('buildBloqs', 'Generate bloqs code into JSON format', function() {
 
