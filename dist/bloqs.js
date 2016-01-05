@@ -4553,7 +4553,7 @@
             tempBloq;
 
         while (connector) {
-            tempBloq = data.getBloqByConnectorUuid(connector, bloqs, connectors);
+            tempBloq = getBloqByConnectorUuid(connector, bloqs, connectors);
             tempBloq[functionToExecute]();
             connector = connectors[tempBloq.connectors[1]].connectedTo;
         }
