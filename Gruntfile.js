@@ -3,12 +3,21 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        concat: {
+            options: {
+                separator: '\n\n',
+            },
+            dist: {
+                src: ['src/scripts/bloqs-languages.js', 'src/scripts/bloqs-utils.js', 'src/scripts/bloqs.js'],
+                dest: 'dist/<%= pkg.name %>.js',
+            },
+        },
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build: {
-                src: 'src/scripts/<%= pkg.name %>.js',
+                src: 'dist/<%= pkg.name %>.js',
                 dest: 'dist/<%= pkg.name %>.min.js'
             }
         },
@@ -126,6 +135,7 @@ module.exports = function(grunt) {
     grunt.registerTask('bloqDist', ['buildBloqs']);
     grunt.registerTask('default', [
         'clean:dist',
+        'concat:dist',
         'bloqDist',
         'uglify',
         'sass'
