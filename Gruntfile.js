@@ -50,14 +50,18 @@ module.exports = function(grunt) {
                     }
                 },
             }
+        },
+        jsdoc: {
+            dist: {
+                src: ['src/scripts/bloqs/**/*.js'],
+                options: {
+                    destination: 'docs'
+                }
+            }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-sass');
-
+    require('load-grunt-tasks')(grunt);
     grunt.loadTasks('tasks');
 
     grunt.registerMultiTask('buildBloqs', 'Generate bloqs code into JSON format', function() {
