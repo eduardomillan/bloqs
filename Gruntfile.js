@@ -38,12 +38,17 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['src/styles/**/*.scss'],
-                tasks: ['sass'],
+                files: ['src/styles/**/*.scss', 'src/scripts/bloqs/**/*.*'],
+                tasks: ['sass', 'bloqDist'],
                 options: {
                     spawn: false,
+
+                    livereload: {
+                        host: 'localhost',
+                        port: 9000,
+                    }
                 },
-            },
+            }
         }
     });
 
