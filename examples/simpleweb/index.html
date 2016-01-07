@@ -46,6 +46,21 @@
 
     //load Bloqs
     $.getJSON('./../../dist/bloqsmap.json', function(bloqSchemas) {
+        window.addEventListener('bloqs:connect', function() {
+            console.log('bloqs:connect');
+        });
+
+        window.addEventListener('bloqs:dragend', function() {
+            console.log('bloqs:dragend');
+        });
+
+        window.addEventListener('bloqs:bloqremoved', function() {
+            console.log('bloqs:bloqremoved');
+        });
+
+        window.addEventListener('bloqs:change', function() {
+            console.log('bloqs:change');
+        });
         var componentsArray = window.bloqsUtils.getEmptyComponentsArray(),
             arduinoMainBloqs = {
                 varsBloq: null,
