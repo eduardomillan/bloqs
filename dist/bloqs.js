@@ -4912,7 +4912,14 @@
 })(window.bloqsUtils = window.bloqsUtils || {}, _, undefined);
 
 'use strict';
-(function(exports, _, bloqsUtils, bloqsLanguages) { ////$rootScope
+(function(exports, _, bloqsUtils, bloqsLanguages) {
+    /**
+     * Events
+     * bloqs:connect
+     * bloqs:dragend
+     * bloqs:bloqremoved
+     * bloqs:change
+     */
 
     var utils = bloqsUtils,
         lang = 'es-ES',
@@ -5101,7 +5108,7 @@
                 default:
                     throw 'Not defined bloq drag!!';
             }
-            //$rootScope.$broadcast('bloqs:connect');
+            window.dispatchEvent(new Event('bloqs:connect'));
 
             if (!bloq.$bloq.closest('.bloq--group')[0]) {
                 bloq.disable();
@@ -5127,7 +5134,7 @@
         $('.connector.available').removeClass('available');
         $('.bloq--dragging').removeClass('bloq--dragging');
         $field.focus();
-        //$rootScope.$broadcast('bloqs:dragend');
+        window.dispatchEvent(new Event('bloqs:dragend'));
 
         draggingBloq = null;
         dragPreviousTopPosition = 0;
@@ -5543,7 +5550,7 @@
         if (bloq) {
             //disconnect
             var topConnector, bottomConnector, outputConnector;
-            //$rootScope.$emit('bloqs:bloqremoved');
+            window.dispatchEvent(new Event('bloqs:bloqremoved'));
             bloq.$bloq[0].removeEventListener('mousedown', bloqMouseDown);
             //if its moving remove all listener
             if ((mouseDownBloq && mouseDownBloq.getAttribute('data-bloq-id') === bloqUuid) ||
@@ -5778,7 +5785,7 @@
                 }
 
                 $element.change(function() {
-                    //$rootScope.$broadcast('bloqs:change');
+                    window.dispatchEvent(new Event('bloqs:change'));
                 });
 
                 if (bloq.bloqData.returnType && bloq.bloqData.returnType.type === 'fromDropdown') {
@@ -5864,7 +5871,7 @@
                     $element[0].dataset.value = evt.currentTarget.value;
                     $element[0].dataset.reference = evt.currentTarget.selectedOptions[0].dataset.reference;
                     //$element[0].dataset.varreference = evt.currentTarget.selectedOptions[0].dataset.varId;
-                    //$rootScope.$broadcast('bloqs:change');
+                    window.dispatchEvent(new Event('bloqs:change'));
                 });
 
                 break;
@@ -5900,7 +5907,7 @@
                 });
                 $element.change(function() {
                     //console.log('change number!');
-                    //$rootScope.$broadcast('bloqs:change');
+                    window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
             case 'stringInput':
@@ -5920,7 +5927,7 @@
                 $element.change(function() {
                     $element.val(utils.validString($element.val()));
                     console.log('change String!');
-                    //$rootScope.$broadcast('bloqs:change');
+                    window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
             case 'charInput':
@@ -5940,7 +5947,7 @@
                 $element.change(function() {
                     $element.val(utils.validChar($element.val()));
                     console.log('change Char!');
-                    //$rootScope.$broadcast('bloqs:change');
+                    window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
             case 'codeInput':
@@ -5959,7 +5966,7 @@
                 });
                 $element.change(function() {
                     console.log('change SCinput!');
-                    //$rootScope.$broadcast('bloqs:change');
+                    window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
             case 'multilineCodeInput':
@@ -5977,7 +5984,7 @@
                 }, 0);
                 $element.change(function() {
                     console.log('change multilineCode!');
-                    //$rootScope.$broadcast('bloqs:change');
+                    window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
             case 'multilineCommentInput':
@@ -6003,7 +6010,7 @@
                 $element.change(function() {
                     $element.val(utils.validComment($element.val()));
                     console.log('change multilineComment!');
-                    //$rootScope.$broadcast('bloqs:change');
+                    window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
             case 'varInput':
@@ -6038,7 +6045,7 @@
 
                 $element.change(function() {
                     console.log('change varInput!');
-                    //$rootScope.$broadcast('bloqs:change');
+                    window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
             case 'bloqInput':
