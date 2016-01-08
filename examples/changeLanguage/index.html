@@ -21,8 +21,7 @@
     <h1 class="header">bloqs demo</h1>
     <!-- begin demo markup -->
     <div id="bloqs--field" class="theme-colors"></div>
-    <button id="getcodebutton">getCode()</button>
-    <div id="code--field"></div>
+    <button id="changelanguage">Change Bloqs language to de-DE</button>
     <!-- end demo markup -->
     <p>See the <a href="http://bq.github.io/bloqs">project homepage</a>.</p>
     <p>Check out the <a href="https://github.com/bq/bloqs">project repo</a>.</p>
@@ -38,56 +37,17 @@
     <script src="./../../src/scripts/bloqs-utils.js"></script>
     <script src="./../../src/scripts/bloqs.js"></script>
     <script>
-    console.log(window.bloqs);
-    console.log(window.bloqsLanguages);
-    console.log(window.bloqsUtils);
     /**
      * Set options like the offset from the field.
      */
     window.bloqs.setOptions({
         fieldOffsetLeft: 0,
-        //fieldOffsetTopSource: ['header'],
         fieldOffsetTopForced: 0
     });
 
     //load Bloqs
     $.getJSON('./../../dist/bloqsmap.json', function(bloqSchemas) {
-        /**
-         * Listener
-         */
-        window.addEventListener('bloqs:connect', function() {
-            console.log('bloqs:connect');
-        });
 
-        window.addEventListener('bloqs:dragend', function() {
-            console.log('bloqs:dragend');
-        });
-
-        window.addEventListener('bloqs:bloqremoved', function() {
-            console.log('bloqs:bloqremoved');
-        });
-
-        window.addEventListener('bloqs:change', function() {
-            console.log('bloqs:change');
-        });
-
-        /**
-         * Components array its the hardware elements
-         * {
-            leds: [],
-            rgbs: [],
-            sensors: [],
-            buzzers: [],
-            servos: [],
-            continuousServos: [],
-            oscillators: [],
-            lcds: [],
-            serialElements: [],
-            clocks: [],
-            hts221: [],
-            robot: []
-        };
-         */
         var componentsArray = window.bloqsUtils.getEmptyComponentsArray(),
             arduinoMainBloqs = {
                 varsBloq: null,
@@ -126,8 +86,14 @@
         arduinoMainBloqs.loopBloq.enable(true);
         arduinoMainBloqs.loopBloq.doConnectable();
 
-        $('#getcodebutton').click(function() {
-            $('#code--field').html(window.bloqsUtils.getCode(componentsArray, arduinoMainBloqs));
+        $('#changelanguage').click(function() {
+            /**
+             * Send language key, available languages are on bloqs-languages.js
+             * We are using poeditor.com to translate (free to Open Source projects). If you want to translate bloqs or
+             * create your own bloqs send us a email to bloqs@bq.com, and we can explain how to use grunt task to do backups, restore from bloqs backups,
+             * edit, ... until we can do a good docs to add to the repo.
+             */
+            window.bloqs.translateBloqs('de-DE');
         });
 
         //start build bloqs!

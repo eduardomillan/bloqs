@@ -21,7 +21,7 @@
     <h1 class="header">bloqs demo</h1>
     <!-- begin demo markup -->
     <div id="bloqs--field" class="theme-colors"></div>
-    <button id="getcodebutton">getCode()</button>
+    <button id="saveProject">Show Bloqs structure()</button>
     <div id="code--field"></div>
     <!-- end demo markup -->
     <p>See the <a href="http://bq.github.io/bloqs">project homepage</a>.</p>
@@ -38,56 +38,17 @@
     <script src="./../../src/scripts/bloqs-utils.js"></script>
     <script src="./../../src/scripts/bloqs.js"></script>
     <script>
-    console.log(window.bloqs);
-    console.log(window.bloqsLanguages);
-    console.log(window.bloqsUtils);
     /**
      * Set options like the offset from the field.
      */
     window.bloqs.setOptions({
         fieldOffsetLeft: 0,
-        //fieldOffsetTopSource: ['header'],
         fieldOffsetTopForced: 0
     });
 
     //load Bloqs
     $.getJSON('./../../dist/bloqsmap.json', function(bloqSchemas) {
-        /**
-         * Listener
-         */
-        window.addEventListener('bloqs:connect', function() {
-            console.log('bloqs:connect');
-        });
 
-        window.addEventListener('bloqs:dragend', function() {
-            console.log('bloqs:dragend');
-        });
-
-        window.addEventListener('bloqs:bloqremoved', function() {
-            console.log('bloqs:bloqremoved');
-        });
-
-        window.addEventListener('bloqs:change', function() {
-            console.log('bloqs:change');
-        });
-
-        /**
-         * Components array its the hardware elements
-         * {
-            leds: [],
-            rgbs: [],
-            sensors: [],
-            buzzers: [],
-            servos: [],
-            continuousServos: [],
-            oscillators: [],
-            lcds: [],
-            serialElements: [],
-            clocks: [],
-            hts221: [],
-            robot: []
-        };
-         */
         var componentsArray = window.bloqsUtils.getEmptyComponentsArray(),
             arduinoMainBloqs = {
                 varsBloq: null,
@@ -126,10 +87,6 @@
         arduinoMainBloqs.loopBloq.enable(true);
         arduinoMainBloqs.loopBloq.doConnectable();
 
-        $('#getcodebutton').click(function() {
-            $('#code--field').html(window.bloqsUtils.getCode(componentsArray, arduinoMainBloqs));
-        });
-
         //start build bloqs!
 
         //Create a if bloq from the bloqsSchemas loaded
@@ -163,6 +120,18 @@
         $field.append(bloq3.$bloq);
         bloq3.enable(true);
         bloq3.doConnectable();
+
+
+
+        $('#saveProject').click(function() {
+            var actualProjectSoftware = {
+                vars: arduinoMainBloqs.varsBloq.getBloqsStructure(),
+                setup: arduinoMainBloqs.setupBloq.getBloqsStructure(),
+                loop: arduinoMainBloqs.loopBloq.getBloqsStructure()
+            };
+            //now you can store that project and load in another moment.
+            $('#code--field').html(JSON.stringify(actualProjectSoftware));
+        });
 
     });
     </script>
