@@ -73,6 +73,15 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.loadTasks('tasks');
 
+
+    grunt.registerTask('default', [
+        'clean:dist',
+        'concat:dist',
+        'bloqDist',
+        'uglify',
+        'sass'
+    ]);
+
     grunt.registerMultiTask('buildBloqs', 'Generate bloqs code into JSON format', function() {
 
         var opts = this.options();
@@ -131,13 +140,13 @@ module.exports = function(grunt) {
 
     });
 
-
     grunt.registerTask('bloqDist', ['buildBloqs']);
-    grunt.registerTask('default', [
-        'clean:dist',
-        'concat:dist',
-        'bloqDist',
-        'uglify',
-        'sass'
-    ]);
+
+    grunt.registerTask('i18n', 'get all file of i18n', function() {
+        grunt.task.run([
+            'clean:i18n',
+            'getpoeditorfiles:42730',
+            'poeditor2bloqs'
+        ]);
+    });
 };

@@ -274,12 +274,4 @@ module.exports = function(grunt) {
             });
         });
     });
-
-    grunt.registerTask('i18n', 'get all file of i18n', function() {
-        grunt.task.run([
-            'clean:i18n',
-            'getpoeditorfiles:42730',
-            'poeditor2bloqs'
-        ]);
-    });
 };

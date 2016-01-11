@@ -6659,6 +6659,90 @@
         return this;
     };
 
+
+    var buildBloqWithContent = function(data, componentsArray, schemas, $field) {
+
+        var tempBloq,
+            originalBloqSchema = schemas[data.name],
+            bloqSchema,
+            lastBottomConnector,
+            tempNodeBloq,
+            tempOutputBloq,
+            inputConnectorUuid,
+            $dropContainer,
+            i;
+
+
+        if (!originalBloqSchema) {
+            console.error('no original schema', data);
+        }
+        //fill the schema with content
+        bloqSchema = bloqsUtils.fillSchemaWithContent(originalBloqSchema, data);
+        tempBloq = new Bloq({
+            bloqData: bloqSchema,
+            componentsArray: componentsArray,
+            $field: $field
+        });
+
+        if (data.content) {
+            for (i = 0; i < data.content[0].length; i++) {
+                if (data.content[0][i].alias === 'bloqInput') {
+                    inputConnectorUuid = tempBloq.getIOConnectorUuidByContentId(data.content[0][i].bloqInputId);
+                    $dropContainer = tempBloq.$bloq.find('[data-connector-id="' + inputConnectorUuid + '"]').first();
+                    //console.debug($dropContainer);
+                    //inputConnectorUuid = $dropContainer.attr('data-connector-id');
+                    //console.debug(inputConnectorUuid);
+                    tempOutputBloq = buildBloqWithContent(data.content[0][i].value, componentsArray, schemas, $field);
+                    tempOutputBloq.$bloq.addClass('nested-bloq');
+                    //Connections in bloqInput
+                    //logical
+                    if (!IOConnectors[inputConnectorUuid]) {
+                        console.debug('not connector?', originalBloqSchema);
+                    }
+                    IOConnectors[inputConnectorUuid].connectedTo = tempOutputBloq.IOConnectors[0];
+                    IOConnectors[tempOutputBloq.IOConnectors[0]].connectedTo = inputConnectorUuid;
+                    //visual
+                    //$dropContainer[0].appendChild(tempOutputBloq.$bloq[0])
+                    $dropContainer.append(tempOutputBloq.$bloq);
+                }
+            }
+        }
+
+        if (data.childs) {
+
+            $dropContainer = tempBloq.$bloq.find('.bloq--extension__content');
+            lastBottomConnector = tempBloq.connectors[2];
+
+            if (data.childs.length > 0) {
+                tempBloq.$bloq.addClass('with--content');
+            }
+            for (i = 0; i < data.childs.length; i++) {
+                tempNodeBloq = buildBloqWithContent(data.childs[i], componentsArray, schemas, $field);
+                //Connections in statement
+                //logical
+                connectors[lastBottomConnector].connectedTo = tempNodeBloq.connectors[0];
+                connectors[tempNodeBloq.connectors[0]].connectedTo = lastBottomConnector;
+                lastBottomConnector = tempNodeBloq.connectors[1];
+
+                //visual
+                tempNodeBloq.$bloq.addClass('inside-bloq');
+                $dropContainer.append(tempNodeBloq.$bloq);
+            }
+        }
+
+        if (data.enable) {
+            tempBloq.enable(true);
+        } else {
+
+            tempBloq.disable();
+        }
+        if (tempBloq.bloqData.createDynamicContent) {
+            updateSoftVar(tempBloq);
+        }
+
+        return tempBloq;
+    };
+
     exports.Bloq = Bloq;
     exports.updateSoftVar = updateSoftVar;
     exports.connectors = connectors;
@@ -6670,6 +6754,7 @@
     exports.destroyFreeBloqs = destroyFreeBloqs;
     exports.updateDropdowns = updateDropdowns;
     exports.setOptions = setOptions;
+    exports.buildBloqWithContent = buildBloqWithContent;
 
     return exports;
 
