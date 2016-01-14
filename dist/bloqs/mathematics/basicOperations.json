@@ -1,0 +1,66 @@
+{
+  "type": "output",
+  "name": "basicOperations",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "d5f9076f-84b6-48f6-844e-15d5e5e7c386"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "float",
+      "name": "8c0a2349-7190-46e8-82b3-0b0239bca785"
+    }
+  ],
+  "bloqClass": "bloq-basic-operations",
+  "content": [
+    [
+      {
+        "bloqInputId": "ARG1",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "d5f9076f-84b6-48f6-844e-15d5e5e7c386"
+      },
+      {
+        "id": "OPERATOR",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "+",
+            "value": "+"
+          },
+          {
+            "label": "-",
+            "value": "-"
+          },
+          {
+            "label": "x",
+            "value": "*"
+          },
+          {
+            "label": "÷",
+            "value": "/"
+          }
+        ]
+      },
+      {
+        "bloqInputId": "ARG2",
+        "alias": "bloqInput",
+        "acceptType": "float",
+        "name": "8c0a2349-7190-46e8-82b3-0b0239bca785"
+      }
+    ]
+  ],
+  "code": "({ARG1} {OPERATOR} {ARG2})",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+}

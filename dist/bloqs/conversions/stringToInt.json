@@ -1,0 +1,36 @@
+{
+  "type": "output",
+  "name": "stringToInt",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "String",
+      "name": "ab8f022e-34bb-46ef-8064-5e516ece87e3"
+    }
+  ],
+  "bloqClass": "bloq-string-to-int",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-string-to-int"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "String",
+        "name": "ab8f022e-34bb-46ef-8064-5e516ece87e3"
+      }
+    ]
+  ],
+  "code": "{VAR}.toInt()",
+  "returnType": {
+    "type": "simple",
+    "value": "int"
+  }
+}

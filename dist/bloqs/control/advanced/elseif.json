@@ -1,0 +1,44 @@
+{
+  "type": "statement-input",
+  "name": "elseifAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "a6d01d77-0f33-4fa8-9e4b-74353c885f3c"
+    }
+  ],
+  "bloqClass": "bloq-else-if",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-else-if-if"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "a6d01d77-0f33-4fa8-9e4b-74353c885f3c"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-else-if-else"
+      }
+    ]
+  ],
+  "code": "else if ({VAR}){{STATEMENTS}}"
+}

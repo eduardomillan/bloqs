@@ -1,0 +1,66 @@
+{
+  "type": "statement",
+  "name": "lcdWritePositionAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "fcab64bc-7845-4e0c-a51c-ccb3746e8395"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "993812ef-027a-4460-99d4-a1f5f75f9d3a"
+    }
+  ],
+  "bloqClass": "bloq-lcd-writte deprecated",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-lcd-writte-write"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "fcab64bc-7845-4e0c-a51c-ccb3746e8395"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-lcd-writte-inLCD"
+      },
+      {
+        "bloqInputId": "LCD",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "993812ef-027a-4460-99d4-a1f5f75f9d3a"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-lcd-writte-advanced-inPosition"
+      },
+      {
+        "id": "COLUMN",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "id": "ROW",
+        "alias": "numberInput",
+        "value": 0
+      }
+    ]
+  ],
+  "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});"
+}

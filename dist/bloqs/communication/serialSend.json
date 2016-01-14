@@ -1,0 +1,55 @@
+{
+  "type": "statement",
+  "name": "serialSend-v1",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "09100d73-b609-4db3-874e-e039c0c638b9"
+    }
+  ],
+  "bloqClass": "bloq-serial-send",
+  "content": [
+    [
+      {
+        "id": "SERIAL",
+        "alias": "dynamicDropdown",
+        "options": "serialElements"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-serial-send-send"
+      },
+      {
+        "bloqInputId": "DATA",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "09100d73-b609-4db3-874e-e039c0c638b9"
+      },
+      {
+        "id": "LN",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-serial-send-println",
+            "value": "println"
+          },
+          {
+            "label": "bloq-serial-send-print",
+            "value": "print"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "{SERIAL}.{LN}({DATA});"
+}

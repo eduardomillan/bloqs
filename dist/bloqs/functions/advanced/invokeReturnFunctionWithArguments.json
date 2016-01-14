@@ -1,0 +1,46 @@
+{
+  "type": "output",
+  "name": "invokeReturnFunctionWithArguments",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "9d16efa5-c873-4087-b1cd-28724301be22"
+    }
+  ],
+  "bloqClass": "bloq-invoke-return-function-with-arguments",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-invoke-return-function-exec"
+      },
+      {
+        "id": "FUNCTION",
+        "alias": "dynamicDropdown",
+        "options": "returnFunctions"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-invoke-function-args"
+      },
+      {
+        "bloqInputId": "ARGS",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "9d16efa5-c873-4087-b1cd-28724301be22"
+      }
+    ]
+  ],
+  "code": "{FUNCTION}({ARGS})",
+  "returnType": {
+    "type": "fromDynamicDropdown",
+    "idDropdown": "FUNCTION",
+    "options": "returnFunctions"
+  }
+}

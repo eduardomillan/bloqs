@@ -1,0 +1,36 @@
+{
+  "type": "output",
+  "name": "analogReadAdvanced",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "1264a7ee-308c-44d4-b394-e491e65063f1"
+    }
+  ],
+  "bloqClass": "bloq-analog-read-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-analog-read-advanced-readpin"
+      },
+      {
+        "bloqInputId": "PIN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "1264a7ee-308c-44d4-b394-e491e65063f1"
+      }
+    ]
+  ],
+  "code": "'{PIN}'.indexOf('A') !== -1 ? 'analogRead({PIN})'.replace(/\"/g, '') : 'analogRead({PIN})'",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+}

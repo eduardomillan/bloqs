@@ -1,0 +1,52 @@
+{
+  "type": "statement",
+  "name": "lcdWriteAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "c8979464-3060-4d69-b3f0-3ec8b92130c4"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "7a7951c4-b455-425f-947c-c4e7a2bfdb6b"
+    }
+  ],
+  "bloqClass": "bloq-lcd-writte-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-lcd-writte-advanced-write"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c8979464-3060-4d69-b3f0-3ec8b92130c4"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-lcd-writte-advanced-inLCD"
+      },
+      {
+        "bloqInputId": "LCD",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "7a7951c4-b455-425f-947c-c4e7a2bfdb6b"
+      }
+    ]
+  ],
+  "code": "{LCD}.print({TEXT});"
+}

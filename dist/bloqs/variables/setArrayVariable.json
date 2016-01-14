@@ -1,0 +1,68 @@
+{
+  "type": "statement",
+  "name": "setArrayVariable",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": {
+        "type": "fromDynamicDropdown",
+        "idDropdown": "NAME",
+        "pointer": "true",
+        "options": "softwareVars"
+      },
+      "name": "935dc6a2-35cb-43cb-84c1-ac9830359148"
+    }
+  ],
+  "bloqClass": "bloq-set-variableArray",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-set-variableArray-variable"
+      },
+      {
+        "id": "NAME",
+        "alias": "dynamicDropdown",
+        "options": "softwareVars"
+      },
+      {
+        "alias": "text",
+        "value": "["
+      },
+      {
+        "id": "ITERATOR",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "alias": "text",
+        "value": "]"
+      },
+      {
+        "alias": "text",
+        "value": "="
+      },
+      {
+        "bloqInputId": "VALUE",
+        "alias": "bloqInput",
+        "acceptType": {
+          "type": "fromDynamicDropdown",
+          "idDropdown": "NAME",
+          "pointer": "true",
+          "options": "softwareVars"
+        },
+        "name": "935dc6a2-35cb-43cb-84c1-ac9830359148"
+      }
+    ]
+  ],
+  "code": "{NAME}[{ITERATOR}] = {VALUE};"
+}

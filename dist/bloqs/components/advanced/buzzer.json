@@ -1,0 +1,72 @@
+{
+  "type": "statement",
+  "name": "buzzerAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "399b9c55-3f53-4000-9ece-da130842edb2"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "5af75a5c-51a3-4d4b-9f35-b496ca4ea1f1"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "a612c1bb-135f-4d64-8a13-603c942aedeb"
+    }
+  ],
+  "bloqClass": "bloq-buzzer-advance",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-advance-sound"
+      },
+      {
+        "bloqInputId": "BUZZER",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "399b9c55-3f53-4000-9ece-da130842edb2"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-advance-note"
+      },
+      {
+        "bloqInputId": "NOTE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "5af75a5c-51a3-4d4b-9f35-b496ca4ea1f1"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-advance-for"
+      },
+      {
+        "bloqInputId": "SECONDS",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "a612c1bb-135f-4d64-8a13-603c942aedeb"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-advance-ms"
+      }
+    ]
+  ],
+  "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+}

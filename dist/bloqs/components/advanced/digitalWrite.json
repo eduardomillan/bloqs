@@ -1,0 +1,52 @@
+{
+  "type": "statement",
+  "name": "digitalWrite",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "06c3dab4-3184-4d2d-bae1-925ca761370d"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "4e9a6bbe-d59c-445d-8d56-2039814f04db"
+    }
+  ],
+  "bloqClass": "bloq-pin-writte-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-pin-digital-write"
+      },
+      {
+        "bloqInputId": "PIN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "06c3dab4-3184-4d2d-bae1-925ca761370d"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-pin-digital-write-data"
+      },
+      {
+        "bloqInputId": "DATA",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "4e9a6bbe-d59c-445d-8d56-2039814f04db"
+      }
+    ]
+  ],
+  "code": "digitalWrite({PIN},{DATA});"
+}

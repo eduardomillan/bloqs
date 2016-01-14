@@ -1,0 +1,36 @@
+{
+  "type": "statement",
+  "name": "waitAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "c24a0f82-4d0b-4e86-a390-9f1f13e7865d"
+    }
+  ],
+  "bloqClass": "bloq-wait",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-wait-wait"
+      },
+      {
+        "bloqInputId": "TIME",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "c24a0f82-4d0b-4e86-a390-9f1f13e7865d"
+      }
+    ]
+  ],
+  "code": "delay({TIME});"
+}

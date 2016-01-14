@@ -1,0 +1,120 @@
+{
+  "type": "statement-input",
+  "name": "evolutionIfLightAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "number",
+      "name": "5ba1d515-9dab-4a92-a847-cb7e6a002481"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "number",
+      "name": "4b8441c9-55d0-450c-bc2f-c534e45d9c9a"
+    }
+  ],
+  "bloqClass": "bloq-evolution-if-light-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-evolution-if-light-advanced"
+      },
+      {
+        "id": "OPERATORLEFT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "=",
+            "value": "=="
+          },
+          {
+            "label": "!=",
+            "value": "!="
+          },
+          {
+            "label": ">",
+            "value": ">"
+          },
+          {
+            "label": ">=",
+            "value": ">="
+          },
+          {
+            "label": "<",
+            "value": "<"
+          },
+          {
+            "label": "<=",
+            "value": "<="
+          }
+        ]
+      },
+      {
+        "id": "LIGHTLEFT",
+        "alias": "bloqInput",
+        "acceptType": "number",
+        "name": "5ba1d515-9dab-4a92-a847-cb7e6a002481"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-evolution-if-light-advanced-and"
+      },
+      {
+        "id": "OPERATORRIGHT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "=",
+            "value": "=="
+          },
+          {
+            "label": "!=",
+            "value": "!="
+          },
+          {
+            "label": ">",
+            "value": ">"
+          },
+          {
+            "label": ">=",
+            "value": ">="
+          },
+          {
+            "label": "<",
+            "value": "<"
+          },
+          {
+            "label": "<=",
+            "value": "<="
+          }
+        ]
+      },
+      {
+        "id": "LIGHTRIGHT",
+        "alias": "bloqInput",
+        "acceptType": "number",
+        "name": "4b8441c9-55d0-450c-bc2f-c534e45d9c9a"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-evolution-if-light-advanced-then"
+      }
+    ]
+  ],
+  "code": "if(evolution.getLight(LEFT) {OPERATORLEFT} {LIGHTLEFT} && evolution.getLight(RIGHT) {OPERATORRIGHT} {LIGHTRIGHT}){{STATEMENTS}}"
+}

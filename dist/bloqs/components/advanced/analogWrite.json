@@ -1,0 +1,52 @@
+{
+  "type": "statement",
+  "name": "analogWrite",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "0e4d9f49-7b5f-44b3-873b-7f2f977f9ec1"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "018692ba-42f1-4de5-b2e6-49f6c19f7b6f"
+    }
+  ],
+  "bloqClass": "bloq-pin-writte-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-pin-analog-write"
+      },
+      {
+        "bloqInputId": "PIN",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "0e4d9f49-7b5f-44b3-873b-7f2f977f9ec1"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-pin-analog-write-data"
+      },
+      {
+        "bloqInputId": "DATA",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "018692ba-42f1-4de5-b2e6-49f6c19f7b6f"
+      }
+    ]
+  ],
+  "code": "'{PIN}'.indexOf('A') !== -1 ? 'analogWrite({PIN},{DATA});'.replace(/\"/g, '') : 'analogWrite({PIN},{DATA});'"
+}

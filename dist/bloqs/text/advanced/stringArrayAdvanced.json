@@ -1,0 +1,55 @@
+{
+  "type": "output",
+  "name": "stringArrayAdvanced",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "4f62e773-6e72-4296-8cfc-998fa2d0ec9c"
+    }
+  ],
+  "bloqClass": "bloq-stringArray-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-stringArray-advanced-arraySize"
+      },
+      {
+        "bloqInputId": "VALUE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "4f62e773-6e72-4296-8cfc-998fa2d0ec9c"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-stringArray-advanced-type"
+      },
+      {
+        "id": "TYPE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-stringArray-advanced-string",
+            "value": "String *"
+          },
+          {
+            "label": "bloq-stringArray-advanced-char",
+            "value": "char *"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))",
+  "returnType": {
+    "type": "fromDropdown",
+    "idDropdown": "TYPE",
+    "options": "softwareVars"
+  }
+}
