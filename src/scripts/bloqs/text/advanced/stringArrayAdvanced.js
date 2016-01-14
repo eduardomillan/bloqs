@@ -43,7 +43,7 @@ var stringArrayAdvanced = _.merge(_.clone(OutputBloq, true), {
             }]
         }]
     ],
-    code: '({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))',
+    code: '({TYPE})malloc({VALUE}*sizeof({TYPE.withoutAsterisk}))',
     returnType: {
         type: 'fromDropdown',
         idDropdown: 'TYPE',

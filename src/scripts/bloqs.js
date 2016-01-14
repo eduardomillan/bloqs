@@ -1638,10 +1638,20 @@
             return code;
         };
 
-        this.getBloqsStructure = function() {
-            var result = {},
+        this.getBloqsStructure = function(fullStructure) {
+            var result,
                 tempBloq;
-            result.name = this.bloqData.name;
+
+            if (fullStructure) {
+                result = _.cloneDeep(this.bloqData);
+            } else {
+                result = {
+                    name: this.bloqData.name,
+                    content: [
+                        []
+                    ]
+                };
+            }
             result.enable = this.itsEnabled();
 
             var rootConnector = this.connectors[2];
@@ -1650,13 +1660,11 @@
                 var connectedConnector = connectors[rootConnector].connectedTo;
                 while (connectedConnector) {
                     tempBloq = utils.getBloqByConnectorUuid(connectedConnector, bloqs, connectors);
-                    result.childs.push(tempBloq.getBloqsStructure());
+                    result.childs.push(tempBloq.getBloqsStructure(fullStructure));
                     connectedConnector = connectors[tempBloq.connectors[1]].connectedTo;
                 }
             }
-            result.content = [
-                []
-            ];
+
             var tempObject, value, selectedValue, attributeValue;
             if (this.bloqData.content[0]) {
 
@@ -1689,7 +1697,7 @@
                                 tempObject = {
                                     alias: this.bloqData.content[0][i].alias,
                                     bloqInputId: this.bloqData.content[0][i].bloqInputId,
-                                    value: connectedBloq.getBloqsStructure()
+                                    value: connectedBloq.getBloqsStructure(fullStructure)
                                 };
                             }
 
@@ -1734,7 +1742,11 @@
                             throw 'I dont know how to get the structure from this contentType :( ' + this.bloqData.content[0][i].alias;
                     }
                     if (tempObject) {
-                        result.content[0].push(tempObject);
+                        if (fullStructure) {
+                            result.content[0][i].value = tempObject.value;
+                        } else {
+                            result.content[0].push(tempObject);
+                        }
                     }
 
                 }
