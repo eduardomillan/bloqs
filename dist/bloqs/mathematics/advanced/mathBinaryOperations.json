@@ -1,6 +1,6 @@
 {
   "type": "output",
-  "name": "logicOperations",
+  "name": "mathBinaryOperations",
   "connectors": [
     {
       "type": "connector--output",
@@ -9,50 +9,50 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "84340101-cf4b-48dd-b893-11bf41f24c86"
+      "acceptType": "float",
+      "name": "84f51df1-2285-4236-b1f3-7ee70cc16ea3"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "3a8d3a5e-c331-419a-bf3d-04388bbe0fe9"
+      "acceptType": "float",
+      "name": "67e7f5a9-7273-4f9d-8d42-09faf37ff9f3"
     }
   ],
-  "bloqClass": "bloq-logic-operations",
+  "bloqClass": "bloq-math-binary-operations",
   "content": [
     [
       {
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "84340101-cf4b-48dd-b893-11bf41f24c86"
+        "acceptType": "float",
+        "name": "84f51df1-2285-4236-b1f3-7ee70cc16ea3"
       },
       {
         "id": "OPERATOR",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "bloq-logic-operations-and",
-            "value": "&&"
+            "label": "^",
+            "value": "^"
           },
           {
-            "label": "bloq-logic-operations-or",
-            "value": "||"
+            "label": "%",
+            "value": "%"
           }
         ]
       },
       {
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "3a8d3a5e-c331-419a-bf3d-04388bbe0fe9"
+        "acceptType": "float",
+        "name": "67e7f5a9-7273-4f9d-8d42-09faf37ff9f3"
       }
     ]
   ],
-  "code": "{ARG1} {OPERATOR} {ARG2}",
+  "code": "'{OPERATOR}' === '^'? 'pow({ARG1},{ARG2})' : '({ARG1} {OPERATOR} {ARG2})'",
   "returnType": {
     "type": "simple",
-    "value": "bool"
+    "value": "float"
   }
 }
