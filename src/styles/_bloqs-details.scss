@@ -10,6 +10,7 @@ $maths-color: #01C0C8;
 $text-color: #0294CF;
 $vars-color: #D9B032;
 $zowi-color: #60BCC9;
+$evolution-color: #ebebeb;
 $conversions-color: #00CC11;
 /* COLOR THEME */
 $theme-color-classes-color: #9b0769;
@@ -23,23 +24,25 @@ $theme-color-maths-color: #00c1c7;
 $theme-color-text-color: #0094cf;
 $theme-color-vars-color: #d8af31;
 $theme-color-zowi-color: #60BCC9;
+$theme-color-evolution-color: #b9bfc3;
 $theme-color-conversions-color: #00CC11;
 
 @mixin createBloqsTheme ($reverse) {
     /*---- CONVERSIONS ---------*/
     @include createBloqsCss($reverse, "bloq-string-to-int", $conversions-color, $theme-color-conversions-color);
     /*---- EVOLUTION ---------*/
-    @include createBloqsCss($reverse, "bloq-evolution-buzzer", $zowi-color, $theme-color-zowi-color);
-    @include createBloqsCss($reverse, "bloq-evolution-head", $zowi-color, $theme-color-zowi-color);
-    @include createBloqsCss($reverse, "bloq-evolution-home", $zowi-color, $theme-color-zowi-color);
-    @include createBloqsCss($reverse, "bloq-evolution-movements-simple", $zowi-color, $theme-color-zowi-color);
-    @include createBloqsCss($reverse, "bloq-evolution-distance", $zowi-color, $theme-color-zowi-color);
-    @include createBloqsCss($reverse, "bloq-evolution-light", $zowi-color, $theme-color-zowi-color);
-    @include createBloqsCss($reverse, "bloq-evolution-line", $zowi-color, $theme-color-zowi-color);
-    @include createBloqsCss($reverse, "bloq-evolution-if-distance", $zowi-color, $theme-color-zowi-color, true);
-    @include createBloqsCss($reverse, "bloq-evolution-if-light", $zowi-color, $theme-color-zowi-color, true);
-    @include createBloqsCss($reverse, "bloq-evolution-if-line", $zowi-color, $theme-color-zowi-color, true);
-    @include createBloqsCss($reverse, "bloq-evolution-if-light-advanced", $zowi-color, $theme-color-zowi-color, true);
+    @include createBloqsCss($reverse, "bloq-evolution-buzzer", $zowi-color, $theme-color-evolution-color);
+    @include createBloqsCss($reverse, "bloq-evolution-head", $evolution-color, $theme-color-evolution-color);
+    @include createBloqsCss($reverse, "bloq-evolution-home", $evolution-color, $theme-color-evolution-color);
+    @include createBloqsCss($reverse, "bloq-evolution-rest", $evolution-color, $theme-color-evolution-color);
+    @include createBloqsCss($reverse, "bloq-evolution-movements-simple", $evolution-color, $theme-color-evolution-color);
+    @include createBloqsCss($reverse, "bloq-evolution-distance", $evolution-color, $theme-color-evolution-color);
+    @include createBloqsCss($reverse, "bloq-evolution-light", $evolution-color, $theme-color-evolution-color);
+    @include createBloqsCss($reverse, "bloq-evolution-line", $evolution-color, $theme-color-evolution-color);
+    @include createBloqsCss($reverse, "bloq-evolution-if-distance", $evolution-color, $theme-color-evolution-color, true);
+    @include createBloqsCss($reverse, "bloq-evolution-if-light", $evolution-color, $theme-color-evolution-color, true);
+    @include createBloqsCss($reverse, "bloq-evolution-if-line", $evolution-color, $theme-color-evolution-color, true);
+    @include createBloqsCss($reverse, "bloq-evolution-if-light-advanced", $evolution-color, $theme-color-evolution-color, true);
     /*---- ZOWI ---------*/
     @include createBloqsCss($reverse, "bloq-zowi-gestures", $zowi-color, $theme-color-zowi-color);
     @include createBloqsCss($reverse, "bloq-zowi-rest", $zowi-color, $theme-color-zowi-color);
