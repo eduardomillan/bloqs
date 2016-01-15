@@ -1,5 +1,4 @@
 /* BASIC THEME */
-
 $code-color: #58B42D;
 $classes-color: #9b0769;
 $communication-color: #E30B9A;
@@ -12,9 +11,7 @@ $text-color: #0294CF;
 $vars-color: #D9B032;
 $zowi-color: #60BCC9;
 $conversions-color: #00CC11;
-
 /* COLOR THEME */
-
 $theme-color-classes-color: #9b0769;
 $theme-color-functions-color: #dd5b0c;
 $theme-color-control-color: #114698;
@@ -27,9 +24,22 @@ $theme-color-text-color: #0094cf;
 $theme-color-vars-color: #d8af31;
 $theme-color-zowi-color: #60BCC9;
 $theme-color-conversions-color: #00CC11;
+
 @mixin createBloqsTheme ($reverse) {
     /*---- CONVERSIONS ---------*/
     @include createBloqsCss($reverse, "bloq-string-to-int", $conversions-color, $theme-color-conversions-color);
+    /*---- EVOLUTION ---------*/
+    @include createBloqsCss($reverse, "bloq-evolution-buzzer", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-evolution-head", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-evolution-home", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-evolution-movements-simple", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-evolution-distance", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-evolution-light", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-evolution-line", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-evolution-if-distance", $zowi-color, $theme-color-zowi-color, true);
+    @include createBloqsCss($reverse, "bloq-evolution-if-light", $zowi-color, $theme-color-zowi-color, true);
+    @include createBloqsCss($reverse, "bloq-evolution-if-line", $zowi-color, $theme-color-zowi-color, true);
+    @include createBloqsCss($reverse, "bloq-evolution-if-light-advanced", $zowi-color, $theme-color-zowi-color, true);
     /*---- ZOWI ---------*/
     @include createBloqsCss($reverse, "bloq-zowi-gestures", $zowi-color, $theme-color-zowi-color);
     @include createBloqsCss($reverse, "bloq-zowi-rest", $zowi-color, $theme-color-zowi-color);
@@ -176,82 +186,102 @@ $theme-color-conversions-color: #00CC11;
     @if ($reverse) {
         &.#{$className} {
             color: $classColor;
+
             input,
             textarea,
             select {
                 color: $classColor;
             }
+
             @if($statementInput) {
                 border-left: 5px solid $classColor;
+
                 & > .bloq--extension:before {
                     border-left: 5px solid $classColor;
                 }
             }
         }
     }
+
     @else {
         &.#{$className}:not(.disabled) {
             color: white;
+
             input,
             textarea,
             select,
             .bloqinput {
-                color: white;
-                background: $themeColorClassColor;
+                color           : white;
+                background      : $themeColorClassColor;
                 background-color: rgba(0, 0, 0, 0.2);
+
                 &:before {
-                    background: $themeColorClassColor;
+                    background      : $themeColorClassColor;
                     background-color: rgba(0, 0, 0, 0.2);
                 }
             }
-            ::-webkit-input-placeholder {
+
+             ::-webkit-input-placeholder {
                 color: white;
             }
+
             select {
-                background-image: url($whiteDownArrow);
-                background-repeat: no-repeat;
+                background-image   : url($whiteDownArrow);
+                background-repeat  : no-repeat;
                 background-position: right 7px bottom 45%;
+
                 option {
                     color: black;
                 }
             }
+
             &.bloq--statement {
                 background-color: $themeColorClassColor;
             }
+
             &.bloq--output {
                 background-color: $themeColorClassColor;
+
                 &:before {
                     background-color: $themeColorClassColor;
                 }
+
                 &:focus:not(.disabled):after {
                     background-color: $themeColorClassColor;
                 }
             }
+
             @if($statementInput) {
                 // border-left: 5px solid $themeColorClassColor;
                 & .bloqinput {
-                    color: white;
-                    background: $themeColorClassColor;
+                    color           : white;
+                    background      : $themeColorClassColor;
                     background-color: rgba(0, 0, 0, 0.2);
+
                     &:before {
-                        background: $themeColorClassColor;
+                        background      : $themeColorClassColor;
                         background-color: rgba(0, 0, 0, 0.2);
                     }
                 }
+
                 &:before {
                     background-color: $themeColorClassColor;
                 }
+
                 & > .bloq--statement-input__header {
                     background-color: $themeColorClassColor;
                 }
+
                 & > .bloq--extension {
                     &:before {
                         border-left: 5px solid $themeColorClassColor;
                     }
+
                     & > .bloq--extension--end {
                         background-color: $themeColorClassColor;
                     }
                 }
+
                 & > .bloq--extension:before {}
             }
         }
