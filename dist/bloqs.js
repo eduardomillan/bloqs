@@ -1327,99 +1327,6 @@
         };
     };
 
-    var getArduinoCode = function(componentsArray, program) {
-        var varCode = getArduinoCodeFromBloq(program.vars),
-            setupCode = getArduinoCodeFromBloq(program.setup),
-            loopCode = getArduinoCodeFromBloq(program.loop);
-        return varCode + setupCode + loopCode;
-    };
-
-    var getArduinoCodeFromBloq = function(bloq) {
-        var code = '';
-        if (bloq.enable) {
-            var contentRegExp = new RegExp('{([A-Z0-9]+)}', 'g'),
-                contentConnectionTypeRegExp = new RegExp('{([A-Z0-9]+\.connectionType)}', 'g'),
-                regExpResult,
-                contents = [];
-            code = bloq.code;
-            while (regExpResult = contentRegExp.exec(code)) {
-                console.log(regExpResult);
-                contents.push(getContentFromBloq(regExpResult[1], bloq));
-            }
-            //twice bucle because regexp are not working fine
-            for (var i = 0; i < contents.length; i++) {
-                console.log('+++');
-                console.log(contents[i].value);
-                console.log((contents[i].value || '').replace(/ \*/g, ''));
-                code = code.replace(new RegExp('{' + contents[i].id + '\.withoutAsterisk}', 'g'), (contents[i].value || '').replace(/ \*/g, ''));
-                code = code.replace(new RegExp('{' + contents[i].id + '\.connectionType}', 'g'), contents[i].connectionType || '');
-                code = code.replace(new RegExp('{' + contents[i].id + '}( )*', 'g'), contents[i].value || '');
-            };
-
-            //search for regular expressions:
-            var reg = /(.*)\?(.*):(.*)/g;
-            if (reg.test(code)) {
-                code = eval(code); // jshint ignore:line
-            }
-            console.log(code);
-        }
-        return code;
-    };
-
-    var getContentFromBloq = function(contentId, bloq) {
-        var content = {
-            value: ''
-        };
-
-        if (contentId === 'STATEMENTS') {
-            content.id = 'STATEMENTS';
-            for (var i = 0; i < bloq.childs.length; i++) {
-                content.value += getArduinoCodeFromBloq(bloq.childs[i]);
-            }
-        } else {
-            content = _.filter(bloq.content[0], function(elem) {
-                if (elem.id === contentId) {
-                    return true;
-                } else if (elem.bloqInputId === contentId) {
-                    elem.id = contentId;
-                    return true;
-                }
-            })[0];
-        }
-        if (content.alias === 'bloqInput' && content.value) {
-            content.connectionType = getTypeFromBloqStructure(content.value);
-            content.value = getArduinoCodeFromBloq(content.value);
-        }
-        return content;
-    };
-
-    var getTypeFromBloqStructure = function(bloq) {
-        var type = '',
-            content = null;
-        if (bloq.returnType) {
-            switch (bloq.returnType.type) {
-                case 'simple':
-                    type = bloq.returnType.value;
-                    break;
-                case 'fromDropdown':
-                    content = getContentFromBloq(bloq.returnType.idDropdown, bloq);
-                    type = content.value;
-                    break;
-                case 'fromDynamicDropdown':
-                    //type = bloq.returnType.value;
-                    break;
-                case 'fromInput':
-                    //type = bloq.returnType.value;
-                    break;
-                default:
-                    throw 'Return type undefined';
-            }
-        } else {
-            throw 'We cant get type from a bloq witouth a returnType';
-        }
-        return type;
-    };
-
     bloqsUtils.validString = validString;
     bloqsUtils.validChar = validChar;
     bloqsUtils.validComment = validComment;
@@ -1468,7 +1375,6 @@
     bloqsUtils.getCaretPosition = getCaretPosition;
     bloqsUtils.setCaretPosition = setCaretPosition;
     bloqsUtils.getEmptyComponentsArray = getEmptyComponentsArray;
-    bloqsUtils.getArduinoCode = getArduinoCode;
 
     return bloqsUtils;
 
@@ -3114,20 +3020,10 @@
             return code;
         };
 
-        this.getBloqsStructure = function(fullStructure) {
-            var result,
+        this.getBloqsStructure = function() {
+            var result = {},
                 tempBloq;
-
-            if (fullStructure) {
-                result = _.cloneDeep(this.bloqData);
-            } else {
-                result = {
-                    name: this.bloqData.name,
-                    content: [
-                        []
-                    ]
-                };
-            }
+            result.name = this.bloqData.name;
             result.enable = this.itsEnabled();
 
             var rootConnector = this.connectors[2];
@@ -3136,11 +3032,13 @@
                 var connectedConnector = connectors[rootConnector].connectedTo;
                 while (connectedConnector) {
                     tempBloq = utils.getBloqByConnectorUuid(connectedConnector, bloqs, connectors);
-                    result.childs.push(tempBloq.getBloqsStructure(fullStructure));
+                    result.childs.push(tempBloq.getBloqsStructure());
                     connectedConnector = connectors[tempBloq.connectors[1]].connectedTo;
                 }
             }
-
+            result.content = [
+                []
+            ];
             var tempObject, value, selectedValue, attributeValue;
             if (this.bloqData.content[0]) {
 
@@ -3173,7 +3071,7 @@
                                 tempObject = {
                                     alias: this.bloqData.content[0][i].alias,
                                     bloqInputId: this.bloqData.content[0][i].bloqInputId,
-                                    value: connectedBloq.getBloqsStructure(fullStructure)
+                                    value: connectedBloq.getBloqsStructure()
                                 };
                             }
 
@@ -3218,11 +3116,7 @@
                             throw 'I dont know how to get the structure from this contentType :( ' + this.bloqData.content[0][i].alias;
                     }
                     if (tempObject) {
-                        if (fullStructure) {
-                            result.content[0][i].value = tempObject.value;
-                        } else {
-                            result.content[0].push(tempObject);
-                        }
+                        result.content[0].push(tempObject);
                     }
 
                 }
