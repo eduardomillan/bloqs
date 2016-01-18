@@ -10,7 +10,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "4f62e773-6e72-4296-8cfc-998fa2d0ec9c"
+      "name": "c98ab587-5d83-4b11-9783-736847083efd"
     }
   ],
   "bloqClass": "bloq-stringArray-advanced",
@@ -24,7 +24,7 @@
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "4f62e773-6e72-4296-8cfc-998fa2d0ec9c"
+        "name": "c98ab587-5d83-4b11-9783-736847083efd"
       },
       {
         "alias": "text",
@@ -46,7 +46,7 @@
       }
     ]
   ],
-  "code": "({TYPE})malloc({VALUE}*sizeof({TYPE}.withoutAsterisk))",
+  "code": "({TYPE})malloc({VALUE}*sizeof({TYPE.withoutAsterisk}))",
   "returnType": {
     "type": "fromDropdown",
     "idDropdown": "TYPE",
