@@ -18,7 +18,7 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var shieldStepperSteps = _.merge(_.clone(OutputBloq, true), {
+var shieldStepperSteps = _.merge(_.clone(StatementBloq, true), {
 
     name: 'shieldStepperSteps',
     bloqClass: 'bloq-shield-stepper-steps',
