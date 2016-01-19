@@ -81,6 +81,9 @@ var zowiMovementsNoDir = _.merge(_.clone(StatementBloq, true), {
                 label: 'bloq-zowi-movements-height-big',
                 value: 'BIG_HEIGHT'
             }]
+        }, {
+            alias: 'text',
+            value: 'bloq-zowi-movements-no-dir-endtext'
         }]
     ],
     code: 'zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT});'

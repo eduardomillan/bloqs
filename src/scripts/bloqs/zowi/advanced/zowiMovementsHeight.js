@@ -12,7 +12,7 @@ var _ = require('lodash'),
  *
  * Description: It makes Zowi execute a specific movement, selectable
  *              from a first drop-down, in a concrete direction,
- *              selectable from a second drop-down, the given number 
+ *              selectable from a second drop-down, the given number
  *              of times at a determined velocity, selectable from a
  *              third drop-down, until a limit height, selectable
  *              from a fourth drop-down.
@@ -93,6 +93,9 @@ var zowiMovementsHeight = _.merge(_.clone(StatementBloq, true), {
                 label: 'bloq-zowi-movements-height-big',
                 value: 'BIG_HEIGHT'
             }]
+        }, {
+            alias: 'text',
+            value: 'bloq-zowi-movements-height-endtext'
         }]
     ],
     code: 'zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT},{DIR});'

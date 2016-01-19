@@ -12,7 +12,7 @@ var _ = require('lodash'),
  *
  * Description: It makes Zowi execute a specific movement, selectable
  *              from a first drop-down, in a concrete direction,
- *              selectable from a second drop-down, the given number 
+ *              selectable from a second drop-down, the given number
  *              of times at a determined velocity, selectable from a
  *              third drop-down.
  *
@@ -79,6 +79,9 @@ var zowiMovements = _.merge(_.clone(StatementBloq, true), {
                 label: 'bloq-zowi-movements-speed-high',
                 value: 'HIGH_SPEED'
             }]
+        }, {
+            alias: 'text',
+            value: 'bloq-zowi-movements-endtext'
         }]
     ],
     code: 'zowi.{MOVEMENT}({STEPS},{SPEED},{DIR});'
