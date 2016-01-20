@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "zowiMovementsNoDir",
+  "name": "zowiMovementsHeightFront",
   "connectors": [
     {
       "type": "connector--top",
@@ -11,47 +11,39 @@
       "accept": "connector--top"
     }
   ],
-  "bloqClass": "bloq-zowi-movements-no-dir",
+  "bloqClass": "bloq-zowi-movements-height-front",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-zowi-movements-no-dir"
+        "value": "bloq-zowi-movements-height"
       },
       {
-        "id": "MOVEMENT",
+        "alias": "text",
+        "value": "bloq-zowi-movements-height-flapping"
+      },
+      {
+        "id": "DIR",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "bloq-zowi-movements-no-dir-updown",
-            "value": "updown"
+            "label": "bloq-zowi-movements-height-forward",
+            "value": "FORWARD"
           },
           {
-            "label": "bloq-zowi-movements-no-dir-swing",
-            "value": "swing"
-          },
-          {
-            "label": "bloq-zowi-movements-no-dir-tiptoeSwing",
-            "value": "tiptoeSwing"
-          },
-          {
-            "label": "bloq-zowi-movements-no-dir-jitter",
-            "value": "jitter"
-          },
-          {
-            "label": "bloq-zowi-movements-no-dir-ascendingTurn",
-            "value": "ascendingTurn"
+            "label": "bloq-zowi-movements-height-backward",
+            "value": "BACKWARD"
           }
         ]
       },
       {
         "id": "STEPS",
         "alias": "numberInput",
-        "value": 4
+        "value": 1
       },
       {
         "alias": "text",
-        "value": "bloq-zowi-movements-no-dir-speed"
+        "value": "bloq-zowi-movements-height-speed"
       },
       {
         "id": "SPEED",
@@ -73,7 +65,7 @@
       },
       {
         "alias": "text",
-        "value": "bloq-zowi-movements-no-dir-height"
+        "value": "bloq-zowi-movements-height-height"
       },
       {
         "id": "HEIGHT",
@@ -95,9 +87,9 @@
       },
       {
         "alias": "text",
-        "value": "bloq-zowi-movements-no-dir-endtext"
+        "value": "bloq-zowi-movements-height-endtext"
       }
     ]
   ],
-  "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT});"
+  "code": "zowi.flapping({STEPS},{SPEED},{HEIGHT},{DIR});"
 }

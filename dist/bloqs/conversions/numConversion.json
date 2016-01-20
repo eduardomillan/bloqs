@@ -1,0 +1,54 @@
+{
+  "type": "output",
+  "name": "numConversion",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "number",
+      "name": "69459633-cfa9-45ce-8ba2-774d1aaa9e80"
+    }
+  ],
+  "bloqClass": "bloq-num-conversion",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-num-conversion"
+      },
+      {
+        "bloqInputId": "NUMBER",
+        "alias": "bloqInput",
+        "acceptType": "number",
+        "name": "69459633-cfa9-45ce-8ba2-774d1aaa9e80"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-num-conversion-to"
+      },
+      {
+        "id": "TYPE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-num-conversion-int",
+            "value": "int"
+          },
+          {
+            "label": "bloq-num-conversion-float",
+            "value": "float"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "({TYPE}) {NUMBER}",
+  "returnType": {
+    "type": "fromDropdown",
+    "idDropdown": "TYPE"
+  }
+}
