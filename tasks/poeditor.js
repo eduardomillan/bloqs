@@ -277,4 +277,75 @@ module.exports = function(grunt) {
             });
         });
     });
+
+    grunt.registerTask('fixduplicated', 'fix duplicated terms on poeditor', function(projectId) {
+        var gruntTaskDone = this.async();
+        var params = {
+            action: 'view_terms',
+            id: projectId || '42730',
+            language: 'es'
+        };
+        callPoEditorApi(params, function(err, res) {
+            if (err) {
+                console.log(err);
+            } else {
+                //console.log(res);
+                grunt.file.write('fixduplicated/backupTerms' + Date.now() + '.json', JSON.stringify(res));
+                var object = {},
+                    duplicated = 0,
+                    finalTerms = [],
+                    firstTerm, secondTerm;
+
+                for (var i = 0; i < res.list.length; i++) {
+                    if (object[res.list[i].term]) {
+                        duplicated++;
+                        console.log('duplis');
+                        firstTerm = object[res.list[i].term].content;
+                        secondTerm = res.list[i];
+                        console.log('first Term');
+                        console.log(firstTerm);
+                        console.log('second Term');
+                        console.log(secondTerm);
+
+                        if (secondTerm.context && !firstTerm.context) {
+                            firstTerm.context = secondTerm.context;
+                        }
+
+                        if (secondTerm.definition.form && !firstTerm.definition.form) {
+                            firstTerm.definition.form = secondTerm.definition.form;
+                        }
+
+                        console.log('final Item');
+                        console.log(finalTerms[object[res.list[i].term].finalArrayPosition]);
+
+                    } else {
+                        object[res.list[i].term] = {
+                            originalArrayPosition: i,
+                            content: res.list[i],
+                            finalArrayPosition: finalTerms.length
+                        };
+                        finalTerms.push(res.list[i]);
+                    }
+                }
+                console.log('Total elements ' + res.list.length);
+                console.log('Tenemos ' + duplicated + ' duplicados');
+                console.log('Resultado final: ' + finalTerms.length);
+
+                gruntTaskDone();
+
+                // callPoEditorApi({
+                //     action: 'sync_terms',
+                //     id: projectId,
+                //     data: JSON.stringify(finalTerms)
+                // }, function(err, res) {
+                //     if (err) {
+                //         console.log(err);
+                //     } else {
+                //         console.log('all ok?');
+                //     }
+                //     gruntTaskDone();
+                // });
+            }
+        });
+    });
 };
