@@ -49,7 +49,7 @@ var zowiSounds = _.merge(_.clone(StatementBloq, true), {
                 label: 'bloq-zowi-sounds-confused',
                 value: 'S_confused'
             }, {
-                label: 'bloq-zowi-sounds-fart1',
+                label: 'bloq-zowi-sounds-fart1-v1',
                 value: 'S_fart1'
             }]
         }]

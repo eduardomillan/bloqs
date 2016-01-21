@@ -22,11 +22,11 @@
     #bloqs--field.theme-basic .bloq.bloq-string-to-int select {
       color: #00CC11; }
   #bloqs--field.theme-basic .bloq.bloq-evolution-buzzer {
-    color: #60BCC9; }
+    color: #89949d; }
     #bloqs--field.theme-basic .bloq.bloq-evolution-buzzer input,
     #bloqs--field.theme-basic .bloq.bloq-evolution-buzzer textarea,
     #bloqs--field.theme-basic .bloq.bloq-evolution-buzzer select {
-      color: #60BCC9; }
+      color: #89949d; }
   #bloqs--field.theme-basic .bloq.bloq-evolution-head {
     color: #89949d; }
     #bloqs--field.theme-basic .bloq.bloq-evolution-head input,
@@ -198,6 +198,36 @@
       color: #60BCC9; }
     #bloqs--field.theme-basic .bloq.bloq-zowi-if-distance > .bloq--extension:before {
       border-left: 5px solid #60BCC9; }
+  #bloqs--field.theme-basic .bloq.bloq-zowi-movements-front {
+    color: #60BCC9; }
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-front input,
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-front textarea,
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-front select {
+      color: #60BCC9; }
+  #bloqs--field.theme-basic .bloq.bloq-zowi-movements-sides {
+    color: #60BCC9; }
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-sides input,
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-sides textarea,
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-sides select {
+      color: #60BCC9; }
+  #bloqs--field.theme-basic .bloq.bloq-zowi-movements-height-sides {
+    color: #60BCC9; }
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-height-sides input,
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-height-sides textarea,
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-height-sides select {
+      color: #60BCC9; }
+  #bloqs--field.theme-basic .bloq.bloq-zowi-movements-height-front {
+    color: #60BCC9; }
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-height-front input,
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-height-front textarea,
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-height-front select {
+      color: #60BCC9; }
+  #bloqs--field.theme-basic .bloq.bloq-zowi-movements-no-dir-v1 {
+    color: #60BCC9; }
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-no-dir-v1 input,
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-no-dir-v1 textarea,
+    #bloqs--field.theme-basic .bloq.bloq-zowi-movements-no-dir-v1 select {
+      color: #60BCC9; }
   #bloqs--field.theme-basic .bloq.bloq-array-class-variable {
     color: #9b0769; }
     #bloqs--field.theme-basic .bloq.bloq-array-class-variable input,
@@ -944,6 +974,12 @@
     #bloqs--field.theme-basic .bloq.bloq-math-binary-operations input,
     #bloqs--field.theme-basic .bloq.bloq-math-binary-operations textarea,
     #bloqs--field.theme-basic .bloq.bloq-math-binary-operations select {
+      color: #01C0C8; }
+  #bloqs--field.theme-basic .bloq.bloq-num-conversion {
+    color: #01C0C8; }
+    #bloqs--field.theme-basic .bloq.bloq-num-conversion input,
+    #bloqs--field.theme-basic .bloq.bloq-num-conversion textarea,
+    #bloqs--field.theme-basic .bloq.bloq-num-conversion select {
       color: #01C0C8; }
 
 #bloqs--field.theme-colors .bloq {
@@ -1903,6 +1939,161 @@
       border-left: 5px solid #60BCC9; }
     #bloqs--field.theme-colors .bloq.bloq-zowi-if-distance:not(.disabled) > .bloq--extension > .bloq--extension--end {
       background-color: #60BCC9; }
+  #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) .bloqinput {
+      color: white;
+      background: #60BCC9;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) .bloqinput:before {
+        background: #60BCC9;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) ::-webkit-input-placeholder {
+      color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #8c919b;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled).bloq--statement {
+      background-color: #60BCC9; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled).bloq--output {
+      background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled).bloq--output:before {
+        background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-front:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #60BCC9; }
+  #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) .bloqinput {
+      color: white;
+      background: #60BCC9;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) .bloqinput:before {
+        background: #60BCC9;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) ::-webkit-input-placeholder {
+      color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #8c919b;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled).bloq--statement {
+      background-color: #60BCC9; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled).bloq--output {
+      background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled).bloq--output:before {
+        background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-sides:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #60BCC9; }
+  #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) .bloqinput {
+      color: white;
+      background: #60BCC9;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) .bloqinput:before {
+        background: #60BCC9;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) ::-webkit-input-placeholder {
+      color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #8c919b;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled).bloq--statement {
+      background-color: #60BCC9; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled).bloq--output {
+      background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled).bloq--output:before {
+        background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-sides:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #60BCC9; }
+  #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) .bloqinput {
+      color: white;
+      background: #60BCC9;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) .bloqinput:before {
+        background: #60BCC9;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) ::-webkit-input-placeholder {
+      color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #8c919b;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled).bloq--statement {
+      background-color: #60BCC9; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled).bloq--output {
+      background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled).bloq--output:before {
+        background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-height-front:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #60BCC9; }
+  #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) .bloqinput {
+      color: white;
+      background: #60BCC9;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) .bloqinput:before {
+        background: #60BCC9;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) ::-webkit-input-placeholder {
+      color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #8c919b;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled).bloq--statement {
+      background-color: #60BCC9; }
+    #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled).bloq--output {
+      background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled).bloq--output:before {
+        background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #60BCC9; }
   #bloqs--field.theme-colors .bloq.bloq-array-class-variable:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-array-class-variable:not(.disabled) input,
@@ -5751,6 +5942,37 @@
       #bloqs--field.theme-colors .bloq.bloq-math-binary-operations:not(.disabled).bloq--output:before {
         background-color: #00c1c7; }
       #bloqs--field.theme-colors .bloq.bloq-math-binary-operations:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #00c1c7; }
+  #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) .bloqinput {
+      color: white;
+      background: #00c1c7;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) .bloqinput:before {
+        background: #00c1c7;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) ::-webkit-input-placeholder {
+      color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #8c919b;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled).bloq--statement {
+      background-color: #00c1c7; }
+    #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled).bloq--output {
+      background-color: #00c1c7; }
+      #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled).bloq--output:before {
+        background-color: #00c1c7; }
+      #bloqs--field.theme-colors .bloq.bloq-num-conversion:not(.disabled).bloq--output:focus:not(.disabled):after {
         background-color: #00c1c7; }
 
 /* MIXINS */

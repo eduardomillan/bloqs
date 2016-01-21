@@ -6,7 +6,7 @@ var _ = require('lodash'),
     StatementBloq = require('./../../statementBloq');
 
 /**
- * Bloq name: zowiMovementsNoDir
+ * Bloq name: zowiMovementsNoDirV1
  *
  * Bloq type: statement
  *
@@ -18,10 +18,10 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var zowiMovementsNoDir = _.merge(_.clone(StatementBloq, true), {
+var zowiMovementsNoDirV1 = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'zowiMovementsNoDir',
-    bloqClass: 'bloq-zowi-movements-no-dir',
+    name: 'zowiMovementsNoDir-v1',
+    bloqClass: 'bloq-zowi-movements-no-dir-v1',
     content: [
         [{
             alias: 'text',
@@ -88,6 +88,6 @@ var zowiMovementsNoDir = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT});'
 });
-utils.generateBloqInputConnectors(zowiMovementsNoDir);
+utils.generateBloqInputConnectors(zowiMovementsNoDirV1);
 
-module.exports = zowiMovementsNoDir;
+module.exports = zowiMovementsNoDirV1;

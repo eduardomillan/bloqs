@@ -31,7 +31,7 @@ $theme-color-conversions-color: #00CC11;
     /*---- CONVERSIONS ---------*/
     @include createBloqsCss($reverse, "bloq-string-to-int", $conversions-color, $theme-color-conversions-color);
     /*---- EVOLUTION ---------*/
-    @include createBloqsCss($reverse, "bloq-evolution-buzzer", $zowi-color, $theme-color-evolution-color);
+    @include createBloqsCss($reverse, "bloq-evolution-buzzer", $evolution-color, $theme-color-evolution-color);
     @include createBloqsCss($reverse, "bloq-evolution-head", $evolution-color, $theme-color-evolution-color);
     @include createBloqsCss($reverse, "bloq-evolution-home", $evolution-color, $theme-color-evolution-color);
     @include createBloqsCss($reverse, "bloq-evolution-rest", $evolution-color, $theme-color-evolution-color);
@@ -58,6 +58,11 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-zowi-if-buttons", $zowi-color, $theme-color-zowi-color, true);
     @include createBloqsCss($reverse, "bloq-zowi-if-sound", $zowi-color, $theme-color-zowi-color, true);
     @include createBloqsCss($reverse, "bloq-zowi-if-distance", $zowi-color, $theme-color-zowi-color, true);
+    @include createBloqsCss($reverse, "bloq-zowi-movements-front", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-zowi-movements-sides", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-zowi-movements-height-sides", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-zowi-movements-height-front", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-zowi-movements-no-dir-v1", $zowi-color, $theme-color-zowi-color);
     /*---- CLASSES ---------*/
     @include createBloqsCss($reverse, "bloq-array-class-variable", $classes-color, $theme-color-classes-color);
     @include createBloqsCss($reverse, "bloq-class", $classes-color, $theme-color-classes-color, true);
@@ -183,6 +188,7 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-random", $maths-color, $theme-color-maths-color);
     @include createBloqsCss($reverse, "bloq-random-seed", $maths-color, $theme-color-maths-color);
     @include createBloqsCss($reverse, "bloq-math-binary-operations", $maths-color, $theme-color-maths-color);
+    @include createBloqsCss($reverse, "bloq-num-conversion", $maths-color, $theme-color-maths-color);
 }
 
 @mixin createBloqsCss($reverse, $className, $classColor, $themeColorClassColor, $statementInput:false) {

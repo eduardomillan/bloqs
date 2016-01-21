@@ -34,9 +34,6 @@ var zowiButtons = _.merge(_.clone(OutputBloq, true), {
                     label: 'bloq-zowi-buttons-B',
                     value: 'PIN_BButton'
                 }]
-        }, {
-            alias: 'text',
-            value: 'bloq-zowi-buttons-zowi'
         }]
     ],
     code: 'digitalRead({BUTTON})',
