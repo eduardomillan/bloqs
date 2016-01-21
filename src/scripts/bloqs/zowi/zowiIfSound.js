@@ -22,7 +22,7 @@ var zowiIfSound = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-zowi-if-sound-v1'
+            value: 'bloq-zowi-if-sound'
         },]
     ],
     code: ' if(zowi.getNoise() >= 650){{STATEMENTS}}'

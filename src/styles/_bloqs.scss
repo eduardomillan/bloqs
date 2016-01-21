@@ -890,6 +890,7 @@ tester + span + .bloqinput {
     list-style: none;
     span {
         vertical-align: top;
+        display: inline-block;
     }
     textarea {
         margin-bottom: .5em;

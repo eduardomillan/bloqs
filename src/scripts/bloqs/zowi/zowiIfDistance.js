@@ -43,7 +43,7 @@ var zowiIfDistance = _.merge(_.clone(StatementInputBloq, true), {
             value: 15
         }, {
             alias: 'text',
-            value: 'bloq-zowi-if-distance-then-v1'
+            value: 'bloq-zowi-if-distance-then'
         },]
     ],
     code: 'if(zowi.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}'

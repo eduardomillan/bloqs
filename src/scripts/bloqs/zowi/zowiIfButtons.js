@@ -37,7 +37,7 @@ var zowiIfButtons = _.merge(_.clone(StatementInputBloq, true), {
                 }]
         }, {
             alias: 'text',
-            value: 'bloq-zowi-if-buttons-then-v1'
+            value: 'bloq-zowi-if-buttons-then'
         },]
     ],
     code: 'if(digitalRead({BUTTON}) == 1){{STATEMENTS}}'

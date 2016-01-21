@@ -6675,7 +6675,8 @@ tester + span + .bloqinput {
   list-style: none; }
   .bloq-comment > .bloq--fixed span,
   .bloq-code > .bloq--fixed span {
-    vertical-align: top; }
+    vertical-align: top;
+    display: inline-block; }
   .bloq-comment > .bloq--fixed textarea,
   .bloq-code > .bloq--fixed textarea {
     margin-bottom: .5em; }
