@@ -189,6 +189,7 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-random-seed", $maths-color, $theme-color-maths-color);
     @include createBloqsCss($reverse, "bloq-math-binary-operations", $maths-color, $theme-color-maths-color);
     @include createBloqsCss($reverse, "bloq-num-conversion", $maths-color, $theme-color-maths-color);
+    @include createBloqsCss($reverse, "bloq-basic-operations-v1", $maths-color, $theme-color-maths-color);
 }
 
 @mixin createBloqsCss($reverse, $className, $classColor, $themeColorClassColor, $statementInput:false) {

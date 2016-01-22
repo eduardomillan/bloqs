@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    OutputBloq = require('./../outputBloq');
+    utils = require('./../../build-utils'),
+    OutputBloq = require('./../../outputBloq');
 
 /**
  * Bloq name: basicOperations
@@ -23,7 +23,7 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
         [{
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            acceptType: 'float'
+            acceptType: 'all'
         }, {
             id: 'OPERATOR',
             alias: 'staticDropdown',
@@ -37,16 +37,22 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
                     label: 'x',
                     value: '*'
                 }, {
-                    label: '÷',
+                    label: '/',
                     value: '/'
-                }] //'+', '-', '×', '÷']
+                }, {
+                    label: '^',
+                    value: '^'
+                }, {
+                    label: '%',
+                    value: '%'
+                }] //'+', '-', '×', '÷', '^']
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            acceptType: 'float'
+            acceptType: 'all'
         }]
     ],
-    code: '({ARG1} {OPERATOR} {ARG2})',
+    code: '\'{OPERATOR}\' === \'^\'? \'pow({ARG1},{ARG2})\' : \'({ARG1} {OPERATOR} {ARG2})\'',
     returnType: {
         type: 'simple',
         value: 'float'

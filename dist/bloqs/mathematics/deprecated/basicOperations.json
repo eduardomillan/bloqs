@@ -9,14 +9,14 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "float",
-      "name": "6fa41218-2589-4c07-b250-4b3f197123ee"
+      "acceptType": "all",
+      "name": "4008ab34-1248-4538-ab33-67af1bf13603"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "float",
-      "name": "85e4d422-5989-4b96-9385-e8a7e6316a80"
+      "acceptType": "all",
+      "name": "e43a9da0-2348-45e5-b0e3-7701bb843d72"
     }
   ],
   "bloqClass": "bloq-basic-operations",
@@ -25,8 +25,8 @@
       {
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
-        "acceptType": "float",
-        "name": "6fa41218-2589-4c07-b250-4b3f197123ee"
+        "acceptType": "all",
+        "name": "4008ab34-1248-4538-ab33-67af1bf13603"
       },
       {
         "id": "OPERATOR",
@@ -45,20 +45,28 @@
             "value": "*"
           },
           {
-            "label": "÷",
+            "label": "/",
             "value": "/"
+          },
+          {
+            "label": "^",
+            "value": "^"
+          },
+          {
+            "label": "%",
+            "value": "%"
           }
         ]
       },
       {
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
-        "acceptType": "float",
-        "name": "85e4d422-5989-4b96-9385-e8a7e6316a80"
+        "acceptType": "all",
+        "name": "e43a9da0-2348-45e5-b0e3-7701bb843d72"
       }
     ]
   ],
-  "code": "({ARG1} {OPERATOR} {ARG2})",
+  "code": "'{OPERATOR}' === '^'? 'pow({ARG1},{ARG2})' : '({ARG1} {OPERATOR} {ARG2})'",
   "returnType": {
     "type": "simple",
     "value": "float"
