@@ -1004,7 +1004,7 @@
                     'data-content-type': elementSchema.alias,
                     'data-placeholder-i18n': elementSchema.placeholder,
                     placeholder: translateBloq(lang, elementSchema.placeholder)
-                }).val(elementSchema.value);
+                }).val(elementSchema.value || translateBloq(lang, elementSchema.defaultValue));
                 $element.on('keyup', function(evt) {
                     $(evt.currentTarget).autoGrowInput({
                         minWidth: 100,
