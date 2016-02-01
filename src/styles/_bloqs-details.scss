@@ -232,7 +232,7 @@ $theme-color-conversions-color: #00CC11;
             }
 
              ::-webkit-input-placeholder {
-                color: white;
+                color: rgba(255, 255, 255, 0.5);
             }
 
             select {
