@@ -1520,6 +1520,7 @@
         fieldOffsetTopSource = options.fieldOffsetTopSource || [];
         fieldOffsetLeft = options.fieldOffsetLeft || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || 0;
+        lang = options.lang || 'es-ES';
     };
 
     var getFieldOffsetTop = function(source) {
