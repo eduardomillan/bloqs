@@ -27,7 +27,7 @@ var lcdWrite = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'TEXT',
             alias: 'stringInput',
-            placeholder: 'bloq-lcd-default'
+            defaultValue: 'bloq-lcd-default'
         }, {
             alias: 'text',
             value: 'bloq-lcd-writte-inLCD'
