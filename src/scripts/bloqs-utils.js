@@ -857,6 +857,11 @@
                     globalVars += 'Zowi zowi;';
                     setupCode += 'zowi.init();';
                 }
+                if (componentsArray.robot[0] === 'evolution') {
+                    includeCode += '#include <BitbloqEvolution.h>\n#include <BitbloqUS.h>\n#include <Servo.h>\n#include <BitbloqOscillator.h>\n';
+                    globalVars += 'Evolution evolution;';
+                    setupCode += 'evolution.init();';
+                }
             }
             if (componentsArray.continuousServos.length >= 1 || componentsArray.servos.length >= 1 || componentsArray.oscillators.length >= 1) {
                 includeCode += '#include <Servo.h>\n';
