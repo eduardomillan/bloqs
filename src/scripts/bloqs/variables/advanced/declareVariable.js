@@ -27,7 +27,7 @@ var declareVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'NAME',
             alias: 'varInput',
-            value: ''
+            placeholder: 'bloq-name-default'
         }, {
             alias: 'text',
             value: 'bloq-declare-variable-declare-type'
