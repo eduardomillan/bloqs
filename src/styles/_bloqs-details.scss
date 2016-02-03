@@ -153,6 +153,10 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-servo", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-digital-read-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-analog-read-advanced", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-encoder", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-hts221", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-joystick", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-linefollower", $components-color, $theme-color-components-color);
     /*---- LOGIC ------*/
     @include createBloqsCss($reverse, "bloq-boolean", $logic-color, $theme-color-logic-color);
     @include createBloqsCss($reverse, "bloq-equality-operations", $logic-color, $theme-color-logic-color);

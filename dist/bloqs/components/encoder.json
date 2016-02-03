@@ -1,0 +1,47 @@
+{
+  "type": "output",
+  "name": "encoder",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-encoder",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Leer"
+      },
+      {
+        "id": "FUNCTION",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "pasos",
+            "value": ""
+          },
+          {
+            "label": "boton",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "del encoder"
+      },
+      {
+        "id": "SENSOR",
+        "alias": "dynamicDropdown",
+        "options": "hts221"
+      }
+    ]
+  ],
+  "code": "",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+}

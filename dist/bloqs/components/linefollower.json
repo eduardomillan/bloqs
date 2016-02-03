@@ -1,0 +1,47 @@
+{
+  "type": "output",
+  "name": "linefollower",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-linefollower",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Leer el"
+      },
+      {
+        "id": "FUNCTION",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "sensor 1",
+            "value": ""
+          },
+          {
+            "label": "sensor 2",
+            "value": ""
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "del sigue líneas"
+      },
+      {
+        "id": "SENSOR",
+        "alias": "dynamicDropdown",
+        "options": "hts221"
+      }
+    ]
+  ],
+  "code": "",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  }
+}
