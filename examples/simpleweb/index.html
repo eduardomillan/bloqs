@@ -141,7 +141,7 @@
 
         //Create a if bloq from the bloqsSchemas loaded
         var bloq1 = new bloqs.Bloq({
-            bloqData: bloqSchemas['linefollower'],
+            bloqData: bloqSchemas['ledPWM'],
             componentsArray: componentsArray,
             $field: $field
         });
@@ -153,7 +153,7 @@
         bloq1.doConnectable();
 
 
-        var bloq2 = new bloqs.Bloq({
+        /*var bloq2 = new bloqs.Bloq({
             bloqData: bloqSchemas['declareVariable'],
             componentsArray: componentsArray,
             $field: $field
@@ -162,7 +162,7 @@
         bloq2.enable(true);
         bloq2.doConnectable();
 
-        
+        */
     });
     </script>
 </body>

@@ -951,7 +951,13 @@
             }
             if (componentsArray.leds.length >= 1) {
                 componentsArray.leds.forEach(function(leds) {
+                    if (includeCode.indexOf('#include <BitbloqSoftPWM.h>') === -1) {
+                        includeCode += '#include <BitbloqSoftPWM.h>\n';
+                    }
                     globalVars += 'int ' + leds.name + ' = ' + (leds.pin.s || '') + ';';
+                    if (setupCode.indexOf('SoftPWMBegin();') === -1) {
+                        setupCode += 'SoftPWMBegin();';
+                    }
                     setupCode += 'pinMode(' + leds.name + ', OUTPUT);';
                 });
             }
