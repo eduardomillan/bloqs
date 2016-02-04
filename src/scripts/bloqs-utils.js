@@ -965,7 +965,13 @@
                     if (includeCode.indexOf('#include <BitbloqRGB.h>') === -1) {
                         includeCode += '#include <BitbloqRGB.h>\n';
                     }
+                    if (includeCode.indexOf('#include <BitbloqSoftPWM.h>') === -1) {
+                        includeCode += '#include <BitbloqSoftPWM.h>\n';
+                    }
                     globalVars += 'ZumRGB ' + rgbs.name + '(' + (rgbs.pin.r || '') + ',' + (rgbs.pin.g || '') + ',' + (rgbs.pin.b || '') + ');';
+                    if (setupCode.indexOf('SoftPWMBegin();') === -1) {
+                        setupCode += 'SoftPWMBegin();';
+                    }
                 });
             }
             if (componentsArray.oscillators.length >= 1) {
