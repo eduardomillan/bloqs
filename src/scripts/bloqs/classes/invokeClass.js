@@ -35,13 +35,6 @@ var invokeClass = _.merge(_.clone(StatementBloq, true), {
             id: 'NAME',
             alias: 'varInput',
             value: ''
-        }, {
-            alias: 'text',
-            value: 'bloq-invoke-class-function-class'
-        }, {
-            id: 'CLASS',
-            alias: 'dynamicDropdown',
-            options: 'classes'
         }]
     ],
     createDynamicContent: 'objects',
