@@ -1,0 +1,46 @@
+{
+  "type": "statement-input",
+  "name": "oscillatorsST",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-oscillators-ST",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Oscilar "
+      },
+      {
+        "id": "TIMES",
+        "alias": "numberInput",
+        "value": 4
+      },
+      {
+        "alias": "text",
+        "value": "veces con un período de"
+      },
+      {
+        "id": "PERIOD",
+        "alias": "numberInput",
+        "value": 1000
+      },
+      {
+        "alias": "text",
+        "value": "ms los siguientes servos:"
+      }
+    ]
+  ],
+  "code": ""
+}

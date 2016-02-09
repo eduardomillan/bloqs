@@ -141,7 +141,7 @@
 
         //Create a if bloq from the bloqsSchemas loaded
         var bloq1 = new bloqs.Bloq({
-            bloqData: bloqSchemas['ledPWM'],
+            bloqData: bloqSchemas['oscillatorsST'],
             componentsArray: componentsArray,
             $field: $field
         });
@@ -153,16 +153,27 @@
         bloq1.doConnectable();
 
 
-        /*var bloq2 = new bloqs.Bloq({
-            bloqData: bloqSchemas['declareVariable'],
+        var bloq2 = new bloqs.Bloq({
+            bloqData: bloqSchemas['oscillatorConf'],
             componentsArray: componentsArray,
             $field: $field
         });
         $field.append(bloq2.$bloq);
         bloq2.enable(true);
         bloq2.doConnectable();
+        
 
-        */
+        var bloq3 = new bloqs.Bloq({
+            bloqData: bloqSchemas['oscillatorConf'],
+            componentsArray: componentsArray,
+            $field: $field
+        });
+        $field.append(bloq3.$bloq);
+        bloq3.enable(true);
+        bloq3.doConnectable();
+        
+
+        
     });
     </script>
 </body>

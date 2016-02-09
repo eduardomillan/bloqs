@@ -158,6 +158,8 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-joystick", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-linefollower", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-ledPWM", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-oscillator-conf", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-oscillators-ST", $components-color, $theme-color-components-color, true);
     /*---- LOGIC ------*/
     @include createBloqsCss($reverse, "bloq-boolean", $logic-color, $theme-color-logic-color);
     @include createBloqsCss($reverse, "bloq-equality-operations", $logic-color, $theme-color-logic-color);

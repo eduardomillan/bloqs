@@ -1,0 +1,42 @@
+{
+  "type": "statement",
+  "name": "ledPWM",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-ledPWM",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Encender el LED"
+      },
+      {
+        "id": "LED",
+        "alias": "dynamicDropdown",
+        "options": "leds"
+      },
+      {
+        "alias": "text",
+        "value": "al"
+      },
+      {
+        "id": "VALUE",
+        "alias": "numberInput",
+        "value": 100
+      },
+      {
+        "alias": "text",
+        "value": "%"
+      }
+    ]
+  ],
+  "code": "'SoftPWMSet({LED},' + ('{VALUE}'? Math.round({VALUE}*2.55) : 0) + ');'"
+}

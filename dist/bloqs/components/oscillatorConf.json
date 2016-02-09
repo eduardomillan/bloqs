@@ -1,0 +1,56 @@
+{
+  "type": "statement",
+  "name": "oscillatorConf",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-oscillator-conf",
+  "content": [
+    [
+      {
+        "id": "OSCILLATOR",
+        "alias": "dynamicDropdown",
+        "options": "oscillators"
+      },
+      {
+        "alias": "text",
+        "value": "con posición inicial"
+      },
+      {
+        "id": "PHASE",
+        "alias": "numberInput",
+        "value": 90
+      },
+      {
+        "alias": "text",
+        "value": "grados, amplitud"
+      },
+      {
+        "id": "AMPLITUDE",
+        "alias": "numberInput",
+        "value": 90
+      },
+      {
+        "alias": "text",
+        "value": "grados y desfase de"
+      },
+      {
+        "id": "PHI",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "alias": "text",
+        "value": "grados"
+      }
+    ]
+  ],
+  "code": ""
+}
