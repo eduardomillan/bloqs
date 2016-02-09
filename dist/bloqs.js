@@ -1525,7 +1525,8 @@
         draggingBloq = null,
         startPreMouseMove = null,
         preMouseMoveX,
-        preMouseMoveY;
+        preMouseMoveY,
+        componentsArray = [];
 
     var setOptions = function(options) {
         fieldOffsetTopSource = options.fieldOffsetTopSource || [];
@@ -2225,12 +2226,11 @@
 
     var buildContent = function(bloq) {
 
-        var componentsArray = bloq.componentsArray,
-            bloqData = bloq.bloqData;
+        var bloqData = bloq.bloqData;
         var $tempElement;
         for (var j = 0; j < bloqData.content.length; j++) {
             for (var k = 0; k < bloqData.content[j].length; k++) {
-                $tempElement = createBloqElement(bloq, bloqData.content[j][k], componentsArray, softwareArrays);
+                $tempElement = createBloqElement(bloq, bloqData.content[j][k], softwareArrays);
                 if (bloqData.content[j][k].position === 'DOWN') {
                     bloq.$contentContainerDown.addClass('with-content');
                     bloq.$contentContainerDown.append($tempElement);
@@ -2331,7 +2331,7 @@
         }
     };
 
-    var createBloqElement = function(bloq, elementSchema, componentsArray, softwareArrays) {
+    var createBloqElement = function(bloq, elementSchema, softwareArrays) {
         var i,
             $tempElement,
             $element = null,
@@ -2774,7 +2774,7 @@
         $field = params.$field || $field;
 
         this.bloqData = params.bloqData;
-        this.componentsArray = params.componentsArray;
+        componentsArray = params.componentsArray || componentsArray;
         this.connectors = [];
         this.IOConnectors = [];
 
@@ -3009,19 +3009,19 @@
                 }
                 value = element.val() || '';
                 //hardcoded!!
-                for (var j = 0; j < this.componentsArray.sensors.length; j++) {
+                for (var j = 0; j < componentsArray.sensors.length; j++) {
 
-                    if (value === this.componentsArray.sensors[j].name) {
-                        type = this.componentsArray.sensors[j].type;
+                    if (value === componentsArray.sensors[j].name) {
+                        type = componentsArray.sensors[j].type;
                         if (type === 'analog') {
-                            value = 'analogRead(' + this.componentsArray.sensors[j].pin.s + ')';
+                            value = 'analogRead(' + componentsArray.sensors[j].pin.s + ')';
                         } else if (type === 'digital') {
-                            value = 'digitalRead(' + this.componentsArray.sensors[j].pin.s + ')';
+                            value = 'digitalRead(' + componentsArray.sensors[j].pin.s + ')';
                         } else if (type === 'LineFollower') { // patch. When the new Web2Board is launched with float * as return, remove this
-                            value = '(float *)' + this.componentsArray.sensors[j].name + '.read()';
+                            value = '(float *)' + componentsArray.sensors[j].name + '.read()';
 
                         } else {
-                            value = this.componentsArray.sensors[j].name + '.read()';
+                            value = componentsArray.sensors[j].name + '.read()';
                         }
                         code = code.replace(new RegExp('{' + elem + '.type}', 'g'), value);
                     }
@@ -3056,7 +3056,7 @@
                             type = childBloq.bloqData.returnType;
                         }
                         if (type.type === 'fromDynamicDropdown') {
-                            connectionType = utils.getFromDynamicDropdownType(childBloq || this, type.idDropdown, type.options, softwareArrays, this.componentsArray);
+                            connectionType = utils.getFromDynamicDropdownType(childBloq || this, type.idDropdown, type.options, softwareArrays, componentsArray);
                         } else if (type.type === 'fromDropdown') {
                             connectionType = utils.getTypeFromBloq(childBloq || this, bloqs, IOConnectors, softwareArrays);
                         } else {
