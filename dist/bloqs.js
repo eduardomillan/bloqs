@@ -1526,7 +1526,7 @@
         startPreMouseMove = null,
         preMouseMoveX,
         preMouseMoveY,
-        componentsArray = [];
+        componentsArray = bloqsUtils.getEmptyComponentsArray();
 
     var setOptions = function(options) {
         fieldOffsetTopSource = options.fieldOffsetTopSource || [];
