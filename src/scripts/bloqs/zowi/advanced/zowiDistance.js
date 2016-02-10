@@ -22,7 +22,7 @@ var zowiDistance = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-zowi-distance'
+            value: 'bloq-zowi-distance-v1'
         }]
     ],
     code: 'zowi.getDistance()',

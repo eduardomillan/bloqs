@@ -25,10 +25,7 @@ var zowiMovementsFront = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-zowi-movements'
-        }, {
-            alias: 'text',
-            value: 'bloq-zowi-movements-walk'
+            value: 'bloq-zowi-movements-walk-v1'
         }, {
             id: 'DIR',
             alias: 'staticDropdown',

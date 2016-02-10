@@ -29,15 +29,15 @@ var zowiIfButtons = _.merge(_.clone(StatementInputBloq, true), {
             id: 'BUTTON',
             alias: 'staticDropdown',
             options: [{
-                    label: 'bloq-zowi-if-buttons-A',
+                    label: 'A',
                     value: 'PIN_AButton'
                 }, {
-                    label: 'bloq-zowi-if-buttons-B',
+                    label: 'B',
                     value: 'PIN_BButton'
                 }]
         }, {
             alias: 'text',
-            value: 'bloq-zowi-if-buttons-then'
+            value: 'bloq-zowi-if-buttons-then-v1'
         },]
     ],
     code: 'if(digitalRead({BUTTON}) == 1){{STATEMENTS}}'

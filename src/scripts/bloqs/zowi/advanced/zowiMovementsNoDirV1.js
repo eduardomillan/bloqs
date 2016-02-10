@@ -24,25 +24,22 @@ var zowiMovementsNoDirV1 = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-zowi-movements-no-dir-v1',
     content: [
         [{
-            alias: 'text',
-            value: 'bloq-zowi-movements-no-dir'
-        }, {
             id: 'MOVEMENT',
             alias: 'staticDropdown',
             options: [{
-                label: 'bloq-zowi-movements-no-dir-updown',
+                label: 'bloq-zowi-movements-no-dir-updown-v1',
                 value: 'updown'
             }, {
-                label: 'bloq-zowi-movements-no-dir-swing',
+                label: 'bloq-zowi-movements-no-dir-swing-v1',
                 value: 'swing'
             }, {
-                label: 'bloq-zowi-movements-no-dir-tiptoeSwing',
+                label: 'bloq-zowi-movements-no-dir-tiptoeSwing-v1',
                 value: 'tiptoeSwing'
             }, {
-                label: 'bloq-zowi-movements-no-dir-jitter',
+                label: 'bloq-zowi-movements-no-dir-jitter-v1',
                 value: 'jitter'
             }, {
-                label: 'bloq-zowi-movements-no-dir-ascendingTurn',
+                label: 'bloq-zowi-movements-no-dir-ascendingTurn-v1',
                 value: 'ascendingTurn'
             }]
         }, {

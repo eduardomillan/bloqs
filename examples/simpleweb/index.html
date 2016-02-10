@@ -141,7 +141,7 @@
 
         //Create a if bloq from the bloqsSchemas loaded
         var bloq1 = new bloqs.Bloq({
-            bloqData: bloqSchemas['declareVariable'],
+            bloqData: bloqSchemas['number'],
             componentsArray: componentsArray,
             $field: $field
         });
@@ -154,49 +154,13 @@
 
 
         var bloq2 = new bloqs.Bloq({
-            bloqData: bloqSchemas['declareVariableAdvanced'],
+            bloqData: bloqSchemas['if'],
             componentsArray: componentsArray,
             $field: $field
         });
         $field.append(bloq2.$bloq);
         bloq2.enable(true);
         bloq2.doConnectable();
-
-        var bloq3 = new bloqs.Bloq({
-            bloqData: bloqSchemas['invokeClass'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        $field.append(bloq3.$bloq);
-        bloq3.enable(true);
-        bloq3.doConnectable();
-
-        var bloq4 = new bloqs.Bloq({
-            bloqData: bloqSchemas['class'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        $field.append(bloq4.$bloq);
-        bloq4.enable(true);
-        bloq4.doConnectable();
-
-        var bloq5 = new bloqs.Bloq({
-            bloqData: bloqSchemas['invokeArgumentsClass'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        $field.append(bloq5.$bloq);
-        bloq5.enable(true);
-        bloq5.doConnectable();
-
-        var bloq6 = new bloqs.Bloq({
-            bloqData: bloqSchemas['classChildren'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        $field.append(bloq6.$bloq);
-        bloq6.enable(true);
-        bloq6.doConnectable();
 
         
     });

@@ -23,7 +23,7 @@ var zowiSounds = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-zowi-sounds'
+            value: 'bloq-zowi-sounds-v1'
         }, {
             id: 'SOUND',
             alias: 'staticDropdown',
