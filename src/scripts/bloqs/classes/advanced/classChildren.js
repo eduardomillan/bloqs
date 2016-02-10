@@ -29,7 +29,7 @@ var classChildren = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             id: 'NAME',
             alias: 'varInput',
-            placeholder: 'bloq-class-default'
+            placeholder: 'bloq-name-default'
         }, {
             alias: 'text',
             value: 'bloq-class-inheritance-type'
