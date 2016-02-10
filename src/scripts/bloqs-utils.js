@@ -857,6 +857,11 @@
                     globalVars += 'Zowi zowi;';
                     setupCode += 'zowi.init();';
                 }
+                if (componentsArray.robot[0] === 'evolution') {
+                    includeCode += '#include <BitbloqEvolution.h>\n#include <BitbloqUS.h>\n#include <Servo.h>\n#include <BitbloqOscillator.h>\n';
+                    globalVars += 'Evolution evolution;';
+                    setupCode += 'evolution.init();';
+                }
             }
             if (componentsArray.continuousServos.length >= 1 || componentsArray.servos.length >= 1 || componentsArray.oscillators.length >= 1) {
                 includeCode += '#include <Servo.h>\n';
@@ -960,7 +965,13 @@
                     if (includeCode.indexOf('#include <BitbloqRGB.h>') === -1) {
                         includeCode += '#include <BitbloqRGB.h>\n';
                     }
+                    if (includeCode.indexOf('#include <BitbloqSoftPWM.h>') === -1) {
+                        includeCode += '#include <BitbloqSoftPWM.h>\n';
+                    }
                     globalVars += 'ZumRGB ' + rgbs.name + '(' + (rgbs.pin.r || '') + ',' + (rgbs.pin.g || '') + ',' + (rgbs.pin.b || '') + ');';
+                    if (setupCode.indexOf('SoftPWMBegin();') === -1) {
+                        setupCode += 'SoftPWMBegin();';
+                    }
                 });
             }
             if (componentsArray.oscillators.length >= 1) {

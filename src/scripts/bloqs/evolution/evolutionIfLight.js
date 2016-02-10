@@ -59,7 +59,7 @@ var evolutionIfLight = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-evolution-if-light-then'
         },]
     ],
-    code: 'if(evolution.getLightRange(LEFT,RANGELEFT) && evolution.getLightRange(RIGHT,RANGERIGHT)){{STATEMENTS}}'
+    code: 'if(evolution.getLightRange(LEFT,{RANGELEFT}) && evolution.getLightRange(RIGHT,{RANGERIGHT})){{STATEMENTS}}'
 });
 
 utils.generateBloqInputConnectors(evolutionIfLight);
