@@ -38,6 +38,8 @@
     <!--Load Scripts-->
     <script src="./../../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./../../bower_components/lodash/lodash.min.js"></script>
+    <script src="./../../bower_components/autogrow/autogrow.min.js"></script>
+    <script src="./../../bower_components/jquery-auto-grow-input/jquery.auto-grow-input.min.js"></script>
     <!--Add bloqs js compiled-->
     <!--<script src="./../../dist/bloqs.min.js"></script>-->
     <!--Or add bloqs js without compile-->
@@ -190,7 +192,7 @@
         bloq5.doConnectable();
 
         var bloq6 = new bloqs.Bloq({
-            bloqData: bloqSchemas['classChildren'],
+            bloqData: bloqSchemas['comment'],
             componentsArray: componentsArray,
             $field: $field
         });
@@ -198,7 +200,7 @@
         bloq6.enable(true);
         bloq6.doConnectable();
 
-        
+
     });
     </script>
 </body>
