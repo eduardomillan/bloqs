@@ -40,7 +40,7 @@ var logicOperations = _.merge(_.clone(OutputBloq, true), {
             acceptType: 'all'
         }]
     ],
-    code: '{ARG1} {OPERATOR} {ARG2}',
+    code: '({ARG1} {OPERATOR} {ARG2})',
     returnType: {
         type: 'simple',
         value: 'bool'
