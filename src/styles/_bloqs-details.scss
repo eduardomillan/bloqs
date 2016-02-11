@@ -106,6 +106,7 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-switch", $control-color, $theme-color-control-color, true);
     @include createBloqsCss($reverse, "bloq-wait", $control-color, $theme-color-control-color);
     @include createBloqsCss($reverse, "bloq-while", $control-color, $theme-color-control-color, true);
+    @include createBloqsCss($reverse, "bloq-case-advanced", $control-color, $theme-color-control-color, true);
     /*---- CODE ------*/
     @include createBloqsCss($reverse, "bloq-code", $code-color, $theme-color-code-color);
     @include createBloqsCss($reverse, "bloq-comment", $code-color, $theme-color-code-color);

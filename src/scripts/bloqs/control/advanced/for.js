@@ -54,9 +54,9 @@ var forAdvancedV1 = _.merge(_.clone(StatementInputBloq, true), {
                 value: '-'
             }]
         }, {
-            id: 'ADD',
-            alias: 'numberInput',
-            value: 1
+            bloqInputId: 'ADD',
+            alias: 'bloqInput',
+            acceptType: 'all'
         }, {
             alias: 'text',
             value: 'bloq-for-exec'
