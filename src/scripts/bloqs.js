@@ -1527,9 +1527,9 @@
                     if (value === componentsArray.sensors[j].name) {
                         type = componentsArray.sensors[j].type;
                         if (type === 'analog') {
-                            value = 'analogRead(' + componentsArray.sensors[j].pin.s + ')';
+                            value = 'analogRead(' + componentsArray.sensors[j].name + ')';
                         } else if (type === 'digital') {
-                            value = 'digitalRead(' + componentsArray.sensors[j].pin.s + ')';
+                            value = 'digitalRead(' + componentsArray.sensors[j].name + ')';
                         } else if (type === 'LineFollower') { // patch. When the new Web2Board is launched with float * as return, remove this
                             value = '(float *)' + componentsArray.sensors[j].name + '.read()';
 
