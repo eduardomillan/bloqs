@@ -141,7 +141,7 @@
 
         //Create a if bloq from the bloqsSchemas loaded
         var bloq1 = new bloqs.Bloq({
-            bloqData: bloqSchemas['oscillatorsST'],
+            bloqData: bloqSchemas['number'],
             componentsArray: componentsArray,
             $field: $field
         });
@@ -154,25 +154,15 @@
 
 
         var bloq2 = new bloqs.Bloq({
-            bloqData: bloqSchemas['oscillatorConf'],
+            bloqData: bloqSchemas['if'],
             componentsArray: componentsArray,
             $field: $field
         });
         $field.append(bloq2.$bloq);
         bloq2.enable(true);
         bloq2.doConnectable();
-        
 
-        var bloq3 = new bloqs.Bloq({
-            bloqData: bloqSchemas['oscillatorConf'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        $field.append(bloq3.$bloq);
-        bloq3.enable(true);
-        bloq3.doConnectable();
         
-
         
     });
     </script>

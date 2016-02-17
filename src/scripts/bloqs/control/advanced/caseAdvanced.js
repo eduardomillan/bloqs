@@ -1,9 +1,11 @@
+//--IN PROGRESS--//
+
 /*global require */
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    StatementInputBloq = require('./../statementInputBloq');
+    utils = require('./../../build-utils'),
+    StatementInputBloq = require('./../../statementInputBloq');
 
 /**
  * Bloq name: caseAdvanced

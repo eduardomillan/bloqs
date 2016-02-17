@@ -1,3 +1,5 @@
+//--IN PROGRESS--//
+
 /*global require */
 'use strict';
 
@@ -6,31 +8,39 @@ var _ = require('lodash'),
     StatementBloq = require('./../../statementBloq');
 
 /**
- * Bloq name: declareVariableAdvanced
+ * Bloq name: declareArray
  *
  * Bloq type: Statement
  *
- * Description: It declares a new variable called with the given
- *              name with a specific type, selectable from a drop-down,
- *              and initializes it with the given value.
+ * Description: It declares a new variable array of the given size, called
+ *              with the given name with a specific type, selectable from
+ *              a drop-down.
  *
  * Return type: none
  */
 
-var declareVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
-    name: 'declareVariableAdvanced',
-    bloqClass: 'bloq-declare-variable',
+var declareArray = _.merge(_.clone(StatementBloq, true), {
+
+    name: 'declareArray',
+    bloqClass: 'bloq-declare-array',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-declare-variable-declare'
+            value: 'bloq-declare-array'
         }, {
             id: 'NAME',
             alias: 'varInput',
-            value: ''
+            placeholder: 'bloq-name-default'
         }, {
             alias: 'text',
-            value: 'bloq-declare-variable-declare-type'
+            value: 'bloq-declare-array-size'
+        }, {
+            bloqInputId: 'SIZE',
+            alias: 'bloqInput',
+            acceptType: 'all'
+        }, {
+            alias: 'text',
+            value: 'bloq-declare-array-type'
         }, {
             id: 'TYPE',
             alias: 'staticDropdown',
@@ -50,23 +60,17 @@ var declareVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
                     label: 'bloq-declare-variable-declare-type-bool',
                     value: 'bool'
                 }]
-        }, {
-            alias: 'text',
-            value: '='
-        }, {
-            bloqInputId: 'VALUE',
-            alias: 'bloqInput',
-            acceptType: 'all',
         }]
     ],
+    code: '{TYPE} {NAME}[{SIZE}];',
+    createDynamicContent: 'softwareVars',
     returnType: {
         type: 'fromDropdown',
         idDropdown: 'TYPE',
-    },
-    createDynamicContent: 'softwareVars',
-    code: '{TYPE} {NAME} = {VALUE};'
+        options: 'softwareVars'
+    }
 });
 
-utils.generateBloqInputConnectors(declareVariableAdvanced);
+utils.generateBloqInputConnectors(declareArray);
 
-module.exports = declareVariableAdvanced;
+module.exports = declareArray;

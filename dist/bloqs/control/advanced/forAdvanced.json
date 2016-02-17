@@ -1,6 +1,6 @@
 {
   "type": "statement-input",
-  "name": "forAdvanced",
+  "name": "forAdvanced-v2",
   "connectors": [
     {
       "type": "connector--top",
@@ -18,22 +18,28 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "4eb9f29e-b0e5-44fd-abd5-f3cad7047309"
+      "name": "eac1af2a-2032-4e26-9bf7-7978fc35b4fb"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "ea23761b-bbb0-42ce-99aa-53b004cb054d"
+      "name": "98f92c2b-a0a6-4e38-a8a1-bec7f906e361"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "a13e0364-3a1c-4953-9b0d-d4ebfbf16c28"
+      "name": "46895ce1-c852-4aa5-bd49-25fa75872c93"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": "all",
+      "name": "87451fe4-2162-428c-99b9-6531dbdb0c6d"
     }
   ],
-  "bloqClass": "bloq-for deprecated",
+  "bloqClass": "bloq-for",
   "content": [
     [
       {
@@ -44,7 +50,7 @@
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "4eb9f29e-b0e5-44fd-abd5-f3cad7047309"
+        "name": "eac1af2a-2032-4e26-9bf7-7978fc35b4fb"
       },
       {
         "alias": "text",
@@ -54,7 +60,7 @@
         "bloqInputId": "INIT",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "ea23761b-bbb0-42ce-99aa-53b004cb054d"
+        "name": "98f92c2b-a0a6-4e38-a8a1-bec7f906e361"
       },
       {
         "alias": "text",
@@ -64,7 +70,7 @@
         "bloqInputId": "FINAL",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "a13e0364-3a1c-4953-9b0d-d4ebfbf16c28"
+        "name": "46895ce1-c852-4aa5-bd49-25fa75872c93"
       },
       {
         "id": "MODE",
@@ -72,13 +78,19 @@
         "options": [
           {
             "label": "bloq-for-add",
-            "value": "++"
+            "value": "+"
           },
           {
             "label": "bloq-for-subtract",
-            "value": "--"
+            "value": "-"
           }
         ]
+      },
+      {
+        "bloqInputId": "ADD",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "87451fe4-2162-428c-99b9-6531dbdb0c6d"
       },
       {
         "alias": "text",
@@ -86,5 +98,5 @@
       }
     ]
   ],
-  "code": "for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}"
+  "code": "'for({VAR}={INIT};{VAR}' + ('{MODE}' === '+'?'<=':'>=' ) + '{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}'"
 }

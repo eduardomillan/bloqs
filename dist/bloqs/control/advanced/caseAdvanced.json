@@ -1,6 +1,6 @@
 {
   "type": "statement-input",
-  "name": "switchAdvanced",
+  "name": "caseAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -18,23 +18,27 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "a9b8c1bd-bcd1-4df7-9ec2-41eb8613b350"
+      "name": "258afcdd-9226-44fe-9c44-a3097fd04e25"
     }
   ],
-  "bloqClass": "bloq-switch",
+  "bloqClass": "bloq-case-advanced",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-switch-check"
+        "value": "bloq-case-ifSameTo"
       },
       {
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "a9b8c1bd-bcd1-4df7-9ec2-41eb8613b350"
+        "name": "258afcdd-9226-44fe-9c44-a3097fd04e25"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-case-exec"
       }
     ]
   ],
-  "code": "switch (int({VAR})) {{STATEMENTS}}"
+  "code": "case {VAR}:{{STATEMENTS}break;}"
 }

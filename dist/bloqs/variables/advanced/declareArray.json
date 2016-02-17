@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "declareVariableAdvanced",
+  "name": "declareArray",
   "connectors": [
     {
       "type": "connector--top",
@@ -14,24 +14,34 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "cb2e6995-2ae3-4bf1-8e1b-18c8d841e341"
+      "name": "48c07945-80a4-47eb-86af-0477648951c6"
     }
   ],
-  "bloqClass": "bloq-declare-variable",
+  "bloqClass": "bloq-declare-array",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-declare-variable-declare"
+        "value": "bloq-declare-array"
       },
       {
         "id": "NAME",
         "alias": "varInput",
-        "value": ""
+        "placeholder": "bloq-name-default"
       },
       {
         "alias": "text",
-        "value": "bloq-declare-variable-declare-type"
+        "value": "bloq-declare-array-size"
+      },
+      {
+        "bloqInputId": "SIZE",
+        "alias": "bloqInput",
+        "acceptType": "all",
+        "name": "48c07945-80a4-47eb-86af-0477648951c6"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-declare-array-type"
       },
       {
         "id": "TYPE",
@@ -58,23 +68,14 @@
             "value": "bool"
           }
         ]
-      },
-      {
-        "alias": "text",
-        "value": "="
-      },
-      {
-        "bloqInputId": "VALUE",
-        "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "cb2e6995-2ae3-4bf1-8e1b-18c8d841e341"
       }
     ]
   ],
+  "code": "{TYPE} {NAME}[{SIZE}];",
+  "createDynamicContent": "softwareVars",
   "returnType": {
     "type": "fromDropdown",
-    "idDropdown": "TYPE"
-  },
-  "createDynamicContent": "softwareVars",
-  "code": "{TYPE} {NAME} = {VALUE};"
+    "idDropdown": "TYPE",
+    "options": "softwareVars"
+  }
 }

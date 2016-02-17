@@ -181,6 +181,7 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-set-variableArray", $vars-color, $theme-color-vars-color);
     @include createBloqsCss($reverse, "bloq-set-variable", $vars-color, $theme-color-vars-color);
     @include createBloqsCss($reverse, "bloq-select-variable", $vars-color, $theme-color-vars-color);
+    @include createBloqsCss($reverse, "bloq-declare-array", $vars-color, $theme-color-vars-color);
     /*---- OUTPUT BLOQ to avoid that a outputbloq take the extern bloq style------*/
     @include createBloqsCss($reverse, "bloq-number", $maths-color, $theme-color-maths-color);
     @include createBloqsCss($reverse, "bloq-string", $text-color, $theme-color-text-color);
