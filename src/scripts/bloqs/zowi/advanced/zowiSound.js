@@ -22,7 +22,7 @@ var zowiSound = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-zowi-sound'
+            value: 'bloq-zowi-sound-v1'
         }]
     ],
     code: 'zowi.getNoise()',

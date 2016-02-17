@@ -23,7 +23,7 @@ var zowiMouth = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-zowi-mouth'
+            value: 'bloq-zowi-mouth-v1'
         }, {
             id: 'GESTURE',
             alias: 'staticDropdown',
