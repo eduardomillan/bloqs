@@ -129,9 +129,11 @@ pre[class*="language-"] {
                 loopBloq: null
             };
 
+        /*//Add some hardware
         componentsArray.servos[0]={id: "servo", name: "servo_0", oscillator:"false", pin:{s:"2"}};
         componentsArray.servos[1]={id: "servo", name: "servo_1", oscillator:"false", pin:{s:"3"}};
         componentsArray.servos[2]={id: "servo", name: "servo_2", oscillator:"false", pin:{s:"4"}};
+        */
 
         var $field = $('#bloqs--field');
         // Create the main arduino bloqs
@@ -172,7 +174,7 @@ pre[class*="language-"] {
 
         //Create a if bloq from the bloqsSchemas loaded
         var bloq1 = new bloqs.Bloq({
-            bloqData: bloqSchemas['if'],
+            bloqData: bloqSchemas['number'],
             componentsArray: componentsArray,
             $field: $field
         });
@@ -185,7 +187,7 @@ pre[class*="language-"] {
 
 
         var bloq2 = new bloqs.Bloq({
-            bloqData: bloqSchemas['servoDetach'],
+            bloqData: bloqSchemas['if'],
             componentsArray: componentsArray,
             $field: $field
         });
