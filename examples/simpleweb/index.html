@@ -129,6 +129,10 @@ pre[class*="language-"] {
                 loopBloq: null
             };
 
+        componentsArray.servos[0]={id: "servo", name: "servo_0", oscillator:"false", pin:{s:"2"}};
+        componentsArray.servos[1]={id: "servo", name: "servo_1", oscillator:"false", pin:{s:"3"}};
+        componentsArray.servos[2]={id: "servo", name: "servo_2", oscillator:"false", pin:{s:"4"}};
+
         var $field = $('#bloqs--field');
         // Create the main arduino bloqs
         //firsttime set componentsArray and field
@@ -168,7 +172,7 @@ pre[class*="language-"] {
 
         //Create a if bloq from the bloqsSchemas loaded
         var bloq1 = new bloqs.Bloq({
-            bloqData: bloqSchemas['declareVariable'],
+            bloqData: bloqSchemas['if'],
             componentsArray: componentsArray,
             $field: $field
         });
@@ -181,7 +185,7 @@ pre[class*="language-"] {
 
 
         var bloq2 = new bloqs.Bloq({
-            bloqData: bloqSchemas['declareVariableAdvanced'],
+            bloqData: bloqSchemas['servoDetach'],
             componentsArray: componentsArray,
             $field: $field
         });
@@ -189,43 +193,7 @@ pre[class*="language-"] {
         bloq2.enable(true);
         bloq2.doConnectable();
 
-        var bloq3 = new bloqs.Bloq({
-            bloqData: bloqSchemas['invokeClass'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        $field.append(bloq3.$bloq);
-        bloq3.enable(true);
-        bloq3.doConnectable();
-
-        var bloq4 = new bloqs.Bloq({
-            bloqData: bloqSchemas['class'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        $field.append(bloq4.$bloq);
-        bloq4.enable(true);
-        bloq4.doConnectable();
-
-        var bloq5 = new bloqs.Bloq({
-            bloqData: bloqSchemas['invokeArgumentsClass'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        $field.append(bloq5.$bloq);
-        bloq5.enable(true);
-        bloq5.doConnectable();
-
-        var bloq6 = new bloqs.Bloq({
-            bloqData: bloqSchemas['comment'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        $field.append(bloq6.$bloq);
-        bloq6.enable(true);
-        bloq6.doConnectable();
-
-
+        
     });
     </script>
 </body>
