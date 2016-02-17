@@ -10,13 +10,13 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "24df831c-be71-4d28-8751-b03caa5f3590"
+      "name": "6ed21f67-ee19-461e-824a-78f3aa1a35e3"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "485f8e47-6df4-467a-bddb-4ef4fa108667"
+      "name": "7f8dbb91-1863-4d3c-8422-21a3c4c2da1c"
     }
   ],
   "bloqClass": "bloq-equality-operations",
@@ -26,7 +26,7 @@
         "bloqInputId": "ARG1",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "24df831c-be71-4d28-8751-b03caa5f3590"
+        "name": "6ed21f67-ee19-461e-824a-78f3aa1a35e3"
       },
       {
         "id": "OPERATOR",
@@ -62,11 +62,11 @@
         "bloqInputId": "ARG2",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "485f8e47-6df4-467a-bddb-4ef4fa108667"
+        "name": "7f8dbb91-1863-4d3c-8422-21a3c4c2da1c"
       }
     ]
   ],
-  "code": "{ARG1} {OPERATOR} {ARG2}",
+  "code": "({ARG1} {OPERATOR} {ARG2})",
   "returnType": {
     "type": "simple",
     "value": "bool"

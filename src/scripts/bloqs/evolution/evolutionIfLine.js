@@ -30,10 +30,10 @@ var evolutionIfLine = _.merge(_.clone(StatementInputBloq, true), {
             alias: 'staticDropdown',
             options: [{
                     label: 'bloq-evolution-if-line-white',
-                    value: '0'
+                    value: '1'
                 }, {
                     label: 'bloq-evolution-if-line-black',
-                    value: '1'
+                    value: '0'
                 }]
         }, {
             alias: 'text',
@@ -43,10 +43,10 @@ var evolutionIfLine = _.merge(_.clone(StatementInputBloq, true), {
             alias: 'staticDropdown',
             options: [{
                     label: 'bloq-evolution-if-line-white',
-                    value: '0'
+                    value: '1'
                 }, {
                     label: 'bloq-evolution-if-line-black',
-                    value: '1'
+                    value: '0'
                 }]
         }, {
             alias: 'text',

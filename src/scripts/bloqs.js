@@ -1523,22 +1523,24 @@
                 value = element.val() || '';
                 //hardcoded!!
                 for (var j = 0; j < componentsArray.sensors.length; j++) {
-
                     if (value === componentsArray.sensors[j].name) {
                         type = componentsArray.sensors[j].type;
                         if (type === 'analog') {
-                            value = 'analogRead(' + componentsArray.sensors[j].pin.s + ')';
+                            value = 'analogRead(' + componentsArray.sensors[j].name + ')';
                         } else if (type === 'digital') {
-                            value = 'digitalRead(' + componentsArray.sensors[j].pin.s + ')';
+                            value = 'digitalRead(' + componentsArray.sensors[j].name + ')';
                         } else if (type === 'LineFollower') { // patch. When the new Web2Board is launched with float * as return, remove this
                             value = '(float *)' + componentsArray.sensors[j].name + '.read()';
-
                         } else {
                             value = componentsArray.sensors[j].name + '.read()';
                         }
                         code = code.replace(new RegExp('{' + elem + '.type}', 'g'), value);
                     }
-
+                }
+                for (var j = 0; j < componentsArray.servos.length; j++) {
+                    if (value === componentsArray.servos[j].name) {
+                        code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.servos[j].pin.s);
+                    }
                 }
                 if (element.attr('data-content-type') === 'stringInput') {
                     value = utils.validString(value);

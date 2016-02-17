@@ -1,6 +1,6 @@
 {
-  "type": "statement-input",
-  "name": "caseDefault",
+  "type": "statement",
+  "name": "servoDetach",
   "connectors": [
     {
       "type": "connector--top",
@@ -9,20 +9,21 @@
     {
       "type": "connector--bottom",
       "accept": "connector--top"
-    },
-    {
-      "type": "connector--root",
-      "accept": "connector--top"
     }
   ],
-  "bloqClass": "bloq-case-default",
+  "bloqClass": "bloq-servo-detach",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-case-default-inOtherCase"
+        "value": "bloq-servo-detach"
+      },
+      {
+        "id": "SERVO",
+        "alias": "dynamicDropdown",
+        "options": "servos"
       }
     ]
   ],
-  "code": "default:{STATEMENTS}break;"
+  "code": "{SERVO}.detach();"
 }
