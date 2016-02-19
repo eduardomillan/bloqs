@@ -544,17 +544,17 @@
     #bloqs--field.theme-basic .bloq.bloq-comment select {
       color: #58B42D; }
   #bloqs--field.theme-basic .bloq.bloq-convert {
-    color: #E30B9A; }
+    color: #cf1c22; }
     #bloqs--field.theme-basic .bloq.bloq-convert input,
     #bloqs--field.theme-basic .bloq.bloq-convert textarea,
     #bloqs--field.theme-basic .bloq.bloq-convert select {
-      color: #E30B9A; }
+      color: #cf1c22; }
   #bloqs--field.theme-basic .bloq.bloq-serial-send {
-    color: #E30B9A; }
+    color: #cf1c22; }
     #bloqs--field.theme-basic .bloq.bloq-serial-send input,
     #bloqs--field.theme-basic .bloq.bloq-serial-send textarea,
     #bloqs--field.theme-basic .bloq.bloq-serial-send select {
-      color: #E30B9A; }
+      color: #cf1c22; }
   #bloqs--field.theme-basic .bloq.bloq-hts221-humidity {
     color: #cf1c22; }
     #bloqs--field.theme-basic .bloq.bloq-hts221-humidity input,
@@ -928,11 +928,11 @@
     #bloqs--field.theme-basic .bloq.bloq-read-sensor select {
       color: #cf1c22; }
   #bloqs--field.theme-basic .bloq.bloq-serial-receiver {
-    color: #E30B9A; }
+    color: #cf1c22; }
     #bloqs--field.theme-basic .bloq.bloq-serial-receiver input,
     #bloqs--field.theme-basic .bloq.bloq-serial-receiver textarea,
     #bloqs--field.theme-basic .bloq.bloq-serial-receiver select {
-      color: #E30B9A; }
+      color: #cf1c22; }
   #bloqs--field.theme-basic .bloq.bloq-basic-operations {
     color: #01C0C8; }
     #bloqs--field.theme-basic .bloq.bloq-basic-operations input,
@@ -3736,13 +3736,13 @@
     #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled) select,
     #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled) .bloqinput {
       color: white;
-      background: #e10a98;
+      background: #ce1c23;
       background-color: rgba(0, 0, 0, 0.2); }
       #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled) input:before,
       #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled) textarea:before,
       #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled) select:before,
       #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled) .bloqinput:before {
-        background: #e10a98;
+        background: #ce1c23;
         background-color: rgba(0, 0, 0, 0.2); }
     #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled) ::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.5); }
@@ -3753,13 +3753,13 @@
       #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled) select option {
         color: black; }
     #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled).bloq--statement {
-      background-color: #e10a98; }
+      background-color: #ce1c23; }
     #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled).bloq--output {
-      background-color: #e10a98; }
+      background-color: #ce1c23; }
       #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled).bloq--output:before {
-        background-color: #e10a98; }
+        background-color: #ce1c23; }
       #bloqs--field.theme-colors .bloq.bloq-convert:not(.disabled).bloq--output:focus:not(.disabled):after {
-        background-color: #e10a98; }
+        background-color: #ce1c23; }
   #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled) input,
@@ -3767,13 +3767,13 @@
     #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled) select,
     #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled) .bloqinput {
       color: white;
-      background: #e10a98;
+      background: #ce1c23;
       background-color: rgba(0, 0, 0, 0.2); }
       #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled) input:before,
       #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled) textarea:before,
       #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled) select:before,
       #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled) .bloqinput:before {
-        background: #e10a98;
+        background: #ce1c23;
         background-color: rgba(0, 0, 0, 0.2); }
     #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled) ::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.5); }
@@ -3784,13 +3784,13 @@
       #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled) select option {
         color: black; }
     #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled).bloq--statement {
-      background-color: #e10a98; }
+      background-color: #ce1c23; }
     #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled).bloq--output {
-      background-color: #e10a98; }
+      background-color: #ce1c23; }
       #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled).bloq--output:before {
-        background-color: #e10a98; }
+        background-color: #ce1c23; }
       #bloqs--field.theme-colors .bloq.bloq-serial-send:not(.disabled).bloq--output:focus:not(.disabled):after {
-        background-color: #e10a98; }
+        background-color: #ce1c23; }
   #bloqs--field.theme-colors .bloq.bloq-hts221-humidity:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-hts221-humidity:not(.disabled) input,
@@ -5720,13 +5720,13 @@
     #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled) select,
     #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled) .bloqinput {
       color: white;
-      background: #e10a98;
+      background: #ce1c23;
       background-color: rgba(0, 0, 0, 0.2); }
       #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled) input:before,
       #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled) textarea:before,
       #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled) select:before,
       #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled) .bloqinput:before {
-        background: #e10a98;
+        background: #ce1c23;
         background-color: rgba(0, 0, 0, 0.2); }
     #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled) ::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.5); }
@@ -5737,13 +5737,13 @@
       #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled) select option {
         color: black; }
     #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled).bloq--statement {
-      background-color: #e10a98; }
+      background-color: #ce1c23; }
     #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled).bloq--output {
-      background-color: #e10a98; }
+      background-color: #ce1c23; }
       #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled).bloq--output:before {
-        background-color: #e10a98; }
+        background-color: #ce1c23; }
       #bloqs--field.theme-colors .bloq.bloq-serial-receiver:not(.disabled).bloq--output:focus:not(.disabled):after {
-        background-color: #e10a98; }
+        background-color: #ce1c23; }
   #bloqs--field.theme-colors .bloq.bloq-basic-operations:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-basic-operations:not(.disabled) input,
