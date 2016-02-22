@@ -1542,6 +1542,16 @@
                         code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.servos[j].pin.s);
                     }
                 }
+                for (var j = 0; j < componentsArray.continuousServos.length; j++) {
+                    if (value === componentsArray.continuousServos[j].name) {
+                        code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.continuousServos[j].pin.s);
+                    }
+                }
+                for (var j = 0; j < componentsArray.oscillators.length; j++) {
+                    if (value === componentsArray.oscillators[j].name) {
+                        code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.oscillators[j].pin.s);
+                    }
+                }
                 if (element.attr('data-content-type') === 'stringInput') {
                     value = utils.validString(value);
                 } else if (element.attr('data-content-type') === 'charInput') {
