@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "rgbLedAdvanced",
+  "name": "rgbLedFadeAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -14,27 +14,27 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "8df1563b-99ab-4687-947d-6905b5a31c96"
+      "name": "a85fe66a-8769-41d1-9807-dc0442bcea42"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "f422e7bd-2275-438c-9d1b-b5c75cf2bd7e"
+      "name": "bd810273-8bf5-48fd-89f9-d82ab7843e51"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "9776cf5d-06bd-4110-9b0e-3391d9cd99ba"
+      "name": "71868fad-e9a1-48e2-ae8a-10fc2bce1d8d"
     }
   ],
-  "bloqClass": "bloq-rgbLed-advanced",
+  "bloqClass": "bloq-rgbLed-fade-advanced",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-rgbLed"
+        "value": "bloq-rgbLed-fade"
       },
       {
         "id": "LED",
@@ -43,35 +43,35 @@
       },
       {
         "alias": "text",
-        "value": "bloq-rgbLed-red"
+        "value": "bloq-rgbLed-fade-red"
       },
       {
         "bloqInputId": "RED",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "8df1563b-99ab-4687-947d-6905b5a31c96"
+        "name": "a85fe66a-8769-41d1-9807-dc0442bcea42"
       },
       {
         "alias": "text",
-        "value": "bloq-rgbLed-green"
+        "value": "bloq-rgbLed-fade-green"
       },
       {
-        "bloqInputId": "GREEN",
+        "id": "GREEN",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "f422e7bd-2275-438c-9d1b-b5c75cf2bd7e"
+        "name": "bd810273-8bf5-48fd-89f9-d82ab7843e51"
       },
       {
         "alias": "text",
-        "value": "bloq-rgbLed-blue"
+        "value": "bloq-rgbLed-fade-blue"
       },
       {
-        "bloqInputId": "BLUE",
+        "id": "BLUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "9776cf5d-06bd-4110-9b0e-3391d9cd99ba"
+        "name": "71868fad-e9a1-48e2-ae8a-10fc2bce1d8d"
       }
     ]
   ],
-  "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});"
+  "code": "{LED}.crossFade({RED},{GREEN},{BLUE});"
 }
