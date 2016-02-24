@@ -861,6 +861,12 @@
     #bloqs--field.theme-basic .bloq.bloq-rgbLed-off textarea,
     #bloqs--field.theme-basic .bloq.bloq-rgbLed-off select {
       color: #cf1c22; }
+  #bloqs--field.theme-basic .bloq.bloq-analog-write-V1 {
+    color: #cf1c22; }
+    #bloqs--field.theme-basic .bloq.bloq-analog-write-V1 input,
+    #bloqs--field.theme-basic .bloq.bloq-analog-write-V1 textarea,
+    #bloqs--field.theme-basic .bloq.bloq-analog-write-V1 select {
+      color: #cf1c22; }
   #bloqs--field.theme-basic .bloq.bloq-boolean {
     color: #7C0DD6; }
     #bloqs--field.theme-basic .bloq.bloq-boolean input,
@@ -5430,6 +5436,37 @@
       #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled).bloq--output:before {
         background-color: #ce1c23; }
       #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #ce1c23; }
+  #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) .bloqinput {
+      color: white;
+      background: #ce1c23;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) .bloqinput:before {
+        background: #ce1c23;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #8c919b;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled).bloq--statement {
+      background-color: #ce1c23; }
+    #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled).bloq--output {
+      background-color: #ce1c23; }
+      #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled).bloq--output:before {
+        background-color: #ce1c23; }
+      #bloqs--field.theme-colors .bloq.bloq-analog-write-V1:not(.disabled).bloq--output:focus:not(.disabled):after {
         background-color: #ce1c23; }
   #bloqs--field.theme-colors .bloq.bloq-boolean:not(.disabled) {
     color: white; }
