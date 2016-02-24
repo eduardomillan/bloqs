@@ -26,27 +26,27 @@ var hts221 = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Leer la'
+            value: 'bloq-hts221'
         }, {
             id: 'FUNCTION',
             alias: 'staticDropdown',
             options: [{
-                label: 'temperatura',
-                value: ''
+                label: 'bloq-hts221-read-temperature',
+                value: 'getTemperature()'
             }, {
-                label: 'humedad',
-                value: ''
+                label: 'bloq-hts221-read-humidity',
+                value: 'getHumidity()'
             }]
         }, {
             alias: 'text',
-            value: 'del sensor'
+            value: 'bloq-hts221-sensor'
         }, {
             id: 'SENSOR',
             alias: 'dynamicDropdown',
             options: 'hts221'
         }]
     ],
-    code: '',
+    code: '{SENSOR}.{FUNCTION}',
     returnType: {
         type: 'simple',
         value: 'float'
