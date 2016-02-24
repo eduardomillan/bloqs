@@ -46,7 +46,11 @@
         fieldOffsetTopSource = options.fieldOffsetTopSource || [];
         fieldOffsetLeft = options.fieldOffsetLeft || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || 0;
-        forcedScrollTop = options.forcedScrollTop || null;
+
+        if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
+            forcedScrollTop = options.forcedScrollTop;
+        }
+
         lang = options.lang || 'es-ES';
     };
 
