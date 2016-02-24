@@ -17,6 +17,7 @@
         availableIOConnectors = [],
         $field = null,
         scrollTop = 0,
+        forcedScrollTop = null,
         softwareArrays = {
             voidFunctions: [],
             returnFunctions: [],
@@ -45,6 +46,7 @@
         fieldOffsetTopSource = options.fieldOffsetTopSource || [];
         fieldOffsetLeft = options.fieldOffsetLeft || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || 0;
+        forcedScrollTop = options.forcedScrollTop || null;
         lang = options.lang || 'es-ES';
     };
 
@@ -341,6 +343,10 @@
             destinationY;
         if (scrollTop !== $field[0].scrollTop) {
             scrollTop = $field[0].scrollTop;
+        }
+
+        if (forcedScrollTop !== null) {
+            scrollTop = forcedScrollTop;
         }
 
         x = clientX - fieldOffsetLeft;
