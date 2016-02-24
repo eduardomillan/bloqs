@@ -248,8 +248,8 @@
         return dragConnectorOffset.left < (dropConnectorOffset.left + dropConnector[0].clientWidth + margin) && (dragConnectorOffset.left + dragConnector[0].clientWidth) > (dropConnectorOffset.left - margin) && dragConnectorOffset.top < (dropConnectorOffset.top + dropConnector[0].clientHeight + margin) && (dragConnectorOffset.top + dragConnector[0].clientHeight) > (dropConnectorOffset.top - margin);
     };
 
-    var sameConnectionType = function(dragBloq, dropBloq, dropConnectorAcceptType, bloqs, IOConnectors, softwareArrays) {
-        var dragConnectorType = getTypeFromBloq(dragBloq, bloqs, IOConnectors, softwareArrays);
+    var sameConnectionType = function(dragBloq, dropBloq, dropConnectorAcceptType, bloqs, IOConnectors, softwareArrays, componentsArray) {
+        var dragConnectorType = getTypeFromBloq(dragBloq, bloqs, IOConnectors, softwareArrays, componentsArray);
         if (typeof(dropConnectorAcceptType) === 'object') {
             dropConnectorAcceptType = getTypeFromDynamicDropdown(dropBloq, dropConnectorAcceptType, softwareArrays);
         }
@@ -686,7 +686,7 @@
         return false;
     };
 
-    var getTypeFromBloq = function(bloq, bloqs, IOConnectors, softwareArrays) {
+    var getTypeFromBloq = function(bloq, bloqs, IOConnectors, softwareArrays, componentsArray) {
         var result;
         if (!bloq) {
             console.error('We cant get the type if we dont have a bloq');
@@ -709,13 +709,13 @@
                     }
                 });
                 if (connector && connector.connectedTo) {
-                    result = getTypeFromBloq(getBloqByConnectorUuid(connector.connectedTo, bloqs, IOConnectors), bloqs, IOConnectors, softwareArrays);
+                    result = getTypeFromBloq(getBloqByConnectorUuid(connector.connectedTo, bloqs, IOConnectors), bloqs, IOConnectors, softwareArrays, componentsArray);
                 } else {
                     result = '';
                 }
                 break;
             case 'fromDynamicDropdown':
-                result = getFromDynamicDropdownType(bloq, bloq.bloqData.returnType.idDropdown, bloq.bloqData.returnType.options, softwareArrays, bloq.componentsArray);
+                result = getFromDynamicDropdownType(bloq, bloq.bloqData.returnType.idDropdown, bloq.bloqData.returnType.options, softwareArrays, componentsArray);
                 break;
             case 'fromDropdown':
                 result = bloq.$bloq.find('[data-content-id="' + bloq.bloqData.returnType.idDropdown + '"]').val();
@@ -1504,6 +1504,7 @@
         availableIOConnectors = [],
         $field = null,
         scrollTop = 0,
+        forcedScrollTop = null,
         softwareArrays = {
             voidFunctions: [],
             returnFunctions: [],
@@ -1532,6 +1533,7 @@
         fieldOffsetTopSource = options.fieldOffsetTopSource || [];
         fieldOffsetLeft = options.fieldOffsetLeft || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || 0;
+        forcedScrollTop = options.forcedScrollTop || null;
         lang = options.lang || 'es-ES';
     };
 
@@ -1806,7 +1808,7 @@
             if (IOConnectors[connectorUuid].data.type === 'connector--input') {
                 if (utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors).isConnectable()) {
                     if (!IOConnectors[connectorUuid].connectedTo) {
-                        if (utils.sameConnectionType(bloq, utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors), IOConnectors[connectorUuid].data.acceptType, bloqs, IOConnectors, softwareArrays)) {
+                        if (utils.sameConnectionType(bloq, utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors), IOConnectors[connectorUuid].data.acceptType, bloqs, IOConnectors, softwareArrays, componentsArray)) {
                             if (!utils.connectorIsInBranch(connectorUuid, bloq.uuid, bloqs, IOConnectors)) {
                                 availableIOConnectors.push(connectorUuid);
                             }
@@ -1828,6 +1830,10 @@
             destinationY;
         if (scrollTop !== $field[0].scrollTop) {
             scrollTop = $field[0].scrollTop;
+        }
+
+        if (forcedScrollTop !== null) {
+            scrollTop = forcedScrollTop;
         }
 
         x = clientX - fieldOffsetLeft;
@@ -1968,7 +1974,7 @@
         var dragConnector = utils.getOutputConnector(bloq, IOConnectors);
         availableIOConnectors.forEach(function(dropConnectorUuid) {
             dropConnector = IOConnectors[dropConnectorUuid];
-            if (utils.itsOver(dragConnector.jqueryObject, dropConnector.jqueryObject, 0) && utils.sameConnectionType(bloqs[dragConnector.bloqUuid], bloqs[dropConnector.bloqUuid], dropConnector.data.acceptType, bloqs, IOConnectors, softwareArrays)) {
+            if (utils.itsOver(dragConnector.jqueryObject, dropConnector.jqueryObject, 0) && utils.sameConnectionType(bloqs[dragConnector.bloqUuid], bloqs[dropConnector.bloqUuid], dropConnector.data.acceptType, bloqs, IOConnectors, softwareArrays, componentsArray)) {
                 dropConnector.jqueryObject.addClass('available');
             } else {
                 dropConnector.jqueryObject.removeClass('available');
@@ -2044,7 +2050,7 @@
             }
             i++;
         }
-        type = type || utils.getTypeFromBloq(bloq, bloqs, IOConnectors, softwareArrays);
+        type = type || utils.getTypeFromBloq(bloq, bloqs, IOConnectors, softwareArrays, componentsArray);
         //arguments if any:
         if (bloq.bloqData.type === 'statement-input' && bloq.bloqData.arguments) {
             args = args || utils.getArgsFromBloq(bloq, bloqs, IOConnectors);
@@ -2114,7 +2120,7 @@
         var tempSoftVar;
         for (var i = 0; i < softwareArrays[dynamicContentType].length; i++) {
             tempSoftVar = softwareArrays[dynamicContentType][i];
-            tempSoftVar.type = utils.getTypeFromBloq(bloqs[tempSoftVar.bloqUuid], bloqs, IOConnectors, softwareArrays);
+            tempSoftVar.type = utils.getTypeFromBloq(bloqs[tempSoftVar.bloqUuid], bloqs, IOConnectors, softwareArrays, componentsArray);
         }
         //utils.drawSoftwareArray(softwareArrays);
     };
@@ -3075,7 +3081,7 @@
                         if (type.type === 'fromDynamicDropdown') {
                             connectionType = utils.getFromDynamicDropdownType(childBloq || this, type.idDropdown, type.options, softwareArrays, componentsArray);
                         } else if (type.type === 'fromDropdown') {
-                            connectionType = utils.getTypeFromBloq(childBloq || this, bloqs, IOConnectors, softwareArrays);
+                            connectionType = utils.getTypeFromBloq(childBloq || this, bloqs, IOConnectors, softwareArrays, componentsArray);
                         } else {
                             connectionType = type.value;
                             if (connectionType === 'string') {
