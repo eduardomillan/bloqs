@@ -4,8 +4,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../build-utils'),
+    StatementBloq = require('./../../statementBloq');
 
 /**
  * Bloq name: PTSensorCalibration
@@ -20,25 +20,25 @@ var _ = require('lodash'),
 var PTSensorCalibration = _.merge(_.clone(StatementBloq, true), {
 
     name: 'PTSensorCalibration',
-    bloqClass: 'bloq-PT-sensor-calibration',
+    bloqClass: 'bloq-PTsensor-calibration',
     content: [
         [{
             alias: 'text',
-            value: 'Definir la presión a nivel del mar a'
+            value: 'bloq-PTsensor-calibration'
         }, {
             id: 'VALUE',
             alias: 'numberInput',
             value: 101325
         }, {
             alias: 'text',
-            value: 'Pa en el sensor'
+            value: 'bloq-PTsensor-calibration-sensor'
         }, {
             id: 'PTSENS',
             alias: 'dynamicDropdown',
-            options: 'hts221'       //CHANGE TO 'barometer'
+            options: 'barometer'
         }]
     ],
-    code: '{PTSENS}.setSealevelPressure({VALUE}));'
+    code: '{PTSENS}.setSealevelPressure({VALUE});'
 
 });
 

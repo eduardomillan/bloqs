@@ -934,6 +934,9 @@
                         arrayOptions = [];
                         arrayOptions = componentsArray.hts221;
                         break;
+                    case 'barometer':
+                        arrayOptions = [];
+                        arrayOptions = componentsArray.barometer;
                     default:
                         arrayOptions = componentsArray[elementSchema.options];
                 }
