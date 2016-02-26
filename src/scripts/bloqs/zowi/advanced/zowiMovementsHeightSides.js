@@ -29,10 +29,10 @@ var zowiMovementsHeightSides = _.merge(_.clone(StatementBloq, true), {
             id: 'MOVEMENT',
             alias: 'staticDropdown',
             options: [{
-                label: 'bloq-zowi-movements-height-moonwalker-v1',
+                label: 'bloq-zowi-movements-simple-moonwalker-v1',
                 value: 'moonwalker'
             }, {
-                label: 'bloq-zowi-movements-height-crusaito-v1',
+                label: 'bloq-zowi-movements-simple-crusaito-v1',
                 value: 'crusaito'
             }]
         }, {

@@ -28,13 +28,13 @@ var zowiMovementsSides = _.merge(_.clone(StatementBloq, true), {
             id: 'MOVEMENT',
             alias: 'staticDropdown',
             options: [{
-                label: 'bloq-zowi-movements-turn-v1',
+                label: 'bloq-zowi-movements-simple-turn-v1',
                 value: 'turn'
             }, {
-                label: 'bloq-zowi-movements-shakeLeg-v1',
+                label: 'bloq-zowi-movements-simple-shakeLeg-v1',
                 value: 'shakeLeg'
             }, {
-                label: 'bloq-zowi-movements-bend-v1',
+                label: 'bloq-zowi-movements-simple-bend-v1',
                 value: 'bend'
             }]
         }, {
