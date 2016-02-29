@@ -931,7 +931,7 @@
                     case 'allServos':
                         arrayOptions = [];
 
-                        arrayOptions = arrayOptions.concat(componentsArray.servos, componentsArray.continuousServos, componentsArray.oscillators);
+                        arrayOptions = arrayOptions.concat(componentsArray.servos, componentsArray.oscillators, componentsArray.continuousServos);
                         break;
                     case 'varComponents':
                         arrayOptions = [];
