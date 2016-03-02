@@ -153,6 +153,8 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-servo", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-digital-read-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-analog-read-advanced", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-PTsensor", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-PTsensor-calibration", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-servo-detach", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-servo-attach", $components-color, $theme-color-components-color);
     /*---- LOGIC ------*/

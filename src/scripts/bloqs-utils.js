@@ -903,6 +903,18 @@
                     setupCode += 'Wire.begin();' + sensor.name + '.begin();';
                 });
             }
+            if (componentsArray.barometer.length >= 1) {
+                if (includeCode.indexOf('#include <Wire.h>') === -1) {
+                    includeCode += '#include <Wire.h>\n';
+                }
+                includeCode += '#include <BitbloqBMP180.h>\n';
+                bitbloqLibs = true;
+
+                componentsArray.barometer.forEach(function(sensor) {
+                    globalVars += 'BMP180 ' + sensor.name + ';';
+                    setupCode += sensor.name + '.init();';
+                });
+            }
             if (componentsArray.sensors.length >= 1) {
                 componentsArray.sensors.forEach(function(sensor) {
                     if (sensor.type === 'Joystick') {
@@ -1322,6 +1334,7 @@
             serialElements: [],
             clocks: [],
             hts221: [],
+            barometer: [],
             robot: []
         };
     };
