@@ -17,6 +17,7 @@
         availableIOConnectors = [],
         $field = null,
         scrollTop = 0,
+        forcedScrollTop = null,
         softwareArrays = {
             voidFunctions: [],
             returnFunctions: [],
@@ -45,6 +46,11 @@
         fieldOffsetTopSource = options.fieldOffsetTopSource || [];
         fieldOffsetLeft = options.fieldOffsetLeft || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || 0;
+
+        if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
+            forcedScrollTop = options.forcedScrollTop;
+        }
+
         lang = options.lang || 'es-ES';
     };
 
@@ -341,6 +347,10 @@
             destinationY;
         if (scrollTop !== $field[0].scrollTop) {
             scrollTop = $field[0].scrollTop;
+        }
+
+        if (forcedScrollTop !== null) {
+            scrollTop = forcedScrollTop;
         }
 
         x = clientX - fieldOffsetLeft;
@@ -921,7 +931,7 @@
                     case 'allServos':
                         arrayOptions = [];
 
-                        arrayOptions = arrayOptions.concat(componentsArray.servos, componentsArray.continuousServos, componentsArray.oscillators);
+                        arrayOptions = arrayOptions.concat(componentsArray.servos, componentsArray.oscillators, componentsArray.continuousServos);
                         break;
                     case 'varComponents':
                         arrayOptions = [];
@@ -1133,7 +1143,7 @@
                         } else {
                             removeSoftVar(bloq, name);
                         }
-                    }, 1000);
+                    }, 1000, bloq.uuid);
                 });
 
                 $element.change(function() {

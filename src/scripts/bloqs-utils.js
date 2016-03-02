@@ -965,13 +965,7 @@
                     if (includeCode.indexOf('#include <BitbloqRGB.h>') === -1) {
                         includeCode += '#include <BitbloqRGB.h>\n';
                     }
-                    if (includeCode.indexOf('#include <BitbloqSoftPWM.h>') === -1) {
-                        includeCode += '#include <BitbloqSoftPWM.h>\n';
-                    }
                     globalVars += 'ZumRGB ' + rgbs.name + '(' + (rgbs.pin.r || '') + ',' + (rgbs.pin.g || '') + ',' + (rgbs.pin.b || '') + ');';
-                    if (setupCode.indexOf('SoftPWMBegin();') === -1) {
-                        setupCode += 'SoftPWMBegin();';
-                    }
                 });
             }
             if (componentsArray.oscillators.length >= 1) {
@@ -1031,11 +1025,13 @@
         }
     };
 
+    var timers = [];
     var delay = (function() {
-        var timer = 0;
-        return function(callback, ms) {
-            clearTimeout(timer);
-            timer = setTimeout(callback, ms);
+        return function(callback, ms, elementId) {
+            if (timers[elementId]) {
+                clearTimeout(timers[elementId]);
+            }
+            timers[elementId] = setTimeout(callback, ms);
         };
     })();
 

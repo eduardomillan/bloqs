@@ -26,7 +26,7 @@ var zowiMovementsHeightFront = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-zowi-movements-height-flapping-v1'
+            value: 'bloq-zowi-movements-simple-flapping-v1'
         }, {
             id: 'DIR',
             alias: 'staticDropdown',
