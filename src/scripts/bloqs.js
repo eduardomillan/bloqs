@@ -17,6 +17,7 @@
         availableIOConnectors = [],
         $field = null,
         scrollTop = 0,
+        forcedScrollTop = null,
         softwareArrays = {
             voidFunctions: [],
             returnFunctions: [],
@@ -38,12 +39,19 @@
         draggingBloq = null,
         startPreMouseMove = null,
         preMouseMoveX,
-        preMouseMoveY;
+        preMouseMoveY,
+        componentsArray = bloqsUtils.getEmptyComponentsArray();
 
     var setOptions = function(options) {
         fieldOffsetTopSource = options.fieldOffsetTopSource || [];
         fieldOffsetLeft = options.fieldOffsetLeft || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || 0;
+
+        if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
+            forcedScrollTop = options.forcedScrollTop;
+        }
+
+        lang = options.lang || 'es-ES';
     };
 
     var getFieldOffsetTop = function(source) {
@@ -317,7 +325,7 @@
             if (IOConnectors[connectorUuid].data.type === 'connector--input') {
                 if (utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors).isConnectable()) {
                     if (!IOConnectors[connectorUuid].connectedTo) {
-                        if (utils.sameConnectionType(bloq, utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors), IOConnectors[connectorUuid].data.acceptType, bloqs, IOConnectors, softwareArrays)) {
+                        if (utils.sameConnectionType(bloq, utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors), IOConnectors[connectorUuid].data.acceptType, bloqs, IOConnectors, softwareArrays, componentsArray)) {
                             if (!utils.connectorIsInBranch(connectorUuid, bloq.uuid, bloqs, IOConnectors)) {
                                 availableIOConnectors.push(connectorUuid);
                             }
@@ -339,6 +347,10 @@
             destinationY;
         if (scrollTop !== $field[0].scrollTop) {
             scrollTop = $field[0].scrollTop;
+        }
+
+        if (forcedScrollTop !== null) {
+            scrollTop = forcedScrollTop;
         }
 
         x = clientX - fieldOffsetLeft;
@@ -479,7 +491,7 @@
         var dragConnector = utils.getOutputConnector(bloq, IOConnectors);
         availableIOConnectors.forEach(function(dropConnectorUuid) {
             dropConnector = IOConnectors[dropConnectorUuid];
-            if (utils.itsOver(dragConnector.jqueryObject, dropConnector.jqueryObject, 0) && utils.sameConnectionType(bloqs[dragConnector.bloqUuid], bloqs[dropConnector.bloqUuid], dropConnector.data.acceptType, bloqs, IOConnectors, softwareArrays)) {
+            if (utils.itsOver(dragConnector.jqueryObject, dropConnector.jqueryObject, 0) && utils.sameConnectionType(bloqs[dragConnector.bloqUuid], bloqs[dropConnector.bloqUuid], dropConnector.data.acceptType, bloqs, IOConnectors, softwareArrays, componentsArray)) {
                 dropConnector.jqueryObject.addClass('available');
             } else {
                 dropConnector.jqueryObject.removeClass('available');
@@ -555,7 +567,7 @@
             }
             i++;
         }
-        type = type || utils.getTypeFromBloq(bloq, bloqs, IOConnectors, softwareArrays);
+        type = type || utils.getTypeFromBloq(bloq, bloqs, IOConnectors, softwareArrays, componentsArray);
         //arguments if any:
         if (bloq.bloqData.type === 'statement-input' && bloq.bloqData.arguments) {
             args = args || utils.getArgsFromBloq(bloq, bloqs, IOConnectors);
@@ -625,7 +637,7 @@
         var tempSoftVar;
         for (var i = 0; i < softwareArrays[dynamicContentType].length; i++) {
             tempSoftVar = softwareArrays[dynamicContentType][i];
-            tempSoftVar.type = utils.getTypeFromBloq(bloqs[tempSoftVar.bloqUuid], bloqs, IOConnectors, softwareArrays);
+            tempSoftVar.type = utils.getTypeFromBloq(bloqs[tempSoftVar.bloqUuid], bloqs, IOConnectors, softwareArrays, componentsArray);
         }
         //utils.drawSoftwareArray(softwareArrays);
     };
@@ -737,12 +749,11 @@
 
     var buildContent = function(bloq) {
 
-        var componentsArray = bloq.componentsArray,
-            bloqData = bloq.bloqData;
+        var bloqData = bloq.bloqData;
         var $tempElement;
         for (var j = 0; j < bloqData.content.length; j++) {
             for (var k = 0; k < bloqData.content[j].length; k++) {
-                $tempElement = createBloqElement(bloq, bloqData.content[j][k], componentsArray, softwareArrays);
+                $tempElement = createBloqElement(bloq, bloqData.content[j][k], softwareArrays);
                 if (bloqData.content[j][k].position === 'DOWN') {
                     bloq.$contentContainerDown.addClass('with-content');
                     bloq.$contentContainerDown.append($tempElement);
@@ -843,7 +854,7 @@
         }
     };
 
-    var createBloqElement = function(bloq, elementSchema, componentsArray, softwareArrays) {
+    var createBloqElement = function(bloq, elementSchema, softwareArrays) {
         var i,
             $tempElement,
             $element = null,
@@ -916,6 +927,11 @@
                                 }
                             }
                         });
+                        break;
+                    case 'allServos':
+                        arrayOptions = [];
+
+                        arrayOptions = arrayOptions.concat(componentsArray.servos, componentsArray.oscillators, componentsArray.continuousServos);
                         break;
                     case 'varComponents':
                         arrayOptions = [];
@@ -1007,7 +1023,7 @@
                     'data-content-type': elementSchema.alias,
                     'data-placeholder-i18n': elementSchema.placeholder,
                     placeholder: translateBloq(lang, elementSchema.placeholder)
-                }).val(elementSchema.value);
+                }).val(elementSchema.value || translateBloq(lang, elementSchema.defaultValue));
                 $element.on('keyup', function(evt) {
                     $(evt.currentTarget).autoGrowInput({
                         minWidth: 100,
@@ -1130,7 +1146,7 @@
                         } else {
                             removeSoftVar(bloq, name);
                         }
-                    }, 1000);
+                    }, 1000, bloq.uuid);
                 });
 
                 $element.change(function() {
@@ -1289,7 +1305,7 @@
         $field = params.$field || $field;
 
         this.bloqData = params.bloqData;
-        this.componentsArray = params.componentsArray;
+        componentsArray = params.componentsArray || componentsArray;
         this.connectors = [];
         this.IOConnectors = [];
 
@@ -1469,7 +1485,7 @@
                 this.$bloq.children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
                 break;
             case 'group':
-                this.$bloq.append('<div class="field--header"><button class="btn btn--collapsefield"></button><h3 data-i18n="' + this.bloqData.headerText + '">' + translateBloq(lang, this.bloqData.headerText) + '</h3></div><div class="field--content"><p data-i18n="' + this.bloqData.descriptionText + '">' + translateBloq(lang, this.bloqData.descriptionText) + '</p><div class="bloq--extension--info" data-i18n="drag-bloq" > ' + translateBloq(lang, 'drag-bloq') + '</div><div class="bloq--extension__content"></div></div>');
+                this.$bloq.append('<div class="field--header"><button class="btn btn--collapsefield"></button><h3 data-i18n="' + this.bloqData.headerText + '">' + translateBloq(lang, this.bloqData.headerText) + '</h3></div><div class="field--content"><div class="bloq--extension--info"> <div class="bloq__info"><p class="bloq__info--text" data-i18n="' + this.bloqData.descriptionText + '">' + translateBloq(lang, this.bloqData.descriptionText) + '</p><svg class="bloq__svg-icon"><image xlink:href="../../images/info.svg"/></svg></div><p class="bloq--drag-bloq" data-i18n="drag-bloq">' + translateBloq(lang, 'drag-bloq') + '</p></div><div class="bloq--extension__content"></div></div>');
 
                 buildConnectors(params.bloqData.connectors, this);
                 this.$bloq.find('.connector--root').addClass('connector--root--group');
@@ -1524,23 +1540,35 @@
                 }
                 value = element.val() || '';
                 //hardcoded!!
-                for (var j = 0; j < this.componentsArray.sensors.length; j++) {
-
-                    if (value === this.componentsArray.sensors[j].name) {
-                        type = this.componentsArray.sensors[j].type;
+                for (var j = 0; j < componentsArray.sensors.length; j++) {
+                    if (value === componentsArray.sensors[j].name) {
+                        type = componentsArray.sensors[j].type;
                         if (type === 'analog') {
-                            value = 'analogRead(' + this.componentsArray.sensors[j].pin.s + ')';
+                            value = 'analogRead(' + componentsArray.sensors[j].name + ')';
                         } else if (type === 'digital') {
-                            value = 'digitalRead(' + this.componentsArray.sensors[j].pin.s + ')';
+                            value = 'digitalRead(' + componentsArray.sensors[j].name + ')';
                         } else if (type === 'LineFollower') { // patch. When the new Web2Board is launched with float * as return, remove this
-                            value = '(float *)' + this.componentsArray.sensors[j].name + '.read()';
-
+                            value = '(float *)' + componentsArray.sensors[j].name + '.read()';
                         } else {
-                            value = this.componentsArray.sensors[j].name + '.read()';
+                            value = componentsArray.sensors[j].name + '.read()';
                         }
                         code = code.replace(new RegExp('{' + elem + '.type}', 'g'), value);
                     }
-
+                }
+                for (var j = 0; j < componentsArray.servos.length; j++) {
+                    if (value === componentsArray.servos[j].name) {
+                        code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.servos[j].pin.s);
+                    }
+                }
+                for (var j = 0; j < componentsArray.continuousServos.length; j++) {
+                    if (value === componentsArray.continuousServos[j].name) {
+                        code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.continuousServos[j].pin.s);
+                    }
+                }
+                for (var j = 0; j < componentsArray.oscillators.length; j++) {
+                    if (value === componentsArray.oscillators[j].name) {
+                        code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.oscillators[j].pin.s);
+                    }
                 }
                 if (element.attr('data-content-type') === 'stringInput') {
                     value = utils.validString(value);
@@ -1571,9 +1599,9 @@
                             type = childBloq.bloqData.returnType;
                         }
                         if (type.type === 'fromDynamicDropdown') {
-                            connectionType = utils.getFromDynamicDropdownType(childBloq || this, type.idDropdown, type.options, softwareArrays, this.componentsArray);
+                            connectionType = utils.getFromDynamicDropdownType(childBloq || this, type.idDropdown, type.options, softwareArrays, componentsArray);
                         } else if (type.type === 'fromDropdown') {
-                            connectionType = utils.getTypeFromBloq(childBloq || this, bloqs, IOConnectors, softwareArrays);
+                            connectionType = utils.getTypeFromBloq(childBloq || this, bloqs, IOConnectors, softwareArrays, componentsArray);
                         } else {
                             connectionType = type.value;
                             if (connectionType === 'string') {

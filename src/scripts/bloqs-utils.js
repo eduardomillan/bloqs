@@ -240,8 +240,8 @@
         return dragConnectorOffset.left < (dropConnectorOffset.left + dropConnector[0].clientWidth + margin) && (dragConnectorOffset.left + dragConnector[0].clientWidth) > (dropConnectorOffset.left - margin) && dragConnectorOffset.top < (dropConnectorOffset.top + dropConnector[0].clientHeight + margin) && (dragConnectorOffset.top + dragConnector[0].clientHeight) > (dropConnectorOffset.top - margin);
     };
 
-    var sameConnectionType = function(dragBloq, dropBloq, dropConnectorAcceptType, bloqs, IOConnectors, softwareArrays) {
-        var dragConnectorType = getTypeFromBloq(dragBloq, bloqs, IOConnectors, softwareArrays);
+    var sameConnectionType = function(dragBloq, dropBloq, dropConnectorAcceptType, bloqs, IOConnectors, softwareArrays, componentsArray) {
+        var dragConnectorType = getTypeFromBloq(dragBloq, bloqs, IOConnectors, softwareArrays, componentsArray);
         if (typeof(dropConnectorAcceptType) === 'object') {
             dropConnectorAcceptType = getTypeFromDynamicDropdown(dropBloq, dropConnectorAcceptType, softwareArrays);
         }
@@ -678,7 +678,7 @@
         return false;
     };
 
-    var getTypeFromBloq = function(bloq, bloqs, IOConnectors, softwareArrays) {
+    var getTypeFromBloq = function(bloq, bloqs, IOConnectors, softwareArrays, componentsArray) {
         var result;
         if (!bloq) {
             console.error('We cant get the type if we dont have a bloq');
@@ -701,13 +701,13 @@
                     }
                 });
                 if (connector && connector.connectedTo) {
-                    result = getTypeFromBloq(getBloqByConnectorUuid(connector.connectedTo, bloqs, IOConnectors), bloqs, IOConnectors, softwareArrays);
+                    result = getTypeFromBloq(getBloqByConnectorUuid(connector.connectedTo, bloqs, IOConnectors), bloqs, IOConnectors, softwareArrays, componentsArray);
                 } else {
                     result = '';
                 }
                 break;
             case 'fromDynamicDropdown':
-                result = getFromDynamicDropdownType(bloq, bloq.bloqData.returnType.idDropdown, bloq.bloqData.returnType.options, softwareArrays, bloq.componentsArray);
+                result = getFromDynamicDropdownType(bloq, bloq.bloqData.returnType.idDropdown, bloq.bloqData.returnType.options, softwareArrays, componentsArray);
                 break;
             case 'fromDropdown':
                 result = bloq.$bloq.find('[data-content-id="' + bloq.bloqData.returnType.idDropdown + '"]').val();
@@ -857,6 +857,11 @@
                     globalVars += 'Zowi zowi;';
                     setupCode += 'zowi.init();';
                 }
+                if (componentsArray.robot[0] === 'evolution') {
+                    includeCode += '#include <BitbloqEvolution.h>\n#include <BitbloqUS.h>\n#include <Servo.h>\n#include <BitbloqOscillator.h>\n';
+                    globalVars += 'Evolution evolution;';
+                    setupCode += 'evolution.init();';
+                }
             }
             if (componentsArray.continuousServos.length >= 1 || componentsArray.servos.length >= 1 || componentsArray.oscillators.length >= 1) {
                 includeCode += '#include <Servo.h>\n';
@@ -933,7 +938,7 @@
             //*******BUZZERS*******//
             if (componentsArray.buzzers.length >= 1) {
                 componentsArray.buzzers.forEach(function(buzzer) {
-                    globalVars += 'int ' + buzzer.name + ' = ' + (buzzer.pin.s || '') + ';';
+                    globalVars += 'const int ' + buzzer.name + ' = ' + (buzzer.pin.s || '') + ';';
                 });
             }
             //*******CLOCKS*******//
@@ -963,7 +968,7 @@
             }
             if (componentsArray.leds.length >= 1) {
                 componentsArray.leds.forEach(function(leds) {
-                    globalVars += 'int ' + leds.name + ' = ' + (leds.pin.s || '') + ';';
+                    globalVars += 'const int ' + leds.name + ' = ' + (leds.pin.s || '') + ';';
                     setupCode += 'pinMode(' + leds.name + ', OUTPUT);';
                 });
             }
@@ -984,7 +989,7 @@
             if (componentsArray.sensors.length >= 1) {
                 componentsArray.sensors.forEach(function(sensor) {
                     if (sensor.type === 'analog' || sensor.type === 'digital') {
-                        globalVars += 'int ' + sensor.name + ' = ' + (sensor.pin.s || '') + ';';
+                        globalVars += 'const int ' + sensor.name + ' = ' + (sensor.pin.s || '') + ';';
                         setupCode += 'pinMode(' + sensor.name + ', INPUT);';
                     } else if (sensor.type === 'Joystick') {
                         globalVars += 'Joystick ' + sensor.name + '(' + (sensor.pin.x || '') + ',' + (sensor.pin.y || '') + ',' + (sensor.pin.k || '') + ');';
@@ -1032,11 +1037,13 @@
         }
     };
 
+    var timers = [];
     var delay = (function() {
-        var timer = 0;
-        return function(callback, ms) {
-            clearTimeout(timer);
-            timer = setTimeout(callback, ms);
+        return function(callback, ms, elementId) {
+            if (timers[elementId]) {
+                clearTimeout(timers[elementId]);
+            }
+            timers[elementId] = setTimeout(callback, ms);
         };
     })();
 

@@ -9,18 +9,42 @@
     body {
         margin: 0;
     }
-    
+
     #code--field {
         width: 100%;
         height: 500px;
     }
-    
+
     #bloqs--field {
         overflow-y: auto;
         background-color: #EBEBEB;
         width: 1500px;
         height: 650px;
     }
+    code[class*="language-"],
+pre[class*="language-"] {
+  color: black;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.3;
+  tab-size: 4;
+  hyphens: none;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text; }
+  code[class*="language-"]::-moz-selection,
+  pre[class*="language-"]::-moz-selection {
+    color: #000;
+    background-color: #fefefe; }
+  code[class*="language-"]::selection,
+  pre[class*="language-"]::selection {
+    color: #000;
+    background-color: #fefefe; }
     </style>
 </head>
 
@@ -29,7 +53,7 @@
     <!-- begin demo markup -->
     <div id="bloqs--field" class="theme-colors"></div>
     <button id="getcodebutton">getCode()</button>
-    <div id="code--field"></div>
+    <code id="code--field" class="language-"></code>
     <!-- end demo markup -->
     <p>See the <a href="http://bq.github.io/bloqs">project homepage</a>.</p>
     <p>Check out the <a href="https://github.com/bq/bloqs">project repo</a>.</p>
@@ -38,9 +62,12 @@
     <!--Load Scripts-->
     <script src="./../../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./../../bower_components/lodash/lodash.min.js"></script>
+    <script src="./../../bower_components/autogrow/autogrow.min.js"></script>
+    <script src="./../../bower_components/jquery-auto-grow-input/jquery.auto-grow-input.min.js"></script>
     <!--Add bloqs js compiled-->
     <!--<script src="./../../dist/bloqs.min.js"></script>-->
     <!--Or add bloqs js without compile-->
+    <script src="beautify.js"></script>
     <script src="./../../src/scripts/bloqs-languages.js"></script>
     <script src="./../../src/scripts/bloqs-utils.js"></script>
     <script src="./../../src/scripts/bloqs.js"></script>
@@ -102,6 +129,12 @@
                 loopBloq: null
             };
 
+        /*//Add some hardware
+        componentsArray.servos[0]={id: "servo", name: "servo_0", oscillator:"false", pin:{s:"2"}};
+        componentsArray.servos[1]={id: "servo", name: "servo_1", oscillator:"false", pin:{s:"3"}};
+        componentsArray.servos[2]={id: "servo", name: "servo_2", oscillator:"false", pin:{s:"4"}};
+        */
+
         var $field = $('#bloqs--field');
         // Create the main arduino bloqs
         //firsttime set componentsArray and field
@@ -134,14 +167,14 @@
         arduinoMainBloqs.loopBloq.doConnectable();
 
         $('#getcodebutton').click(function() {
-            $('#code--field').html(window.bloqsUtils.getCode(componentsArray, arduinoMainBloqs));
+            $('#code--field').text(js_beautify(window.bloqsUtils.getCode(componentsArray, arduinoMainBloqs)));
         });
 
         //start build bloqs!
 
         //Create a if bloq from the bloqsSchemas loaded
         var bloq1 = new bloqs.Bloq({
-            bloqData: bloqSchemas['numConversion'],
+            bloqData: bloqSchemas['number'],
             componentsArray: componentsArray,
             $field: $field
         });

@@ -22,7 +22,7 @@ var zowiHome = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-zowi-rest'
+            value: 'bloq-zowi-rest-v1'
         }]
     ],
     code: 'zowi.home();'
