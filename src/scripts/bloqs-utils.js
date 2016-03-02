@@ -881,8 +881,17 @@
                 bitbloqLibs = true;
             }
             if (componentsArray.serialElements.length >= 1) {
-                includeCode += '#include <SoftwareSerial.h>\n#include <BitbloqSoftwareSerial.h>\n';
-                bitbloqLibs = true;
+                componentsArray.serialElements.forEach(function(serialElement) {
+                    if (serialElement.pin.s != 'serial' || searchNameFromBloq(nameToSearch, bloq, bloqs, connectors)) {
+                        if (includeCode.indexOf('#include <SoftwareSerial.h>') === -1) {
+                            includeCode += '#include <SoftwareSerial.h>\n';
+                        }
+                        if (includeCode.indexOf('#include <BitbloqSoftwareSerial.h>') === -1) {
+                            includeCode += '#include <BitbloqSoftwareSerial.h>\n';
+                        }
+                        bitbloqLibs = true;
+                    }
+                });
             }
             if (componentsArray.clocks.length >= 1) {
                 if (includeCode.indexOf('#include <Wire.h>') === -1) {
@@ -996,10 +1005,10 @@
             if (componentsArray.serialElements.length >= 1) {
                 componentsArray.serialElements.forEach(function(serialElement) {
                     if (serialElement.pin.s === 'serial') {
-                        serialElement.pin.rx = '0';
-                        serialElement.pin.tx = '1';
+                        setupCode += 'Serial.begin(' + (serialElement.baudRate || '') + ');';
+                    } else {
+                        globalVars += 'bqSoftwareSerial ' + serialElement.name + '(' + (serialElement.pin.rx || '') + ',' + (serialElement.pin.tx || '') + ',' + (serialElement.baudRate || '') + ');';
                     }
-                    globalVars += 'bqSoftwareSerial ' + serialElement.name + '(' + (serialElement.pin.rx || '') + ',' + (serialElement.pin.tx || '') + ',' + (serialElement.baudRate || '') + ');';
                 });
             }
             code = '\n/***   Included libraries  ***/\n' + includeCode + '\n\n/***   Global variables and function definition  ***/\n' + globalVars + bloqs.varsBloq.getCode() + '\n\n/***   Setup  ***/\n' + bloqs.setupBloq.getCode(setupCode) + '\n\n/***   Loop  ***/\n' + bloqs.loopBloq.getCode() + '' + finalFunctions;
@@ -1012,6 +1021,51 @@
     var splice = function(string, idx, rem, s) {
 
         return (string.slice(0, idx) + s + string.slice(idx + Math.abs(rem)));
+    };
+
+    var searchNameOnProgram = function(nameToSearch, mainbloqs, bloqs, connectors, IOConnectors) {
+        var found = searchNameFromBloq(nameToSearch, mainbloqs.varsBloq, bloqs, connectors, IOConnectors);
+        if (found) return true;
+
+        found = searchNameFromBloq(nameToSearch, mainbloqs.setupBloq, bloqs, connectors, IOConnectors);
+        if (found) return true;
+
+        found = searchNameFromBloq(nameToSearch, mainbloqs.loopBloq, bloqs, connectors, IOConnectors);
+
+        return found;
+    };
+
+    var searchNameFromBloq = function(nameToSearch, bloq, bloqs, connectors, IOConnectors) {
+        var connector,
+            found = bloq.bloqData.name === nameToSearch;
+
+        if (found) return true;
+
+        if (bloq.IOConnectors.length >= 1) {
+            found = bloq.IOConnectors.some(function(connector) {
+                return searchNameFromBloq(nameToSearch, getBloqByConnectorUuid(connector, bloqs, IOConnectors), bloqs, connectors, IOConnectors);
+            });
+        }
+
+        if (found) return true;
+
+        if (bloq.bloqData.type === 'statement-input' && connectors[bloq.connectors[2]].connectedTo) {
+            connector = connectors[bloq.connectors[2]].connectedTo; //Root
+            found = searchNameFromBloq(nameToSearch, getBloqByConnectorUuid(connector, bloqs, connectors), bloqs, connectors, , IOConnectors);
+        }
+
+        if (found) return true;
+
+        if (bloq.bloqData.type === 'group' && connectors[bloq.connectors[2]].connectedTo) {
+            connector = connectors[bloq.connectors[2]].connectedTo; //First bloq
+        } else if (bloq.bloqData.type === 'statement' && connectors[bloq.connectors[1]].connectedTo) {
+            connector = connectors[bloq.connectors[1]].connectedTo; //Next bloq
+        }
+
+        if (connector) {
+            found = searchNameFromBloq(nameToSearch, getBloqByConnectorUuid(connector, bloqs, connectors), bloqs, connectors, IOConnectors);
+        }
+        return found;
     };
 
     var executeFunctionOnConnectedStatementBloqs = function(functionToExecute, bloq, bloqs, connectors) {
