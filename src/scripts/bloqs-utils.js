@@ -918,7 +918,7 @@
             if (componentsArray.sensors.length >= 1) {
                 componentsArray.sensors.forEach(function(sensor) {
                     if (sensor.type === 'Joystick') {
-                        includeCode += '#include <BitbloqJoystick.h>\n#include <Wire.h>\n';
+                        includeCode += '#include <BitbloqJoystick.h>\n';
                         bitbloqLibs = true;
                     } else if (sensor.type === 'ButtonPad') {
                         includeCode += '#include <BitbloqButtonPad.h>\n';
