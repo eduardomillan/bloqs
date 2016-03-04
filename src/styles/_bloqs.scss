@@ -168,6 +168,7 @@
     }
 }
 
+
 /* group */
 
 .bloq--group {
@@ -356,16 +357,11 @@
 }
 
 .bloq__info {
-    .bloq__svg-icon {
-        margin: 14px 10px;
-        margin-left: 0px;
-        width: 20px;
-        height: 20px;
-        image {
-            width: 20px;
-            height: 20px;
-        }
-    }
+    background-image: url($infoIcon);
+    margin: 14px 10px;
+    margin-left: 0px;
+    width: 20px;
+    height: 20px;
     .bloq__info--text {
         position: absolute;
         top: -5px;
@@ -393,6 +389,7 @@
     }
 }
 
+
 /* GENERAL */
 
 .invisible {
@@ -404,6 +401,7 @@
     height: 10px;
     margin: 0;
 }
+
 
 /* BLOQS */
 
@@ -471,7 +469,7 @@
     input[type=text] {
         width: 100px;
         & + select {
-          margin-left: 10px;
+            margin-left: 10px;
         }
     }
     &.bloq-number,
@@ -795,6 +793,7 @@
 .bloq-vars {
     margin-top: 0;
 }
+
 
 /* CONNECTORS */
 
