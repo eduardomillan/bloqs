@@ -29,7 +29,7 @@ var switchAdvanced = _.merge(_.clone(StatementInputBloq, true), {
             acceptType: 'all'
         }]
     ],
-    code: 'switch (int({VAR})) {{STATEMENTS}}'
+    code: 'switch ({VAR}) {{STATEMENTS}}'
 });
 
 utils.generateBloqInputConnectors(switchAdvanced);

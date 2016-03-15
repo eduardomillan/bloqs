@@ -18,7 +18,7 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "904defa7-dfb0-466c-bee2-1036f46c0f0f"
+      "name": "9cbace21-f1cb-4987-9b6c-144a780cc294"
     }
   ],
   "bloqClass": "bloq-switch",
@@ -32,9 +32,9 @@
         "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "904defa7-dfb0-466c-bee2-1036f46c0f0f"
+        "name": "9cbace21-f1cb-4987-9b6c-144a780cc294"
       }
     ]
   ],
-  "code": "switch (int({VAR})) {{STATEMENTS}}"
+  "code": "switch ({VAR}) {{STATEMENTS}}"
 }
