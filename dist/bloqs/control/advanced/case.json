@@ -1,6 +1,6 @@
 {
   "type": "statement-input",
-  "name": "whileAdvanced",
+  "name": "caseAdvanced-v1",
   "connectors": [
     {
       "type": "connector--top",
@@ -18,27 +18,27 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "cd66dbe4-2be0-4e7f-91d8-0a7fae6f2455"
+      "name": "deed3252-214b-4f85-a10f-20316c40c47c"
     }
   ],
-  "bloqClass": "bloq-while",
+  "bloqClass": "bloq-case",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-while-while"
+        "value": "bloq-case-ifSameTo"
       },
       {
-        "bloqInputId": "CONDITION",
+        "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "cd66dbe4-2be0-4e7f-91d8-0a7fae6f2455"
+        "name": "deed3252-214b-4f85-a10f-20316c40c47c"
       },
       {
         "alias": "text",
-        "value": "bloq-while-exec"
+        "value": "bloq-case-exec"
       }
     ]
   ],
-  "code": "while ({CONDITION}){{STATEMENTS}}"
+  "code": "case {VALUE}:{STATEMENTS}break;"
 }
