@@ -17,7 +17,7 @@ var _ = require('lodash'),
 
 var switchAdvanced = _.merge(_.clone(StatementInputBloq, true), {
 
-    name: 'switchAdvanced-v2',
+    name: 'switchAdvanced',
     bloqClass: 'bloq-switch',
     content: [
         [{
@@ -29,7 +29,7 @@ var switchAdvanced = _.merge(_.clone(StatementInputBloq, true), {
             acceptType: 'all'
         }]
     ],
-    code: 'switch ({VAR}) {{STATEMENTS}}'
+    code: 'switch (int({VAR})) {{STATEMENTS}}'
 });
 
 utils.generateBloqInputConnectors(switchAdvanced);

@@ -1,6 +1,6 @@
 {
-  "type": "statement",
-  "name": "oscillatorStartAdvanced",
+  "type": "statement-input",
+  "name": "switchAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -11,26 +11,30 @@
       "accept": "connector--top"
     },
     {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": "all",
-      "name": "48c3f877-1edf-42fc-8dd7-63f51f558b75"
+      "name": "e0436b67-cde0-41d5-bfb9-39b86c32064b"
     }
   ],
-  "bloqClass": "bloq-oscillator-start-advanced",
+  "bloqClass": "bloq-switch",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-oscillator-start-advanced-oscillator"
+        "value": "bloq-switch-check"
       },
       {
-        "bloqInputId": "OSCILLATOR",
+        "bloqInputId": "VAR",
         "alias": "bloqInput",
         "acceptType": "all",
-        "name": "48c3f877-1edf-42fc-8dd7-63f51f558b75"
+        "name": "e0436b67-cde0-41d5-bfb9-39b86c32064b"
       }
     ]
   ],
-  "code": "{OSCILLATOR}.start()"
+  "code": "switch (int({VAR})) {{STATEMENTS}}"
 }
