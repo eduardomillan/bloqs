@@ -27,7 +27,7 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             id: 'OPERATOR',
             alias: 'staticDropdown',
@@ -53,7 +53,7 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-if-exec'

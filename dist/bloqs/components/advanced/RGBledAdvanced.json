@@ -13,20 +13,26 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "d1d055a2-79e1-4424-a5e8-3dd2995b0eac"
+      "acceptType": [
+        "all"
+      ],
+      "name": "1aa82254-92f7-4c11-a12d-f83746bc03cc"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "74c65cde-a18f-4032-87b6-112d006289f6"
+      "acceptType": [
+        "all"
+      ],
+      "name": "6904527a-5b59-475c-ab84-3dc970e1d1f2"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "e8585842-1504-4b63-98c5-d7d7c4fc7e6a"
+      "acceptType": [
+        "all"
+      ],
+      "name": "25c61d2a-8fa9-48f6-b063-fcbe4a46a5f2"
     }
   ],
   "bloqClass": "bloq-rgbLed-advanced",
@@ -48,8 +54,10 @@
       {
         "bloqInputId": "RED",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "d1d055a2-79e1-4424-a5e8-3dd2995b0eac"
+        "acceptType": [
+          "all"
+        ],
+        "name": "1aa82254-92f7-4c11-a12d-f83746bc03cc"
       },
       {
         "alias": "text",
@@ -58,8 +66,10 @@
       {
         "bloqInputId": "GREEN",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "74c65cde-a18f-4032-87b6-112d006289f6"
+        "acceptType": [
+          "all"
+        ],
+        "name": "6904527a-5b59-475c-ab84-3dc970e1d1f2"
       },
       {
         "alias": "text",
@@ -68,8 +78,10 @@
       {
         "bloqInputId": "BLUE",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "e8585842-1504-4b63-98c5-d7d7c4fc7e6a"
+        "acceptType": [
+          "all"
+        ],
+        "name": "25c61d2a-8fa9-48f6-b063-fcbe4a46a5f2"
       }
     ]
   ],

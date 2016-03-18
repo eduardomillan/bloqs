@@ -26,7 +26,7 @@ var whileAdvanced = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'CONDITION',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-while-exec'

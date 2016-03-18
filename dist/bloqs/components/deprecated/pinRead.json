@@ -9,8 +9,10 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "4e46be46-79dd-4cec-bb5c-f0afc9b6f56c"
+      "acceptType": [
+        "all"
+      ],
+      "name": "d159bcbf-18a5-405f-8644-4e7cca38421d"
     }
   ],
   "bloqClass": "bloq-pin-read-advanced",
@@ -23,8 +25,10 @@
       {
         "bloqInputId": "PIN",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "4e46be46-79dd-4cec-bb5c-f0afc9b6f56c"
+        "acceptType": [
+          "all"
+        ],
+        "name": "d159bcbf-18a5-405f-8644-4e7cca38421d"
       }
     ]
   ],

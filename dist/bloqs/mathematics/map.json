@@ -9,14 +9,18 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "float",
-      "name": "8971f9b0-6111-4da0-9e5c-09bdb0773623"
+      "acceptType": [
+        "float"
+      ],
+      "name": "bb895782-9c32-4364-8c4d-9e042efe70a2"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "float",
-      "name": "65d27301-f30d-432e-9b42-a528ceeb1fb6"
+      "acceptType": [
+        "float"
+      ],
+      "name": "a95b35d6-1e85-4578-8e16-a939470d28d9"
     }
   ],
   "bloqClass": "bloq-map",
@@ -29,8 +33,10 @@
       {
         "bloqInputId": "VAR",
         "alias": "bloqInput",
-        "acceptType": "float",
-        "name": "8971f9b0-6111-4da0-9e5c-09bdb0773623"
+        "acceptType": [
+          "float"
+        ],
+        "name": "bb895782-9c32-4364-8c4d-9e042efe70a2"
       },
       {
         "alias": "text",
@@ -39,8 +45,10 @@
       {
         "bloqInputId": "MAXVAL",
         "alias": "bloqInput",
-        "acceptType": "float",
-        "name": "65d27301-f30d-432e-9b42-a528ceeb1fb6"
+        "acceptType": [
+          "float"
+        ],
+        "name": "a95b35d6-1e85-4578-8e16-a939470d28d9"
       },
       {
         "alias": "text",

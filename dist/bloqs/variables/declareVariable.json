@@ -13,8 +13,10 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "ddd6123e-2a9d-4de6-9245-eea530e82085"
+      "acceptType": [
+        "all"
+      ],
+      "name": "92bccdec-9443-4e7b-a644-e7afc978f2c6"
     }
   ],
   "bloqClass": "bloq-declare-variable",
@@ -36,8 +38,10 @@
       {
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "ddd6123e-2a9d-4de6-9245-eea530e82085"
+        "acceptType": [
+          "all"
+        ],
+        "name": "92bccdec-9443-4e7b-a644-e7afc978f2c6"
       }
     ]
   ],

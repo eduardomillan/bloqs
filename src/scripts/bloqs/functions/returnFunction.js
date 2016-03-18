@@ -36,7 +36,7 @@ var returnFunction = _.merge(_.clone(StatementInputBloq, true), {
             position: 'DOWN',
             bloqInputId: 'RETURN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     createDynamicContent: 'returnFunctions',

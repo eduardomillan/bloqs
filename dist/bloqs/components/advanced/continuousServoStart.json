@@ -13,14 +13,18 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "9fa55b82-9233-4657-83c6-4fb7ec07521a"
+      "acceptType": [
+        "all"
+      ],
+      "name": "59b3fb28-796d-4b8c-ad12-94c7310759c2"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "eef5672a-0ae5-44c5-b19d-47c99e4f01fb"
+      "acceptType": [
+        "all"
+      ],
+      "name": "a098092c-9505-4a73-a0ae-e30d71cf9ee9"
     }
   ],
   "bloqClass": "bloq-continuous-servo-start-advanced",
@@ -33,8 +37,10 @@
       {
         "bloqInputId": "SERVO",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "9fa55b82-9233-4657-83c6-4fb7ec07521a"
+        "acceptType": [
+          "all"
+        ],
+        "name": "59b3fb28-796d-4b8c-ad12-94c7310759c2"
       },
       {
         "alias": "text",
@@ -43,8 +49,10 @@
       {
         "bloqInputId": "DIRECTION",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "eef5672a-0ae5-44c5-b19d-47c99e4f01fb"
+        "acceptType": [
+          "all"
+        ],
+        "name": "a098092c-9505-4a73-a0ae-e30d71cf9ee9"
       }
     ]
   ],

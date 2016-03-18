@@ -29,7 +29,7 @@ var convert = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'NUMBER',
             alias: 'bloqInput',
-            acceptType: 'number'
+            acceptType: ['int', 'float']
         }, {
             alias: 'text',
             value: 'bloq-convert-to'

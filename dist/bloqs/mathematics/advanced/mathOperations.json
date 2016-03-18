@@ -9,8 +9,10 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "efeac3fb-6f17-4fb1-8aa5-b0bdf2bae13c"
+      "acceptType": [
+        "all"
+      ],
+      "name": "4cf7c597-ccec-46d6-a663-713954741f0a"
     }
   ],
   "bloqClass": "bloq-math-operations",
@@ -45,8 +47,10 @@
       {
         "bloqInputId": "ARG",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "efeac3fb-6f17-4fb1-8aa5-b0bdf2bae13c"
+        "acceptType": [
+          "all"
+        ],
+        "name": "4cf7c597-ccec-46d6-a663-713954741f0a"
       }
     ]
   ],

@@ -23,7 +23,7 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
         [{
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             id: 'OPERATOR',
             alias: 'staticDropdown',
@@ -49,7 +49,7 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '\'{OPERATOR}\' === \'^\'? \'pow({ARG1},{ARG2})\' : \'({ARG1} {OPERATOR} {ARG2})\'',

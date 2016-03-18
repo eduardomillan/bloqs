@@ -6,16 +6,16 @@ var _ = require('lodash'),
     StatementBloq = require('./../../statementBloq');
 
 /**
-* Bloq name: evolutionHeadAdvance
-*
-* Bloq type: statement
-*
-* Description: It makes Evolution turn its head a given amount
-*              of degrees to a specific side, selectable from
-*              a drop-down.
-*
-* Return type: none
-*/
+ * Bloq name: evolutionHeadAdvance
+ *
+ * Bloq type: statement
+ *
+ * Description: It makes Evolution turn its head a given amount
+ *              of degrees to a specific side, selectable from
+ *              a drop-down.
+ *
+ * Return type: none
+ */
 
 var evolutionHeadAdvance = _.merge(_.clone(StatementBloq, true), {
 
@@ -28,7 +28,7 @@ var evolutionHeadAdvance = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'DEGREES',
             alias: 'bloqInput',
-            acceptType: 'float'
+            acceptType: ['float']
         }, {
             alias: 'text',
             value: 'bloq-evolution-head-advance-deg'
@@ -36,12 +36,12 @@ var evolutionHeadAdvance = _.merge(_.clone(StatementBloq, true), {
             id: 'SIDE',
             alias: 'staticDropdown',
             options: [{
-                    label: 'bloq-evolution-head-advance-left',
-                    value: 'HEAD_LEFT'
-                }, {
-                    label: 'bloq-evolution-head-advance-right',
-                    value: 'HEAD_RIGHT'
-                }]
+                label: 'bloq-evolution-head-advance-left',
+                value: 'HEAD_LEFT'
+            }, {
+                label: 'bloq-evolution-head-advance-right',
+                value: 'HEAD_RIGHT'
+            }]
         }]
     ],
     code: '\'{SIDE}\' === \'HEAD_LEFT\'? \'evolution.turnHead({DEGREES});\' : \'evolution.turnHead(-{DEGREES});\'',

@@ -9,8 +9,10 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "8121d7dc-44a2-43d3-b69b-d6cc313b384e"
+      "acceptType": [
+        "all"
+      ],
+      "name": "22c1d472-c9d7-409f-b996-14dcc7400714"
     }
   ],
   "bloqClass": "bloq-array-variable",
@@ -32,8 +34,10 @@
       {
         "bloqInputId": "POSITION",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "8121d7dc-44a2-43d3-b69b-d6cc313b384e"
+        "acceptType": [
+          "all"
+        ],
+        "name": "22c1d472-c9d7-409f-b996-14dcc7400714"
       },
       {
         "alias": "text",

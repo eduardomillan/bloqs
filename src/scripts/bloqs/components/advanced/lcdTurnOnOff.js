@@ -37,7 +37,7 @@ var lcdTurnOnOffAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'LCD',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '{LCD}.setBacklight({STATE});'

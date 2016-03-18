@@ -13,8 +13,10 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "f02d4a36-c3ba-4653-bb95-5f095e8bf46c"
+      "acceptType": [
+        "all"
+      ],
+      "name": "356e4230-ad10-4da8-b93f-35b2d79fbbd0"
     }
   ],
   "bloqClass": "bloq-oscillator-stop-advanced",
@@ -27,8 +29,10 @@
       {
         "bloqInputId": "OSCILLATOR",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "f02d4a36-c3ba-4653-bb95-5f095e8bf46c"
+        "acceptType": [
+          "all"
+        ],
+        "name": "356e4230-ad10-4da8-b93f-35b2d79fbbd0"
       }
     ]
   ],

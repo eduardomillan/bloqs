@@ -26,14 +26,14 @@ var digitalWrite = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-pin-digital-write-data'
         }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: 'digitalWrite({PIN},{DATA});'

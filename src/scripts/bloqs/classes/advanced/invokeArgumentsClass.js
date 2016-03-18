@@ -7,12 +7,12 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: invokeArgumentsClass
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It instance an object of a specific class, selectable
  *              from a drop-down, with a given name and arguments.
- * 
+ *
  * Return type: none
  */
 
@@ -41,7 +41,7 @@ var invokeArgumentsClass = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     createDynamicContent: 'objects',

@@ -27,14 +27,14 @@ var lcdWritePositionAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-lcd-writte-inLCD'
         }, {
             bloqInputId: 'LCD',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-lcd-writte-advanced-inPosition'

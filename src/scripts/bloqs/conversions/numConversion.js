@@ -26,7 +26,7 @@ var numConversion = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'NUMBER',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-num-conversion-to'
@@ -40,7 +40,7 @@ var numConversion = _.merge(_.clone(OutputBloq, true), {
                 label: 'bloq-num-conversion-float',
                 value: 'float'
             }]
-        },]
+        }, ]
     ],
     code: '({TYPE}) {NUMBER}',
     returnType: {

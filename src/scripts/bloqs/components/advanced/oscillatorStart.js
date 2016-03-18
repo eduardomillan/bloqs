@@ -26,7 +26,7 @@ var oscillatorStartAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'OSCILLATOR',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '{OSCILLATOR}.start()'

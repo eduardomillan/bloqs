@@ -27,21 +27,21 @@ var buzzerAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'BUZZER',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-buzzer-advance-note'
         }, {
             bloqInputId: 'NOTE',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-buzzer-advance-for'
         }, {
             bloqInputId: 'SECONDS',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-buzzer-advance-ms'

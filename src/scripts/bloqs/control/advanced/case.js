@@ -26,7 +26,7 @@ var bloqCaseAdvanced = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-case-exec'

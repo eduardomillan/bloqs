@@ -26,14 +26,14 @@ var servoNormalAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'SERVO',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-servo-advanced-to'
         }, {
             bloqInputId: 'POSITION',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-servo-advanced-degrees'

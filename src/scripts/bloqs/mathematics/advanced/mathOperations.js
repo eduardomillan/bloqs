@@ -43,7 +43,7 @@ var mathOperations = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'ARG',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '{OPERATOR}({ARG})',

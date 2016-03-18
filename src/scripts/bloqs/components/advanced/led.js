@@ -36,7 +36,7 @@ var ledAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'LED',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: 'digitalWrite({LED},{STATE});'

@@ -26,14 +26,14 @@ var continuousServoStartAdvancedV1 = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'SERVO',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-continuous-servo-start-advanced-direction'
         }, {
             bloqInputId: 'DIRECTION',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '{SERVO}.write({DIRECTION});'

@@ -27,28 +27,28 @@ var oscillatorAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'OSCILLATOR',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-oscillator-advanced-around'
         }, {
             bloqInputId: 'PHASE',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-oscillator-advanced-amplitude'
         }, {
             bloqInputId: 'AMPLITUDE',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-oscillator-advanced-speed'
         }, {
             bloqInputId: 'SPEED',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();'

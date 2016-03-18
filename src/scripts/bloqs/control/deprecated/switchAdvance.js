@@ -26,7 +26,7 @@ var switchAdvanced = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: 'switch (int({VAR})) {{STATEMENTS}}'

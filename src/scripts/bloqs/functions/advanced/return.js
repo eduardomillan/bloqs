@@ -27,7 +27,7 @@ var bloqReturn = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'RETURN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: 'return {RETURN};'

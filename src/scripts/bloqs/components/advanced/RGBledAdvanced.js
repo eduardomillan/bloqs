@@ -35,21 +35,21 @@ var rgbLedAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'RED',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-rgbLed-green'
         }, {
             bloqInputId: 'GREEN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-rgbLed-blue'
         }, {
             bloqInputId: 'BLUE',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '{LED}.setRGBcolor({RED},{GREEN},{BLUE});'

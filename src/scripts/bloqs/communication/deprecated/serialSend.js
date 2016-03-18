@@ -31,7 +31,7 @@ var serialSend = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             id: 'FUNCTION',
             alias: 'staticDropdown',

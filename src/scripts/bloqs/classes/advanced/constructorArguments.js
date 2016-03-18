@@ -7,13 +7,13 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: constructorClassArguments
- * 
+ *
  * Bloq type: Statement-Input
  *
  * Description: It defines de constructor with arguments of a class, which
  *              would be executed when the class was instanced into an object.
  *              It is used to initialize the variables of the class.
- * 
+ *
  * Return type: none
  */
 
@@ -28,7 +28,7 @@ var constructorClassArguments = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};',

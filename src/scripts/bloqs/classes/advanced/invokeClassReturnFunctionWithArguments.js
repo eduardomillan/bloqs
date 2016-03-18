@@ -42,7 +42,7 @@ var invokeClassReturnFunctionWithArguments = _.merge(_.clone(OutputBloq, true), 
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '{CLASS}.{FUNCTION}({ARGS});',

@@ -9,8 +9,10 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "String",
-      "name": "cf3f7c4d-01d3-46cf-8af8-e6cfb5b68713"
+      "acceptType": [
+        "String"
+      ],
+      "name": "502f5550-14c0-4df3-a6cc-8c08d3bcd0d2"
     }
   ],
   "bloqClass": "bloq-string-to-int",
@@ -23,8 +25,10 @@
       {
         "bloqInputId": "VAR",
         "alias": "bloqInput",
-        "acceptType": "String",
-        "name": "cf3f7c4d-01d3-46cf-8af8-e6cfb5b68713"
+        "acceptType": [
+          "String"
+        ],
+        "name": "502f5550-14c0-4df3-a6cc-8c08d3bcd0d2"
       }
     ]
   ],

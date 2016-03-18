@@ -13,26 +13,34 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "5f20dc80-e4e5-4cab-bbb5-40f47ddf2900"
+      "acceptType": [
+        "all"
+      ],
+      "name": "3ba9fc05-a0d4-431f-949e-fef650aecc41"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "7ffd64d7-a1b4-40ae-a378-23d94d62f46c"
+      "acceptType": [
+        "all"
+      ],
+      "name": "2e803d6c-46ce-4017-8745-06d72ab25e1f"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "9a56ac6e-d310-46d3-80a0-1cb78935af4e"
+      "acceptType": [
+        "all"
+      ],
+      "name": "77c77c95-0111-41c3-bd2c-04de6a0cabb1"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "960b3294-98fd-4e6c-9659-864f20122079"
+      "acceptType": [
+        "all"
+      ],
+      "name": "5e9d5ac3-369a-4c18-a0dd-40760e4fffad"
     }
   ],
   "bloqClass": "bloq-lcd-writte",
@@ -45,8 +53,10 @@
       {
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "5f20dc80-e4e5-4cab-bbb5-40f47ddf2900"
+        "acceptType": [
+          "all"
+        ],
+        "name": "3ba9fc05-a0d4-431f-949e-fef650aecc41"
       },
       {
         "alias": "text",
@@ -55,8 +65,10 @@
       {
         "bloqInputId": "LCD",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "7ffd64d7-a1b4-40ae-a378-23d94d62f46c"
+        "acceptType": [
+          "all"
+        ],
+        "name": "2e803d6c-46ce-4017-8745-06d72ab25e1f"
       },
       {
         "alias": "text",
@@ -65,14 +77,18 @@
       {
         "bloqInputId": "COLUMN",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "9a56ac6e-d310-46d3-80a0-1cb78935af4e"
+        "acceptType": [
+          "all"
+        ],
+        "name": "77c77c95-0111-41c3-bd2c-04de6a0cabb1"
       },
       {
         "bloqInputId": "ROW",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "960b3294-98fd-4e6c-9659-864f20122079"
+        "acceptType": [
+          "all"
+        ],
+        "name": "5e9d5ac3-369a-4c18-a0dd-40760e4fffad"
       }
     ]
   ],

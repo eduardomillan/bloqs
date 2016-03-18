@@ -26,7 +26,7 @@ var readSensorAdvanced = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     // code: '\'{PIN}\'.indexOf(\'A\') === 0 ? \'analogRead({PIN})\' : \'digitalRead({PIN})\''

@@ -9,32 +9,42 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "float",
-      "name": "9e35660a-64cf-4ecf-96e9-f4f6ddd589e1"
+      "acceptType": [
+        "float"
+      ],
+      "name": "f410b4f1-cc95-4125-a112-0dbd7c906191"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "float",
-      "name": "235781a7-6406-4a94-a309-c8759703ae3b"
+      "acceptType": [
+        "float"
+      ],
+      "name": "8f57b478-b401-4b90-932c-8b666c125b21"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "float",
-      "name": "4a8a47e0-4e4d-4aba-95d1-10d64f603a64"
+      "acceptType": [
+        "float"
+      ],
+      "name": "e31530e8-0bbb-43bd-abb6-fcd2b3a9e43a"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "float",
-      "name": "8378d043-ce16-4f8a-834e-f0a48148d7ea"
+      "acceptType": [
+        "float"
+      ],
+      "name": "77fcd195-ff32-4f3f-a3ce-b64dc494dbf9"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "float",
-      "name": "e9200e35-b9bd-42f3-b77f-cabd8bf53d92"
+      "acceptType": [
+        "float"
+      ],
+      "name": "cddd366a-04cd-419b-97fa-d1b2ddc5435f"
     }
   ],
   "bloqClass": "bloq-map-advanced",
@@ -47,8 +57,10 @@
       {
         "bloqInputId": "VAR",
         "alias": "bloqInput",
-        "acceptType": "float",
-        "name": "9e35660a-64cf-4ecf-96e9-f4f6ddd589e1"
+        "acceptType": [
+          "float"
+        ],
+        "name": "f410b4f1-cc95-4125-a112-0dbd7c906191"
       },
       {
         "alias": "text",
@@ -57,8 +69,10 @@
       {
         "bloqInputId": "INITMIN",
         "alias": "bloqInput",
-        "acceptType": "float",
-        "name": "235781a7-6406-4a94-a309-c8759703ae3b"
+        "acceptType": [
+          "float"
+        ],
+        "name": "8f57b478-b401-4b90-932c-8b666c125b21"
       },
       {
         "alias": "text",
@@ -67,8 +81,10 @@
       {
         "bloqInputId": "INITMAX",
         "alias": "bloqInput",
-        "acceptType": "float",
-        "name": "4a8a47e0-4e4d-4aba-95d1-10d64f603a64"
+        "acceptType": [
+          "float"
+        ],
+        "name": "e31530e8-0bbb-43bd-abb6-fcd2b3a9e43a"
       },
       {
         "alias": "text",
@@ -77,8 +93,10 @@
       {
         "bloqInputId": "FINMIN",
         "alias": "bloqInput",
-        "acceptType": "float",
-        "name": "8378d043-ce16-4f8a-834e-f0a48148d7ea"
+        "acceptType": [
+          "float"
+        ],
+        "name": "77fcd195-ff32-4f3f-a3ce-b64dc494dbf9"
       },
       {
         "alias": "text",
@@ -87,8 +105,10 @@
       {
         "bloqInputId": "FINMAX",
         "alias": "bloqInput",
-        "acceptType": "float",
-        "name": "e9200e35-b9bd-42f3-b77f-cabd8bf53d92"
+        "acceptType": [
+          "float"
+        ],
+        "name": "cddd366a-04cd-419b-97fa-d1b2ddc5435f"
       },
       {
         "alias": "text",

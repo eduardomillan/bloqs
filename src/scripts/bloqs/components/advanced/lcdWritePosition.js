@@ -26,25 +26,25 @@ var lcdWritePositionAdvancedV1 = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-lcd-writte-inLCD'
         }, {
             bloqInputId: 'LCD',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-lcd-writte-advanced-inPosition'
         }, {
             bloqInputId: 'COLUMN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             bloqInputId: 'ROW',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});'

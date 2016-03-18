@@ -21,7 +21,9 @@
       {
         "continuousServoStartAdvancedInputId": "SERVO",
         "alias": "continuousServoStartAdvancedInput",
-        "acceptType": "all"
+        "acceptType": [
+          "all"
+        ]
       },
       {
         "alias": "text",

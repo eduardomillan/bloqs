@@ -35,7 +35,7 @@ var arrayVariableAdvanced = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'POSITION',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: ']'

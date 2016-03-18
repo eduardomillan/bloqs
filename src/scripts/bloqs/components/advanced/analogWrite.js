@@ -26,14 +26,14 @@ var analogWrite = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-pin-analog-write-data'
         }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '\'{PIN}\'.indexOf(\'A\') !== -1 ? \'analogWrite({PIN},{DATA});\'.replace(/"/g, \'\') : \'analogWrite({PIN},{DATA});\'',

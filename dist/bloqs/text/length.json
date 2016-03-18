@@ -9,8 +9,10 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "String",
-      "name": "ed6b494f-8aa6-4151-8b5b-87fece113437"
+      "acceptType": [
+        "String"
+      ],
+      "name": "e89766b8-ac17-49ed-8e09-56c2207878f9"
     }
   ],
   "bloqClass": "bloq-length",
@@ -23,8 +25,10 @@
       {
         "bloqInputId": "TEXT",
         "alias": "bloqInput",
-        "acceptType": "String",
-        "name": "ed6b494f-8aa6-4151-8b5b-87fece113437"
+        "acceptType": [
+          "String"
+        ],
+        "name": "e89766b8-ac17-49ed-8e09-56c2207878f9"
       }
     ]
   ],

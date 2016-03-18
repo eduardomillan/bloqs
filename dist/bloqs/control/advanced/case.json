@@ -17,8 +17,10 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "66cedb8d-cd04-4020-b322-22faef9cb447"
+      "acceptType": [
+        "all"
+      ],
+      "name": "aed0d242-b4ad-4d15-a13f-defe07605c9e"
     }
   ],
   "bloqClass": "bloq-case",
@@ -31,8 +33,10 @@
       {
         "bloqInputId": "VALUE",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "66cedb8d-cd04-4020-b322-22faef9cb447"
+        "acceptType": [
+          "all"
+        ],
+        "name": "aed0d242-b4ad-4d15-a13f-defe07605c9e"
       },
       {
         "alias": "text",

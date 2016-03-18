@@ -26,7 +26,7 @@ var stringToInt = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
-            acceptType: 'String'
+            acceptType: ['String']
         }]
     ],
     code: '{VAR}.toInt()',

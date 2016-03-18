@@ -13,8 +13,10 @@
     {
       "type": "connector--input",
       "accept": "connector--output",
-      "acceptType": "all",
-      "name": "3bf901f2-6adb-4679-9736-071b1050170c"
+      "acceptType": [
+        "all"
+      ],
+      "name": "f18713d8-3161-4f41-8777-bbd76fbd7cd6"
     }
   ],
   "bloqClass": "bloq-wait",
@@ -27,8 +29,10 @@
       {
         "bloqInputId": "TIME",
         "alias": "bloqInput",
-        "acceptType": "all",
-        "name": "3bf901f2-6adb-4679-9736-071b1050170c"
+        "acceptType": [
+          "all"
+        ],
+        "name": "f18713d8-3161-4f41-8777-bbd76fbd7cd6"
       }
     ]
   ],

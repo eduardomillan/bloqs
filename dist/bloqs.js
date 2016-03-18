@@ -250,12 +250,14 @@
 
     var sameConnectionType = function(dragBloq, dropBloq, dropConnectorAcceptType, bloqs, IOConnectors, softwareArrays, componentsArray) {
         var dragConnectorType = getTypeFromBloq(dragBloq, bloqs, IOConnectors, softwareArrays, componentsArray);
-        if (typeof(dropConnectorAcceptType) === 'object') {
+        //if acceptType its and object, the acceptType comes from a dinamic dropdown.
+        console.log(Object.prototype.toString.call(dropConnectorAcceptType));
+        if (Object.prototype.toString.call(dropConnectorAcceptType) === '[object Object]') {
             dropConnectorAcceptType = getTypeFromDynamicDropdown(dropBloq, dropConnectorAcceptType, softwareArrays);
         }
-        return (dragConnectorType === 'all') || (dropConnectorAcceptType === 'all') || (dragConnectorType === dropConnectorAcceptType);
+        return (dragConnectorType === 'all') || (dropConnectorAcceptType.indexOf('all') !== -1) || (dropConnectorAcceptType.indexOf(dragConnectorType) !== -1);
     };
-
+    //getConnectorsUuidByAcceptType
     var getTypeFromDynamicDropdown = function(bloq, typeObject, softwareArrays) {
         var attributeValue = bloq.$bloq.find('select[data-content-id="' + typeObject.idDropdown + '"][data-dropdowncontent="' + typeObject.options + '"]').attr('data-value');
         var selectedValue = bloq.$bloq.find('select[data-content-id="' + typeObject.idDropdown + '"][data-dropdowncontent="' + typeObject.options + '"]').val();
@@ -513,7 +515,7 @@
     var getConnectorsUuidByAcceptType = function(IOConnectors, type) {
         var result = [];
         for (var key in IOConnectors) {
-            if (IOConnectors[key].data.acceptType === type) {
+            if (IOConnectors[key].data.acceptType.indexOf('type') !== -1) {
                 result.push(IOConnectors[key].uuid);
             }
         }
@@ -1493,7 +1495,6 @@
     return bloqsUtils;
 
 })(window.bloqsUtils = window.bloqsUtils || {}, _, undefined);
-
 
 'use strict';
 (function(exports, _, bloqsUtils, bloqsLanguages) {

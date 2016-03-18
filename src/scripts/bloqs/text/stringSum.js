@@ -23,14 +23,14 @@ var stringSum = _.merge(_.clone(OutputBloq, true), {
         [{
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            acceptType: 'String'
+            acceptType: ['String']
         }, {
             alias: 'text',
             value: '+'
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            acceptType: 'String'
+            acceptType: ['String']
         }]
     ],
     code: 'String({ARG1})+String({ARG2})',

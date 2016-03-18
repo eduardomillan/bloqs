@@ -56,7 +56,7 @@ var declareVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
-            acceptType: 'all',
+            acceptType: ['all'],
         }]
     ],
     returnType: {

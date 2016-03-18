@@ -26,14 +26,14 @@ var pinWriteAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }, {
             alias: 'text',
             value: 'bloq-pin-writte-advanced-data'
         }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',
-            acceptType: 'all'
+            acceptType: ['all']
         }]
     ],
     code: '\'{PIN}\'.indexOf(\'A\') === 0 ? \'analogWrite({PIN},{DATA});\' : \'digitalWrite({PIN},{DATA});\''
