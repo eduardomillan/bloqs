@@ -1570,8 +1570,9 @@
     };
 
     var bloqMouseDown = function(evt) {
-        //console.log('bloqMouseDown');
-        //console.log(evt.target.tagName);
+        // console.log('bloqMouseDown');
+        // console.log(evt);
+        // console.log(evt.target.tagName);
         if (evt.target.tagName !== 'SELECT') {
             //to avoid mousemove event on children and parents at the same time
             evt.stopPropagation();
@@ -1580,6 +1581,8 @@
             startPreMouseMove = true;
             document.addEventListener('mousemove', bloqPreMouseMove);
             document.addEventListener('mouseup', bloqMouseUpBeforeMove);
+            document.addEventListener('touchmove', bloqPreMouseMove);
+            document.addEventListener('touchend', bloqMouseUpBeforeMove);
         }
     };
 
@@ -1588,21 +1591,28 @@
         mouseDownBloq = null;
         document.removeEventListener('mousemove', bloqPreMouseMove);
         document.removeEventListener('mouseup', bloqMouseUpBeforeMove);
+        document.removeEventListener('touchmove', bloqPreMouseMove);
+        document.removeEventListener('touchend', bloqMouseUpBeforeMove);
     };
 
     //to avoid move bloqs with a 1 px movement
     var bloqPreMouseMove = function(evt) {
+        // console.log('bloqPreMouseMove');
+        // console.log(evt.type);
+        var pageX = evt.pageX || evt.touches[0].pageX,
+            pageY = evt.pageY || evt.touches[0].pageY;
+
         if (startPreMouseMove) {
-            preMouseMoveX = evt.pageX;
-            preMouseMoveY = evt.pageY;
+            preMouseMoveX = pageX;
+            preMouseMoveY = pageY;
             startPreMouseMove = false;
 
             //we take values to the bloqsMouseMove from the first move
             var position = mouseDownBloq.getBoundingClientRect();
 
             //mouse position respect bloq
-            dragBloqMousePositionX = evt.pageX - position.left;
-            dragBloqMousePositionY = evt.pageY - position.top;
+            dragBloqMousePositionX = pageX - position.left;
+            dragBloqMousePositionY = pageY - position.top;
 
             //the mouse position its relative to the document, we need the top offset from header
             fieldOffsetTop = getFieldOffsetTop(fieldOffsetTopSource);
@@ -1614,14 +1624,16 @@
             //to add the scroll to the mouse positions
             scrollTop = $field[0].scrollTop;
         } else {
-
-            var distanceX = evt.pageX - preMouseMoveX,
-                distanceY = evt.pageY - preMouseMoveY;
+            //console.log(pageX, pageY)
+            var distanceX = pageX - preMouseMoveX,
+                distanceY = pageY - preMouseMoveY;
 
             //console.log('distance', Math.abs(distanceX), Math.abs(distanceY));
             if ((Math.abs(distanceX) >= 5) || (Math.abs(distanceY) >= 5)) {
                 document.removeEventListener('mousemove', bloqPreMouseMove);
                 document.addEventListener('mousemove', bloqMouseMove);
+                document.removeEventListener('touchmove', bloqPreMouseMove);
+                document.addEventListener('touchmove', bloqMouseMove);
             }
         }
     };
@@ -1640,6 +1652,8 @@
             }
             document.removeEventListener('mouseup', bloqMouseUpBeforeMove);
             document.addEventListener('mouseup', bloqMouseUp);
+            document.removeEventListener('touchend', bloqMouseUpBeforeMove);
+            document.addEventListener('touchend', bloqMouseUp);
 
             mouseDownBloq.className = mouseDownBloq.className.concat(' dragging');
 
@@ -1661,7 +1675,10 @@
         }
 
         bloq = bloq || draggingBloq;
-        var distance = moveBloq(bloq, evt.clientX, evt.clientY);
+        var clientX = evt.clientX || evt.touches[0].clientX,
+            clientY = evt.clientY || evt.touches[0].clientY;
+
+        var distance = moveBloq(bloq, clientX, clientY);
 
         switch (bloq.bloqData.type) {
             case 'statement':
@@ -1735,6 +1752,8 @@
 
         document.removeEventListener('mousemove', bloqMouseMove);
         document.removeEventListener('mouseup', bloqMouseUp);
+        document.removeEventListener('touchmove', bloqMouseMove);
+        document.removeEventListener('touchend', bloqMouseUp);
     };
 
     var statementDragStart = function(bloq) {
@@ -2157,6 +2176,12 @@
                 document.removeEventListener('mousemove', bloqPreMouseMove);
                 document.removeEventListener('mousemove', bloqMouseMove);
                 document.removeEventListener('mouseup', bloqMouseUp);
+
+
+                document.removeEventListener('touchend', bloqMouseUpBeforeMove);
+                document.removeEventListener('touchmove', bloqPreMouseMove);
+                document.removeEventListener('touchmove', bloqMouseMove);
+                document.removeEventListener('touchend', bloqMouseUp);
             }
             switch (bloq.bloqData.type) {
                 case 'statement-input':
@@ -2959,6 +2984,7 @@
                     //this.$bloq.attr('draggable', true);
                     buildContent(this);
                     this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
+                    this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
                     buildConnectors(params.bloqData.connectors, this);
                     this.$contentContainer.children().children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
                     this.$contentContainer.children().children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
@@ -2972,6 +2998,7 @@
                     //this.$bloq.attr('draggable', true);
                     buildContent(this);
                     this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
+                    this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
                     buildConnectors(params.bloqData.connectors, this);
                     this.$bloq.children().children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
                     this.$bloq.children().children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
@@ -2981,13 +3008,13 @@
                     //this.$bloq.attr('draggable', true);
                     buildContent(this);
                     this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
+                    this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
                     buildConnectors(params.bloqData.connectors, this);
                     this.$bloq.children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
                     this.$bloq.children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
                     break;
                 case 'group':
                     this.$bloq.append('<div class="field--header"><button class="btn btn--collapsefield"></button><h3 data-i18n="' + this.bloqData.headerText + '">' + translateBloq(lang, this.bloqData.headerText) + '</h3></div><div class="field--content"><div class="bloq--extension--info"> <div class="bloq__info"><p class="bloq__info--text" data-i18n="' + this.bloqData.descriptionText + '">' + translateBloq(lang, this.bloqData.descriptionText) + '</p></div><p class="bloq--drag-bloq" data-i18n="drag-bloq">' + translateBloq(lang, 'drag-bloq') + '</p></div><div class="bloq--extension__content"></div></div>');
-
                     buildConnectors(params.bloqData.connectors, this);
                     this.$bloq.find('.connector--root').addClass('connector--root--group');
                     this.$bloq.find('.field--header .btn').on('click', this.collapseGroupContent);
