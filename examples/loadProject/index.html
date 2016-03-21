@@ -30,6 +30,7 @@
     <button id="loadFirstProject">Load project with 2 statement Bloqs</button>
     <button id="loadSecondProject">Load project with a statement Bloq and Bloqs inside</button>
     <button id="loadThirdProject">Load project with a statement Bloq and Bloqs inside, and child Bloqs</button>
+    <button id="loadFourthProject">Comment project</button>
     <!-- end demo markup -->
     <p>See the <a href="http://bq.github.io/bloqs">project homepage</a>.</p>
     <p>Check out the <a href="https://github.com/bq/bloqs">project repo</a>.</p>
@@ -38,6 +39,8 @@
     <!--Load Scripts-->
     <script src="./../../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="./../../bower_components/lodash/lodash.min.js"></script>
+    <script src="./../../bower_components/autogrow/autogrow.min.js"></script>
+    <script src="./../../bower_components/jquery-auto-grow-input/jquery.auto-grow-input.min.js"></script>
     <!--Add bloqs js compiled-->
     <!--<script src="./../../dist/bloqs.min.js"></script>-->
     <!--Or add bloqs js without compile-->
@@ -93,42 +96,6 @@
         $field.append(arduinoMainBloqs.loopBloq.$bloq);
         arduinoMainBloqs.loopBloq.enable(true);
         arduinoMainBloqs.loopBloq.doConnectable();
-
-
-        //start build bloqs!
-
-        //Create a if bloq from the bloqsSchemas loaded
-        var bloq1 = new bloqs.Bloq({
-            bloqData: bloqSchemas['if'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        //append it to the field
-        $field.append(bloq1.$bloq);
-        //enable if you want
-        bloq1.enable(true);
-        //do connectable to allow anothers bloqs to connect to them
-        bloq1.doConnectable();
-
-
-        var bloq2 = new bloqs.Bloq({
-            bloqData: bloqSchemas['for-v1'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        $field.append(bloq2.$bloq);
-        bloq2.enable(true);
-        bloq2.doConnectable();
-
-        var bloq3 = new bloqs.Bloq({
-            bloqData: bloqSchemas['number'],
-            componentsArray: componentsArray,
-            $field: $field
-        });
-        $field.append(bloq3.$bloq);
-        bloq3.enable(true);
-        bloq3.doConnectable();
-
 
 
 
@@ -368,6 +335,46 @@
             }
         };
 
+        //---------fourth Example
+
+
+        var varsBloqWithComment = {
+            vars: {
+                name: 'varsBloq',
+                enable: true,
+                childs: [{
+                    name: 'code',
+                    enable: true,
+                    content: [
+                        [{
+                            alias: "multilineCommentInput",
+                            id: "COMMENT",
+                            value: "comentario\ncon\nsaltos\nde linea."
+                        }]
+                    ]
+                }],
+                content: [
+                    []
+                ]
+            },
+            setup: {
+                name: 'setupBloq',
+                enable: true,
+                childs: [],
+                content: [
+                    []
+                ]
+            },
+            loop: {
+                name: 'loopBloq',
+                enable: true,
+                childs: [],
+                content: [
+                    []
+                ]
+            }
+        };
+
 
         var loadProject = function(project) {
             //Lets go to load another project
@@ -410,6 +417,10 @@
 
         $('#loadThirdProject').click(function() {
             loadProject(varsBloqWithIfWithContentAndChilds);
+        });
+
+        $('#loadFourthProject').click(function() {
+            loadProject(varsBloqWithComment);
         });
 
     });
