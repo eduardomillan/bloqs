@@ -73,16 +73,6 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
     grunt.loadTasks('tasks');
 
-
-    grunt.registerTask('default', [
-        //'i18n',
-        'clean:dist',
-        'concat:dist',
-        'bloqDist',
-        'uglify',
-        'sass'
-    ]);
-
     grunt.registerMultiTask('buildBloqs', 'Generate bloqs code into JSON format', function() {
 
         var opts = this.options();
@@ -150,4 +140,33 @@ module.exports = function(grunt) {
             'poeditor2bloqs'
         ]);
     });
+
+    grunt.registerTask('default', [
+        'i18n',
+        'clean:dist',
+        'concat:dist',
+        'bloqDist',
+        'uglify',
+        'sass'
+    ]);
+
+    grunt.registerTask('prepareversion', function(version) {
+        if (version) {
+            var bowerFile = grunt.file.readJSON('bower.json');
+            bowerFile.version = version;
+            grunt.file.write('bower.json', JSON.stringify(bowerFile, null, 4));
+            console.log('Bower version changed');
+
+            var packageFile = grunt.file.readJSON('package.json');
+            packageFile.version = version;
+            grunt.file.write('package.json', JSON.stringify(packageFile, null, 4));
+            console.log('Package version changed');
+            grunt.task.run([
+                'default'
+            ]);
+        } else {
+            grunt.log.error('Tienes que indicar la version, grunt prepareversion:v2.1.0');
+        }
+    });
+
 };
