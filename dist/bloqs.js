@@ -1441,6 +1441,59 @@
         return type;
     };
 
+    /**
+     * Return the connectors from the second bloq that can connect with any connector in bloq1
+     * return null if cant find a valid connector
+     *
+     */
+    function canConnectStatementBloqs(bloq1, bloq2, connectors){
+        var result = [];
+        if( canConnectConnectors(bloq1.connectors[0], bloq2.connectors[1], connectors)){
+            result.push(bloq2.connectors[1]);
+        }
+        if( canConnectConnectors(bloq1.connectors[1], bloq2.connectors[0], connectors)){
+            result.push(bloq2.connectors[0]);
+        }
+        if( bloq1.connectors[2] && canConnectConnectors(bloq1.connectors[2], bloq2.connectors[0], connectors)){
+            result.push(bloq2.connectors[0]);
+        }
+        if( bloq2.connectors[2] && canConnectConnectors(bloq1.connectors[0], bloq2.connectors[2], connectors)){
+            result.push(bloq2.connectors[2]);
+        }
+        if(result.length === 0){
+            result = null;
+        }
+        return result;
+    };
+
+    function canConnectConnectors(connectorUuid1, connectorUuid2, connectors){
+        var connector1 = connectors[connectorUuid1],
+            connector2 = connectors[connectorUuid2];
+        return ((connector1.data.type === connector2.data.accept)
+            && canConnectAliases(connector1.data.acceptedAliases, connector2.data.acceptedAliases));
+    };
+
+    function canConnectAliases(acceptedAliases1, acceptedAliases2) {
+        if (acceptedAliases1 && acceptedAliases2) {
+            console.log('---');
+            console.log(acceptedAliases1, acceptedAliases2);
+            console.log(arrayIntersection([acceptedAliases1, acceptedAliases2]));
+        }
+
+        return (!acceptedAliases1 && !acceptedAliases2)
+        || (acceptedAliases1 && acceptedAliases2 && arrayIntersection([acceptedAliases1, acceptedAliases2]))
+        || (!acceptedAliases1 && (acceptedAliases2.indexOf('all') !== -1))
+        || (!acceptedAliases2 && (acceptedAliases1.indexOf('all') !== -1));
+    }
+
+    function arrayIntersection(arrays) {
+        return arrays.shift().filter(function(v) {
+            return arrays.every(function(a) {
+                return a.indexOf(v) !== -1;
+            });
+        });
+    }
+
     bloqsUtils.validString = validString;
     bloqsUtils.validChar = validChar;
     bloqsUtils.validComment = validComment;
@@ -1490,6 +1543,9 @@
     bloqsUtils.setCaretPosition = setCaretPosition;
     bloqsUtils.getEmptyComponentsArray = getEmptyComponentsArray;
     bloqsUtils.getArduinoCode = getArduinoCode;
+    bloqsUtils.canConnectAliases = canConnectAliases;
+    bloqsUtils.canConnectStatementBloqs = canConnectStatementBloqs;
+
 
     return bloqsUtils;
 
@@ -1742,8 +1798,8 @@
             availableIOConnectors = [];
             $('.bloq').removeClass('dragging');
             $('.connector.available').removeClass('available');
-            $('.connector.invalidinput').removeClass('invalidinput');
-            $('.connector.validinput').removeClass('validinput');
+            $('.connector.invalid').removeClass('invalid');
+            $('.connector.valid').removeClass('valid');
             $('.bloq--dragging').removeClass('bloq--dragging');
             $field.focus();
             window.dispatchEvent(new Event('bloqs:dragend'));
@@ -1788,16 +1844,38 @@
 
             availableConnectors = [];
 
-            for (var connectorUuid in connectors) {
-
-                if (connectors[connectorUuid].data.type !== 'connector--empty') {
-                    if (utils.getBloqByConnectorUuid(connectorUuid, bloqs, connectors).isConnectable()) {
-                        if (!utils.connectorIsInBranch(connectorUuid, bloq.uuid, bloqs, connectors)) {
-                            availableConnectors.push(connectorUuid);
-                        }
+            var possibleConnectors;
+            for  (var possibleDropBloqUuid in bloqs) {
+                var possibleDropBloq = bloqs[possibleDropBloqUuid];
+                if( possibleDropBloq.isConnectable()
+                  && !utils.connectorIsInBranch(possibleDropBloq.connectors[0], bloq.uuid, bloqs, connectors)){
+                    possibleConnectors = utils.canConnectStatementBloqs(bloq, possibleDropBloq, connectors);
+                    if(possibleConnectors){
+                        availableConnectors = availableConnectors.concat(possibleConnectors);
                     }
                 }
             }
+
+            for (var i = 0; i < availableConnectors.length; i++) {
+                connectors[availableConnectors[i]].jqueryObject.addClass('valid');
+            };
+
+            // var dropBloq;
+            // for (var connectorUuid in connectors) {
+
+            //     dropBloq = utils.getBloqByConnectorUuid(connectorUuid, bloqs, connectors);
+            //     if (dropBloq.isConnectable()
+            //         && (connectors[connectorUuid].data.type !== 'connector--empty')
+            //         && !utils.connectorIsInBranch(connectorUuid, bloq.uuid, bloqs, connectors)) {
+
+            //         if (utils.canConnectConnectors( bloq.connectors[0], connectorUuid , connectors)){
+            //             availableConnectors.push(connectorUuid);
+            //             connectors[connectorUuid].jqueryObject.addClass('valid');
+            //         } else {
+            //             connectors[connectorUuid].jqueryObject.addClass('invalid');
+            //         }
+            //     }
+            // }
         };
 
         var removeFromStatementInput = function(firstBloqToRemove) {
@@ -1847,9 +1925,9 @@
                         && utils.sameConnectionType(bloq, utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors), IOConnectors[connectorUuid].data.acceptType, bloqs, IOConnectors, softwareArrays, componentsArray)
                         && !utils.connectorIsInBranch(connectorUuid, bloq.uuid, bloqs, IOConnectors)) {
                             availableIOConnectors.push(connectorUuid);
-                            IOConnectors[connectorUuid].jqueryObject.addClass('validinput');
+                            IOConnectors[connectorUuid].jqueryObject.addClass('valid');
                         } else {
-                            IOConnectors[connectorUuid].jqueryObject.addClass('invalidinput');
+                            IOConnectors[connectorUuid].jqueryObject.addClass('invalid');
                         }
                     }
                 }
@@ -1981,7 +2059,9 @@
                     while (!found && (i < dragConnectors.length)) {
                         $dragConnector = connectors[dragConnectors[i]].jqueryObject;
 
-                        if ((connectors[dragConnectors[i]].data.type === connectors[dropConnectorUuid].data.accept) && utils.itsOver($dragConnector, $dropConnector, 20)) {
+                        if ((connectors[dragConnectors[i]].data.type === connectors[dropConnectorUuid].data.accept)
+                            && utils.canConnectAliases(connectors[dropConnectorUuid].data.acceptedAliases, connectors[dragConnectors[i]].data.acceptedAliases)
+                            && utils.itsOver($dragConnector, $dropConnector, 20)) {
                             found = true;
                         } else {
                             i++;

@@ -6284,10 +6284,6 @@
   #bloqs-context-menu button {
     padding: 15px; }
 
-.bloq-invoke-function .connector--bottom {
-  width: 100%;
-  left: 0; }
-
 .submenu__item--component {
   margin: 1em 1em 1em 10px; }
   .submenu__item--component.indent-1 {
@@ -6511,19 +6507,6 @@
       margin-left: 2em; }
       .bloq .bloq--extension .with-content .bloqinput .bloqinput {
         margin-left: 1em; }
-  .bloq .connector--root {
-    top: 36px;
-    height: 4px;
-    left: 21px;
-    width: calc(100% - 20px); }
-    .bloq .connector--root.available:after {
-      content: '';
-      width: 100%;
-      border-top: 3px solid #f1cb33;
-      z-index: 1;
-      position: absolute;
-      max-width: 200px;
-      bottom: -2px; }
 
 .bloq--statement {
   background-color: #ebebeb; }
@@ -6796,79 +6779,6 @@
 .bloq-vars {
   margin-top: 0; }
 
-/* CONNECTORS */
-.connector--offline {
-  border-radius: 3px;
-  width: 100%;
-  height: 10%;
-  position: absolute;
-  left: 0;
-  border: 0;
-  margin: 0;
-  padding: 0; }
-
-.connector--bottom {
-  bottom: 0; }
-  .connector--bottom.available:after {
-    content: '';
-    width: 100%;
-    border-top: 3px solid #f1cb33;
-    z-index: 1;
-    position: absolute;
-    bottom: 0;
-    max-width: 200px; }
-
-.connector--top {
-  top: 0; }
-  .connector--top.available:after {
-    content: '';
-    width: 100%;
-    border-top: 3px solid #f1cb33;
-    z-index: 1;
-    position: absolute;
-    max-width: 200px; }
-
-.connector--input.invalidinput:after {
-  content: '';
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  left: -10px;
-  background-color: #DD5A0A;
-  border-radius: 100%;
-  top: 12px;
-  border: 1px solid #DD5A0A;
-  z-index: 2; }
-
-.connector--input.validinput:after {
-  content: '';
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  left: -10px;
-  background-color: #5DDC21;
-  border-radius: 100%;
-  top: 12px;
-  border: 1px solid #5DDC21;
-  z-index: 2; }
-
-.connector--input.available:after {
-  content: '';
-  width: 15px;
-  height: 15px;
-  position: absolute;
-  left: -10px;
-  background-color: #f1cb33;
-  border-radius: 100%;
-  top: 12px;
-  border: 1px solid #f1cb33;
-  z-index: 2; }
-
-.connector--output {
-  width: 1px;
-  height: 12px;
-  margin-top: 14px; }
-
 .bloq--extension__content > .bloq {
   position: relative; }
 
@@ -6882,19 +6792,6 @@ tester + span + .bloqinput {
 .bloq--group {
   position: relative;
   width: 100%; }
-  .bloq--group .connector--root--group {
-    top: 94px;
-    height: 60px;
-    width: 415px;
-    max-width: 415px;
-    left: 0; }
-    .bloq--group .connector--root--group.available:after {
-      content: none; }
-  .bloq--group.with--content .connector--root--group {
-    top: 55px;
-    left: 18px;
-    height: 5px;
-    width: 381px; }
 
 * + .bloqinput {
   margin-left: 15px; }
@@ -6914,6 +6811,161 @@ tester + span + .bloqinput {
   .bloq-comment > .bloq--fixed textarea,
   .bloq-code > .bloq--fixed textarea {
     margin-bottom: .5em; }
+
+.bloq .connector--offline {
+  border-radius: 3px;
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  left: 0;
+  border: 0;
+  margin: 0;
+  padding: 0; }
+
+.bloq .connector--root {
+  top: 36px;
+  height: 4px;
+  left: 21px;
+  width: calc(100% - 20px); }
+  .bloq .connector--root.invalid:after {
+    content: '';
+    width: 100%;
+    border-top: 3px solid #DD5A0A;
+    z-index: 1;
+    position: absolute;
+    max-width: 200px;
+    bottom: -2px; }
+  .bloq .connector--root.valid:after {
+    content: '';
+    width: 100%;
+    border-top: 3px solid #5DDC21;
+    z-index: 1;
+    position: absolute;
+    max-width: 200px;
+    bottom: -2px; }
+  .bloq .connector--root.available:after {
+    content: '';
+    width: 100%;
+    border-top: 3px solid #f1cb33;
+    z-index: 1;
+    position: absolute;
+    max-width: 200px;
+    bottom: -2px; }
+
+.bloq .connector--bottom {
+  bottom: 0; }
+  .bloq .connector--bottom.invalid:after {
+    content: '';
+    width: 100%;
+    border-top: 3px solid #DD5A0A;
+    z-index: 1;
+    position: absolute;
+    max-width: 200px;
+    bottom: 0; }
+  .bloq .connector--bottom.valid:after {
+    content: '';
+    width: 100%;
+    border-top: 3px solid #5DDC21;
+    z-index: 1;
+    position: absolute;
+    max-width: 200px;
+    bottom: 0; }
+  .bloq .connector--bottom.available:after {
+    content: '';
+    width: 100%;
+    border-top: 3px solid #f1cb33;
+    z-index: 1;
+    position: absolute;
+    max-width: 200px;
+    bottom: 0; }
+
+.bloq .connector--top {
+  top: 0; }
+  .bloq .connector--top.invalid:after {
+    content: '';
+    width: 100%;
+    border-top: 3px solid #DD5A0A;
+    z-index: 1;
+    position: absolute;
+    max-width: 200px; }
+  .bloq .connector--top.valid:after {
+    content: '';
+    width: 100%;
+    border-top: 3px solid #5DDC21;
+    z-index: 1;
+    position: absolute;
+    max-width: 200px; }
+  .bloq .connector--top.available:after {
+    content: '';
+    width: 100%;
+    border-top: 3px solid #f1cb33;
+    z-index: 1;
+    position: absolute;
+    max-width: 200px; }
+
+.bloq .connector--input.invalid:after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: -10px;
+  background-color: #DD5A0A;
+  border-radius: 100%;
+  top: 12px;
+  border: 1px solid #DD5A0A;
+  z-index: 2; }
+
+.bloq .connector--input.valid:after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: -10px;
+  background-color: #5DDC21;
+  border-radius: 100%;
+  top: 12px;
+  border: 1px solid #5DDC21;
+  z-index: 2; }
+
+.bloq .connector--input.available:after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: -10px;
+  background-color: #f1cb33;
+  border-radius: 100%;
+  top: 12px;
+  border: 1px solid #f1cb33;
+  z-index: 2; }
+
+.bloq .connector--output {
+  width: 1px;
+  height: 12px;
+  margin-top: 14px; }
+
+.bloq.bloq--group .connector--root--group {
+  top: 94px;
+  height: 60px;
+  width: 415px;
+  max-width: 415px;
+  left: 0; }
+  .bloq.bloq--group .connector--root--group.available:after {
+    content: none; }
+
+.bloq.bloq--group.with--content .connector--root--group {
+  top: 55px;
+  left: 18px;
+  height: 5px;
+  width: 381px; }
+
+.bloq.bloq-invoke-function .connector--bottom {
+  width: 100%;
+  left: 0; }
+
+.bloq .bloq--extension .bloq--extension--end .connector--bottom {
+  width: 150px;
+  z-index: 10; }
 
 .tooltip {
   position: absolute;

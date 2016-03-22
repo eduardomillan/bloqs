@@ -244,8 +244,8 @@
             availableIOConnectors = [];
             $('.bloq').removeClass('dragging');
             $('.connector.available').removeClass('available');
-            $('.connector.invalidinput').removeClass('invalidinput');
-            $('.connector.validinput').removeClass('validinput');
+            $('.connector.invalid').removeClass('invalid');
+            $('.connector.valid').removeClass('valid');
             $('.bloq--dragging').removeClass('bloq--dragging');
             $field.focus();
             window.dispatchEvent(new Event('bloqs:dragend'));
@@ -290,16 +290,21 @@
 
             availableConnectors = [];
 
-            for (var connectorUuid in connectors) {
-
-                if (connectors[connectorUuid].data.type !== 'connector--empty') {
-                    if (utils.getBloqByConnectorUuid(connectorUuid, bloqs, connectors).isConnectable()) {
-                        if (!utils.connectorIsInBranch(connectorUuid, bloq.uuid, bloqs, connectors)) {
-                            availableConnectors.push(connectorUuid);
-                        }
+            var possibleConnectors;
+            for  (var possibleDropBloqUuid in bloqs) {
+                var possibleDropBloq = bloqs[possibleDropBloqUuid];
+                if( possibleDropBloq.isConnectable()
+                  && !utils.connectorIsInBranch(possibleDropBloq.connectors[0], bloq.uuid, bloqs, connectors)){
+                    possibleConnectors = utils.canConnectStatementBloqs(bloq, possibleDropBloq, connectors);
+                    if(possibleConnectors){
+                        availableConnectors = availableConnectors.concat(possibleConnectors);
                     }
                 }
             }
+
+            for (var i = 0; i < availableConnectors.length; i++) {
+                connectors[availableConnectors[i]].jqueryObject.addClass('valid');
+            };
         };
 
         var removeFromStatementInput = function(firstBloqToRemove) {
@@ -349,9 +354,9 @@
                         && utils.sameConnectionType(bloq, utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors), IOConnectors[connectorUuid].data.acceptType, bloqs, IOConnectors, softwareArrays, componentsArray)
                         && !utils.connectorIsInBranch(connectorUuid, bloq.uuid, bloqs, IOConnectors)) {
                             availableIOConnectors.push(connectorUuid);
-                            IOConnectors[connectorUuid].jqueryObject.addClass('validinput');
+                            IOConnectors[connectorUuid].jqueryObject.addClass('valid');
                         } else {
-                            IOConnectors[connectorUuid].jqueryObject.addClass('invalidinput');
+                            IOConnectors[connectorUuid].jqueryObject.addClass('invalid');
                         }
                     }
                 }
@@ -483,7 +488,9 @@
                     while (!found && (i < dragConnectors.length)) {
                         $dragConnector = connectors[dragConnectors[i]].jqueryObject;
 
-                        if ((connectors[dragConnectors[i]].data.type === connectors[dropConnectorUuid].data.accept) && utils.itsOver($dragConnector, $dropConnector, 20)) {
+                        if ((connectors[dragConnectors[i]].data.type === connectors[dropConnectorUuid].data.accept)
+                            && utils.canConnectAliases(connectors[dropConnectorUuid].data.acceptedAliases, connectors[dragConnectors[i]].data.acceptedAliases)
+                            && utils.itsOver($dragConnector, $dropConnector, 20)) {
                             found = true;
                         } else {
                             i++;

@@ -1433,6 +1433,67 @@
         return type;
     };
 
+    /**
+     * Return the connectors from the second bloq that can connect with any connector in bloq1
+     * return null if cant find a valid connector
+     *
+     */
+    function canConnectStatementBloqs(bloq1, bloq2, connectors){
+        var result = [];
+        if( canConnectConnectors(bloq1.connectors[0], bloq2.connectors[1], connectors)){
+            // we must chek of its some bloq connected, to ensure that the connector and the top or bottom branch
+            // can connect to ensure the bloqs join
+            // if( connectors[bloq1.connectors[0]].connectedTo
+            //     && canConnectConnectors(connectors[bloq1.connectors[0]].connectedTo, gettopbranch(bloq2.connectors[0]), connectors)){
+
+            //     }
+            // }
+            result.push(bloq2.connectors[1]);
+        }
+        if( canConnectConnectors(bloq1.connectors[1], bloq2.connectors[0], connectors)){
+            result.push(bloq2.connectors[0]);
+        }
+        if( bloq1.connectors[2] && canConnectConnectors(bloq1.connectors[2], bloq2.connectors[0], connectors)){
+            result.push(bloq2.connectors[0]);
+        }
+        if( bloq2.connectors[2] && canConnectConnectors(bloq1.connectors[0], bloq2.connectors[2], connectors)){
+            result.push(bloq2.connectors[2]);
+        }
+        if(result.length === 0){
+            result = null;
+        }
+        return result;
+    };
+
+    function canConnectConnectors(connectorUuid1, connectorUuid2, connectors){
+        var connector1 = connectors[connectorUuid1],
+            connector2 = connectors[connectorUuid2];
+
+        return ((connector1.data.type === connector2.data.accept)
+            && canConnectAliases(connector1.data.acceptedAliases, connector2.data.acceptedAliases));
+    };
+
+    function canConnectAliases(acceptedAliases1, acceptedAliases2) {
+        if (acceptedAliases1 && acceptedAliases2) {
+            console.log('---');
+            console.log(acceptedAliases1, acceptedAliases2);
+            console.log(arrayIntersection([acceptedAliases1, acceptedAliases2]));
+        }
+
+        return (!acceptedAliases1 && !acceptedAliases2)
+        || (acceptedAliases1 && acceptedAliases2 && arrayIntersection([acceptedAliases1, acceptedAliases2]))
+        || (!acceptedAliases1 && (acceptedAliases2.indexOf('all') !== -1))
+        || (!acceptedAliases2 && (acceptedAliases1.indexOf('all') !== -1));
+    }
+
+    function arrayIntersection(arrays) {
+        return arrays.shift().filter(function(v) {
+            return arrays.every(function(a) {
+                return a.indexOf(v) !== -1;
+            });
+        });
+    }
+
     bloqsUtils.validString = validString;
     bloqsUtils.validChar = validChar;
     bloqsUtils.validComment = validComment;
@@ -1482,6 +1543,9 @@
     bloqsUtils.setCaretPosition = setCaretPosition;
     bloqsUtils.getEmptyComponentsArray = getEmptyComponentsArray;
     bloqsUtils.getArduinoCode = getArduinoCode;
+    bloqsUtils.canConnectAliases = canConnectAliases;
+    bloqsUtils.canConnectStatementBloqs = canConnectStatementBloqs;
+
 
     return bloqsUtils;
 

@@ -1,18 +1,5 @@
 /* MIXINS */
 
-@mixin inputCircle($color) {
-    content: '';
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    left: -10px;
-    background-color: $color;
-    border-radius: 100%;
-    top: 12px;
-    border: 1px solid $color;
-    z-index: 2;
-}
-
 @mixin disabledBloq {
     background-color: white;
     background-image: url($disabledBloqsBackground);
@@ -338,13 +325,6 @@
     }
 }
 
-.bloq-invoke-function {
-    .connector--bottom {
-        width: 100%;
-        left: 0;
-    }
-}
-
 .submenu__item--component {
     margin: 1em 1em 1em 10px;
     &.indent-1 {
@@ -612,23 +592,6 @@
             }
         }
     }
-    .connector--root {
-        top: 36px;
-        height: 4px;
-        left: 21px;
-        width: calc(100% - 20px);
-        &.available {
-            &:after {
-                content: '';
-                width: 100%;
-                border-top: 3px solid #f1cb33;
-                z-index: 1;
-                position: absolute;
-                max-width: 200px;
-                bottom: -2px;
-            }
-        }
-    }
 }
 
 .bloq--statement {
@@ -804,66 +767,6 @@
     margin-top: 0;
 }
 
-/* CONNECTORS */
-
-.connector--offline {
-    border-radius: 3px;
-    width: 100%;
-    height: 10%;
-    position: absolute;
-    left: 0;
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-.connector--bottom {
-    bottom: 0;
-    &.available {
-        &:after {
-            content: '';
-            width: 100%;
-            border-top: 3px solid #f1cb33;
-            z-index: 1;
-            position: absolute;
-            bottom: 0;
-            max-width: 200px;
-        }
-    }
-}
-
-.connector--top {
-    top: 0;
-    &.available {
-        &:after {
-            content: '';
-            width: 100%;
-            border-top: 3px solid #f1cb33;
-            z-index: 1;
-            position: absolute;
-            max-width: 200px;
-        }
-    }
-}
-
-.connector--input.invalidinput:after {
-    @include inputCircle(#DD5A0A);
-}
-
-.connector--input.validinput:after {
-    @include inputCircle(#5DDC21);
-}
-
-.connector--input.available:after {
-    @include inputCircle(#f1cb33);
-}
-
-.connector--output {
-    width: 1px;
-    height: 12px;
-    margin-top: 14px;
-}
-
 .bloq--extension__content > .bloq {
     position: relative;
 }
@@ -882,26 +785,6 @@ tester + span + .bloqinput {
 .bloq--group {
     position: relative;
     width: 100%;
-    .connector--root--group {
-        top: 94px;
-        height: 60px;
-        width: 415px;
-        max-width: 415px;
-        left: 0;
-        &.available {
-            &:after {
-                content: none;
-            }
-        }
-    }
-    &.with--content {
-        .connector--root--group {
-            top: 55px;
-            left: 18px;
-            height: 5px;
-            width: 381px;
-        }
-    }
 }
 
 * + .bloqinput {
