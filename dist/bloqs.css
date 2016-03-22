@@ -6828,6 +6828,30 @@
     position: absolute;
     max-width: 200px; }
 
+.connector--input.invalidinput:after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: -10px;
+  background-color: #DD5A0A;
+  border-radius: 100%;
+  top: 12px;
+  border: 1px solid #DD5A0A;
+  z-index: 2; }
+
+.connector--input.validinput:after {
+  content: '';
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  left: -10px;
+  background-color: #5DDC21;
+  border-radius: 100%;
+  top: 12px;
+  border: 1px solid #5DDC21;
+  z-index: 2; }
+
 .connector--input.available:after {
   content: '';
   width: 15px;
@@ -6890,3 +6914,29 @@ tester + span + .bloqinput {
   .bloq-comment > .bloq--fixed textarea,
   .bloq-code > .bloq--fixed textarea {
     margin-bottom: .5em; }
+
+.tooltip {
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: black;
+  color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 4px;
+  text-align: center; }
+  .tooltip:before {
+    content: attr(data-literal); }
+  .tooltip:after {
+    border: 1px solid black; }
+  .tooltip .flecha {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: #000000 transparent transparent transparent; }

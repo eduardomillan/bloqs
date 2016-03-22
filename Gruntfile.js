@@ -142,7 +142,7 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', [
-        'i18n',
+        //'i18n',
         'clean:dist',
         'concat:dist',
         'bloqDist',

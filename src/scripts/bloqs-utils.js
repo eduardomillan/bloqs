@@ -243,7 +243,6 @@
     var sameConnectionType = function(dragBloq, dropBloq, dropConnectorAcceptType, bloqs, IOConnectors, softwareArrays, componentsArray) {
         var dragConnectorType = getTypeFromBloq(dragBloq, bloqs, IOConnectors, softwareArrays, componentsArray);
         //if acceptType its and object, the acceptType comes from a dinamic dropdown.
-        console.log(Object.prototype.toString.call(dropConnectorAcceptType));
         if (Object.prototype.toString.call(dropConnectorAcceptType) === '[object Object]') {
             dropConnectorAcceptType = getTypeFromDynamicDropdown(dropBloq, dropConnectorAcceptType, softwareArrays);
         }
