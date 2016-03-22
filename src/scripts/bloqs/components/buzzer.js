@@ -57,6 +57,27 @@ var buzzer = _.merge(_.clone(StatementBloq, true), {
             }, {
                 label: 'bloq-buzzer-si',
                 value: '494'
+            },{
+                label: 'bloq-buzzer-do-#',
+                value: '277'
+            }, {
+                label: 'bloq-buzzer-re-#',
+                value: '311'
+            // }, {
+            //     label: 'bloq-buzzer-mi-#',
+            //     value: ''
+            }, {
+                label: 'bloq-buzzer-fa-#',
+                value: '370'
+            }, {
+                label: 'bloq-buzzer-sol-#',
+                value: '415'
+            }, {
+                label: 'bloq-buzzer-la-#',
+                value: '466'
+            // }, {
+            //     label: 'bloq-buzzer-si-#',
+            //     value: ''
             }]
         }, {
             alias: 'text',
