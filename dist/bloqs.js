@@ -1449,6 +1449,13 @@
     function canConnectStatementBloqs(bloq1, bloq2, connectors){
         var result = [];
         if( canConnectConnectors(bloq1.connectors[0], bloq2.connectors[1], connectors)){
+            // we must chek of its some bloq connected, to ensure that the connector and the top or bottom branch
+            // can connect to ensure the bloqs join
+            // if( connectors[bloq1.connectors[0]].connectedTo
+            //     && canConnectConnectors(connectors[bloq1.connectors[0]].connectedTo, gettopbranch(bloq2.connectors[0]), connectors)){
+
+            //     }
+            // }
             result.push(bloq2.connectors[1]);
         }
         if( canConnectConnectors(bloq1.connectors[1], bloq2.connectors[0], connectors)){
@@ -1469,6 +1476,7 @@
     function canConnectConnectors(connectorUuid1, connectorUuid2, connectors){
         var connector1 = connectors[connectorUuid1],
             connector2 = connectors[connectorUuid2];
+
         return ((connector1.data.type === connector2.data.accept)
             && canConnectAliases(connector1.data.acceptedAliases, connector2.data.acceptedAliases));
     };
@@ -1550,6 +1558,62 @@
     return bloqsUtils;
 
 })(window.bloqsUtils = window.bloqsUtils || {}, _, undefined);
+
+
+'use strict';
+(function(bloqsTooltip) {
+
+    var $currentField, $tooltip;
+
+    function addBloqsTooltip($field){
+        if($currentField){
+            destroyTooltip();
+        };
+        $currentField = $field;
+        $tooltip = createTooltip();
+        $currentField.append($tooltip);
+    };
+
+    function createTooltip(){
+        var $tooltip = $('<div>').attr({
+                'id': 'bloqs-tooltip',
+                'class': 'tooltip',
+                'data-literal':'Im a happy tooltip'
+            });
+
+        $tooltip.append('<div class="flecha"></div>');
+
+        return $tooltip;
+    };
+
+    function destroyTooltip(){
+        if($tooltip){
+            $tooltip.remove();
+        }
+    };
+
+    function showTooltip(text, positionX, positionY){
+        $tooltip.css({
+            display: 'block',
+            top:positionX,
+            left: positionY
+        });
+        $tooltip.attr({
+            'data-literal': text
+        });
+    };
+
+    function hideTooltip(){
+        $tooltip.css({
+            display:'none'
+        });
+    };
+
+    bloqsTooltip.addBloqsTooltip = addBloqsTooltip;
+
+    return bloqsTooltip;
+
+})(window.bloqsTooltip = window.bloqsTooltip || {}, undefined);
 
 
 'use strict';
@@ -1859,23 +1923,6 @@
             for (var i = 0; i < availableConnectors.length; i++) {
                 connectors[availableConnectors[i]].jqueryObject.addClass('valid');
             };
-
-            // var dropBloq;
-            // for (var connectorUuid in connectors) {
-
-            //     dropBloq = utils.getBloqByConnectorUuid(connectorUuid, bloqs, connectors);
-            //     if (dropBloq.isConnectable()
-            //         && (connectors[connectorUuid].data.type !== 'connector--empty')
-            //         && !utils.connectorIsInBranch(connectorUuid, bloq.uuid, bloqs, connectors)) {
-
-            //         if (utils.canConnectConnectors( bloq.connectors[0], connectorUuid , connectors)){
-            //             availableConnectors.push(connectorUuid);
-            //             connectors[connectorUuid].jqueryObject.addClass('valid');
-            //         } else {
-            //             connectors[connectorUuid].jqueryObject.addClass('invalid');
-            //         }
-            //     }
-            // }
         };
 
         var removeFromStatementInput = function(firstBloqToRemove) {

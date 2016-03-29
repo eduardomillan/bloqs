@@ -8,7 +8,7 @@ module.exports = function(grunt) {
                 separator: '\n\n'
             },
             dist: {
-                src: ['src/scripts/bloqs-languages.js', 'src/scripts/bloqs-utils.js', 'src/scripts/bloqs.js'],
+                src: ['src/scripts/bloqs-languages.js', 'src/scripts/bloqs-utils.js', 'src/scripts/bloqs-tooltip.js', 'src/scripts/bloqs.js'],
                 dest: 'dist/<%= pkg.name %>.js'
             }
         },
