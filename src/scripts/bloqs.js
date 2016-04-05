@@ -293,7 +293,8 @@
             var possibleConnectors;
             for  (var possibleDropBloqUuid in bloqs) {
                 var possibleDropBloq = bloqs[possibleDropBloqUuid];
-                if( possibleDropBloq.isConnectable()
+                if( possibleDropBloq.bloqData.type !== 'output'
+                  && possibleDropBloq.isConnectable()
                   && !utils.connectorIsInBranch(possibleDropBloq.connectors[0], bloq.uuid, bloqs, connectors)){
                     possibleConnectors = utils.canConnectStatementBloqs(bloq, possibleDropBloq, connectors);
                     if(possibleConnectors){
