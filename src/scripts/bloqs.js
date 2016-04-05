@@ -1346,7 +1346,7 @@
                     }
 
                     this.bloqData = params.bloqData;
-                    //componentsArray = params.componentsArray || componentsArray;
+                    componentsArray = params.componentsArray || componentsArray;
                     this.connectors = [];
                     this.IOConnectors = [];
 
@@ -1931,7 +1931,6 @@
             exports.updateDropdowns = updateDropdowns;
             exports.setOptions = setOptions;
             exports.buildBloqWithContent = buildBloqWithContent;
-            exports.componentsArray = componentsArray;
 
             return exports;
 
