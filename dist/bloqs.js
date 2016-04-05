@@ -3201,34 +3201,34 @@
                             }
                             value = element.val() || '';
                             //hardcoded!!
-                            for (var j = 0; j < componentsArray.sensors.length; j++) {
-                                if (value === componentsArray.sensors[j].name) {
-                                    type = componentsArray.sensors[j].type;
+                            for (var j = 0; j < that.componentsArray.sensors.length; j++) {
+                                if (value === that.componentsArray.sensors[j].name) {
+                                    type = that.componentsArray.sensors[j].type;
                                     if (type === 'analog') {
-                                        value = 'analogRead(' + componentsArray.sensors[j].name + ')';
+                                        value = 'analogRead(' + that.componentsArray.sensors[j].name + ')';
                                     } else if (type === 'digital') {
-                                        value = 'digitalRead(' + componentsArray.sensors[j].name + ')';
+                                        value = 'digitalRead(' + that.componentsArray.sensors[j].name + ')';
                                     } else if (type === 'LineFollower') { // patch. When the new Web2Board is launched with float * as return, remove this
-                                        value = '(float *)' + componentsArray.sensors[j].name + '.read()';
+                                        value = '(float *)' + that.componentsArray.sensors[j].name + '.read()';
                                     } else {
-                                        value = componentsArray.sensors[j].name + '.read()';
+                                        value = that.componentsArray.sensors[j].name + '.read()';
                                     }
                                     code = code.replace(new RegExp('{' + elem + '.type}', 'g'), value);
                                 }
                             }
-                            for (var j = 0; j < componentsArray.servos.length; j++) {
-                                if (value === componentsArray.servos[j].name) {
-                                    code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.servos[j].pin.s);
+                            for (var j = 0; j < that.componentsArray.servos.length; j++) {
+                                if (value === that.componentsArray.servos[j].name) {
+                                    code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), that.componentsArray.servos[j].pin.s);
                                 }
                             }
-                            for (var j = 0; j < componentsArray.continuousServos.length; j++) {
-                                if (value === componentsArray.continuousServos[j].name) {
-                                    code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.continuousServos[j].pin.s);
+                            for (var j = 0; j < that.componentsArray.continuousServos.length; j++) {
+                                if (value === that.componentsArray.continuousServos[j].name) {
+                                    code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), that.componentsArray.continuousServos[j].pin.s);
                                 }
                             }
-                            for (var j = 0; j < componentsArray.oscillators.length; j++) {
-                                if (value === componentsArray.oscillators[j].name) {
-                                    code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.oscillators[j].pin.s);
+                            for (var j = 0; j < that.componentsArray.oscillators.length; j++) {
+                                if (value === that.componentsArray.oscillators[j].name) {
+                                    code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), that.componentsArray.oscillators[j].pin.s);
                                 }
                             }
                             if (element.attr('data-content-type') === 'stringInput') {
