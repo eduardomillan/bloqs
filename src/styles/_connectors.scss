@@ -1,6 +1,8 @@
-$invalid-connector-color: #DD5A0A;
-$valid-connector-color: #5DDC21;
+$invalid-connector-color: transparent;
+$valid-connector-color: transparent;
 $available-connector-color: #f1cb33;
+// $invalid-connector-color: #DD5A0A;
+// $valid-connector-color: #5DDC21;
 
 @mixin inputCircle($color) {
     content: '';

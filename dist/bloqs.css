@@ -6830,7 +6830,7 @@ tester + span + .bloqinput {
   .bloq .connector--root.invalid:after {
     content: '';
     width: 100%;
-    border-top: 3px solid #DD5A0A;
+    border-top: 3px solid transparent;
     z-index: 1;
     position: absolute;
     max-width: 200px;
@@ -6838,7 +6838,7 @@ tester + span + .bloqinput {
   .bloq .connector--root.valid:after {
     content: '';
     width: 100%;
-    border-top: 3px solid #5DDC21;
+    border-top: 3px solid transparent;
     z-index: 1;
     position: absolute;
     max-width: 200px;
@@ -6857,7 +6857,7 @@ tester + span + .bloqinput {
   .bloq .connector--bottom.invalid:after {
     content: '';
     width: 100%;
-    border-top: 3px solid #DD5A0A;
+    border-top: 3px solid transparent;
     z-index: 1;
     position: absolute;
     max-width: 200px;
@@ -6865,7 +6865,7 @@ tester + span + .bloqinput {
   .bloq .connector--bottom.valid:after {
     content: '';
     width: 100%;
-    border-top: 3px solid #5DDC21;
+    border-top: 3px solid transparent;
     z-index: 1;
     position: absolute;
     max-width: 200px;
@@ -6884,14 +6884,14 @@ tester + span + .bloqinput {
   .bloq .connector--top.invalid:after {
     content: '';
     width: 100%;
-    border-top: 3px solid #DD5A0A;
+    border-top: 3px solid transparent;
     z-index: 1;
     position: absolute;
     max-width: 200px; }
   .bloq .connector--top.valid:after {
     content: '';
     width: 100%;
-    border-top: 3px solid #5DDC21;
+    border-top: 3px solid transparent;
     z-index: 1;
     position: absolute;
     max-width: 200px; }
@@ -6909,10 +6909,10 @@ tester + span + .bloqinput {
   height: 15px;
   position: absolute;
   left: -10px;
-  background-color: #DD5A0A;
+  background-color: transparent;
   border-radius: 100%;
   top: 12px;
-  border: 1px solid #DD5A0A;
+  border: 1px solid transparent;
   z-index: 2; }
 
 .bloq .connector--input.valid:after {
@@ -6921,10 +6921,10 @@ tester + span + .bloqinput {
   height: 15px;
   position: absolute;
   left: -10px;
-  background-color: #5DDC21;
+  background-color: transparent;
   border-radius: 100%;
   top: 12px;
-  border: 1px solid #5DDC21;
+  border: 1px solid transparent;
   z-index: 2; }
 
 .bloq .connector--input.available:after {

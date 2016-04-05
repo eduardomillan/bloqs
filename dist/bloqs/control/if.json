@@ -8,11 +8,7 @@
     },
     {
       "type": "connector--bottom",
-      "accept": "connector--top",
-      "acceptedAliases": [
-        "all",
-        "ifDown"
-      ]
+      "accept": "connector--top"
     },
     {
       "type": "connector--root",
@@ -24,7 +20,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "5f2ad7ab-c9d6-4d4a-b67f-ab9a8d777d73"
+      "name": "0728d004-cd5a-4c13-99af-ce48fff36c02"
     },
     {
       "type": "connector--input",
@@ -32,7 +28,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "0617db98-b8cb-428d-bb61-5c79fea87c17"
+      "name": "fb55543a-599d-42cf-913f-76695ef8b9f8"
     }
   ],
   "bloqClass": "bloq-if",
@@ -48,7 +44,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "5f2ad7ab-c9d6-4d4a-b67f-ab9a8d777d73"
+        "name": "0728d004-cd5a-4c13-99af-ce48fff36c02"
       },
       {
         "id": "OPERATOR",
@@ -86,7 +82,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "0617db98-b8cb-428d-bb61-5c79fea87c17"
+        "name": "fb55543a-599d-42cf-913f-76695ef8b9f8"
       },
       {
         "alias": "text",

@@ -29,7 +29,7 @@ var bloqElse = _.merge(_.clone(StatementInputBloq, true), {
     code: 'else {{STATEMENTS}}'
 });
 
-bloqElse.connectors[0].acceptedAliases = ['ifDown', 'elseifDown'];
+//bloqElse.connectors[0].acceptedAliases = ['ifDown', 'elseifDown'];
 
 utils.generateBloqInputConnectors(bloqElse);
 
