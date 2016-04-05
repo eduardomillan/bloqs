@@ -6194,6 +6194,10 @@
   .bloq--group.with--content p,
   .bloq--group.with--content .bloq--extension--info {
     display: none; }
+  .bloq--group.with--content > .bloqinput {
+    height: 36px; }
+    .bloq--group.with--content > .bloqinput > .bloq--output {
+      margin: 0 10px !important; }
 
 .bloq--group--collapsed {
   min-height: 45px;
@@ -6630,8 +6634,6 @@
 
 .bloq--statement-input:focus > .bloq--extension > .with-content > .bloqinput {
   height: 36px; }
-  .bloq--statement-input:focus > .bloq--extension > .with-content > .bloqinput > .bloq--output {
-    margin: 0 10px !important; }
   .bloq--statement-input:focus > .bloq--extension > .with-content > .bloqinput:before {
     top: 10px; }
   .bloq--statement-input:focus > .bloq--extension > .with-content > .bloqinput .nested-bloq {

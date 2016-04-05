@@ -140,10 +140,6 @@
             & > .bloqinput {
                 height: 36px;
 
-                & > .bloq--output {
-                    margin: 0 10px !important;
-                }
-
                 &:before {
                     top: 10px;
                 }
@@ -240,6 +236,14 @@
         p,
         .bloq--extension--info {
             display: none;
+        }
+
+        & > .bloqinput {
+            height: 36px;
+
+            & > .bloq--output {
+                margin: 0 10px !important;
+            }
         }
     }
 }
