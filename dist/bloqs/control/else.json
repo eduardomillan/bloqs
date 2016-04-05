@@ -4,11 +4,7 @@
   "connectors": [
     {
       "type": "connector--top",
-      "accept": "connector--bottom",
-      "acceptedAliases": [
-        "ifDown",
-        "elseifDown"
-      ]
+      "accept": "connector--bottom"
     },
     {
       "type": "connector--bottom",
