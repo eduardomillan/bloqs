@@ -1931,6 +1931,7 @@
             exports.updateDropdowns = updateDropdowns;
             exports.setOptions = setOptions;
             exports.buildBloqWithContent = buildBloqWithContent;
+            exports.componentsArray = componentsArray;
 
             return exports;
 
