@@ -394,22 +394,31 @@
 
     .bloq__info--text {
         position        : absolute;
-        top             : -5px;
+        top             : 45px;
         height          : 4px;
         padding         : 15px;
         line-height     : 4px;
-        background-color: #1E1F21;
         color           : white;
         display         : none;
+        background-color: #373b44;
+        font-size       : 12px;
+        font-weight     : 700;
+        min-width       : 100px;
+        text-align      : center;
+        border-radius   : 4px;
+        color           : rgba(255, 255, 255, 0.95);
+        font-weight     : 500;
+        width           : 100%;
+        clear           : both;
 
         &:after {
             content         : '';
             width           : 10px;
             height          : 10px;
-            background-color: #1E1F21;
+            background-color: #373b44;
             position        : absolute;
             left            : 7px;
-            top             : 29px;
+            top             : 25px;
             transform       : rotate(-45deg);
         }
     }
@@ -650,18 +659,19 @@
             span {
                 margin-left: 0;
             }
+
             & > .bloqinput {
                 & > .bloq--output {
-                        padding-left: 10px;
+                    padding-left: 10px;
                 }
             }
+
             .bloqinput {
                 margin-left: 2em;
 
                 .bloqinput {
                     margin-left: 1em;
                 }
-
             }
         }
     }
