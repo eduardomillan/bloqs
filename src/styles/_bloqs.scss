@@ -237,14 +237,6 @@
         .bloq--extension--info {
             display: none;
         }
-
-        & > .bloqinput {
-            height: 36px;
-
-            & > .bloq--output {
-                margin: 0 10px !important;
-            }
-        }
     }
 }
 
@@ -658,13 +650,20 @@
             span {
                 margin-left: 0;
             }
+            & > .bloqinput {
+                height: 36px;
 
+                & > .bloq--output {
+                    margin: 0 10px !important;
+                }
+            }
             .bloqinput {
                 margin-left: 2em;
 
                 .bloqinput {
                     margin-left: 1em;
                 }
+
             }
         }
     }
