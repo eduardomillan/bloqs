@@ -1,7 +1,8 @@
 /* BASIC THEME */
 $code-color: #58B42D;
 $classes-color: #e30b9a;
-$communication-color: #cf1c22;  //#E30B9A
+$communication-color: #cf1c22;
+//#E30B9A
 $components-color: #cf1c22;
 $control-color: #11489A;
 $functions-color: #DD5A0A;
@@ -17,7 +18,8 @@ $theme-color-classes-color: #e30b9a;
 $theme-color-functions-color: #dd5b0c;
 $theme-color-control-color: #114698;
 $theme-color-code-color: #59b52e;
-$theme-color-communication-color: #ce1c23;  //#e10a98
+$theme-color-communication-color: #ce1c23;
+//#e10a98
 $theme-color-components-color: #ce1c23;
 $theme-color-logic-color: #790cd7;
 $theme-color-maths-color: #00c1c7;
@@ -243,6 +245,10 @@ $theme-color-conversions-color: #00CC11;
                 background-image   : url($whiteDownArrow);
                 background-repeat  : no-repeat;
                 background-position: right 7px bottom 45%;
+
+                & .bloq__inner--first {
+                    margin-left: 10px;
+                }
 
                 option {
                     color: black;
