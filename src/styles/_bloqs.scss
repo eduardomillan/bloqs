@@ -651,10 +651,8 @@
                 margin-left: 0;
             }
             & > .bloqinput {
-                height: 36px;
-
                 & > .bloq--output {
-                    margin: 0 10px !important;
+                        padding-left: 10px;
                 }
             }
             .bloqinput {

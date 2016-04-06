@@ -6503,10 +6503,8 @@
     border-left: 0 !important; }
     .bloq .bloq--extension .with-content span {
       margin-left: 0; }
-    .bloq .bloq--extension .with-content > .bloqinput {
-      height: 36px; }
-      .bloq .bloq--extension .with-content > .bloqinput > .bloq--output {
-        margin: 0 10px !important; }
+    .bloq .bloq--extension .with-content > .bloqinput > .bloq--output {
+      padding-left: 10px; }
     .bloq .bloq--extension .with-content .bloqinput {
       margin-left: 2em; }
       .bloq .bloq--extension .with-content .bloqinput .bloqinput {
