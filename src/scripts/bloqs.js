@@ -1346,7 +1346,7 @@
                     }
 
                     this.bloqData = params.bloqData;
-                    this.componentsArray = params.componentsArray || componentsArray;
+                    componentsArray = params.componentsArray || componentsArray;
                     this.connectors = [];
                     this.IOConnectors = [];
 
