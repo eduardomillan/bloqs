@@ -1347,9 +1347,7 @@
 
                     this.bloqData = params.bloqData;
                     componentsArray = params.componentsArray || componentsArray;
-                    if(!this.componentsArray){
-                        console.log('no componentsArray');
-                    }
+
                     this.connectors = [];
                     this.IOConnectors = [];
 
