@@ -853,8 +853,8 @@
     var checkPins = function (component){
 
         if(component.pins){
-            for (var type in component.pins){
-                component.pins[type].forEach(function(pin){
+            for (var pinType in component.pins){
+                component.pins[pinType].forEach(function(pin){
                     component.pin[pin] = component.pin[pin] || ''
                 });
             }
