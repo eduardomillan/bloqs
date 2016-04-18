@@ -842,6 +842,19 @@
         return bloqSchema;
     };
 
+    var checkPins = function (component){
+
+        if(component.pins){
+            for (var pinType in component.pins){
+                component.pins[pinType].forEach(function(pin){
+                    component.pin[pin] = component.pin[pin] || ''
+                });
+            }
+        }
+
+        return component;
+    };
+
     var getCode = function(componentsArray, bloqs) {
         var includeCode = '',
             globalVars = '',
@@ -1535,6 +1548,7 @@
     bloqsUtils.removeInputsConnectorsFromBloq = removeInputsConnectorsFromBloq;
     bloqsUtils.getParent = getParent;
     bloqsUtils.getCode = getCode;
+    bloqsUtils.checkPins = checkPins;
     bloqsUtils.splice = splice;
     bloqsUtils.translateRegExp = translateRegExp;
     bloqsUtils.executeFunctionOnConnectedStatementBloqs = executeFunctionOnConnectedStatementBloqs;
