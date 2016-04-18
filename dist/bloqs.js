@@ -3574,6 +3574,7 @@
     exports.updateDropdowns = updateDropdowns;
     exports.setOptions = setOptions;
     exports.buildBloqWithContent = buildBloqWithContent;
+    exports.clearSoftwareArrays = clearSoftwareArrays;
 
     return exports;
 
