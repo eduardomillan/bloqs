@@ -135,6 +135,8 @@
                 setupBloq: null,
                 loopBloq: null
             };
+            
+        window.bloqs.componentsArray = componentsArray;
 
         /*//Add some hardware
         componentsArray.servos[0]={id: "servo", name: "servo_0", oscillator:"false", pin:{s:"2"}};
@@ -193,12 +195,7 @@
             bloq.doConnectable();
         };
 
-        createBloq('if');
-        createBloq('switchAdvanced-v2');
-        createBloq('caseAdvanced-v1');
-        createBloq('elseif');
-        createBloq('else');
-        createBloq('setVariable');
+        createBloq('serialReceiveInt');
         createBloq('declareVariable');
 
     });
