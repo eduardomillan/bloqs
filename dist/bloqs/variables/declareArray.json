@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "declareVariableAdvanced",
+  "name": "declareArray",
   "connectors": [
     {
       "type": "connector--top",
@@ -9,22 +9,14 @@
     {
       "type": "connector--bottom",
       "accept": "connector--top"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": [
-        "all"
-      ],
-      "name": "256e775b-8d03-412a-99d7-22aae0753d0e"
     }
   ],
-  "bloqClass": "bloq-declare-variable",
+  "bloqClass": "bloq-declare-array",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-declare-variable-declare"
+        "value": "bloq-declare-array-declare"
       },
       {
         "id": "NAME",
@@ -33,7 +25,7 @@
       },
       {
         "alias": "text",
-        "value": "bloq-declare-variable-declare-type"
+        "value": "bloq-declare-array-declare-type"
       },
       {
         "id": "TYPE",
@@ -63,22 +55,15 @@
       },
       {
         "alias": "text",
-        "value": "="
+        "value": "bloq-declare-array-declare-size"
       },
       {
-        "bloqInputId": "VALUE",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "name": "256e775b-8d03-412a-99d7-22aae0753d0e"
+        "id": "VALUE",
+        "alias": "numberInput",
+        "value": 3
       }
     ]
   ],
-  "returnType": {
-    "type": "fromDropdown",
-    "idDropdown": "TYPE"
-  },
   "createDynamicContent": "softwareVars",
-  "code": "{TYPE} {NAME} = {VALUE};"
+  "code": "{TYPE} {NAME} [{VALUE}];"
 }

@@ -114,6 +114,7 @@ $theme-color-conversions-color: #00CC11;
     /*---- COMMUNICATION ------*/
     @include createBloqsCss($reverse, "bloq-convert", $communication-color, $theme-color-communication-color);
     @include createBloqsCss($reverse, "bloq-serial-send", $communication-color, $theme-color-communication-color);
+    @include createBloqsCss($reverse, "bloq-serial-receive-number", $communication-color, $theme-color-communication-color);
     /*---- COMPONENTS ------*/
     @include createBloqsCss($reverse, "bloq-hts221-humidity", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-hts221-temperature", $components-color, $theme-color-components-color);
@@ -173,6 +174,7 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-stringArray-advanced", $text-color, $theme-color-text-color);
     @include createBloqsCss($reverse, "bloq-string-sum", $text-color, $theme-color-text-color);
     /*---- VARIABLES ------*/
+    @include createBloqsCss($reverse, "bloq-declare-array", $vars-color, $theme-color-vars-color);
     @include createBloqsCss($reverse, "bloq-array-variable", $vars-color, $theme-color-vars-color);
     @include createBloqsCss($reverse, "bloq-declare-variable", $vars-color, $theme-color-vars-color);
     @include createBloqsCss($reverse, "bloq-sw-variable-advanced", $vars-color, $theme-color-vars-color);
