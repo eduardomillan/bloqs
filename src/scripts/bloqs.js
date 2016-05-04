@@ -1,5 +1,5 @@
 'use strict';
-(function (exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip) {
+(function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip) {
     /**
      * Events
      * bloqs:connect
@@ -29,9 +29,9 @@
         dragPreviousLeftPosition,
         dragBloqMousePositionX,
         dragBloqMousePositionY,
-    //we cant get the offset if the element its not visible, to avoid calc them on each drag, set them here
+        //we cant get the offset if the element its not visible, to avoid calc them on each drag, set them here
         fieldOffsetTop,
-    //to relative fields
+        //to relative fields
         fieldOffsetLeft = 0, //Bitbloq value 70,
         fieldOffsetTopSource = [], //bitbloq value['header', 'nav--make', 'actions--make', 'tabs--title'],
         fieldOffsetTopForced = 0,
@@ -42,7 +42,7 @@
         preMouseMoveY,
         componentsArray = bloqsUtils.getEmptyComponentsArray();
 
-    var setOptions = function (options) {
+    var setOptions = function(options) {
         fieldOffsetTopSource = options.fieldOffsetTopSource || [];
         fieldOffsetLeft = options.fieldOffsetLeft || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || 0;
@@ -54,7 +54,7 @@
         lang = options.lang || 'es-ES';
     };
 
-    var getFieldOffsetTop = function (source) {
+    var getFieldOffsetTop = function(source) {
         var fieldOffsetTop = 0;
         if (fieldOffsetTopForced) {
             fieldOffsetTop = fieldOffsetTopForced;
@@ -71,7 +71,7 @@
         return fieldOffsetTop;
     };
 
-    var bloqMouseDown = function (evt) {
+    var bloqMouseDown = function(evt) {
         // console.log('bloqMouseDown');
         // console.log(evt);
         // console.log(evt.target.tagName);
@@ -88,7 +88,7 @@
         }
     };
 
-    var bloqMouseUpBeforeMove = function () {
+    var bloqMouseUpBeforeMove = function() {
         //console.log('bloqMouseUpBeforeMove');
         mouseDownBloq = null;
         document.removeEventListener('mousemove', bloqPreMouseMove);
@@ -98,7 +98,7 @@
     };
 
     //to avoid move bloqs with a 1 px movement
-    var bloqPreMouseMove = function (evt) {
+    var bloqPreMouseMove = function(evt) {
         // console.log('bloqPreMouseMove');
         // console.log(evt.type);
         var pageX = evt.pageX || evt.touches[0].pageX,
@@ -140,7 +140,7 @@
         }
     };
 
-    var bloqMouseMove = function (evt) {
+    var bloqMouseMove = function(evt) {
         //console.log('bloqMouseMove');
         var bloq = null;
         //actions to do before start to move
@@ -160,17 +160,17 @@
             mouseDownBloq.className = mouseDownBloq.className.concat(' dragging');
 
             switch (bloq.bloqData.type) {
-            case 'statement':
-            case 'statement-input':
-                statementDragStart(bloq);
-                break;
-            case 'output':
-                outputDragStart(bloq);
-                break;
-            case 'group':
-                throw 'Group cant be moved';
-            default:
-                throw 'Not defined bloq dragstart!!';
+                case 'statement':
+                case 'statement-input':
+                    statementDragStart(bloq);
+                    break;
+                case 'output':
+                    outputDragStart(bloq);
+                    break;
+                case 'group':
+                    throw 'Group cant be moved';
+                default:
+                    throw 'Not defined bloq dragstart!!';
             }
             mouseDownBloq = null;
             draggingBloq = bloq;
@@ -183,25 +183,25 @@
         var distance = moveBloq(bloq, clientX, clientY);
 
         switch (bloq.bloqData.type) {
-        case 'statement':
-        case 'statement-input':
-            utils.redrawTree(bloq, bloqs, connectors);
-            if (distance > 10) {
-                handleCollisions([bloq.connectors[0], utils.getLastBottomConnectorUuid(bloq.uuid, bloqs, connectors)], evt);
-            }
-            break;
-        case 'output':
-            if (distance > 10) {
-                handleIOCollisions(bloq, availableIOConnectors);
-            }
-            break;
-        default:
-            throw 'Not defined bloq drag!!';
+            case 'statement':
+            case 'statement-input':
+                utils.redrawTree(bloq, bloqs, connectors);
+                if (distance > 10) {
+                    handleCollisions([bloq.connectors[0], utils.getLastBottomConnectorUuid(bloq.uuid, bloqs, connectors)], evt);
+                }
+                break;
+            case 'output':
+                if (distance > 10) {
+                    handleIOCollisions(bloq, availableIOConnectors);
+                }
+                break;
+            default:
+                throw 'Not defined bloq drag!!';
         }
 
     };
 
-    var bloqMouseUp = function () {
+    var bloqMouseUp = function() {
         //console.log('bloqMouseUp');
         scrollTop = 0;
         var $dropConnector = $('.connector.available').first(),
@@ -210,15 +210,15 @@
         if ($dropConnector[0]) {
 
             switch (bloq.bloqData.type) {
-            case 'statement':
-            case 'statement-input':
-                statementDragEnd(bloq, $dropConnector);
-                break;
-            case 'output':
-                outputDragEnd(bloq, $dropConnector);
-                break;
-            default:
-                throw 'Not defined bloq drag!!';
+                case 'statement':
+                case 'statement-input':
+                    statementDragEnd(bloq, $dropConnector);
+                    break;
+                case 'output':
+                    outputDragEnd(bloq, $dropConnector);
+                    break;
+                default:
+                    throw 'Not defined bloq drag!!';
             }
             window.dispatchEvent(new Event('bloqs:connect'));
 
@@ -260,7 +260,7 @@
         document.removeEventListener('touchend', bloqMouseUp);
     };
 
-    var statementDragStart = function (bloq) {
+    var statementDragStart = function(bloq) {
 
         var previousConnector = connectors[bloq.connectors[0]].connectedTo;
 
@@ -293,10 +293,8 @@
         var possibleConnectors;
         for (var possibleDropBloqUuid in bloqs) {
             var possibleDropBloq = bloqs[possibleDropBloqUuid];
-            if (possibleDropBloq.bloqData.type !== 'output'
-                && possibleDropBloq.isConnectable()
-                && !utils.connectorIsInBranch(possibleDropBloq.connectors[0], bloq.uuid, bloqs, connectors)) {
-                possibleConnectors = utils.canConnectStatementBloqs(bloq, possibleDropBloq, connectors);
+            if (possibleDropBloq.bloqData.type !== 'output' && possibleDropBloq.isConnectable() && !utils.connectorIsInBranch(possibleDropBloq.connectors[0], bloq.uuid, bloqs, connectors)) {
+                possibleConnectors = utils.canConnectStatementBloqs(bloq, possibleDropBloq, bloqs, connectors);
                 if (possibleConnectors) {
                     availableConnectors = availableConnectors.concat(possibleConnectors);
                 }
@@ -305,11 +303,10 @@
 
         for (var i = 0; i < availableConnectors.length; i++) {
             connectors[availableConnectors[i]].jqueryObject.addClass('valid');
-        }
-        ;
+        };
     };
 
-    var removeFromStatementInput = function (firstBloqToRemove) {
+    var removeFromStatementInput = function(firstBloqToRemove) {
         var $totalBloqsToRemove = [firstBloqToRemove.$bloq];
         var childConnectorUuid = connectors[firstBloqToRemove.connectors[1]].connectedTo,
             bloqToRemove,
@@ -328,7 +325,7 @@
 
     };
 
-    var outputDragStart = function (bloq) {
+    var outputDragStart = function(bloq) {
         var outputConnector = utils.getOutputConnector(bloq, IOConnectors);
         if (outputConnector.connectedTo) {
             bloq.$bloq.removeClass('nested-bloq');
@@ -351,10 +348,7 @@
         availableIOConnectors = [];
         for (var connectorUuid in IOConnectors) {
             if (IOConnectors[connectorUuid].data.type === 'connector--input') {
-                if (utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors).isConnectable()
-                    && !IOConnectors[connectorUuid].connectedTo
-                    && utils.sameConnectionType(bloq, utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors), IOConnectors[connectorUuid].data.acceptType, bloqs, IOConnectors, softwareArrays, componentsArray)
-                    && !utils.connectorIsInBranch(connectorUuid, bloq.uuid, bloqs, IOConnectors)) {
+                if (utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors).isConnectable() && !IOConnectors[connectorUuid].connectedTo && utils.sameConnectionType(bloq, utils.getBloqByConnectorUuid(connectorUuid, bloqs, IOConnectors), IOConnectors[connectorUuid].data.acceptType, bloqs, IOConnectors, softwareArrays, componentsArray) && !utils.connectorIsInBranch(connectorUuid, bloq.uuid, bloqs, IOConnectors)) {
                     availableIOConnectors.push(connectorUuid);
                     IOConnectors[connectorUuid].jqueryObject.addClass('valid');
                 } else {
@@ -366,7 +360,7 @@
         // console.log('availableIOConnectors',availableIOConnectors);
     };
 
-    var moveBloq = function (bloq, clientX, clientY) {
+    var moveBloq = function(bloq, clientX, clientY) {
         var position = bloq.$bloq[0].getBoundingClientRect(),
             distance = Math.round(Math.sqrt(Math.pow(dragPreviousTopPosition - position.top, 2) + Math.pow(dragPreviousLeftPosition - position.left, 2))),
             x,
@@ -399,7 +393,7 @@
         return distance;
     };
 
-    var statementDragEnd = function (bloq, $dropConnector) {
+    var statementDragEnd = function(bloq, $dropConnector) {
 
         var dropConnectorUuid = $dropConnector.attr('data-connector-id');
         var dragConnectorUuid = $('[data-connector-id="' + dropConnectorUuid + '"]').attr('data-canconnectwith');
@@ -419,7 +413,7 @@
 
     };
 
-    var connectorRootDragEnd = function (dragBloq, $dropConnector) {
+    var connectorRootDragEnd = function(dragBloq, $dropConnector) {
         //console.log('connectorRootDragEnd');
         var dropConnectorUuid = $dropConnector.attr('data-connector-id');
         var dropBloq = bloqs[connectors[dropConnectorUuid].bloqUuid];
@@ -455,7 +449,7 @@
         utils.redrawTree(dropBloq, bloqs, connectors);
     };
 
-    var outputDragEnd = function (bloq, $dropConnector) {
+    var outputDragEnd = function(bloq, $dropConnector) {
         var dropConnectorUuid = $dropConnector.attr('data-connector-id');
         var dragConnectorUuid = utils.getOutputConnector(bloq, IOConnectors).uuid;
 
@@ -475,7 +469,7 @@
         }
     };
 
-    var handleCollisions = function (dragConnectors) {
+    var handleCollisions = function(dragConnectors) {
         var i,
             found,
             $dropConnector,
@@ -483,16 +477,14 @@
             tempBloq;
 
         // For each available connector
-        availableConnectors.forEach(function (dropConnectorUuid) {
+        availableConnectors.forEach(function(dropConnectorUuid) {
             $dropConnector = connectors[dropConnectorUuid].jqueryObject;
             i = 0;
             found = false;
             while (!found && (i < dragConnectors.length)) {
                 $dragConnector = connectors[dragConnectors[i]].jqueryObject;
 
-                if ((connectors[dragConnectors[i]].data.type === connectors[dropConnectorUuid].data.accept)
-                    && utils.canConnectAliases(connectors[dropConnectorUuid].data.acceptedAliases, connectors[dragConnectors[i]].data.acceptedAliases)
-                    && utils.itsOver($dragConnector, $dropConnector, 20)) {
+                if ((connectors[dragConnectors[i]].data.type === connectors[dropConnectorUuid].data.accept) && utils.canConnectAliases(connectors[dropConnectorUuid].data.acceptedAliases, connectors[dragConnectors[i]].data.acceptedAliases) && utils.itsOver($dragConnector, $dropConnector, 20)) {
                     found = true;
                 } else {
                     i++;
@@ -516,10 +508,10 @@
         });
     };
 
-    var handleIOCollisions = function (bloq, availableIOConnectors) {
+    var handleIOCollisions = function(bloq, availableIOConnectors) {
         var dropConnector;
         var dragConnector = utils.getOutputConnector(bloq, IOConnectors);
-        availableIOConnectors.forEach(function (dropConnectorUuid) {
+        availableIOConnectors.forEach(function(dropConnectorUuid) {
             dropConnector = IOConnectors[dropConnectorUuid];
             if (utils.itsOver(dragConnector.jqueryObject, dropConnector.jqueryObject, 0) && utils.sameConnectionType(bloqs[dragConnector.bloqUuid], bloqs[dropConnector.bloqUuid], dropConnector.data.acceptType, bloqs, IOConnectors, softwareArrays, componentsArray)) {
                 dropConnector.jqueryObject.addClass('available');
@@ -530,57 +522,57 @@
         });
     };
 
-    var setLogicalConnections = function (dropConnectorUuid, dragConnectorUUid) {
+    var setLogicalConnections = function(dropConnectorUuid, dragConnectorUUid) {
         //console.log('conectamos', dropConnectorUuid, connectors[dropConnectorUuid].data.type, 'con ', dragConnectorUUid, connectors[dragConnectorUUid].data.type);
         //console.log('conectado con', connectors[dropConnectorUuid].connectedTo, 'y el otro con', connectors[dragConnectorUUid].connectedTo);
         if (connectors[dropConnectorUuid].connectedTo) {
             var dropBottomConnectorUuid, dragBloqLastBottomConnectorUuid, dropTopConnectorUuid, dragBloqFirstTopConnectorUuid;
             switch (connectors[dropConnectorUuid].data.type) {
-            case 'connector--bottom':
-                dropBottomConnectorUuid = connectors[dropConnectorUuid].connectedTo;
-                dragBloqLastBottomConnectorUuid = utils.getLastBottomConnectorUuid(connectors[dragConnectorUUid].bloqUuid, bloqs, connectors);
-                connectors[dragBloqLastBottomConnectorUuid].connectedTo = dropBottomConnectorUuid;
-                connectors[dropBottomConnectorUuid].connectedTo = dragBloqLastBottomConnectorUuid;
-                break;
-            case 'connector--top':
-                dropTopConnectorUuid = connectors[dropConnectorUuid].connectedTo;
-                dragBloqFirstTopConnectorUuid = utils.getFirstTopConnectorUuid(connectors[dragConnectorUUid].bloqUuid, bloqs, connectors);
-                connectors[dropTopConnectorUuid].connectedTo = dragBloqFirstTopConnectorUuid;
-                connectors[dragBloqFirstTopConnectorUuid].connectedTo = dropTopConnectorUuid;
-                break;
-            case 'connector--root':
-                dropBottomConnectorUuid = connectors[dropConnectorUuid].connectedTo;
-                dragBloqLastBottomConnectorUuid = utils.getLastBottomConnectorUuid(connectors[dragConnectorUUid].bloqUuid, bloqs, connectors);
-                connectors[dragBloqLastBottomConnectorUuid].connectedTo = dropBottomConnectorUuid;
-                connectors[dropBottomConnectorUuid].connectedTo = dragBloqLastBottomConnectorUuid;
-                break;
-            default:
-                throw 'connector on setLogicalConnections no handled ' + connectors[dropConnectorUuid].data.type;
+                case 'connector--bottom':
+                    dropBottomConnectorUuid = connectors[dropConnectorUuid].connectedTo;
+                    dragBloqLastBottomConnectorUuid = utils.getLastBottomConnectorUuid(connectors[dragConnectorUUid].bloqUuid, bloqs, connectors);
+                    connectors[dragBloqLastBottomConnectorUuid].connectedTo = dropBottomConnectorUuid;
+                    connectors[dropBottomConnectorUuid].connectedTo = dragBloqLastBottomConnectorUuid;
+                    break;
+                case 'connector--top':
+                    dropTopConnectorUuid = connectors[dropConnectorUuid].connectedTo;
+                    dragBloqFirstTopConnectorUuid = utils.getFirstTopConnectorUuid(connectors[dragConnectorUUid].bloqUuid, bloqs, connectors);
+                    connectors[dropTopConnectorUuid].connectedTo = dragBloqFirstTopConnectorUuid;
+                    connectors[dragBloqFirstTopConnectorUuid].connectedTo = dropTopConnectorUuid;
+                    break;
+                case 'connector--root':
+                    dropBottomConnectorUuid = connectors[dropConnectorUuid].connectedTo;
+                    dragBloqLastBottomConnectorUuid = utils.getLastBottomConnectorUuid(connectors[dragConnectorUUid].bloqUuid, bloqs, connectors);
+                    connectors[dragBloqLastBottomConnectorUuid].connectedTo = dropBottomConnectorUuid;
+                    connectors[dropBottomConnectorUuid].connectedTo = dragBloqLastBottomConnectorUuid;
+                    break;
+                default:
+                    throw 'connector on setLogicalConnections no handled ' + connectors[dropConnectorUuid].data.type;
             }
         }
         connectors[dropConnectorUuid].connectedTo = dragConnectorUUid;
         connectors[dragConnectorUUid].connectedTo = dropConnectorUuid;
     };
 
-    var placeNestedBloq = function (dropConnectorUuid, dragConnectorUuid) {
+    var placeNestedBloq = function(dropConnectorUuid, dragConnectorUuid) {
         //console.log('Nest');
 
         var dropBloq = bloqs[connectors[dropConnectorUuid].bloqUuid];
         //console.log(dropBloq, dragBloq);
 
         switch (dropBloq.bloqData.type) {
-        case 'statement':
-        case 'statement-input':
-            utils.redrawTree(utils.getBloqByConnectorUuid(dragConnectorUuid, bloqs, connectors), bloqs, connectors);
-            break;
-        case 'output':
-            break;
-        default:
-            throw 'bloqtype not defined in nesting ' + dropBloq.bloqData.type;
+            case 'statement':
+            case 'statement-input':
+                utils.redrawTree(utils.getBloqByConnectorUuid(dragConnectorUuid, bloqs, connectors), bloqs, connectors);
+                break;
+            case 'output':
+                break;
+            default:
+                throw 'bloqtype not defined in nesting ' + dropBloq.bloqData.type;
         }
     };
 
-    var updateSoftVar = function (bloq, name, type, args) {
+    var updateSoftVar = function(bloq, name, type, args) {
         var dynamicContentType = bloq.bloqData.createDynamicContent;
         //console.log('updating softVar', dynamicContentType);
         if (!dynamicContentType) {
@@ -644,7 +636,7 @@
         // console.log('afterUpdating: ', softwareArrays);
     };
 
-    var removeSoftVar = function (bloq) {
+    var removeSoftVar = function(bloq) {
         var dynamicContentType = bloq.bloqData.createDynamicContent;
         var found = false,
             i = 0;
@@ -662,7 +654,7 @@
         updateSoftVarTypes(softwareArrays, dynamicContentType, bloqs, IOConnectors);
     };
 
-    var updateSoftVarTypes = function (softwareArrays, dynamicContentType, bloqs, IOConnectors) {
+    var updateSoftVarTypes = function(softwareArrays, dynamicContentType, bloqs, IOConnectors) {
 
         var tempSoftVar;
         for (var i = 0; i < softwareArrays[dynamicContentType].length; i++) {
@@ -672,7 +664,7 @@
         //utils.drawSoftwareArray(softwareArrays);
     };
 
-    var removeBloq = function (bloqUuid, redraw) {
+    var removeBloq = function(bloqUuid, redraw) {
         //console.log('remove:', bloqUuid);
         var bloq = bloqs[bloqUuid],
             i;
@@ -697,61 +689,61 @@
                 document.removeEventListener('touchend', bloqMouseUp);
             }
             switch (bloq.bloqData.type) {
-            case 'statement-input':
-            case 'group':
-                var tempBloq,
-                    childConnector = connectors[bloq.connectors[2]].connectedTo;
+                case 'statement-input':
+                case 'group':
+                    var tempBloq,
+                        childConnector = connectors[bloq.connectors[2]].connectedTo;
 
-                while (childConnector) {
-                    tempBloq = utils.getBloqByConnectorUuid(childConnector, bloqs, connectors);
-                    childConnector = connectors[tempBloq.connectors[1]].connectedTo;
-                    removeBloq(tempBloq.uuid);
-                }
-                /* falls through */
-            case 'statement':
-
-                topConnector = connectors[bloq.connectors[0]].connectedTo;
-                bottomConnector = connectors[bloq.connectors[1]].connectedTo;
-
-                if (topConnector && bottomConnector) {
-                    connectors[topConnector].connectedTo = bottomConnector;
-                    connectors[bottomConnector].connectedTo = topConnector;
-
-                    if (redraw) {
-                        utils.redrawTree(utils.getBloqByConnectorUuid(topConnector, bloqs, connectors), bloqs, connectors);
+                    while (childConnector) {
+                        tempBloq = utils.getBloqByConnectorUuid(childConnector, bloqs, connectors);
+                        childConnector = connectors[tempBloq.connectors[1]].connectedTo;
+                        removeBloq(tempBloq.uuid);
                     }
+                    /* falls through */
+                case 'statement':
 
-                } else if (topConnector) {
-                    connectors[topConnector].connectedTo = null;
-                    var previousBloq = bloqs[connectors[topConnector].bloqUuid];
-                    if (previousBloq.bloqData.type === 'group') {
-                        previousBloq.$bloq.removeClass('with--content');
-                    }
+                    topConnector = connectors[bloq.connectors[0]].connectedTo;
+                    bottomConnector = connectors[bloq.connectors[1]].connectedTo;
 
-                    if (redraw) {
-                        utils.redrawTree(utils.getBloqByConnectorUuid(topConnector, bloqs, connectors), bloqs, connectors);
-                    }
-                } else if (bottomConnector) {
-                    connectors[bottomConnector].connectedTo = null;
-                }
-                //remove the inputs bloqs inside in 1 level
-                var uuid;
-                for (i = 0; i < bloq.IOConnectors.length; i++) {
-                    uuid = bloq.IOConnectors[i];
-                    if ((IOConnectors[uuid].data.type === 'connector--input') && IOConnectors[uuid].connectedTo) {
-                        removeBloq(IOConnectors[IOConnectors[uuid].connectedTo].bloqUuid);
-                    }
-                }
-                break;
-            case 'output':
-                outputConnector = IOConnectors[bloq.IOConnectors[0]].connectedTo;
+                    if (topConnector && bottomConnector) {
+                        connectors[topConnector].connectedTo = bottomConnector;
+                        connectors[bottomConnector].connectedTo = topConnector;
 
-                if (outputConnector) {
-                    IOConnectors[outputConnector].connectedTo = null;
-                }
-                break;
-            default:
-                throw 'we dont know how to delete: ' + bloq.bloqData.type;
+                        if (redraw) {
+                            utils.redrawTree(utils.getBloqByConnectorUuid(topConnector, bloqs, connectors), bloqs, connectors);
+                        }
+
+                    } else if (topConnector) {
+                        connectors[topConnector].connectedTo = null;
+                        var previousBloq = bloqs[connectors[topConnector].bloqUuid];
+                        if (previousBloq.bloqData.type === 'group') {
+                            previousBloq.$bloq.removeClass('with--content');
+                        }
+
+                        if (redraw) {
+                            utils.redrawTree(utils.getBloqByConnectorUuid(topConnector, bloqs, connectors), bloqs, connectors);
+                        }
+                    } else if (bottomConnector) {
+                        connectors[bottomConnector].connectedTo = null;
+                    }
+                    //remove the inputs bloqs inside in 1 level
+                    var uuid;
+                    for (i = 0; i < bloq.IOConnectors.length; i++) {
+                        uuid = bloq.IOConnectors[i];
+                        if ((IOConnectors[uuid].data.type === 'connector--input') && IOConnectors[uuid].connectedTo) {
+                            removeBloq(IOConnectors[IOConnectors[uuid].connectedTo].bloqUuid);
+                        }
+                    }
+                    break;
+                case 'output':
+                    outputConnector = IOConnectors[bloq.IOConnectors[0]].connectedTo;
+
+                    if (outputConnector) {
+                        IOConnectors[outputConnector].connectedTo = null;
+                    }
+                    break;
+                default:
+                    throw 'we dont know how to delete: ' + bloq.bloqData.type;
             }
 
             //remove visual
@@ -783,7 +775,7 @@
 
     };
 
-    var buildContent = function (bloq) {
+    var buildContent = function(bloq) {
 
         var bloqData = bloq.bloqData;
         var $tempElement;
@@ -800,7 +792,7 @@
         }
     };
 
-    var buildStatementConnector = function (tempUuid, bloqConnectors, bloq, tempConnector, $container) {
+    var buildStatementConnector = function(tempUuid, bloqConnectors, bloq, tempConnector, $container) {
         var $connector = $('<div>').attr({
             'data-connector-id': tempUuid
         });
@@ -815,7 +807,7 @@
         return $connector;
     };
 
-    var buildConnectors = function (bloqConnectors, bloq) {
+    var buildConnectors = function(bloqConnectors, bloq) {
         //connectors
         var $connector, tempUuid, tempConnector, $container;
         for (var i = 0; i < bloqConnectors.length; i++) {
@@ -830,389 +822,389 @@
             };
 
             switch (bloqConnectors[i].type) {
-            case 'connector--top':
-                if (bloq.bloqData.type === 'statement-input') {
-                    $container = bloq.$bloq.children('.bloq--statement-input__header');
-                } else {
-                    $container = bloq.$bloq.children('.bloq--fixed');
-                }
-                $connector = buildStatementConnector(tempUuid, bloqConnectors[i], bloq, tempConnector, $container);
-                break;
-            case 'connector--bottom':
-                if (bloq.bloqData.type === 'statement-input') {
-                    $container = bloq.$bloq.find('.bloq--extension--end');
-                } else {
-                    $container = bloq.$bloq.children('.bloq--fixed');
-                }
-                $connector = buildStatementConnector(tempUuid, bloqConnectors[i], bloq, tempConnector, $container);
-                break;
-            case 'connector--root':
-                if (bloq.bloqData.type === 'statement-input') {
-                    $container = bloq.$bloq.children('.bloq--statement-input__header');
-                } else {
-                    $container = bloq.$bloq;
-                }
-                $connector = buildStatementConnector(tempUuid, bloqConnectors[i], bloq, tempConnector, $container);
+                case 'connector--top':
+                    if (bloq.bloqData.type === 'statement-input') {
+                        $container = bloq.$bloq.children('.bloq--statement-input__header');
+                    } else {
+                        $container = bloq.$bloq.children('.bloq--fixed');
+                    }
+                    $connector = buildStatementConnector(tempUuid, bloqConnectors[i], bloq, tempConnector, $container);
+                    break;
+                case 'connector--bottom':
+                    if (bloq.bloqData.type === 'statement-input') {
+                        $container = bloq.$bloq.find('.bloq--extension--end');
+                    } else {
+                        $container = bloq.$bloq.children('.bloq--fixed');
+                    }
+                    $connector = buildStatementConnector(tempUuid, bloqConnectors[i], bloq, tempConnector, $container);
+                    break;
+                case 'connector--root':
+                    if (bloq.bloqData.type === 'statement-input') {
+                        $container = bloq.$bloq.children('.bloq--statement-input__header');
+                    } else {
+                        $container = bloq.$bloq;
+                    }
+                    $connector = buildStatementConnector(tempUuid, bloqConnectors[i], bloq, tempConnector, $container);
 
-                break;
-            case 'connector--input':
-                $connector = $(bloq.$bloq.find('.bloqinput[data-connector-name="' + bloqConnectors[i].name + '"]'));
+                    break;
+                case 'connector--input':
+                    $connector = $(bloq.$bloq.find('.bloqinput[data-connector-name="' + bloqConnectors[i].name + '"]'));
 
-                $connector.attr({
-                    'data-connector-id': tempUuid
-                }).addClass('connector ' + bloqConnectors[i].type);
-                tempConnector.contentId = $connector.attr('data-content-id');
-                IOConnectors[tempUuid] = tempConnector;
-                bloq.IOConnectors.push(tempUuid);
-                break;
-            case 'connector--output':
-                $connector = $('<div>').attr({
-                    'data-connector-id': tempUuid
-                }).addClass('connector connector--offline ' + bloqConnectors[i].type);
+                    $connector.attr({
+                        'data-connector-id': tempUuid
+                    }).addClass('connector ' + bloqConnectors[i].type);
+                    tempConnector.contentId = $connector.attr('data-content-id');
+                    IOConnectors[tempUuid] = tempConnector;
+                    bloq.IOConnectors.push(tempUuid);
+                    break;
+                case 'connector--output':
+                    $connector = $('<div>').attr({
+                        'data-connector-id': tempUuid
+                    }).addClass('connector connector--offline ' + bloqConnectors[i].type);
 
-                bloq.$bloq.append($connector);
+                    bloq.$bloq.append($connector);
 
-                tempConnector.returnType = bloq.bloqData.returnType;
-                IOConnectors[tempUuid] = tempConnector;
+                    tempConnector.returnType = bloq.bloqData.returnType;
+                    IOConnectors[tempUuid] = tempConnector;
 
-                bloq.IOConnectors.push(tempUuid);
-                break;
-            case 'connector--empty':
-                $connector = $('<div>');
-                connectors[tempUuid] = tempConnector;
+                    bloq.IOConnectors.push(tempUuid);
+                    break;
+                case 'connector--empty':
+                    $connector = $('<div>');
+                    connectors[tempUuid] = tempConnector;
 
-                bloq.connectors.push(tempUuid);
-                break;
-            default:
-                throw 'Connector not defined to build';
+                    bloq.connectors.push(tempUuid);
+                    break;
+                default:
+                    throw 'Connector not defined to build';
             }
             tempConnector.jqueryObject = $connector;
         }
     };
 
-    var createBloqElement = function (bloq, elementSchema, softwareArrays) {
+    var createBloqElement = function(bloq, elementSchema, softwareArrays) {
         var i,
             $tempElement,
             $element = null,
             arrayOptions,
             key;
         switch (elementSchema.alias) {
-        case 'staticDropdown':
-            //component
-            $element = $('<select>');
-            $element.attr({
-                name: '',
-                'data-content-id': elementSchema.id
-            });
-
-            var childs = [];
-            for (i = 0; i < elementSchema.options.length; i++) {
-                $tempElement = $('<option>').attr({
-                    value: elementSchema.options[i].value,
-                    'data-i18n': elementSchema.options[i].label
-                }).html(translateBloq(lang, elementSchema.options[i].label));
-                childs.push($tempElement);
-            }
-            utils.appendArrayInOneTime($element, childs);
-            if (elementSchema.value) {
-                $element.val(elementSchema.value);
-            }
-
-            $element.change(function () {
-                window.dispatchEvent(new Event('bloqs:change'));
-            });
-
-            if (bloq.bloqData.returnType && bloq.bloqData.returnType.type === 'fromDropdown') {
-                $element.change(function () {
-                    updateSoftVar(bloq);
+            case 'staticDropdown':
+                //component
+                $element = $('<select>');
+                $element.attr({
+                    name: '',
+                    'data-content-id': elementSchema.id
                 });
-            }
 
-            break;
-        case 'dynamicDropdown':
-            $element = $('<select>');
-            $element.attr({
-                name: '',
-                'data-content-id': elementSchema.id,
-                'data-dropdowncontent': elementSchema.options,
-                'data-value': elementSchema.value
-            });
+                var childs = [];
+                for (i = 0; i < elementSchema.options.length; i++) {
+                    $tempElement = $('<option>').attr({
+                        value: elementSchema.options[i].value,
+                        'data-i18n': elementSchema.options[i].label
+                    }).html(translateBloq(lang, elementSchema.options[i].label));
+                    childs.push($tempElement);
+                }
+                utils.appendArrayInOneTime($element, childs);
+                if (elementSchema.value) {
+                    $element.val(elementSchema.value);
+                }
 
-            switch (elementSchema.options) {
-            case 'voidFunctions':
-            case 'returnFunctions':
-            case 'softwareVars':
-            case 'classes':
-            case 'objects':
-                arrayOptions = softwareArrays[elementSchema.options];
-                $element.change(function () {
-                    //if we change a dynamicDropdown, can be for two reasons
-                    // We are a output and we refresh vars of the old BLoq
-                    // We are selecting a variable in a statement, and we update the dont change type
-                    if (bloq.bloqData.type === 'output') {
-                        var outputConnector = utils.getOutputConnector(bloq, IOConnectors);
-                        //if its connected to another bloq, we update the vars of the old bloq
-                        if (outputConnector.connectedTo) {
+                $element.change(function() {
+                    window.dispatchEvent(new Event('bloqs:change'));
+                });
 
-                            var bloqConnector = IOConnectors[outputConnector.connectedTo],
-                                oldBloq = bloqs[bloqConnector.bloqUuid];
+                if (bloq.bloqData.returnType && bloq.bloqData.returnType.type === 'fromDropdown') {
+                    $element.change(function() {
+                        updateSoftVar(bloq);
+                    });
+                }
 
-                            if (oldBloq.bloqData.returnType && (oldBloq.bloqData.returnType.type === 'fromInput')) {
-                                updateSoftVar(oldBloq);
+                break;
+            case 'dynamicDropdown':
+                $element = $('<select>');
+                $element.attr({
+                    name: '',
+                    'data-content-id': elementSchema.id,
+                    'data-dropdowncontent': elementSchema.options,
+                    'data-value': elementSchema.value
+                });
+
+                switch (elementSchema.options) {
+                    case 'voidFunctions':
+                    case 'returnFunctions':
+                    case 'softwareVars':
+                    case 'classes':
+                    case 'objects':
+                        arrayOptions = softwareArrays[elementSchema.options];
+                        $element.change(function() {
+                            //if we change a dynamicDropdown, can be for two reasons
+                            // We are a output and we refresh vars of the old BLoq
+                            // We are selecting a variable in a statement, and we update the dont change type
+                            if (bloq.bloqData.type === 'output') {
+                                var outputConnector = utils.getOutputConnector(bloq, IOConnectors);
+                                //if its connected to another bloq, we update the vars of the old bloq
+                                if (outputConnector.connectedTo) {
+
+                                    var bloqConnector = IOConnectors[outputConnector.connectedTo],
+                                        oldBloq = bloqs[bloqConnector.bloqUuid];
+
+                                    if (oldBloq.bloqData.returnType && (oldBloq.bloqData.returnType.type === 'fromInput')) {
+                                        updateSoftVar(oldBloq);
+                                    }
+                                }
+                            }
+                        });
+                        break;
+                    case 'allServos':
+                        arrayOptions = [];
+
+                        arrayOptions = arrayOptions.concat(componentsArray.servos, componentsArray.oscillators, componentsArray.continuousServos);
+                        break;
+                    case 'varComponents':
+                        arrayOptions = [];
+
+                        for (key in componentsArray) {
+                            if (componentsArray[key].length >= 1) {
+                                arrayOptions = arrayOptions.concat(componentsArray[key]);
                             }
                         }
-                    }
-                });
-                break;
-            case 'allServos':
-                arrayOptions = [];
-
-                arrayOptions = arrayOptions.concat(componentsArray.servos, componentsArray.oscillators, componentsArray.continuousServos);
-                break;
-            case 'varComponents':
-                arrayOptions = [];
-
-                for (key in componentsArray) {
-                    if (componentsArray[key].length >= 1) {
-                        arrayOptions = arrayOptions.concat(componentsArray[key]);
-                    }
+                        break;
+                    case 'clocks':
+                        arrayOptions = [];
+                        arrayOptions = componentsArray.clocks;
+                        break;
+                    case 'hts221':
+                        arrayOptions = [];
+                        arrayOptions = componentsArray.hts221;
+                        break;
+                    case 'barometer':
+                        arrayOptions = [];
+                        arrayOptions = componentsArray.barometer;
+                    default:
+                        arrayOptions = componentsArray[elementSchema.options];
                 }
+                if (!arrayOptions) {
+                    throw 'Dropdowns not defined in array: ' + elementSchema.options;
+                }
+
+                //content
+                utils.drawDropdownOptions($element, arrayOptions);
+
+                if (elementSchema.value) {
+                    $element.val(elementSchema.value);
+                    var componentRef = arrayOptions.find(function(item) {
+                        return item.name === elementSchema.value;
+                    });
+                    $element[0].dataset.reference = componentRef ? componentRef.uid : '';
+                    $element[0].dataset.value = elementSchema.value;
+                    $element.val(elementSchema.value);
+                }
+
+                $element.change(function(evt) {
+                    $element[0].dataset.value = evt.currentTarget.value;
+                    $element[0].dataset.reference = evt.currentTarget.selectedOptions[0].dataset.reference;
+                    //$element[0].dataset.varreference = evt.currentTarget.selectedOptions[0].dataset.varId;
+                    window.dispatchEvent(new Event('bloqs:change'));
+                });
+
                 break;
-            case 'clocks':
-                arrayOptions = [];
-                arrayOptions = componentsArray.clocks;
+            case 'text':
+                $element = $('<span>').attr({
+                    'data-i18n': elementSchema.value
+                }).html(translateBloq(lang, elementSchema.value));
                 break;
-            case 'hts221':
-                arrayOptions = [];
-                arrayOptions = componentsArray.hts221;
+            case 'removableText':
+                $element = $('<span>').html(elementSchema.value);
+                $element.addClass('removabletext');
+
                 break;
-            case 'barometer':
-                arrayOptions = [];
-                arrayOptions = componentsArray.barometer;
-            default:
-                arrayOptions = componentsArray[elementSchema.options];
-            }
-            if (!arrayOptions) {
-                throw 'Dropdowns not defined in array: ' + elementSchema.options;
-            }
+            case 'numberInput':
+                $element = $('<input>').attr({
+                    type: 'text',
+                    'data-content-id': elementSchema.id,
+                    'data-placeholder-i18n': elementSchema.placeholder,
+                    placeholder: translateBloq(lang, elementSchema.placeholder)
+                }).val(elementSchema.value);
+                //Check that the characters are numbers
+                $element.bind('input', function() {
+                    var position = utils.getCaretPosition(this);
+                    var a = utils.validNumber($(this).val());
+                    $(this).val(a.value);
+                    utils.setCaretPosition(this, position - a.removedChar);
+                });
+                $element.on('keyup', function(evt) {
+                    $(evt.currentTarget).autoGrowInput({
+                        minWidth: 60,
+                        comfortZone: 30
+                    });
+                });
+                $element.change(function() {
+                    //console.log('change number!');
+                    window.dispatchEvent(new Event('bloqs:change'));
+                });
+                break;
+            case 'stringInput':
+                $element = $('<input>').attr({
+                    type: 'text',
+                    'data-content-id': elementSchema.id,
+                    'data-content-type': elementSchema.alias,
+                    'data-placeholder-i18n': elementSchema.placeholder,
+                    placeholder: translateBloq(lang, elementSchema.placeholder)
+                }).val(elementSchema.value || translateBloq(lang, elementSchema.defaultValue));
+                $element.on('keyup', function(evt) {
+                    $(evt.currentTarget).autoGrowInput({
+                        minWidth: 100,
+                        comfortZone: 30
+                    });
+                });
+                $element.change(function() {
+                    $element.val(utils.validString($element.val()));
+                    console.log('change String!');
+                    window.dispatchEvent(new Event('bloqs:change'));
+                });
+                break;
+            case 'charInput':
+                $element = $('<input>').attr({
+                    type: 'text',
+                    'data-content-id': elementSchema.id,
+                    'data-content-type': elementSchema.alias,
+                    'data-placeholder-i18n': elementSchema.placeholder,
+                    placeholder: translateBloq(lang, elementSchema.placeholder)
+                }).val(elementSchema.value);
+                $element.on('keyup', function(evt) {
+                    $(evt.currentTarget).autoGrowInput({
+                        minWidth: 100,
+                        comfortZone: 30
+                    });
+                });
+                $element.change(function() {
+                    $element.val(utils.validChar($element.val()));
+                    console.log('change Char!');
+                    window.dispatchEvent(new Event('bloqs:change'));
+                });
+                break;
+            case 'codeInput':
+                $element = $('<input>').attr({
+                    type: 'text',
+                    'data-content-id': elementSchema.id,
+                    'data-content-type': elementSchema.alias,
+                    'data-placeholder-i18n': elementSchema.placeholder,
+                    placeholder: translateBloq(lang, elementSchema.placeholder)
+                }).val(elementSchema.value);
+                $element.on('keyup', function(evt) {
+                    $(evt.currentTarget).autoGrowInput({
+                        minWidth: 100,
+                        comfortZone: 30
+                    });
+                });
+                $element.change(function() {
+                    console.log('change SCinput!');
+                    window.dispatchEvent(new Event('bloqs:change'));
+                });
+                break;
+            case 'multilineCodeInput':
+                $element = $('<textarea class="msd-elastic: \n;" ng-model="bar" cols="40" rows="1"></textarea>').attr({
+                    'data-content-id': elementSchema.id,
+                    'data-content-type': elementSchema.alias,
+                    'name': elementSchema.id,
+                    'data-placeholder-i18n': elementSchema.placeholder,
+                    placeholder: translateBloq(lang, elementSchema.placeholder)
+                }).val(elementSchema.value);
+                setTimeout(function() {
+                    $('[name="' + elementSchema.id + '"]').autogrow({
+                        onInitialize: true
+                    });
+                }, 0);
+                $element.change(function() {
+                    console.log('change multilineCode!');
+                    window.dispatchEvent(new Event('bloqs:change'));
+                });
+                break;
+            case 'multilineCommentInput':
+                $element = $('<textarea class="msd-elastic: \n;" ng-model="bar" cols="40" rows="1"></textarea>').attr({
+                    'data-content-id': elementSchema.id,
+                    'data-content-type': elementSchema.alias,
+                    'name': elementSchema.id,
+                    'data-placeholder-i18n': elementSchema.placeholder,
+                    placeholder: translateBloq(lang, elementSchema.placeholder)
+                }).val(elementSchema.value);
+                setTimeout(function() {
+                    $('[name="' + elementSchema.id + '"]').autogrow({
+                        onInitialize: true
+                    });
+                }, 0);
 
-            //content
-            utils.drawDropdownOptions($element, arrayOptions);
+                $element.keyup(function() {
+                    bloqsUtils.delay(function() {
+                        $element.val(utils.validComment($element.val()));
+                    }, 1000);
+                });
 
-            if (elementSchema.value) {
-                $element.val(elementSchema.value);
-                var componentRef = arrayOptions.find(function (item) {
-                    return item.name === elementSchema.value;
-                });
-                $element[0].dataset.reference = componentRef ? componentRef.uid : '';
-                $element[0].dataset.value = elementSchema.value;
-                $element.val(elementSchema.value);
-            }
-
-            $element.change(function (evt) {
-                $element[0].dataset.value = evt.currentTarget.value;
-                $element[0].dataset.reference = evt.currentTarget.selectedOptions[0].dataset.reference;
-                //$element[0].dataset.varreference = evt.currentTarget.selectedOptions[0].dataset.varId;
-                window.dispatchEvent(new Event('bloqs:change'));
-            });
-
-            break;
-        case 'text':
-            $element = $('<span>').attr({
-                'data-i18n': elementSchema.value
-            }).html(translateBloq(lang, elementSchema.value));
-            break;
-        case 'removableText':
-            $element = $('<span>').html(elementSchema.value);
-            $element.addClass('removabletext');
-
-            break;
-        case 'numberInput':
-            $element = $('<input>').attr({
-                type: 'text',
-                'data-content-id': elementSchema.id,
-                'data-placeholder-i18n': elementSchema.placeholder,
-                placeholder: translateBloq(lang, elementSchema.placeholder)
-            }).val(elementSchema.value);
-            //Check that the characters are numbers
-            $element.bind('input', function () {
-                var position = utils.getCaretPosition(this);
-                var a = utils.validNumber($(this).val());
-                $(this).val(a.value);
-                utils.setCaretPosition(this, position - a.removedChar);
-            });
-            $element.on('keyup', function (evt) {
-                $(evt.currentTarget).autoGrowInput({
-                    minWidth: 60,
-                    comfortZone: 30
-                });
-            });
-            $element.change(function () {
-                //console.log('change number!');
-                window.dispatchEvent(new Event('bloqs:change'));
-            });
-            break;
-        case 'stringInput':
-            $element = $('<input>').attr({
-                type: 'text',
-                'data-content-id': elementSchema.id,
-                'data-content-type': elementSchema.alias,
-                'data-placeholder-i18n': elementSchema.placeholder,
-                placeholder: translateBloq(lang, elementSchema.placeholder)
-            }).val(elementSchema.value || translateBloq(lang, elementSchema.defaultValue));
-            $element.on('keyup', function (evt) {
-                $(evt.currentTarget).autoGrowInput({
-                    minWidth: 100,
-                    comfortZone: 30
-                });
-            });
-            $element.change(function () {
-                $element.val(utils.validString($element.val()));
-                console.log('change String!');
-                window.dispatchEvent(new Event('bloqs:change'));
-            });
-            break;
-        case 'charInput':
-            $element = $('<input>').attr({
-                type: 'text',
-                'data-content-id': elementSchema.id,
-                'data-content-type': elementSchema.alias,
-                'data-placeholder-i18n': elementSchema.placeholder,
-                placeholder: translateBloq(lang, elementSchema.placeholder)
-            }).val(elementSchema.value);
-            $element.on('keyup', function (evt) {
-                $(evt.currentTarget).autoGrowInput({
-                    minWidth: 100,
-                    comfortZone: 30
-                });
-            });
-            $element.change(function () {
-                $element.val(utils.validChar($element.val()));
-                console.log('change Char!');
-                window.dispatchEvent(new Event('bloqs:change'));
-            });
-            break;
-        case 'codeInput':
-            $element = $('<input>').attr({
-                type: 'text',
-                'data-content-id': elementSchema.id,
-                'data-content-type': elementSchema.alias,
-                'data-placeholder-i18n': elementSchema.placeholder,
-                placeholder: translateBloq(lang, elementSchema.placeholder)
-            }).val(elementSchema.value);
-            $element.on('keyup', function (evt) {
-                $(evt.currentTarget).autoGrowInput({
-                    minWidth: 100,
-                    comfortZone: 30
-                });
-            });
-            $element.change(function () {
-                console.log('change SCinput!');
-                window.dispatchEvent(new Event('bloqs:change'));
-            });
-            break;
-        case 'multilineCodeInput':
-            $element = $('<textarea class="msd-elastic: \n;" ng-model="bar" cols="40" rows="1"></textarea>').attr({
-                'data-content-id': elementSchema.id,
-                'data-content-type': elementSchema.alias,
-                'name': elementSchema.id,
-                'data-placeholder-i18n': elementSchema.placeholder,
-                placeholder: translateBloq(lang, elementSchema.placeholder)
-            }).val(elementSchema.value);
-            setTimeout(function () {
-                $('[name="' + elementSchema.id + '"]').autogrow({
-                    onInitialize: true
-                });
-            }, 0);
-            $element.change(function () {
-                console.log('change multilineCode!');
-                window.dispatchEvent(new Event('bloqs:change'));
-            });
-            break;
-        case 'multilineCommentInput':
-            $element = $('<textarea class="msd-elastic: \n;" ng-model="bar" cols="40" rows="1"></textarea>').attr({
-                'data-content-id': elementSchema.id,
-                'data-content-type': elementSchema.alias,
-                'name': elementSchema.id,
-                'data-placeholder-i18n': elementSchema.placeholder,
-                placeholder: translateBloq(lang, elementSchema.placeholder)
-            }).val(elementSchema.value);
-            setTimeout(function () {
-                $('[name="' + elementSchema.id + '"]').autogrow({
-                    onInitialize: true
-                });
-            }, 0);
-
-            $element.keyup(function () {
-                bloqsUtils.delay(function () {
+                $element.change(function() {
                     $element.val(utils.validComment($element.val()));
-                }, 1000);
-            });
-
-            $element.change(function () {
-                $element.val(utils.validComment($element.val()));
-                console.log('change multilineComment!');
-                window.dispatchEvent(new Event('bloqs:change'));
-            });
-            break;
-        case 'varInput':
-            $element = $('<input>').attr({
-                type: 'text',
-                'data-content-id': elementSchema.id,
-                'data-placeholder-i18n': elementSchema.placeholder,
-                placeholder: translateBloq(lang, elementSchema.placeholder)
-            }).val(elementSchema.value);
-
-            bloq.varInputs = [];
-            bloq.varInputs.push($element);
-            $element.addClass('var--input');
-            $element.on('keyup', function (evt) {
-                $(evt.currentTarget).autoGrowInput({
-                    minWidth: 100,
-                    comfortZone: 30
+                    console.log('change multilineComment!');
+                    window.dispatchEvent(new Event('bloqs:change'));
                 });
-            });
-            //Transform the name to create valid function / variables names
-            $element.keyup(function () {
-                bloqsUtils.delay(function () {
-                    var name = utils.validName($element.val(), softwareArrays);
-                    $element.val(name);
-                    if (name) {
-                        updateSoftVar(bloq, name);
-                    } else {
-                        removeSoftVar(bloq, name);
-                    }
-                }, 1000, bloq.uuid);
-            });
+                break;
+            case 'varInput':
+                $element = $('<input>').attr({
+                    type: 'text',
+                    'data-content-id': elementSchema.id,
+                    'data-placeholder-i18n': elementSchema.placeholder,
+                    placeholder: translateBloq(lang, elementSchema.placeholder)
+                }).val(elementSchema.value);
 
-            $element.change(function () {
-                console.log('change varInput!');
-                window.dispatchEvent(new Event('bloqs:change'));
-            });
-            break;
-        case 'bloqInput':
-            $element = $('<div>').attr({
-                'data-connector-name': elementSchema.name,
-                'data-content-id': elementSchema.bloqInputId
-            });
-            $element.addClass('bloqinput');
-            break;
-        case 'headerText':
-            $element = $('<h3>').html(elementSchema.value);
-            $element.addClass('headerText');
-            break;
-        case 'descriptionText':
-            $element = $('<p>').html(elementSchema.value);
-            $element.addClass('descriptionText');
-            break;
-        default:
-            throw 'elementSchema not defined: ' + elementSchema.alias;
+                bloq.varInputs = [];
+                bloq.varInputs.push($element);
+                $element.addClass('var--input');
+                $element.on('keyup', function(evt) {
+                    $(evt.currentTarget).autoGrowInput({
+                        minWidth: 100,
+                        comfortZone: 30
+                    });
+                });
+                //Transform the name to create valid function / variables names
+                $element.keyup(function() {
+                    bloqsUtils.delay(function() {
+                        var name = utils.validName($element.val(), softwareArrays);
+                        $element.val(name);
+                        if (name) {
+                            updateSoftVar(bloq, name);
+                        } else {
+                            removeSoftVar(bloq, name);
+                        }
+                    }, 1000, bloq.uuid);
+                });
+
+                $element.change(function() {
+                    console.log('change varInput!');
+                    window.dispatchEvent(new Event('bloqs:change'));
+                });
+                break;
+            case 'bloqInput':
+                $element = $('<div>').attr({
+                    'data-connector-name': elementSchema.name,
+                    'data-content-id': elementSchema.bloqInputId
+                });
+                $element.addClass('bloqinput');
+                break;
+            case 'headerText':
+                $element = $('<h3>').html(elementSchema.value);
+                $element.addClass('headerText');
+                break;
+            case 'descriptionText':
+                $element = $('<p>').html(elementSchema.value);
+                $element.addClass('descriptionText');
+                break;
+            default:
+                throw 'elementSchema not defined: ' + elementSchema.alias;
         }
 
         return $element;
     };
 
-    var translateBloqs = function (newLang) {
+    var translateBloqs = function(newLang) {
         if (newLang !== lang) {
             lang = newLang;
             var bloqElements, bloqPlaceholders, i18nKey;
@@ -1236,27 +1228,27 @@
         }
     };
 
-    var destroyFreeBloqs = function () {
+    var destroyFreeBloqs = function() {
         var uuid, bloq;
         for (uuid in bloqs) {
             bloq = bloqs[uuid];
             if (bloq.isConnectable()) {
                 switch (bloq.bloqData.type) {
-                case 'statement':
-                case 'statement-input':
-                    if (!connectors[bloq.connectors[0]].connectedTo) {
-                        removeBloq(uuid);
-                    }
-                    break;
-                case 'output':
-                    if (!IOConnectors[bloq.IOConnectors[0]].connectedTo) {
-                        removeBloq(uuid);
-                    }
-                    break;
-                case 'group':
-                    break;
-                default:
-                    throw 'its free? ' + bloq.bloqData.type;
+                    case 'statement':
+                    case 'statement-input':
+                        if (!connectors[bloq.connectors[0]].connectedTo) {
+                            removeBloq(uuid);
+                        }
+                        break;
+                    case 'output':
+                        if (!IOConnectors[bloq.IOConnectors[0]].connectedTo) {
+                            removeBloq(uuid);
+                        }
+                        break;
+                    case 'group':
+                        break;
+                    default:
+                        throw 'its free? ' + bloq.bloqData.type;
                 }
             }
         }
@@ -1266,7 +1258,7 @@
      * Get bloqs that are not connected
      *
      */
-    var getFreeBloqs = function () {
+    var getFreeBloqs = function() {
         var bloq,
             result = [],
             bloqGroup,
@@ -1276,51 +1268,51 @@
             bloq = bloqs[uuid];
             if (bloq.isConnectable()) {
                 switch (bloq.bloqData.type) {
-                case 'statement':
-                case 'statement-input':
-                    if (!connectors[bloq.connectors[0]].connectedTo) {
-                        bloqGroup = [bloq.getBloqsStructure()];
-                        connectedConnector = connectors[bloq.connectors[1]].connectedTo;
-                        while (connectedConnector) {
-                            tempBloq = utils.getBloqByConnectorUuid(connectedConnector, bloqs, connectors);
-                            bloqGroup.push(tempBloq.getBloqsStructure());
-                            connectedConnector = connectors[tempBloq.connectors[1]].connectedTo;
+                    case 'statement':
+                    case 'statement-input':
+                        if (!connectors[bloq.connectors[0]].connectedTo) {
+                            bloqGroup = [bloq.getBloqsStructure()];
+                            connectedConnector = connectors[bloq.connectors[1]].connectedTo;
+                            while (connectedConnector) {
+                                tempBloq = utils.getBloqByConnectorUuid(connectedConnector, bloqs, connectors);
+                                bloqGroup.push(tempBloq.getBloqsStructure());
+                                connectedConnector = connectors[tempBloq.connectors[1]].connectedTo;
+                            }
+                            result.push({
+                                position: bloq.$bloq.position(),
+                                bloqGroup: bloqGroup
+                            });
                         }
-                        result.push({
-                            position: bloq.$bloq.position(),
-                            bloqGroup: bloqGroup
-                        });
-                    }
-                    break;
-                case 'output':
-                    if (!IOConnectors[bloq.IOConnectors[0]].connectedTo) {
-                        bloqGroup = [bloq.getBloqsStructure()];
-                        result.push({
-                            position: bloq.$bloq[0].getBoundingClientRect(),
-                            bloqGroup: bloqGroup
-                        });
-                    }
-                    break;
-                case 'group':
-                    break;
-                default:
-                    throw 'its free? ' + bloq.bloqData.type;
+                        break;
+                    case 'output':
+                        if (!IOConnectors[bloq.IOConnectors[0]].connectedTo) {
+                            bloqGroup = [bloq.getBloqsStructure()];
+                            result.push({
+                                position: bloq.$bloq[0].getBoundingClientRect(),
+                                bloqGroup: bloqGroup
+                            });
+                        }
+                        break;
+                    case 'group':
+                        break;
+                    default:
+                        throw 'its free? ' + bloq.bloqData.type;
                 }
             }
         }
         return result;
     };
 
-    var updateDropdowns = function () {
+    var updateDropdowns = function() {
         var key;
         for (key in softwareArrays) {
             updateDropdown(key);
         }
     };
 
-    var updateDropdown = function (softwareArrayKey) {
+    var updateDropdown = function(softwareArrayKey) {
         var $element, tempValue;
-        $('select[data-dropdownContent="' + softwareArrayKey + '"]').each(function (index, element) {
+        $('select[data-dropdownContent="' + softwareArrayKey + '"]').each(function(index, element) {
             $element = $(element);
             tempValue = $element.attr('data-value');
             bloqsUtils.drawDropdownOptions($element, softwareArrays[softwareArrayKey]);
@@ -1330,7 +1322,7 @@
         });
     };
 
-    var translateBloq = function (lang, key) {
+    var translateBloq = function(lang, key) {
         return bloqsLanguages.texts[lang][key] || bloqsLanguages.texts['en-GB'][key] || bloqsLanguages.texts['es-ES'][key] || key;
     };
 
@@ -1356,7 +1348,7 @@
                 connectable,
                 that = this;
 
-            this.collapseGroupContent = function () {
+            this.collapseGroupContent = function() {
 
                 var $fieldContent = that.$bloq.children('.field--content');
                 //$fieldContent = $(e.currentTarget).parent().find('.field--content');
@@ -1365,7 +1357,7 @@
                 $fieldContent.parent().toggleClass('collapsed--field');
             };
 
-            this.enable = function (onlyParent) {
+            this.enable = function(onlyParent) {
                 if (!enable) {
                     this.$bloq.removeClass('disabled');
                     //console.log('activamos', this.uuid, this.bloqData.name);
@@ -1397,7 +1389,7 @@
                 }
             };
 
-            this.disable = function (onlyParent) {
+            this.disable = function(onlyParent) {
                 this.$bloq.addClass('disabled');
                 if (enable) {
 
@@ -1405,17 +1397,17 @@
                     if (this.bloqData.content && this.bloqData.content[0]) {
                         for (var i = 0; i < this.bloqData.content[0].length; i++) {
                             switch (this.bloqData.content[0][i].alias) {
-                            case 'bloqInput':
-                                //disable the inputs bloqs inside in 1 level
-                                var uuid;
-                                for (var j = 0; j < this.IOConnectors.length; j++) {
-                                    uuid = this.IOConnectors[j];
-                                    if ((IOConnectors[uuid].data.type === 'connector--input') && IOConnectors[uuid].connectedTo) {
-                                        utils.getBloqByConnectorUuid(IOConnectors[uuid].connectedTo, bloqs, IOConnectors).disable();
+                                case 'bloqInput':
+                                    //disable the inputs bloqs inside in 1 level
+                                    var uuid;
+                                    for (var j = 0; j < this.IOConnectors.length; j++) {
+                                        uuid = this.IOConnectors[j];
+                                        if ((IOConnectors[uuid].data.type === 'connector--input') && IOConnectors[uuid].connectedTo) {
+                                            utils.getBloqByConnectorUuid(IOConnectors[uuid].connectedTo, bloqs, IOConnectors).disable();
+                                        }
                                     }
-                                }
-                                break;
-                            default:
+                                    break;
+                                default:
                             }
                         }
                     }
@@ -1434,11 +1426,11 @@
                 }
             };
 
-            this.itsEnabled = function () {
+            this.itsEnabled = function() {
                 return enable;
             };
 
-            this.doConnectable = function () {
+            this.doConnectable = function() {
                 if (!connectable) {
                     // console.log('make them connectable', this.uuid, this.bloqData.name);
                     if (this.bloqData.content && this.bloqData.content[0]) {
@@ -1468,15 +1460,15 @@
                 }
             };
 
-            this.doNotConnectable = function () {
+            this.doNotConnectable = function() {
                 connectable = false;
             };
 
-            this.isConnectable = function () {
+            this.isConnectable = function() {
                 return connectable;
             };
 
-            this.itsFree = function () {
+            this.itsFree = function() {
                 return (this.$bloq.closest('.bloq--group').length === 0);
             };
 
@@ -1494,51 +1486,51 @@
             this.doNotConnectable();
 
             switch (this.bloqData.type) {
-            case 'statement-input':
-                this.$bloq.append('<div class="bloq--statement-input__header"></div><div class="bloq--extension"><div class="bloq--extension__content"></div> <div class="bloq--extension--end"></div></div>');
-                this.$contentContainer = this.$bloq.find('.bloq--statement-input__header');
-                this.$contentContainerDown = this.$bloq.find('.bloq--extension--end');
-                //this.$bloq.attr('draggable', true);
-                buildContent(this);
-                this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
-                this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
-                buildConnectors(params.bloqData.connectors, this);
-                this.$contentContainer.children().children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
-                this.$contentContainer.children().children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
-                this.$contentContainer.children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
-                this.$contentContainerDown.children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
-                this.$contentContainerDown.children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
-                break;
-            case 'statement':
-                this.$bloq.append('<div class="bloq--fixed">');
-                this.$contentContainer = this.$bloq.find('.bloq--fixed');
-                //this.$bloq.attr('draggable', true);
-                buildContent(this);
-                this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
-                this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
-                buildConnectors(params.bloqData.connectors, this);
-                this.$bloq.children().children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
-                this.$bloq.children().children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
-                break;
-            case 'output':
-                this.$contentContainer = this.$bloq;
-                //this.$bloq.attr('draggable', true);
-                buildContent(this);
-                this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
-                this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
-                buildConnectors(params.bloqData.connectors, this);
-                this.$bloq.children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
-                this.$bloq.children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
-                break;
-            case 'group':
-                this.$bloq.append('<div class="field--header"><button class="btn btn--collapsefield"></button><h3 data-i18n="' + this.bloqData.headerText + '">' + translateBloq(lang, this.bloqData.headerText) + '</h3></div><div class="field--content"><div class="bloq--extension--info"> <div class="bloq__info"><p class="bloq__info--text" data-i18n="' + this.bloqData.descriptionText + '">' + translateBloq(lang, this.bloqData.descriptionText) + '</p></div><p class="bloq--drag-bloq" data-i18n="drag-bloq">' + translateBloq(lang, 'drag-bloq') + '</p></div><div class="bloq--extension__content"></div></div>');
-                buildConnectors(params.bloqData.connectors, this);
-                this.$bloq.find('.connector--root').addClass('connector--root--group');
-                this.$bloq.find('.field--header .btn').on('click', this.collapseGroupContent);
-                this.$bloq.find('.field--header h3').on('click', this.collapseGroupContent);
-                break;
-            default:
-                throw 'bloqData ' + this.bloqData.type + 'not defined in bloq construction';
+                case 'statement-input':
+                    this.$bloq.append('<div class="bloq--statement-input__header"></div><div class="bloq--extension"><div class="bloq--extension__content"></div> <div class="bloq--extension--end"></div></div>');
+                    this.$contentContainer = this.$bloq.find('.bloq--statement-input__header');
+                    this.$contentContainerDown = this.$bloq.find('.bloq--extension--end');
+                    //this.$bloq.attr('draggable', true);
+                    buildContent(this);
+                    this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
+                    this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
+                    buildConnectors(params.bloqData.connectors, this);
+                    this.$contentContainer.children().children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
+                    this.$contentContainer.children().children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
+                    this.$contentContainer.children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
+                    this.$contentContainerDown.children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
+                    this.$contentContainerDown.children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
+                    break;
+                case 'statement':
+                    this.$bloq.append('<div class="bloq--fixed">');
+                    this.$contentContainer = this.$bloq.find('.bloq--fixed');
+                    //this.$bloq.attr('draggable', true);
+                    buildContent(this);
+                    this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
+                    this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
+                    buildConnectors(params.bloqData.connectors, this);
+                    this.$bloq.children().children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
+                    this.$bloq.children().children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
+                    break;
+                case 'output':
+                    this.$contentContainer = this.$bloq;
+                    //this.$bloq.attr('draggable', true);
+                    buildContent(this);
+                    this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
+                    this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
+                    buildConnectors(params.bloqData.connectors, this);
+                    this.$bloq.children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
+                    this.$bloq.children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
+                    break;
+                case 'group':
+                    this.$bloq.append('<div class="field--header"><button class="btn btn--collapsefield"></button><h3 data-i18n="' + this.bloqData.headerText + '">' + translateBloq(lang, this.bloqData.headerText) + '</h3></div><div class="field--content"><div class="bloq--extension--info"> <div class="bloq__info"><p class="bloq__info--text" data-i18n="' + this.bloqData.descriptionText + '">' + translateBloq(lang, this.bloqData.descriptionText) + '</p></div><p class="bloq--drag-bloq" data-i18n="drag-bloq">' + translateBloq(lang, 'drag-bloq') + '</p></div><div class="bloq--extension__content"></div></div>');
+                    buildConnectors(params.bloqData.connectors, this);
+                    this.$bloq.find('.connector--root').addClass('connector--root--group');
+                    this.$bloq.find('.field--header .btn').on('click', this.collapseGroupContent);
+                    this.$bloq.find('.field--header h3').on('click', this.collapseGroupContent);
+                    break;
+                default:
+                    throw 'bloqData ' + this.bloqData.type + 'not defined in bloq construction';
             }
 
             if (this.bloqData.createDynamicContent) {
@@ -1550,7 +1542,7 @@
                 }
             }
 
-            this.getIOConnectorUuidByContentId = function (contentId) {
+            this.getIOConnectorUuidByContentId = function(contentId) {
                 var found = false,
                     i = 0,
                     result = null;
@@ -1569,7 +1561,7 @@
              * Get the bloq's code, substituting each input's value
              * @return {[type]} code            [description]
              */
-            this.getCode = function (previousCode) {
+            this.getCode = function(previousCode) {
                 var code = this.bloqData.code;
                 var childBloq, childConnectorId;
                 var elementTags = _.without(_.pluck(this.bloqData.content[0], 'id'), undefined);
@@ -1578,7 +1570,7 @@
                     type = '';
                 var connectionType = '';
 
-                elementTags.forEach(function (elem) {
+                elementTags.forEach(function(elem) {
                     var element = this.$contentContainer.find('> [data-content-id="' + elem + '"]');
                     if (element.length === 0) {
                         element = this.$contentContainer.find('[data-content-id="' + elem + '"]');
@@ -1675,7 +1667,7 @@
                         childBloq = utils.getBloqByConnectorUuid(childConnectorId, bloqs, connectors);
                         var branchConnectors = utils.getBranchsConnectorsNoChildren(childBloq.uuid, connectors, bloqs);
 
-                        branchConnectors.forEach(function (branchConnector) {
+                        branchConnectors.forEach(function(branchConnector) {
                             if (utils.itsInsideAConnectorRoot(bloqs[connectors[branchConnector].bloqUuid], bloqs, connectors)) {
                                 var bloqId = connectors[branchConnector].bloqUuid;
                                 if (bloqId !== children[children.length - 1]) {
@@ -1684,7 +1676,7 @@
                             }
                         });
                     }
-                    children.forEach(function (elem) {
+                    children.forEach(function(elem) {
                         value += bloqs[elem].getCode();
                     });
                     // if (children.length >= 1) {
@@ -1714,7 +1706,7 @@
                 return code;
             };
 
-            this.getBloqsStructure = function (fullStructure) {
+            this.getBloqsStructure = function(fullStructure) {
                 var result,
                     tempBloq;
 
@@ -1747,75 +1739,75 @@
                     for (var i = 0; i < this.bloqData.content[0].length; i++) {
                         tempObject = null;
                         switch (this.bloqData.content[0][i].alias) {
-                        case 'varInput':
-                        case 'stringInput':
-                        case 'numberInput':
-                        case 'multilineCodeInput':
-                        case 'multilineCommentInput':
-                        case 'codeInput':
-                        case 'charInput':
-                            value = this.$bloq.find('[data-content-id="' + this.bloqData.content[0][i].id + '"]').val();
-                            if (value) {
-                                tempObject = {
-                                    alias: this.bloqData.content[0][i].alias,
-                                    id: this.bloqData.content[0][i].id,
-                                    value: value
-                                };
-                            }
-                            break;
-                        case 'bloqInput':
-                            //get the inputs bloqs inside in 1 level
-                            var uuid,
-                                connectedBloq;
-                            uuid = this.getIOConnectorUuidByContentId(this.bloqData.content[0][i].bloqInputId);
-                            if ((IOConnectors[uuid].data.type === 'connector--input') && IOConnectors[uuid].connectedTo) {
-                                connectedBloq = utils.getBloqByConnectorUuid(IOConnectors[uuid].connectedTo, bloqs, IOConnectors);
-                                tempObject = {
-                                    alias: this.bloqData.content[0][i].alias,
-                                    bloqInputId: this.bloqData.content[0][i].bloqInputId,
-                                    value: connectedBloq.getBloqsStructure(fullStructure)
-                                };
-                            }
+                            case 'varInput':
+                            case 'stringInput':
+                            case 'numberInput':
+                            case 'multilineCodeInput':
+                            case 'multilineCommentInput':
+                            case 'codeInput':
+                            case 'charInput':
+                                value = this.$bloq.find('[data-content-id="' + this.bloqData.content[0][i].id + '"]').val();
+                                if (value) {
+                                    tempObject = {
+                                        alias: this.bloqData.content[0][i].alias,
+                                        id: this.bloqData.content[0][i].id,
+                                        value: value
+                                    };
+                                }
+                                break;
+                            case 'bloqInput':
+                                //get the inputs bloqs inside in 1 level
+                                var uuid,
+                                    connectedBloq;
+                                uuid = this.getIOConnectorUuidByContentId(this.bloqData.content[0][i].bloqInputId);
+                                if ((IOConnectors[uuid].data.type === 'connector--input') && IOConnectors[uuid].connectedTo) {
+                                    connectedBloq = utils.getBloqByConnectorUuid(IOConnectors[uuid].connectedTo, bloqs, IOConnectors);
+                                    tempObject = {
+                                        alias: this.bloqData.content[0][i].alias,
+                                        bloqInputId: this.bloqData.content[0][i].bloqInputId,
+                                        value: connectedBloq.getBloqsStructure(fullStructure)
+                                    };
+                                }
 
-                            break;
-                        case 'dynamicDropdown':
-                            attributeValue = this.$bloq.find('select[data-content-id="' + this.bloqData.content[0][i].id + '"][data-dropdowncontent="' + this.bloqData.content[0][i].options + '"]').attr('data-value');
-                            selectedValue = this.$bloq.find('select[data-content-id="' + this.bloqData.content[0][i].id + '"][data-dropdowncontent="' + this.bloqData.content[0][i].options + '"]').val();
-                            //only software Vars get value from val(), hardware, use attribute or val()
-                            var variableType = this.bloqData.content[0][i].options;
-                            var itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType);
+                                break;
+                            case 'dynamicDropdown':
+                                attributeValue = this.$bloq.find('select[data-content-id="' + this.bloqData.content[0][i].id + '"][data-dropdowncontent="' + this.bloqData.content[0][i].options + '"]').attr('data-value');
+                                selectedValue = this.$bloq.find('select[data-content-id="' + this.bloqData.content[0][i].id + '"][data-dropdowncontent="' + this.bloqData.content[0][i].options + '"]').val();
+                                //only software Vars get value from val(), hardware, use attribute or val()
+                                var variableType = this.bloqData.content[0][i].options;
+                                var itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType);
 
-                            if (itsSoftwareValue !== -1) {
-                                value = selectedValue;
-                            } else {
-                                value = attributeValue || selectedValue;
-                            }
+                                if (itsSoftwareValue !== -1) {
+                                    value = selectedValue;
+                                } else {
+                                    value = attributeValue || selectedValue;
+                                }
 
-                            // console.log('val', attributeValue, selectedValue);
-                            if (value) {
-                                tempObject = {
-                                    alias: this.bloqData.content[0][i].alias,
-                                    id: this.bloqData.content[0][i].id,
-                                    value: value
-                                };
-                            }
-                            break;
-                        case 'staticDropdown':
-                            //value = this.$bloq.find('select[data-content-id="' + this.bloqData.content[0][i].id + '"]').val();
-                            value = this.$contentContainer.find('> select[data-content-id="' + this.bloqData.content[0][i].id + '"]').val();
-                            if (value) {
-                                tempObject = {
-                                    alias: this.bloqData.content[0][i].alias,
-                                    id: this.bloqData.content[0][i].id,
-                                    value: value
-                                };
-                            }
-                            break;
-                        case 'text':
-                            //we dont catch this field
-                            break;
-                        default:
-                            throw 'I dont know how to get the structure from this contentType :( ' + this.bloqData.content[0][i].alias;
+                                // console.log('val', attributeValue, selectedValue);
+                                if (value) {
+                                    tempObject = {
+                                        alias: this.bloqData.content[0][i].alias,
+                                        id: this.bloqData.content[0][i].id,
+                                        value: value
+                                    };
+                                }
+                                break;
+                            case 'staticDropdown':
+                                //value = this.$bloq.find('select[data-content-id="' + this.bloqData.content[0][i].id + '"]').val();
+                                value = this.$contentContainer.find('> select[data-content-id="' + this.bloqData.content[0][i].id + '"]').val();
+                                if (value) {
+                                    tempObject = {
+                                        alias: this.bloqData.content[0][i].alias,
+                                        id: this.bloqData.content[0][i].id,
+                                        value: value
+                                    };
+                                }
+                                break;
+                            case 'text':
+                                //we dont catch this field
+                                break;
+                            default:
+                                throw 'I dont know how to get the structure from this contentType :( ' + this.bloqData.content[0][i].alias;
                         }
                         if (tempObject) {
                             if (fullStructure) {
@@ -1837,7 +1829,7 @@
         }
     };
 
-    var clearSoftwareArrays = function () {
+    var clearSoftwareArrays = function() {
         softwareArrays = {
             voidFunctions: [],
             returnFunctions: [],
@@ -1847,7 +1839,7 @@
         };
     };
 
-    var buildBloqWithContent = function (data, componentsArray, schemas, $field) {
+    var buildBloqWithContent = function(data, componentsArray, schemas, $field) {
 
         var tempBloq,
             originalBloqSchema = schemas[data.name],

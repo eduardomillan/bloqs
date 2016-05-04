@@ -62,7 +62,7 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
     code: 'if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}'
 });
 
-//bloqIf.connectors[1].acceptedAliases = ['all', 'ifDown'];
+bloqIf.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
 utils.generateBloqInputConnectors(bloqIf);
 

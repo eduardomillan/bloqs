@@ -12,7 +12,10 @@
     },
     {
       "type": "connector--root",
-      "accept": "connector--top"
+      "accept": "connector--top",
+      "acceptedAliases": [
+        "switchChildren"
+      ]
     }
   ],
   "bloqClass": "bloq-switch",

@@ -31,6 +31,8 @@ var caseDefault = _.merge(_.clone(StatementInputBloq, true), {
 
 });
 
+caseDefault.connectors[0].acceptedAliases = ['switchChildren', 'case'];
+
 utils.generateBloqInputConnectors(caseDefault);
 
 module.exports = caseDefault;

@@ -1449,28 +1449,41 @@
     /**
      * Return the connectors from the second bloq that can connect with any connector in bloq1
      * return null if cant find a valid connector
-     *
+     * First bloq is moving bloq
      */
-    function canConnectStatementBloqs(bloq1, bloq2, connectors) {
+    function canConnectStatementBloqs(bloq1, bloq2, bloqs, connectors) {
         var result = [];
         if (canConnectConnectors(bloq1.connectors[0], bloq2.connectors[1], connectors)) {
             // we must chek of its some bloq connected, to ensure that the connector and the top or bottom branch
             // can connect to ensure the bloqs join
-            // if( connectors[bloq1.connectors[0]].connectedTo
-            //     && canConnectConnectors(connectors[bloq1.connectors[0]].connectedTo, gettopbranch(bloq2.connectors[0]), connectors)){
-
-            //     }
-            // }
-            result.push(bloq2.connectors[1]);
+            if (connectors[bloq2.connectors[1]].connectedTo) {
+                if (canConnectConnectors(connectors[bloq2.connectors[1]].connectedTo, getLastBottomConnectorUuid(bloq1.uuid, bloqs, connectors), connectors)) {
+                    result.push(bloq2.connectors[1]);
+                }
+            } else {
+                result.push(bloq2.connectors[1]);
+            }
         }
         if (canConnectConnectors(bloq1.connectors[1], bloq2.connectors[0], connectors)) {
-            result.push(bloq2.connectors[0]);
+            if (connectors[bloq2.connectors[0]].connectedTo) {
+                if (canConnectConnectors(connectors[bloq2.connectors[0]].connectedTo, getFirstTopConnectorUuid(bloq1.uuid, bloqs, connectors), connectors)) {
+                    result.push(bloq2.connectors[0]);
+                }
+            } else {
+                result.push(bloq2.connectors[0]);
+            }
         }
         if (bloq1.connectors[2] && canConnectConnectors(bloq1.connectors[2], bloq2.connectors[0], connectors)) {
             result.push(bloq2.connectors[0]);
         }
         if (bloq2.connectors[2] && canConnectConnectors(bloq1.connectors[0], bloq2.connectors[2], connectors)) {
-            result.push(bloq2.connectors[2]);
+            if (connectors[bloq2.connectors[2]].connectedTo) {
+                if (canConnectConnectors(connectors[bloq2.connectors[2]].connectedTo, getLastBottomConnectorUuid(bloq1.uuid, bloqs, connectors), connectors)) {
+                    result.push(bloq2.connectors[2]);
+                }
+            } else {
+                result.push(bloq2.connectors[2]);
+            }
         }
         if (result.length === 0) {
             result = null;
@@ -1492,7 +1505,7 @@
             console.log(arrayIntersection([acceptedAliases1, acceptedAliases2]));
         }
 
-        return (!acceptedAliases1 && !acceptedAliases2) || (acceptedAliases1 && acceptedAliases2 && arrayIntersection([acceptedAliases1, acceptedAliases2])) || (!acceptedAliases1 && (acceptedAliases2.indexOf('all') !== -1)) || (!acceptedAliases2 && (acceptedAliases1.indexOf('all') !== -1));
+        return (!acceptedAliases1 && !acceptedAliases2) || (acceptedAliases1 && acceptedAliases2 && (arrayIntersection([acceptedAliases1, acceptedAliases2]).length > 0)) || (!acceptedAliases1 && (acceptedAliases2.indexOf('all') !== -1)) || (!acceptedAliases2 && (acceptedAliases1.indexOf('all') !== -1));
     }
 
     function arrayIntersection(arrays) {

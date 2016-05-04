@@ -33,6 +33,8 @@ var bloqSwitch = _.merge(_.clone(StatementInputBloq, true), {
     code: 'switch (int({VAR})) {{STATEMENTS}}'
 });
 
+bloqSwitch.connectors[2].acceptedAliases = ['switchChildren'];
+
 utils.generateBloqInputConnectors(bloqSwitch);
 
 module.exports = bloqSwitch;

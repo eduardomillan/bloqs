@@ -62,8 +62,8 @@ var elseif = _.merge(_.clone(StatementInputBloq, true), {
     code: 'else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}'
 });
 
-// elseif.connectors[0].acceptedAliases = ['ifDown'];
-// elseif.connectors[1].acceptedAliases = ['all', 'elseifDown'];
+elseif.connectors[0].acceptedAliases = ['ifDown'];
+elseif.connectors[1].acceptedAliases = ['all', 'elseifDown'];
 
 utils.generateBloqInputConnectors(elseif);
 
