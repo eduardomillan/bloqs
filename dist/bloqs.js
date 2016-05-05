@@ -1377,7 +1377,7 @@
                 contents = [];
             code = bloq.code;
             while (regExpResult = contentRegExp.exec(code)) {
-                console.log(regExpResult);
+                //console.log(regExpResult);
                 contents.push(getContentFromBloq(regExpResult[1], bloq));
             }
             //twice bucle because regexp are not working fine
@@ -1507,11 +1507,11 @@
     };
 
     function canConnectAliases(acceptedAliases1, acceptedAliases2) {
-        if (acceptedAliases1 && acceptedAliases2) {
-            console.log('---');
-            console.log(acceptedAliases1, acceptedAliases2);
-            console.log(arrayIntersection([acceptedAliases1, acceptedAliases2]));
-        }
+        // if (acceptedAliases1 && acceptedAliases2) {
+        //     console.log('---');
+        //     console.log(acceptedAliases1, acceptedAliases2);
+        //     console.log(arrayIntersection([acceptedAliases1, acceptedAliases2]));
+        // }
 
         return (!acceptedAliases1 && !acceptedAliases2) || (acceptedAliases1 && acceptedAliases2 && (arrayIntersection([acceptedAliases1, acceptedAliases2]).length > 0)) || (!acceptedAliases1 && (acceptedAliases2.indexOf('all') !== -1)) || (!acceptedAliases2 && (acceptedAliases1.indexOf('all') !== -1));
     }
@@ -2700,7 +2700,7 @@
                 });
                 $element.change(function() {
                     $element.val(utils.validString($element.val()));
-                    console.log('change String!');
+                    //console.log('change String!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
@@ -2720,7 +2720,7 @@
                 });
                 $element.change(function() {
                     $element.val(utils.validChar($element.val()));
-                    console.log('change Char!');
+                    //console.log('change Char!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
@@ -2739,7 +2739,7 @@
                     });
                 });
                 $element.change(function() {
-                    console.log('change SCinput!');
+                    //console.log('change SCinput!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
@@ -2757,7 +2757,7 @@
                     });
                 }, 0);
                 $element.change(function() {
-                    console.log('change multilineCode!');
+                    //console.log('change multilineCode!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
@@ -2783,7 +2783,7 @@
 
                 $element.change(function() {
                     $element.val(utils.validComment($element.val()));
-                    console.log('change multilineComment!');
+                    //console.log('change multilineComment!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
@@ -2818,7 +2818,7 @@
                 });
 
                 $element.change(function() {
-                    console.log('change varInput!');
+                    //console.log('change varInput!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;

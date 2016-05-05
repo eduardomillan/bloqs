@@ -1369,7 +1369,7 @@
                 contents = [];
             code = bloq.code;
             while (regExpResult = contentRegExp.exec(code)) {
-                console.log(regExpResult);
+                //console.log(regExpResult);
                 contents.push(getContentFromBloq(regExpResult[1], bloq));
             }
             //twice bucle because regexp are not working fine
@@ -1499,11 +1499,11 @@
     };
 
     function canConnectAliases(acceptedAliases1, acceptedAliases2) {
-        if (acceptedAliases1 && acceptedAliases2) {
-            console.log('---');
-            console.log(acceptedAliases1, acceptedAliases2);
-            console.log(arrayIntersection([acceptedAliases1, acceptedAliases2]));
-        }
+        // if (acceptedAliases1 && acceptedAliases2) {
+        //     console.log('---');
+        //     console.log(acceptedAliases1, acceptedAliases2);
+        //     console.log(arrayIntersection([acceptedAliases1, acceptedAliases2]));
+        // }
 
         return (!acceptedAliases1 && !acceptedAliases2) || (acceptedAliases1 && acceptedAliases2 && (arrayIntersection([acceptedAliases1, acceptedAliases2]).length > 0)) || (!acceptedAliases1 && (acceptedAliases2.indexOf('all') !== -1)) || (!acceptedAliases2 && (acceptedAliases1.indexOf('all') !== -1));
     }

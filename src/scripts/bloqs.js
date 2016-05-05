@@ -1060,7 +1060,7 @@
                 });
                 $element.change(function() {
                     $element.val(utils.validString($element.val()));
-                    console.log('change String!');
+                    //console.log('change String!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
@@ -1080,7 +1080,7 @@
                 });
                 $element.change(function() {
                     $element.val(utils.validChar($element.val()));
-                    console.log('change Char!');
+                    //console.log('change Char!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
@@ -1099,7 +1099,7 @@
                     });
                 });
                 $element.change(function() {
-                    console.log('change SCinput!');
+                    //console.log('change SCinput!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
@@ -1117,7 +1117,7 @@
                     });
                 }, 0);
                 $element.change(function() {
-                    console.log('change multilineCode!');
+                    //console.log('change multilineCode!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
@@ -1143,7 +1143,7 @@
 
                 $element.change(function() {
                     $element.val(utils.validComment($element.val()));
-                    console.log('change multilineComment!');
+                    //console.log('change multilineComment!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
@@ -1178,7 +1178,7 @@
                 });
 
                 $element.change(function() {
-                    console.log('change varInput!');
+                    //console.log('change varInput!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
                 break;
