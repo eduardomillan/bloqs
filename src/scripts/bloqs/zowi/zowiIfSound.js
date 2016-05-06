@@ -6,14 +6,14 @@ var _ = require('lodash'),
     StatementInputBloq = require('./../statementInputBloq');
 
 /**
-* Bloq name: zowiIfSound
-*
-* Bloq type: Statement-Input
-*
-* Description: It executes the following code only if Zowi heards a sound.
-*
-* Return type: none
-*/
+ * Bloq name: zowiIfSound
+ *
+ * Bloq type: Statement-Input
+ *
+ * Description: It executes the following code only if Zowi heards a sound.
+ *
+ * Return type: none
+ */
 
 var zowiIfSound = _.merge(_.clone(StatementInputBloq, true), {
 
@@ -23,10 +23,12 @@ var zowiIfSound = _.merge(_.clone(StatementInputBloq, true), {
         [{
             alias: 'text',
             value: 'bloq-zowi-if-sound-v1'
-        },]
+        }, ]
     ],
     code: ' if(zowi.getNoise() >= 650){{STATEMENTS}}'
 });
+
+zowiIfSound.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
 utils.generateBloqInputConnectors(zowiIfSound);
 

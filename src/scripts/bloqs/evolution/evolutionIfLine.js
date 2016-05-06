@@ -6,16 +6,16 @@ var _ = require('lodash'),
     StatementInputBloq = require('./../statementInputBloq');
 
 /**
-* Bloq name: evolutionIfLine
-*
-* Bloq type: Statement-Input
-*
-* Description: It executes the following code only if Evolution detects
-*              black or white, selectable from two drop-downs, in both
-*              line follower sensors.
-*
-* Return type: none
-*/
+ * Bloq name: evolutionIfLine
+ *
+ * Bloq type: Statement-Input
+ *
+ * Description: It executes the following code only if Evolution detects
+ *              black or white, selectable from two drop-downs, in both
+ *              line follower sensors.
+ *
+ * Return type: none
+ */
 
 var evolutionIfLine = _.merge(_.clone(StatementInputBloq, true), {
 
@@ -29,12 +29,12 @@ var evolutionIfLine = _.merge(_.clone(StatementInputBloq, true), {
             id: 'LINELEFT',
             alias: 'staticDropdown',
             options: [{
-                    label: 'bloq-evolution-if-line-white',
-                    value: '1'
-                }, {
-                    label: 'bloq-evolution-if-line-black',
-                    value: '0'
-                }]
+                label: 'bloq-evolution-if-line-white',
+                value: '1'
+            }, {
+                label: 'bloq-evolution-if-line-black',
+                value: '0'
+            }]
         }, {
             alias: 'text',
             value: 'bloq-evolution-if-line-and'
@@ -42,19 +42,21 @@ var evolutionIfLine = _.merge(_.clone(StatementInputBloq, true), {
             id: 'LINERIGHT',
             alias: 'staticDropdown',
             options: [{
-                    label: 'bloq-evolution-if-line-white',
-                    value: '1'
-                }, {
-                    label: 'bloq-evolution-if-line-black',
-                    value: '0'
-                }]
+                label: 'bloq-evolution-if-line-white',
+                value: '1'
+            }, {
+                label: 'bloq-evolution-if-line-black',
+                value: '0'
+            }]
         }, {
             alias: 'text',
             value: 'bloq-evolution-if-line-then'
-        },]
+        }, ]
     ],
     code: 'if(evolution.getLine(LEFT) == {LINELEFT} && evolution.getLine(RIGHT) == {LINERIGHT}){{STATEMENTS}}'
 });
+
+evolutionIfLine.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
 utils.generateBloqInputConnectors(evolutionIfLine);
 

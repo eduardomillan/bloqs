@@ -6,16 +6,16 @@ var _ = require('lodash'),
     StatementInputBloq = require('./../statementInputBloq');
 
 /**
-* Bloq name: zowiIfButton
-*
-* Bloq type: Statement-Input
-*
-* Description: It executes the following code only if the one of
-*              both buttons of the Zowi's back, selectable from a
-*              drop-down, is pushed.
-*
-* Return type: none
-*/
+ * Bloq name: zowiIfButton
+ *
+ * Bloq type: Statement-Input
+ *
+ * Description: It executes the following code only if the one of
+ *              both buttons of the Zowi's back, selectable from a
+ *              drop-down, is pushed.
+ *
+ * Return type: none
+ */
 
 var zowiIfButtons = _.merge(_.clone(StatementInputBloq, true), {
 
@@ -29,19 +29,21 @@ var zowiIfButtons = _.merge(_.clone(StatementInputBloq, true), {
             id: 'BUTTON',
             alias: 'staticDropdown',
             options: [{
-                    label: 'A',
-                    value: 'PIN_AButton'
-                }, {
-                    label: 'B',
-                    value: 'PIN_BButton'
-                }]
+                label: 'A',
+                value: 'PIN_AButton'
+            }, {
+                label: 'B',
+                value: 'PIN_BButton'
+            }]
         }, {
             alias: 'text',
             value: 'bloq-zowi-if-buttons-then-v1'
-        },]
+        }, ]
     ],
     code: 'if(digitalRead({BUTTON}) == 1){{STATEMENTS}}'
 });
+
+zowiIfButtons.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
 utils.generateBloqInputConnectors(zowiIfButtons);
 

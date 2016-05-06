@@ -6,15 +6,15 @@ var _ = require('lodash'),
     StatementInputBloq = require('./../statementInputBloq');
 
 /**
-* Bloq name: zowiIfDistance
-*
-* Bloq type: Statement-Input
-*
-* Description: It executes the following code only if Zowi detects
-*              a specific distance.
-*
-* Return type: none
-*/
+ * Bloq name: zowiIfDistance
+ *
+ * Bloq type: Statement-Input
+ *
+ * Description: It executes the following code only if Zowi detects
+ *              a specific distance.
+ *
+ * Return type: none
+ */
 
 var zowiIfDistance = _.merge(_.clone(StatementInputBloq, true), {
 
@@ -28,12 +28,12 @@ var zowiIfDistance = _.merge(_.clone(StatementInputBloq, true), {
             id: 'OPERATOR',
             alias: 'staticDropdown',
             options: [{
-                    label: 'bloq-zowi-if-distance-less',
-                    value: '<'
-                }, {
-                    label: 'bloq-zowi-if-distance-more',
-                    value: '>'
-                }]
+                label: 'bloq-zowi-if-distance-less',
+                value: '<'
+            }, {
+                label: 'bloq-zowi-if-distance-more',
+                value: '>'
+            }]
         }, {
             alias: 'text',
             value: 'bloq-zowi-if-distance-than'
@@ -44,10 +44,12 @@ var zowiIfDistance = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             alias: 'text',
             value: 'bloq-zowi-if-distance-then-v1'
-        },]
+        }, ]
     ],
     code: 'if(zowi.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}'
 });
+
+zowiIfDistance.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
 utils.generateBloqInputConnectors(zowiIfDistance);
 

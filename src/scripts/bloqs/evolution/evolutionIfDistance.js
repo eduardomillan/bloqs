@@ -6,15 +6,15 @@ var _ = require('lodash'),
     StatementInputBloq = require('./../statementInputBloq');
 
 /**
-* Bloq name: evolutionIfDistance
-*
-* Bloq type: Statement-Input
-*
-* Description: It executes the following code only if Evolution detects
-*              a specific distance.
-*
-* Return type: none
-*/
+ * Bloq name: evolutionIfDistance
+ *
+ * Bloq type: Statement-Input
+ *
+ * Description: It executes the following code only if Evolution detects
+ *              a specific distance.
+ *
+ * Return type: none
+ */
 
 var evolutionIfDistance = _.merge(_.clone(StatementInputBloq, true), {
 
@@ -28,12 +28,12 @@ var evolutionIfDistance = _.merge(_.clone(StatementInputBloq, true), {
             id: 'OPERATOR',
             alias: 'staticDropdown',
             options: [{
-                    label: 'bloq-evolution-if-distance-less',
-                    value: '<'
-                }, {
-                    label: 'bloq-evolution-if-distance-more',
-                    value: '>'
-                }]
+                label: 'bloq-evolution-if-distance-less',
+                value: '<'
+            }, {
+                label: 'bloq-evolution-if-distance-more',
+                value: '>'
+            }]
         }, {
             alias: 'text',
             value: 'bloq-evolution-if-distance-than'
@@ -44,10 +44,12 @@ var evolutionIfDistance = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             alias: 'text',
             value: 'bloq-evolution-if-distance-then'
-        },]
+        }, ]
     ],
     code: 'if(evolution.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}'
 });
+
+evolutionIfDistance.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
 utils.generateBloqInputConnectors(evolutionIfDistance);
 
