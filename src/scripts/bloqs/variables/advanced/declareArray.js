@@ -59,6 +59,10 @@ var declareArrayAdvanced = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     createDynamicContent: 'softwareVars',
+    returnType: {
+        type: 'fromDropdown',
+        idDropdown: 'TYPE'
+    },
     code: '{TYPE} {NAME} [{VALUE}];'
 });
 

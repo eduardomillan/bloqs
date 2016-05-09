@@ -52,13 +52,17 @@ var declareArray = _.merge(_.clone(StatementBloq, true), {
         }, {
             alias: 'text',
             value: 'bloq-declare-array-declare-size'
-        },{
+        }, {
             id: 'VALUE',
             alias: 'numberInput',
             value: 3
         }]
     ],
     createDynamicContent: 'softwareVars',
+    returnType: {
+        type: 'fromDropdown',
+        idDropdown: 'TYPE'
+    },
     code: '{TYPE} {NAME} [{VALUE}];'
 });
 

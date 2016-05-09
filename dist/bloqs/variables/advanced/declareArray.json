@@ -17,7 +17,7 @@
         "float",
         "int"
       ],
-      "name": "84dc24ce-80c8-42d2-bf60-c50365f67cd6"
+      "name": "ab91944e-21bb-4ce2-aa17-3a4b196b8808"
     }
   ],
   "bloqClass": "bloq-declare-array",
@@ -73,10 +73,14 @@
           "float",
           "int"
         ],
-        "name": "84dc24ce-80c8-42d2-bf60-c50365f67cd6"
+        "name": "ab91944e-21bb-4ce2-aa17-3a4b196b8808"
       }
     ]
   ],
   "createDynamicContent": "softwareVars",
+  "returnType": {
+    "type": "fromDropdown",
+    "idDropdown": "TYPE"
+  },
   "code": "{TYPE} {NAME} [{VALUE}];"
 }

@@ -65,5 +65,9 @@
     ]
   ],
   "createDynamicContent": "softwareVars",
+  "returnType": {
+    "type": "fromDropdown",
+    "idDropdown": "TYPE"
+  },
   "code": "{TYPE} {NAME} [{VALUE}];"
 }
