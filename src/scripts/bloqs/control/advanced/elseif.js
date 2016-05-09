@@ -36,6 +36,9 @@ var elseifAdvanced = _.merge(_.clone(StatementInputBloq, true), {
     code: 'else if ({VAR}){{STATEMENTS}}'
 });
 
+elseifAdvanced.connectors[0].acceptedAliases = ['ifDown'];
+elseifAdvanced.connectors[1].acceptedAliases = ['all', 'elseifDown'];
+
 utils.generateBloqInputConnectors(elseifAdvanced);
 
 module.exports = elseifAdvanced;

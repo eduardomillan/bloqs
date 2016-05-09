@@ -36,6 +36,8 @@ var ifAdvanced = _.merge(_.clone(StatementInputBloq, true), {
     code: 'if({CONDITION}){{STATEMENTS}}'
 });
 
+ifAdvanced.connectors[1].acceptedAliases = ['all', 'ifDown'];
+
 utils.generateBloqInputConnectors(ifAdvanced);
 
 module.exports = ifAdvanced;

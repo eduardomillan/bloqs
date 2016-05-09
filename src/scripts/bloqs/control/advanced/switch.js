@@ -32,6 +32,8 @@ var switchAdvanced = _.merge(_.clone(StatementInputBloq, true), {
     code: 'switch ({VAR}) {{STATEMENTS}}'
 });
 
+switchAdvanced.connectors[2].acceptedAliases = ['switchChildren'];
+
 utils.generateBloqInputConnectors(switchAdvanced);
 
 module.exports = switchAdvanced;

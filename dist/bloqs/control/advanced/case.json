@@ -4,11 +4,18 @@
   "connectors": [
     {
       "type": "connector--top",
-      "accept": "connector--bottom"
+      "accept": "connector--bottom",
+      "acceptedAliases": [
+        "switchChildren",
+        "case"
+      ]
     },
     {
       "type": "connector--bottom",
-      "accept": "connector--top"
+      "accept": "connector--top",
+      "acceptedAliases": [
+        "case"
+      ]
     },
     {
       "type": "connector--root",
@@ -20,7 +27,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "05432d28-104f-4b4d-ba77-ae28e4a279ea"
+      "name": "5a04fa13-7567-463f-b225-7da03c1d069b"
     }
   ],
   "bloqClass": "bloq-case",
@@ -36,7 +43,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "05432d28-104f-4b4d-ba77-ae28e4a279ea"
+        "name": "5a04fa13-7567-463f-b225-7da03c1d069b"
       },
       {
         "alias": "text",

@@ -4,11 +4,18 @@
   "connectors": [
     {
       "type": "connector--top",
-      "accept": "connector--bottom"
+      "accept": "connector--bottom",
+      "acceptedAliases": [
+        "ifDown"
+      ]
     },
     {
       "type": "connector--bottom",
-      "accept": "connector--top"
+      "accept": "connector--top",
+      "acceptedAliases": [
+        "all",
+        "elseifDown"
+      ]
     },
     {
       "type": "connector--root",
@@ -20,7 +27,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "7e05a318-7919-499b-b785-14b4a8f7d4b5"
+      "name": "2e228e90-1220-40f4-a4e0-2be060c7ce66"
     }
   ],
   "bloqClass": "bloq-else-if",
@@ -36,7 +43,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "7e05a318-7919-499b-b785-14b4a8f7d4b5"
+        "name": "2e228e90-1220-40f4-a4e0-2be060c7ce66"
       },
       {
         "alias": "text",

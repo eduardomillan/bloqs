@@ -12,7 +12,10 @@
     },
     {
       "type": "connector--root",
-      "accept": "connector--top"
+      "accept": "connector--top",
+      "acceptedAliases": [
+        "switchChildren"
+      ]
     },
     {
       "type": "connector--input",
@@ -20,7 +23,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "0473eb90-fa9c-49b2-91a6-ec4f264467b5"
+      "name": "c6573cd5-a4e5-4912-942b-ae09c305534c"
     }
   ],
   "bloqClass": "bloq-switch",
@@ -36,7 +39,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "0473eb90-fa9c-49b2-91a6-ec4f264467b5"
+        "name": "c6573cd5-a4e5-4912-942b-ae09c305534c"
       }
     ]
   ],
