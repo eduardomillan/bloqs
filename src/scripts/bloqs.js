@@ -1323,6 +1323,10 @@
     };
 
     var translateBloq = function(lang, key) {
+        if (!bloqsLanguages.texts[lang]) {
+            console.error('Language not supported ' + lang);
+            lang = 'en-GB';
+        }
         return bloqsLanguages.texts[lang][key] || bloqsLanguages.texts['en-GB'][key] || bloqsLanguages.texts['es-ES'][key] || key;
     };
 
