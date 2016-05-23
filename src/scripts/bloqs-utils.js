@@ -246,7 +246,7 @@
         if (Object.prototype.toString.call(dropConnectorAcceptType) === '[object Object]') {
             dropConnectorAcceptType = getTypeFromDynamicDropdown(dropBloq, dropConnectorAcceptType, softwareArrays);
         }
-        return (dragConnectorType === 'all') || (dropConnectorAcceptType.indexOf('all') !== -1) || (dropConnectorAcceptType.indexOf(dragConnectorType) !== -1);
+        return (dragConnectorType === 'all') || (dropConnectorAcceptType.indexOf('all') !== -1) || (dropConnectorAcceptType.indexOf(dragConnectorType) !== -1) || ((dragConnectorType === 'float') && (dropConnectorAcceptType.indexOf('int') !== -1)) || ((dragConnectorType === 'int') && (dropConnectorAcceptType.indexOf('float') !== -1));
     };
     //getConnectorsUuidByAcceptType
     var getTypeFromDynamicDropdown = function(bloq, typeObject, softwareArrays) {

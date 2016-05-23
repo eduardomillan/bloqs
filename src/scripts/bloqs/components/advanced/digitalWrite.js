@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: digitalWrite
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It sets a specific digital pin with a given value.
- * 
+ *
  * Return type: none
  */
 
@@ -29,7 +29,7 @@ var digitalWrite = _.merge(_.clone(StatementBloq, true), {
             acceptType: ['all']
         }, {
             alias: 'text',
-            value: 'bloq-pin-digital-write-data'
+            value: 'bloq-pin-digital-write-data-V1'
         }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',

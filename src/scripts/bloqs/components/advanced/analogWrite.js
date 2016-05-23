@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: analogWrite
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It sets a specific analog pin with a given value.
- * 
+ *
  * Return type: none
  */
 
@@ -22,14 +22,14 @@ var analogWrite = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-pin-analog-write'
+            value: 'bloq-pin-analog-write-V1'
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
             acceptType: ['all']
         }, {
             alias: 'text',
-            value: 'bloq-pin-analog-write-data'
+            value: 'bloq-pin-analog-write-data-V1'
         }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',
