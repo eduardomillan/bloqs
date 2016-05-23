@@ -246,6 +246,7 @@
         if (Object.prototype.toString.call(dropConnectorAcceptType) === '[object Object]') {
             dropConnectorAcceptType = getTypeFromDynamicDropdown(dropBloq, dropConnectorAcceptType, softwareArrays);
         }
+        //we assume that float = int its a valid connection because c do a internal cast
         return (dragConnectorType === 'all') || (dropConnectorAcceptType.indexOf('all') !== -1) || (dropConnectorAcceptType.indexOf(dragConnectorType) !== -1) || ((dragConnectorType === 'float') && (dropConnectorAcceptType.indexOf('int') !== -1)) || ((dragConnectorType === 'int') && (dropConnectorAcceptType.indexOf('float') !== -1));
     };
     //getConnectorsUuidByAcceptType
