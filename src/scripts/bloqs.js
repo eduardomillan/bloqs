@@ -29,9 +29,9 @@
         dragPreviousLeftPosition,
         dragBloqMousePositionX,
         dragBloqMousePositionY,
-        //we cant get the offset if the element its not visible, to avoid calc them on each drag, set them here
+    //we cant get the offset if the element its not visible, to avoid calc them on each drag, set them here
         fieldOffsetTop,
-        //to relative fields
+    //to relative fields
         fieldOffsetLeft = 0, //Bitbloq value 70,
         fieldOffsetTopSource = [], //bitbloq value['header', 'nav--make', 'actions--make', 'tabs--title'],
         fieldOffsetTopForced = 0,
@@ -303,7 +303,8 @@
 
         for (var i = 0; i < availableConnectors.length; i++) {
             connectors[availableConnectors[i]].jqueryObject.addClass('valid');
-        };
+        }
+        ;
     };
 
     var removeFromStatementInput = function(firstBloqToRemove) {
@@ -699,7 +700,7 @@
                         childConnector = connectors[tempBloq.connectors[1]].connectedTo;
                         removeBloq(tempBloq.uuid);
                     }
-                    /* falls through */
+                /* falls through */
                 case 'statement':
 
                     topConnector = connectors[bloq.connectors[0]].connectedTo;
@@ -1581,34 +1582,38 @@
                     }
                     value = element.val() || '';
                     //hardcoded!!
-                    for (var j = 0; j < componentsArray.sensors.length; j++) {
-                        if (value === componentsArray.sensors[j].name) {
-                            type =  componentsArray.sensors[j].type;
+                    if (!window.bloqs.componentsArray) {
+                        componentsArray = bloqsUtils.getEmptyComponentsArray();
+                    }
+                    var j;
+                    for (j = 0; j < window.bloqs.componentsArray.sensors.length; j++) {
+                        if (value === window.bloqs.componentsArray.sensors[j].name) {
+                            type = window.bloqs.componentsArray.sensors[j].type;
                             if (type === 'analog') {
-                                value = 'analogRead(' + componentsArray.sensors[j].name + ')';
+                                value = 'analogRead(' + window.bloqs.componentsArray.sensors[j].name + ')';
                             } else if (type === 'digital') {
-                                value = 'digitalRead(' + componentsArray.sensors[j].name + ')';
+                                value = 'digitalRead(' + window.bloqs.componentsArray.sensors[j].name + ')';
                             } else if (type === 'LineFollower') { // patch. When the new Web2Board is launched with float * as return, remove this
-                                value = '(float *)' + componentsArray.sensors[j].name + '.read()';
+                                value = '(float *)' + window.bloqs.componentsArray.sensors[j].name + '.read()';
                             } else {
-                                value = componentsArray.sensors[j].name + '.read()';
+                                value = window.bloqs.componentsArray.sensors[j].name + '.read()';
                             }
                             code = code.replace(new RegExp('{' + elem + '.type}', 'g'), value);
                         }
                     }
-                    for (var j = 0; j < componentsArray.servos.length; j++) {
-                        if (value === componentsArray.servos[j].name) {
-                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.servos[j].pin.s);
+                    for (j = 0; j < window.bloqs.componentsArray.servos.length; j++) {
+                        if (value === window.bloqs.componentsArray.servos[j].name) {
+                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), window.bloqs.componentsArray.servos[j].pin.s);
                         }
                     }
-                    for (var j = 0; j < componentsArray.continuousServos.length; j++) {
-                        if (value === componentsArray.continuousServos[j].name) {
-                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.continuousServos[j].pin.s);
+                    for (j = 0; j < window.bloqs.componentsArray.continuousServos.length; j++) {
+                        if (value === window.bloqs.componentsArray.continuousServos[j].name) {
+                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), window.bloqs.componentsArray.continuousServos[j].pin.s);
                         }
                     }
-                    for (var j = 0; j < componentsArray.oscillators.length; j++) {
-                        if (value === componentsArray.oscillators[j].name) {
-                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), componentsArray.oscillators[j].pin.s);
+                    for (j = 0; j < window.bloqs.componentsArray.oscillators.length; j++) {
+                        if (value === window.bloqs.componentsArray.oscillators[j].name) {
+                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), window.bloqs.componentsArray.oscillators[j].pin.s);
                         }
                     }
                     if (element.attr('data-content-type') === 'stringInput') {
