@@ -3225,7 +3225,7 @@
                     value = element.val() || '';
                     //hardcoded!!
                     if (!window.bloqs.componentsArray) {
-                        componentsArray = bloqsUtils.getEmptyComponentsArray();
+                        window.bloqs.componentsArray = bloqsUtils.getEmptyComponentsArray();
                     }
                     var j;
                     for (j = 0; j < window.bloqs.componentsArray.sensors.length; j++) {
