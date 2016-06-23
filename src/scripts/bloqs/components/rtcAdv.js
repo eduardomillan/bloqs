@@ -28,6 +28,12 @@ var clockRTCAdvanced = _.merge(_.clone(OutputBloq, true), {
             id: 'FUNCTION',
             alias: 'staticDropdown',
             options: [{
+                label: 'bloq-rtc-date-2',
+                value: 'getDate'
+            }, {
+                label: 'bloq-rtc-time-2',
+                value: 'getTime'
+            },{
                 label: 'bloq-rtc-hour',
                 value: 'getHour'
             }, {
