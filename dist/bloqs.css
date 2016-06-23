@@ -6820,7 +6820,8 @@
   .bloq input[type=text] {
     width: 100px; }
     .bloq input[type=text] + select {
-      margin-left: 10px; }
+      margin-left: 10px;
+      margin-right: 10px; }
   .bloq.bloq-number input, .bloq.bloq-numberArray input, .bloq.bloq-numberArray-advanced-type input, .bloq.bloq-wait input, .bloq.bloq-boolArray input, .bloq.bloq-case input {
     width: 51px; }
   .bloq select {
