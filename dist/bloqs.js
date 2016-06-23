@@ -441,7 +441,7 @@
      * @return {[type]}            [description]
      */
     var drawTree = function(bloqs, connectors) {
-        console.log('drawtree');
+        //console.log('drawtree');
         //buscamos los tipo statement q no tienen un top conectado
         for (var uuid in bloqs) {
             //console.log(bloqs[uuid]);
@@ -1582,6 +1582,7 @@
     return bloqsUtils;
 
 })(window.bloqsUtils = window.bloqsUtils || {}, _, undefined);
+
 
 'use strict';
 (function(bloqsTooltip) {
@@ -3160,7 +3161,6 @@
                     break;
                 case 'output':
                     this.$contentContainer = this.$bloq;
-                    //this.$bloq.attr('draggable', true);
                     buildContent(this);
                     this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
                     this.$bloq[0].addEventListener('touchstart', bloqMouseDown);

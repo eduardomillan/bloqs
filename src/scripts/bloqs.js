@@ -1519,7 +1519,6 @@
                     break;
                 case 'output':
                     this.$contentContainer = this.$bloq;
-                    //this.$bloq.attr('draggable', true);
                     buildContent(this);
                     this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
                     this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
