@@ -433,7 +433,7 @@
      * @return {[type]}            [description]
      */
     var drawTree = function(bloqs, connectors) {
-        console.log('drawtree');
+        //console.log('drawtree');
         //buscamos los tipo statement q no tienen un top conectado
         for (var uuid in bloqs) {
             //console.log(bloqs[uuid]);
