@@ -6,7 +6,8 @@
       "type": "connector--top",
       "accept": "connector--bottom",
       "acceptedAliases": [
-        "ifDown"
+        "ifDown",
+        "elseifDown"
       ]
     },
     {
@@ -27,7 +28,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "c7604440-9820-4112-b405-6003c327fbaa"
+      "name": "da2bcd0f-1429-4708-a672-463882ce63cd"
     },
     {
       "type": "connector--input",
@@ -35,7 +36,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "ab72f810-27ca-48ba-ad33-b3a33ca98984"
+      "name": "6080688c-ae73-45d6-9eaf-49b4f5e7f12d"
     }
   ],
   "bloqClass": "bloq-else-if",
@@ -51,7 +52,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "c7604440-9820-4112-b405-6003c327fbaa"
+        "name": "da2bcd0f-1429-4708-a672-463882ce63cd"
       },
       {
         "id": "OPERATOR",
@@ -89,7 +90,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "ab72f810-27ca-48ba-ad33-b3a33ca98984"
+        "name": "6080688c-ae73-45d6-9eaf-49b4f5e7f12d"
       },
       {
         "alias": "text",

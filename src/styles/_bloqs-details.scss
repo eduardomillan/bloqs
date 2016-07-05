@@ -184,6 +184,7 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-string", $text-color, $theme-color-text-color);
     @include createBloqsCss($reverse, "bloq-read-sensor", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-serial-receiver", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-pinlevels", $components-color, $theme-color-components-color);
     /*---- MATHS ------*/
     @include createBloqsCss($reverse, "bloq-basic-operations", $maths-color, $theme-color-maths-color);
     @include createBloqsCss($reverse, "bloq-numberArray-advanced", $maths-color, $theme-color-maths-color);
