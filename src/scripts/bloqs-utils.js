@@ -953,7 +953,7 @@
             //*******BUZZERS*******//
             if (componentsArray.buzzers.length >= 1) {
                 componentsArray.buzzers.forEach(function(buzzer) {
-                    globalVars += 'int ' + buzzer.name + ' = ' + (buzzer.pin.s || '') + ';';
+                    globalVars += 'const int ' + buzzer.name + ' = ' + (buzzer.pin.s || '') + ';';
                 });
             }
             //*******CLOCKS*******//
@@ -983,7 +983,7 @@
             }
             if (componentsArray.leds.length >= 1) {
                 componentsArray.leds.forEach(function(leds) {
-                    globalVars += 'int ' + leds.name + ' = ' + (leds.pin.s || '') + ';';
+                    globalVars += 'const int ' + leds.name + ' = ' + (leds.pin.s || '') + ';';
                     setupCode += 'pinMode(' + leds.name + ', OUTPUT);';
                 });
             }
@@ -1004,7 +1004,7 @@
             if (componentsArray.sensors.length >= 1) {
                 componentsArray.sensors.forEach(function(sensor) {
                     if (sensor.type === 'analog' || sensor.type === 'digital') {
-                        globalVars += 'int ' + sensor.name + ' = ' + (sensor.pin.s || '') + ';';
+                        globalVars += 'const int ' + sensor.name + ' = ' + (sensor.pin.s || '') + ';';
                         setupCode += 'pinMode(' + sensor.name + ', INPUT);';
                     } else if (sensor.type === 'Joystick') {
                         globalVars += 'Joystick ' + sensor.name + '(' + (sensor.pin.x || '') + ',' + (sensor.pin.y || '') + ',' + (sensor.pin.k || '') + ');';
