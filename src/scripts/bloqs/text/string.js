@@ -36,6 +36,11 @@ var string = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'String'
+    },
+    python: {
+        codeLines: [{
+            code: '"{TEXT}"'
+        }]
     }
 });
 

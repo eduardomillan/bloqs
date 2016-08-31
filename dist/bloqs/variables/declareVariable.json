@@ -16,7 +16,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "a8e0e558-f0ec-468b-8b99-c1e0e992f8a4"
+      "name": "b7f32576-e420-4290-afd1-8c8128a413f3"
     }
   ],
   "bloqClass": "bloq-declare-variable",
@@ -41,7 +41,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "a8e0e558-f0ec-468b-8b99-c1e0e992f8a4"
+        "name": "b7f32576-e420-4290-afd1-8c8128a413f3"
       }
     ]
   ],
@@ -50,5 +50,12 @@
     "bloqInputId": "VALUE"
   },
   "createDynamicContent": "softwareVars",
-  "code": "{VALUE.connectionType} {NAME} = {VALUE};"
+  "code": "{VALUE.connectionType} {NAME} = {VALUE};",
+  "python": {
+    "codeLines": [
+      {
+        "code": "{NAME} = {VALUE}"
+      }
+    ]
+  }
 }

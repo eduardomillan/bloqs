@@ -59,7 +59,15 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-if-exec'
         }, ]
     ],
-    code: 'if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}'
+    code: 'if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}',
+    python: {
+        codeLines: [{
+            code: 'if({ARG1} {OPERATOR} {ARG2}):'
+        }, {
+            indentation: 1,
+            code: '{STATEMENTS}'
+        }]
+    }
 });
 
 bloqIf.connectors[1].acceptedAliases = ['all', 'ifDown'];

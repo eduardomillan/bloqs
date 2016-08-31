@@ -48,8 +48,8 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['src/styles/**/*.scss', 'src/scripts/bloqs/**/*.*'],
-                tasks: ['sass', 'bloqDist'],
+                files: ['src/styles/**/*.scss', 'src/scripts/**/*.*'],
+                tasks: ['default'],
                 options: {
                     spawn: false,
 
