@@ -21,6 +21,8 @@
 
      name: 'pythonBloq',
      bloqClass: 'bloq-python',
+     headerText: 'Python Code',
+     descriptionText: 'Python code come here',
      content: [],
      python: {
          codeLines: [{
