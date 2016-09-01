@@ -2,7 +2,7 @@
 (function(pythonGeneration) {
 
     var INDENT_CHARACTER = ' ';
-    var PARAMS_REGEXP = /{(.*?)}/g;
+    var PARAMS_REGEXP = /{(.*?)}/;
 
     function getCode(bloqFullStructure, parentIndent) {
         parentIndent = parentIndent || 0;
@@ -15,7 +15,8 @@
             value,
             code = '',
             tempCode,
-            match;
+            match,
+            numberOfIndents;
 
         if (aliases) {
             for (var i = 0; i < aliases.length; i++) {
@@ -34,7 +35,9 @@
         }
 
         for (var i = 0; i < codeLines.length; i++) {
-            tempCode = INDENT_CHARACTER.repeat(parentIndent + codeLines[i].indentation) + codeLines[i].code;
+            numberOfIndents = parentIndent + (codeLines[i].indentation || 0);
+
+            tempCode = INDENT_CHARACTER.repeat(numberOfIndents) + codeLines[i].code;
             //searchGroups
             match = PARAMS_REGEXP.exec(tempCode);
             while (match) {
@@ -43,10 +46,12 @@
                 tempCode = tempCode.replace(match[0], aliasesValuesHashMap[match[1]]);
                 match = PARAMS_REGEXP.exec(tempCode);
             }
-            code += tempCode;
+
             if (bloqFullStructure.type != 'output') {
-                code += '\n';
+                tempCode += '\n';
             }
+
+            code += tempCode;
         }
         return code;
     }

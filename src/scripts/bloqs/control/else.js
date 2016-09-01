@@ -26,7 +26,15 @@ var bloqElse = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-else-else'
         }]
     ],
-    code: 'else {{STATEMENTS}}'
+    code: 'else {{STATEMENTS}}',
+    python: {
+        codeLines: [{
+            code: 'else:'
+        }, {
+            indentation: 1,
+            code: '{STATEMENTS}'
+        }]
+    }
 });
 
 bloqElse.connectors[0].acceptedAliases = ['ifDown', 'elseifDown'];

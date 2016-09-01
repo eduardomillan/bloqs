@@ -28,5 +28,16 @@
       }
     ]
   ],
-  "code": "else {{STATEMENTS}}"
+  "code": "else {{STATEMENTS}}",
+  "python": {
+    "codeLines": [
+      {
+        "code": "else:"
+      },
+      {
+        "indentation": 1,
+        "code": "{STATEMENTS}"
+      }
+    ]
+  }
 }

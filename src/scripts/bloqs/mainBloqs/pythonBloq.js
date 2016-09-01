@@ -24,6 +24,8 @@
      content: [],
      python: {
          codeLines: [{
+             code: '# coding=utf-8'
+         }, {
              code: '{STATEMENTS}'
          }]
      }
