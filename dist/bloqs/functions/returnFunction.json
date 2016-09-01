@@ -20,7 +20,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "aeb2246b-e09e-4aea-ac7f-11f1d1110a47"
+      "name": "edeb0651-2741-451b-8026-9305f8db7372"
     }
   ],
   "bloqClass": "bloq-return-function",
@@ -47,7 +47,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "aeb2246b-e09e-4aea-ac7f-11f1d1110a47"
+        "name": "edeb0651-2741-451b-8026-9305f8db7372"
       }
     ]
   ],
@@ -56,5 +56,20 @@
     "type": "fromInput",
     "bloqInputId": "RETURN"
   },
-  "code": "{RETURN.connectionType} {FUNCNAME} () {{STATEMENTS}return {RETURN};}"
+  "code": "{RETURN.connectionType} {FUNCNAME} () {{STATEMENTS}return {RETURN};}",
+  "python": {
+    "codeLines": [
+      {
+        "code": "def {FUNCNAME}():"
+      },
+      {
+        "indentation": 1,
+        "code": "{STATEMENTS}"
+      },
+      {
+        "indentation": 1,
+        "code": "return {RETURN}"
+      }
+    ]
+  }
 }

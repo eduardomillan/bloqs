@@ -34,6 +34,11 @@ var invokeFunction = _.merge(_.clone(StatementBloq, true), {
     dynamicDropdown: {
         idDropdown: 'FUNCTION',
         options: 'voidFunctions'
+    },
+    python: {
+        codeLines: [{
+            code: '{FUNCTION}()'
+        }]
     }
 });
 

@@ -20,7 +20,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "ef522aa4-7e91-4e45-9883-c020547387c5"
+      "name": "8ea0ddf4-b712-4bea-b20e-8507f4463f46"
     },
     {
       "type": "connector--input",
@@ -28,7 +28,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "35e5ff89-8ce8-4f6e-bdc2-5100dd5c2b59"
+      "name": "54c99277-6194-4e2f-8a0c-f6511ab72509"
     }
   ],
   "bloqClass": "bloq-while",
@@ -44,7 +44,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "ef522aa4-7e91-4e45-9883-c020547387c5"
+        "name": "8ea0ddf4-b712-4bea-b20e-8507f4463f46"
       },
       {
         "id": "OPERATOR",
@@ -82,7 +82,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "35e5ff89-8ce8-4f6e-bdc2-5100dd5c2b59"
+        "name": "54c99277-6194-4e2f-8a0c-f6511ab72509"
       },
       {
         "alias": "text",
@@ -90,5 +90,16 @@
       }
     ]
   ],
-  "code": "while ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}"
+  "code": "while ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}",
+  "python": {
+    "codeLines": [
+      {
+        "code": "while ({ARG1} {OPERATOR} {ARG2}):"
+      },
+      {
+        "indentation": 1,
+        "code": "{STATEMENTS}"
+      }
+    ]
+  }
 }

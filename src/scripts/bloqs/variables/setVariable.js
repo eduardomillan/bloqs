@@ -41,7 +41,12 @@ var setVariable = _.merge(_.clone(StatementBloq, true), {
             }
         }]
     ],
-    code: '{NAME} = {VALUE};'
+    code: '{NAME} = {VALUE};',
+    python: {
+        codeLines: [{
+            code: '{NAME} = {VALUE}'
+        }]
+    }
 });
 
 utils.generateBloqInputConnectors(setVariable);

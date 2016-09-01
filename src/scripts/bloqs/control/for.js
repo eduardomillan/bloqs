@@ -62,7 +62,21 @@ var forV1 = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-for-exec'
         }]
     ],
-    code: '\'for({VAR}={INIT};{VAR}\' + (\'{MODE}\' === \'+\'?\'<=\':\'>=\' ) + \'{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}\''
+    code: '\'for({VAR}={INIT};{VAR}\' + (\'{MODE}\' === \'+\'?\'<=\':\'>=\' ) + \'{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}\'',
+    python: {
+        codeLines: [{
+            conditional: {
+                aliasId: 'MODE',
+                code: {
+                    '+': 'for {VAR} in range({INIT}, {FINAL}):',
+                    '-': 'for {VAR} in range({FINAL}, {INIT}, -1):'
+                }
+            }
+        }, {
+            indentation: 1,
+            code: '{STATEMENTS}'
+        }]
+    }
 });
 
 utils.generateBloqInputConnectors(forV1);

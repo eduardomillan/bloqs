@@ -5,14 +5,14 @@ var _ = require('lodash');
 var StatementBloq = require('./../statementBloq');
 
 /**
-* Bloq name: code
-* 
-* Bloq type: Statement
-*
-* Description: It gives the space to write a comment in the code.
-* 
-* Return type: none
-*/
+ * Bloq name: code
+ *
+ * Bloq type: Statement
+ *
+ * Description: It gives the space to write a comment in the code.
+ *
+ * Return type: none
+ */
 
 var comment = _.merge(_.clone(StatementBloq, true), {
 
@@ -25,10 +25,15 @@ var comment = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'COMMENT',
             alias: 'multilineCommentInput',
-            placeholder:'bloq-comment-default'
+            placeholder: 'bloq-comment-default'
         }]
     ],
-    code: '/*\n{COMMENT}\n*/'
+    code: '/*\n{COMMENT}\n*/',
+    python: {
+        codeLines: [{
+            code: '"""{COMMENT}"""'
+        }]
+    }
 });
 
 module.exports = comment;

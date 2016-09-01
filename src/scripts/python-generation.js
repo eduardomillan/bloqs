@@ -1,11 +1,14 @@
 'use strict';
 (function(pythonGeneration) {
 
-    var INDENT_CHARACTER = ' ';
+    var INDENT_DEFAULT_CHARACTER = '    ';
     var PARAMS_REGEXP = /{(.*?)}/;
+    var params = {
+        indentCharacter: INDENT_DEFAULT_CHARACTER
+    }
 
-    function getCode(bloqFullStructure, parentIndent) {
-        parentIndent = parentIndent || 0;
+
+    function getCode(bloqFullStructure) {
         console.log('getting code from bloq', bloqFullStructure);
         var codeLines = bloqFullStructure.python.codeLines,
             aliases = bloqFullStructure.content[0],
@@ -29,15 +32,19 @@
         }
         if (childs) {
             for (var i = 0; i < childs.length; i++) {
-                childsCode += getCode(childs[i], parentIndent + 4);
+                childsCode += getCode(childs[i]);
             }
             aliasesValuesHashMap.STATEMENTS = childsCode;
         }
 
         for (var i = 0; i < codeLines.length; i++) {
-            numberOfIndents = parentIndent + (codeLines[i].indentation || 0);
+            numberOfIndents = (codeLines[i].indentation || 0);
+            if (codeLines[i].conditional) {
+                tempCode = codeLines[i].conditional.code[aliasesValuesHashMap[codeLines[i].conditional.aliasId]];
+            } else {
+                tempCode = codeLines[i].code;
+            }
 
-            tempCode = INDENT_CHARACTER.repeat(numberOfIndents) + codeLines[i].code;
             //searchGroups
             match = PARAMS_REGEXP.exec(tempCode);
             while (match) {
@@ -46,6 +53,8 @@
                 tempCode = tempCode.replace(match[0], aliasesValuesHashMap[match[1]]);
                 match = PARAMS_REGEXP.exec(tempCode);
             }
+
+            tempCode = tempCode.replace(/^/gm, params.indentCharacter.repeat(numberOfIndents));
 
             if (bloqFullStructure.type != 'output') {
                 tempCode += '\n';
@@ -57,6 +66,7 @@
     }
 
     pythonGeneration.getCode = getCode;
+    pythonGeneration.params = params;
 
     return pythonGeneration;
 

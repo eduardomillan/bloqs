@@ -18,7 +18,7 @@
         "idDropdown": "NAME",
         "options": "softwareVars"
       },
-      "name": "4e1f9f64-9987-47d4-ac39-38e399754fdf"
+      "name": "c7d7e4c7-6f53-4008-be4f-501bf5d551b4"
     }
   ],
   "bloqClass": "bloq-set-variable",
@@ -45,9 +45,16 @@
           "idDropdown": "NAME",
           "options": "softwareVars"
         },
-        "name": "4e1f9f64-9987-47d4-ac39-38e399754fdf"
+        "name": "c7d7e4c7-6f53-4008-be4f-501bf5d551b4"
       }
     ]
   ],
-  "code": "{NAME} = {VALUE};"
+  "code": "{NAME} = {VALUE};",
+  "python": {
+    "codeLines": [
+      {
+        "code": "{NAME} = {VALUE}"
+      }
+    ]
+  }
 }

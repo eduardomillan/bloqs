@@ -12,7 +12,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "b384eb97-a901-423e-a364-c909353f8736"
+      "name": "24d0dc33-335e-491d-8a20-b86a70c8d1bf"
     },
     {
       "type": "connector--input",
@@ -20,7 +20,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "cc2673e4-f332-484a-aff6-813e12cff7a6"
+      "name": "67a41b3e-9721-4bc3-9a07-bb324369d144"
     }
   ],
   "bloqClass": "bloq-basic-operations",
@@ -32,7 +32,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "b384eb97-a901-423e-a364-c909353f8736"
+        "name": "24d0dc33-335e-491d-8a20-b86a70c8d1bf"
       },
       {
         "id": "OPERATOR",
@@ -70,7 +70,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "cc2673e4-f332-484a-aff6-813e12cff7a6"
+        "name": "67a41b3e-9721-4bc3-9a07-bb324369d144"
       }
     ]
   ],
@@ -78,5 +78,22 @@
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "conditional": {
+          "aliasId": "OPERATOR",
+          "code": {
+            "+": "{ARG1} {OPERATOR} {ARG2}",
+            "-": "{ARG1} {OPERATOR} {ARG2}",
+            "*": "{ARG1} {OPERATOR} {ARG2}",
+            "/": "{ARG1} {OPERATOR} {ARG2}",
+            "^": "{ARG1} ** {ARG2}",
+            "%": "{ARG1} {OPERATOR} {ARG2}"
+          }
+        }
+      }
+    ]
   }
 }
