@@ -7022,6 +7022,8 @@
     margin-right: 10px; }
     .bloq--statement-input .bloq--statement-input__header span + .bloqinput {
       margin-left: .5em; }
+  .bloq--statement-input .bloq--statement-input__header button {
+    z-index: 1; }
 
 .bloq--statement-input:focus:before {
   border-right: 2px solid #f1cb33 inset;
@@ -7255,6 +7257,9 @@
 .bloq.dragging {
   z-index: 10;
   position: absolute; }
+
+.bloq.collapsed .bloq--extension {
+  display: none; }
 
 tester + span + .bloqinput {
   margin-left: 1.6em; }

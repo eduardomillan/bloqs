@@ -1744,9 +1744,9 @@
         dragPreviousLeftPosition,
         dragBloqMousePositionX,
         dragBloqMousePositionY,
-    //we cant get the offset if the element its not visible, to avoid calc them on each drag, set them here
+        //we cant get the offset if the element its not visible, to avoid calc them on each drag, set them here
         fieldOffsetTop,
-    //to relative fields
+        //to relative fields
         fieldOffsetLeft = 0, //Bitbloq value 70,
         fieldOffsetTopSource = [], //bitbloq value['header', 'nav--make', 'actions--make', 'tabs--title'],
         fieldOffsetTopForced = 0,
@@ -2018,8 +2018,7 @@
 
         for (var i = 0; i < availableConnectors.length; i++) {
             connectors[availableConnectors[i]].jqueryObject.addClass('valid');
-        }
-        ;
+        };
     };
 
     var removeFromStatementInput = function(firstBloqToRemove) {
@@ -2406,6 +2405,7 @@
             }
             switch (bloq.bloqData.type) {
                 case 'statement-input':
+                    bloq.$bloq.find('.btn-collapse')[0].removeEventListener('click', collapseButtonClick);
                 case 'group':
                     var tempBloq,
                         childConnector = connectors[bloq.connectors[2]].connectedTo;
@@ -2415,7 +2415,7 @@
                         childConnector = connectors[tempBloq.connectors[1]].connectedTo;
                         removeBloq(tempBloq.uuid);
                     }
-                /* falls through */
+                    /* falls through */
                 case 'statement':
 
                     topConnector = connectors[bloq.connectors[0]].connectedTo;
@@ -3046,6 +3046,18 @@
         return bloqsLanguages.texts[lang][key] || bloqsLanguages.texts['en-GB'][key] || bloqsLanguages.texts['es-ES'][key] || key;
     };
 
+    function collapseButtonClick(evt) {
+        //console.log('collapse IT!', evt);
+        if (evt.target.parentElement.parentElement.className.indexOf(' collapsed') === -1) {
+            evt.target.parentElement.parentElement.className = evt.target.parentElement.parentElement.className.concat(' collapsed');
+            evt.target.innerHTML = '+'
+        } else {
+            evt.target.parentElement.parentElement.className = evt.target.parentElement.parentElement.className.replace(' collapsed', '');
+            evt.target.innerHTML = '-'
+        }
+
+    }
+
     // Block Constructor
     var Bloq = function Bloq(params) {
         if (params.bloqData) {
@@ -3207,13 +3219,14 @@
 
             switch (this.bloqData.type) {
                 case 'statement-input':
-                    this.$bloq.append('<div class="bloq--statement-input__header"></div><div class="bloq--extension"><div class="bloq--extension__content"></div> <div class="bloq--extension--end"></div></div>');
+                    this.$bloq.append('<div class="bloq--statement-input__header"><button class="btn-collapse">-</button></div><div class="bloq--extension"><div class="bloq--extension__content"></div> <div class="bloq--extension--end"></div></div>');
                     this.$contentContainer = this.$bloq.find('.bloq--statement-input__header');
                     this.$contentContainerDown = this.$bloq.find('.bloq--extension--end');
                     //this.$bloq.attr('draggable', true);
                     buildContent(this);
                     this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
                     this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
+                    this.$bloq.find('.btn-collapse')[0].addEventListener('click', collapseButtonClick);
                     buildConnectors(params.bloqData.connectors, this);
                     this.$contentContainer.children().children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
                     this.$contentContainer.children().children().not('.connector.connector--offline').last().addClass('bloq__inner--last');
