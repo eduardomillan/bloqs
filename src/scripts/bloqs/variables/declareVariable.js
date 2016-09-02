@@ -41,7 +41,12 @@ var declareVariable = _.merge(_.clone(StatementBloq, true), {
         bloqInputId: 'VALUE'
     },
     createDynamicContent: 'softwareVars',
-    code: '{VALUE.connectionType} {NAME} = {VALUE};'
+    code: '{VALUE.connectionType} {NAME} = {VALUE};',
+    python: {
+        codeLines: [{
+            code: '{NAME} = {VALUE}'
+        }]
+    }
 });
 
 utils.generateBloqInputConnectors(declareVariable);

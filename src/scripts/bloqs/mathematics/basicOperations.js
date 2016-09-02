@@ -56,6 +56,21 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    python: {
+        codeLines: [{
+            conditional: {
+                aliasId: 'OPERATOR',
+                code: {
+                    '+': '{ARG1} {OPERATOR} {ARG2}',
+                    '-': '{ARG1} {OPERATOR} {ARG2}',
+                    '*': '{ARG1} {OPERATOR} {ARG2}',
+                    '/': '{ARG1} {OPERATOR} {ARG2}',
+                    '^': '{ARG1} ** {ARG2}',
+                    '%': '{ARG1} {OPERATOR} {ARG2}'
+                }
+            }
+        }]
     }
 });
 

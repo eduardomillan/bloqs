@@ -28,7 +28,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "e1e9fd17-f7b0-48b5-bc21-367494895b85"
+      "name": "87f6406a-69b3-424b-8464-92f1e0ff59a2"
     },
     {
       "type": "connector--input",
@@ -36,7 +36,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "c04659d2-c556-47ad-8e6e-ae79ce33eaa3"
+      "name": "add10b5d-0d92-4336-9f0f-e12c398594f3"
     }
   ],
   "bloqClass": "bloq-else-if",
@@ -52,7 +52,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "e1e9fd17-f7b0-48b5-bc21-367494895b85"
+        "name": "87f6406a-69b3-424b-8464-92f1e0ff59a2"
       },
       {
         "id": "OPERATOR",
@@ -90,7 +90,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "c04659d2-c556-47ad-8e6e-ae79ce33eaa3"
+        "name": "add10b5d-0d92-4336-9f0f-e12c398594f3"
       },
       {
         "alias": "text",
@@ -98,5 +98,16 @@
       }
     ]
   ],
-  "code": "else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}"
+  "code": "else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}",
+  "python": {
+    "codeLines": [
+      {
+        "code": "elif({ARG1} {OPERATOR} {ARG2}):"
+      },
+      {
+        "indentation": 1,
+        "code": "{STATEMENTS}"
+      }
+    ]
+  }
 }

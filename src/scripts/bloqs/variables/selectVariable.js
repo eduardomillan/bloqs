@@ -34,6 +34,11 @@ var selectVariable = _.merge(_.clone(OutputBloq, true), {
         type: 'fromDynamicDropdown',
         idDropdown: 'VAR',
         options: 'softwareVars'
+    },
+    python: {
+        codeLines: [{
+            code: '{VAR}'
+        }]
     }
 });
 
