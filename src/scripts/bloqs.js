@@ -1,5 +1,5 @@
 'use strict';
-(function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip) {
+(function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested) {
     /**
      * Events
      * bloqs:connect
@@ -673,6 +673,13 @@
             var topConnector, bottomConnector, outputConnector;
             window.dispatchEvent(new Event('bloqs:bloqremoved'));
             bloq.$bloq[0].removeEventListener('mousedown', bloqMouseDown);
+            //remove listener of suggested window
+            if (bloq.$bloqInputs) {
+                for (i = 0; i < bloq.$bloqInputs.length; i++) {
+                    bloq.$bloqInputs[i].off('click');
+                }
+            }
+
             //if its moving remove all listener
             if ((mouseDownBloq && mouseDownBloq.getAttribute('data-bloq-id') === bloqUuid) ||
                 (draggingBloq && draggingBloq.uuid)) {
@@ -1189,6 +1196,13 @@
                     'data-content-id': elementSchema.bloqInputId
                 });
                 $element.addClass('bloqinput');
+
+                $element.click(showSuggestedWindow);
+                if (!bloq.$bloqInputs) {
+                    bloq.$bloqInputs = [];
+                }
+                //store bloq input to remove listeners from suggested windows
+                bloq.$bloqInputs.push($element);
                 break;
             case 'headerText':
                 $element = $('<h3>').html(elementSchema.value);
@@ -1204,6 +1218,11 @@
 
         return $element;
     };
+
+    function showSuggestedWindow(evt) {
+        console.log('click input', evt);
+        bloqsSuggested.showSuggestedWindow();
+    }
 
     var translateBloqs = function(newLang) {
         if (newLang !== lang) {
@@ -1224,8 +1243,8 @@
                     i18nKey = bloqElements[j].getAttribute('data-i18n');
                     bloqElements[j].innerHTML = translateBloq(lang, i18nKey);
                 }
-
             }
+            bloqsSuggested.setSuggestedText(translateBloq(lang, 'suggested'));
         }
     };
 
@@ -1959,4 +1978,4 @@
 
     return exports;
 
-})(window.bloqs = window.bloqs || {}, _, bloqsUtils, bloqsLanguages, bloqsTooltip, undefined);
+})(window.bloqs = window.bloqs || {}, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, undefined);
