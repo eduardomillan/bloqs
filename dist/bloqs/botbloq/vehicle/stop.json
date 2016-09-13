@@ -1,0 +1,31 @@
+{
+  "type": "statement",
+  "name": "botbloqVehicleStop",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-vehicle-stop",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Parar"
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "codeLines": [
+      {
+        "code": "botbloqVehicle.parar()"
+      }
+    ]
+  }
+}

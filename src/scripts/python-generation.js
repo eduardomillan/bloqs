@@ -5,11 +5,16 @@
     var PARAMS_REGEXP = /{(.*?)}/;
     var params = {
         indentCharacter: INDENT_DEFAULT_CHARACTER
-    }
+    };
+
+    var imports = [];
 
 
-    function getCode(bloqFullStructure) {
-        console.log('getting code from bloq', bloqFullStructure);
+    function getCode(bloqFullStructure, cleanImports) {
+        console.log('getting code from bloq', bloqFullStructure, cleanImports);
+        if(cleanImports){
+            imports = [];
+        }
         var codeLines = bloqFullStructure.python.codeLines,
             aliases = bloqFullStructure.content[0],
             childs = bloqFullStructure.childs,
