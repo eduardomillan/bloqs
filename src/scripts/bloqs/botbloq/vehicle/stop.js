@@ -26,6 +26,11 @@ var botbloqVehicleStop = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     python: {
+        libraries:['botbloqVehicle'],
+        needInstanceOf:[{
+            name: 'vehicle',
+            type: 'BotbloqVehicle'
+        }],
         codeLines: [{
             code: 'botbloqVehicle.parar()'
         }]

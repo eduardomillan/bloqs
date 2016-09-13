@@ -1648,14 +1648,39 @@
         indentCharacter: INDENT_DEFAULT_CHARACTER
     };
 
-    var imports = [];
+    var imports = {},
+    instances = {};
 
+    function getCode(bloqFullStructure) {
+        console.log('getting code', bloqFullStructure);
+        imports = {};
+        instances = {};
 
-    function getCode(bloqFullStructure, cleanImports) {
-        console.log('getting code from bloq', bloqFullStructure, cleanImports);
-        if(cleanImports){
-            imports = [];
+        var code = '# coding=utf-8\n\n';
+
+        var bloqsCode = getCodeFromBLoq(bloqFullStructure);
+        var propiedad;
+        //after bloqscode to reuse the bucle to fill libraries and instance dependencies
+        var importsCode = '';
+        for(propiedad in imports){
+            importsCode += 'import ' + propiedad + '\n';
         }
+
+        var instancesCode = '';
+        for(propiedad in instances){
+            instancesCode += propiedad  + ' = ' + instances[propiedad] + '()\n';
+        }
+
+
+        code += importsCode + '\n\n';
+        code += instancesCode + '\n\n';
+        code += bloqsCode + '\n\n';
+        return code;
+    }
+
+    function getCodeFromBLoq(bloqFullStructure) {
+        console.log('getting code from bloq', bloqFullStructure);
+
         var codeLines = bloqFullStructure.python.codeLines,
             aliases = bloqFullStructure.content[0],
             childs = bloqFullStructure.childs,
@@ -1667,18 +1692,30 @@
             match,
             numberOfIndents;
 
+        if(bloqFullStructure.python.libraries){
+            for (var i = 0; i < bloqFullStructure.python.libraries.length; i++) {
+                imports[bloqFullStructure.python.libraries[i]] = true;
+            }
+        }
+
+        if(bloqFullStructure.python.needInstanceOf){
+            for (var i = 0; i < bloqFullStructure.python.needInstanceOf.length; i++) {
+                instances[bloqFullStructure.python.needInstanceOf[i].name] = bloqFullStructure.python.needInstanceOf[i].type;
+            }
+        }
+
         if (aliases) {
             for (var i = 0; i < aliases.length; i++) {
                 if (aliases[i].id) {
                     aliasesValuesHashMap[aliases[i].id] = aliases[i].value;
                 } else if (aliases[i].bloqInputId && aliases[i].value) {
-                    aliasesValuesHashMap[aliases[i].bloqInputId] = getCode(aliases[i].value);
+                    aliasesValuesHashMap[aliases[i].bloqInputId] = getCodeFromBLoq(aliases[i].value);
                 }
             }
         }
         if (childs) {
             for (var i = 0; i < childs.length; i++) {
-                childsCode += getCode(childs[i]);
+                childsCode += getCodeFromBLoq(childs[i]);
             }
             aliasesValuesHashMap.STATEMENTS = childsCode;
         }

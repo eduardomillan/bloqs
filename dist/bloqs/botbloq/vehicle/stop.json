@@ -22,6 +22,15 @@
   ],
   "code": "",
   "python": {
+    "libraries": [
+      "botbloqVehicle"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "vehicle",
+        "type": "BotbloqVehicle"
+      }
+    ],
     "codeLines": [
       {
         "code": "botbloqVehicle.parar()"

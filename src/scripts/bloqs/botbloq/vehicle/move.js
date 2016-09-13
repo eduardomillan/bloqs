@@ -56,14 +56,19 @@ var botbloqVehicleMove = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     python: {
+        libraries:['botbloqVehicle'],
+        needInstanceOf:[{
+            name: 'vehicle',
+            type: 'BotbloqVehicle'
+        }],
         codeLines: [{
             conditional: {
                 aliasId: 'MOVEMENT',
                 code: {
-                    'forward': 'botbloqVehicle.avanzar({DELAY},{SPEED})',
-                    'backward': 'botbloqVehicle.retroceder({DELAY},{SPEED})',
-                    'right': 'botbloqVehicle.girarDerecha({DELAY},{SPEED})',
-                    'left': 'botbloqVehicle.girarIzquierda({DELAY},{SPEED})'
+                    'forward': 'vehicle.avanzar({DELAY},{SPEED})',
+                    'backward': 'vehicle.retroceder({DELAY},{SPEED})',
+                    'right': 'vehicle.girarDerecha({DELAY},{SPEED})',
+                    'left': 'vehicle.girarIzquierda({DELAY},{SPEED})'
                 }
             }
         }]
