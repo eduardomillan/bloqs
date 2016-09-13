@@ -35,7 +35,15 @@ var voidFunction = _.merge(_.clone(StatementInputBloq, true), {
         type: 'simple',
         value: 'void'
     },
-    code: 'void {FUNCNAME} (){{STATEMENTS}}'
+    code: 'void {FUNCNAME} (){{STATEMENTS}}',
+    python: {
+        codeLines: [{
+            code: 'def {FUNCNAME}():'
+        }, {
+            indentation: 1,
+            code: '{STATEMENTS}'
+        }]
+    }
 });
 
 utils.generateBloqInputConnectors(voidFunction);

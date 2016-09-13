@@ -27,7 +27,12 @@ var code = _.merge(_.clone(StatementBloq, true), {
             placeholder: 'bloq-code-writeYourCode'
         }]
     ],
-    code: '{CODE}\n'
+    code: '{CODE}\n',
+    python: {
+        codeLines: [{
+            code: '{CODE}'
+        }]
+    }
 });
 utils.generateBloqInputConnectors(code);
 module.exports = code;

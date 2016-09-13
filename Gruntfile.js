@@ -8,7 +8,13 @@ module.exports = function(grunt) {
                 separator: '\n\n'
             },
             dist: {
-                src: ['src/scripts/bloqs-languages.js', 'src/scripts/bloqs-utils.js', 'src/scripts/bloqs-tooltip.js', 'src/scripts/bloqs.js'],
+                src: [
+                    'src/scripts/bloqs-languages.js',
+                    'src/scripts/bloqs-utils.js',
+                    'src/scripts/bloqs-tooltip.js',
+                    'src/scripts/python-generation.js',
+                    'src/scripts/bloqs.js'
+                ],
                 dest: 'dist/<%= pkg.name %>.js'
             }
         },
@@ -48,8 +54,8 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['src/styles/**/*.scss', 'src/scripts/bloqs/**/*.*'],
-                tasks: ['sass', 'bloqDist'],
+                files: ['src/styles/**/*.scss', 'src/scripts/**/*.*'],
+                tasks: ['default'],
                 options: {
                     spawn: false,
 

@@ -36,6 +36,11 @@ var invokeReturnFunction = _.merge(_.clone(OutputBloq, true), {
         type: 'fromDynamicDropdown',
         idDropdown: 'FUNCTION',
         options: 'returnFunctions'
+    },
+    python: {
+        codeLines: [{
+            code: '{FUNCTION}()'
+        }]
     }
 });
 

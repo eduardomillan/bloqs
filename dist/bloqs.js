@@ -1640,6 +1640,80 @@
 
 
 'use strict';
+(function(pythonGeneration) {
+
+    var INDENT_DEFAULT_CHARACTER = '    ';
+    var PARAMS_REGEXP = /{(.*?)}/;
+    var params = {
+        indentCharacter: INDENT_DEFAULT_CHARACTER
+    }
+
+
+    function getCode(bloqFullStructure) {
+        console.log('getting code from bloq', bloqFullStructure);
+        var codeLines = bloqFullStructure.python.codeLines,
+            aliases = bloqFullStructure.content[0],
+            childs = bloqFullStructure.childs,
+            childsCode = '',
+            aliasesValuesHashMap = {},
+            value,
+            code = '',
+            tempCode,
+            match,
+            numberOfIndents;
+
+        if (aliases) {
+            for (var i = 0; i < aliases.length; i++) {
+                if (aliases[i].id) {
+                    aliasesValuesHashMap[aliases[i].id] = aliases[i].value;
+                } else if (aliases[i].bloqInputId && aliases[i].value) {
+                    aliasesValuesHashMap[aliases[i].bloqInputId] = getCode(aliases[i].value);
+                }
+            }
+        }
+        if (childs) {
+            for (var i = 0; i < childs.length; i++) {
+                childsCode += getCode(childs[i]);
+            }
+            aliasesValuesHashMap.STATEMENTS = childsCode;
+        }
+
+        for (var i = 0; i < codeLines.length; i++) {
+            numberOfIndents = (codeLines[i].indentation || 0);
+            if (codeLines[i].conditional) {
+                tempCode = codeLines[i].conditional.code[aliasesValuesHashMap[codeLines[i].conditional.aliasId]];
+            } else {
+                tempCode = codeLines[i].code;
+            }
+
+            //searchGroups
+            match = PARAMS_REGEXP.exec(tempCode);
+            while (match) {
+                console.log('match!', match);
+                console.log(aliasesValuesHashMap[match[1]]);
+                tempCode = tempCode.replace(match[0], aliasesValuesHashMap[match[1]]);
+                match = PARAMS_REGEXP.exec(tempCode);
+            }
+
+            tempCode = tempCode.replace(/^/gm, params.indentCharacter.repeat(numberOfIndents));
+
+            if (bloqFullStructure.type != 'output') {
+                tempCode += '\n';
+            }
+
+            code += tempCode;
+        }
+        return code;
+    }
+
+    pythonGeneration.getCode = getCode;
+    pythonGeneration.params = params;
+
+    return pythonGeneration;
+
+})(window.pythonGeneration = window.pythonGeneration || {}, undefined);
+
+'use strict';
 (function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip) {
     /**
      * Events
@@ -1670,9 +1744,9 @@
         dragPreviousLeftPosition,
         dragBloqMousePositionX,
         dragBloqMousePositionY,
-    //we cant get the offset if the element its not visible, to avoid calc them on each drag, set them here
+        //we cant get the offset if the element its not visible, to avoid calc them on each drag, set them here
         fieldOffsetTop,
-    //to relative fields
+        //to relative fields
         fieldOffsetLeft = 0, //Bitbloq value 70,
         fieldOffsetTopSource = [], //bitbloq value['header', 'nav--make', 'actions--make', 'tabs--title'],
         fieldOffsetTopForced = 0,
@@ -1944,8 +2018,7 @@
 
         for (var i = 0; i < availableConnectors.length; i++) {
             connectors[availableConnectors[i]].jqueryObject.addClass('valid');
-        }
-        ;
+        };
     };
 
     var removeFromStatementInput = function(firstBloqToRemove) {
@@ -2332,6 +2405,7 @@
             }
             switch (bloq.bloqData.type) {
                 case 'statement-input':
+                    bloq.$bloq.find('.btn-collapse')[0].removeEventListener('click', collapseButtonClick);
                 case 'group':
                     var tempBloq,
                         childConnector = connectors[bloq.connectors[2]].connectedTo;
@@ -2341,7 +2415,7 @@
                         childConnector = connectors[tempBloq.connectors[1]].connectedTo;
                         removeBloq(tempBloq.uuid);
                     }
-                /* falls through */
+                    /* falls through */
                 case 'statement':
 
                     topConnector = connectors[bloq.connectors[0]].connectedTo;
@@ -2972,6 +3046,18 @@
         return bloqsLanguages.texts[lang][key] || bloqsLanguages.texts['en-GB'][key] || bloqsLanguages.texts['es-ES'][key] || key;
     };
 
+    function collapseButtonClick(evt) {
+        //console.log('collapse IT!', evt);
+        if (evt.target.parentElement.parentElement.className.indexOf(' collapsed') === -1) {
+            evt.target.parentElement.parentElement.className = evt.target.parentElement.parentElement.className.concat(' collapsed');
+            evt.target.innerHTML = '+'
+        } else {
+            evt.target.parentElement.parentElement.className = evt.target.parentElement.parentElement.className.replace(' collapsed', '');
+            evt.target.innerHTML = '-'
+        }
+
+    }
+
     // Block Constructor
     var Bloq = function Bloq(params) {
         if (params.bloqData) {
@@ -3133,13 +3219,14 @@
 
             switch (this.bloqData.type) {
                 case 'statement-input':
-                    this.$bloq.append('<div class="bloq--statement-input__header"></div><div class="bloq--extension"><div class="bloq--extension__content"></div> <div class="bloq--extension--end"></div></div>');
+                    this.$bloq.append('<div class="bloq--statement-input__header"><button class="btn-collapse">-</button></div><div class="bloq--extension"><div class="bloq--extension__content"></div> <div class="bloq--extension--end"></div></div>');
                     this.$contentContainer = this.$bloq.find('.bloq--statement-input__header');
                     this.$contentContainerDown = this.$bloq.find('.bloq--extension--end');
                     //this.$bloq.attr('draggable', true);
                     buildContent(this);
                     this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
                     this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
+                    this.$bloq.find('.btn-collapse')[0].addEventListener('click', collapseButtonClick);
                     buildConnectors(params.bloqData.connectors, this);
                     this.$contentContainer.children().children().not('.connector.connector--offline').first().addClass('bloq__inner--first');
                     this.$contentContainer.children().children().not('.connector.connector--offline').last().addClass('bloq__inner--last');

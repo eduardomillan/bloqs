@@ -30,7 +30,6 @@
     <button id="loadFirstProject">Load project with 2 statement Bloqs</button>
     <button id="loadSecondProject">Load project with a statement Bloq and Bloqs inside</button>
     <button id="loadThirdProject">Load project with a statement Bloq and Bloqs inside, and child Bloqs</button>
-    <button id="loadFourthProject">Comment project</button>
     <!-- end demo markup -->
     <p>See the <a href="http://bq.github.io/bloqs">project homepage</a>.</p>
     <p>Check out the <a href="https://github.com/bq/bloqs">project repo</a>.</p>
@@ -46,6 +45,7 @@
     <!--Or add bloqs js without compile-->
     <script src="./../../src/scripts/bloqs-languages.js"></script>
     <script src="./../../src/scripts/bloqs-utils.js"></script>
+    <script src="./../../src/scripts/bloqs-tooltip.js"></script>
     <script src="./../../src/scripts/bloqs.js"></script>
     <script>
     /**
@@ -335,45 +335,7 @@
             }
         };
 
-        //---------fourth Example
 
-
-        var varsBloqWithComment = {
-            vars: {
-                name: 'varsBloq',
-                enable: true,
-                childs: [{
-                    name: 'code',
-                    enable: true,
-                    content: [
-                        [{
-                            alias: "multilineCommentInput",
-                            id: "COMMENT",
-                            value: "comentario\ncon\nsaltos\nde linea."
-                        }]
-                    ]
-                }],
-                content: [
-                    []
-                ]
-            },
-            setup: {
-                name: 'setupBloq',
-                enable: true,
-                childs: [],
-                content: [
-                    []
-                ]
-            },
-            loop: {
-                name: 'loopBloq',
-                enable: true,
-                childs: [],
-                content: [
-                    []
-                ]
-            }
-        };
 
 
         var loadProject = function(project) {
@@ -419,9 +381,6 @@
             loadProject(varsBloqWithIfWithContentAndChilds);
         });
 
-        $('#loadFourthProject').click(function() {
-            loadProject(varsBloqWithComment);
-        });
 
     });
     </script>

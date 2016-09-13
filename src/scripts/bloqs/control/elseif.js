@@ -59,7 +59,15 @@ var elseif = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-else-if-else'
         }]
     ],
-    code: 'else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}'
+    code: 'else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}',
+    python: {
+        codeLines: [{
+            code: 'elif({ARG1} {OPERATOR} {ARG2}):'
+        }, {
+            indentation: 1,
+            code: '{STATEMENTS}'
+        }]
+    }
 });
 
 elseif.connectors[0].acceptedAliases = ['ifDown', 'elseifDown'];

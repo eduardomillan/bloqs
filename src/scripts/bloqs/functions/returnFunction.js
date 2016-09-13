@@ -44,7 +44,18 @@ var returnFunction = _.merge(_.clone(StatementInputBloq, true), {
         type: 'fromInput',
         bloqInputId: 'RETURN'
     },
-    code: '{RETURN.connectionType} {FUNCNAME} () {{STATEMENTS}return {RETURN};}'
+    code: '{RETURN.connectionType} {FUNCNAME} () {{STATEMENTS}return {RETURN};}',
+    python: {
+        codeLines: [{
+            code: 'def {FUNCNAME}():'
+        }, {
+            indentation: 1,
+            code: '{STATEMENTS}'
+        }, {
+            indentation: 1,
+            code: 'return {RETURN}'
+        }]
+    }
 });
 
 utils.generateBloqInputConnectors(returnFunction);

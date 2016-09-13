@@ -24,7 +24,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "dd9cfb48-0713-45bf-b906-d7412d6f6f5c"
+      "name": "df29edc4-d1d2-4aeb-a1b2-8eefbf59d2b8"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "8acb7eb8-bb75-42ca-be4b-24a98a1d336f"
+      "name": "34b9fafb-1033-4066-b395-66717d478af4"
     }
   ],
   "bloqClass": "bloq-if",
@@ -48,7 +48,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "dd9cfb48-0713-45bf-b906-d7412d6f6f5c"
+        "name": "df29edc4-d1d2-4aeb-a1b2-8eefbf59d2b8"
       },
       {
         "id": "OPERATOR",
@@ -86,7 +86,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "8acb7eb8-bb75-42ca-be4b-24a98a1d336f"
+        "name": "34b9fafb-1033-4066-b395-66717d478af4"
       },
       {
         "alias": "text",
@@ -94,5 +94,16 @@
       }
     ]
   ],
-  "code": "if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}"
+  "code": "if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}",
+  "python": {
+    "codeLines": [
+      {
+        "code": "if({ARG1} {OPERATOR} {ARG2}):"
+      },
+      {
+        "indentation": 1,
+        "code": "{STATEMENTS}"
+      }
+    ]
+  }
 }
