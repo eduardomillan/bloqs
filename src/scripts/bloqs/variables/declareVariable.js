@@ -42,6 +42,9 @@ var declareVariable = _.merge(_.clone(StatementBloq, true), {
     },
     createDynamicContent: 'softwareVars',
     code: '{VALUE.connectionType} {NAME} = {VALUE};',
+    arduino:{
+        code: '@{VALUE.returnType} {NAME} = {VALUE};'
+    },
     python: {
         codeLines: [{
             code: '{NAME} = {VALUE}'
