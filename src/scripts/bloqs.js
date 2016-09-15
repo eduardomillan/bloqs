@@ -50,6 +50,7 @@
         if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
             forcedScrollTop = options.forcedScrollTop;
         }
+        bloqsSuggested.init(options.suggestionWindowParent, options.bloqSchemas);
 
         lang = options.lang || 'es-ES';
     };
@@ -1221,7 +1222,17 @@
 
     function showSuggestedWindow(evt) {
         console.log('click input', evt);
-        bloqsSuggested.showSuggestedWindow();
+        if(evt.target.hasAttribute('data-connector-name')){
+            var bloqConnectorUuid = evt.target.getAttribute('data-connector-id');
+            console.log('id', bloqConnectorUuid);
+            var params = {};
+            if(IOConnectors[bloqConnectorUuid]){
+                params.suggestedBloqs =  IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
+            } else if(connectors[bloqConnectorUuid]){
+                params.suggestedBloqs =  connectors[bloqConnectorUuid].data.suggestedBloqs;
+            }
+            bloqsSuggested.showSuggestedWindow(params);
+        }
     }
 
     var translateBloqs = function(newLang) {
@@ -1507,6 +1518,10 @@
             this.itsFree = function() {
                 return (this.$bloq.closest('.bloq--group').length === 0);
             };
+
+            this.autoRemove = function(){
+                removeBloq(this.uuid);
+            }
 
             //creation
             this.$bloq = $('<div>').attr({

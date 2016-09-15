@@ -70,8 +70,11 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
+utils.generateBloqInputConnectors(bloqIf);
 bloqIf.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
-utils.generateBloqInputConnectors(bloqIf);
+bloqIf.connectors[1].suggestedBloqs = ['else', 'elseif'];
+
+bloqIf.connectors[3].suggestedBloqs = ['number', 'string'];
 
 module.exports = bloqIf;
