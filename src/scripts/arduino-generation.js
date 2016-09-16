@@ -64,13 +64,13 @@
             for (var i = 0; i < aliases.length; i++) {
                 if (aliases[i].id) {
                     aliasesValuesHashMap[aliases[i].id] = {
-                        value: aliases[i].value
+                        value: aliases[i].value || ''
                     };
                 } else if (aliases[i].bloqInputId && aliases[i].value) {
                     aliasesValuesHashMap[aliases[i].bloqInputId] = {};
-                    aliasesValuesHashMap[aliases[i].bloqInputId].value = getCodeFromBloq(aliases[i].value);
+                    aliasesValuesHashMap[aliases[i].bloqInputId].value = getCodeFromBloq(aliases[i].value) || '';
                     if(aliases[i].value && aliases[i].value.returnType){
-                        aliasesValuesHashMap[aliases[i].bloqInputId].returnType = aliases[i].value.returnType.value
+                        aliasesValuesHashMap[aliases[i].bloqInputId].returnType = aliases[i].value.returnType.value || '';
                     }
                 }
             }

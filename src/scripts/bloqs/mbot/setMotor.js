@@ -6,34 +6,31 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
-* Bloq name: mBotMove
+* Bloq name: mBotSetMotor
 *
 * Bloq type: Statement
 *
-* Description: Move the vehicle forward
+* Description:Set the motor speed
 *
 */
 
-var mBotMove = _.merge(_.clone(StatementBloq, true), {
+var mBotSetMotor = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'mBotMove',
-    bloqClass: 'bloq-mbot-move',
+    name: 'mBotSetMotor',
+    bloqClass: 'bloq-mbot-setmotor',
     content: [
         [{
-            id: 'MOVEMENT',
+            alias: 'text',
+            value: 'Fijar el motor '
+        },{
+            id: 'MOTOR',
             alias: 'staticDropdown',
             options: [{
-                label: 'Avanzar',
-                value: 'forward'
+                label: 'M1',
+                value: 'M1'
             }, {
-                label: 'Retroceder',
-                value: 'backward'
-            }, {
-                label: 'Girar a la derecha',
-                value: 'right'
-            }, {
-                label: 'Girar a la izquierda',
-                value: 'left'
+                label: 'M2',
+                value: 'M2'
             }]
         },
         {
@@ -76,10 +73,10 @@ var mBotMove = _.merge(_.clone(StatementBloq, true), {
             name: 'mBot',
             type: 'MBot'
         }],
-        code: 'mBot.move({MOVEMENT},{SPEED});'
+        code: 'mBot.setMotor({MOTOR},{SPEED});'
     }
 });
 
-utils.generateBloqInputConnectors(mBotMove);
+utils.generateBloqInputConnectors(mBotSetMotor);
 
-module.exports = mBotMove;
+module.exports = mBotSetMotor;

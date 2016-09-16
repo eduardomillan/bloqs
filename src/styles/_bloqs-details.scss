@@ -51,6 +51,15 @@ $theme-color-mbot-color: #0076b4;
     @include createBloqsCss($reverse, "bloq-evolution-if-light-advanced", $evolution-color, $theme-color-evolution-color, true);
     /*---- MBOT ---------*/
     @include createBloqsCss($reverse, "bloq-mbot-move", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-setmotor", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-setservo", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-setled", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-setled-advanced", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-buzzer", $mbot-color, $theme-color-mbot-color);
+
+    @include createBloqsCss($reverse, "bloq-mbot-showfacebynumber", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-printtext", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-getdistance", $mbot-color, $theme-color-mbot-color);
     /*---- ZOWI ---------*/
     @include createBloqsCss($reverse, "bloq-zowi-gestures", $zowi-color, $theme-color-zowi-color);
     @include createBloqsCss($reverse, "bloq-zowi-rest", $zowi-color, $theme-color-zowi-color);
