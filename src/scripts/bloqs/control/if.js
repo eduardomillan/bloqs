@@ -78,6 +78,8 @@ bloqIf.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
 bloqIf.connectors[1].suggestedBloqs = ['else', 'elseif'];
 
-bloqIf.connectors[3].suggestedBloqs = ['number', 'string'];
+bloqIf.connectors[3].suggestedBloqs = ['number', 'string', 'for-v1', 'elseif'];
+
+bloqIf.connectors[4].suggestedBloqs = ['number', 'string'];
 
 module.exports = bloqIf;

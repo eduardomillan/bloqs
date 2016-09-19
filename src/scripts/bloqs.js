@@ -75,10 +75,14 @@
     var bloqMouseDown = function(evt) {
         // console.log('bloqMouseDown');
         // console.log(evt);
-        // console.log(evt.target.tagName);
+        //console.log(evt.target.tagName);
+
+
         if (evt.target.tagName !== 'SELECT') {
             //to avoid mousemove event on children and parents at the same time
             evt.stopPropagation();
+            //launch another event
+            window.dispatchEvent(new CustomEvent('bloqs:mousedown', { detail: event.target }));
 
             mouseDownBloq = evt.currentTarget;
             startPreMouseMove = true;
@@ -249,7 +253,7 @@
         $('.connector.valid').removeClass('valid');
         $('.bloq--dragging').removeClass('bloq--dragging');
         $field.focus();
-        window.dispatchEvent(new Event('bloqs:dragend'));
+        window.dispatchEvent(new CustomEvent('bloqs:dragend', { detail: bloq }));
 
         draggingBloq = null;
         dragPreviousTopPosition = 0;
@@ -1222,14 +1226,18 @@
 
     function showSuggestedWindow(evt) {
         console.log('click input', evt);
-        if(evt.target.hasAttribute('data-connector-name')){
+        if (evt.target.hasAttribute('data-connector-name')) {
             var bloqConnectorUuid = evt.target.getAttribute('data-connector-id');
             console.log('id', bloqConnectorUuid);
             var params = {};
-            if(IOConnectors[bloqConnectorUuid]){
-                params.suggestedBloqs =  IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
-            } else if(connectors[bloqConnectorUuid]){
-                params.suggestedBloqs =  connectors[bloqConnectorUuid].data.suggestedBloqs;
+            if (IOConnectors[bloqConnectorUuid]) {
+                params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
+            } else if (connectors[bloqConnectorUuid]) {
+                params.suggestedBloqs = connectors[bloqConnectorUuid].data.suggestedBloqs;
+            }
+            params.showWindowCallback = function(selectedBloqId) {
+                var selectedBloq = bloqs[selectedBloqId];
+                outputDragEnd(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
             }
             bloqsSuggested.showSuggestedWindow(params);
         }
@@ -1519,7 +1527,7 @@
                 return (this.$bloq.closest('.bloq--group').length === 0);
             };
 
-            this.autoRemove = function(){
+            this.autoRemove = function() {
                 removeBloq(this.uuid);
             }
 
