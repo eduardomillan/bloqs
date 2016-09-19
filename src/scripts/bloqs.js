@@ -1,5 +1,5 @@
 'use strict';
-(function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip) {
+(function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested) {
     /**
      * Events
      * bloqs:connect
@@ -50,6 +50,7 @@
         if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
             forcedScrollTop = options.forcedScrollTop;
         }
+        bloqsSuggested.init(options.suggestionWindowParent, options.bloqSchemas);
 
         lang = options.lang || 'es-ES';
     };
@@ -673,6 +674,13 @@
             var topConnector, bottomConnector, outputConnector;
             window.dispatchEvent(new Event('bloqs:bloqremoved'));
             bloq.$bloq[0].removeEventListener('mousedown', bloqMouseDown);
+            //remove listener of suggested window
+            if (bloq.$bloqInputs) {
+                for (i = 0; i < bloq.$bloqInputs.length; i++) {
+                    bloq.$bloqInputs[i].off('click');
+                }
+            }
+
             //if its moving remove all listener
             if ((mouseDownBloq && mouseDownBloq.getAttribute('data-bloq-id') === bloqUuid) ||
                 (draggingBloq && draggingBloq.uuid)) {
@@ -1189,6 +1197,13 @@
                     'data-content-id': elementSchema.bloqInputId
                 });
                 $element.addClass('bloqinput');
+
+                $element.click(showSuggestedWindow);
+                if (!bloq.$bloqInputs) {
+                    bloq.$bloqInputs = [];
+                }
+                //store bloq input to remove listeners from suggested windows
+                bloq.$bloqInputs.push($element);
                 break;
             case 'headerText':
                 $element = $('<h3>').html(elementSchema.value);
@@ -1204,6 +1219,21 @@
 
         return $element;
     };
+
+    function showSuggestedWindow(evt) {
+        console.log('click input', evt);
+        if(evt.target.hasAttribute('data-connector-name')){
+            var bloqConnectorUuid = evt.target.getAttribute('data-connector-id');
+            console.log('id', bloqConnectorUuid);
+            var params = {};
+            if(IOConnectors[bloqConnectorUuid]){
+                params.suggestedBloqs =  IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
+            } else if(connectors[bloqConnectorUuid]){
+                params.suggestedBloqs =  connectors[bloqConnectorUuid].data.suggestedBloqs;
+            }
+            bloqsSuggested.showSuggestedWindow(params);
+        }
+    }
 
     var translateBloqs = function(newLang) {
         if (newLang !== lang) {
@@ -1224,8 +1254,8 @@
                     i18nKey = bloqElements[j].getAttribute('data-i18n');
                     bloqElements[j].innerHTML = translateBloq(lang, i18nKey);
                 }
-
             }
+            bloqsSuggested.setSuggestedText(translateBloq(lang, 'suggested'));
         }
     };
 
@@ -1488,6 +1518,10 @@
             this.itsFree = function() {
                 return (this.$bloq.closest('.bloq--group').length === 0);
             };
+
+            this.autoRemove = function(){
+                removeBloq(this.uuid);
+            }
 
             //creation
             this.$bloq = $('<div>').attr({
@@ -1959,4 +1993,4 @@
 
     return exports;
 
-})(window.bloqs = window.bloqs || {}, _, bloqsUtils, bloqsLanguages, bloqsTooltip, undefined);
+})(window.bloqs = window.bloqs || {}, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, undefined);

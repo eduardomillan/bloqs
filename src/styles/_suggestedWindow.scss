@@ -1,0 +1,18 @@
+.suggestion-window {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-color: #FFF;
+    top:0;
+    left:0;
+    z-index:10;
+    .header {
+        background-color: #CCC;
+        width: 100%;
+        p {}
+    }
+
+    &.hide{
+        display: none;
+    }
+}
