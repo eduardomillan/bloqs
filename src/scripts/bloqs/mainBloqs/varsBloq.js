@@ -24,7 +24,10 @@
      headerText: 'bloq-var-header',
      descriptionText: 'bloq-var-description',
      content: [],
-     code: '{STATEMENTS}'
+     code: '{STATEMENTS}',
+     arduino:{
+        code: '{STATEMENTS}'
+    }
  });
 
  utils.generateBloqInputConnectors(varsBloq);

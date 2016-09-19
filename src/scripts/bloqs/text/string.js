@@ -37,6 +37,9 @@ var string = _.merge(_.clone(OutputBloq, true), {
         type: 'simple',
         value: 'String'
     },
+    arduino:{
+        code: '{TEXT}'
+    },
     python: {
         codeLines: [{
             code: '"{TEXT}"'
