@@ -60,6 +60,9 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
         }, ]
     ],
     code: 'if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}',
+    arduino: {
+        code: 'if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}'
+    },
     python: {
         codeLines: [{
             code: 'if({ARG1} {OPERATOR} {ARG2}):'

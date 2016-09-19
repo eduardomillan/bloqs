@@ -7,9 +7,9 @@
 
 
     var includes = {},
-    instances = {};
+        instances = {};
 
-    function getCode(componentsArray, arduinoMainBloqs) {
+    function getCode(arduinoMainBloqs) {
         console.log('getting code', arduinoMainBloqs);
         includes = {};
         instances = {};
@@ -22,13 +22,13 @@
         var prop;
         //after bloqscode to reuse the bucle to fill libraries and instance dependencies
         var includesCode = '';
-        for(prop in includes){
+        for (prop in includes) {
             includesCode += '#include <' + prop + '>\n';
         }
 
         var instancesCode = '';
-        for(prop in instances){
-            instancesCode +=  instances[prop] + ' ' + prop  + '()\n';
+        for (prop in instances) {
+            instancesCode += instances[prop] + ' ' + prop + '()\n';
         }
 
 
@@ -48,13 +48,13 @@
             childsCode = '',
             aliasesValuesHashMap = {};
 
-        if(bloqFullStructure.arduino.includes){
+        if (bloqFullStructure.arduino.includes) {
             for (var i = 0; i < bloqFullStructure.arduino.includes.length; i++) {
                 includes[bloqFullStructure.arduino.includes[i]] = true;
             }
         }
 
-        if(bloqFullStructure.arduino.needInstanceOf){
+        if (bloqFullStructure.arduino.needInstanceOf) {
             for (var i = 0; i < bloqFullStructure.arduino.needInstanceOf.length; i++) {
                 instances[bloqFullStructure.arduino.needInstanceOf[i].name] = bloqFullStructure.arduino.needInstanceOf[i].type;
             }
@@ -66,12 +66,19 @@
                     aliasesValuesHashMap[aliases[i].id] = {
                         value: aliases[i].value || ''
                     };
-                } else if (aliases[i].bloqInputId && aliases[i].value) {
+                } else if (aliases[i].bloqInputId) {
                     aliasesValuesHashMap[aliases[i].bloqInputId] = {};
-                    aliasesValuesHashMap[aliases[i].bloqInputId].value = getCodeFromBloq(aliases[i].value) || '';
-                    if(aliases[i].value && aliases[i].value.returnType){
-                        aliasesValuesHashMap[aliases[i].bloqInputId].returnType = aliases[i].value.returnType.value || '';
+                    if (aliases[i].value) {
+                        aliasesValuesHashMap[aliases[i].bloqInputId].value = getCodeFromBloq(aliases[i].value) || '';
+
+                        if (aliases[i].value.returnType) {
+                            aliasesValuesHashMap[aliases[i].bloqInputId].returnType = aliases[i].value.returnType.value || '';
+                        }
+                    } else {
+                        aliasesValuesHashMap[aliases[i].bloqInputId].value = '';
+                        aliasesValuesHashMap[aliases[i].bloqInputId].returnType = '';
                     }
+
                 }
             }
         }
@@ -80,8 +87,8 @@
                 childsCode += getCodeFromBloq(childs[i]);
             }
             aliasesValuesHashMap.STATEMENTS = {
-                    value: childsCode
-                };
+                value: childsCode
+            };
         }
 
         var code;
