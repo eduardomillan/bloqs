@@ -4,18 +4,25 @@
     top: 0;
     left: 0;
     z-index: 10;
+    box-shadow: 2px 2px 6px 0 rgba(50, 50, 50, .35);
     .header {
         background-color: #CCC;
         width: 100%;
         position: relative;
         overflow: hidden;
-        p {}
+        p {
+            margin: 10px 14px;
+        }
     }
     .bloq-container {
         position: relative;
         overflow: hidden;
         .bloq {
             position: relative;
+            margin: 15px 25px;
+            .bloq--statement-input__header {
+                position: static !important;
+            }
         }
     }
     &.hide {

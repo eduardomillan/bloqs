@@ -1229,7 +1229,9 @@
         if (evt.target.hasAttribute('data-connector-name')) {
             var bloqConnectorUuid = evt.target.getAttribute('data-connector-id');
             console.log('id', bloqConnectorUuid);
-            var params = {};
+            var params = {
+                suggestedText: translateBloq(lang, 'suggested')
+            };
             if (IOConnectors[bloqConnectorUuid]) {
                 params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
             } else if (connectors[bloqConnectorUuid]) {

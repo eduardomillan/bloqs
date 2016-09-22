@@ -3,8 +3,8 @@
 
     var suggestedWindow,
         header,
+        headerTitle,
         bloqsContainer,
-        suggestedText,
         bloqSchemas,
         windowParent,
         suggestedBloqs,
@@ -29,11 +29,15 @@
             params.launchWindowItemHeight = params.launchWindowItemHeight || 0;
 
             params.suggestedBloqs = params.suggestedBloqs || [];
-            params.suggestedText = params.suggestedText || suggestedText || '';
+            params.suggestedText = params.suggestedText || '';
 
             showWindowCallback = params.showWindowCallback;
             console.log('params.suggestedBloqs', params.suggestedBloqs);
             showWindow();
+            if (params.suggestedText) {
+                setSuggestedText(params.suggestedText);
+            }
+
             moveWindow();
             createBloqsInside(params.suggestedBloqs);
         } else {
@@ -81,18 +85,16 @@
     }
 
     function setSuggestedText(text) {
-        suggestedText = text;
-        if (suggestedWindow) {
-            //suggestedWindow.suggestedText //TODO
+        if (headerTitle) {
+            headerTitle.innerHTML = text;
         }
     }
 
     function createHeader() {
-        var title = document.createElement('p');
-        title.innerHTML = suggestedText;
+        headerTitle = document.createElement('p');
         var header = document.createElement('div');
         header.className += 'header';
-        header.appendChild(title);
+        header.appendChild(headerTitle);
 
         return header;
     }
@@ -131,6 +133,7 @@
 
     function onSuggestedBloqDragEnd(evt) {
         console.log('onSuggestedBloqDragEnd', evt.detail);
+        //comprobar si está encima del input que lo llamo, o relativamente cerca, de estarlo se conecta, si no, no se conecta ya que puede haberlo arrastrado a otro sitio
         bloqSelected(evt.detail.uuid);
     }
 
