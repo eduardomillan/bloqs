@@ -1958,7 +1958,7 @@
                 workspaceWidth: params.workspaceWidth,
                 fieldOffsetTop: params.fieldOffsetTop,
                 fieldOffsetLeft: params.fieldOffsetLeft,
-                fieldOffsetRight: fieldOffsetRight
+                fieldOffsetRight: params.fieldOffsetRight
             });
         } else {
             console.error('You must set the bloqSchemas');
