@@ -1933,8 +1933,8 @@
 
             params.suggestedBloqs = params.suggestedBloqs || [];
             params.suggestedText = params.suggestedText || '';
-            params.offsetTop = params.offsetTop || 0;
-            params.offsetLeft = params.offsetLeft || 0;
+            params.fieldOffsetTop = params.fieldOffsetTop || 0;
+            params.fieldOffsetLeft = params.fieldOffsetLeft || 0;
 
             showWindowCallback = params.showWindowCallback;
             console.log('params.suggestedBloqs', params.suggestedBloqs);
@@ -1954,8 +1954,8 @@
                 workspaceTopPoint: params.workspaceTopPoint,
                 workspaceHeight: params.workspaceHeight,
                 workspaceWidth: params.workspaceWidth,
-                offsetTop: params.offsetTop,
-                offsetLeft: params.offsetLeft
+                fieldOffsetTop: params.fieldOffsetTop,
+                fieldOffsetLeft: params.fieldOffsetLeft
             });
         } else {
             console.error('You must set the bloqSchemas');
@@ -2010,11 +2010,11 @@
         suggestedWindow.className = suggestedWindow.className.replace(' right', '');
         suggestedWindow.className = suggestedWindow.className.replace(' top', '');
 
-        var offsetTop = 3 - params.offsetTop,
-            offsetLeft = 21 - params.offsetLeft,
+        var offsetTop = 3 + params.fieldOffsetTop,
+            offsetLeft = 21 + params.fieldOffsetLeft,
             finalPoint = {};
         if (params.workspaceHeight >= (params.launcherBottomPoint.top + offsetTop + params.suggestedWindowHeight)) {
-            finalPoint.top = params.launcherBottomPoint.top + offsetTop;
+            finalPoint.top = params.launcherBottomPoint.top - offsetTop;
             console.log('top');
         } else if ((params.suggestedWindowHeight + offsetTop) <= params.launcherTopPoint.top) {
             finalPoint.top = params.launcherTopPoint.top - offsetTop - params.suggestedWindowHeight;
@@ -3387,8 +3387,8 @@
                     },
                     workspaceHeight: workspaceRect.height,
                     workspaceWidth: workspaceRect.width,
-                    offsetTop: getFieldOffsetTop(fieldOffsetTopSource),
-                    offsetLeft: fieldOffsetLeft
+                    fieldOffsetTop: getFieldOffsetTop(fieldOffsetTopSource),
+                    fieldOffsetLeft: fieldOffsetLeft
                 };
                 if (IOConnectors[bloqConnectorUuid]) {
                     params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;

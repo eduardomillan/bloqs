@@ -1261,8 +1261,8 @@
                     },
                     workspaceHeight: workspaceRect.height,
                     workspaceWidth: workspaceRect.width,
-                    offsetTop: getFieldOffsetTop(fieldOffsetTopSource),
-                    offsetLeft: fieldOffsetLeft
+                    fieldOffsetTop: getFieldOffsetTop(fieldOffsetTopSource),
+                    fieldOffsetLeft: fieldOffsetLeft
                 };
                 if (IOConnectors[bloqConnectorUuid]) {
                     params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
