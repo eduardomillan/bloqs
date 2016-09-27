@@ -2017,7 +2017,7 @@
         suggestedWindow.className = suggestedWindow.className.replace(' right', '');
         suggestedWindow.className = suggestedWindow.className.replace(' top', '');
 
-        var heightExtraOffset = 3,
+        var heightExtraOffset = 6,
             widthExtraOffset = 21,
             finalPoint = {},
             bottomFreeSpace = params.workspaceHeight + params.fieldOffsetTop - params.launcherBottomPoint.top,
@@ -2052,7 +2052,7 @@
     }
 
     function createHeader() {
-        headerTitle = document.createElement('p');
+        headerTitle = document.createElement('h3');
         var header = document.createElement('div');
         header.className += 'sugg-header';
         header.appendChild(headerTitle);
