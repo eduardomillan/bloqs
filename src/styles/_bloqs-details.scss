@@ -9,9 +9,10 @@ $logic-color: #7C0DD6;
 $maths-color: #01C0C8;
 $text-color: #0294CF;
 $vars-color: #D9B032;
+$conversions-color: #00CC11;
 $zowi-color: #60BCC9;
 $evolution-color: #9a0768;
-$conversions-color: #00CC11;
+$mbot-color: #0076b4;
 
 /* COLOR THEME */
 
@@ -24,9 +25,10 @@ $theme-color-logic-color: #790cd7;
 $theme-color-maths-color: #00c1c7;
 $theme-color-text-color: #0094cf;
 $theme-color-vars-color: #d8af31;
+$theme-color-conversions-color: #00CC11;
 $theme-color-zowi-color: #60BCC9;
 $theme-color-evolution-color: #9a0768;
-$theme-color-conversions-color: #00CC11;
+$theme-color-mbot-color: #0076b4;
 @mixin createBloqsTheme ($reverse) {
     /*---- CONVERSIONS ---------*/
     @include createBloqsCss($reverse, "bloq-string-to-int", $conversions-color, $theme-color-conversions-color);
@@ -43,6 +45,16 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-evolution-if-light", $evolution-color, $theme-color-evolution-color, true);
     @include createBloqsCss($reverse, "bloq-evolution-if-line", $evolution-color, $theme-color-evolution-color, true);
     @include createBloqsCss($reverse, "bloq-evolution-if-light-advanced", $evolution-color, $theme-color-evolution-color, true);
+    /*---- MBOT ---------*/
+    @include createBloqsCss($reverse, "bloq-mbot-move", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-setmotor", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-setservo", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-setled", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-setled-advanced", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-buzzer", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-showfacebynumber", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-printtext", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-getdistance", $mbot-color, $theme-color-mbot-color);
     /*---- ZOWI ---------*/
     @include createBloqsCss($reverse, "bloq-zowi-gestures", $zowi-color, $theme-color-zowi-color);
     @include createBloqsCss($reverse, "bloq-zowi-rest", $zowi-color, $theme-color-zowi-color);
@@ -120,6 +132,7 @@ $theme-color-conversions-color: #00CC11;
     @include createBloqsCss($reverse, "bloq-rgbLed-simple", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-rgbLed-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-rgbLed-fade", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-rgbLed-off", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-rtc", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-rtc-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-rtc-init", $components-color, $theme-color-components-color);

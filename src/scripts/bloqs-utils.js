@@ -1517,6 +1517,18 @@
         });
     }
 
+    function findAncestor(el, className) {
+        var result;
+        while (!result && el) {
+            if (el.className.indexOf(className) !== -1) {
+                result = el;
+            } else {
+                el = el.parentElement;
+            }
+        }
+        return result;
+    }
+
     bloqsUtils.validString = validString;
     bloqsUtils.validChar = validChar;
     bloqsUtils.validComment = validComment;
@@ -1569,6 +1581,7 @@
     bloqsUtils.getArduinoCode = getArduinoCode;
     bloqsUtils.canConnectAliases = canConnectAliases;
     bloqsUtils.canConnectStatementBloqs = canConnectStatementBloqs;
+    bloqsUtils.findAncestor = findAncestor;
 
 
     return bloqsUtils;

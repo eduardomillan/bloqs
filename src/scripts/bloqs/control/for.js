@@ -63,6 +63,15 @@ var forV1 = _.merge(_.clone(StatementInputBloq, true), {
         }]
     ],
     code: '\'for({VAR}={INIT};{VAR}\' + (\'{MODE}\' === \'+\'?\'<=\':\'>=\' ) + \'{FINAL};{VAR}{MODE}={ADD}){{STATEMENTS}}\'',
+    arduino: {
+        conditional: {
+            aliasId: 'MODE',
+            code: {
+                '+': 'for({VAR}={INIT};{VAR} <= {FINAL};{VAR} += {ADD}){{STATEMENTS}}',
+                '-': 'for({VAR}={INIT};{VAR} >= {FINAL};{VAR} -= {ADD}){{STATEMENTS}}'
+            }
+        }
+    },
     python: {
         codeLines: [{
             conditional: {

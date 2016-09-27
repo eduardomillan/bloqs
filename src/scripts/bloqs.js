@@ -1,5 +1,5 @@
 'use strict';
-(function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip) {
+(function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested) {
     /**
      * Events
      * bloqs:connect
@@ -33,6 +33,7 @@
         fieldOffsetTop,
         //to relative fields
         fieldOffsetLeft = 0, //Bitbloq value 70,
+        fieldOffsetRight = 0, //Bitbloq value 216 (toolbox and scroll)
         fieldOffsetTopSource = [], //bitbloq value['header', 'nav--make', 'actions--make', 'tabs--title'],
         fieldOffsetTopForced = 0,
         mouseDownBloq = null,
@@ -43,13 +44,15 @@
         componentsArray = bloqsUtils.getEmptyComponentsArray();
 
     var setOptions = function(options) {
-        fieldOffsetTopSource = options.fieldOffsetTopSource || [];
-        fieldOffsetLeft = options.fieldOffsetLeft || 0;
-        fieldOffsetTopForced = options.fieldOffsetTopForced || 0;
+        fieldOffsetTopSource = options.fieldOffsetTopSource || fieldOffsetTopSource || [];
+        fieldOffsetLeft = options.fieldOffsetLeft || fieldOffsetLeft || 0;
+        fieldOffsetRight = options.fieldOffsetRight || fieldOffsetRight || 0;
+        fieldOffsetTopForced = options.fieldOffsetTopForced || fieldOffsetTopForced || 0;
 
         if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
             forcedScrollTop = options.forcedScrollTop;
         }
+        bloqsSuggested.init(options.suggestionWindowParent, options.bloqSchemas);
 
         lang = options.lang || 'es-ES';
     };
@@ -74,10 +77,14 @@
     var bloqMouseDown = function(evt) {
         // console.log('bloqMouseDown');
         // console.log(evt);
-        // console.log(evt.target.tagName);
+        //console.log(evt.target.tagName);
+
+
         if (evt.target.tagName !== 'SELECT') {
             //to avoid mousemove event on children and parents at the same time
             evt.stopPropagation();
+            //launch another event
+            window.dispatchEvent(new CustomEvent('bloqs:mousedown', { detail: event.target }));
 
             mouseDownBloq = evt.currentTarget;
             startPreMouseMove = true;
@@ -206,7 +213,12 @@
         scrollTop = 0;
         var $dropConnector = $('.connector.available').first(),
             bloq = draggingBloq;
+        window.dispatchEvent(new CustomEvent('bloqs:dragend', { detail: bloq }));
+        connectBloq(bloq, $dropConnector);
 
+    };
+
+    var connectBloq = function(bloq, $dropConnector) {
         if ($dropConnector[0]) {
 
             switch (bloq.bloqData.type) {
@@ -215,7 +227,7 @@
                     statementDragEnd(bloq, $dropConnector);
                     break;
                 case 'output':
-                    outputDragEnd(bloq, $dropConnector);
+                    connectOutputBloq(bloq, $dropConnector);
                     break;
                 default:
                     throw 'Not defined bloq drag!!';
@@ -248,7 +260,7 @@
         $('.connector.valid').removeClass('valid');
         $('.bloq--dragging').removeClass('bloq--dragging');
         $field.focus();
-        window.dispatchEvent(new Event('bloqs:dragend'));
+
 
         draggingBloq = null;
         dragPreviousTopPosition = 0;
@@ -449,7 +461,7 @@
         utils.redrawTree(dropBloq, bloqs, connectors);
     };
 
-    var outputDragEnd = function(bloq, $dropConnector) {
+    var connectOutputBloq = function(bloq, $dropConnector) {
         var dropConnectorUuid = $dropConnector.attr('data-connector-id');
         var dragConnectorUuid = utils.getOutputConnector(bloq, IOConnectors).uuid;
 
@@ -673,6 +685,13 @@
             var topConnector, bottomConnector, outputConnector;
             window.dispatchEvent(new Event('bloqs:bloqremoved'));
             bloq.$bloq[0].removeEventListener('mousedown', bloqMouseDown);
+            //remove listener of suggested window
+            if (bloq.$bloqInputs) {
+                for (i = 0; i < bloq.$bloqInputs.length; i++) {
+                    bloq.$bloqInputs[i].off('click');
+                }
+            }
+
             //if its moving remove all listener
             if ((mouseDownBloq && mouseDownBloq.getAttribute('data-bloq-id') === bloqUuid) ||
                 (draggingBloq && draggingBloq.uuid)) {
@@ -1189,6 +1208,13 @@
                     'data-content-id': elementSchema.bloqInputId
                 });
                 $element.addClass('bloqinput');
+
+                $element.click(showSuggestedWindow);
+                if (!bloq.$bloqInputs) {
+                    bloq.$bloqInputs = [];
+                }
+                //store bloq input to remove listeners from suggested windows
+                bloq.$bloqInputs.push($element);
                 break;
             case 'headerText':
                 $element = $('<h3>').html(elementSchema.value);
@@ -1204,6 +1230,54 @@
 
         return $element;
     };
+
+    function showSuggestedWindow(evt) {
+        console.log('click input', evt);
+        //to avoid event on children and parents at the same time
+
+        if (evt.target.hasAttribute('data-connector-name')) {
+            var bloqConnectorUuid = evt.target.getAttribute('data-connector-id');
+            console.log('id', bloqConnectorUuid);
+            var bloq = utils.getBloqByConnectorUuid(bloqConnectorUuid, bloqs, IOConnectors);
+            console.log(bloq.itsEnabled());
+            if (bloq.itsEnabled()) {
+                evt.stopPropagation();
+
+
+                var launcherRect = evt.target.getBoundingClientRect();
+                var workspaceRect = $field[0].getBoundingClientRect();
+                var params = {
+                    suggestedText: translateBloq(lang, 'suggested'),
+                    launcherTopPoint: {
+                        top: launcherRect.top,
+                        left: launcherRect.left
+                    },
+                    launcherBottomPoint: {
+                        top: launcherRect.bottom,
+                        left: launcherRect.left
+                    },
+                    launcherHeight: launcherRect.height,
+                    workspaceHeight: workspaceRect.height,
+                    workspaceWidth: workspaceRect.width,
+                    fieldOffsetTop: getFieldOffsetTop(fieldOffsetTopSource),
+                    fieldOffsetLeft: fieldOffsetLeft,
+                    fieldOffsetRight: fieldOffsetRight,
+                    fieldScrollTop: $field[0].scrollTop,
+                    fieldScrollLeft: $field[0].scrollLeft
+                };
+                if (IOConnectors[bloqConnectorUuid]) {
+                    params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
+                } else if (connectors[bloqConnectorUuid]) {
+                    params.suggestedBloqs = connectors[bloqConnectorUuid].data.suggestedBloqs;
+                }
+                params.showWindowCallback = function(selectedBloqId) {
+                    var selectedBloq = bloqs[selectedBloqId];
+                    connectBloq(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
+                }
+                bloqsSuggested.showSuggestedWindow(params);
+            }
+        }
+    }
 
     var translateBloqs = function(newLang) {
         if (newLang !== lang) {
@@ -1224,8 +1298,8 @@
                     i18nKey = bloqElements[j].getAttribute('data-i18n');
                     bloqElements[j].innerHTML = translateBloq(lang, i18nKey);
                 }
-
             }
+            bloqsSuggested.setSuggestedText(translateBloq(lang, 'suggested'));
         }
     };
 
@@ -1488,6 +1562,10 @@
             this.itsFree = function() {
                 return (this.$bloq.closest('.bloq--group').length === 0);
             };
+
+            this.autoRemove = function() {
+                removeBloq(this.uuid);
+            }
 
             //creation
             this.$bloq = $('<div>').attr({
@@ -1959,4 +2037,4 @@
 
     return exports;
 
-})(window.bloqs = window.bloqs || {}, _, bloqsUtils, bloqsLanguages, bloqsTooltip, undefined);
+})(window.bloqs = window.bloqs || {}, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, undefined);

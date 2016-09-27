@@ -24,7 +24,12 @@
       "acceptType": [
         "all"
       ],
-      "name": "df29edc4-d1d2-4aeb-a1b2-8eefbf59d2b8"
+      "name": "9e9c0809-ed41-4366-b1d9-82f15218db47",
+      "suggestedBloqs": [
+        "number",
+        "string",
+        "selectVariable"
+      ]
     },
     {
       "type": "connector--input",
@@ -32,7 +37,12 @@
       "acceptType": [
         "all"
       ],
-      "name": "34b9fafb-1033-4066-b395-66717d478af4"
+      "name": "66c71971-167a-4827-a2d2-7774bbf12777",
+      "suggestedBloqs": [
+        "number",
+        "string",
+        "selectVariable"
+      ]
     }
   ],
   "bloqClass": "bloq-if",
@@ -48,7 +58,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "df29edc4-d1d2-4aeb-a1b2-8eefbf59d2b8"
+        "name": "9e9c0809-ed41-4366-b1d9-82f15218db47"
       },
       {
         "id": "OPERATOR",
@@ -86,7 +96,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "34b9fafb-1033-4066-b395-66717d478af4"
+        "name": "66c71971-167a-4827-a2d2-7774bbf12777"
       },
       {
         "alias": "text",
@@ -95,6 +105,9 @@
     ]
   ],
   "code": "if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}",
+  "arduino": {
+    "code": "if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}"
+  },
   "python": {
     "codeLines": [
       {

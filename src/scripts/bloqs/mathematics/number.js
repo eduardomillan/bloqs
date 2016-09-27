@@ -31,6 +31,9 @@ var number = _.merge(_.clone(OutputBloq, true), {
         type: 'simple',
         value: 'float'
     },
+    arduino:{
+        code: '{VALUE}'
+    },
     python: {
         codeLines: [{
             code: '{VALUE}'

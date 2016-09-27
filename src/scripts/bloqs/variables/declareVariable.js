@@ -42,6 +42,9 @@ var declareVariable = _.merge(_.clone(StatementBloq, true), {
     },
     createDynamicContent: 'softwareVars',
     code: '{VALUE.connectionType} {NAME} = {VALUE};',
+    arduino: {
+        code: '@{VALUE.returnType} {NAME} = {VALUE};'
+    },
     python: {
         codeLines: [{
             code: '{NAME} = {VALUE}'
@@ -50,5 +53,7 @@ var declareVariable = _.merge(_.clone(StatementBloq, true), {
 });
 
 utils.generateBloqInputConnectors(declareVariable);
+
+declareVariable.connectors[2].suggestedBloqs = ['number', 'string', 'selectVariable', 'basicOperations'];
 
 module.exports = declareVariable;

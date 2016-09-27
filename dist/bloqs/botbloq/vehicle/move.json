@@ -1,0 +1,84 @@
+{
+  "type": "statement",
+  "name": "botbloqVehicleMove",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-vehicle-move",
+  "content": [
+    [
+      {
+        "id": "MOVEMENT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Avanzar",
+            "value": "forward"
+          },
+          {
+            "label": "Retroceder",
+            "value": "backward"
+          },
+          {
+            "label": "Girar a la derecha",
+            "value": "right"
+          },
+          {
+            "label": "Girar a la izquierda",
+            "value": "left"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "durante"
+      },
+      {
+        "id": "DELAY",
+        "alias": "numberInput",
+        "value": 1000
+      },
+      {
+        "alias": "text",
+        "value": "ms a una velocidad de"
+      },
+      {
+        "id": "SPEED",
+        "alias": "numberInput",
+        "value": 5
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "botbloqVehicle"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "vehicle",
+        "type": "BotbloqVehicle"
+      }
+    ],
+    "codeLines": [
+      {
+        "conditional": {
+          "aliasId": "MOVEMENT",
+          "code": {
+            "forward": "vehicle.avanzar({DELAY},{SPEED})",
+            "backward": "vehicle.retroceder({DELAY},{SPEED})",
+            "right": "vehicle.girarDerecha({DELAY},{SPEED})",
+            "left": "vehicle.girarIzquierda({DELAY},{SPEED})"
+          }
+        }
+      }
+    ]
+  }
+}

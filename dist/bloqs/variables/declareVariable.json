@@ -16,7 +16,13 @@
       "acceptType": [
         "all"
       ],
-      "name": "6e8ef6e2-b5c0-4e63-abd5-d20701d9d810"
+      "name": "ac9b709c-dec0-4b4e-b42d-4bb47d166853",
+      "suggestedBloqs": [
+        "number",
+        "string",
+        "selectVariable",
+        "basicOperations"
+      ]
     }
   ],
   "bloqClass": "bloq-declare-variable",
@@ -41,7 +47,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "6e8ef6e2-b5c0-4e63-abd5-d20701d9d810"
+        "name": "ac9b709c-dec0-4b4e-b42d-4bb47d166853"
       }
     ]
   ],
@@ -51,6 +57,9 @@
   },
   "createDynamicContent": "softwareVars",
   "code": "{VALUE.connectionType} {NAME} = {VALUE};",
+  "arduino": {
+    "code": "@{VALUE.returnType} {NAME} = {VALUE};"
+  },
   "python": {
     "codeLines": [
       {

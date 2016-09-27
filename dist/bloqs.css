@@ -3,6 +3,7 @@
 #bloqs--field.theme-basic .bloq {
   /*---- CONVERSIONS ---------*/
   /*---- EVOLUTION ---------*/
+  /*---- MBOT ---------*/
   /*---- ZOWI ---------*/
   /*---- CLASSES ---------*/
   /*---- FUNCTIONS ------*/
@@ -105,6 +106,60 @@
       color: #9a0768; }
     #bloqs--field.theme-basic .bloq.bloq-evolution-if-light-advanced > .bloq--extension:before {
       border-left: 5px solid #9a0768; }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-move {
+    color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-move input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-move textarea,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-move select {
+      color: #0076b4; }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-setmotor {
+    color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setmotor input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setmotor textarea,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setmotor select {
+      color: #0076b4; }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-setservo {
+    color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setservo input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setservo textarea,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setservo select {
+      color: #0076b4; }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-setled {
+    color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setled input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setled textarea,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setled select {
+      color: #0076b4; }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-setled-advanced {
+    color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setled-advanced input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setled-advanced textarea,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-setled-advanced select {
+      color: #0076b4; }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-buzzer {
+    color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-buzzer input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-buzzer textarea,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-buzzer select {
+      color: #0076b4; }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-showfacebynumber {
+    color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-showfacebynumber input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-showfacebynumber textarea,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-showfacebynumber select {
+      color: #0076b4; }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-printtext {
+    color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-printtext input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-printtext textarea,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-printtext select {
+      color: #0076b4; }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-getdistance {
+    color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-getdistance input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-getdistance textarea,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-getdistance select {
+      color: #0076b4; }
   #bloqs--field.theme-basic .bloq.bloq-zowi-gestures {
     color: #60BCC9; }
     #bloqs--field.theme-basic .bloq.bloq-zowi-gestures input,
@@ -597,6 +652,12 @@
     #bloqs--field.theme-basic .bloq.bloq-rgbLed-fade textarea,
     #bloqs--field.theme-basic .bloq.bloq-rgbLed-fade select {
       color: #cf1c22; }
+  #bloqs--field.theme-basic .bloq.bloq-rgbLed-off {
+    color: #cf1c22; }
+    #bloqs--field.theme-basic .bloq.bloq-rgbLed-off input,
+    #bloqs--field.theme-basic .bloq.bloq-rgbLed-off textarea,
+    #bloqs--field.theme-basic .bloq.bloq-rgbLed-off select {
+      color: #cf1c22; }
   #bloqs--field.theme-basic .bloq.bloq-rtc {
     color: #cf1c22; }
     #bloqs--field.theme-basic .bloq.bloq-rtc input,
@@ -1039,6 +1100,7 @@
 #bloqs--field.theme-colors .bloq {
   /*---- CONVERSIONS ---------*/
   /*---- EVOLUTION ---------*/
+  /*---- MBOT ---------*/
   /*---- ZOWI ---------*/
   /*---- CLASSES ---------*/
   /*---- FUNCTIONS ------*/
@@ -1540,6 +1602,303 @@
       border-left: 5px solid #9a0768; }
     #bloqs--field.theme-colors .bloq.bloq-evolution-if-light-advanced:not(.disabled) > .bloq--extension > .bloq--extension--end {
       background-color: #9a0768; }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled).bloq--statement {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled).bloq--output {
+      background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled).bloq--output:before {
+        background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-move:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #0076b4; }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled).bloq--statement {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled).bloq--output {
+      background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled).bloq--output:before {
+        background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setmotor:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #0076b4; }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled).bloq--statement {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled).bloq--output {
+      background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled).bloq--output:before {
+        background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setservo:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #0076b4; }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled).bloq--statement {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled).bloq--output {
+      background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled).bloq--output:before {
+        background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #0076b4; }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled).bloq--statement {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled).bloq--output {
+      background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled).bloq--output:before {
+        background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-setled-advanced:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #0076b4; }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled).bloq--statement {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled).bloq--output {
+      background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled).bloq--output:before {
+        background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-buzzer:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #0076b4; }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled).bloq--statement {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled).bloq--output {
+      background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled).bloq--output:before {
+        background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-showfacebynumber:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #0076b4; }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled).bloq--statement {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled).bloq--output {
+      background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled).bloq--output:before {
+        background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-printtext:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #0076b4; }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled).bloq--statement {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled).bloq--output {
+      background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled).bloq--output:before {
+        background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-getdistance:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #0076b4; }
   #bloqs--field.theme-colors .bloq.bloq-zowi-gestures:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-zowi-gestures:not(.disabled) input,
@@ -4209,6 +4568,39 @@
       #bloqs--field.theme-colors .bloq.bloq-rgbLed-fade:not(.disabled).bloq--output:before {
         background-color: #ce1c23; }
       #bloqs--field.theme-colors .bloq.bloq-rgbLed-fade:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #ce1c23; }
+  #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) .bloqinput {
+      color: white;
+      background: #ce1c23;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) .bloqinput:before {
+        background: #ce1c23;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled).bloq--statement {
+      background-color: #ce1c23; }
+    #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled).bloq--output {
+      background-color: #ce1c23; }
+      #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled).bloq--output:before {
+        background-color: #ce1c23; }
+      #bloqs--field.theme-colors .bloq.bloq-rgbLed-off:not(.disabled).bloq--output:focus:not(.disabled):after {
         background-color: #ce1c23; }
   #bloqs--field.theme-colors .bloq.bloq-rtc:not(.disabled) {
     color: white; }
@@ -7023,7 +7415,10 @@
     .bloq--statement-input .bloq--statement-input__header span + .bloqinput {
       margin-left: .5em; }
   .bloq--statement-input .bloq--statement-input__header button {
-    z-index: 1; }
+    z-index: 1;
+    width: 12px;
+    height: 14px;
+    color: #fff; }
 
 .bloq--statement-input:focus:before {
   border-right: 2px solid #f1cb33 inset;
@@ -7414,6 +7809,15 @@ tester + span + .bloqinput {
   border: 1px solid #f1cb33;
   z-index: 2; }
 
+.bloq:not(.disabled) .connector--input:hover {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="12.53" height="13.09" viewBox="0 0 12.53 13.09"><defs><style> .cls-1 { fill: #ffffff; fill-rule: evenodd;}</style></defs><path d="M12.063,6.029 L11.469,6.029 C11.210,6.029 11.000,5.819 11.000,5.560 C11.000,5.301 11.210,5.091 11.469,5.091 L12.063,5.091 C12.321,5.091 12.531,5.301 12.531,5.560 C12.531,5.819 12.321,6.029 12.063,6.029 ZM10.255,1.593 L9.760,1.102 C9.710,1.053 9.710,0.973 9.760,0.924 L10.660,0.033 C10.709,-0.017 10.790,-0.017 10.840,0.033 L11.335,0.523 C11.384,0.572 11.384,0.652 11.335,0.701 L10.435,1.593 C10.385,1.642 10.304,1.642 10.255,1.593 ZM9.051,7.829 L9.055,7.830 C9.028,7.852 9.003,7.874 8.979,7.895 C8.964,7.909 8.949,7.922 8.934,7.935 C8.141,8.653 8.295,9.076 8.286,9.302 L8.255,12.056 L7.046,12.056 C7.046,12.957 6.676,13.091 6.219,13.091 C5.762,13.091 5.391,12.652 5.391,12.056 L4.246,12.056 L4.277,9.302 C4.268,9.076 4.423,8.653 3.629,7.935 C3.614,7.922 3.600,7.909 3.585,7.895 C3.560,7.874 3.535,7.852 3.509,7.830 L3.513,7.829 C2.649,7.018 2.234,6.052 2.234,4.772 C2.234,2.317 3.839,0.950 6.282,0.950 C8.724,0.950 10.267,2.317 10.267,4.772 C10.267,6.052 9.914,7.018 9.051,7.829 ZM7.250,10.029 L5.250,10.029 L5.250,11.029 L7.250,11.029 L7.250,10.029 ZM2.034,1.561 L1.134,0.670 C1.084,0.621 1.084,0.541 1.134,0.492 L1.629,0.001 C1.679,-0.048 1.759,-0.048 1.809,0.001 L2.709,0.893 C2.759,0.942 2.759,1.022 2.709,1.071 L2.214,1.561 C2.164,1.611 2.084,1.611 2.034,1.561 ZM1.531,5.560 C1.531,5.819 1.321,6.029 1.063,6.029 L0.469,6.029 C0.210,6.029 0.000,5.819 0.000,5.560 C0.000,5.301 0.210,5.091 0.469,5.091 L1.063,5.091 C1.321,5.091 1.531,5.301 1.531,5.560 ZM2.152,8.677 L2.647,9.167 C2.696,9.216 2.696,9.296 2.647,9.345 L1.747,10.237 C1.697,10.286 1.616,10.286 1.567,10.237 L1.072,9.746 C1.022,9.697 1.022,9.617 1.072,9.568 L1.972,8.677 C2.021,8.627 2.102,8.627 2.152,8.677 ZM10.528,8.645 L11.428,9.537 C11.478,9.586 11.478,9.666 11.428,9.715 L10.933,10.205 C10.884,10.255 10.803,10.255 10.753,10.205 L9.853,9.314 C9.804,9.265 9.804,9.185 9.853,9.136 L10.348,8.645 C10.398,8.596 10.479,8.596 10.528,8.645 Z" class="cls-1"/></svg>') !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 13px 13px !important;
+  background-color: rgba(0, 0, 0, 0.3) !important; }
+  .bloq:not(.disabled) .connector--input:hover:before {
+    background-color: rgba(0, 0, 0, 0.3) !important; }
+
 .bloq .connector--output {
   width: 1px;
   height: 12px;
@@ -7467,3 +7871,53 @@ tester + span + .bloqinput {
     border-style: solid;
     border-width: 10px 10px 0 10px;
     border-color: #000000 transparent transparent transparent; }
+
+.suggestion-window {
+  position: absolute;
+  background-color: #FFF;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  box-shadow: 2px 2px 6px 0 rgba(50, 50, 50, 0.35);
+  min-width: 350px;
+  border-radius: 5px; }
+  .suggestion-window .sugg-header {
+    background-color: #eaebec;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; }
+    .suggestion-window .sugg-header h3 {
+      margin: 10px 14px; }
+  .suggestion-window .triangle {
+    width: 0;
+    height: 0;
+    position: absolute;
+    margin-left: 32px;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent; }
+    .suggestion-window .triangle.top {
+      top: -13px;
+      border-bottom: 14px solid #eaebec; }
+    .suggestion-window .triangle.bottom {
+      display: none;
+      bottom: -13px;
+      border-top: 14px solid #ffffff; }
+  .suggestion-window.right .triangle {
+    margin-left: auto;
+    margin-right: 23px; }
+  .suggestion-window.top .triangle.top {
+    display: none; }
+  .suggestion-window.top .triangle.bottom {
+    display: block; }
+  .suggestion-window .bloq-container {
+    position: relative;
+    overflow: hidden; }
+    .suggestion-window .bloq-container .bloq {
+      position: relative;
+      margin: 15px 25px; }
+      .suggestion-window .bloq-container .bloq .bloq--statement-input__header {
+        position: static !important; }
+  .suggestion-window.hide {
+    display: none; }

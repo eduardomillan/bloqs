@@ -24,7 +24,10 @@
      headerText: 'bloq-setup-header',
      descriptionText: 'bloq-setup-description',
      content: [],
-     code: 'void setup(){{STATEMENTS}}'
+     code: 'void setup(){{STATEMENTS}}',
+     arduino:{
+        code: 'void setup(){{STATEMENTS}}'
+    }
  });
 
  utils.generateBloqInputConnectors(setupBloq);

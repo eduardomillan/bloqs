@@ -78,6 +78,8 @@
     <script src="./../../src/scripts/bloqs-utils.js"></script>
     <script src="./../../src/scripts/bloqs-tooltip.js"></script>
     <script src="./../../src/scripts/python-generation.js"></script>
+    <script src="./../../src/scripts/bloqs-suggested.js"></script>
+    <script src="./../../src/scripts/arduino-generation.js"></script>
     <script src="./../../src/scripts/bloqs.js"></script>
     <script>
     console.log(window.bloqs);
@@ -87,14 +89,19 @@
     /**
      * Set options like the offset from the field.
      */
-    window.bloqs.setOptions({
-        fieldOffsetLeft: 0,
-        //fieldOffsetTopSource: ['header'],
-        fieldOffsetTopForced: 0
-    });
+
+
 
     //load Bloqs
     $.getJSON('./../../dist/bloqsmap.json', function(bloqSchemas) {
+        window.bloqs.setOptions({
+            fieldOffsetLeft: 0,
+            //fieldOffsetTopSource: ['header'],
+            fieldOffsetTopForced: 0,
+            bloqSchemas: bloqSchemas,
+            suggestionWindowParent: document.getElementById('bloqs--field')
+        });
+
         /**
          * Listener
          */
@@ -178,7 +185,11 @@
         arduinoMainBloqs.loopBloq.doConnectable();
 
         $('#getcodebutton').click(function() {
-            $('#code--field').text(js_beautify(window.bloqsUtils.getCode(componentsArray, arduinoMainBloqs)));
+            $('#code--field').text(js_beautify(window.arduinoGeneration.getCode({
+                varsBloq: arduinoMainBloqs.varsBloq.getBloqsStructure(true),
+                setupBloq: arduinoMainBloqs.setupBloq.getBloqsStructure(true),
+                loopBloq: arduinoMainBloqs.loopBloq.getBloqsStructure(true)
+            })));
         });
 
         //start build bloqs!
@@ -197,23 +208,14 @@
             bloq.doConnectable();
         };
 
-        createBloq('declareVariableAdvanced');
+        createBloq('if');
         createBloq('declareVariable');
-        createBloq('declareVariable');
-        createBloq('selectVariable');
-        createBloq('number');
-        createBloq('number');
-
-        createBloq('basicOperations');
-        createBloq('setVariable');
-        createBloq('number');
-
-        createBloq('digitalWrite');
-        createBloq('clockRTCAdvanced');
         createBloq('for-v1');
-
-
-
+        /*createBloq('number');
+        createBloq('string');
+        ;
+        createBloq('selectVariable');
+        */
 
 
     });

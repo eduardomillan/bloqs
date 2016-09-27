@@ -644,6 +644,9 @@
         }
         button {
             z-index: 1;
+            width: 12px;
+            height: 14px;
+            color: #fff;
         }
     }
     @include bloqStatementInputFocus;

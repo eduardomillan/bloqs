@@ -35,6 +35,9 @@ var selectVariable = _.merge(_.clone(OutputBloq, true), {
         idDropdown: 'VAR',
         options: 'softwareVars'
     },
+    arduino: {
+        code: '{VAR}'
+    },
     python: {
         codeLines: [{
             code: '{VAR}'
@@ -43,5 +46,6 @@ var selectVariable = _.merge(_.clone(OutputBloq, true), {
 });
 
 utils.generateBloqInputConnectors(selectVariable);
+
 
 module.exports = selectVariable;

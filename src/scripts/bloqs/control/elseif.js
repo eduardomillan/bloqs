@@ -70,9 +70,13 @@ var elseif = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
+utils.generateBloqInputConnectors(elseif);
+
 elseif.connectors[0].acceptedAliases = ['ifDown', 'elseifDown'];
 elseif.connectors[1].acceptedAliases = ['all', 'elseifDown'];
 
-utils.generateBloqInputConnectors(elseif);
+elseif.connectors[3].suggestedBloqs = ['number', 'string', 'selectVariable'];
+elseif.connectors[4].suggestedBloqs = ['number', 'string', 'selectVariable'];
+
 
 module.exports = elseif;
