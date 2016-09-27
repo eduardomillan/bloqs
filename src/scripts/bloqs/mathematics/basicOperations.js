@@ -76,5 +76,9 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
 
 utils.generateBloqInputConnectors(basicOperations);
 
+basicOperations.connectors[1].suggestedBloqs = ['number', 'string', 'selectVariable', 'basicOperations'];
+
+basicOperations.connectors[2].suggestedBloqs = ['number', 'string', 'selectVariable', 'basicOperations'];
+
 
 module.exports = basicOperations;

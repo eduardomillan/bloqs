@@ -18,15 +18,13 @@
     function showSuggestedWindow(params) {
         if (bloqSchemas) {
             params = params || {};
-            params.workspaceX = params.workspaceX || 0;
-            params.workspaceY = params.workspaceY || 0;
+            params.workspaceTopPoint = params.workspaceTopPoint || 0;
             params.workspaceWidth = params.workspaceWidth || 0;
             params.workspaceHeight = params.workspaceHeight || 0;
 
-            params.launchWindowItemX = params.launchWindowItemX || 0;
-            params.launchWindowItemY = params.launchWindowItemY || 0;
-            params.launchWindowItemWidth = params.launchWindowItemWidth || 0;
-            params.launchWindowItemHeight = params.launchWindowItemHeight || 0;
+            params.launcherTopPoint = params.launcherTopPoint || 0;
+            params.launcherBottomPoint = params.launcherBottomPoint || 0;
+
 
             params.suggestedBloqs = params.suggestedBloqs || [];
             params.suggestedText = params.suggestedText || '';
@@ -38,8 +36,18 @@
                 setSuggestedText(params.suggestedText);
             }
 
-            moveWindow();
+
             createBloqsInside(params.suggestedBloqs);
+            moveWindow({
+                launcherTopPoint: params.launcherTopPoint,
+                launcherHeight: params.launcherHeight,
+                launcherBottomPoint: params.launcherBottomPoint,
+                suggestedWindowWidth: suggestedWindow.offsetWidth,
+                suggestedWindowHeight: suggestedWindow.offsetHeight,
+                workspaceTopPoint: params.workspaceTopPoint,
+                workspaceHeight: params.workspaceHeight,
+                workspaceWidth: params.workspaceWidth
+            });
         } else {
             console.error('You must set the bloqSchemas');
         }
@@ -54,8 +62,16 @@
             bloqsContainer = document.createElement('div');
             bloqsContainer.className = 'bloqs-container';
 
+            var topTriangle = document.createElement('div');
+            topTriangle.className += 'triangle top';
+
+            var bottomTriangle = document.createElement('div');
+            bottomTriangle.className += 'triangle bottom';
+
+            suggestedWindow.appendChild(topTriangle);
             suggestedWindow.appendChild(header);
             suggestedWindow.appendChild(bloqsContainer);
+            suggestedWindow.appendChild(bottomTriangle);
 
             windowParent.appendChild(suggestedWindow);
         } else {
@@ -80,8 +96,41 @@
         window.removeEventListener('bloqs:dragend', onSuggestedBloqDragEnd);
     }
 
-    function moveWindow() {
-        console.log('place window in the available space');
+    function moveWindow(params) {
+        console.log('place window in the available space', params);
+        suggestedWindow.className = suggestedWindow.className.replace(' right', '');
+        suggestedWindow.className = suggestedWindow.className.replace(' top', '');
+
+        var offsetTop = 3,
+            offsetLeft = 21,
+            finalPoint = {};
+        if (params.workspaceHeight >= (params.launcherBottomPoint.top + offsetTop + params.suggestedWindowHeight)) {
+            finalPoint.top = params.launcherBottomPoint.top + offsetTop;
+            console.log('top');
+        } else if ((params.suggestedWindowHeight + offsetTop) <= params.launcherTopPoint.top) {
+            finalPoint.top = params.launcherTopPoint.top - offsetTop - params.suggestedWindowHeight;
+            suggestedWindow.className += ' top';
+            console.log('bottom');
+        } else {
+            console.log('no one');
+            if (params.launcherTopPoint.top >= (params.workspaceHeight - (params.launcherBottomPoint.top + offsetTop + params.suggestedWindowHeight))) {
+                finalPoint.top = params.launcherTopPoint.top - offsetTop - params.suggestedWindowHeight;
+                suggestedWindow.className += ' top';
+                console.log('bottom');
+            } else {
+                finalPoint.top = params.launcherBottomPoint.top + offsetTop;
+                console.log('top');
+            }
+        }
+        if ((params.workspaceWidth - params.launcherBottomPoint.left - offsetLeft) >= params.suggestedWindowWidth) {
+            finalPoint.left = params.launcherBottomPoint.left - offsetLeft;
+        } else if (params.suggestedWindowWidth <= (params.launcherBottomPoint.left + params.launcherHeight)) {
+            finalPoint.left = (params.launcherBottomPoint.left + params.launcherHeight) - params.suggestedWindowWidth + offsetLeft;
+            suggestedWindow.className += ' right';
+        } else {
+            finalPoint.left = params.launcherBottomPoint.left - offsetLeft;
+        }
+        suggestedWindow.style.transform = 'translate(' + finalPoint.left + 'px,' + finalPoint.top + 'px)';
     }
 
     function setSuggestedText(text) {

@@ -211,7 +211,12 @@
         scrollTop = 0;
         var $dropConnector = $('.connector.available').first(),
             bloq = draggingBloq;
+        window.dispatchEvent(new CustomEvent('bloqs:dragend', { detail: bloq }));
+        connectBloq(bloq, $dropConnector);
 
+    };
+
+    var connectBloq = function(bloq, $dropConnector) {
         if ($dropConnector[0]) {
 
             switch (bloq.bloqData.type) {
@@ -220,7 +225,7 @@
                     statementDragEnd(bloq, $dropConnector);
                     break;
                 case 'output':
-                    outputDragEnd(bloq, $dropConnector);
+                    connectOutputBloq(bloq, $dropConnector);
                     break;
                 default:
                     throw 'Not defined bloq drag!!';
@@ -253,7 +258,7 @@
         $('.connector.valid').removeClass('valid');
         $('.bloq--dragging').removeClass('bloq--dragging');
         $field.focus();
-        window.dispatchEvent(new CustomEvent('bloqs:dragend', { detail: bloq }));
+
 
         draggingBloq = null;
         dragPreviousTopPosition = 0;
@@ -454,7 +459,7 @@
         utils.redrawTree(dropBloq, bloqs, connectors);
     };
 
-    var outputDragEnd = function(bloq, $dropConnector) {
+    var connectOutputBloq = function(bloq, $dropConnector) {
         var dropConnectorUuid = $dropConnector.attr('data-connector-id');
         var dragConnectorUuid = utils.getOutputConnector(bloq, IOConnectors).uuid;
 
@@ -1226,22 +1231,48 @@
 
     function showSuggestedWindow(evt) {
         console.log('click input', evt);
+        //to avoid event on children and parents at the same time
+
         if (evt.target.hasAttribute('data-connector-name')) {
             var bloqConnectorUuid = evt.target.getAttribute('data-connector-id');
             console.log('id', bloqConnectorUuid);
-            var params = {
-                suggestedText: translateBloq(lang, 'suggested')
-            };
-            if (IOConnectors[bloqConnectorUuid]) {
-                params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
-            } else if (connectors[bloqConnectorUuid]) {
-                params.suggestedBloqs = connectors[bloqConnectorUuid].data.suggestedBloqs;
+            var bloq = utils.getBloqByConnectorUuid(bloqConnectorUuid, bloqs, IOConnectors);
+            console.log(bloq.itsEnabled());
+            if (bloq.itsEnabled()) {
+                evt.stopPropagation();
+
+
+                var launcherRect = evt.target.getBoundingClientRect();
+                var workspaceRect = $field[0].getBoundingClientRect();
+                var params = {
+                    suggestedText: translateBloq(lang, 'suggested'),
+                    launcherTopPoint: {
+                        top: launcherRect.top,
+                        left: launcherRect.left
+                    },
+                    launcherBottomPoint: {
+                        top: launcherRect.bottom,
+                        left: launcherRect.left
+                    },
+                    launcherHeight: launcherRect.height,
+                    workspaceTopPoint: {
+                        top: workspaceRect.top,
+                        left: workspaceRect.left
+                    },
+                    workspaceHeight: workspaceRect.height,
+                    workspaceWidth: workspaceRect.width
+                };
+                if (IOConnectors[bloqConnectorUuid]) {
+                    params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
+                } else if (connectors[bloqConnectorUuid]) {
+                    params.suggestedBloqs = connectors[bloqConnectorUuid].data.suggestedBloqs;
+                }
+                params.showWindowCallback = function(selectedBloqId) {
+                    var selectedBloq = bloqs[selectedBloqId];
+                    connectBloq(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
+                }
+                bloqsSuggested.showSuggestedWindow(params);
             }
-            params.showWindowCallback = function(selectedBloqId) {
-                var selectedBloq = bloqs[selectedBloqId];
-                outputDragEnd(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
-            }
-            bloqsSuggested.showSuggestedWindow(params);
         }
     }
 

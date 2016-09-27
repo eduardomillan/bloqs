@@ -1,3 +1,5 @@
+$windowBorderRadius: 5px;
+$headerColor: #eaebec;
 .suggestion-window {
     position: absolute;
     background-color: #FFF;
@@ -5,13 +7,49 @@
     left: 0;
     z-index: 10;
     box-shadow: 2px 2px 6px 0 rgba(50, 50, 50, .35);
+    min-width: 350px;
+    border-radius: $windowBorderRadius;
     .header {
-        background-color: #CCC;
+        background-color: $headerColor;
         width: 100%;
         position: relative;
         overflow: hidden;
+        border-top-left-radius: $windowBorderRadius;
+        border-top-right-radius: $windowBorderRadius;
         p {
             margin: 10px 14px;
+        }
+    }
+    .triangle {
+        width: 0;
+        height: 0;
+        margin-left: 32px;
+        border-left: 14px solid transparent;
+        border-right: 14px solid transparent;
+        &.top {
+            margin-top: -12px;
+            border-bottom: 12px solid $headerColor;
+        }
+        &.bottom {
+            display: none;
+            margin-bottom: -12px;
+            border-top: 12px solid $headerColor;
+        }
+    }
+    &.right {
+        .triangle {
+            margin-left: auto;
+            margin-right: 23px;
+        }
+    }
+    &.top {
+        .triangle {
+            &.top {
+                display: none;
+            }
+            &.bottom {
+                display: block;
+            }
         }
     }
     .bloq-container {

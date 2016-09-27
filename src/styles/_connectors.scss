@@ -100,16 +100,6 @@ $available-connector-color: #f1cb33;
         }
     }
     .connector--input {
-        &:hover {
-            background-image: url($bulb) !important;
-            background-repeat: no-repeat !important;
-            background-position: center !important;
-            background-size: 13px 13px !important;
-            background-color: rgba(0, 0, 0, 0.3) !important;
-            &:before {
-                background-color: rgba(0, 0, 0, 0.3) !important;
-            }
-        }
         &.invalid:after {
             @include inputCircle($invalid-connector-color);
         }
@@ -118,6 +108,20 @@ $available-connector-color: #f1cb33;
         }
         &.available:after {
             @include inputCircle($available-connector-color);
+        }
+    }
+    &:not(.disabled) {
+        .connector--input {
+            &:hover {
+                background-image: url($bulb) !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+                background-size: 13px 13px !important;
+                background-color: rgba(0, 0, 0, 0.3) !important;
+                &:before {
+                    background-color: rgba(0, 0, 0, 0.3) !important;
+                }
+            }
         }
     }
     .connector--output {
