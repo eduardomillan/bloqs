@@ -7376,7 +7376,10 @@
     .bloq--statement-input .bloq--statement-input__header span + .bloqinput {
       margin-left: .5em; }
   .bloq--statement-input .bloq--statement-input__header button {
-    z-index: 1; }
+    z-index: 1;
+    width: 12px;
+    height: 14px;
+    color: #fff; }
 
 .bloq--statement-input:focus:before {
   border-right: 2px solid #f1cb33 inset;
