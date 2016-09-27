@@ -119,14 +119,14 @@
             widthNeededSpace = params.suggestedWindowWidth + widthExtraOffset;
 
         if ((bottomFreeSpace >= heightNeededSpace) || (bottomFreeSpace >= topFreeSpace) || (topFreeSpace < heightNeededSpace)) {
-            finalPoint.top = params.launcherBottomPoint.top + heightExtraOffset - params.fieldOffsetTop;
+            finalPoint.top = params.launcherBottomPoint.top - params.fieldOffsetTop + heightExtraOffset;
         } else {
-            finalPoint.top = params.launcherTopPoint.top - params.suggestedWindowHeight - heightExtraOffset;
+            finalPoint.top = params.launcherTopPoint.top - params.fieldOffsetTop - params.suggestedWindowHeight - heightExtraOffset;
             suggestedWindow.className += ' top';
         }
 
         if ((rightFreeSpace >= widthNeededSpace) || (rightFreeSpace >= leftFreeSpace) || (leftFreeSpace < widthNeededSpace)) {
-            finalPoint.left = params.launcherBottomPoint.left - widthExtraOffset - params.fieldOffsetLeft;
+            finalPoint.left = params.launcherBottomPoint.left - params.fieldOffsetLeft - widthExtraOffset;
         } else {
             finalPoint.left = params.launcherBottomPoint.left - params.fieldOffsetLeft - params.suggestedWindowHeight + widthExtraOffset;
             suggestedWindow.className += ' left';
