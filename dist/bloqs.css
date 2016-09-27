@@ -7854,16 +7854,17 @@ tester + span + .bloqinput {
   .suggestion-window .triangle {
     width: 0;
     height: 0;
+    position: absolute;
     margin-left: 32px;
     border-left: 14px solid transparent;
     border-right: 14px solid transparent; }
     .suggestion-window .triangle.top {
-      margin-top: -12px;
-      border-bottom: 12px solid #eaebec; }
+      top: -13px;
+      border-bottom: 14px solid #eaebec; }
     .suggestion-window .triangle.bottom {
       display: none;
-      margin-bottom: -12px;
-      border-top: 12px solid #eaebec; }
+      bottom: -13px;
+      border-top: 14px solid #ffffff; }
   .suggestion-window.right .triangle {
     margin-left: auto;
     margin-right: 23px; }
