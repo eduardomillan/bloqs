@@ -43,9 +43,9 @@
         componentsArray = bloqsUtils.getEmptyComponentsArray();
 
     var setOptions = function(options) {
-        fieldOffsetTopSource = options.fieldOffsetTopSource || [];
-        fieldOffsetLeft = options.fieldOffsetLeft || 0;
-        fieldOffsetTopForced = options.fieldOffsetTopForced || 0;
+        fieldOffsetTopSource = options.fieldOffsetTopSource || fieldOffsetTopSource || [];
+        fieldOffsetLeft = options.fieldOffsetLeft || fieldOffsetLeft || 0;
+        fieldOffsetTopForced = options.fieldOffsetTopForced || fieldOffsetTopForced || 0;
 
         if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
             forcedScrollTop = options.forcedScrollTop;
@@ -1260,7 +1260,9 @@
                         left: workspaceRect.left
                     },
                     workspaceHeight: workspaceRect.height,
-                    workspaceWidth: workspaceRect.width
+                    workspaceWidth: workspaceRect.width,
+                    offsetTop: getFieldOffsetTop(fieldOffsetTopSource),
+                    offsetLeft: fieldOffsetLeft
                 };
                 if (IOConnectors[bloqConnectorUuid]) {
                     params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;

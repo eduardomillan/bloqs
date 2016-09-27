@@ -1916,8 +1916,8 @@
         showWindowCallback;
 
     function init(suggestionWindowParent, schemas) {
-        windowParent = suggestionWindowParent;
-        bloqSchemas = schemas;
+        windowParent = suggestionWindowParent || windowParent;
+        bloqSchemas = schemas || bloqSchemas;
     }
 
     function showSuggestedWindow(params) {
@@ -1933,6 +1933,8 @@
 
             params.suggestedBloqs = params.suggestedBloqs || [];
             params.suggestedText = params.suggestedText || '';
+            params.offSetTop = params.offSetTop || 0;
+            params.offSetLeft = params.offSetLeft || 0;
 
             showWindowCallback = params.showWindowCallback;
             console.log('params.suggestedBloqs', params.suggestedBloqs);
@@ -1951,7 +1953,9 @@
                 suggestedWindowHeight: suggestedWindow.offsetHeight,
                 workspaceTopPoint: params.workspaceTopPoint,
                 workspaceHeight: params.workspaceHeight,
-                workspaceWidth: params.workspaceWidth
+                workspaceWidth: params.workspaceWidth,
+                offsetTop: params.offsetTop,
+                offsetLeft: params.offsetLeft
             });
         } else {
             console.error('You must set the bloqSchemas');
@@ -2006,8 +2010,8 @@
         suggestedWindow.className = suggestedWindow.className.replace(' right', '');
         suggestedWindow.className = suggestedWindow.className.replace(' top', '');
 
-        var offsetTop = 3,
-            offsetLeft = 21,
+        var offsetTop = 3 + params.offsetTop,
+            offsetLeft = 21 + params.offsetLeft,
             finalPoint = {};
         if (params.workspaceHeight >= (params.launcherBottomPoint.top + offsetTop + params.suggestedWindowHeight)) {
             finalPoint.top = params.launcherBottomPoint.top + offsetTop;
@@ -2165,9 +2169,9 @@
         componentsArray = bloqsUtils.getEmptyComponentsArray();
 
     var setOptions = function(options) {
-        fieldOffsetTopSource = options.fieldOffsetTopSource || [];
-        fieldOffsetLeft = options.fieldOffsetLeft || 0;
-        fieldOffsetTopForced = options.fieldOffsetTopForced || 0;
+        fieldOffsetTopSource = options.fieldOffsetTopSource || fieldOffsetTopSource || [];
+        fieldOffsetLeft = options.fieldOffsetLeft || fieldOffsetLeft || 0;
+        fieldOffsetTopForced = options.fieldOffsetTopForced || fieldOffsetTopForced || 0;
 
         if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
             forcedScrollTop = options.forcedScrollTop;
@@ -3382,7 +3386,9 @@
                         left: workspaceRect.left
                     },
                     workspaceHeight: workspaceRect.height,
-                    workspaceWidth: workspaceRect.width
+                    workspaceWidth: workspaceRect.width,
+                    offsetTop: getFieldOffsetTop(fieldOffsetTopSource),
+                    offsetLeft: fieldOffsetLeft
                 };
                 if (IOConnectors[bloqConnectorUuid]) {
                     params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
