@@ -2017,7 +2017,7 @@
             widthExtraOffset = 21,
             finalPoint = {},
             bottomFreeSpace = params.workspaceHeight + params.fieldOffsetTop - params.launcherBottomPoint.top,
-            topFreeSpace = params.launcherTopPoint.top,
+            topFreeSpace = params.launcherTopPoint.top - params.fieldOffsetTop,
             heightNeededSpace = params.suggestedWindowHeight + heightExtraOffset,
             rightFreeSpace = params.workspaceWidth - params.fieldOffsetRight - (params.launcherBottomPoint.left - params.fieldOffsetLeft),
             leftFreeSpace = params.launcherBottomPoint.left - params.fieldOffsetLeft,
@@ -2031,7 +2031,7 @@
         }
 
         if ((rightFreeSpace >= widthNeededSpace) || (rightFreeSpace >= leftFreeSpace) || (leftFreeSpace < widthNeededSpace)) {
-            finalPoint.left = params.launcherBottomPoint.left + widthExtraOffset - params.fieldOffsetLeft;
+            finalPoint.left = params.launcherBottomPoint.left - widthExtraOffset - params.fieldOffsetLeft;
         } else {
             finalPoint.left = params.launcherBottomPoint.left - params.fieldOffsetLeft - params.suggestedWindowHeight + widthExtraOffset;
             suggestedWindow.className += ' left';
