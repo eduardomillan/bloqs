@@ -1933,8 +1933,8 @@
 
             params.suggestedBloqs = params.suggestedBloqs || [];
             params.suggestedText = params.suggestedText || '';
-            params.offSetTop = params.offSetTop || 0;
-            params.offSetLeft = params.offSetLeft || 0;
+            params.offsetTop = params.offsetTop || 0;
+            params.offsetLeft = params.offsetLeft || 0;
 
             showWindowCallback = params.showWindowCallback;
             console.log('params.suggestedBloqs', params.suggestedBloqs);
