@@ -149,7 +149,7 @@
     function createHeader() {
         headerTitle = document.createElement('p');
         var header = document.createElement('div');
-        header.className += 'header';
+        header.className += 'sugg-header';
         header.appendChild(headerTitle);
 
         return header;
@@ -197,10 +197,10 @@
         console.log('onSuggestedBloqClick', evt);
         var eventBloq = evt.currentTarget;
         var eventBloqId = eventBloq.getAttribute('data-bloq-id');
-        bloqSelected(eventBloqId);
+        bloqSelected(eventBloqId, true);
     }
 
-    function bloqSelected(bloqUuid) {
+    function bloqSelected(bloqUuid, sendConnect) {
         for (var i = 0; i < suggestedBloqs.length; i++) {
             suggestedBloqs[i].$bloq[0].removeEventListener('click', onSuggestedBloqClick);
             if (suggestedBloqs[i].uuid !== bloqUuid) {
@@ -208,7 +208,7 @@
             }
         }
         bloqsContainer.innerHTML = '';
-        if (bloqUuid) {
+        if (bloqUuid && sendConnect) {
             showWindowCallback(bloqUuid);
         }
         hideWindow();

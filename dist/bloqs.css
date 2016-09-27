@@ -7842,14 +7842,14 @@ tester + span + .bloqinput {
   box-shadow: 2px 2px 6px 0 rgba(50, 50, 50, 0.35);
   min-width: 350px;
   border-radius: 5px; }
-  .suggestion-window .header {
+  .suggestion-window .sugg-header {
     background-color: #eaebec;
     width: 100%;
     position: relative;
     overflow: hidden;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px; }
-    .suggestion-window .header p {
+    .suggestion-window .sugg-header p {
       margin: 10px 14px; }
   .suggestion-window .triangle {
     width: 0;
