@@ -33,6 +33,7 @@
         fieldOffsetTop,
         //to relative fields
         fieldOffsetLeft = 0, //Bitbloq value 70,
+        fieldOffsetRight = 0, //Bitbloq value 216 (toolbox and scroll)
         fieldOffsetTopSource = [], //bitbloq value['header', 'nav--make', 'actions--make', 'tabs--title'],
         fieldOffsetTopForced = 0,
         mouseDownBloq = null,
@@ -45,6 +46,7 @@
     var setOptions = function(options) {
         fieldOffsetTopSource = options.fieldOffsetTopSource || fieldOffsetTopSource || [];
         fieldOffsetLeft = options.fieldOffsetLeft || fieldOffsetLeft || 0;
+        fieldOffsetRight = options.fieldOffsetRight || fieldOffsetRight || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || fieldOffsetTopForced || 0;
 
         if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
@@ -1262,7 +1264,8 @@
                     workspaceHeight: workspaceRect.height,
                     workspaceWidth: workspaceRect.width,
                     fieldOffsetTop: getFieldOffsetTop(fieldOffsetTopSource),
-                    fieldOffsetLeft: fieldOffsetLeft
+                    fieldOffsetLeft: fieldOffsetLeft,
+                    fieldOffsetRight: fieldOffsetRight
                 };
                 if (IOConnectors[bloqConnectorUuid]) {
                     params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;

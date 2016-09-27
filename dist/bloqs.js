@@ -1935,6 +1935,8 @@
             params.suggestedText = params.suggestedText || '';
             params.fieldOffsetTop = params.fieldOffsetTop || 0;
             params.fieldOffsetLeft = params.fieldOffsetLeft || 0;
+            params.fieldOffsetRight = params.fieldOffsetRight || 0;
+
 
             showWindowCallback = params.showWindowCallback;
             console.log('params.suggestedBloqs', params.suggestedBloqs);
@@ -1955,7 +1957,8 @@
                 workspaceHeight: params.workspaceHeight,
                 workspaceWidth: params.workspaceWidth,
                 fieldOffsetTop: params.fieldOffsetTop,
-                fieldOffsetLeft: params.fieldOffsetLeft
+                fieldOffsetLeft: params.fieldOffsetLeft,
+                fieldOffsetRight: fieldOffsetRight
             });
         } else {
             console.error('You must set the bloqSchemas');
@@ -2010,35 +2013,31 @@
         suggestedWindow.className = suggestedWindow.className.replace(' right', '');
         suggestedWindow.className = suggestedWindow.className.replace(' top', '');
 
-        var offsetTop = 3 + params.fieldOffsetTop,
-            offsetLeft = 21 + params.fieldOffsetLeft,
-            finalPoint = {};
-        if (params.workspaceHeight >= (params.launcherBottomPoint.top + offsetTop + params.suggestedWindowHeight)) {
-            finalPoint.top = params.launcherBottomPoint.top - offsetTop;
-            console.log('top');
-        } else if ((params.suggestedWindowHeight + offsetTop) <= params.launcherTopPoint.top) {
-            finalPoint.top = params.launcherTopPoint.top - offsetTop - params.suggestedWindowHeight;
+        var heightExtraOffset = 3,
+            widthExtraOffset = 21,
+            finalPoint = {},
+            bottomFreeSpace = params.workspaceHeight + params.fieldOffsetTop - params.launcherBottomPoint.top,
+            topFreeSpace = params.launcherTopPoint.top,
+            heightNeededSpace = params.suggestedWindowHeight + heightExtraOffset,
+            rightFreeSpace = params.workspaceWidth - params.fieldOffsetRight - (params.launcherBottomPoint.left - params.fieldOffsetLeft),
+            leftFreeSpace = params.launcherBottomPoint.left - params.fieldOffsetLeft,
+            widthNeededSpace = params.suggestedWindowWidth + widthExtraOffset;
+
+        if ((bottomFreeSpace >= heightNeededSpace) || (bottomFreeSpace >= topFreeSpace) || (topFreeSpace < heightNeededSpace)) {
+            finalPoint.top = params.launcherBottomPoint.top + heightExtraOffset - params.fieldOffsetTop;
+        } else {
+            finalPoint.top = params.launcherTopPoint.top - params.suggestedWindowHeight - heightExtraOffset;
             suggestedWindow.className += ' top';
-            console.log('bottom');
-        } else {
-            console.log('no one');
-            if (params.launcherTopPoint.top >= (params.workspaceHeight - (params.launcherBottomPoint.top + offsetTop + params.suggestedWindowHeight))) {
-                finalPoint.top = params.launcherTopPoint.top - offsetTop - params.suggestedWindowHeight;
-                suggestedWindow.className += ' top';
-                console.log('bottom');
-            } else {
-                finalPoint.top = params.launcherBottomPoint.top + offsetTop;
-                console.log('top');
-            }
         }
-        if ((params.workspaceWidth - params.launcherBottomPoint.left - offsetLeft) >= params.suggestedWindowWidth) {
-            finalPoint.left = params.launcherBottomPoint.left - offsetLeft;
-        } else if (params.suggestedWindowWidth <= (params.launcherBottomPoint.left + params.launcherHeight)) {
-            finalPoint.left = (params.launcherBottomPoint.left + params.launcherHeight) - params.suggestedWindowWidth + offsetLeft;
-            suggestedWindow.className += ' right';
+
+        if ((rightFreeSpace >= widthNeededSpace) || (rightFreeSpace >= leftFreeSpace) || (leftFreeSpace < widthNeededSpace)) {
+            finalPoint.left = params.launcherBottomPoint.left + widthExtraOffset - params.fieldOffsetLeft;
         } else {
-            finalPoint.left = params.launcherBottomPoint.left - offsetLeft;
+            finalPoint.left = params.launcherBottomPoint.left - params.fieldOffsetLeft - params.suggestedWindowHeight + widthExtraOffset;
+            suggestedWindow.className += ' left';
         }
+
+
         suggestedWindow.style.transform = 'translate(' + finalPoint.left + 'px,' + finalPoint.top + 'px)';
     }
 
@@ -2159,6 +2158,7 @@
         fieldOffsetTop,
         //to relative fields
         fieldOffsetLeft = 0, //Bitbloq value 70,
+        fieldOffsetRight = 0, //Bitbloq value 216 (toolbox and scroll)
         fieldOffsetTopSource = [], //bitbloq value['header', 'nav--make', 'actions--make', 'tabs--title'],
         fieldOffsetTopForced = 0,
         mouseDownBloq = null,
@@ -2171,6 +2171,7 @@
     var setOptions = function(options) {
         fieldOffsetTopSource = options.fieldOffsetTopSource || fieldOffsetTopSource || [];
         fieldOffsetLeft = options.fieldOffsetLeft || fieldOffsetLeft || 0;
+        fieldOffsetRight = options.fieldOffsetRight || fieldOffsetRight || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || fieldOffsetTopForced || 0;
 
         if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
@@ -3388,7 +3389,8 @@
                     workspaceHeight: workspaceRect.height,
                     workspaceWidth: workspaceRect.width,
                     fieldOffsetTop: getFieldOffsetTop(fieldOffsetTopSource),
-                    fieldOffsetLeft: fieldOffsetLeft
+                    fieldOffsetLeft: fieldOffsetLeft,
+                    fieldOffsetRight: fieldOffsetRight
                 };
                 if (IOConnectors[bloqConnectorUuid]) {
                     params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
