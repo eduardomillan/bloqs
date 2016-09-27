@@ -1,0 +1,85 @@
+{
+  "type": "statement",
+  "name": "mBotSetLed",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-mbot-setled",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Establecer "
+      },
+      {
+        "id": "LEDS",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "todos los leds",
+            "value": "0"
+          },
+          {
+            "label": "el led derecho",
+            "value": "1"
+          },
+          {
+            "label": "el led izquierdo",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "con esta mezcla de colores:"
+      },
+      {
+        "alias": "text",
+        "value": "rojo:"
+      },
+      {
+        "id": "RED",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "alias": "text",
+        "value": "verde:"
+      },
+      {
+        "id": "GREEN",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "alias": "text",
+        "value": "azul:"
+      },
+      {
+        "id": "BLUE",
+        "alias": "numberInput",
+        "value": 0
+      }
+    ]
+  ],
+  "code": "",
+  "arduino": {
+    "includes": [
+      "mBot.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "mBot",
+        "type": "MBot"
+      }
+    ],
+    "code": "mBot.setLed(7, {LEDS}, {RED}, {GREEN}, {BLUE});"
+  }
+}
