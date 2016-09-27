@@ -2010,8 +2010,8 @@
         suggestedWindow.className = suggestedWindow.className.replace(' right', '');
         suggestedWindow.className = suggestedWindow.className.replace(' top', '');
 
-        var offsetTop = 3 + params.offsetTop,
-            offsetLeft = 21 + params.offsetLeft,
+        var offsetTop = 3 - params.offsetTop,
+            offsetLeft = 21 - params.offsetLeft,
             finalPoint = {};
         if (params.workspaceHeight >= (params.launcherBottomPoint.top + offsetTop + params.suggestedWindowHeight)) {
             finalPoint.top = params.launcherBottomPoint.top + offsetTop;
