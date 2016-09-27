@@ -1923,7 +1923,7 @@
     function showSuggestedWindow(params) {
         if (bloqSchemas) {
             params = params || {};
-            params.workspaceTopPoint = params.workspaceTopPoint || 0;
+
             params.workspaceWidth = params.workspaceWidth || 0;
             params.workspaceHeight = params.workspaceHeight || 0;
 
@@ -1936,6 +1936,9 @@
             params.fieldOffsetTop = params.fieldOffsetTop || 0;
             params.fieldOffsetLeft = params.fieldOffsetLeft || 0;
             params.fieldOffsetRight = params.fieldOffsetRight || 0;
+            params.fieldScrollTop = params.fieldScrollTop || 0;
+            params.fieldScrollLeft = params.fieldScrollLeft || 0;
+
 
 
             showWindowCallback = params.showWindowCallback;
@@ -1953,12 +1956,13 @@
                 launcherBottomPoint: params.launcherBottomPoint,
                 suggestedWindowWidth: suggestedWindow.offsetWidth,
                 suggestedWindowHeight: suggestedWindow.offsetHeight,
-                workspaceTopPoint: params.workspaceTopPoint,
                 workspaceHeight: params.workspaceHeight,
                 workspaceWidth: params.workspaceWidth,
                 fieldOffsetTop: params.fieldOffsetTop,
                 fieldOffsetLeft: params.fieldOffsetLeft,
-                fieldOffsetRight: params.fieldOffsetRight
+                fieldOffsetRight: params.fieldOffsetRight,
+                fieldScrollTop: params.fieldScrollTop,
+                fieldScrollLeft: params.fieldScrollLeft
             });
         } else {
             console.error('You must set the bloqSchemas');
@@ -2024,16 +2028,16 @@
             widthNeededSpace = params.suggestedWindowWidth + widthExtraOffset;
 
         if ((bottomFreeSpace >= heightNeededSpace) || (bottomFreeSpace >= topFreeSpace) || (topFreeSpace < heightNeededSpace)) {
-            finalPoint.top = params.launcherBottomPoint.top - params.fieldOffsetTop + heightExtraOffset;
+            finalPoint.top = params.launcherBottomPoint.top - params.fieldOffsetTop + heightExtraOffset + params.fieldScrollTop;
         } else {
-            finalPoint.top = params.launcherTopPoint.top - params.fieldOffsetTop - params.suggestedWindowHeight - heightExtraOffset;
+            finalPoint.top = params.launcherTopPoint.top - params.fieldOffsetTop - params.suggestedWindowHeight - heightExtraOffset + params.fieldScrollTop;
             suggestedWindow.className += ' top';
         }
 
         if ((rightFreeSpace >= widthNeededSpace) || (rightFreeSpace >= leftFreeSpace) || (leftFreeSpace < widthNeededSpace)) {
-            finalPoint.left = params.launcherBottomPoint.left - params.fieldOffsetLeft - widthExtraOffset;
+            finalPoint.left = params.launcherBottomPoint.left - params.fieldOffsetLeft - widthExtraOffset + params.fieldScrollLeft;
         } else {
-            finalPoint.left = params.launcherBottomPoint.left - params.fieldOffsetLeft - params.suggestedWindowHeight + widthExtraOffset;
+            finalPoint.left = params.launcherBottomPoint.left - params.fieldOffsetLeft - params.suggestedWindowHeight + widthExtraOffset + params.fieldScrollLeft;
             suggestedWindow.className += ' left';
         }
 
@@ -3382,15 +3386,13 @@
                         left: launcherRect.left
                     },
                     launcherHeight: launcherRect.height,
-                    workspaceTopPoint: {
-                        top: workspaceRect.top,
-                        left: workspaceRect.left
-                    },
                     workspaceHeight: workspaceRect.height,
                     workspaceWidth: workspaceRect.width,
                     fieldOffsetTop: getFieldOffsetTop(fieldOffsetTopSource),
                     fieldOffsetLeft: fieldOffsetLeft,
-                    fieldOffsetRight: fieldOffsetRight
+                    fieldOffsetRight: fieldOffsetRight,
+                    fieldScrollTop: $field[0].scrollTop,
+                    fieldScrollLeft: $field[0].scrollLeft
                 };
                 if (IOConnectors[bloqConnectorUuid]) {
                     params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;

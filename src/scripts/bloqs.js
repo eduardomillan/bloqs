@@ -1257,15 +1257,13 @@
                         left: launcherRect.left
                     },
                     launcherHeight: launcherRect.height,
-                    workspaceTopPoint: {
-                        top: workspaceRect.top,
-                        left: workspaceRect.left
-                    },
                     workspaceHeight: workspaceRect.height,
                     workspaceWidth: workspaceRect.width,
                     fieldOffsetTop: getFieldOffsetTop(fieldOffsetTopSource),
                     fieldOffsetLeft: fieldOffsetLeft,
-                    fieldOffsetRight: fieldOffsetRight
+                    fieldOffsetRight: fieldOffsetRight,
+                    fieldScrollTop: $field[0].scrollTop,
+                    fieldScrollLeft: $field[0].scrollLeft
                 };
                 if (IOConnectors[bloqConnectorUuid]) {
                     params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
