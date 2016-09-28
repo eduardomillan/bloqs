@@ -21,6 +21,7 @@ var generateBloqInputConnectors = function(bloq) {
                     type: 'connector--input',
                     accept: 'connector--output',
                     acceptType: bloq.content[i][j].acceptType,
+                    suggestedBloqs: bloq.content[i][j].suggestedBloqs,
                     name: uuid
                 });
             }

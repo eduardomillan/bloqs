@@ -34,7 +34,8 @@ var invokeReturnFunctionWithArguments = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'string', 'selectVariable', 'arguments']
         }]
     ],
     code: '{FUNCTION}({ARGS})',

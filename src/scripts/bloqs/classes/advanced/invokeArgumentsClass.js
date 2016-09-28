@@ -41,7 +41,8 @@ var invokeArgumentsClass = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['arguments', 'number', 'string', 'selectVariable']
         }]
     ],
     createDynamicContent: 'objects',

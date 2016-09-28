@@ -43,7 +43,8 @@ var map = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
-            acceptType: ['float']
+            acceptType: ['float'],
+            suggestedBloqs: ['number', 'selectVariable']
         }]
     ],
     code: '{OPERATOR}({VAR})',

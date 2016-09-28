@@ -53,12 +53,15 @@ $headerColor: #eaebec;
             }
         }
     }
+    .bloqs-container {
+        margin: 7px 0px;
+    }
     .bloq-container {
         position: relative;
         overflow: hidden;
         .bloq {
             position: relative;
-            margin: 15px 25px;
+            margin: 7px 25px;
             .bloq--statement-input__header {
                 position: static !important;
             }

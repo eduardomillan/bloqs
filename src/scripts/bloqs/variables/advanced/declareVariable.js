@@ -57,6 +57,7 @@ var declareVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
             acceptType: ['all'],
+            suggestedBloqs: ['number', 'basicOperations', 'string', 'stringSum', 'char', 'boolean']
         }]
     ],
     returnType: {

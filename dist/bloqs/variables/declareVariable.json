@@ -16,13 +16,13 @@
       "acceptType": [
         "all"
       ],
-      "name": "ac9b709c-dec0-4b4e-b42d-4bb47d166853",
       "suggestedBloqs": [
         "number",
+        "basicOperations",
         "string",
-        "selectVariable",
-        "basicOperations"
-      ]
+        "stringSum"
+      ],
+      "name": "dae4c238-2f7b-4c89-b902-fa5802f341e0"
     }
   ],
   "bloqClass": "bloq-declare-variable",
@@ -47,7 +47,13 @@
         "acceptType": [
           "all"
         ],
-        "name": "ac9b709c-dec0-4b4e-b42d-4bb47d166853"
+        "suggestedBloqs": [
+          "number",
+          "basicOperations",
+          "string",
+          "stringSum"
+        ],
+        "name": "dae4c238-2f7b-4c89-b902-fa5802f341e0"
       }
     ]
   ],

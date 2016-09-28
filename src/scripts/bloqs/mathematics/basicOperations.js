@@ -23,7 +23,8 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
         [{
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable', 'basicOperations']
         }, {
             id: 'OPERATOR',
             alias: 'staticDropdown',
@@ -49,7 +50,8 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable', 'basicOperations']
         }]
     ],
     code: '\'{OPERATOR}\' === \'^\'? \'pow({ARG1},{ARG2})\' : \'({ARG1} {OPERATOR} {ARG2})\'',
@@ -75,10 +77,6 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
 });
 
 utils.generateBloqInputConnectors(basicOperations);
-
-basicOperations.connectors[1].suggestedBloqs = ['number', 'string', 'selectVariable', 'basicOperations'];
-
-basicOperations.connectors[2].suggestedBloqs = ['number', 'string', 'selectVariable', 'basicOperations'];
 
 
 module.exports = basicOperations;

@@ -34,7 +34,8 @@ var voidFunctionWithArguments = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['argument', 'arguments', 'number', 'string', 'selectVariable']
         }]
     ],
     createDynamicContent: 'voidFunctions',

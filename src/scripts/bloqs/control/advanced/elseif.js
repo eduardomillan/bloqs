@@ -27,7 +27,8 @@ var elseifAdvanced = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['equalityOperations', 'logicOperations']
         }, {
             alias: 'text',
             value: 'bloq-else-if-else'

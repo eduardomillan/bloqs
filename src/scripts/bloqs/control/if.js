@@ -27,7 +27,8 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'string', 'selectVariable']
         }, {
             id: 'OPERATOR',
             alias: 'staticDropdown',
@@ -53,7 +54,8 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'string', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-if-exec'
@@ -76,8 +78,5 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
 utils.generateBloqInputConnectors(bloqIf);
 bloqIf.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
-bloqIf.connectors[3].suggestedBloqs = ['number', 'string', 'selectVariable'];
-
-bloqIf.connectors[4].suggestedBloqs = ['number', 'string', 'selectVariable'];
 
 module.exports = bloqIf;

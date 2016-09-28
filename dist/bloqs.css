@@ -7911,12 +7911,14 @@ tester + span + .bloqinput {
     display: none; }
   .suggestion-window.top .triangle.bottom {
     display: block; }
+  .suggestion-window .bloqs-container {
+    margin: 7px 0px; }
   .suggestion-window .bloq-container {
     position: relative;
     overflow: hidden; }
     .suggestion-window .bloq-container .bloq {
       position: relative;
-      margin: 15px 25px; }
+      margin: 7px 25px; }
       .suggestion-window .bloq-container .bloq .bloq--statement-input__header {
         position: static !important; }
   .suggestion-window.hide {

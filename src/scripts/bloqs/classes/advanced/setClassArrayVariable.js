@@ -7,13 +7,13 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: setClassArrayVariable
- * 
+ *
  * Bloq type: Statement
- * 
+ *
  * Description: It sets an specific element of an array-type variable,
  *              selectable from a first drop-down, of an object, selectable
  *              from a second drop-down.
- * 
+ *
  * Return type: none
  */
 
@@ -57,7 +57,8 @@ var setClassArrayVariable = _.merge(_.clone(StatementBloq, true), {
                 idDropdown: 'NAME',
                 pointer: 'true',
                 options: 'softwareVars'
-            }
+            },
+            suggestedBloqs: ['number', 'basicOperations', 'string', 'stringSum']
         }]
     ],
     code: '{CLASS}.{NAME}[{ITERATOR}] = {VALUE};'

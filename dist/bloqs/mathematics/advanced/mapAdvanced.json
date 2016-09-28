@@ -12,7 +12,11 @@
       "acceptType": [
         "float"
       ],
-      "name": "47048fa3-47f0-4a14-bc62-fa60edbfac0d"
+      "suggestedBloqs": [
+        "readSensor",
+        "selectVariable"
+      ],
+      "name": "8f8c877b-d978-4105-b11d-50dd90d1c388"
     },
     {
       "type": "connector--input",
@@ -20,7 +24,11 @@
       "acceptType": [
         "float"
       ],
-      "name": "3bde17ec-a438-4fbd-b37a-b285a7ce17a0"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "bff4c27a-63a7-459a-a65b-235c7493be52"
     },
     {
       "type": "connector--input",
@@ -28,7 +36,11 @@
       "acceptType": [
         "float"
       ],
-      "name": "b04a1802-efea-4252-aac4-aafe5207d7e0"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "a2c630ed-1e54-4ad0-8e81-e270b94702d4"
     },
     {
       "type": "connector--input",
@@ -36,7 +48,11 @@
       "acceptType": [
         "float"
       ],
-      "name": "9bfeb3e2-7d0a-43be-8e3d-3b0f278e85ea"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "a86c879b-2df9-4812-9e4c-033d67d0b331"
     },
     {
       "type": "connector--input",
@@ -44,7 +60,11 @@
       "acceptType": [
         "float"
       ],
-      "name": "1c9e2bdf-b359-4815-b002-15b5d37e9984"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "70b6b4c6-ae8f-47bb-9faf-f3d04530fc10"
     }
   ],
   "bloqClass": "bloq-map-advanced",
@@ -60,7 +80,11 @@
         "acceptType": [
           "float"
         ],
-        "name": "47048fa3-47f0-4a14-bc62-fa60edbfac0d"
+        "suggestedBloqs": [
+          "readSensor",
+          "selectVariable"
+        ],
+        "name": "8f8c877b-d978-4105-b11d-50dd90d1c388"
       },
       {
         "alias": "text",
@@ -72,7 +96,11 @@
         "acceptType": [
           "float"
         ],
-        "name": "3bde17ec-a438-4fbd-b37a-b285a7ce17a0"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "bff4c27a-63a7-459a-a65b-235c7493be52"
       },
       {
         "alias": "text",
@@ -84,7 +112,11 @@
         "acceptType": [
           "float"
         ],
-        "name": "b04a1802-efea-4252-aac4-aafe5207d7e0"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "a2c630ed-1e54-4ad0-8e81-e270b94702d4"
       },
       {
         "alias": "text",
@@ -96,7 +128,11 @@
         "acceptType": [
           "float"
         ],
-        "name": "9bfeb3e2-7d0a-43be-8e3d-3b0f278e85ea"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "a86c879b-2df9-4812-9e4c-033d67d0b331"
       },
       {
         "alias": "text",
@@ -108,7 +144,11 @@
         "acceptType": [
           "float"
         ],
-        "name": "1c9e2bdf-b359-4815-b002-15b5d37e9984"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "70b6b4c6-ae8f-47bb-9faf-f3d04530fc10"
       },
       {
         "alias": "text",

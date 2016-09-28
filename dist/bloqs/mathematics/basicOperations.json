@@ -12,13 +12,12 @@
       "acceptType": [
         "all"
       ],
-      "name": "7f2f73f4-8fa1-4129-be15-9007921449d6",
       "suggestedBloqs": [
         "number",
-        "string",
         "selectVariable",
         "basicOperations"
-      ]
+      ],
+      "name": "eed5be0b-9a3c-42e7-91c6-737fe812f847"
     },
     {
       "type": "connector--input",
@@ -26,13 +25,12 @@
       "acceptType": [
         "all"
       ],
-      "name": "b34e2751-f5a5-4c38-99ca-a3e76a8b780a",
       "suggestedBloqs": [
         "number",
-        "string",
         "selectVariable",
         "basicOperations"
-      ]
+      ],
+      "name": "af5b7121-efc9-44fb-acbd-3fb8df951409"
     }
   ],
   "bloqClass": "bloq-basic-operations",
@@ -44,7 +42,12 @@
         "acceptType": [
           "all"
         ],
-        "name": "7f2f73f4-8fa1-4129-be15-9007921449d6"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable",
+          "basicOperations"
+        ],
+        "name": "eed5be0b-9a3c-42e7-91c6-737fe812f847"
       },
       {
         "id": "OPERATOR",
@@ -82,7 +85,12 @@
         "acceptType": [
           "all"
         ],
-        "name": "b34e2751-f5a5-4c38-99ca-a3e76a8b780a"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable",
+          "basicOperations"
+        ],
+        "name": "af5b7121-efc9-44fb-acbd-3fb8df951409"
       }
     ]
   ],

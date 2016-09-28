@@ -20,7 +20,10 @@
       "acceptType": [
         "all"
       ],
-      "name": "43125dbc-94d0-4d4a-891d-dc2a414455c3"
+      "suggestedBloqs": [
+        "selectVariable"
+      ],
+      "name": "0d837d62-8766-4209-921e-f9310b40b4ad"
     },
     {
       "type": "connector--input",
@@ -28,7 +31,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "4e1e1ce0-acb0-42b5-857b-4e17a169ac9b"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "8985e57a-7e84-4608-9745-dba6f318b985"
     },
     {
       "type": "connector--input",
@@ -36,7 +43,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "3ab5c699-1117-4a4b-ac3f-3938ce685ca9"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "f5208f69-d840-4c05-872b-97d000c96c8d"
     }
   ],
   "bloqClass": "bloq-for",
@@ -52,7 +63,10 @@
         "acceptType": [
           "all"
         ],
-        "name": "43125dbc-94d0-4d4a-891d-dc2a414455c3"
+        "suggestedBloqs": [
+          "selectVariable"
+        ],
+        "name": "0d837d62-8766-4209-921e-f9310b40b4ad"
       },
       {
         "alias": "text",
@@ -64,7 +78,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "4e1e1ce0-acb0-42b5-857b-4e17a169ac9b"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "8985e57a-7e84-4608-9745-dba6f318b985"
       },
       {
         "alias": "text",
@@ -76,7 +94,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "3ab5c699-1117-4a4b-ac3f-3938ce685ca9"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "f5208f69-d840-4c05-872b-97d000c96c8d"
       },
       {
         "id": "MODE",

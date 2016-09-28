@@ -185,11 +185,14 @@
         arduinoMainBloqs.loopBloq.doConnectable();
 
         $('#getcodebutton').click(function() {
-            $('#code--field').text(js_beautify(window.arduinoGeneration.getCode({
+            //old way
+            $('#code--field').text(js_beautify(window.bloqsUtils.getCode(componentsArray, arduinoMainBloqs)));
+            //new way
+            /*$('#code--field').text(js_beautify(window.arduinoGeneration.getCode({
                 varsBloq: arduinoMainBloqs.varsBloq.getBloqsStructure(true),
                 setupBloq: arduinoMainBloqs.setupBloq.getBloqsStructure(true),
                 loopBloq: arduinoMainBloqs.loopBloq.getBloqsStructure(true)
-            })));
+            })));*/
         });
 
         //start build bloqs!
@@ -208,14 +211,27 @@
             bloq.doConnectable();
         };
 
-        createBloq('if');
-        createBloq('declareVariable');
-        createBloq('for-v1');
-        /*createBloq('number');
-        createBloq('string');
-        ;
-        createBloq('selectVariable');
-        */
+        var functionBloqs = ['if', 'invokeFunctionWithArguments', 'arguments', 'invokeReturnFunctionWithArguments',
+            'return', 'returnFunctionWithArguments', 'voidFunctionWithArguments'
+        ];
+        var varsBloqs = ['setVariable', 'declareVariable', 'setArrayVariable', 'arrayVariableAdvanced', 'declareArrayAdvanced',
+            'declareVariableAdvanced', 'setArrayVariableAdvanced'
+        ];
+        var mathBloqs = ['declareVariable', 'basicOperations', 'map', 'random', 'mapAdvanced', 'mathOperations',
+            'numberArrayAdvanced', 'round-v1', 'numConversion'
+        ];
+        var textBloqs = ['declareVariable', 'length', 'stringArrayAdvanced', 'stringCreate', 'stringSum'];
+
+        var controlBloqs = ['caseAdvanced-v1', 'elseifAdvanced', 'forAdvanced-v1', 'ifAdvanced', 'switchAdvanced-v2', 'waitAdvanced', 'whileAdvanced'];
+
+        var classBloqs = ['setClassVariable', 'constructorClassArguments', 'invokeArgumentsClass', 'invokeClassFunctionWithArguments',
+            'invokeClassReturnFunctionWithArguments', 'setClassArrayVariable'
+        ];
+
+        for (var i = 0; i < classBloqs.length; i++) {
+
+            createBloq(classBloqs[i]);
+        }
 
 
     });

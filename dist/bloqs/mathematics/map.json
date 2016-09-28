@@ -12,7 +12,11 @@
       "acceptType": [
         "float"
       ],
-      "name": "86722c8d-b34e-4cdb-ae55-0aef13fd02ef"
+      "suggestedBloqs": [
+        "readSensor",
+        "selectVariable"
+      ],
+      "name": "725a6e0b-c661-4fc0-8c1b-62028a5b01ca"
     },
     {
       "type": "connector--input",
@@ -20,7 +24,11 @@
       "acceptType": [
         "float"
       ],
-      "name": "febe1647-ce61-49bf-bd83-9e7ec885798e"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "0b8598f1-f4cd-44f7-9a52-14d78ea5c1e0"
     }
   ],
   "bloqClass": "bloq-map",
@@ -36,7 +44,11 @@
         "acceptType": [
           "float"
         ],
-        "name": "86722c8d-b34e-4cdb-ae55-0aef13fd02ef"
+        "suggestedBloqs": [
+          "readSensor",
+          "selectVariable"
+        ],
+        "name": "725a6e0b-c661-4fc0-8c1b-62028a5b01ca"
       },
       {
         "alias": "text",
@@ -48,7 +60,11 @@
         "acceptType": [
           "float"
         ],
-        "name": "febe1647-ce61-49bf-bd83-9e7ec885798e"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "0b8598f1-f4cd-44f7-9a52-14d78ea5c1e0"
       },
       {
         "alias": "text",

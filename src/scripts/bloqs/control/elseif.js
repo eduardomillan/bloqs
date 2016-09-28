@@ -27,7 +27,8 @@ var elseif = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'string', 'selectVariable']
         }, {
             id: 'OPERATOR',
             alias: 'staticDropdown',
@@ -53,7 +54,8 @@ var elseif = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'string', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-else-if-else'
@@ -74,9 +76,6 @@ utils.generateBloqInputConnectors(elseif);
 
 elseif.connectors[0].acceptedAliases = ['ifDown', 'elseifDown'];
 elseif.connectors[1].acceptedAliases = ['all', 'elseifDown'];
-
-elseif.connectors[3].suggestedBloqs = ['number', 'string', 'selectVariable'];
-elseif.connectors[4].suggestedBloqs = ['number', 'string', 'selectVariable'];
 
 
 module.exports = elseif;
