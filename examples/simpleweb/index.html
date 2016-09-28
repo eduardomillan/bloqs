@@ -214,9 +214,23 @@
         var functionBloqs = ['if', 'invokeFunctionWithArguments', 'arguments', 'invokeReturnFunctionWithArguments',
             'return', 'returnFunctionWithArguments', 'voidFunctionWithArguments'
         ];
-        for (var i = 0; i < functionBloqs.length; i++) {
+        var varsBloqs = ['setVariable', 'declareVariable', 'setArrayVariable', 'arrayVariableAdvanced', 'declareArrayAdvanced',
+            'declareVariableAdvanced', 'setArrayVariableAdvanced'
+        ];
+        var mathBloqs = ['declareVariable', 'basicOperations', 'map', 'random', 'mapAdvanced', 'mathOperations',
+            'numberArrayAdvanced', 'round-v1', 'numConversion'
+        ];
+        var textBloqs = ['declareVariable', 'length', 'stringArrayAdvanced', 'stringCreate', 'stringSum'];
 
-            createBloq(functionBloqs[i]);
+        var controlBloqs = ['caseAdvanced-v1', 'elseifAdvanced', 'forAdvanced-v1', 'ifAdvanced', 'switchAdvanced-v2', 'waitAdvanced', 'whileAdvanced'];
+
+        var classBloqs = ['setClassVariable', 'constructorClassArguments', 'invokeArgumentsClass', 'invokeClassFunctionWithArguments',
+            'invokeClassReturnFunctionWithArguments', 'setClassArrayVariable'
+        ];
+
+        for (var i = 0; i < classBloqs.length; i++) {
+
+            createBloq(classBloqs[i]);
         }
 
 

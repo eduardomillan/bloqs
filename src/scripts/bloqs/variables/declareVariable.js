@@ -34,6 +34,7 @@ var declareVariable = _.merge(_.clone(StatementBloq, true), {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
             acceptType: ['all'],
+            suggestedBloqs: ['number', 'basicOperations', 'string', 'stringSum']
         }]
     ],
     returnType: {
@@ -54,6 +55,5 @@ var declareVariable = _.merge(_.clone(StatementBloq, true), {
 
 utils.generateBloqInputConnectors(declareVariable);
 
-declareVariable.connectors[2].suggestedBloqs = ['number', 'string', 'selectVariable', 'basicOperations'];
 
 module.exports = declareVariable;

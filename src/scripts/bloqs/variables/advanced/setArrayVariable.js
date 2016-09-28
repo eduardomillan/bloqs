@@ -35,7 +35,8 @@ var setArrayVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'ITERATOR',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'string', 'selectVariable']
         }, {
             alias: 'text',
             value: ']'
@@ -45,7 +46,8 @@ var setArrayVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'string', 'selectVariable']
         }]
     ],
     code: '{NAME}[{ITERATOR}] = {VALUE};'

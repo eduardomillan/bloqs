@@ -27,7 +27,8 @@ var waitAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'TIME',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }]
     ],
     code: 'delay({TIME});'

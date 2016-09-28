@@ -27,14 +27,16 @@ var map = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
-            acceptType: ['float']
+            acceptType: ['float'],
+            suggestedBloqs: ['readSensor', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-map-value'
         }, {
             bloqInputId: 'MAXVAL',
             alias: 'bloqInput',
-            acceptType: ['float']
+            acceptType: ['float'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: ']'

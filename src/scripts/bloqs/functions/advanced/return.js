@@ -27,14 +27,13 @@ var bloqReturn = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'RETURN',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['selectVariable', 'logicOperations', 'equalityOperations']
         }]
     ],
     code: 'return {RETURN};'
 });
 
 utils.generateBloqInputConnectors(bloqReturn);
-
-bloqReturn.connectors[2].suggestedBloqs = ['selectVariable', 'logicOperations', 'equalityOperations'];
 
 module.exports = bloqReturn;

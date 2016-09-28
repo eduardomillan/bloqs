@@ -46,7 +46,8 @@ var setClassVariable = _.merge(_.clone(StatementBloq, true), {
                 type: 'fromDynamicDropdown',
                 idDropdown: 'NAME',
                 options: 'softwareVars'
-            }
+            },
+            suggestedBloqs: ['number', 'basicOperations', 'string', 'stringSum']
         }]
     ],
     code: '{CLASS}.{NAME} = {VALUE};'

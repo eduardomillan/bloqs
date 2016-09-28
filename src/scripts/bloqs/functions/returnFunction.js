@@ -36,7 +36,8 @@ var returnFunction = _.merge(_.clone(StatementInputBloq, true), {
             position: 'DOWN',
             bloqInputId: 'RETURN',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['selectVariable', 'logicOperations', 'equalityOperations']
         }]
     ],
     createDynamicContent: 'returnFunctions',
@@ -59,7 +60,5 @@ var returnFunction = _.merge(_.clone(StatementInputBloq, true), {
 });
 
 utils.generateBloqInputConnectors(returnFunction);
-
-returnFunction.connectors[3].suggestedBloqs = ['selectVariable', 'logicOperations', 'equalityOperations'];
 
 module.exports = returnFunction;

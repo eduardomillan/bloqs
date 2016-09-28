@@ -28,7 +28,8 @@ var constructorClassArguments = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['argument', 'arguments', 'number', 'string', 'selectVariable']
         }]
     ],
     code: '{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};',

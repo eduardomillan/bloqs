@@ -26,7 +26,8 @@ var bloqLength = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
-            acceptType: ['String']
+            acceptType: ['String'],
+            suggestedBloqs: ['selectVariable']
         }]
     ],
     code: '{TEXT}.length()',

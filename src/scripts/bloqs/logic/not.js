@@ -26,7 +26,8 @@ var not = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'CONDITION',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['selectVariable']
         }]
     ],
     code: '!{CONDITION}',

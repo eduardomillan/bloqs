@@ -34,7 +34,8 @@ var invokeFunctionWithArguments = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'string', 'selectVariable', 'arguments']
         }]
     ],
     code: '{FUNCTION}({ARGS});',
@@ -45,7 +46,5 @@ var invokeFunctionWithArguments = _.merge(_.clone(StatementBloq, true), {
 });
 
 utils.generateBloqInputConnectors(invokeFunctionWithArguments);
-
-invokeFunctionWithArguments.connectors[2].suggestedBloqs = ['number', 'string', 'selectVariable', 'arguments'];
 
 module.exports = invokeFunctionWithArguments;

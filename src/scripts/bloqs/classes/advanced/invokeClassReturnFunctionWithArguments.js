@@ -7,13 +7,13 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: invokeClassReturnFunctionWithArguments
- * 
+ *
  * Bloq type: Output
  *
  * Description: It execute a function, selectable from a first drop-down,
  *              which does return an argument, of an specific object,
  *              selectable from a second drop-down, with the given arguments.
- * 
+ *
  * Return type: same type as the function's return
  */
 
@@ -42,7 +42,8 @@ var invokeClassReturnFunctionWithArguments = _.merge(_.clone(OutputBloq, true), 
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['arguments', 'number', 'string', 'selectVariable']
         }]
     ],
     code: '{CLASS}.{FUNCTION}({ARGS});',

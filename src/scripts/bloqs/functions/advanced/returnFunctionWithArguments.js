@@ -34,7 +34,8 @@ var returnFunctionWithArguments = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'ARGS',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['argument', 'arguments', 'number', 'string', 'selectVariable']
         }, {
             position: 'DOWN',
             alias: 'text',
@@ -43,7 +44,8 @@ var returnFunctionWithArguments = _.merge(_.clone(StatementInputBloq, true), {
             position: 'DOWN',
             bloqInputId: 'RETURN',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['selectVariable', 'logicOperations', 'equalityOperations']
         }]
     ],
     createDynamicContent: 'returnFunctions',
@@ -59,8 +61,5 @@ var returnFunctionWithArguments = _.merge(_.clone(StatementInputBloq, true), {
 });
 
 utils.generateBloqInputConnectors(returnFunctionWithArguments);
-
-returnFunctionWithArguments.connectors[3].suggestedBloqs = ['argument', 'arguments', 'number', 'string', 'selectVariable'];
-returnFunctionWithArguments.connectors[4].suggestedBloqs = ['selectVariable', 'logicOperations', 'equalityOperations'];
 
 module.exports = returnFunctionWithArguments;

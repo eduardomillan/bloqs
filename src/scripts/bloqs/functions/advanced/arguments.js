@@ -24,7 +24,7 @@ var bloqArguments = _.merge(_.clone(OutputBloq, true), {
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
             acceptType: ['all'],
-            suggestedBloqs: ['argument', 'arguments', 'number', 'string', 'selectVariable'];
+            suggestedBloqs: ['argument', 'arguments', 'number', 'string', 'selectVariable']
         }, {
             alias: 'text',
             value: ','
@@ -32,7 +32,7 @@ var bloqArguments = _.merge(_.clone(OutputBloq, true), {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
             acceptType: ['all'],
-            suggestedBloqs: ['argument', 'arguments', 'number', 'string', 'selectVariable'];
+            suggestedBloqs: ['argument', 'arguments', 'number', 'string', 'selectVariable']
         }]
     ],
     createDynamicContent: 'softwareVars',

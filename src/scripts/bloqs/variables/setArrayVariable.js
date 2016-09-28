@@ -50,7 +50,8 @@ var setArrayVariable = _.merge(_.clone(StatementBloq, true), {
                 idDropdown: 'NAME',
                 pointer: 'true',
                 options: 'softwareVars'
-            }
+            },
+            suggestedBloqs: ['number', 'string', 'selectVariable']
         }]
     ],
     code: '{NAME}[{ITERATOR}] = {VALUE};'

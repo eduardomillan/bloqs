@@ -28,21 +28,24 @@ var forAdvancedV1 = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-for-from'
         }, {
             bloqInputId: 'INIT',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-for-to'
         }, {
             bloqInputId: 'FINAL',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             id: 'MODE',
             alias: 'staticDropdown',

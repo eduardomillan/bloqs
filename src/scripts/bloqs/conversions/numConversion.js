@@ -26,7 +26,8 @@ var numConversion = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'NUMBER',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-num-conversion-to'

@@ -27,7 +27,8 @@ var numberArrayAdvanced = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-numberArray-advanced-type'

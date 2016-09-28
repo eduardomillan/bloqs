@@ -12,7 +12,11 @@
       "acceptType": [
         "String"
       ],
-      "name": "a2648b0d-5b05-46f3-a908-ff43dc1d3a71"
+      "suggestedBloqs": [
+        "string",
+        "selectVariable"
+      ],
+      "name": "dcd3aa10-eddd-49ba-b244-565d914baeba"
     },
     {
       "type": "connector--input",
@@ -20,7 +24,11 @@
       "acceptType": [
         "String"
       ],
-      "name": "a63c8979-399e-4ef6-8689-58f0da2f736a"
+      "suggestedBloqs": [
+        "string",
+        "selectVariable"
+      ],
+      "name": "a7a65445-821f-4f00-983a-cc66be48c60f"
     }
   ],
   "bloqClass": "bloq-string-sum",
@@ -32,7 +40,11 @@
         "acceptType": [
           "String"
         ],
-        "name": "a2648b0d-5b05-46f3-a908-ff43dc1d3a71"
+        "suggestedBloqs": [
+          "string",
+          "selectVariable"
+        ],
+        "name": "dcd3aa10-eddd-49ba-b244-565d914baeba"
       },
       {
         "alias": "text",
@@ -44,7 +56,11 @@
         "acceptType": [
           "String"
         ],
-        "name": "a63c8979-399e-4ef6-8689-58f0da2f736a"
+        "suggestedBloqs": [
+          "string",
+          "selectVariable"
+        ],
+        "name": "a7a65445-821f-4f00-983a-cc66be48c60f"
       }
     ]
   ],

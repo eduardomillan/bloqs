@@ -26,7 +26,8 @@ var stringCreate = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['selectVariable']
         }]
     ],
     code: 'String({TEXT})',

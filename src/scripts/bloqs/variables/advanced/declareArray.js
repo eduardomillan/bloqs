@@ -55,7 +55,8 @@ var declareArrayAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'VALUE',
             alias: 'bloqInput',
-            acceptType: ['float', 'int']
+            acceptType: ['float', 'int'],
+            suggestedBloqs: ['number', 'selectVariable']
         }]
     ],
     createDynamicContent: 'softwareVars',
