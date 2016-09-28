@@ -35,4 +35,6 @@ var bloqReturn = _.merge(_.clone(StatementBloq, true), {
 
 utils.generateBloqInputConnectors(bloqReturn);
 
+bloqReturn.connectors[2].suggestedBloqs = ['selectVariable', 'logicOperations', 'equalityOperations'];
+
 module.exports = bloqReturn;

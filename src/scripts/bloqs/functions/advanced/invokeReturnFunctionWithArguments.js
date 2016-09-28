@@ -47,4 +47,6 @@ var invokeReturnFunctionWithArguments = _.merge(_.clone(OutputBloq, true), {
 
 utils.generateBloqInputConnectors(invokeReturnFunctionWithArguments);
 
+invokeReturnFunctionWithArguments.connectors[1].suggestedBloqs = ['number', 'string', 'selectVariable', 'arguments'];
+
 module.exports = invokeReturnFunctionWithArguments;

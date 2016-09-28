@@ -60,4 +60,7 @@ var returnFunctionWithArguments = _.merge(_.clone(StatementInputBloq, true), {
 
 utils.generateBloqInputConnectors(returnFunctionWithArguments);
 
+returnFunctionWithArguments.connectors[3].suggestedBloqs = ['argument', 'arguments', 'number', 'string', 'selectVariable'];
+returnFunctionWithArguments.connectors[4].suggestedBloqs = ['selectVariable', 'logicOperations', 'equalityOperations'];
+
 module.exports = returnFunctionWithArguments;

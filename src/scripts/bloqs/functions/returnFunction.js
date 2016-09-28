@@ -60,4 +60,6 @@ var returnFunction = _.merge(_.clone(StatementInputBloq, true), {
 
 utils.generateBloqInputConnectors(returnFunction);
 
+returnFunction.connectors[3].suggestedBloqs = ['selectVariable', 'logicOperations', 'equalityOperations'];
+
 module.exports = returnFunction;

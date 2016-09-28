@@ -186,13 +186,13 @@
 
         $('#getcodebutton').click(function() {
             //old way
-            //$('#code--field').text(js_beautify(window.bloqsUtils.getCode(componentsArray, arduinoMainBloqs)));
+            $('#code--field').text(js_beautify(window.bloqsUtils.getCode(componentsArray, arduinoMainBloqs)));
             //new way
-            $('#code--field').text(js_beautify(window.arduinoGeneration.getCode({
+            /*$('#code--field').text(js_beautify(window.arduinoGeneration.getCode({
                 varsBloq: arduinoMainBloqs.varsBloq.getBloqsStructure(true),
                 setupBloq: arduinoMainBloqs.setupBloq.getBloqsStructure(true),
                 loopBloq: arduinoMainBloqs.loopBloq.getBloqsStructure(true)
-            })));
+            })));*/
         });
 
         //start build bloqs!
@@ -211,14 +211,13 @@
             bloq.doConnectable();
         };
 
-        createBloq('if');
-        createBloq('declareVariable');
+        var functionBloqs = ['if', 'invokeFunctionWithArguments', 'arguments', 'invokeReturnFunctionWithArguments',
+            'return', 'returnFunctionWithArguments', 'voidFunctionWithArguments'
+        ];
+        for (var i = 0; i < functionBloqs.length; i++) {
 
-        /*createBloq('number');
-        createBloq('string');
-        ;
-        createBloq('selectVariable');
-        */
+            createBloq(functionBloqs[i]);
+        }
 
 
     });
