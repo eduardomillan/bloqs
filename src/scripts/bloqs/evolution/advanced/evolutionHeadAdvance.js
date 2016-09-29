@@ -28,7 +28,8 @@ var evolutionHeadAdvance = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'DEGREES',
             alias: 'bloqInput',
-            acceptType: ['float']
+            acceptType: ['float'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-evolution-head-advance-deg'

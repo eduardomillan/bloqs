@@ -7,12 +7,12 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: oscillatorAdvanced
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It sets a specific servo to oscillate around a given
  *              point with a certain amplitude and velocity.
- * 
+ *
  * Return type: none
  */
 
@@ -27,28 +27,32 @@ var oscillatorAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'OSCILLATOR',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['hwVariable', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-oscillator-advanced-around'
         }, {
             bloqInputId: 'PHASE',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-oscillator-advanced-amplitude'
         }, {
             bloqInputId: 'AMPLITUDE',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-oscillator-advanced-speed'
         }, {
             bloqInputId: 'SPEED',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }]
     ],
     code: '{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();'

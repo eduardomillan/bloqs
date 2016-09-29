@@ -16,7 +16,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "fc83ec89-d39c-49f3-bd51-cd417d07018a"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "321d0126-1831-4018-8003-213e1e5be8c2"
     },
     {
       "type": "connector--input",
@@ -24,7 +28,12 @@
       "acceptType": [
         "all"
       ],
-      "name": "4bf3f5dd-df46-47a7-aaae-269c8bc9add6"
+      "suggestedBloqs": [
+        "pinLevels",
+        "number",
+        "selectVariable"
+      ],
+      "name": "c5d595de-ffeb-4e00-8e5e-a9366924358d"
     }
   ],
   "bloqClass": "bloq-pin-writte-advanced",
@@ -40,7 +49,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "fc83ec89-d39c-49f3-bd51-cd417d07018a"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "321d0126-1831-4018-8003-213e1e5be8c2"
       },
       {
         "alias": "text",
@@ -52,7 +65,12 @@
         "acceptType": [
           "all"
         ],
-        "name": "4bf3f5dd-df46-47a7-aaae-269c8bc9add6"
+        "suggestedBloqs": [
+          "pinLevels",
+          "number",
+          "selectVariable"
+        ],
+        "name": "c5d595de-ffeb-4e00-8e5e-a9366924358d"
       }
     ]
   ],

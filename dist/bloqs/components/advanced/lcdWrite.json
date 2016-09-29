@@ -16,7 +16,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "86469623-c33f-4ded-af6a-4b644dd2defc"
+      "suggestedBloqs": [
+        "string",
+        "selectVariable"
+      ],
+      "name": "c79ea301-3922-4847-aedc-36db299f47d0"
     },
     {
       "type": "connector--input",
@@ -24,7 +28,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "140d6148-22df-4466-b1ee-f1d530ea532f"
+      "suggestedBloqs": [
+        "hwVariable",
+        "selectVariable"
+      ],
+      "name": "f5cfb373-e987-4701-98e8-0e6efa450be0"
     }
   ],
   "bloqClass": "bloq-lcd-writte-advanced",
@@ -40,7 +48,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "86469623-c33f-4ded-af6a-4b644dd2defc"
+        "suggestedBloqs": [
+          "string",
+          "selectVariable"
+        ],
+        "name": "c79ea301-3922-4847-aedc-36db299f47d0"
       },
       {
         "alias": "text",
@@ -52,7 +64,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "140d6148-22df-4466-b1ee-f1d530ea532f"
+        "suggestedBloqs": [
+          "hwVariable",
+          "selectVariable"
+        ],
+        "name": "f5cfb373-e987-4701-98e8-0e6efa450be0"
       }
     ]
   ],

@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: lcdWriteAdvanced
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It writes the given input on a specific LCD.
- * 
+ *
  * Return type: none
  */
 
@@ -26,14 +26,16 @@ var lcdWriteAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['string', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-lcd-writte-advanced-inLCD'
         }, {
             bloqInputId: 'LCD',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['hwVariable', 'selectVariable']
         }]
     ],
     code: '{LCD}.print({TEXT});'

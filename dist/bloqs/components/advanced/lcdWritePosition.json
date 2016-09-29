@@ -16,7 +16,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "07bec2e4-0fff-4994-8c58-4c7a4650e891"
+      "suggestedBloqs": [
+        "string",
+        "selectVariable"
+      ],
+      "name": "0b90ad2a-a72a-469c-8ec0-a37a8af055c8"
     },
     {
       "type": "connector--input",
@@ -24,7 +28,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "1753679b-0bbe-4e44-b7a8-c4b864d696e2"
+      "suggestedBloqs": [
+        "hwVariable",
+        "selectVariable"
+      ],
+      "name": "8654ac5e-a8b7-4ea0-b695-f7b61f873a15"
     },
     {
       "type": "connector--input",
@@ -32,7 +40,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "c0b16fd9-2ba8-4b9a-9257-5410507b4fd7"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "91793d8c-d0f2-4e0d-a657-eac9bc2b3835"
     },
     {
       "type": "connector--input",
@@ -40,7 +52,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "254b51eb-4b7e-47dd-8d6d-81f41a45648b"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "b08f2b81-bfcc-4313-9fbe-9a99ee206ba1"
     }
   ],
   "bloqClass": "bloq-lcd-writte",
@@ -56,7 +72,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "07bec2e4-0fff-4994-8c58-4c7a4650e891"
+        "suggestedBloqs": [
+          "string",
+          "selectVariable"
+        ],
+        "name": "0b90ad2a-a72a-469c-8ec0-a37a8af055c8"
       },
       {
         "alias": "text",
@@ -68,7 +88,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "1753679b-0bbe-4e44-b7a8-c4b864d696e2"
+        "suggestedBloqs": [
+          "hwVariable",
+          "selectVariable"
+        ],
+        "name": "8654ac5e-a8b7-4ea0-b695-f7b61f873a15"
       },
       {
         "alias": "text",
@@ -80,7 +104,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "c0b16fd9-2ba8-4b9a-9257-5410507b4fd7"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "91793d8c-d0f2-4e0d-a657-eac9bc2b3835"
       },
       {
         "bloqInputId": "ROW",
@@ -88,7 +116,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "254b51eb-4b7e-47dd-8d6d-81f41a45648b"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "b08f2b81-bfcc-4313-9fbe-9a99ee206ba1"
       }
     ]
   ],

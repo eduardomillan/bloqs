@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: servoNormalAdvanced
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It sets a specific servo in a given position.
- * 
+ *
  * Return type: none
  */
 
@@ -26,14 +26,16 @@ var servoNormalAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'SERVO',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['hwVariable', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-servo-advanced-to'
         }, {
             bloqInputId: 'POSITION',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-servo-advanced-degrees'

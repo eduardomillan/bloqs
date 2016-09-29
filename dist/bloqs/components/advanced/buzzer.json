@@ -16,7 +16,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "def5184a-b736-480f-98cd-82ef0939029a"
+      "suggestedBloqs": [
+        "hwVariable",
+        "selectVariable"
+      ],
+      "name": "bb50d32c-bc62-4971-a536-9195c1240dd1"
     },
     {
       "type": "connector--input",
@@ -24,7 +28,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "c2037d0a-345b-42cb-81ed-c1e872629204"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "b9a59136-880f-4b8c-a894-afc6a143a79c"
     },
     {
       "type": "connector--input",
@@ -32,7 +40,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "95f3450d-7556-4a14-8391-42562c85d3fd"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "29b17019-d2a4-4192-b943-5f92c076ef3c"
     }
   ],
   "bloqClass": "bloq-buzzer-advance",
@@ -48,7 +60,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "def5184a-b736-480f-98cd-82ef0939029a"
+        "suggestedBloqs": [
+          "hwVariable",
+          "selectVariable"
+        ],
+        "name": "bb50d32c-bc62-4971-a536-9195c1240dd1"
       },
       {
         "alias": "text",
@@ -60,7 +76,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "c2037d0a-345b-42cb-81ed-c1e872629204"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "b9a59136-880f-4b8c-a894-afc6a143a79c"
       },
       {
         "alias": "text",
@@ -72,7 +92,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "95f3450d-7556-4a14-8391-42562c85d3fd"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "29b17019-d2a4-4192-b943-5f92c076ef3c"
       },
       {
         "alias": "text",

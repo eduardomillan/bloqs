@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: digitalReadAdvanced
- * 
+ *
  * Bloq type: Output
  *
  * Description: It returns the read of a digital pin.
- * 
+ *
  * Return type: float
  */
 
@@ -26,7 +26,8 @@ var digitalReadAdvanced = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }]
     ],
     code: 'digitalRead({PIN})',

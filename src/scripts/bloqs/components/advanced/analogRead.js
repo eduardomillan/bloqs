@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: analogReadAdvanced
- * 
+ *
  * Bloq type: Output
  *
  * Description: It returns the read of an analog pin.
- * 
+ *
  * Return type: float
  */
 
@@ -26,7 +26,8 @@ var analogReadAdvanced = _.merge(_.clone(OutputBloq, true), {
         }, {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }]
     ],
     code: '\'{PIN}\'.indexOf(\'A\') !== -1 ? \'analogRead({PIN})\'.replace(/"/g, \'\') : \'analogRead({PIN})\'',
