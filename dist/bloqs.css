@@ -7416,9 +7416,12 @@
       margin-left: .5em; }
   .bloq--statement-input .bloq--statement-input__header button {
     z-index: 1;
-    width: 12px;
+    width: 14px;
     height: 14px;
-    color: #fff; }
+    font-size: 12px;
+    color: #fff;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3); }
 
 .bloq--statement-input:focus:before {
   border-right: 2px solid #f1cb33 inset;
