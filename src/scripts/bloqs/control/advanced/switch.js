@@ -27,7 +27,7 @@ var switchAdvanced = _.merge(_.clone(StatementInputBloq, true), {
             bloqInputId: 'VAR',
             alias: 'bloqInput',
             acceptType: ['all'],
-            suggestedBloqs: ['selectVariable']
+            suggestedBloqs: ['selectVariable', 'readSensor']
         }]
     ],
     code: 'switch ({VAR}) {{STATEMENTS}}'

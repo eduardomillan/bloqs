@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: continuousServoStopAdvanced
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It stops a specific continuous servo.
- * 
+ *
  * Return type: none
  */
 
@@ -26,7 +26,8 @@ var continuousServoStopAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'SERVO',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['hwVariable', 'selectVariable']
         }]
     ],
     code: '{SERVO}.write(90);'

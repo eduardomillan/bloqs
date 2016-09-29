@@ -16,7 +16,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "d69c4cf8-ad3b-4b13-9fcc-8c319e47e00f"
+      "suggestedBloqs": [
+        "hwVariable",
+        "selectVariable"
+      ],
+      "name": "4e8a652d-1571-4a56-8fbe-07109c34f018"
     },
     {
       "type": "connector--input",
@@ -24,7 +28,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "77ca6910-76e6-4138-8f5b-6e7a16675cba"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "192fe1aa-7543-4a91-8de3-ad159ed6316b"
     },
     {
       "type": "connector--input",
@@ -32,7 +40,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "47284ce8-ece8-46e1-b9b3-ce38d579b97a"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "7d7f30e5-a860-412d-82c8-ccfc14772611"
     },
     {
       "type": "connector--input",
@@ -40,7 +52,11 @@
       "acceptType": [
         "all"
       ],
-      "name": "64bd5c6a-60e5-4045-8ccb-c987f6a0bd30"
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "da279c8b-3558-452f-9626-d30768177ac5"
     }
   ],
   "bloqClass": "bloq-oscillator-advanced",
@@ -56,7 +72,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "d69c4cf8-ad3b-4b13-9fcc-8c319e47e00f"
+        "suggestedBloqs": [
+          "hwVariable",
+          "selectVariable"
+        ],
+        "name": "4e8a652d-1571-4a56-8fbe-07109c34f018"
       },
       {
         "alias": "text",
@@ -68,7 +88,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "77ca6910-76e6-4138-8f5b-6e7a16675cba"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "192fe1aa-7543-4a91-8de3-ad159ed6316b"
       },
       {
         "alias": "text",
@@ -80,7 +104,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "47284ce8-ece8-46e1-b9b3-ce38d579b97a"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "7d7f30e5-a860-412d-82c8-ccfc14772611"
       },
       {
         "alias": "text",
@@ -92,7 +120,11 @@
         "acceptType": [
           "all"
         ],
-        "name": "64bd5c6a-60e5-4045-8ccb-c987f6a0bd30"
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "da279c8b-3558-452f-9626-d30768177ac5"
       }
     ]
   ],

@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: ledAdvanced
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It switches on or off aspecific led.
- * 
+ *
  * Return type: none
  */
 
@@ -36,7 +36,8 @@ var ledAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'LED',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['hwVariable', 'selectVariable']
         }]
     ],
     code: 'digitalWrite({LED},{STATE});'

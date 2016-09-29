@@ -7,12 +7,12 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: lcdTurnOnOffAdvanced
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It switches on or off the background light of a
  *              specific LCD.
- * 
+ *
  * Return type: none
  */
 
@@ -37,7 +37,8 @@ var lcdTurnOnOffAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'LCD',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['hwVariable', 'selectVariable']
         }]
     ],
     code: '{LCD}.setBacklight({STATE});'

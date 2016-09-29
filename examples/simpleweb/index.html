@@ -228,9 +228,18 @@
             'invokeClassReturnFunctionWithArguments', 'setClassArrayVariable'
         ];
 
-        for (var i = 0; i < classBloqs.length; i++) {
+        var comunicationBloqs = ['convert', 'serialSend-v1'];
 
-            createBloq(classBloqs[i]);
+        var componentsBloqs = ['analogReadAdvanced', 'analogWrite', 'buzzerAdvanced', 'continuousServoStartAdvanced-v1', 'continuousServoStopAdvanced', 'digitalReadAdvanced', 'digitalWrite', 'lcdTurnOnOffAdvanced', 'lcdWriteAdvanced', 'lcdWritePositionAdvanced-v1'];
+
+        var componentsBloqs2 = ['ledAdvanced', 'oscillatorStopAdvanced', 'oscillatorStartAdvanced', 'oscillatorAdvanced', 'rgbLedAdvanced', 'servoNormalAdvanced'];
+
+        var evolutionBloqs = ['evolutionHeadAdvance'];
+
+
+        for (var i = 0; i < evolutionBloqs.length; i++) {
+
+            createBloq(evolutionBloqs[i]);
         }
 
 

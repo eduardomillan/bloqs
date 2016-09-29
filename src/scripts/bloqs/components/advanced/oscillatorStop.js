@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: oscillatorStopAdvanced
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It stops a specific servo.
- * 
+ *
  * Return type: none
  */
 
@@ -26,7 +26,8 @@ var oscillatorStopAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             bloqInputId: 'OSCILLATOR',
             alias: 'bloqInput',
-            acceptType: ['all']
+            acceptType: ['all'],
+            suggestedBloqs: ['hwVariable', 'selectVariable']
         }]
     ],
     code: '{OSCILLATOR}.stop()'
