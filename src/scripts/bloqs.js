@@ -1272,6 +1272,9 @@
                 }
                 params.showWindowCallback = function(selectedBloqId) {
                     var selectedBloq = bloqs[selectedBloqId];
+                    if (!selectedBloq.isConnectable()) {
+                        selectedBloq.doConnectable();
+                    }
                     connectBloq(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
                 }
                 bloqsSuggested.showSuggestedWindow(params);

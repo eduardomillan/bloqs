@@ -1943,27 +1943,32 @@
 
             showWindowCallback = params.showWindowCallback;
             console.log('params.suggestedBloqs', params.suggestedBloqs);
-            showWindow();
-            if (params.suggestedText) {
-                setSuggestedText(params.suggestedText);
+            if (params.suggestedBloqs && (params.suggestedBloqs.length > 0)) {
+                showWindow();
+                if (params.suggestedText) {
+                    setSuggestedText(params.suggestedText);
+                }
+
+
+                createBloqsInside(params.suggestedBloqs);
+                moveWindow({
+                    launcherTopPoint: params.launcherTopPoint,
+                    launcherHeight: params.launcherHeight,
+                    launcherBottomPoint: params.launcherBottomPoint,
+                    suggestedWindowWidth: suggestedWindow.offsetWidth,
+                    suggestedWindowHeight: suggestedWindow.offsetHeight,
+                    workspaceHeight: params.workspaceHeight,
+                    workspaceWidth: params.workspaceWidth,
+                    fieldOffsetTop: params.fieldOffsetTop,
+                    fieldOffsetLeft: params.fieldOffsetLeft,
+                    fieldOffsetRight: params.fieldOffsetRight,
+                    fieldScrollTop: params.fieldScrollTop,
+                    fieldScrollLeft: params.fieldScrollLeft
+                });
+            } else {
+                console.log('no bloqs suggested');
             }
 
-
-            createBloqsInside(params.suggestedBloqs);
-            moveWindow({
-                launcherTopPoint: params.launcherTopPoint,
-                launcherHeight: params.launcherHeight,
-                launcherBottomPoint: params.launcherBottomPoint,
-                suggestedWindowWidth: suggestedWindow.offsetWidth,
-                suggestedWindowHeight: suggestedWindow.offsetHeight,
-                workspaceHeight: params.workspaceHeight,
-                workspaceWidth: params.workspaceWidth,
-                fieldOffsetTop: params.fieldOffsetTop,
-                fieldOffsetLeft: params.fieldOffsetLeft,
-                fieldOffsetRight: params.fieldOffsetRight,
-                fieldScrollTop: params.fieldScrollTop,
-                fieldScrollLeft: params.fieldScrollLeft
-            });
         } else {
             console.error('You must set the bloqSchemas');
         }
@@ -3401,6 +3406,9 @@
                 }
                 params.showWindowCallback = function(selectedBloqId) {
                     var selectedBloq = bloqs[selectedBloqId];
+                    if (!selectedBloq.isConnectable()) {
+                        selectedBloq.doConnectable();
+                    }
                     connectBloq(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
                 }
                 bloqsSuggested.showSuggestedWindow(params);
