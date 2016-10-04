@@ -23,8 +23,7 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         [{
             alias: 'text',
             value: 'Obtener la distancia del ultrasonidos en el'
-        },
-        {
+        }, {
             id: 'PORT',
             alias: 'staticDropdown',
             options: [{
@@ -33,10 +32,10 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
             }, {
                 label: 'puerto 2',
                 value: '2'
-            },{
+            }, {
                 label: 'puerto 3',
                 value: '3'
-            },{
+            }, {
                 label: 'puerto 4',
                 value: '4'
             }]
@@ -47,9 +46,9 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         type: 'simple',
         value: 'float'
     },
-    arduino:{
-        includes:['mBot.h' ],
-        needInstanceOf:[{
+    arduino: {
+        includes: ['mBot.h'],
+        needInstanceOf: [{
             name: 'mBot',
             type: 'MBot'
         }],

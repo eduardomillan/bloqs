@@ -2,17 +2,17 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../build-utils'),
+    StatementBloq = require('./../../statementBloq');
 
 /**
-* Bloq name: mBotShowFaceByNumber
-*
-* Bloq type: Statement
-*
-* Description:
-*
-*/
+ * Bloq name: mBotShowFaceByNumber
+ *
+ * Bloq type: Statement
+ *
+ * Description:
+ *
+ */
 
 var mBotShowFaceByNumber = _.merge(_.clone(StatementBloq, true), {
 
@@ -22,17 +22,14 @@ var mBotShowFaceByNumber = _.merge(_.clone(StatementBloq, true), {
         [{
             alias: 'text',
             value: 'Mostrar la cara número '
-        },
-        {
+        }, {
             id: 'FACE',
             alias: 'numberInput',
             value: 0
-        },
-        {
+        }, {
             alias: 'text',
             value: 'en la pantalla conectada en el '
-        },
-        {
+        }, {
             id: 'PORT',
             alias: 'staticDropdown',
             options: [{
@@ -51,9 +48,9 @@ var mBotShowFaceByNumber = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     code: '',
-    arduino:{
-        includes:['mBot.h' ],
-        needInstanceOf:[{
+    arduino: {
+        includes: ['mBot.h'],
+        needInstanceOf: [{
             name: 'mBot',
             type: 'MBot'
         }],

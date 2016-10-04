@@ -9,19 +9,19 @@
     body {
         margin: 0;
     }
-
+    
     #code--field {
         width: 100%;
         height: 500px;
     }
-
+    
     #bloqs--field {
         overflow-y: auto;
         background-color: #EBEBEB;
         width: 1500px;
         height: 650px;
     }
-
+    
     code[class*="language-"],
     pre[class*="language-"] {
         color: black;
@@ -39,13 +39,13 @@
         -ms-user-select: text;
         user-select: text;
     }
-
+    
     code[class*="language-"]::-moz-selection,
     pre[class*="language-"]::-moz-selection {
         color: #000;
         background-color: #fefefe;
     }
-
+    
     code[class*="language-"]::selection,
     pre[class*="language-"]::selection {
         color: #000;
@@ -78,6 +78,7 @@
     <script src="./../../src/scripts/bloqs-utils.js"></script>
     <script src="./../../src/scripts/bloqs-tooltip.js"></script>
     <script src="./../../src/scripts/python-generation.js"></script>
+    <script src="./../../src/scripts/bloqs-suggested.js"></script>
     <script src="./../../src/scripts/arduino-generation.js"></script>
     <script src="./../../src/scripts/bloqs.js"></script>
     <script>
@@ -97,7 +98,9 @@
         window.bloqs.setOptions({
             fieldOffsetLeft: 0,
             //fieldOffsetTopSource: ['header'],
-            fieldOffsetTopForced: 0
+            fieldOffsetTopForced: 0,
+            bloqSchemas: bloqSchemas,
+            suggestionWindowParent: document.getElementById('bloqs--field')
         });
         /**
          * Listener
@@ -162,7 +165,7 @@
         arduinoMainBloqs.loopBloq.doConnectable();
 
         $('#getcodebutton').click(function() {
-            $('#code--field').text(js_beautify(window.arduinoGeneration.getCode(componentsArray, {
+            $('#code--field').text(js_beautify(window.arduinoGeneration.getCode({
                 varsBloq: arduinoMainBloqs.varsBloq.getBloqsStructure(true),
                 setupBloq: arduinoMainBloqs.setupBloq.getBloqsStructure(true),
                 loopBloq: arduinoMainBloqs.loopBloq.getBloqsStructure(true)
@@ -186,21 +189,12 @@
         };
 
         createBloq('mBotMove');
-        createBloq('mBotSetMotor');
-        createBloq('mBotSetServo');
-        createBloq('mBotSetLed');
-        createBloq('mBotSetLedAdvanced');
         createBloq('mBotBuzzer');
 
         createBloq('mBotGetDistance');
-        createBloq('mBotShowPrintText');
-        createBloq('mBotShowFaceByNumber');
-
-        createBloq('number');
-        createBloq('string');
-        createBloq('declareVariable');
-        createBloq('selectVariable');
-        createBloq('for-v1');
+        createBloq('mBotGetButtonStatus');
+        createBloq('mBotGetLightSensor');
+        createBloq('mBotSetLed');
 
     });
     </script>

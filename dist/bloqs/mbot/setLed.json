@@ -80,6 +80,6 @@
         "type": "MBot"
       }
     ],
-    "code": "mBot.setLed(7, {LEDS}, {RED}, {GREEN}, {BLUE});"
+    "code": "mBot.setLed({LEDS}, {RED}, {GREEN}, {BLUE});"
   }
 }

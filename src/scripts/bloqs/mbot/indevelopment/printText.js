@@ -2,17 +2,17 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../build-utils'),
+    StatementBloq = require('./../../statementBloq');
 
 /**
-* Bloq name: mBotShowPrintText
-*
-* Bloq type: Statement
-*
-* Description:
-*
-*/
+ * Bloq name: mBotShowPrintText
+ *
+ * Bloq type: Statement
+ *
+ * Description:
+ *
+ */
 
 var mBotShowPrintText = _.merge(_.clone(StatementBloq, true), {
 
@@ -22,17 +22,14 @@ var mBotShowPrintText = _.merge(_.clone(StatementBloq, true), {
         [{
             alias: 'text',
             value: 'Escribir'
-        },
-        {
+        }, {
             id: 'TEXT',
             alias: 'stringInput',
             defaultValue: 'Hola'
-        },
-        {
+        }, {
             alias: 'text',
             value: 'en la pantalla conectada en el '
-        },
-        {
+        }, {
             id: 'PORT',
             alias: 'staticDropdown',
             options: [{
@@ -48,27 +45,23 @@ var mBotShowPrintText = _.merge(_.clone(StatementBloq, true), {
                 label: 'puerto 4',
                 value: '4'
             }]
-        },
-        {
+        }, {
             alias: 'text',
             value: 'empezando en la posición (columna, fila)'
-        },
-        {
+        }, {
             id: 'COLUMN',
             alias: 'numberInput',
             value: 0
-        },
-        {
+        }, {
             id: 'ROW',
             alias: 'numberInput',
             value: 0
-        }
-        ]
+        }]
     ],
     code: '',
-    arduino:{
-        includes:['mBot.h' ],
-        needInstanceOf:[{
+    arduino: {
+        includes: ['mBot.h'],
+        needInstanceOf: [{
             name: 'mBot',
             type: 'MBot'
         }],

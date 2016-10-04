@@ -2,17 +2,17 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../build-utils'),
+    StatementBloq = require('./../../statementBloq');
 
 /**
-* Bloq name: mBotSetMotor
-*
-* Bloq type: Statement
-*
-* Description:Set the motor speed
-*
-*/
+ * Bloq name: mBotSetMotor
+ *
+ * Bloq type: Statement
+ *
+ * Description:Set the motor speed
+ *
+ */
 
 var mBotSetMotor = _.merge(_.clone(StatementBloq, true), {
 
@@ -22,7 +22,7 @@ var mBotSetMotor = _.merge(_.clone(StatementBloq, true), {
         [{
             alias: 'text',
             value: 'Fijar el motor '
-        },{
+        }, {
             id: 'MOTOR',
             alias: 'staticDropdown',
             options: [{
@@ -32,12 +32,10 @@ var mBotSetMotor = _.merge(_.clone(StatementBloq, true), {
                 label: 'M2',
                 value: 'M2'
             }]
-        },
-        {
+        }, {
             alias: 'text',
             value: 'a una velocidad'
-        },
-        {
+        }, {
             id: 'SPEED',
             alias: 'staticDropdown',
             options: [{
@@ -55,21 +53,19 @@ var mBotSetMotor = _.merge(_.clone(StatementBloq, true), {
             }, {
                 label: 'despacio',
                 value: '-50'
-            },
-            {
+            }, {
                 label: 'muy despacio',
                 value: '-100'
-            },
-            {
+            }, {
                 label: 'muy muy despacio',
                 value: '-255'
             }]
         }]
     ],
     code: '',
-    arduino:{
-        includes:['mBot.h' ],
-        needInstanceOf:[{
+    arduino: {
+        includes: ['mBot.h'],
+        needInstanceOf: [{
             name: 'mBot',
             type: 'MBot'
         }],
