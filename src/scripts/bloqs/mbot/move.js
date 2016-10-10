@@ -6,13 +6,13 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
-* Bloq name: mBotMove
-*
-* Bloq type: Statement
-*
-* Description: Move the vehicle forward
-*
-*/
+ * Bloq name: mBotMove
+ *
+ * Bloq type: Statement
+ *
+ * Description: Move the vehicle forward
+ *
+ */
 
 var mBotMove = _.merge(_.clone(StatementBloq, true), {
 
@@ -24,23 +24,21 @@ var mBotMove = _.merge(_.clone(StatementBloq, true), {
             alias: 'staticDropdown',
             options: [{
                 label: 'Avanzar',
-                value: 'forward'
+                value: '1'
             }, {
                 label: 'Retroceder',
-                value: 'backward'
+                value: '2'
             }, {
                 label: 'Girar a la derecha',
-                value: 'right'
+                value: '3'
             }, {
                 label: 'Girar a la izquierda',
-                value: 'left'
+                value: '4'
             }]
-        },
-        {
+        }, {
             alias: 'text',
             value: 'a una velocidad'
-        },
-        {
+        }, {
             id: 'SPEED',
             alias: 'staticDropdown',
             options: [{
@@ -58,21 +56,19 @@ var mBotMove = _.merge(_.clone(StatementBloq, true), {
             }, {
                 label: 'despacio',
                 value: '-50'
-            },
-            {
+            }, {
                 label: 'muy despacio',
                 value: '-100'
-            },
-            {
+            }, {
                 label: 'muy muy despacio',
                 value: '-255'
             }]
         }]
     ],
     code: '',
-    arduino:{
-        includes:['mBot.h' ],
-        needInstanceOf:[{
+    arduino: {
+        includes: ['mBot.h'],
+        needInstanceOf: [{
             name: 'mBot',
             type: 'MBot'
         }],

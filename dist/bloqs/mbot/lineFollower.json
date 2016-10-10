@@ -1,0 +1,58 @@
+{
+  "type": "output",
+  "name": "mBotLineFollower",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-mbot-linefollower",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Obtener la información del siguelineas en el "
+      },
+      {
+        "id": "PORT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "puerto 1",
+            "value": "1"
+          },
+          {
+            "label": "puerto 2",
+            "value": "2"
+          },
+          {
+            "label": "puerto 3",
+            "value": "3"
+          },
+          {
+            "label": "puerto 4",
+            "value": "4"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "arduino": {
+    "includes": [
+      "mBot.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "mBot",
+        "type": "MBot"
+      }
+    ],
+    "code": "mBot.getLineFollower({PORT})"
+  }
+}
