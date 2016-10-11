@@ -28,6 +28,9 @@ var code = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     code: '{CODE}\n',
+    arduino: {
+        code: '{CODE}\n'
+    },
     python: {
         codeLines: [{
             code: '{CODE}'

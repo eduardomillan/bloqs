@@ -28,7 +28,7 @@
 
         var instancesCode = '';
         for (prop in instances) {
-            instancesCode += instances[prop] + ' ' + prop + '()\n';
+            instancesCode += instances[prop] + ' ' + prop + '();\n';
         }
 
 

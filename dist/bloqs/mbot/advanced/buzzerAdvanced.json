@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "lcdWriteAdvanced",
+  "name": "mBotBuzzerAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -14,63 +14,75 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
-        "all"
+        "float"
       ],
       "suggestedBloqs": [
-        "string",
+        "number",
         "selectVariable"
       ],
-      "name": "dc1faff6-d410-4ffa-ad31-e750d70f92b9"
+      "name": "11506e08-ed18-4f27-8a3d-8b3c7aeda461"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
-        "all"
+        "float"
       ],
       "suggestedBloqs": [
-        "hwVariable",
+        "number",
         "selectVariable"
       ],
-      "name": "116c9fab-f36e-4b4a-bd9f-3b15bf2d5e61"
+      "name": "789b0173-352e-450e-a633-3379ab536fde"
     }
   ],
-  "bloqClass": "bloq-lcd-writte-advanced",
+  "bloqClass": "bloq-mbot-buzzer",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-lcd-writte-advanced-write"
+        "value": "Hacer sonar la nota"
       },
       {
-        "bloqInputId": "TEXT",
+        "bloqInputId": "NOTE",
         "alias": "bloqInput",
         "acceptType": [
-          "all"
+          "float"
         ],
         "suggestedBloqs": [
-          "string",
+          "number",
           "selectVariable"
         ],
-        "name": "dc1faff6-d410-4ffa-ad31-e750d70f92b9"
+        "name": "11506e08-ed18-4f27-8a3d-8b3c7aeda461"
       },
       {
         "alias": "text",
-        "value": "bloq-lcd-writte-advanced-inLCD"
+        "value": "beat"
       },
       {
-        "bloqInputId": "LCD",
+        "bloqInputId": "BEAT",
         "alias": "bloqInput",
         "acceptType": [
-          "all"
+          "float"
         ],
         "suggestedBloqs": [
-          "hwVariable",
+          "number",
           "selectVariable"
         ],
-        "name": "116c9fab-f36e-4b4a-bd9f-3b15bf2d5e61"
+        "name": "789b0173-352e-450e-a633-3379ab536fde"
       }
     ]
   ],
-  "code": "{LCD}.print({TEXT});"
+  "code": "",
+  "arduino": {
+    "includes": [
+      "BitbloqMBot.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "mBot",
+        "type": "MBot"
+      }
+    ],
+    "code": "mBot.tone({NOTE},{BEAT});"
+  }
 }
