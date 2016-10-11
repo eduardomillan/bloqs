@@ -26,7 +26,7 @@ var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
         [{
             alias: 'text',
             value: 'Hacer sonar la nota'
-        },{
+        }, {
             id: 'NOTE',
             alias: 'staticDropdown',
             options: [{
@@ -50,7 +50,7 @@ var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
             }, {
                 label: 'bloq-buzzer-si',
                 value: '494'
-            },{
+            }, {
                 label: 'bloq-buzzer-do-#',
                 value: '277'
             }, {
@@ -75,7 +75,7 @@ var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
             options: [{
                 label: 'doble',
                 value: '2000'
-            },{
+            }, {
                 label: 'entero',
                 value: '1000'
             }, {
@@ -91,9 +91,9 @@ var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     code: '',
-    arduino:{
-        includes:['mBot.h' ],
-        needInstanceOf:[{
+    arduino: {
+        includes: ['BitbloqMBot.h'],
+        needInstanceOf: [{
             name: 'mBot',
             type: 'MBot'
         }],

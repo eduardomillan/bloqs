@@ -47,7 +47,7 @@ var mBotLineFollower = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     },
     arduino: {
-        includes: ['mBot.h'],
+        includes: ['BitbloqMBot.h'],
         needInstanceOf: [{
             name: 'mBot',
             type: 'MBot'
