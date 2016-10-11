@@ -9,9 +9,45 @@
     {
       "type": "connector--bottom",
       "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "04ecda8d-cf85-4af2-a4cc-929628de4fbd"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "7618e517-d465-414e-832c-87d89ffb4b41"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "3e12f3f1-7c20-4197-a26d-04516f72ea46"
     }
   ],
-  "bloqClass": "bloq-mbot-setled-advanced",
+  "bloqClass": "bloq-mbot-setled",
   "content": [
     [
       {
@@ -27,46 +63,12 @@
             "value": "0"
           },
           {
-            "label": "el led 1",
+            "label": "el led derecho",
             "value": "1"
           },
           {
-            "label": "el led 2",
+            "label": "el led izquierdo",
             "value": "2"
-          },
-          {
-            "label": "el led 3",
-            "value": "3"
-          },
-          {
-            "label": "el led 4",
-            "value": "4"
-          }
-        ]
-      },
-      {
-        "alias": "text",
-        "value": "del "
-      },
-      {
-        "id": "PORT",
-        "alias": "staticDropdown",
-        "options": [
-          {
-            "label": "puerto 1",
-            "value": "1"
-          },
-          {
-            "label": "puerto 2",
-            "value": "2"
-          },
-          {
-            "label": "puerto 3",
-            "value": "3"
-          },
-          {
-            "label": "puerto 4",
-            "value": "4"
           }
         ]
       },
@@ -79,34 +81,55 @@
         "value": "rojo:"
       },
       {
-        "id": "RED",
-        "alias": "numberInput",
-        "value": 0
+        "bloqInputId": "RED",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "04ecda8d-cf85-4af2-a4cc-929628de4fbd"
       },
       {
         "alias": "text",
         "value": "verde:"
       },
       {
-        "id": "GREEN",
-        "alias": "numberInput",
-        "value": 0
+        "bloqInputId": "GREEN",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "7618e517-d465-414e-832c-87d89ffb4b41"
       },
       {
         "alias": "text",
         "value": "azul:"
       },
       {
-        "id": "BLUE",
-        "alias": "numberInput",
-        "value": 0
+        "bloqInputId": "BLUE",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "3e12f3f1-7c20-4197-a26d-04516f72ea46"
       }
     ]
   ],
   "code": "",
   "arduino": {
     "includes": [
-      "mBot.h"
+      "BitbloqMBot.h"
     ],
     "needInstanceOf": [
       {
@@ -114,6 +137,6 @@
         "type": "MBot"
       }
     ],
-    "code": "mBot.setLed({PORT}, {LEDS}, {RED}, {GREEN}, {BLUE});"
+    "code": "mBot.setLed({LEDS}, {RED}, {GREEN}, {BLUE});"
   }
 }

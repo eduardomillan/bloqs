@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotBuzzerAdvanced",
+  "name": "mBotMoveAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,30 +20,40 @@
         "number",
         "selectVariable"
       ],
-      "name": "f1713be0-a201-424e-a635-77106d2159a2"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": [
-        "float"
-      ],
-      "suggestedBloqs": [
-        "number",
-        "selectVariable"
-      ],
-      "name": "55bfcbd0-e6de-49b2-a6e3-13e711197ac9"
+      "name": "ac3946ba-4ad2-451b-95ed-413af2dff17b"
     }
   ],
-  "bloqClass": "bloq-mbot-buzzer",
+  "bloqClass": "bloq-mbot-move",
   "content": [
     [
       {
-        "alias": "text",
-        "value": "Hacer sonar la nota"
+        "id": "MOVEMENT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Avanzar",
+            "value": "1"
+          },
+          {
+            "label": "Retroceder",
+            "value": "2"
+          },
+          {
+            "label": "Girar a la derecha",
+            "value": "3"
+          },
+          {
+            "label": "Girar a la izquierda",
+            "value": "4"
+          }
+        ]
       },
       {
-        "bloqInputId": "NOTE",
+        "alias": "text",
+        "value": "a una velocidad"
+      },
+      {
+        "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": [
           "float"
@@ -52,23 +62,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "f1713be0-a201-424e-a635-77106d2159a2"
-      },
-      {
-        "alias": "text",
-        "value": "beat"
-      },
-      {
-        "bloqInputId": "BEAT",
-        "alias": "bloqInput",
-        "acceptType": [
-          "float"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "55bfcbd0-e6de-49b2-a6e3-13e711197ac9"
+        "name": "ac3946ba-4ad2-451b-95ed-413af2dff17b"
       }
     ]
   ],
@@ -83,6 +77,6 @@
         "type": "MBot"
       }
     ],
-    "code": "mBot.tone({NOTE},{BEAT});"
+    "code": "mBot.move({MOVEMENT},{SPEED});"
   }
 }
