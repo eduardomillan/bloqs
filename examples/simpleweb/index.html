@@ -147,9 +147,17 @@
 
         window.bloqs.componentsArray = componentsArray;
 
-        /*//Add some hardware
-        componentsArray.servos[0]={id: "servo", name: "servo_0", oscillator:"false", pin:{s:"2"}};
-        componentsArray.servos[1]={id: "servo", name: "servo_1", oscillator:"false", pin:{s:"3"}};
+        //Add some hardware
+        componentsArray.serialElements[0] = {
+            id: "serialElement",
+            name: "serial_0",
+            oscillator: "false",
+            pin: {
+                s: "2"
+            }
+        };
+
+        /*componentsArray.servos[1]={id: "servo", name: "servo_1", oscillator:"false", pin:{s:"3"}};
         componentsArray.servos[2]={id: "servo", name: "servo_2", oscillator:"false", pin:{s:"4"}};
         */
 
@@ -186,13 +194,13 @@
 
         $('#getcodebutton').click(function() {
             //old way
-            $('#code--field').text(js_beautify(window.bloqsUtils.getCode(componentsArray, arduinoMainBloqs)));
+            /*$('#code--field').text(js_beautify(window.bloqsUtils.getCode(componentsArray, arduinoMainBloqs)));*/
             //new way
-            /*$('#code--field').text(js_beautify(window.arduinoGeneration.getCode({
+            $('#code--field').text(js_beautify(window.arduinoGeneration.getCode({
                 varsBloq: arduinoMainBloqs.varsBloq.getBloqsStructure(true),
                 setupBloq: arduinoMainBloqs.setupBloq.getBloqsStructure(true),
                 loopBloq: arduinoMainBloqs.loopBloq.getBloqsStructure(true)
-            })));*/
+            }, hardwareSchema)));
         });
 
         //start build bloqs!
@@ -236,13 +244,71 @@
 
         var evolutionBloqs = ['evolutionHeadAdvance'];
 
-        var testSet = ['declareVariable', 'number']
+        var testSet = ['declareVariable', 'number', 'serialSend-v1']
 
         for (var i = 0; i < testSet.length; i++) {
 
             createBloq(testSet[i]);
         }
 
+        var hardwareSchema = {
+            "components": [{
+                "id": "sp",
+                "baudRate": "9600",
+                "width": 115,
+                "height": 71,
+                "pin": {
+                    "s": "serial"
+                },
+                "pins": {
+                    "serial": [
+                        "s"
+                    ]
+                },
+                "dragtype": "components",
+                "coordinates": {
+                    "x": 9.9,
+                    "y": 39.52569169960474
+                },
+                "category": "serialElements",
+                "name": "serial_0",
+                "connected": true,
+                "uid": "df47e6be-8aec-4b63-9119-0dcb31511d72",
+                "endpoints": {
+                    "s": {
+                        "type": "serial",
+                        "uid": "67eed2ae-74a8-4916-a26d-0f75bbaff2dc"
+                    }
+                }
+            }, {
+                "id": "led",
+                "width": 55,
+                "height": 83,
+                "pins": {
+                    "digital": [
+                        "s"
+                    ]
+                },
+                "dragtype": "components",
+                "coordinates": {
+                    "x": 77.2,
+                    "y": 13.203463203463203
+                },
+                "category": "leds",
+                "name": "LED_0",
+                "connected": true,
+                "uid": "bfa1a548-8bc5-44b5-9e5e-d9e647db72b1",
+                "pin": {
+                    "s": "7"
+                },
+                "endpoints": {
+                    "s": {
+                        "type": "digital",
+                        "uid": "3fe14580-c769-4fb2-ac65-b614cd15e74c"
+                    }
+                }
+            }]
+        };
 
     });
     </script>
