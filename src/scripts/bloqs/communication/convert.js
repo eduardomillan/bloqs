@@ -53,6 +53,9 @@ var convert = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '({NUMBER},{TYPE});',
+    arduino: {
+        code: '({NUMBER},{TYPE})'
+    },
     returnType: {
         type: 'simple',
         value: 'float'

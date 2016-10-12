@@ -68,6 +68,9 @@ var bloqWhile = _.merge(_.clone(StatementInputBloq, true), {
             indentation: 1,
             code: '{STATEMENTS}'
         }]
+    },
+    arduino: {
+        code: 'while ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}'
     }
 });
 

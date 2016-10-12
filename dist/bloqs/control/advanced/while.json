@@ -24,7 +24,7 @@
         "equalityOperations",
         "logicOperations"
       ],
-      "name": "f7ee9a08-a4c1-4984-a273-a1c02d99988b"
+      "name": "c4b67d2c-305a-47cc-97fa-0185df6e5d6e"
     }
   ],
   "bloqClass": "bloq-while",
@@ -44,7 +44,7 @@
           "equalityOperations",
           "logicOperations"
         ],
-        "name": "f7ee9a08-a4c1-4984-a273-a1c02d99988b"
+        "name": "c4b67d2c-305a-47cc-97fa-0185df6e5d6e"
       },
       {
         "alias": "text",
@@ -52,5 +52,8 @@
       }
     ]
   ],
-  "code": "while ({CONDITION}){{STATEMENTS}}"
+  "code": "while ({CONDITION}){{STATEMENTS}}",
+  "arduino": {
+    "code": "while ({CONDITION}){{STATEMENTS}}"
+  }
 }

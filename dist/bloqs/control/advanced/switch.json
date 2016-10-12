@@ -27,7 +27,7 @@
         "selectVariable",
         "readSensor"
       ],
-      "name": "f35b4a78-c43c-4e82-ae1d-1bfbc3d13e10"
+      "name": "12bada2c-92cf-4602-a9ea-9d08b1a2aeb3"
     }
   ],
   "bloqClass": "bloq-switch",
@@ -47,9 +47,12 @@
           "selectVariable",
           "readSensor"
         ],
-        "name": "f35b4a78-c43c-4e82-ae1d-1bfbc3d13e10"
+        "name": "12bada2c-92cf-4602-a9ea-9d08b1a2aeb3"
       }
     ]
   ],
-  "code": "switch ({VAR}) {{STATEMENTS}}"
+  "code": "switch ({VAR}) {{STATEMENTS}}",
+  "arduino": {
+    "code": "switch ({VAR}) {{STATEMENTS}}"
+  }
 }

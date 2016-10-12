@@ -33,7 +33,10 @@ var whileAdvanced = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-while-exec'
         }]
     ],
-    code: 'while ({CONDITION}){{STATEMENTS}}'
+    code: 'while ({CONDITION}){{STATEMENTS}}',
+    arduino: {
+        code: 'while ({CONDITION}){{STATEMENTS}}'
+    }
 });
 
 utils.generateBloqInputConnectors(whileAdvanced);

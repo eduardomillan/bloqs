@@ -30,6 +30,9 @@ var stringToInt = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{VAR}.toInt()',
+    arduino: {
+        code: '{VAR}.toInt()'
+    },
     returnType: {
         type: 'simple',
         value: 'int'

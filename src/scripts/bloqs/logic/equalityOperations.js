@@ -55,6 +55,9 @@ var equalityOperations = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '({ARG1} {OPERATOR} {ARG2})',
+    arduino: {
+        code: '({ARG1} {OPERATOR} {ARG2})'
+    },
     returnType: {
         type: 'simple',
         value: 'bool'

@@ -25,7 +25,10 @@ var bloqBreak = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-break-stopLoop'
         }]
     ],
-    code: 'break;'
+    code: 'break;',
+    arduino: {
+        code: 'break;'
+    }
 });
 
 utils.generateBloqInputConnectors(bloqBreak);

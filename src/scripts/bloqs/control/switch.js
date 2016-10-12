@@ -30,7 +30,10 @@ var bloqSwitch = _.merge(_.clone(StatementInputBloq, true), {
             options: 'softwareVars'
         }]
     ],
-    code: 'switch (int({VAR})) {{STATEMENTS}}'
+    code: 'switch (int({VAR})) {{STATEMENTS}}',
+    arduino: {
+        code: 'switch (int({VAR})) {{STATEMENTS}}'
+    }
 });
 
 bloqSwitch.connectors[2].acceptedAliases = ['switchChildren'];

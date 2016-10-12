@@ -26,6 +26,9 @@ var millis = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: 'millis()',
+    arduino: {
+        code: 'millis()'
+    },
     returnType: {
         type: 'simple',
         value: 'float'

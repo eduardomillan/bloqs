@@ -33,7 +33,10 @@ var wait = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-wait-ms'
         }]
     ],
-    code: 'delay({TIME});'
+    code: 'delay({TIME});',
+    arduino: {
+        code: 'delay({TIME});'
+    }
 });
 
 utils.generateBloqInputConnectors(wait);

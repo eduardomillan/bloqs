@@ -55,8 +55,10 @@ var enableInterrupt = _.merge(_.clone(StatementBloq, true), {
             }]
         }]
     ],
-    code: 'enableInterrupt({PIN}, {FUNC}, {STATE});'
-
+    code: 'enableInterrupt({PIN}, {FUNC}, {STATE});',
+    arduino: {
+        code: 'enableInterrupt({PIN}, {FUNC}, {STATE});'
+    }
 });
 
 utils.generateBloqInputConnectors(enableInterrupt);

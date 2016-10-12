@@ -30,6 +30,15 @@ var serialReceive = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: '{SERIAL}.readString()',
+    arduino: {
+        includes: ['BitbloqSoftwareSerial.h'],
+        needInstanceOf: [{
+            name: '{SERIAL}',
+            type: 'bqSoftwareSerial',
+            arguments: [0, 1, '[{SERIAL}.baudRate]']
+        }],
+        code: '{SERIAL}.readString()'
+    },
     returnType: {
         type: 'simple',
         value: 'String'

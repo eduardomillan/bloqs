@@ -34,7 +34,10 @@ var ifAdvanced = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-if-exec'
         }]
     ],
-    code: 'if({CONDITION}){{STATEMENTS}}'
+    code: 'if({CONDITION}){{STATEMENTS}}',
+    arduino: {
+        code: 'if({CONDITION}){{STATEMENTS}}'
+    }
 });
 
 ifAdvanced.connectors[1].acceptedAliases = ['all', 'ifDown'];

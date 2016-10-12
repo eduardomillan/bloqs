@@ -52,5 +52,8 @@
       }
     ]
   ],
-  "code": "enableInterrupt({PIN}, {FUNC}, {STATE});"
+  "code": "enableInterrupt({PIN}, {FUNC}, {STATE});",
+  "arduino": {
+    "code": "enableInterrupt({PIN}, {FUNC}, {STATE});"
+  }
 }

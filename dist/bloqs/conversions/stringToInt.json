@@ -12,7 +12,7 @@
       "acceptType": [
         "String"
       ],
-      "name": "4006dd30-7c0c-4592-9d38-1141d80b953f"
+      "name": "1d482b0e-1c07-43c3-abf7-9f05ed3e065f"
     }
   ],
   "bloqClass": "bloq-string-to-int",
@@ -28,11 +28,14 @@
         "acceptType": [
           "String"
         ],
-        "name": "4006dd30-7c0c-4592-9d38-1141d80b953f"
+        "name": "1d482b0e-1c07-43c3-abf7-9f05ed3e065f"
       }
     ]
   ],
   "code": "{VAR}.toInt()",
+  "arduino": {
+    "code": "{VAR}.toInt()"
+  },
   "returnType": {
     "type": "simple",
     "value": "int"

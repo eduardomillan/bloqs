@@ -27,8 +27,10 @@ var caseDefault = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-case-default-inOtherCase'
         }]
     ],
-    code: 'default:{STATEMENTS}break;'
-
+    code: 'default:{STATEMENTS}break;',
+    arduino: {
+        code: 'default:{STATEMENTS}break;'
+    }
 });
 
 caseDefault.connectors[0].acceptedAliases = ['switchChildren', 'case'];

@@ -29,5 +29,8 @@
       }
     ]
   ],
-  "code": "delay({TIME});"
+  "code": "delay({TIME});",
+  "arduino": {
+    "code": "delay({TIME});"
+  }
 }

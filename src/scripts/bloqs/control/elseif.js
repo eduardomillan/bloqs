@@ -69,6 +69,9 @@ var elseif = _.merge(_.clone(StatementInputBloq, true), {
             indentation: 1,
             code: '{STATEMENTS}'
         }]
+    },
+    arduino: {
+        code: 'else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}'
     }
 });
 

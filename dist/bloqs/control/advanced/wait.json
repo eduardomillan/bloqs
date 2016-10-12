@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "357083f2-ceb1-4927-a82e-56ea492b0581"
+      "name": "b19fd2fb-883c-4122-b73e-7d48f1fce11a"
     }
   ],
   "bloqClass": "bloq-wait",
@@ -40,9 +40,12 @@
           "number",
           "selectVariable"
         ],
-        "name": "357083f2-ceb1-4927-a82e-56ea492b0581"
+        "name": "b19fd2fb-883c-4122-b73e-7d48f1fce11a"
       }
     ]
   ],
-  "code": "delay({TIME});"
+  "code": "delay({TIME});",
+  "arduino": {
+    "code": "delay({TIME});"
+  }
 }

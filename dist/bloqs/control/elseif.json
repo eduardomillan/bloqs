@@ -34,7 +34,7 @@
         "selectVariable",
         "readSensor"
       ],
-      "name": "080b9498-650b-4e36-9040-bd637a46502e"
+      "name": "c30e972a-5170-41b6-a72a-2535ab712282"
     },
     {
       "type": "connector--input",
@@ -48,7 +48,7 @@
         "selectVariable",
         "readSensor"
       ],
-      "name": "809bf1f3-1c5c-40e6-9cf3-ea670e989a98"
+      "name": "8cc610ab-d793-40ac-a7a1-417dd349a23a"
     }
   ],
   "bloqClass": "bloq-else-if",
@@ -70,7 +70,7 @@
           "selectVariable",
           "readSensor"
         ],
-        "name": "080b9498-650b-4e36-9040-bd637a46502e"
+        "name": "c30e972a-5170-41b6-a72a-2535ab712282"
       },
       {
         "id": "OPERATOR",
@@ -114,7 +114,7 @@
           "selectVariable",
           "readSensor"
         ],
-        "name": "809bf1f3-1c5c-40e6-9cf3-ea670e989a98"
+        "name": "8cc610ab-d793-40ac-a7a1-417dd349a23a"
       },
       {
         "alias": "text",
@@ -133,5 +133,8 @@
         "code": "{STATEMENTS}"
       }
     ]
+  },
+  "arduino": {
+    "code": "else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}"
   }
 }

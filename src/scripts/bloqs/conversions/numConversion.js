@@ -44,6 +44,9 @@ var numConversion = _.merge(_.clone(OutputBloq, true), {
         }, ]
     ],
     code: '({TYPE}) {NUMBER}',
+    arduino: {
+        code: '({TYPE},{NUMBER})'
+    },
     returnType: {
         type: 'fromDropdown',
         idDropdown: 'TYPE',

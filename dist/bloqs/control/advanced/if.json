@@ -28,7 +28,7 @@
         "equalityOperations",
         "logicOperations"
       ],
-      "name": "2231474f-2934-4d2a-bbb1-b9e30053b9b4"
+      "name": "363c1b7f-7bb4-4618-b15f-7cd134313943"
     }
   ],
   "bloqClass": "bloq-if",
@@ -48,7 +48,7 @@
           "equalityOperations",
           "logicOperations"
         ],
-        "name": "2231474f-2934-4d2a-bbb1-b9e30053b9b4"
+        "name": "363c1b7f-7bb4-4618-b15f-7cd134313943"
       },
       {
         "alias": "text",
@@ -56,5 +56,8 @@
       }
     ]
   ],
-  "code": "if({CONDITION}){{STATEMENTS}}"
+  "code": "if({CONDITION}){{STATEMENTS}}",
+  "arduino": {
+    "code": "if({CONDITION}){{STATEMENTS}}"
+  }
 }

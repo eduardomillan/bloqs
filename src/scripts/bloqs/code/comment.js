@@ -29,6 +29,9 @@ var comment = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     code: '/*\n{COMMENT}\n*/',
+    arduino: {
+        code: '/*\n{COMMENT}\n*/'
+    },
     python: {
         codeLines: [{
             code: '"""{COMMENT}"""'

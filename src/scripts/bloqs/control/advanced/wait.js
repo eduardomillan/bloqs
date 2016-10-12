@@ -31,7 +31,10 @@ var waitAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['number', 'selectVariable']
         }]
     ],
-    code: 'delay({TIME});'
+    code: 'delay({TIME});',
+    arduino: {
+        code: 'delay({TIME});'
+    }
 });
 
 utils.generateBloqInputConnectors(waitAdvanced);

@@ -1858,6 +1858,31 @@
         return code;
     }
 
+    function getTypeFromBloq(bloq) {
+        var result;
+        if (bloq.returnType.value) {
+            result = bloq.returnType.value;
+        } else {
+            var contentId,
+                propertyName,
+                i = 0;
+            switch (bloq.returnType.type) {
+                case 'fromDropdown':
+                    contentId = bloq.returnType.idDropdown;
+                    propertyName = 'id';
+                    break;
+            }
+
+            while (!result && (i < bloq.content[0].length)) {
+                if (bloq.content[0][i][propertyName] === contentId) {
+                    result = bloq.content[0][i].value;
+                }
+                i++;
+            }
+        }
+        return result || '';
+    }
+
     function getCodeFromBloq(bloqFullStructure) {
         console.log('getting code from bloq', bloqFullStructure);
 
@@ -1885,7 +1910,7 @@
                         aliasesValuesHashMap[aliases[i].bloqInputId].value = getCodeFromBloq(aliases[i].value) || '';
 
                         if (aliases[i].value.returnType) {
-                            aliasesValuesHashMap[aliases[i].bloqInputId].returnType = aliases[i].value.returnType.value || '';
+                            aliasesValuesHashMap[aliases[i].bloqInputId].returnType = getTypeFromBloq(aliases[i].value);
                         }
                     } else {
                         aliasesValuesHashMap[aliases[i].bloqInputId].value = '';
@@ -1951,7 +1976,7 @@
             match = PARAMS_REGEXP.exec(code);
         }
 
-        if (bloqFullStructure.type != 'output') {
+        if (bloqFullStructure.type !== 'output') {
             code += '\n';
         }
 

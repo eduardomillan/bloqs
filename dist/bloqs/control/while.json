@@ -25,7 +25,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "4c8bb523-b7f0-48a4-b58d-2e0631102d18"
+      "name": "435f1620-6d53-4d45-a1a1-5d8f16510822"
     },
     {
       "type": "connector--input",
@@ -38,7 +38,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "2a8ccfdd-0027-4e16-96b8-4a5230536a90"
+      "name": "015ae2e8-fac6-4322-ae47-da2152b3156f"
     }
   ],
   "bloqClass": "bloq-while",
@@ -59,7 +59,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "4c8bb523-b7f0-48a4-b58d-2e0631102d18"
+        "name": "435f1620-6d53-4d45-a1a1-5d8f16510822"
       },
       {
         "id": "OPERATOR",
@@ -102,7 +102,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "2a8ccfdd-0027-4e16-96b8-4a5230536a90"
+        "name": "015ae2e8-fac6-4322-ae47-da2152b3156f"
       },
       {
         "alias": "text",
@@ -121,5 +121,8 @@
         "code": "{STATEMENTS}"
       }
     ]
+  },
+  "arduino": {
+    "code": "while ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}"
   }
 }

@@ -30,7 +30,10 @@ var switchAdvanced = _.merge(_.clone(StatementInputBloq, true), {
             suggestedBloqs: ['selectVariable', 'readSensor']
         }]
     ],
-    code: 'switch ({VAR}) {{STATEMENTS}}'
+    code: 'switch ({VAR}) {{STATEMENTS}}',
+    arduino: {
+        code: 'switch ({VAR}) {{STATEMENTS}}'
+    }
 });
 
 switchAdvanced.connectors[2].acceptedAliases = ['switchChildren'];

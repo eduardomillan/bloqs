@@ -225,12 +225,12 @@
         var varsBloqs = ['setVariable', 'declareVariable', 'setArrayVariable', 'arrayVariableAdvanced', 'declareArrayAdvanced',
             'declareVariableAdvanced', 'setArrayVariableAdvanced'
         ];
-        var mathBloqs = ['declareVariable', 'basicOperations', 'map', 'random', 'mapAdvanced', 'mathOperations',
-            'numberArrayAdvanced', 'round-v1', 'numConversion'
-        ];
+        var mathBloqs = ['declareVariable', 'basicOperations', 'map', 'random', 'mapAdvanced', 'mathOperations', 'numberArrayAdvanced', 'round-v1', 'numConversion'];
         var textBloqs = ['declareVariable', 'length', 'stringArrayAdvanced', 'stringCreate', 'stringSum'];
 
-        var controlBloqs = ['caseAdvanced-v1', 'elseifAdvanced', 'forAdvanced-v1', 'ifAdvanced', 'switchAdvanced-v2', 'waitAdvanced', 'whileAdvanced'];
+        var controlBloqs = ['break', 'case', 'caseDefault', 'continue', 'else', 'elseif', 'for-v1', 'if', 'millis', 'switch', 'wait', 'while'];
+
+        var controlBloqs2 = ['caseAdvanced-v1', 'elseifAdvanced', 'forAdvanced-v1', 'ifAdvanced', 'switchAdvanced-v2', 'waitAdvanced', 'whileAdvanced'];
 
         var classBloqs = ['setClassVariable', 'constructorClassArguments', 'invokeArgumentsClass', 'invokeClassFunctionWithArguments',
             'invokeClassReturnFunctionWithArguments', 'setClassArrayVariable'
@@ -244,8 +244,12 @@
 
         var evolutionBloqs = ['evolutionHeadAdvance'];
 
-        var testSet = ['declareVariable', 'number', 'serialSend-v1']
+        var conversionBloqs = ['declareVariable', 'numConversion', 'stringToInt'];
 
+
+
+        var testSet = ['convert', 'serialReceive', 'serialReceiveInt', 'declareVariable'];
+        testSet = conversionBloqs;
         for (var i = 0; i < testSet.length; i++) {
 
             createBloq(testSet[i]);

@@ -25,7 +25,10 @@ var bloqContinue = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-continue-continue'
         }]
     ],
-    code: 'continue;'
+    code: 'continue;',
+    arduino: {
+        code: 'continue;'
+    }
 });
 
 utils.generateBloqInputConnectors(bloqContinue);

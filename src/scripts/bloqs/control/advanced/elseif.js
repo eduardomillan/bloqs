@@ -34,7 +34,10 @@ var elseifAdvanced = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-else-if-else'
         }]
     ],
-    code: 'else if ({VAR}){{STATEMENTS}}'
+    code: 'else if ({VAR}){{STATEMENTS}}',
+    arduino: {
+        code: 'else if ({VAR}){{STATEMENTS}}'
+    }
 });
 
 elseifAdvanced.connectors[0].acceptedAliases = ['ifDown', 'elseifDown'];
