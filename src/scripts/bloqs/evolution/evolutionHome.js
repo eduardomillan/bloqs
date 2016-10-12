@@ -6,14 +6,14 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
-* Bloq name: evolutionHome
-*
-* Bloq type: statement
-*
-* Description: It makes Evolution rest in the defect position.
-*
-* Return type: none
-*/
+ * Bloq name: evolutionHome
+ *
+ * Bloq type: statement
+ *
+ * Description: It makes Evolution rest in the defect position.
+ *
+ * Return type: none
+ */
 
 var evolutionHome = _.merge(_.clone(StatementBloq, true), {
 
@@ -25,7 +25,16 @@ var evolutionHome = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-evolution-rest'
         }]
     ],
-    code: 'evolution.home();'
+    code: 'evolution.home();',
+    arduino: {
+        includes: ['BitbloqEvolution.h', 'BitbloqUS.h', 'Servo.h', 'BitbloqOscillator.h'],
+        needInstanceOf: [{
+            name: 'evolution',
+            type: 'Evolution'
+        }],
+        setupExtraCode: 'evolution.init();',
+        code: 'evolution.home();'
+    }
 });
 utils.generateBloqInputConnectors(evolutionHome);
 

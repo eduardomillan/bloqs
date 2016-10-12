@@ -6,15 +6,15 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
-* Bloq name: evolutionMovementsSimple
-*
-* Bloq type: statement
-*
-* Description: It makes Evolution execute a specific movement,
-*              selectable from a drop-down.
-*
-* Return type: none
-*/
+ * Bloq name: evolutionMovementsSimple
+ *
+ * Bloq type: statement
+ *
+ * Description: It makes Evolution execute a specific movement,
+ *              selectable from a drop-down.
+ *
+ * Return type: none
+ */
 
 var evolutionMovementsSimple = _.merge(_.clone(StatementBloq, true), {
 
@@ -42,7 +42,16 @@ var evolutionMovementsSimple = _.merge(_.clone(StatementBloq, true), {
             }]
         }]
     ],
-    code: 'evolution.{MOVEMENT}();'
+    code: 'evolution.{MOVEMENT}();',
+    arduino: {
+        includes: ['BitbloqEvolution.h', 'BitbloqUS.h', 'Servo.h', 'BitbloqOscillator.h'],
+        needInstanceOf: [{
+            name: 'evolution',
+            type: 'Evolution'
+        }],
+        setupExtraCode: 'evolution.init();',
+        code: 'evolution.{MOVEMENT}();'
+    }
 });
 utils.generateBloqInputConnectors(evolutionMovementsSimple);
 

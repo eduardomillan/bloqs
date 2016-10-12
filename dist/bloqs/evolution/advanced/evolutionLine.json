@@ -35,6 +35,22 @@
     ]
   ],
   "code": "evolution.getLine({SIDE})",
+  "arduino": {
+    "includes": [
+      "BitbloqEvolution.h",
+      "BitbloqUS.h",
+      "Servo.h",
+      "BitbloqOscillator.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "evolution",
+        "type": "Evolution"
+      }
+    ],
+    "setupExtraCode": "evolution.init();",
+    "code": "evolution.getLine({SIDE})"
+  },
   "returnType": {
     "type": "simple",
     "value": "int"

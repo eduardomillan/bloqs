@@ -59,7 +59,16 @@ var evolutionIfLight = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-evolution-if-light-then'
         }, ]
     ],
-    code: 'if(evolution.getLightRange(LEFT,{RANGELEFT}) && evolution.getLightRange(RIGHT,{RANGERIGHT})){{STATEMENTS}}'
+    code: 'if(evolution.getLightRange(LEFT,{RANGELEFT}) && evolution.getLightRange(RIGHT,{RANGERIGHT})){{STATEMENTS}}',
+    arduino: {
+        includes: ['BitbloqEvolution.h', 'BitbloqUS.h', 'Servo.h', 'BitbloqOscillator.h'],
+        needInstanceOf: [{
+            name: 'evolution',
+            type: 'Evolution'
+        }],
+        setupExtraCode: 'evolution.init();',
+        code: 'if(evolution.getLightRange(LEFT,{RANGELEFT}) && evolution.getLightRange(RIGHT,{RANGERIGHT})){{STATEMENTS}}'
+    }
 });
 
 evolutionIfLight.connectors[1].acceptedAliases = ['all', 'ifDown'];

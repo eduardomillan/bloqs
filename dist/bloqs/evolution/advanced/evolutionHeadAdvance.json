@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "0c129486-ae6d-4ac4-94b4-548ec4226f4f"
+      "name": "29ef35e5-b372-4d1e-839a-286f1223ccfe"
     }
   ],
   "bloqClass": "bloq-evolution-head",
@@ -40,7 +40,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "0c129486-ae6d-4ac4-94b4-548ec4226f4f"
+        "name": "29ef35e5-b372-4d1e-839a-286f1223ccfe"
       },
       {
         "alias": "text",
@@ -62,5 +62,27 @@
       }
     ]
   ],
-  "code": "'{SIDE}' === 'HEAD_LEFT'? 'evolution.turnHead({DEGREES});' : 'evolution.turnHead(-{DEGREES});'"
+  "code": "'{SIDE}' === 'HEAD_LEFT'? 'evolution.turnHead({DEGREES});' : 'evolution.turnHead(-{DEGREES});'",
+  "arduino": {
+    "includes": [
+      "BitbloqEvolution.h",
+      "BitbloqUS.h",
+      "Servo.h",
+      "BitbloqOscillator.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "evolution",
+        "type": "Evolution"
+      }
+    ],
+    "setupExtraCode": "evolution.init();",
+    "conditional": {
+      "aliasId": "SIDE",
+      "code": {
+        "HEAD_LEFT": "evolution.turnHead({DEGREES});",
+        "HEAD_RIGHT": "evolution.turnHead(-{DEGREES});"
+      }
+    }
+  }
 }

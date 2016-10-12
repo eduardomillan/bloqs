@@ -72,5 +72,21 @@
       }
     ]
   ],
-  "code": "if(evolution.getLightRange(LEFT,{RANGELEFT}) && evolution.getLightRange(RIGHT,{RANGERIGHT})){{STATEMENTS}}"
+  "code": "if(evolution.getLightRange(LEFT,{RANGELEFT}) && evolution.getLightRange(RIGHT,{RANGERIGHT})){{STATEMENTS}}",
+  "arduino": {
+    "includes": [
+      "BitbloqEvolution.h",
+      "BitbloqUS.h",
+      "Servo.h",
+      "BitbloqOscillator.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "evolution",
+        "type": "Evolution"
+      }
+    ],
+    "setupExtraCode": "evolution.init();",
+    "code": "if(evolution.getLightRange(LEFT,{RANGELEFT}) && evolution.getLightRange(RIGHT,{RANGERIGHT})){{STATEMENTS}}"
+  }
 }

@@ -63,7 +63,17 @@ var zowiGestures = _.merge(_.clone(StatementBloq, true), {
             }]
         }]
     ],
-    code: 'zowi.playGesture({GESTURE});'
+    code: 'zowi.playGesture({GESTURE});',
+    arduino: {
+        includes: ['BitbloqZowi.h', 'BitbloqUS.h', 'BitbloqBatteryReader.h',
+            'BitbloqLedMatrix.h', 'Servo.h', 'BitbloqOscillator.h', 'EEPROM.h'
+        ],
+        needInstanceOf: [{
+            name: 'zowi',
+            type: 'Zowi'
+        }],
+        code: 'zowi.playGesture({GESTURE});'
+    }
 });
 utils.generateBloqInputConnectors(zowiGestures);
 

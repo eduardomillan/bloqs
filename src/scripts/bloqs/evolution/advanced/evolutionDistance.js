@@ -6,14 +6,14 @@ var _ = require('lodash'),
     OutputBloq = require('./../../outputBloq');
 
 /**
-* Bloq name: evolutionDistance
-*
-* Bloq type: Output
-*
-* Description: It returns the distance measurement that Evolution sees.
-*
-* Return type: float
-*/
+ * Bloq name: evolutionDistance
+ *
+ * Bloq type: Output
+ *
+ * Description: It returns the distance measurement that Evolution sees.
+ *
+ * Return type: float
+ */
 
 var evolutionDistance = _.merge(_.clone(OutputBloq, true), {
 
@@ -26,6 +26,15 @@ var evolutionDistance = _.merge(_.clone(OutputBloq, true), {
         }]
     ],
     code: 'evolution.getDistance()',
+    arduino: {
+        includes: ['BitbloqEvolution.h', 'BitbloqUS.h', 'Servo.h', 'BitbloqOscillator.h'],
+        needInstanceOf: [{
+            name: 'evolution',
+            type: 'Evolution'
+        }],
+        setupExtraCode: 'evolution.init();',
+        code: 'evolution.getDistance()'
+    },
     returnType: {
         type: 'simple',
         value: 'float'

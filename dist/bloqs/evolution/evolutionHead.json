@@ -38,5 +38,21 @@
       }
     ]
   ],
-  "code": "evolution.turnHead({SIDE});"
+  "code": "evolution.turnHead({SIDE});",
+  "arduino": {
+    "includes": [
+      "BitbloqEvolution.h",
+      "BitbloqUS.h",
+      "Servo.h",
+      "BitbloqOscillator.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "evolution",
+        "type": "Evolution"
+      }
+    ],
+    "setupExtraCode": "evolution.init();",
+    "code": "evolution.turnHead({SIDE});"
+  }
 }

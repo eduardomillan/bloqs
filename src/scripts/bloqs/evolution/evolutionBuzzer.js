@@ -6,15 +6,15 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
-* Bloq name: evolutionBuzzer
-* 
-* Bloq type: Statement
-*
-* Description: It turns on the buzzer of Evolution with a basic note, 
-*              selectable from a drop-down, during a given period of time.
-* 
-* Return type: none
-*/
+ * Bloq name: evolutionBuzzer
+ *
+ * Bloq type: Statement
+ *
+ * Description: It turns on the buzzer of Evolution with a basic note,
+ *              selectable from a drop-down, during a given period of time.
+ *
+ * Return type: none
+ */
 
 var evolutionBuzzer = _.merge(_.clone(StatementBloq, true), {
 
@@ -61,7 +61,16 @@ var evolutionBuzzer = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-evolution-buzzer-ms'
         }]
     ],
-    code: 'evolution._tone({NOTE},{SECONDS});'
+    code: 'evolution._tone({NOTE},{SECONDS});',
+    arduino: {
+        includes: ['BitbloqEvolution.h', 'BitbloqUS.h', 'Servo.h', 'BitbloqOscillator.h'],
+        needInstanceOf: [{
+            name: 'evolution',
+            type: 'Evolution'
+        }],
+        setupExtraCode: 'evolution.init();',
+        code: 'evolution._tone({NOTE},{SECONDS});'
+    }
 });
 utils.generateBloqInputConnectors(evolutionBuzzer);
 

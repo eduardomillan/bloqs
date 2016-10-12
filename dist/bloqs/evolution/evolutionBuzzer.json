@@ -67,5 +67,21 @@
       }
     ]
   ],
-  "code": "evolution._tone({NOTE},{SECONDS});"
+  "code": "evolution._tone({NOTE},{SECONDS});",
+  "arduino": {
+    "includes": [
+      "BitbloqEvolution.h",
+      "BitbloqUS.h",
+      "Servo.h",
+      "BitbloqOscillator.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "evolution",
+        "type": "Evolution"
+      }
+    ],
+    "setupExtraCode": "evolution.init();",
+    "code": "evolution._tone({NOTE},{SECONDS});"
+  }
 }

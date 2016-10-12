@@ -246,10 +246,12 @@
 
         var conversionBloqs = ['declareVariable', 'numConversion', 'stringToInt'];
 
+        var evolutionBloqs = ['evolutionBuzzer', 'evolutionHead', 'evolutionHome', 'evolutionIfDistance', 'evolutionIfLight', 'evolutionIfLine', 'evolutionMovementsSimple'];
 
+        var evolutionBloqs2 = ['declareVariable', 'evolutionDistance', 'evolutionHeadAdvance', 'evolutionLight', 'evolutionLine'];
 
-        var testSet = ['convert', 'serialReceive', 'serialReceiveInt', 'declareVariable'];
-        testSet = conversionBloqs;
+        var testSet = ['evolutionBuzzer', 'evolutionBuzzer'];
+        testSet = evolutionBloqs2;
         for (var i = 0; i < testSet.length; i++) {
 
             createBloq(testSet[i]);

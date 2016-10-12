@@ -46,7 +46,16 @@ var evolutionIfDistance = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-evolution-if-distance-then'
         }, ]
     ],
-    code: 'if(evolution.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}'
+    code: 'if(evolution.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}',
+    arduino: {
+        includes: ['BitbloqEvolution.h', 'BitbloqUS.h', 'Servo.h', 'BitbloqOscillator.h'],
+        needInstanceOf: [{
+            name: 'evolution',
+            type: 'Evolution'
+        }],
+        setupExtraCode: 'evolution.init();',
+        code: 'if(evolution.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}'
+    }
 });
 
 evolutionIfDistance.connectors[1].acceptedAliases = ['all', 'ifDown'];

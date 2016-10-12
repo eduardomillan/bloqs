@@ -46,6 +46,21 @@ var evolutionHeadAdvance = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     code: '\'{SIDE}\' === \'HEAD_LEFT\'? \'evolution.turnHead({DEGREES});\' : \'evolution.turnHead(-{DEGREES});\'',
+    arduino: {
+        includes: ['BitbloqEvolution.h', 'BitbloqUS.h', 'Servo.h', 'BitbloqOscillator.h'],
+        needInstanceOf: [{
+            name: 'evolution',
+            type: 'Evolution'
+        }],
+        setupExtraCode: 'evolution.init();',
+        conditional: {
+            aliasId: 'SIDE',
+            code: {
+                'HEAD_LEFT': 'evolution.turnHead({DEGREES});',
+                'HEAD_RIGHT': 'evolution.turnHead(-{DEGREES});'
+            }
+        }
+    }
 });
 utils.generateBloqInputConnectors(evolutionHeadAdvance);
 

@@ -53,7 +53,16 @@ var evolutionIfLine = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-evolution-if-line-then'
         }, ]
     ],
-    code: 'if(evolution.getLine(LEFT) == {LINELEFT} && evolution.getLine(RIGHT) == {LINERIGHT}){{STATEMENTS}}'
+    code: 'if(evolution.getLine(LEFT) == {LINELEFT} && evolution.getLine(RIGHT) == {LINERIGHT}){{STATEMENTS}}',
+    arduino: {
+        includes: ['BitbloqEvolution.h', 'BitbloqUS.h', 'Servo.h', 'BitbloqOscillator.h'],
+        needInstanceOf: [{
+            name: 'evolution',
+            type: 'Evolution'
+        }],
+        setupExtraCode: 'evolution.init();',
+        code: 'if(evolution.getLine(LEFT) == {LINELEFT} && evolution.getLine(RIGHT) == {LINERIGHT}){{STATEMENTS}}'
+    }
 });
 
 evolutionIfLine.connectors[1].acceptedAliases = ['all', 'ifDown'];

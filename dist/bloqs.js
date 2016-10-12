@@ -1779,7 +1779,8 @@
 
 
     var includes = {},
-        instances = {};
+        instances = {},
+        setupExtraCodeList = {};
 
     function getCode(arduinoMainBloqs, hardwareList) {
         console.log('getting code', arduinoMainBloqs);
@@ -1796,6 +1797,11 @@
         var includesCode = '';
         for (prop in includes) {
             includesCode += '#include <' + prop + '>\n';
+        }
+
+        var setupExtraCode = '';
+        for (prop in setupExtraCodeList) {
+            setupExtraCode += prop + '\n';
         }
 
         var instancesCode = '',
@@ -1826,9 +1832,15 @@
         code += includesCode + '\n\n';
         code += instancesCode + '\n\n';
         code += varsCode + '\n\n';
-        code += setupCode + '\n\n';
+        code += addSetupCode(setupCode, setupExtraCode) + '\n\n';
         code += loopCode + '\n\n';
         return code;
+    }
+
+    function addSetupCode(setupCode, setupExtraCode) {
+        var positionToAdd = 13;
+        setupExtraCode = '\n' + setupExtraCode + '\n';
+        return [setupCode.slice(0, positionToAdd), setupExtraCode, setupCode.slice(positionToAdd)].join('');
     }
 
     function findItemByProperty(searchValue, list, property) {
@@ -1948,6 +1960,12 @@
             }
         }
 
+
+        if (bloqFullStructure.arduino.setupExtraCode) {
+            setupExtraCodeList[processCode(bloqFullStructure.arduino.setupExtraCode, aliasesValuesHashMap)] = true;
+        }
+
+
         var code;
         if (bloqFullStructure.arduino.conditional) {
             code = bloqFullStructure.arduino.conditional.code[aliasesValuesHashMap[bloqFullStructure.arduino.conditional.aliasId].value];
@@ -1956,7 +1974,16 @@
         }
         code = code || '';
 
+        code = processCode(code, aliasesValuesHashMap);
 
+        if (bloqFullStructure.type !== 'output') {
+            code += '\n';
+        }
+
+        return code;
+    }
+
+    function processCode(code, aliasesValuesHashMap) {
         var match;
         //searchGroups
         match = BLOQS_PARAMS_REGEXP.exec(code);
@@ -1974,10 +2001,6 @@
             //console.log(aliasesValuesHashMap[match[1]]);
             code = code.replace(match[0], aliasesValuesHashMap[match[1]].value);
             match = PARAMS_REGEXP.exec(code);
-        }
-
-        if (bloqFullStructure.type !== 'output') {
-            code += '\n';
         }
 
         return code;

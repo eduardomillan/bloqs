@@ -20,5 +20,21 @@
       }
     ]
   ],
-  "code": "evolution.home();"
+  "code": "evolution.home();",
+  "arduino": {
+    "includes": [
+      "BitbloqEvolution.h",
+      "BitbloqUS.h",
+      "Servo.h",
+      "BitbloqOscillator.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "evolution",
+        "type": "Evolution"
+      }
+    ],
+    "setupExtraCode": "evolution.init();",
+    "code": "evolution.home();"
+  }
 }
