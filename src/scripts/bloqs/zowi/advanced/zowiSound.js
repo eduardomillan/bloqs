@@ -29,6 +29,16 @@ var zowiSound = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    arduino: {
+        includes: ['BitbloqZowi.h', 'BitbloqUS.h', 'BitbloqBatteryReader.h',
+            'BitbloqLedMatrix.h', 'Servo.h', 'BitbloqOscillator.h', 'EEPROM.h'
+        ],
+        needInstanceOf: [{
+            name: 'zowi',
+            type: 'Zowi'
+        }],
+        code: 'zowi.getNoise()'
     }
 });
 utils.generateBloqInputConnectors(zowiSound);

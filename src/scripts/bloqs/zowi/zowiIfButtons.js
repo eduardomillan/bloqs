@@ -40,7 +40,17 @@ var zowiIfButtons = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-zowi-if-buttons-then-v1'
         }, ]
     ],
-    code: 'if(digitalRead({BUTTON}) == 1){{STATEMENTS}}'
+    code: 'if(digitalRead({BUTTON}) == 1){{STATEMENTS}}',
+    arduino: {
+        includes: ['BitbloqZowi.h', 'BitbloqUS.h', 'BitbloqBatteryReader.h',
+            'BitbloqLedMatrix.h', 'Servo.h', 'BitbloqOscillator.h', 'EEPROM.h'
+        ],
+        needInstanceOf: [{
+            name: 'zowi',
+            type: 'Zowi'
+        }],
+        code: 'if(digitalRead({BUTTON}) == 1){{STATEMENTS}}'
+    }
 });
 
 zowiIfButtons.connectors[1].acceptedAliases = ['all', 'ifDown'];

@@ -25,7 +25,17 @@ var zowiIfSound = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-zowi-if-sound-v1'
         }, ]
     ],
-    code: ' if(zowi.getNoise() >= 650){{STATEMENTS}}'
+    code: ' if(zowi.getNoise() >= 650){{STATEMENTS}}',
+    arduino: {
+        includes: ['BitbloqZowi.h', 'BitbloqUS.h', 'BitbloqBatteryReader.h',
+            'BitbloqLedMatrix.h', 'Servo.h', 'BitbloqOscillator.h', 'EEPROM.h'
+        ],
+        needInstanceOf: [{
+            name: 'zowi',
+            type: 'Zowi'
+        }],
+        code: ' if(zowi.getNoise() >= 650){{STATEMENTS}}'
+    }
 });
 
 zowiIfSound.connectors[1].acceptedAliases = ['all', 'ifDown'];

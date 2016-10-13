@@ -15,7 +15,7 @@
       "suggestedBloqs": [
         "selectVariable"
       ],
-      "name": "564a5c02-86a4-4e2c-a278-18d6134cb24c"
+      "name": "9ec52d0a-ac1c-4104-8248-e67f2ca33c48"
     }
   ],
   "bloqClass": "bloq-length",
@@ -34,7 +34,7 @@
         "suggestedBloqs": [
           "selectVariable"
         ],
-        "name": "564a5c02-86a4-4e2c-a278-18d6134cb24c"
+        "name": "9ec52d0a-ac1c-4104-8248-e67f2ca33c48"
       }
     ]
   ],
@@ -42,5 +42,8 @@
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "arduino": {
+    "code": "{TEXT}.length()"
   }
 }

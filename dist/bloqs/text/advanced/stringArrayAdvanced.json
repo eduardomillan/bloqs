@@ -16,7 +16,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "3d2bafbb-1e89-4f9f-8bfa-56419c0833a9"
+      "name": "db73d00a-9a39-450f-9281-47fed3e560fc"
     }
   ],
   "bloqClass": "bloq-stringArray-advanced",
@@ -36,7 +36,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "3d2bafbb-1e89-4f9f-8bfa-56419c0833a9"
+        "name": "db73d00a-9a39-450f-9281-47fed3e560fc"
       },
       {
         "alias": "text",
@@ -63,5 +63,8 @@
     "type": "fromDropdown",
     "idDropdown": "TYPE",
     "options": "softwareVars"
+  },
+  "arduino": {
+    "code": "({TYPE})malloc({VALUE}*sizeof(¬{TYPE.withoutAsterisk}))"
   }
 }

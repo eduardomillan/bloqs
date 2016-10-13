@@ -49,6 +49,9 @@ var stringArrayAdvanced = _.merge(_.clone(OutputBloq, true), {
         type: 'fromDropdown',
         idDropdown: 'TYPE',
         options: 'softwareVars'
+    },
+    arduino: {
+        code: '({TYPE})malloc({VALUE}*sizeof(¬{TYPE.withoutAsterisk}))'
     }
 });
 

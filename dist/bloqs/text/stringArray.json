@@ -29,5 +29,8 @@
   "returnType": {
     "type": "simple",
     "value": "String *"
+  },
+  "arduino": {
+    "code": "(String *)malloc({VALUE}*sizeof(String))"
   }
 }

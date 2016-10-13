@@ -46,7 +46,17 @@ var zowiIfDistance = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-zowi-if-distance-then-v1'
         }, ]
     ],
-    code: 'if(zowi.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}'
+    code: 'if(zowi.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}',
+    arduino: {
+        includes: ['BitbloqZowi.h', 'BitbloqUS.h', 'BitbloqBatteryReader.h',
+            'BitbloqLedMatrix.h', 'Servo.h', 'BitbloqOscillator.h', 'EEPROM.h'
+        ],
+        needInstanceOf: [{
+            name: 'zowi',
+            type: 'Zowi'
+        }],
+        code: 'if(zowi.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}'
+    }
 });
 
 zowiIfDistance.connectors[1].acceptedAliases = ['all', 'ifDown'];

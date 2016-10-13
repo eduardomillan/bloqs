@@ -36,6 +36,9 @@ var bloqChar = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'char'
+    },
+    arduino: {
+        code: '\'{TEXT}\''
     }
 });
 

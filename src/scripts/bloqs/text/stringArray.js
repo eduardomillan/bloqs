@@ -36,6 +36,9 @@ var stringArray = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'String *'
+    },
+    arduino: {
+        code: '(String *)malloc({VALUE}*sizeof(String))'
     }
 });
 

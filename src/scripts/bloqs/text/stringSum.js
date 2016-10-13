@@ -39,6 +39,9 @@ var stringSum = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'String'
+    },
+    arduino: {
+        code: 'String({ARG1})+String({ARG2})'
     }
 });
 
