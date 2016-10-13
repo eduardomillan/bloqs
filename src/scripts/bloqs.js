@@ -667,14 +667,26 @@
     };
 
     var updateSoftVarTypes = function(softwareArrays, dynamicContentType, bloqs, IOConnectors) {
+        //refresh type of functions and vars
+        if ((dynamicContentType === 'returnFunctions') || (dynamicContentType === 'softwareVars')) {
+            refreshSoftVarTypes(softwareArrays, 'returnFunctions', bloqs, IOConnectors);
+            refreshSoftVarTypes(softwareArrays, 'softwareVars', bloqs, IOConnectors);
+        } else {
+            refreshSoftVarTypes(softwareArrays, dynamicContentType, bloqs, IOConnectors);
+        }
 
+
+        //console.log('dynamicContentType updated', dynamicContentType);
+        //utils.drawSoftwareArray(softwareArrays);
+    };
+
+    function refreshSoftVarTypes(softwareArrays, dynamicContentType, bloqs, IOConnectors) {
         var tempSoftVar;
         for (var i = 0; i < softwareArrays[dynamicContentType].length; i++) {
             tempSoftVar = softwareArrays[dynamicContentType][i];
             tempSoftVar.type = utils.getTypeFromBloq(bloqs[tempSoftVar.bloqUuid], bloqs, IOConnectors, softwareArrays, componentsArray);
         }
-        //utils.drawSoftwareArray(softwareArrays);
-    };
+    }
 
     var removeBloq = function(bloqUuid, redraw) {
         //console.log('remove:', bloqUuid);
@@ -1878,9 +1890,16 @@
                                 //only software Vars get value from val(), hardware, use attribute or val()
                                 var variableType = this.bloqData.content[0][i].options;
                                 var itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType);
-
+                                var valueType;
                                 if (itsSoftwareValue !== -1) {
                                     value = selectedValue;
+                                    var j = 0;
+                                    while (!valueType && (j < softwareArrays[variableType].length)) {
+                                        if (softwareArrays[variableType][j].name === value) {
+                                            valueType = softwareArrays[variableType][j].type;
+                                        }
+                                        j++;
+                                    }
                                 } else {
                                     value = attributeValue || selectedValue;
                                 }
@@ -1890,7 +1909,8 @@
                                     tempObject = {
                                         alias: this.bloqData.content[0][i].alias,
                                         id: this.bloqData.content[0][i].id,
-                                        value: value
+                                        value: value,
+                                        valueType: valueType
                                     };
                                 }
                                 break;
@@ -1914,6 +1934,7 @@
                         if (tempObject) {
                             if (fullStructure) {
                                 result.content[0][i].value = tempObject.value;
+                                result.content[0][i].valueType = tempObject.valueType;
                             } else {
                                 result.content[0].push(tempObject);
                             }

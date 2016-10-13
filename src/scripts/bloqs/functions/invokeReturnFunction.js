@@ -41,6 +41,9 @@ var invokeReturnFunction = _.merge(_.clone(OutputBloq, true), {
         codeLines: [{
             code: '{FUNCTION}()'
         }]
+    },
+    arduino: {
+        code: '{FUNCTION}()'
     }
 });
 

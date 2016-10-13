@@ -39,6 +39,9 @@ var invokeFunction = _.merge(_.clone(StatementBloq, true), {
         codeLines: [{
             code: '{FUNCTION}()'
         }]
+    },
+    arduino: {
+        code: '{FUNCTION}();'
     }
 });
 

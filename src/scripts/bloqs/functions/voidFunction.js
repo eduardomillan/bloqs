@@ -43,6 +43,9 @@ var voidFunction = _.merge(_.clone(StatementInputBloq, true), {
             indentation: 1,
             code: '{STATEMENTS}'
         }]
+    },
+    arduino: {
+        code: 'void {FUNCNAME} (){{STATEMENTS}}'
     }
 });
 

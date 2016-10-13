@@ -59,6 +59,7 @@
     <!-- begin demo markup -->
     <div id="bloqs--field" class="theme-colors"></div>
     <button id="getcodebutton">getCode()</button>
+    <button id="getStructure">getStructure()</button>
     <code id="code--field" class="language-"></code>
     <!-- end demo markup -->
     <p>See the <a href="http://bq.github.io/bloqs">project homepage</a>.</p>
@@ -202,7 +203,15 @@
                 loopBloq: arduinoMainBloqs.loopBloq.getBloqsStructure(true)
             }, hardwareSchema)));
         });
-
+        $('#getStructure').click(function() {
+            var actualProjectSoftware = {
+                vars: arduinoMainBloqs.varsBloq.getBloqsStructure(true),
+                setup: arduinoMainBloqs.setupBloq.getBloqsStructure(true),
+                loop: arduinoMainBloqs.loopBloq.getBloqsStructure(true)
+            };
+            //now you can store that project and load in another moment.
+            console.log(JSON.stringify(actualProjectSoftware));
+        });
         //start build bloqs!
         var createBloq = function(name) {
             //Create a if bloq from the bloqsSchemas loaded
@@ -219,9 +228,12 @@
             bloq.doConnectable();
         };
 
-        var functionBloqs = ['if', 'invokeFunctionWithArguments', 'arguments', 'invokeReturnFunctionWithArguments',
-            'return', 'returnFunctionWithArguments', 'voidFunctionWithArguments'
+        var functionBloqs = ['declareVariable', 'declareVariable', 'returnFunction', 'invokeFunction', 'invokeReturnFunction', 'returnFunction',
+            'voidFunction'
         ];
+
+        var functionBloqs2 = ['declareVariable', 'argument', 'arguments', 'invokeFunctionWithArguments', 'invokeReturnFunctionWithArguments', 'return', 'returnFunctionWithArguments', 'voidFunctionWithArguments'];
+
         var varsBloqs = ['setVariable', 'declareVariable', 'setArrayVariable', 'arrayVariableAdvanced', 'declareArrayAdvanced',
             'declareVariableAdvanced', 'setArrayVariableAdvanced'
         ];
@@ -251,7 +263,10 @@
         var evolutionBloqs2 = ['declareVariable', 'evolutionDistance', 'evolutionHeadAdvance', 'evolutionLight', 'evolutionLine'];
 
         var testSet = ['evolutionBuzzer', 'evolutionBuzzer'];
-        testSet = evolutionBloqs2;
+
+
+        testSet = functionBloqs;
+
         for (var i = 0; i < testSet.length; i++) {
 
             createBloq(testSet[i]);

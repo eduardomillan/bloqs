@@ -109,6 +109,7 @@
                 i = 0;
             switch (bloq.returnType.type) {
                 case 'fromDropdown':
+                case 'fromDynamicDropdown':
                     contentId = bloq.returnType.idDropdown;
                     propertyName = 'id';
                     break;
@@ -116,7 +117,7 @@
 
             while (!result && (i < bloq.content[0].length)) {
                 if (bloq.content[0][i][propertyName] === contentId) {
-                    result = bloq.content[0][i].value;
+                    result = bloq.content[0][i].valueType || bloq.content[0][i].value;
                 }
                 i++;
             }

@@ -56,6 +56,9 @@ var returnFunction = _.merge(_.clone(StatementInputBloq, true), {
             indentation: 1,
             code: 'return {RETURN}'
         }]
+    },
+    arduino: {
+        code: '@{RETURN.returnType} {FUNCNAME} () {{STATEMENTS}return {RETURN};}'
     }
 });
 
