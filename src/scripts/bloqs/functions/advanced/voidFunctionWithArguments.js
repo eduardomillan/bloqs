@@ -47,7 +47,10 @@ var voidFunctionWithArguments = _.merge(_.clone(StatementInputBloq, true), {
         type: 'fromInput',
         bloqInputId: 'ARGS'
     },
-    code: 'void {FUNCNAME} ({ARGS}){{STATEMENTS}}'
+    code: 'void {FUNCNAME} ({ARGS}){{STATEMENTS}}',
+    arduino: {
+        code: 'void {FUNCNAME} ({ARGS}){{STATEMENTS}}'
+    }
 });
 
 utils.generateBloqInputConnectors(voidFunctionWithArguments);

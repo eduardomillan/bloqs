@@ -42,6 +42,9 @@ var invokeFunctionWithArguments = _.merge(_.clone(StatementBloq, true), {
     dynamicDropdown: {
         idDropdown: 'FUNCTION',
         options: 'voidFunctions'
+    },
+    arduino: {
+        code: '{FUNCTION}({ARGS});'
     }
 });
 

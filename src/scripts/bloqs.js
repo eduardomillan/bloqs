@@ -1896,7 +1896,7 @@
                                     var j = 0;
                                     while (!valueType && (j < softwareArrays[variableType].length)) {
                                         if (softwareArrays[variableType][j].name === value) {
-                                            valueType = softwareArrays[variableType][j].type;
+                                            valueType = softwareArrays[variableType][j].type || -1;
                                         }
                                         j++;
                                     }

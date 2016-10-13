@@ -18,7 +18,7 @@
         "selectVariable",
         "arguments"
       ],
-      "name": "c24bf0b9-bcd9-4b26-9b1a-e7e03b3de80b"
+      "name": "181909d4-e9ea-4dd7-b886-23a73f48cdc6"
     }
   ],
   "bloqClass": "bloq-invoke-return-function-with-arguments",
@@ -49,7 +49,7 @@
           "selectVariable",
           "arguments"
         ],
-        "name": "c24bf0b9-bcd9-4b26-9b1a-e7e03b3de80b"
+        "name": "181909d4-e9ea-4dd7-b886-23a73f48cdc6"
       }
     ]
   ],
@@ -58,5 +58,8 @@
     "type": "fromDynamicDropdown",
     "idDropdown": "FUNCTION",
     "options": "returnFunctions"
+  },
+  "arduino": {
+    "code": "{FUNCTION}({ARGS})"
   }
 }

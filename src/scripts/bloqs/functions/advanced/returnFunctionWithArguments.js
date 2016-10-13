@@ -57,7 +57,10 @@ var returnFunctionWithArguments = _.merge(_.clone(StatementInputBloq, true), {
         type: 'fromInput',
         bloqInputId: 'ARGS'
     },
-    code: '{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}'
+    code: '{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}',
+    arduino: {
+        code: '@{RETURN.returnType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}'
+    }
 });
 
 utils.generateBloqInputConnectors(returnFunctionWithArguments);

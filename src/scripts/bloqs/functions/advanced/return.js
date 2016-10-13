@@ -31,7 +31,10 @@ var bloqReturn = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['selectVariable', 'logicOperations', 'equalityOperations']
         }]
     ],
-    code: 'return {RETURN};'
+    code: 'return {RETURN};',
+    arduino: {
+        code: 'return {RETURN};'
+    }
 });
 
 utils.generateBloqInputConnectors(bloqReturn);

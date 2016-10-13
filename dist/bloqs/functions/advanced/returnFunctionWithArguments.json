@@ -27,7 +27,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "018c0cea-af3e-4ef3-8110-da213b2ac69c"
+      "name": "95351466-f85a-4240-abe7-67a6e0b55f17"
     },
     {
       "type": "connector--input",
@@ -40,7 +40,7 @@
         "logicOperations",
         "equalityOperations"
       ],
-      "name": "fefca097-10c6-4be9-b96f-a7227770f614"
+      "name": "d33265bf-0756-45d3-8af8-4aa6e8eccd6c"
     }
   ],
   "bloqClass": "bloq-return-function-with-arguments",
@@ -72,7 +72,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "018c0cea-af3e-4ef3-8110-da213b2ac69c"
+        "name": "95351466-f85a-4240-abe7-67a6e0b55f17"
       },
       {
         "position": "DOWN",
@@ -91,7 +91,7 @@
           "logicOperations",
           "equalityOperations"
         ],
-        "name": "fefca097-10c6-4be9-b96f-a7227770f614"
+        "name": "d33265bf-0756-45d3-8af8-4aa6e8eccd6c"
       }
     ]
   ],
@@ -104,5 +104,8 @@
     "type": "fromInput",
     "bloqInputId": "ARGS"
   },
-  "code": "{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
+  "code": "{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}",
+  "arduino": {
+    "code": "@{RETURN.returnType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
+  }
 }

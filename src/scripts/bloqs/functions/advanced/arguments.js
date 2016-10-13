@@ -41,6 +41,9 @@ var bloqArguments = _.merge(_.clone(OutputBloq, true), {
         type: 'simple',
         value: 'var'
     },
+    arduino: {
+        code: '{ARG1},{ARG2}'
+    }
 });
 
 utils.generateBloqInputConnectors(bloqArguments);

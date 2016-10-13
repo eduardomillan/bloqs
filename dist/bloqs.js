@@ -1888,7 +1888,9 @@
 
             while (!result && (i < bloq.content[0].length)) {
                 if (bloq.content[0][i][propertyName] === contentId) {
-                    result = bloq.content[0][i].valueType || bloq.content[0][i].value;
+                    if (bloq.content[0][i].valueType !== -1) {
+                        result = bloq.content[0][i].valueType || bloq.content[0][i].value;
+                    }
                 }
                 i++;
             }
@@ -4140,7 +4142,7 @@
                                     var j = 0;
                                     while (!valueType && (j < softwareArrays[variableType].length)) {
                                         if (softwareArrays[variableType][j].name === value) {
-                                            valueType = softwareArrays[variableType][j].type;
+                                            valueType = softwareArrays[variableType][j].type || -1;
                                         }
                                         j++;
                                     }

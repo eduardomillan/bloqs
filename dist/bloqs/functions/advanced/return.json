@@ -21,7 +21,7 @@
         "logicOperations",
         "equalityOperations"
       ],
-      "name": "6d0eb56f-3741-4efa-b991-dcc787bb4a46"
+      "name": "592d2e50-2de2-4ac7-891b-630bf124b8d4"
     }
   ],
   "bloqClass": "bloq-return",
@@ -42,9 +42,12 @@
           "logicOperations",
           "equalityOperations"
         ],
-        "name": "6d0eb56f-3741-4efa-b991-dcc787bb4a46"
+        "name": "592d2e50-2de2-4ac7-891b-630bf124b8d4"
       }
     ]
   ],
-  "code": "return {RETURN};"
+  "code": "return {RETURN};",
+  "arduino": {
+    "code": "return {RETURN};"
+  }
 }

@@ -19,7 +19,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "52733a5d-da99-4dcd-97d1-901493bc763c"
+      "name": "3ac6ab64-2a2a-49b8-8826-4a14cfe73aca"
     },
     {
       "type": "connector--input",
@@ -34,7 +34,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "5dfe80b9-31e4-49b6-a2ef-0414dc1db4ba"
+      "name": "dcb113cd-a482-4af5-aa38-14f4c1a575a0"
     }
   ],
   "bloqClass": "bloq-arguments",
@@ -53,7 +53,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "52733a5d-da99-4dcd-97d1-901493bc763c"
+        "name": "3ac6ab64-2a2a-49b8-8826-4a14cfe73aca"
       },
       {
         "alias": "text",
@@ -72,7 +72,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "5dfe80b9-31e4-49b6-a2ef-0414dc1db4ba"
+        "name": "dcb113cd-a482-4af5-aa38-14f4c1a575a0"
       }
     ]
   ],
@@ -81,5 +81,8 @@
   "returnType": {
     "type": "simple",
     "value": "var"
+  },
+  "arduino": {
+    "code": "{ARG1},{ARG2}"
   }
 }

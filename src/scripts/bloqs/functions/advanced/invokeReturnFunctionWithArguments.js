@@ -43,6 +43,9 @@ var invokeReturnFunctionWithArguments = _.merge(_.clone(OutputBloq, true), {
         type: 'fromDynamicDropdown',
         idDropdown: 'FUNCTION',
         options: 'returnFunctions'
+    },
+    arduino: {
+        code: '{FUNCTION}({ARGS})'
     }
 });
 
