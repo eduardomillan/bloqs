@@ -47,6 +47,9 @@ var setVariable = _.merge(_.clone(StatementBloq, true), {
         codeLines: [{
             code: '{NAME} = {VALUE}'
         }]
+    },
+    arduino: {
+        code: '{NAME} = {VALUE};'
     }
 });
 

@@ -17,7 +17,7 @@
         "selectVariable",
         "basicOperations"
       ],
-      "name": "03dffa0a-735f-4980-b964-b9b96e1fca98"
+      "name": "40867711-96a2-414e-9aeb-1a90fed96872"
     },
     {
       "type": "connector--input",
@@ -30,7 +30,7 @@
         "selectVariable",
         "basicOperations"
       ],
-      "name": "48d15700-4be5-4e57-9fb4-044d0fe70daa"
+      "name": "c875c829-142b-4840-bf9c-aea817728c90"
     }
   ],
   "bloqClass": "bloq-basic-operations",
@@ -47,7 +47,7 @@
           "selectVariable",
           "basicOperations"
         ],
-        "name": "03dffa0a-735f-4980-b964-b9b96e1fca98"
+        "name": "40867711-96a2-414e-9aeb-1a90fed96872"
       },
       {
         "id": "OPERATOR",
@@ -90,7 +90,7 @@
           "selectVariable",
           "basicOperations"
         ],
-        "name": "48d15700-4be5-4e57-9fb4-044d0fe70daa"
+        "name": "c875c829-142b-4840-bf9c-aea817728c90"
       }
     ]
   ],
@@ -115,5 +115,18 @@
         }
       }
     ]
+  },
+  "arduino": {
+    "conditional": {
+      "aliasId": "OPERATOR",
+      "code": {
+        "+": "{ARG1} {OPERATOR} {ARG2}",
+        "-": "{ARG1} {OPERATOR} {ARG2}",
+        "*": "{ARG1} {OPERATOR} {ARG2}",
+        "/": "{ARG1} {OPERATOR} {ARG2}",
+        "^": "{ARG1} ** {ARG2}",
+        "%": "{ARG1} {OPERATOR} {ARG2}"
+      }
+    }
   }
 }

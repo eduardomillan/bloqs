@@ -36,6 +36,9 @@ var numberArray = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float *'
+    },
+    arduino: {
+        code: '(float*)malloc({VALUE}*sizeof(float))'
     }
 });
 

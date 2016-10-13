@@ -46,6 +46,9 @@ var logicOperations = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'bool'
+    },
+    arduino: {
+        code: '({ARG1} {OPERATOR} {ARG2})'
     }
 });
 

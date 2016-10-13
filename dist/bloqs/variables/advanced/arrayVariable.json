@@ -17,7 +17,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "a7208c7d-44a1-4867-a3e9-244d7efaac49"
+      "name": "381c6268-f932-4289-b567-72274f003d53"
     }
   ],
   "bloqClass": "bloq-array-variable",
@@ -47,7 +47,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "a7208c7d-44a1-4867-a3e9-244d7efaac49"
+        "name": "381c6268-f932-4289-b567-72274f003d53"
       },
       {
         "alias": "text",
@@ -61,5 +61,8 @@
     "idDropdown": "VAR",
     "pointer": "true",
     "options": "softwareVars"
+  },
+  "arduino": {
+    "code": "{VAR}[{POSITION}]"
   }
 }

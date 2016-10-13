@@ -16,7 +16,7 @@
         "readSensor",
         "selectVariable"
       ],
-      "name": "9233584c-2476-4752-b202-ab591e210e34"
+      "name": "4d70cfc8-3338-4ac1-ab09-b63e88fb9dcd"
     },
     {
       "type": "connector--input",
@@ -28,7 +28,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "f2946d3a-f961-4249-bfab-c87e7abb41a8"
+      "name": "467e6580-dd0f-4599-a544-bb85d379013f"
     }
   ],
   "bloqClass": "bloq-map",
@@ -48,7 +48,7 @@
           "readSensor",
           "selectVariable"
         ],
-        "name": "9233584c-2476-4752-b202-ab591e210e34"
+        "name": "4d70cfc8-3338-4ac1-ab09-b63e88fb9dcd"
       },
       {
         "alias": "text",
@@ -64,7 +64,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "f2946d3a-f961-4249-bfab-c87e7abb41a8"
+        "name": "467e6580-dd0f-4599-a544-bb85d379013f"
       },
       {
         "alias": "text",
@@ -76,5 +76,8 @@
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "arduino": {
+    "code": "map({VAR},0,1023,0,{MAXVAL})"
   }
 }

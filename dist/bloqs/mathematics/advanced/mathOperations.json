@@ -16,7 +16,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "131433fa-f32d-4935-acd3-f81ae0d2a75b"
+      "name": "c2c74c59-4f15-49fb-9370-4a8ceb01a4e1"
     }
   ],
   "bloqClass": "bloq-math-operations",
@@ -58,7 +58,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "131433fa-f32d-4935-acd3-f81ae0d2a75b"
+        "name": "c2c74c59-4f15-49fb-9370-4a8ceb01a4e1"
       }
     ]
   ],
@@ -66,5 +66,8 @@
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "arduino": {
+    "code": "{OPERATOR}({ARG})"
   }
 }

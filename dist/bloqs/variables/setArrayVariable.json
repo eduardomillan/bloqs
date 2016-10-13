@@ -24,7 +24,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "1ff6e8a9-2bfa-4f31-a5ab-cbe185af4e16"
+      "name": "c9358f34-0042-46bb-b815-470d315a90f1"
     }
   ],
   "bloqClass": "bloq-set-variableArray",
@@ -70,9 +70,12 @@
           "string",
           "selectVariable"
         ],
-        "name": "1ff6e8a9-2bfa-4f31-a5ab-cbe185af4e16"
+        "name": "c9358f34-0042-46bb-b815-470d315a90f1"
       }
     ]
   ],
-  "code": "{NAME}[{ITERATOR}] = {VALUE};"
+  "code": "{NAME}[{ITERATOR}] = {VALUE};",
+  "arduino": {
+    "code": "{NAME}[{ITERATOR}] = {VALUE};"
+  }
 }

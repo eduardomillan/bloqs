@@ -21,7 +21,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "f037a299-3167-469f-ae37-fbde347ad004"
+      "name": "f2a52316-3f99-4ccc-b709-efffd4d44811"
     }
   ],
   "bloqClass": "bloq-declare-array",
@@ -81,7 +81,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "f037a299-3167-469f-ae37-fbde347ad004"
+        "name": "f2a52316-3f99-4ccc-b709-efffd4d44811"
       }
     ]
   ],
@@ -90,5 +90,8 @@
     "type": "fromDropdown",
     "idDropdown": "TYPE"
   },
-  "code": "{TYPE} {NAME} [{VALUE}];"
+  "code": "{TYPE} {NAME} [{VALUE}];",
+  "arduino": {
+    "code": "{TYPE} {NAME} [{VALUE}];"
+  }
 }

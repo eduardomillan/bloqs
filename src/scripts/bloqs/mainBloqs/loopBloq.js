@@ -24,9 +24,9 @@
      descriptionText: 'bloq-loop-description',
      content: [],
      code: 'void loop(){{STATEMENTS}}',
-     arduino:{
-        code: 'void loop(){{STATEMENTS}}'
-    }
+     arduino: {
+         code: 'void loop(){{STATEMENTS}}'
+     }
  });
 
  utils.generateBloqInputConnectors(loopBloq);

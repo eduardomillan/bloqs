@@ -50,7 +50,10 @@ var setArrayVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['number', 'string', 'selectVariable']
         }]
     ],
-    code: '{NAME}[{ITERATOR}] = {VALUE};'
+    code: '{NAME}[{ITERATOR}] = {VALUE};',
+    arduino: {
+        code: '{NAME}[{ITERATOR}] = {VALUE};'
+    }
 });
 
 utils.generateBloqInputConnectors(setArrayVariableAdvanced);

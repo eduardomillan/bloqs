@@ -51,6 +51,9 @@ var mathOperations = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    arduino: {
+        code: '{OPERATOR}({ARG})'
     }
 });
 

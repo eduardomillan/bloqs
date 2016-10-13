@@ -64,7 +64,10 @@ var declareArrayAdvanced = _.merge(_.clone(StatementBloq, true), {
         type: 'fromDropdown',
         idDropdown: 'TYPE'
     },
-    code: '{TYPE} {NAME} [{VALUE}];'
+    code: '{TYPE} {NAME} [{VALUE}];',
+    arduino: {
+        code: '{TYPE} {NAME} [{VALUE}];'
+    }
 });
 
 utils.generateBloqInputConnectors(declareArrayAdvanced);

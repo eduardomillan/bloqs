@@ -65,7 +65,10 @@ var declareVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
         idDropdown: 'TYPE',
     },
     createDynamicContent: 'softwareVars',
-    code: '{TYPE} {NAME} = {VALUE};'
+    code: '{TYPE} {NAME} = {VALUE};',
+    arduino: {
+        code: '{TYPE} {NAME} = {VALUE};'
+    }
 });
 
 utils.generateBloqInputConnectors(declareVariableAdvanced);

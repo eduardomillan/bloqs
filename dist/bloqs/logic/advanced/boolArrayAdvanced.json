@@ -12,7 +12,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "785bc32a-1856-4d4f-9303-21e6a6e951d2"
+      "name": "85c207d9-c7c8-4643-ad30-d09f596bd2ff"
     }
   ],
   "bloqClass": "bloq-boolArray-advanced",
@@ -28,7 +28,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "785bc32a-1856-4d4f-9303-21e6a6e951d2"
+        "name": "85c207d9-c7c8-4643-ad30-d09f596bd2ff"
       },
       {
         "alias": "text",
@@ -40,5 +40,8 @@
   "returnType": {
     "type": "simple",
     "value": "bool *"
+  },
+  "arduino": {
+    "code": "(bool *)malloc({VALUE}*sizeof(bool))"
   }
 }

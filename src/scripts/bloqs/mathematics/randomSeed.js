@@ -29,6 +29,9 @@ var randomSeed = _.merge(_.clone(StatementBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    arduino: {
+        code: 'randomSeed(micros());'
     }
 });
 

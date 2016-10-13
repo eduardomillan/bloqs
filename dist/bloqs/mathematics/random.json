@@ -16,7 +16,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "64633bfa-453f-4e1e-bc0a-77ae4a3fb474"
+      "name": "bca780f9-2ee9-43b4-99c9-d1b796e0d3d0"
     },
     {
       "type": "connector--input",
@@ -28,7 +28,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "6f612306-b06d-45e7-a4ac-bd25b167ae39"
+      "name": "8effcf11-bf71-480c-85c5-f8ddf6d24fd0"
     }
   ],
   "bloqClass": "bloq-random",
@@ -48,7 +48,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "64633bfa-453f-4e1e-bc0a-77ae4a3fb474"
+        "name": "bca780f9-2ee9-43b4-99c9-d1b796e0d3d0"
       },
       {
         "alias": "text",
@@ -64,7 +64,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "6f612306-b06d-45e7-a4ac-bd25b167ae39"
+        "name": "8effcf11-bf71-480c-85c5-f8ddf6d24fd0"
       }
     ]
   ],
@@ -72,5 +72,8 @@
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "arduino": {
+    "code": "random({ARG1},{ARG2}+1)"
   }
 }

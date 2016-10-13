@@ -16,7 +16,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "0869afaf-c77d-4902-b510-016355d90c02"
+      "name": "dacc2c8c-9cab-41ef-a0b0-d104a19ef0a6"
     }
   ],
   "bloqClass": "bloq-round",
@@ -58,7 +58,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "0869afaf-c77d-4902-b510-016355d90c02"
+        "name": "dacc2c8c-9cab-41ef-a0b0-d104a19ef0a6"
       }
     ]
   ],
@@ -66,5 +66,8 @@
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "arduino": {
+    "code": "{OPERATOR}({VAR})"
   }
 }

@@ -16,7 +16,7 @@
         "readSensor",
         "selectVariable"
       ],
-      "name": "a03b3b6d-b675-43ff-a38c-23b076b6bf75"
+      "name": "192ba37f-1929-4f46-bc92-0cecf3baacc4"
     },
     {
       "type": "connector--input",
@@ -28,7 +28,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "2bb55cd9-4b53-447d-83c8-89fd0504a07a"
+      "name": "de0172e0-02cd-44ab-9ddc-eae3f43c36b6"
     },
     {
       "type": "connector--input",
@@ -40,7 +40,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "cb9ea0ba-9cc4-4b50-b21b-d0a84bdd7027"
+      "name": "0c492275-2668-4640-8717-c6004794da13"
     },
     {
       "type": "connector--input",
@@ -52,7 +52,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "102876d2-ae2c-4e33-9ffb-9d27e26b7f1e"
+      "name": "b26a0386-8286-4e56-b0c5-cd06e6c255d6"
     },
     {
       "type": "connector--input",
@@ -64,7 +64,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "69a5c3ad-e30b-4414-94f1-27d571792645"
+      "name": "b5a982ce-e3c2-4805-8f79-142c941fa646"
     }
   ],
   "bloqClass": "bloq-map-advanced",
@@ -84,7 +84,7 @@
           "readSensor",
           "selectVariable"
         ],
-        "name": "a03b3b6d-b675-43ff-a38c-23b076b6bf75"
+        "name": "192ba37f-1929-4f46-bc92-0cecf3baacc4"
       },
       {
         "alias": "text",
@@ -100,7 +100,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "2bb55cd9-4b53-447d-83c8-89fd0504a07a"
+        "name": "de0172e0-02cd-44ab-9ddc-eae3f43c36b6"
       },
       {
         "alias": "text",
@@ -116,7 +116,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "cb9ea0ba-9cc4-4b50-b21b-d0a84bdd7027"
+        "name": "0c492275-2668-4640-8717-c6004794da13"
       },
       {
         "alias": "text",
@@ -132,7 +132,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "102876d2-ae2c-4e33-9ffb-9d27e26b7f1e"
+        "name": "b26a0386-8286-4e56-b0c5-cd06e6c255d6"
       },
       {
         "alias": "text",
@@ -148,7 +148,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "69a5c3ad-e30b-4414-94f1-27d571792645"
+        "name": "b5a982ce-e3c2-4805-8f79-142c941fa646"
       },
       {
         "alias": "text",
@@ -160,5 +160,8 @@
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "arduino": {
+    "code": "map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX})"
   }
 }

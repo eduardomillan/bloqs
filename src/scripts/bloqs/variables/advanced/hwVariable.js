@@ -35,6 +35,9 @@ var hwVariable = _.merge(_.clone(OutputBloq, true), {
         type: 'fromDynamicDropdown',
         idDropdown: 'COMPONENT',
         options: 'varComponents'
+    },
+    arduino: {
+        code: '{COMPONENT}'
     }
 });
 

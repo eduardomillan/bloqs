@@ -17,7 +17,7 @@
         "equalityOperations",
         "logicOperations"
       ],
-      "name": "7efbf736-cd8c-4135-bf6e-1c8d6758fd7e"
+      "name": "37ada5f2-217f-4821-86a0-210006db99a3"
     },
     {
       "type": "connector--input",
@@ -30,7 +30,7 @@
         "equalityOperations",
         "logicOperations"
       ],
-      "name": "2d535e5a-57c8-448c-b37f-79fdfcd31f89"
+      "name": "bdca7e60-8072-482f-9ff1-a4d36af5016e"
     }
   ],
   "bloqClass": "bloq-logic-operations",
@@ -47,7 +47,7 @@
           "equalityOperations",
           "logicOperations"
         ],
-        "name": "7efbf736-cd8c-4135-bf6e-1c8d6758fd7e"
+        "name": "37ada5f2-217f-4821-86a0-210006db99a3"
       },
       {
         "id": "OPERATOR",
@@ -74,7 +74,7 @@
           "equalityOperations",
           "logicOperations"
         ],
-        "name": "2d535e5a-57c8-448c-b37f-79fdfcd31f89"
+        "name": "bdca7e60-8072-482f-9ff1-a4d36af5016e"
       }
     ]
   ],
@@ -82,5 +82,8 @@
   "returnType": {
     "type": "simple",
     "value": "bool"
+  },
+  "arduino": {
+    "code": "({ARG1} {OPERATOR} {ARG2})"
   }
 }

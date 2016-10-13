@@ -34,6 +34,9 @@ var not = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'bool'
+    },
+    arduino: {
+        code: '!{CONDITION}'
     }
 });
 

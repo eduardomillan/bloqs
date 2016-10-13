@@ -36,8 +36,10 @@ var boolean = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'bool'
+    },
+    arduino: {
+        code: '{STATE}'
     }
-
 });
 
 utils.generateBloqInputConnectors(boolean);

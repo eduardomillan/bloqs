@@ -42,6 +42,9 @@ var random = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    arduino: {
+        code: 'random({ARG1},{ARG2}+1)'
     }
 });
 

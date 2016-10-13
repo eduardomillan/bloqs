@@ -4,12 +4,18 @@
     var INDENT_DEFAULT_CHARACTER = '    ',
         PARAMS_REGEXP = /{([^{].[^\s]*?)}/,
         HARDWARE_PARAMS_REGEXP = /\[(.[^\s\.]+?)(\.?)(.[^\s\.]*?)\]/,
-        BLOQS_PARAMS_REGEXP = /@{([^{].*?)\.(.*?)}/;
+        BLOQS_PARAMS_REGEXP = /@{([^{].*?)\.(.*?)}/,
+        BLOQS_FUNCTION_PARAMS_REGEXP = /¬{([^{].*?)\.(.*?)}/;
 
 
     var includes = {},
         instances = {},
-        setupExtraCodeList = {};
+        setupExtraCodeList = {},
+        bloqsFunctions = {
+            withoutAsterisk: function(text) {
+                return text.replace('*', '');
+            }
+        };
 
     function getCode(arduinoMainBloqs, hardwareList) {
         console.log('getting code', arduinoMainBloqs);
@@ -160,7 +166,6 @@
                         aliasesValuesHashMap[aliases[i].bloqInputId].value = '';
                         aliasesValuesHashMap[aliases[i].bloqInputId].returnType = '';
                     }
-
                 }
             }
         }
@@ -224,6 +229,15 @@
             //console.log(aliasesValuesHashMap[match[1]]);
             code = code.replace(match[0], aliasesValuesHashMap[match[1]][match[2]]);
             match = BLOQS_PARAMS_REGEXP.exec(code);
+        }
+
+        ////searchGroups
+        match = BLOQS_FUNCTION_PARAMS_REGEXP.exec(code);
+        while (match) {
+            //console.log('match!', match);
+            //console.log(aliasesValuesHashMap[match[1]]);
+            code = code.replace(match[0], bloqsFunctions[match[2]](aliasesValuesHashMap[match[1]].value));
+            match = BLOQS_FUNCTION_PARAMS_REGEXP.exec(code);
         }
 
         //searchGroups

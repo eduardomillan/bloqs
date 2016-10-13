@@ -36,6 +36,9 @@ var boolArray = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'bool *'
+    },
+    arduino: {
+        code: '(bool *)malloc({VALUE}*sizeof(bool))'
     }
 });
 

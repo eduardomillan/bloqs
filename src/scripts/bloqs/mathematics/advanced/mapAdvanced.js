@@ -70,6 +70,9 @@ var mapAdvanced = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    arduino: {
+        code: 'map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX})'
     }
 });
 

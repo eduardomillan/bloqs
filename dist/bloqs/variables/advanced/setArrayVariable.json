@@ -21,7 +21,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "fc38a57f-181b-49c3-baa4-168750d66339"
+      "name": "664cc8e7-35ab-4e5c-a295-649ae8080899"
     },
     {
       "type": "connector--input",
@@ -34,7 +34,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "3f12f22b-a221-42b0-8bd8-0bf33e9013e7"
+      "name": "a22fc993-3649-4011-961a-6de4e623b4cd"
     }
   ],
   "bloqClass": "bloq-set-variableArray",
@@ -64,7 +64,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "fc38a57f-181b-49c3-baa4-168750d66339"
+        "name": "664cc8e7-35ab-4e5c-a295-649ae8080899"
       },
       {
         "alias": "text",
@@ -85,9 +85,12 @@
           "string",
           "selectVariable"
         ],
-        "name": "3f12f22b-a221-42b0-8bd8-0bf33e9013e7"
+        "name": "a22fc993-3649-4011-961a-6de4e623b4cd"
       }
     ]
   ],
-  "code": "{NAME}[{ITERATOR}] = {VALUE};"
+  "code": "{NAME}[{ITERATOR}] = {VALUE};",
+  "arduino": {
+    "code": "{NAME}[{ITERATOR}] = {VALUE};"
+  }
 }

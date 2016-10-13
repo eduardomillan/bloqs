@@ -48,6 +48,9 @@ var arrayVariableAdvanced = _.merge(_.clone(OutputBloq, true), {
         idDropdown: 'VAR',
         pointer: 'true',
         options: 'softwareVars'
+    },
+    arduino: {
+        code: '{VAR}[{POSITION}]'
     }
 });
 

@@ -24,7 +24,7 @@
         "char",
         "boolean"
       ],
-      "name": "004ec5e9-fb97-4c70-a07e-a45885b5bd9b"
+      "name": "5eea8491-f1ca-4f05-b32f-8dd47e56fc48"
     }
   ],
   "bloqClass": "bloq-declare-variable",
@@ -87,7 +87,7 @@
           "char",
           "boolean"
         ],
-        "name": "004ec5e9-fb97-4c70-a07e-a45885b5bd9b"
+        "name": "5eea8491-f1ca-4f05-b32f-8dd47e56fc48"
       }
     ]
   ],
@@ -96,5 +96,8 @@
     "idDropdown": "TYPE"
   },
   "createDynamicContent": "softwareVars",
-  "code": "{TYPE} {NAME} = {VALUE};"
+  "code": "{TYPE} {NAME} = {VALUE};",
+  "arduino": {
+    "code": "{TYPE} {NAME} = {VALUE};"
+  }
 }
