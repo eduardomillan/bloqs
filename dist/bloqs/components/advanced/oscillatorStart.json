@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "dd640b12-8845-4c96-bc7d-252deff6b94b"
+      "name": "1107bb72-1c52-4b6a-a87e-6e509d3d0643"
     }
   ],
   "bloqClass": "bloq-oscillator-start-advanced",
@@ -40,9 +40,12 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "dd640b12-8845-4c96-bc7d-252deff6b94b"
+        "name": "1107bb72-1c52-4b6a-a87e-6e509d3d0643"
       }
     ]
   ],
-  "code": "{OSCILLATOR}.start()"
+  "code": "{OSCILLATOR}.start()",
+  "arduino": {
+    "code": "{OSCILLATOR}.start()"
+  }
 }

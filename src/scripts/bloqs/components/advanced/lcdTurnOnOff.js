@@ -41,7 +41,10 @@ var lcdTurnOnOffAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['hwVariable', 'selectVariable']
         }]
     ],
-    code: '{LCD}.setBacklight({STATE});'
+    code: '{LCD}.setBacklight({STATE});',
+    arduino: {
+        code: '{LCD}.setBacklight({STATE});'
+    }
 });
 
 utils.generateBloqInputConnectors(lcdTurnOnOffAdvanced);

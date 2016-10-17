@@ -52,7 +52,10 @@ var rgbLedFade = _.merge(_.clone(StatementBloq, true), {
             value: 0
         }]
     ],
-    code: '{LED}.crossFade({RED},{GREEN},{BLUE});'
+    code: '{LED}.crossFade({RED},{GREEN},{BLUE});',
+    arduino: {
+        code: '{LED}.crossFade({RED},{GREEN},{BLUE});'
+    }
 });
 
 utils.generateBloqInputConnectors(rgbLedFade);

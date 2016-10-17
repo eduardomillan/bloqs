@@ -30,7 +30,10 @@ var oscillatorStartAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['hwVariable', 'selectVariable']
         }]
     ],
-    code: '{OSCILLATOR}.start()'
+    code: '{OSCILLATOR}.start()',
+    arduino: {
+        code: '{OSCILLATOR}.start()'
+    }
 });
 
 utils.generateBloqInputConnectors(oscillatorStartAdvanced);

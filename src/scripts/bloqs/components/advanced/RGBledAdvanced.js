@@ -55,7 +55,10 @@ var rgbLedAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['number', 'selectVariable']
         }]
     ],
-    code: '{LED}.setRGBcolor({RED},{GREEN},{BLUE});'
+    code: '{LED}.setRGBcolor({RED},{GREEN},{BLUE});',
+    arduino: {
+        code: '{LED}.setRGBcolor({RED},{GREEN},{BLUE});'
+    }
 });
 
 utils.generateBloqInputConnectors(rgbLedAdvanced);

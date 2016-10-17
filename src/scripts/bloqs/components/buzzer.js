@@ -57,15 +57,15 @@ var buzzer = _.merge(_.clone(StatementBloq, true), {
             }, {
                 label: 'bloq-buzzer-si',
                 value: '494'
-            },{
+            }, {
                 label: 'bloq-buzzer-do-#',
                 value: '277'
             }, {
                 label: 'bloq-buzzer-re-#',
                 value: '311'
-            // }, {
-            //     label: 'bloq-buzzer-mi-#',
-            //     value: ''
+                    // }, {
+                    //     label: 'bloq-buzzer-mi-#',
+                    //     value: ''
             }, {
                 label: 'bloq-buzzer-fa-#',
                 value: '370'
@@ -75,9 +75,9 @@ var buzzer = _.merge(_.clone(StatementBloq, true), {
             }, {
                 label: 'bloq-buzzer-la-#',
                 value: '466'
-            // }, {
-            //     label: 'bloq-buzzer-si-#',
-            //     value: ''
+                    // }, {
+                    //     label: 'bloq-buzzer-si-#',
+                    //     value: ''
             }]
         }, {
             alias: 'text',
@@ -91,7 +91,10 @@ var buzzer = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-buzzer-ms'
         }]
     ],
-    code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'
+    code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});',
+    arduino: {
+        code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'
+    }
 });
 utils.generateBloqInputConnectors(buzzer);
 

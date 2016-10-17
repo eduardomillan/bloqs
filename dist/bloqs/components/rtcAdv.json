@@ -67,5 +67,8 @@
   "returnType": {
     "type": "simple",
     "value": "int"
+  },
+  "arduino": {
+    "code": "{RTC}.{FUNCTION}()"
   }
 }

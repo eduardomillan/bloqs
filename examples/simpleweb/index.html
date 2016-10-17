@@ -158,9 +158,23 @@
             }
         };
 
-        /*componentsArray.servos[1]={id: "servo", name: "servo_1", oscillator:"false", pin:{s:"3"}};
-        componentsArray.servos[2]={id: "servo", name: "servo_2", oscillator:"false", pin:{s:"4"}};
-        */
+        componentsArray.servos[0] = {
+            id: "servo",
+            name: "servo_0",
+            oscillator: "false",
+            pin: {
+                s: "3"
+            }
+        };
+        componentsArray.servos[1] = {
+            id: "servo",
+            name: "servo_2",
+            oscillator: "false",
+            pin: {
+                s: "4"
+            }
+        };
+
 
         var $field = $('#bloqs--field');
         // Create the main arduino bloqs
@@ -260,9 +274,15 @@
 
         var comunicationBloqs = ['convert', 'serialSend-v1'];
 
-        var componentsBloqs = ['analogReadAdvanced', 'analogWrite', 'buzzerAdvanced', 'continuousServoStartAdvanced-v1', 'continuousServoStopAdvanced', 'digitalReadAdvanced', 'digitalWrite', 'lcdTurnOnOffAdvanced', 'lcdWriteAdvanced', 'lcdWritePositionAdvanced-v1'];
+        var componentsBloqs = ['declareVariable', 'buzzer', 'continuousServoStart', 'continuousServoStop', 'hts221Humidity', 'hts221Temperature', 'lcdClear', 'lcdTurnOnOff', 'lcdWrite', 'lcdWritePosition', 'led', 'oscillator', 'oscillatorStart', 'oscillatorStop', 'oscillatorTimes', 'PTSensor', 'readSensor'];
 
-        var componentsBloqs2 = ['ledAdvanced', 'oscillatorStopAdvanced', 'oscillatorStartAdvanced', 'oscillatorAdvanced', 'rgbLedAdvanced', 'servoNormalAdvanced'];
+        var componentsBloqs2 = ['declareVariable', 'rgbLed', 'rgbLedFade', 'rgbLedOff', 'rgbLedSimple', 'clockRTCAdvanced', 'clockRTCInit', 'servoNormal'];
+
+        var componentsBloqs3 = ['declareVariable', 'analogReadAdvanced', 'analogWrite', 'buzzerAdvanced', 'continuousServoStartAdvanced-v1', 'continuousServoStopAdvanced', 'digitalReadAdvanced', 'digitalWrite', 'lcdTurnOnOffAdvanced', 'lcdWriteAdvanced', 'lcdWritePositionAdvanced-v1', 'ledAdvanced'];
+
+        var componentsBloqs4 = ['declareVariable', 'oscillatorAdvanced', 'oscillatorStartAdvanced', 'oscillatorStopAdvanced', 'pinLevels', 'PTSensorCalibration', 'rgbLedAdvanced', 'servoNormalAdvanced', 'servoAttach', 'servoDetach'];
+
+        var hardwareBloqs = ['servoAttach'];
 
         var evolutionBloqs = ['evolutionHeadAdvance'];
 
@@ -279,7 +299,7 @@
         var testSet = ['evolutionBuzzer', 'evolutionBuzzer'];
 
 
-        testSet = zowi2;
+        testSet = hardwareBloqs;
 
         for (var i = 0; i < testSet.length; i++) {
 
@@ -342,6 +362,34 @@
                         "uid": "3fe14580-c769-4fb2-ac65-b614cd15e74c"
                     }
                 }
+            }, {
+                "category": "servos",
+                "connected": true,
+                "coordinates": {
+                    "x": 73.4,
+                    "y": 8.695652173913043
+                },
+                "dragtype": "components",
+                "endpoints": {
+                    "s": {
+                        "type": "digital",
+                        "uid": "e6f64bd5-3327-49f3-8061-cc697daed825"
+                    }
+                },
+                "height": 106,
+                "id": "servo",
+                "name": "servo_0",
+                "oscillator": "false",
+                "pin": {
+                    "s": "6"
+                },
+                "pins": {
+                    "digital": [
+                        "s"
+                    ]
+                },
+                "uid": "bca89355-7619-4a14-bf0f-ba1aba694585",
+                "width": 125
             }]
         };
 

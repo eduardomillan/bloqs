@@ -38,7 +38,10 @@ var PTSensorCalibration = _.merge(_.clone(StatementBloq, true), {
             options: 'barometer'
         }]
     ],
-    code: '{PTSENS}.setSealevelPressure({VALUE});'
+    code: '{PTSENS}.setSealevelPressure({VALUE});',
+    arduino: {
+        code: '{PTSENS}.setSealevelPressure({VALUE});'
+    }
 
 });
 

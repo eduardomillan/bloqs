@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "97b90ba7-a0f6-47ae-9467-c800d0ae8f7b"
+      "name": "2fc6c562-ee4c-4390-a963-5124caf2e014"
     }
   ],
   "bloqClass": "bloq-lcd-turn-on-off-advanced",
@@ -54,9 +54,12 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "97b90ba7-a0f6-47ae-9467-c800d0ae8f7b"
+        "name": "2fc6c562-ee4c-4390-a963-5124caf2e014"
       }
     ]
   ],
-  "code": "{LCD}.setBacklight({STATE});"
+  "code": "{LCD}.setBacklight({STATE});",
+  "arduino": {
+    "code": "{LCD}.setBacklight({STATE});"
+  }
 }

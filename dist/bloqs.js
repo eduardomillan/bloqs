@@ -1774,7 +1774,8 @@
 
     var INDENT_DEFAULT_CHARACTER = '    ',
         PARAMS_REGEXP = /{([^{].[^\s]*?)}/,
-        HARDWARE_PARAMS_REGEXP = /\[(.[^\s\.]+?)(\.?)(.[^\s\.]*?)\]/,
+        HARDWARE_INCLUDES_PARAMS_REGEXP = /\[(.[^\s\.]+?)(\.?)(.[^\s\.]*?)\]/,
+        BLOQS_HARDWARE_REGEXP = /º\[([^{].*?)\.(.*?)\]/,
         BLOQS_PARAMS_REGEXP = /@{([^{].*?)\.(.*?)}/,
         BLOQS_FUNCTION_PARAMS_REGEXP = /¬{([^{].*?)\.(.*?)}/;
 
@@ -1785,6 +1786,12 @@
         bloqsFunctions = {
             withoutAsterisk: function(text) {
                 return text.replace('*', '');
+            },
+            formatPin: function(pin) {
+                if (pin.indexOf('A') !== -1) {
+                    pin = pin.replace(/\"/g, '');
+                }
+                return pin;
             }
         };
 
@@ -1795,9 +1802,9 @@
 
         var code = '';
 
-        var varsCode = getCodeFromBloq(arduinoMainBloqs.varsBloq);
-        var setupCode = getCodeFromBloq(arduinoMainBloqs.setupBloq);
-        var loopCode = getCodeFromBloq(arduinoMainBloqs.loopBloq);
+        var varsCode = getCodeFromBloq(arduinoMainBloqs.varsBloq, hardwareList);
+        var setupCode = getCodeFromBloq(arduinoMainBloqs.setupBloq, hardwareList);
+        var loopCode = getCodeFromBloq(arduinoMainBloqs.loopBloq, hardwareList);
         var prop;
         //after bloqscode to reuse the bucle to fill libraries and instance dependencies
         var includesCode = '';
@@ -1819,7 +1826,7 @@
                     if (PARAMS_REGEXP.test(instances[instanceId].arguments[i])) {
                         instances[instanceId].arguments[i] = instances[instanceId].arguments[i].replace(instances[instanceId].name, instances[instanceId].realName);
                     }
-                    if (HARDWARE_PARAMS_REGEXP.test(instances[instanceId].arguments[i])) {
+                    if (HARDWARE_INCLUDES_PARAMS_REGEXP.test(instances[instanceId].arguments[i])) {
 
                         instances[instanceId].arguments[i] = replaceHardwareVars(instances[instanceId].arguments[i], hardwareList);
                     }
@@ -1864,7 +1871,7 @@
     function replaceHardwareVars(code, hardwareSchema) {
         var result = code,
             match, tempHardwareData;
-        match = HARDWARE_PARAMS_REGEXP.exec(code);
+        match = HARDWARE_INCLUDES_PARAMS_REGEXP.exec(code);
         if (match) {
             //console.log('match!', match);
             //console.log('alias', match[1]);
@@ -1904,7 +1911,7 @@
         return result || '';
     }
 
-    function getCodeFromBloq(bloqFullStructure) {
+    function getCodeFromBloq(bloqFullStructure, hardwareList) {
         console.log('getting code from bloq', bloqFullStructure);
 
         var aliases = bloqFullStructure.content[0],
@@ -1928,7 +1935,7 @@
                 } else if (aliases[i].bloqInputId) {
                     aliasesValuesHashMap[aliases[i].bloqInputId] = {};
                     if (aliases[i].value) {
-                        aliasesValuesHashMap[aliases[i].bloqInputId].value = getCodeFromBloq(aliases[i].value) || '';
+                        aliasesValuesHashMap[aliases[i].bloqInputId].value = getCodeFromBloq(aliases[i].value, hardwareList) || '';
 
                         if (aliases[i].value.returnType) {
                             aliasesValuesHashMap[aliases[i].bloqInputId].returnType = getTypeFromBloq(aliases[i].value);
@@ -1942,7 +1949,7 @@
         }
         if (childs) {
             for (var i = 0; i < childs.length; i++) {
-                childsCode += getCodeFromBloq(childs[i]);
+                childsCode += getCodeFromBloq(childs[i], hardwareList);
             }
             aliasesValuesHashMap.STATEMENTS = {
                 value: childsCode
@@ -1982,7 +1989,7 @@
         }
         code = code || '';
 
-        code = processCode(code, aliasesValuesHashMap);
+        code = processCode(code, aliasesValuesHashMap, hardwareList);
 
         if (bloqFullStructure.type !== 'output') {
             code += '\n';
@@ -1991,9 +1998,9 @@
         return code;
     }
 
-    function processCode(code, aliasesValuesHashMap) {
+    function processCode(code, aliasesValuesHashMap, hardwareList) {
         var match;
-        //searchGroups
+        //Especial @
         match = BLOQS_PARAMS_REGEXP.exec(code);
         while (match) {
             //console.log('match!', match);
@@ -2002,7 +2009,7 @@
             match = BLOQS_PARAMS_REGEXP.exec(code);
         }
 
-        ////searchGroups
+        //execute function on code parts ¬
         match = BLOQS_FUNCTION_PARAMS_REGEXP.exec(code);
         while (match) {
             //console.log('match!', match);
@@ -2020,7 +2027,32 @@
             match = PARAMS_REGEXP.exec(code);
         }
 
+        //hardware vars
+        match = BLOQS_HARDWARE_REGEXP.exec(code);
+        var tempHardwareData;
+        while (match) {
+            //console.log('match!', match);
+            //console.log(aliasesValuesHashMap[match[1]]);
+            tempHardwareData = findItemByProperty(match[1], hardwareList.components, 'name');
+            code = code.replace(match[0], accessNestedPropertyByString(tempHardwareData, match[2]));
+            match = BLOQS_HARDWARE_REGEXP.exec(code);
+        }
+
+
         return code;
+    }
+
+    function accessNestedPropertyByString(object, nestedKey) {
+        //nestedKey = nestedKey.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+        //nestedKey = nestedKey.replace(/^\./, ''); // strip a leading dot
+        var properties = nestedKey.split('.');
+        var result = JSON.parse(JSON.stringify(object));
+        for (var i = 0; i < properties.length; i++) {
+            if (result) {
+                result = result[properties[i]];
+            }
+        }
+        return result;
     }
 
     arduinoGeneration.getCode = getCode;

@@ -50,7 +50,10 @@ var buzzerAdvanced = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-buzzer-advance-ms'
         }]
     ],
-    code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'
+    code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});',
+    arduino: {
+        code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'
+    }
 });
 utils.generateBloqInputConnectors(buzzerAdvanced);
 

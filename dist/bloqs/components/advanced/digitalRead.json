@@ -16,7 +16,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "d619eb4b-f68e-451f-b4ed-3a059affd7d7"
+      "name": "fa90e280-015e-460e-b200-ba2b8199c02d"
     }
   ],
   "bloqClass": "bloq-digital-read-advanced",
@@ -36,7 +36,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "d619eb4b-f68e-451f-b4ed-3a059affd7d7"
+        "name": "fa90e280-015e-460e-b200-ba2b8199c02d"
       }
     ]
   ],
@@ -44,5 +44,8 @@
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "arduino": {
+    "code": "digitalRead({PIN})"
   }
 }

@@ -20,7 +20,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "de82c36a-21e1-4464-ad34-327e89a68c42"
+      "name": "f5ce8da3-ead2-4ae4-927b-d85f6318f91f"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "bcaff36c-a663-4cc1-aff6-12231b11d779"
+      "name": "7861cd29-e64d-40be-8000-670626222aad"
     }
   ],
   "bloqClass": "bloq-lcd-writte-advanced",
@@ -52,7 +52,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "de82c36a-21e1-4464-ad34-327e89a68c42"
+        "name": "f5ce8da3-ead2-4ae4-927b-d85f6318f91f"
       },
       {
         "alias": "text",
@@ -68,9 +68,12 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "bcaff36c-a663-4cc1-aff6-12231b11d779"
+        "name": "7861cd29-e64d-40be-8000-670626222aad"
       }
     ]
   ],
-  "code": "{LCD}.print({TEXT});"
+  "code": "{LCD}.print({TEXT});",
+  "arduino": {
+    "code": "{LCD}.print({TEXT});"
+  }
 }

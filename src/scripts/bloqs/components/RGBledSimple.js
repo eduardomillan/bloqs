@@ -66,7 +66,10 @@ var rgbLedSimple = _.merge(_.clone(StatementBloq, true), {
             }]
         }]
     ],
-    code: '{LED}.setRGBcolor({COLOR});'
+    code: '{LED}.setRGBcolor({COLOR});',
+    arduino: {
+        code: '{LED}.setRGBcolor({COLOR});'
+    }
 
 });
 

@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "e287fb63-f48f-4fa5-a671-528121b3cdd9"
+      "name": "3e6da711-49c8-43a2-82ca-98c4a8b53a77"
     }
   ],
   "bloqClass": "bloq-led-advanced",
@@ -54,9 +54,12 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "e287fb63-f48f-4fa5-a671-528121b3cdd9"
+        "name": "3e6da711-49c8-43a2-82ca-98c4a8b53a77"
       }
     ]
   ],
-  "code": "digitalWrite({LED},{STATE});"
+  "code": "digitalWrite({LED},{STATE});",
+  "arduino": {
+    "code": "digitalWrite({LED},{STATE});"
+  }
 }

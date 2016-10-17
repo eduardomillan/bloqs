@@ -32,15 +32,15 @@ var PTSensor = _.merge(_.clone(OutputBloq, true), {
             id: 'FUNCTION',
             alias: 'staticDropdown',
             options: [{
-                    label: 'bloq-PTsensor-pressure',
-                    value: 'getPressure()'
-                }, {
-                    label: 'bloq-PTsensor-temperature',
-                    value: 'getTemperature()'
-                }, {
-                    label: 'bloq-PTsensor-altitude',
-                    value: 'getAltitude()'
-                }]
+                label: 'bloq-PTsensor-pressure',
+                value: 'getPressure()'
+            }, {
+                label: 'bloq-PTsensor-temperature',
+                value: 'getTemperature()'
+            }, {
+                label: 'bloq-PTsensor-altitude',
+                value: 'getAltitude()'
+            }]
         }, {
             alias: 'text',
             value: 'bloq-PTsensor-sensor'
@@ -54,6 +54,9 @@ var PTSensor = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    arduino: {
+        code: '{PTSENS}.{FUNCTION}'
     }
 });
 

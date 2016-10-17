@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "2472f869-e0f7-4eea-9260-441271f9ecd9"
+      "name": "aee7689f-75e7-4601-ab27-e8d0e8fe0b31"
     }
   ],
   "bloqClass": "bloq-oscillator-stop-advanced",
@@ -40,9 +40,12 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "2472f869-e0f7-4eea-9260-441271f9ecd9"
+        "name": "aee7689f-75e7-4601-ab27-e8d0e8fe0b31"
       }
     ]
   ],
-  "code": "{OSCILLATOR}.stop()"
+  "code": "{OSCILLATOR}.stop()",
+  "arduino": {
+    "code": "{OSCILLATOR}.stop()"
+  }
 }

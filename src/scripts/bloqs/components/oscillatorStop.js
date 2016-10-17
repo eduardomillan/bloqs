@@ -30,7 +30,10 @@ var oscillatorStop = _.merge(_.clone(StatementBloq, true), {
             options: 'oscillators'
         }]
     ],
-    code: '{OSCILLATOR}.Stop();'
+    code: '{OSCILLATOR}.Stop();',
+    arduino: {
+        code: '{OSCILLATOR}.Stop();'
+    }
 
 });
 utils.generateBloqInputConnectors(oscillatorStop);

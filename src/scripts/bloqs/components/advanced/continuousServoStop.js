@@ -30,7 +30,10 @@ var continuousServoStopAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['hwVariable', 'selectVariable']
         }]
     ],
-    code: '{SERVO}.write(90);'
+    code: '{SERVO}.write(90);',
+    arduino: {
+        code: '{SERVO}.write(90);'
+    }
 });
 
 utils.generateBloqInputConnectors(continuousServoStopAdvanced);

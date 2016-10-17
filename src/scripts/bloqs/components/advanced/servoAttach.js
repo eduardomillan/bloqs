@@ -9,11 +9,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: servoAttach
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It attach a servo in order to be handled.
- * 
+ *
  * Return type: none
  */
 
@@ -31,7 +31,10 @@ var servoAttach = _.merge(_.clone(StatementBloq, true), {
             options: 'allServos'
         }]
     ],
-    code: '{SERVO}.attach({SERVO.pin});'
+    code: '{SERVO}.attach({SERVO.pin});',
+    arduino: {
+        code: '{SERVO}.attach(º[{SERVO}.pin.s]);'
+    }
 });
 
 utils.generateBloqInputConnectors(servoAttach);

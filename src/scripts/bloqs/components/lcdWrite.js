@@ -37,7 +37,10 @@ var lcdWrite = _.merge(_.clone(StatementBloq, true), {
             options: 'lcds'
         }]
     ],
-    code: '{LCD}.print("{TEXT}");'
+    code: '{LCD}.print("{TEXT}");',
+    arduino: {
+        code: '{LCD}.print("{TEXT}");'
+    }
 
 });
 

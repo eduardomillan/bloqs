@@ -39,6 +39,9 @@ var analogWrite = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     code: '\'{PIN}\'.indexOf(\'A\') !== -1 ? \'analogWrite({PIN},{DATA});\'.replace(/"/g, \'\') : \'analogWrite({PIN},{DATA});\'',
+    arduino: {
+        code: 'analogWrite(¬{PIN.formatPin}, {DATA});'
+    }
 });
 
 utils.generateBloqInputConnectors(analogWrite);

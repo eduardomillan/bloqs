@@ -52,7 +52,10 @@ var rgbLed = _.merge(_.clone(StatementBloq, true), {
             value: 0
         }]
     ],
-    code: '{LED}.setRGBcolor({RED},{GREEN},{BLUE});'
+    code: '{LED}.setRGBcolor({RED},{GREEN},{BLUE});',
+    arduino: {
+        code: '{LED}.setRGBcolor({RED},{GREEN},{BLUE});'
+    }
 });
 
 utils.generateBloqInputConnectors(rgbLed);

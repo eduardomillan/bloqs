@@ -71,5 +71,8 @@
       }
     ]
   ],
-  "code": "{LED}.setRGBcolor({COLOR});"
+  "code": "{LED}.setRGBcolor({COLOR});",
+  "arduino": {
+    "code": "{LED}.setRGBcolor({COLOR});"
+  }
 }

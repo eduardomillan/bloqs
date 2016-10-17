@@ -96,5 +96,8 @@
       }
     ]
   ],
-  "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+  "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});",
+  "arduino": {
+    "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+  }
 }

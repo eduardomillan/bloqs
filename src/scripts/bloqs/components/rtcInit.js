@@ -31,7 +31,10 @@ var clockRTCInit = _.merge(_.clone(StatementBloq, true), {
             options: 'clocks'
         }]
     ],
-    code: '{RTC}.adjust(DateTime(__DATE__, __TIME__));'
+    code: '{RTC}.adjust(DateTime(__DATE__, __TIME__));',
+    arduino: {
+        code: '{RTC}.adjust(DateTime(__DATE__, __TIME__));'
+    }
 });
 
 utils.generateBloqInputConnectors(clockRTCInit);

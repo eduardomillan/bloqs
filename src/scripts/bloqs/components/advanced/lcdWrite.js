@@ -38,7 +38,10 @@ var lcdWriteAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['hwVariable', 'selectVariable']
         }]
     ],
-    code: '{LCD}.print({TEXT});'
+    code: '{LCD}.print({TEXT});',
+    arduino: {
+        code: '{LCD}.print({TEXT});'
+    }
 
 });
 

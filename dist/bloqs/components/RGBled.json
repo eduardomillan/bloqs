@@ -52,5 +52,8 @@
       }
     ]
   ],
-  "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});"
+  "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});",
+  "arduino": {
+    "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});"
+  }
 }

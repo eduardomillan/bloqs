@@ -38,7 +38,10 @@ var continuousServoStartAdvancedV1 = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['number', 'selectVariable']
         }]
     ],
-    code: '{SERVO}.write({DIRECTION});'
+    code: '{SERVO}.write({DIRECTION});',
+    arduino: {
+        code: '{SERVO}.write({DIRECTION});'
+    }
 });
 
 utils.generateBloqInputConnectors(continuousServoStartAdvancedV1);

@@ -33,7 +33,7 @@ var clockRTCAdvanced = _.merge(_.clone(OutputBloq, true), {
             }, {
                 label: 'bloq-rtc-time-2',
                 value: 'getTime'
-            },{
+            }, {
                 label: 'bloq-rtc-hour',
                 value: 'getHour'
             }, {
@@ -65,6 +65,9 @@ var clockRTCAdvanced = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'int'
+    },
+    arduino: {
+        code: '{RTC}.{FUNCTION}()'
     }
 });
 

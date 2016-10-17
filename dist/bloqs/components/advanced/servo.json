@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "33e7fe57-1eb1-44a5-baef-870fff605a28"
+      "name": "b5eb1fc3-7be5-4ff9-b903-2685ed84f5db"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "604f2a47-e0da-458c-9d36-b638a34cafe4"
+      "name": "41819ea1-6dfa-4b22-a5b0-435caca87c8e"
     }
   ],
   "bloqClass": "bloq-servo-advanced",
@@ -52,7 +52,7 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "33e7fe57-1eb1-44a5-baef-870fff605a28"
+        "name": "b5eb1fc3-7be5-4ff9-b903-2685ed84f5db"
       },
       {
         "alias": "text",
@@ -68,7 +68,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "604f2a47-e0da-458c-9d36-b638a34cafe4"
+        "name": "41819ea1-6dfa-4b22-a5b0-435caca87c8e"
       },
       {
         "alias": "text",
@@ -76,5 +76,8 @@
       }
     ]
   ],
-  "code": "{SERVO}.write({POSITION});"
+  "code": "{SERVO}.write({POSITION});",
+  "arduino": {
+    "code": "{SERVO}.write({POSITION});"
+  }
 }

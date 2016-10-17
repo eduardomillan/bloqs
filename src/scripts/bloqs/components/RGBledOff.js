@@ -31,7 +31,10 @@ var rgbLedOff = _.merge(_.clone(StatementBloq, true), {
             options: 'rgbs'
         }]
     ],
-    code: '{LED}.setRGBcolor(0,0,0);'
+    code: '{LED}.setRGBcolor(0,0,0);',
+    arduino: {
+        code: '{LED}.setRGBcolor(0,0,0);'
+    }
 });
 
 utils.generateBloqInputConnectors(rgbLedOff);

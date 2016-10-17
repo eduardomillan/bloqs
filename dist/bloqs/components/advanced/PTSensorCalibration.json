@@ -34,5 +34,8 @@
       }
     ]
   ],
-  "code": "{PTSENS}.setSealevelPressure({VALUE});"
+  "code": "{PTSENS}.setSealevelPressure({VALUE});",
+  "arduino": {
+    "code": "{PTSENS}.setSealevelPressure({VALUE});"
+  }
 }

@@ -52,5 +52,8 @@
       }
     ]
   ],
-  "code": "{LED}.crossFade({RED},{GREEN},{BLUE});"
+  "code": "{LED}.crossFade({RED},{GREEN},{BLUE});",
+  "arduino": {
+    "code": "{LED}.crossFade({RED},{GREEN},{BLUE});"
+  }
 }

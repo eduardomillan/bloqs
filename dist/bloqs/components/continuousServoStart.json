@@ -43,5 +43,8 @@
       }
     ]
   ],
-  "code": "{SERVO}.write({DIRECTION});"
+  "code": "{SERVO}.write({DIRECTION});",
+  "arduino": {
+    "code": "{SERVO}.write({DIRECTION});"
+  }
 }

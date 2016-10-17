@@ -40,7 +40,10 @@ var ledAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['hwVariable', 'selectVariable']
         }]
     ],
-    code: 'digitalWrite({LED},{STATE});'
+    code: 'digitalWrite({LED},{STATE});',
+    arduino: {
+        code: 'digitalWrite({LED},{STATE});'
+    }
 });
 
 utils.generateBloqInputConnectors(ledAdvanced);

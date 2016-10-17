@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "575c60ad-a6a1-4797-83bf-949e5015eb3b"
+      "name": "43dd9d31-1c89-4953-a5d1-74e8ce73f354"
     },
     {
       "type": "connector--input",
@@ -33,7 +33,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "7684b319-4eb6-46d8-a159-832c29d5efdc"
+      "name": "05e3eee1-6673-4f53-a755-ec529a7f1e89"
     }
   ],
   "bloqClass": "bloq-pin-writte-advanced",
@@ -53,7 +53,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "575c60ad-a6a1-4797-83bf-949e5015eb3b"
+        "name": "43dd9d31-1c89-4953-a5d1-74e8ce73f354"
       },
       {
         "alias": "text",
@@ -70,9 +70,12 @@
           "number",
           "selectVariable"
         ],
-        "name": "7684b319-4eb6-46d8-a159-832c29d5efdc"
+        "name": "05e3eee1-6673-4f53-a755-ec529a7f1e89"
       }
     ]
   ],
-  "code": "digitalWrite({PIN},{DATA});"
+  "code": "digitalWrite({PIN},{DATA});",
+  "arduino": {
+    "code": "digitalWrite({PIN},{DATA});"
+  }
 }

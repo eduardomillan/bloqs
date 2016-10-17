@@ -40,7 +40,10 @@ var servoNormal = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-servo-degrees'
         }]
     ],
-    code: '{SERVO}.write({POSITION});'
+    code: '{SERVO}.write({POSITION});',
+    arduino: {
+        code: '{SERVO}.write({POSITION});'
+    }
 });
 
 utils.generateBloqInputConnectors(servoNormal);

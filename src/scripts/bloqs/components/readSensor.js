@@ -36,6 +36,9 @@ var readSensor = _.merge(_.clone(OutputBloq, true), {
         type: 'fromDynamicDropdown',
         idDropdown: 'SENSOR',
         options: 'sensors'
+    },
+    arduino: {
+        code: '{SENSOR}'
     }
 });
 

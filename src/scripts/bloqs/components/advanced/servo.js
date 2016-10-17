@@ -41,7 +41,10 @@ var servoNormalAdvanced = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-servo-advanced-degrees'
         }]
     ],
-    code: '{SERVO}.write({POSITION});'
+    code: '{SERVO}.write({POSITION});',
+    arduino: {
+        code: '{SERVO}.write({POSITION});'
+    }
 });
 
 utils.generateBloqInputConnectors(servoNormalAdvanced);

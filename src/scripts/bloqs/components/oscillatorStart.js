@@ -30,7 +30,10 @@ var oscillatorStart = _.merge(_.clone(StatementBloq, true), {
             options: 'oscillators'
         }]
     ],
-    code: '{OSCILLATOR}.Play();{OSCILLATOR}.refresh();'
+    code: '{OSCILLATOR}.Play();{OSCILLATOR}.refresh();',
+    arduino: {
+        code: '{OSCILLATOR}.Play();{OSCILLATOR}.refresh();'
+    }
 });
 
 utils.generateBloqInputConnectors(oscillatorStart);

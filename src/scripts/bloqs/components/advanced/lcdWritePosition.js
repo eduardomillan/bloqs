@@ -51,7 +51,10 @@ var lcdWritePositionAdvancedV1 = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['number', 'selectVariable']
         }]
     ],
-    code: '{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});'
+    code: '{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});',
+    arduino: {
+        code: '{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});'
+    }
 
 });
 

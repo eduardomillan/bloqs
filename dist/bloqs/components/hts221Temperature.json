@@ -25,5 +25,8 @@
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "arduino": {
+    "code": "{SENSOR}.getTemperature()"
   }
 }

@@ -48,5 +48,8 @@
       }
     ]
   ],
-  "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print(\"{TEXT}\");"
+  "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print(\"{TEXT}\");",
+  "arduino": {
+    "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print(\"{TEXT}\");"
+  }
 }

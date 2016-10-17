@@ -60,7 +60,10 @@ var oscillatorTimes = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-oscillator-times'
         }]
     ],
-    code: 'oscillate({OSCILLATOR}, {AMPLITUDE}, {PHASE}, {SPEED}, {TIMES});'
+    code: 'oscillate({OSCILLATOR}, {AMPLITUDE}, {PHASE}, {SPEED}, {TIMES});',
+    arduino: {
+        code: 'oscillate({OSCILLATOR}, {AMPLITUDE}, {PHASE}, {SPEED}, {TIMES});'
+    }
 });
 
 utils.generateBloqInputConnectors(oscillatorTimes);

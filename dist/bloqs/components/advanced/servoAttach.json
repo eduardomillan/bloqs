@@ -25,5 +25,8 @@
       }
     ]
   ],
-  "code": "{SERVO}.attach({SERVO.pin});"
+  "code": "{SERVO}.attach({SERVO.pin});",
+  "arduino": {
+    "code": "{SERVO}.attach(º[{SERVO}.pin.s]);"
+  }
 }

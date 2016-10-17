@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "ced99c83-49aa-4606-90fd-58d742da8686"
+      "name": "14a6f1e7-3b22-41e8-aec1-7deca258a9bc"
     }
   ],
   "bloqClass": "bloq-continuous-servo-stop-advanced",
@@ -40,9 +40,12 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "ced99c83-49aa-4606-90fd-58d742da8686"
+        "name": "14a6f1e7-3b22-41e8-aec1-7deca258a9bc"
       }
     ]
   ],
-  "code": "{SERVO}.write(90);"
+  "code": "{SERVO}.write(90);",
+  "arduino": {
+    "code": "{SERVO}.write(90);"
+  }
 }

@@ -35,6 +35,9 @@ var hts221Humidity = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    arduino: {
+        code: '{SENSOR}.getHumidity()'
     }
 
 });

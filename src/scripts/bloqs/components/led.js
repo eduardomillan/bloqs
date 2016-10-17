@@ -40,7 +40,10 @@ var led = _.merge(_.clone(StatementBloq, true), {
             options: 'leds'
         }]
     ],
-    code: 'digitalWrite({LED},{STATE});'
+    code: 'digitalWrite({LED},{STATE});',
+    arduino: {
+        code: 'digitalWrite({LED},{STATE});'
+    }
 });
 
 utils.generateBloqInputConnectors(led);

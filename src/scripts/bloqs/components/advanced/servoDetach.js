@@ -9,11 +9,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: servoDetach
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It detach a servo.
- * 
+ *
  * Return type: none
  */
 
@@ -31,7 +31,10 @@ var servoDetach = _.merge(_.clone(StatementBloq, true), {
             options: 'allServos'
         }]
     ],
-    code: '{SERVO}.detach();'
+    code: '{SERVO}.detach();',
+    arduino: {
+        code: '{SERVO}.detach();'
+    }
 });
 
 utils.generateBloqInputConnectors(servoDetach);

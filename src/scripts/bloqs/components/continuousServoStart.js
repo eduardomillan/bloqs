@@ -44,7 +44,10 @@ var continuousServoStart = _.merge(_.clone(StatementBloq, true), {
             }]
         }]
     ],
-    code: '{SERVO}.write({DIRECTION});'
+    code: '{SERVO}.write({DIRECTION});',
+    arduino: {
+        code: '{SERVO}.write({DIRECTION});'
+    }
 });
 
 utils.generateBloqInputConnectors(continuousServoStart);

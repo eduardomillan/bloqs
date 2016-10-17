@@ -30,7 +30,10 @@ var lcdClear = _.merge(_.clone(StatementBloq, true), {
             options: 'lcds'
         }]
     ],
-    code: '{LCD}.clear();'
+    code: '{LCD}.clear();',
+    arduino: {
+        code: '{LCD}.clear();'
+    }
 
 });
 
