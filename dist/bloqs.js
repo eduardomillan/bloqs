@@ -1835,11 +1835,11 @@
         }
 
 
-        code += includesCode + '\n\n';
-        code += instancesCode + '\n\n';
+        code += '/***   Included libraries  ***/\n' + includesCode + '\n\n';
+        code += '/***   Global variables and function definition  ***/' + instancesCode + '\n';
         code += varsCode + '\n\n';
-        code += addSetupCode(setupCode, setupExtraCode) + '\n\n';
-        code += loopCode + '\n\n';
+        code += '/***   Setup  ***/' + addSetupCode(setupCode, setupExtraCode) + '\n\n';
+        code += '/***   Loop  ***/' + loopCode + '\n\n';
         return code;
     }
 
