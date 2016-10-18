@@ -32,6 +32,12 @@ var continuousServoStop = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '{SERVO}.write(90);',
     arduino: {
+        includes: ['Servo.h'],
+        needInstanceOf: [{
+            name: '{SERVO}',
+            type: 'Servo'
+        }],
+        setupExtraCode: '{SERVO}.attach(º[{SERVO}.pin.s]);',
         code: '{SERVO}.write(90);'
     }
 

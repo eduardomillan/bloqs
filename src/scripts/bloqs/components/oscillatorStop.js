@@ -32,6 +32,16 @@ var oscillatorStop = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '{OSCILLATOR}.Stop();',
     arduino: {
+        includes: [
+            'Servo.h',
+            'Wire.h',
+            'BitbloqOscillator.h'
+        ],
+        needInstanceOf: [{
+            name: '{OSCILLATOR}',
+            type: 'Oscillator'
+        }],
+        setupExtraCode: '{OSCILLATOR}.attach(º[{OSCILLATOR}.pin.s]);',
         code: '{OSCILLATOR}.Stop();'
     }
 

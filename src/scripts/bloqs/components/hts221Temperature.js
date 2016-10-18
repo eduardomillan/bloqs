@@ -37,6 +37,16 @@ var hts221Temperature = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     },
     arduino: {
+        includes: [
+            'Wire.h',
+            'BitbloqHTS221.h',
+            'HTS221_Registers.h'
+        ],
+        needInstanceOf: [{
+            name: '{SENSOR}',
+            type: 'HTS221'
+        }],
+        setupExtraCode: 'Wire.begin();\n{SENSOR}.begin();',
         code: '{SENSOR}.getTemperature()'
     }
 

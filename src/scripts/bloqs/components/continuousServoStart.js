@@ -46,6 +46,12 @@ var continuousServoStart = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '{SERVO}.write({DIRECTION});',
     arduino: {
+        includes: ['Servo.h'],
+        needInstanceOf: [{
+            name: '{SERVO}',
+            type: 'Servo'
+        }],
+        setupExtraCode: '{SERVO}.attach(º[{SERVO}.pin.s]);',
         code: '{SERVO}.write({DIRECTION});'
     }
 });

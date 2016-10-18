@@ -32,6 +32,16 @@ var lcdClear = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '{LCD}.clear();',
     arduino: {
+        includes: [
+            'Wire.h',
+            'BitbloqLiquidCrystal.h'
+        ],
+        needInstanceOf: [{
+            name: '{LCD}',
+            type: 'LiquidCrystal',
+            arguments: [0]
+        }],
+        setupExtraCode: '{LCD}.begin(16, 2);{LCD}.clear();',
         code: '{LCD}.clear();'
     }
 

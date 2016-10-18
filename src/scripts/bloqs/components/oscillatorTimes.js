@@ -62,6 +62,16 @@ var oscillatorTimes = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'oscillate({OSCILLATOR}, {AMPLITUDE}, {PHASE}, {SPEED}, {TIMES});',
     arduino: {
+        includes: [
+            'Servo.h',
+            'Wire.h',
+            'BitbloqOscillator.h'
+        ],
+        needInstanceOf: [{
+            name: '{OSCILLATOR}',
+            type: 'Oscillator'
+        }],
+        setupExtraCode: '{OSCILLATOR}.attach(º[{OSCILLATOR}.pin.s]);',
         code: 'oscillate({OSCILLATOR}, {AMPLITUDE}, {PHASE}, {SPEED}, {TIMES});'
     }
 });

@@ -54,6 +54,16 @@ var oscillator = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '{OSCILLATOR}.SetO({PHASE});{OSCILLATOR}.SetA({AMPLITUDE});{OSCILLATOR}.SetT({SPEED});{OSCILLATOR}.refresh();',
     arduino: {
+        includes: [
+            'Servo.h',
+            'Wire.h',
+            'BitbloqOscillator.h'
+        ],
+        needInstanceOf: [{
+            name: '{OSCILLATOR}',
+            type: 'Oscillator'
+        }],
+        setupExtraCode: '{OSCILLATOR}.attach(º[{OSCILLATOR}.pin.s]);',
         code: '{OSCILLATOR}.SetO({PHASE});{OSCILLATOR}.SetA({AMPLITUDE});{OSCILLATOR}.SetT({SPEED});{OSCILLATOR}.refresh();'
     }
 });

@@ -42,6 +42,12 @@ var led = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'digitalWrite({LED},{STATE});',
     arduino: {
+        needInstanceOf: [{
+            name: '{LED}',
+            type: 'const int',
+            equals: 'º[{LED}.pin.s]'
+        }],
+        setupExtraCode: 'pinMode({LED}, OUTPUT);',
         code: 'digitalWrite({LED},{STATE});'
     }
 });

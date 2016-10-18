@@ -12,6 +12,7 @@
     var includes = {},
         instances = {},
         setupExtraCodeList = {},
+        programExtraCodeList = {},
         bloqsFunctions = {
             withoutAsterisk: function(text) {
                 return text.replace('*', '');
@@ -34,6 +35,8 @@
         var varsCode = getCodeFromBloq(arduinoMainBloqs.varsBloq, hardwareList);
         var setupCode = getCodeFromBloq(arduinoMainBloqs.setupBloq, hardwareList);
         var loopCode = getCodeFromBloq(arduinoMainBloqs.loopBloq, hardwareList);
+
+        generateIndependentHardwareCode(hardwareList);
         var prop;
         //after bloqscode to reuse the bucle to fill libraries and instance dependencies
         var includesCode = '';
@@ -44,6 +47,11 @@
         var setupExtraCode = '';
         for (prop in setupExtraCodeList) {
             setupExtraCode += prop + '\n';
+        }
+
+        var programExtraCode = '';
+        for (prop in programExtraCodeList) {
+            programExtraCode += prop + '\n';
         }
 
         var instancesCode = '',
@@ -61,7 +69,7 @@
                     }
                     instancesCode += ' ' + instances[instanceId].arguments[i] + ',';
                 }
-                if (instances[instanceId].arguments.length > 1) {
+                if (instances[instanceId].arguments.length > 0) {
                     instancesCode = instancesCode.slice(0, -1);
                 }
                 instancesCode += ');\n'
@@ -78,6 +86,7 @@
         code += varsCode + '\n\n';
         code += '/***   Setup  ***/' + addSetupCode(setupCode, setupExtraCode) + '\n\n';
         code += '/***   Loop  ***/' + loopCode + '\n\n';
+        code += programExtraCode + '\n\n';
         return code;
     }
 
@@ -192,25 +201,13 @@
                 tempInstanceId;
 
             for (var i = 0; i < bloqFullStructure.arduino.needInstanceOf.length; i++) {
-                tempInstanceName = bloqFullStructure.arduino.needInstanceOf[i].name;
-                tempInstanceName = processCode(tempInstanceName, aliasesValuesHashMap, hardwareList);
-
-                tempInstanceId = tempInstanceName + String(bloqFullStructure.arduino.needInstanceOf[i].arguments || '');
-
-
-                instances[tempInstanceId] = {
-                    equals: processCode(bloqFullStructure.arduino.needInstanceOf[i].equals, aliasesValuesHashMap, hardwareList),
-                    type: bloqFullStructure.arduino.needInstanceOf[i].type,
-                    name: bloqFullStructure.arduino.needInstanceOf[i].name,
-                    realName: tempInstanceName,
-                    arguments: bloqFullStructure.arduino.needInstanceOf[i].arguments
-                };
+                addInstance(bloqFullStructure.arduino.needInstanceOf[i], aliasesValuesHashMap, hardwareList);
             }
         }
 
 
         if (bloqFullStructure.arduino.setupExtraCode) {
-            setupExtraCodeList[processCode(bloqFullStructure.arduino.setupExtraCode, aliasesValuesHashMap)] = true;
+            setupExtraCodeList[processCode(bloqFullStructure.arduino.setupExtraCode, aliasesValuesHashMap, hardwareList)] = true;
         }
 
 
@@ -254,20 +251,27 @@
         //searchGroups
         match = PARAMS_REGEXP.exec(code);
         while (match) {
-            //console.log('match!', match);
-            //console.log(aliasesValuesHashMap[match[1]]);
-            code = code.replace(match[0], aliasesValuesHashMap[match[1]].value);
+            if (aliasesValuesHashMap[match[1]]) {
+                code = code.replace(match[0], aliasesValuesHashMap[match[1]].value);
+            } else {
+                code = code.replace(match[0], '<no element>');
+            }
+
             match = PARAMS_REGEXP.exec(code);
         }
 
         //hardware vars
+
         match = BLOQS_HARDWARE_REGEXP.exec(code);
         var tempHardwareData;
         while (match) {
-            //console.log('match!', match);
-            //console.log(aliasesValuesHashMap[match[1]]);
-            tempHardwareData = findItemByProperty(match[1], hardwareList.components, 'name');
-            code = code.replace(match[0], accessNestedPropertyByString(tempHardwareData, match[2]));
+            if (hardwareList && hardwareList.components) {
+                tempHardwareData = findItemByProperty(match[1], hardwareList.components, 'name');
+                code = code.replace(match[0], accessNestedPropertyByString(tempHardwareData, match[2]));
+            } else {
+                code = code.replace(match[0], '<no hardware>');
+            }
+
             match = BLOQS_HARDWARE_REGEXP.exec(code);
         }
 
@@ -276,8 +280,6 @@
     }
 
     function accessNestedPropertyByString(object, nestedKey) {
-        //nestedKey = nestedKey.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
-        //nestedKey = nestedKey.replace(/^\./, ''); // strip a leading dot
         var properties = nestedKey.split('.');
         var result = JSON.parse(JSON.stringify(object));
         for (var i = 0; i < properties.length; i++) {
@@ -286,6 +288,216 @@
             }
         }
         return result;
+    }
+
+    function generateIndependentHardwareCode(hardwareList) {
+
+        var tempSetupExtraCode,
+            tempInstanceOf,
+            tempIncludes,
+            tempProgramExtraCode;
+
+        if (hardwareList.components) {
+            for (var i = 0; i < hardwareList.components.length; i++) {
+                tempSetupExtraCode = null;
+                tempInstanceOf = null;
+                tempProgramExtraCode = null;
+                tempIncludes = [];
+                switch (hardwareList.components[i].id) {
+                    case 'led':
+                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', OUTPUT);';
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'const int',
+                            equals: hardwareList.components[i].pin.s
+                        };
+                        break;
+                    case 'button':
+                    case 'limitswitch':
+                    case 'pot':
+                    case 'ldrs':
+                    case 'sound':
+                    case 'irs':
+                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'const int',
+                            equals: hardwareList.components[i].pin.s
+                        };
+                        break;
+
+                    case 'bt':
+                        tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'bqSoftwareSerial',
+                            arguments: [
+                                hardwareList.components[i].pin.rx,
+                                hardwareList.components[i].pin.tx,
+                                hardwareList.components[i].baudRate
+                            ]
+                        };
+                        break;
+                    case 'sp':
+                        tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'bqSoftwareSerial',
+                            arguments: [
+                                0,
+                                1,
+                                hardwareList.components[i].baudRate
+                            ]
+                        };
+                        break;
+                    case 'buttons':
+                        tempIncludes = ['BitbloqButtonPad.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'ButtonPad',
+                            arguments: [
+                                hardwareList.components[i].pin.s
+                            ]
+                        };
+                        break;
+                    case 'encoder':
+                        tempIncludes = ['BitbloqEncoder.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'Encoder',
+                            arguments: [
+                                'encoderUpdaterWrapper',
+                                hardwareList.components[i].pin.k,
+                                hardwareList.components[i].pin.sa,
+                                hardwareList.components[i].pin.sb
+                            ]
+                        };
+                        tempProgramExtraCode = 'void encoderUpdaterWrapper() {\n' + hardwareList.components[i].name + '.update();\n}';
+                        break;
+                    case 'joystick':
+                        tempIncludes = ['BitbloqJoystick.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'Joystick',
+                            arguments: [
+                                'encoderUpdaterWrapper',
+                                hardwareList.components[i].pin.x,
+                                hardwareList.components[i].pin.y,
+                                hardwareList.components[i].pin.k
+                            ]
+                        };
+                        break;
+                    case 'lcd':
+                        tempIncludes = ['Wire.h', 'BitbloqLiquidCrystal.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'LiquidCrystal',
+                            arguments: [
+                                '0'
+                            ]
+                        };
+                        tempSetupExtraCode = hardwareList.components[i].name + '.begin(16, 2);' + hardwareList.components[i].name + '.clear();';
+                        break;
+                    case 'RGBled':
+                        tempIncludes = ['BitbloqRGB.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'ZumRGB',
+                            arguments: [
+                                hardwareList.components[i].pin.r,
+                                hardwareList.components[i].pin.g,
+                                hardwareList.components[i].pin.b
+                            ]
+                        };
+                        break;
+                    case 'rtc':
+                        tempIncludes = ['Wire.h', 'BitbloqRTC.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'RTC_DS1307'
+                        };
+                        break;
+                    case 'hts221':
+                        tempIncludes = ['Wire.h', 'BitbloqHTS221.h', 'HTS221_Registers.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'HTS221'
+                        };
+                        tempSetupExtraCode = 'Wire.begin();\n' + hardwareList.components[i].name + '.begin();';
+                        break;
+                    case 'us':
+                        tempIncludes = ['BitbloqUS.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'US',
+                            arguments: [
+                                hardwareList.components[i].pin.trigger,
+                                hardwareList.components[i].pin.echo
+                            ]
+                        };
+                        break;
+                    case 'servo':
+                    case 'servocont':
+                        tempIncludes = ['Servo.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'Servo'
+                        };
+                        tempSetupExtraCode = hardwareList.components[i].name + '.attach(' + hardwareList.components[i].pin.s + ');';
+                        break;
+                    case 'irs2':
+                        tempIncludes = ['BitbloqLineFollower.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'LineFollower',
+                            arguments: [
+                                hardwareList.components[i].pin.s1,
+                                hardwareList.components[i].pin.s2
+                            ]
+                        };
+                        break;
+                    case 'buzzer':
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'const int',
+                            equals: hardwareList.components[i].pin.s
+                        };
+                        break;
+                }
+
+                if (tempInstanceOf) {
+                    addInstance(tempInstanceOf, {}, hardwareList);
+                }
+
+                if (tempSetupExtraCode) {
+                    setupExtraCodeList[tempSetupExtraCode] = true;
+                }
+
+                if (tempProgramExtraCode) {
+                    programExtraCodeList[tempProgramExtraCode] = true;
+                }
+
+                for (var j = 0; j < tempIncludes.length; j++) {
+                    includes[tempIncludes[j]] = true;
+                }
+            }
+        }
+
+    }
+
+    function addInstance(needInstanceOf, aliasesValuesHashMap, hardwareList) {
+        var tempInstanceName = needInstanceOf.name;
+        tempInstanceName = processCode(tempInstanceName, aliasesValuesHashMap, hardwareList);
+
+        var tempInstanceId = tempInstanceName + String(needInstanceOf.arguments || '');
+
+        instances[tempInstanceId] = {
+            equals: processCode(needInstanceOf.equals, aliasesValuesHashMap, hardwareList),
+            type: needInstanceOf.type,
+            name: needInstanceOf.name,
+            realName: tempInstanceName,
+            arguments: needInstanceOf.arguments
+        };
     }
 
     arduinoGeneration.getCode = getCode;
