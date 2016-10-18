@@ -1836,8 +1836,10 @@
                     instancesCode = instancesCode.slice(0, -1);
                 }
                 instancesCode += ');\n'
+            } else if (instances[instanceId].equals) {
+                instancesCode += instances[instanceId].type + ' ' + instances[instanceId].realName + ' = ' + instances[instanceId].equals + ';\n';
             } else {
-                instancesCode += instances[instanceId].type + ' ' + instances[instanceId].name + ';\n';
+                instancesCode += instances[instanceId].type + ' ' + instances[instanceId].realName + ';\n';
             }
         }
 
@@ -1959,14 +1961,16 @@
         if (bloqFullStructure.arduino.needInstanceOf) {
             var tempInstanceName,
                 tempInstanceId;
+
             for (var i = 0; i < bloqFullStructure.arduino.needInstanceOf.length; i++) {
                 tempInstanceName = bloqFullStructure.arduino.needInstanceOf[i].name;
-                if (PARAMS_REGEXP.test(tempInstanceName)) {
-                    matchAliasOnInstance = PARAMS_REGEXP.exec(tempInstanceName);
-                    tempInstanceName = aliasesValuesHashMap[matchAliasOnInstance[1]].value;
-                }
-                tempInstanceId = tempInstanceName + String(bloqFullStructure.arduino.needInstanceOf[i].arguments);
+                tempInstanceName = processCode(tempInstanceName, aliasesValuesHashMap, hardwareList);
+
+                tempInstanceId = tempInstanceName + String(bloqFullStructure.arduino.needInstanceOf[i].arguments || '');
+
+
                 instances[tempInstanceId] = {
+                    equals: processCode(bloqFullStructure.arduino.needInstanceOf[i].equals, aliasesValuesHashMap, hardwareList),
                     type: bloqFullStructure.arduino.needInstanceOf[i].type,
                     name: bloqFullStructure.arduino.needInstanceOf[i].name,
                     realName: tempInstanceName,

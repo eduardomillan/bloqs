@@ -93,6 +93,11 @@ var buzzer = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});',
     arduino: {
+        needInstanceOf: [{
+            name: '{BUZZER}',
+            type: 'const int',
+            equals: 'º[{BUZZER}.pin.s]'
+        }],
         code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'
     }
 });

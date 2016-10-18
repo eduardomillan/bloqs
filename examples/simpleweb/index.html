@@ -175,6 +175,14 @@
             }
         };
 
+        componentsArray.buzzers.push({
+            id: "buzzer",
+            name: "zumbador_0",
+            pin: {
+                s: "5"
+            }
+        });
+
 
         var $field = $('#bloqs--field');
         // Create the main arduino bloqs
@@ -296,10 +304,10 @@
 
         var zowi2 = ['declareVariable', 'zowiButtons', 'zowiDistance', 'zowiMovementsFront', 'zowiMovementsHeightFront', 'zowiMovementsHeightSides', 'zowiMovementsNoDir-v1', 'zowiMovementsSides', 'zowiSound'];
 
-        var testSet = ['evolutionBuzzer', 'evolutionBuzzer'];
+        var testSet = ['buzzer', 'evolutionBuzzer', 'mBotBuzzer'];
 
 
-        testSet = hardwareBloqs;
+        testSet = testSet;
 
         for (var i = 0; i < testSet.length; i++) {
 
@@ -390,6 +398,34 @@
                 },
                 "uid": "bca89355-7619-4a14-bf0f-ba1aba694585",
                 "width": 125
+            }, {
+                "category": "buzzers",
+                "connected": true,
+                "coordinates": {
+                    "x": 73.3,
+                    "y": 24.308300395256918
+                },
+                "dragtype": "components",
+                "endpoints": {
+                    "s": {
+                        "type": "digital",
+                        "uid": "8b49e998-8f5e-4770-80a9-998b94a93708"
+                    }
+                },
+                "height": 80,
+                "id": "buzz",
+                "name": "zumbador_0",
+                "pin": {
+                    "s": "5"
+                },
+                "pins": {
+                    "digital": [
+                        "s"
+                    ]
+                },
+                "type": "digital",
+                "uid": "7e9daf0b-0c84-47da-a9ee-61f6998cfd48",
+                "width": 85
             }]
         };
 
