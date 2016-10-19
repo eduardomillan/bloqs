@@ -1827,7 +1827,7 @@
         };
 
     function getCode(arduinoMainBloqs, hardwareList) {
-        console.log('getting code', arduinoMainBloqs);
+        //console.log('getting code', arduinoMainBloqs);
         includes = {};
         instances = {};
         setupExtraCodeList = {};
@@ -1943,7 +1943,7 @@
     }
 
     function getCodeFromBloq(bloqFullStructure, hardwareList) {
-        console.log('getting code from bloq', bloqFullStructure);
+        //console.log('getting code from bloq', bloqFullStructure);
 
         var aliases = bloqFullStructure.content[0],
             childs = bloqFullStructure.childs,
@@ -2249,7 +2249,7 @@
                             ]
                         };
                         break;
-                    case 'buzzer':
+                    case 'buzz':
                         tempInstanceOf = {
                             name: hardwareList.components[i].name,
                             type: 'const int',
