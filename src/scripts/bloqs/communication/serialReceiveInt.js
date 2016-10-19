@@ -35,7 +35,7 @@ var serialReceiveInt = _.merge(_.clone(OutputBloq, true), {
         needInstanceOf: [{
             name: '{SERIAL}',
             type: 'bqSoftwareSerial',
-            arguments: [0, 1, '[{SERIAL}.baudRate]']
+            arguments: [0, 1, 'º[{SERIAL}.baudRate]']
         }],
         code: '{SERIAL}.readInt()'
     },
