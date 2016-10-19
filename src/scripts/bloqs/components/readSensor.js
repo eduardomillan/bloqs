@@ -38,7 +38,7 @@ var readSensor = _.merge(_.clone(OutputBloq, true), {
         options: 'sensors'
     },
     arduino: {
-        code: '{SENSOR}'
+        code: '¬{SENSOR.readSensor}'
     }
 });
 

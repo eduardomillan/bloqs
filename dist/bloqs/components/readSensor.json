@@ -28,6 +28,6 @@
     "options": "sensors"
   },
   "arduino": {
-    "code": "{SENSOR}"
+    "code": "¬{SENSOR.readSensor}"
   }
 }

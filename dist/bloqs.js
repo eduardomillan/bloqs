@@ -1793,6 +1793,35 @@
                     pin = pin.replace(/\"/g, '');
                 }
                 return pin;
+            },
+            readSensor: function(sensorName, aliasesValuesHashMap, hardwareList) {
+                var result;
+                var sensorData,
+                    i = 0;
+                while (!sensorData && (i < hardwareList.components.length)) {
+                    if (hardwareList.components[i].name === sensorName) {
+                        sensorData = hardwareList.components[i];
+                    }
+                    i++;
+                }
+                if (sensorData) {
+                    switch (sensorData.type) {
+                        case 'analog':
+                            result = 'analogRead(' + sensorName + ')';
+                            break
+                        case 'digital':
+                            result = 'digitalRead(' + sensorName + ')';
+                            break;
+                        case 'LineFollower':
+                            result = '(float *) ' + sensorName + '.read()';
+                            break;
+                        default:
+                            result = sensorName + '.read()'
+                    }
+                }
+
+
+                return result || '';
             }
         };
 
@@ -1831,13 +1860,6 @@
             if (instances[instanceId].arguments) {
                 instancesCode += instances[instanceId].type + ' ' + instances[instanceId].realName + '(';
                 for (var i = 0; i < instances[instanceId].arguments.length; i++) {
-                    if (PARAMS_REGEXP.test(instances[instanceId].arguments[i])) {
-                        instances[instanceId].arguments[i] = instances[instanceId].arguments[i].replace(instances[instanceId].name, instances[instanceId].realName);
-                    }
-                    if (HARDWARE_INCLUDES_PARAMS_REGEXP.test(instances[instanceId].arguments[i])) {
-
-                        instances[instanceId].arguments[i] = replaceHardwareVars(instances[instanceId].arguments[i], hardwareList);
-                    }
                     instancesCode += ' ' + instances[instanceId].arguments[i] + ',';
                 }
                 if (instances[instanceId].arguments.length > 0) {
@@ -1877,21 +1899,6 @@
             i++;
         }
         return found;
-    }
-
-    function replaceHardwareVars(code, hardwareSchema) {
-        var result = code,
-            match, tempHardwareData;
-        match = HARDWARE_INCLUDES_PARAMS_REGEXP.exec(code);
-        if (match) {
-            //console.log('match!', match);
-            //console.log('alias', match[1]);
-            //console.log('property', match[3]);
-            tempHardwareData = findItemByProperty(match[1], hardwareSchema.components, 'name');
-            //console.log('hardware Data', tempHardwareData);
-            code = code.replace(match[0], tempHardwareData[match[3]]);
-        }
-        return code;
     }
 
     function getTypeFromBloq(bloq) {
@@ -2015,7 +2022,7 @@
         while (match) {
             //console.log('match!', match);
             //console.log(aliasesValuesHashMap[match[1]]);
-            code = code.replace(match[0], bloqsFunctions[match[2]](aliasesValuesHashMap[match[1]].value));
+            code = code.replace(match[0], bloqsFunctions[match[2]](aliasesValuesHashMap[match[1]].value, aliasesValuesHashMap, hardwareList));
             match = BLOQS_FUNCTION_PARAMS_REGEXP.exec(code);
         }
 
@@ -2259,6 +2266,13 @@
     function addInstance(needInstanceOf, aliasesValuesHashMap, hardwareList) {
         var tempInstanceName = needInstanceOf.name;
         tempInstanceName = processCode(tempInstanceName, aliasesValuesHashMap, hardwareList);
+
+        if (needInstanceOf.arguments) {
+            for (var i = 0; i < needInstanceOf.arguments.length; i++) {
+                needInstanceOf.arguments[i] = processCode(needInstanceOf.arguments[i], aliasesValuesHashMap, hardwareList);
+            }
+        }
+
 
         var tempInstanceId = tempInstanceName + String(needInstanceOf.arguments || '');
 
@@ -4398,16 +4412,27 @@
                                 //only software Vars get value from val(), hardware, use attribute or val()
                                 var variableType = this.bloqData.content[0][i].options;
                                 var itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType);
-                                var valueType;
+                                var valueType, j;
                                 if (itsSoftwareValue !== -1) {
                                     value = selectedValue;
-                                    var j = 0;
+                                    j = 0;
                                     while (!valueType && (j < softwareArrays[variableType].length)) {
                                         if (softwareArrays[variableType][j].name === value) {
                                             valueType = softwareArrays[variableType][j].type || -1;
                                         }
                                         j++;
                                     }
+                                } else if (variableType === 'sensors') {
+                                    value = selectedValue;
+
+                                    j = 0;
+                                    while (!valueType && (j < componentsArray.sensors.length)) {
+                                        if (componentsArray.sensors[j].name === value) {
+                                            valueType = componentsArray.sensors[j].dataReturnType;
+                                        }
+                                        j++;
+                                    }
+
                                 } else {
                                     value = attributeValue || selectedValue;
                                 }

@@ -1890,16 +1890,27 @@
                                 //only software Vars get value from val(), hardware, use attribute or val()
                                 var variableType = this.bloqData.content[0][i].options;
                                 var itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType);
-                                var valueType;
+                                var valueType, j;
                                 if (itsSoftwareValue !== -1) {
                                     value = selectedValue;
-                                    var j = 0;
+                                    j = 0;
                                     while (!valueType && (j < softwareArrays[variableType].length)) {
                                         if (softwareArrays[variableType][j].name === value) {
                                             valueType = softwareArrays[variableType][j].type || -1;
                                         }
                                         j++;
                                     }
+                                } else if (variableType === 'sensors') {
+                                    value = selectedValue;
+
+                                    j = 0;
+                                    while (!valueType && (j < componentsArray.sensors.length)) {
+                                        if (componentsArray.sensors[j].name === value) {
+                                            valueType = componentsArray.sensors[j].dataReturnType;
+                                        }
+                                        j++;
+                                    }
+
                                 } else {
                                     value = attributeValue || selectedValue;
                                 }
