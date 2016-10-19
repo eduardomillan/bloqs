@@ -1784,6 +1784,7 @@
         instances = {},
         setupExtraCodeList = {},
         programExtraCodeList = {},
+        programFunctionDeclarationsList = {},
         bloqsFunctions = {
             withoutAsterisk: function(text) {
                 return text.replace('*', '');
@@ -1829,6 +1830,9 @@
         console.log('getting code', arduinoMainBloqs);
         includes = {};
         instances = {};
+        setupExtraCodeList = {};
+        programExtraCodeList = {};
+        programFunctionDeclarationsList = {};
 
         var code = '';
 
@@ -1854,6 +1858,13 @@
             programExtraCode += prop + '\n';
         }
 
+        var programFunctionDeclarations = '';
+        for (prop in programFunctionDeclarationsList) {
+            programFunctionDeclarations += prop + '\n';
+        }
+
+
+
         var instancesCode = '',
             instanceId;
         for (instanceId in instances) {
@@ -1875,7 +1886,9 @@
 
 
         code += '/***   Included libraries  ***/\n' + includesCode + '\n\n';
-        code += '/***   Global variables and function definition  ***/' + instancesCode + '\n';
+        code += '/***   Global variables and function definition  ***/';
+        code += programFunctionDeclarations + '\n';
+        code += instancesCode + '\n';
         code += varsCode + '\n\n';
         code += '/***   Setup  ***/' + addSetupCode(setupCode, setupExtraCode) + '\n\n';
         code += '/***   Loop  ***/' + loopCode + '\n\n';
@@ -2073,13 +2086,15 @@
         var tempSetupExtraCode,
             tempInstanceOf,
             tempIncludes,
-            tempProgramExtraCode;
+            tempProgramExtraCode,
+            tempProgramFunctionDeclaration;
 
         if (hardwareList.components) {
             for (var i = 0; i < hardwareList.components.length; i++) {
                 tempSetupExtraCode = null;
                 tempInstanceOf = null;
                 tempProgramExtraCode = null;
+                tempProgramFunctionDeclaration = null;
                 tempIncludes = [];
                 switch (hardwareList.components[i].id) {
                     case 'led':
@@ -2150,6 +2165,7 @@
                                 hardwareList.components[i].pin.sb
                             ]
                         };
+                        tempProgramFunctionDeclaration = 'void encoderUpdaterWrapper()';
                         tempProgramExtraCode = 'void encoderUpdaterWrapper() {\n' + hardwareList.components[i].name + '.update();\n}';
                         break;
                     case 'joystick':
@@ -2158,7 +2174,6 @@
                             name: hardwareList.components[i].name,
                             type: 'Joystick',
                             arguments: [
-                                'encoderUpdaterWrapper',
                                 hardwareList.components[i].pin.x,
                                 hardwareList.components[i].pin.y,
                                 hardwareList.components[i].pin.k
@@ -2254,6 +2269,12 @@
                 if (tempProgramExtraCode) {
                     programExtraCodeList[tempProgramExtraCode] = true;
                 }
+
+                if (tempProgramFunctionDeclaration) {
+                    programFunctionDeclarationsList[tempProgramFunctionDeclaration] = true;
+                }
+
+
 
                 for (var j = 0; j < tempIncludes.length; j++) {
                     includes[tempIncludes[j]] = true;
