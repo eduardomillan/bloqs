@@ -2165,7 +2165,7 @@
                                 hardwareList.components[i].pin.sb
                             ]
                         };
-                        tempProgramFunctionDeclaration = 'void encoderUpdaterWrapper()';
+                        tempProgramFunctionDeclaration = 'void encoderUpdaterWrapper();';
                         tempProgramExtraCode = 'void encoderUpdaterWrapper() {\n' + hardwareList.components[i].name + '.update();\n}';
                         break;
                     case 'joystick':
