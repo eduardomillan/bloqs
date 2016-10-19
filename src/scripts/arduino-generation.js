@@ -478,7 +478,7 @@
                             ]
                         };
                         break;
-                    case 'buzzer':
+                    case 'buzz':
                         tempInstanceOf = {
                             name: hardwareList.components[i].name,
                             type: 'const int',
