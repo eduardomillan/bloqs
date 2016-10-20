@@ -13,6 +13,7 @@ $conversions-color: #00CC11;
 $zowi-color: #60BCC9;
 $evolution-color: #9a0768;
 $mbot-color: #0076b4;
+$botbloq-car: #60bcc9;
 
 /* COLOR THEME */
 
@@ -29,7 +30,11 @@ $theme-color-conversions-color: #00CC11;
 $theme-color-zowi-color: #60BCC9;
 $theme-color-evolution-color: #9a0768;
 $theme-color-mbot-color: #0076b4;
+$theme-color-botbloq-car: #60bcc9;
 @mixin createBloqsTheme ($reverse) {
+    /*---- BOTBLOQ - CAR ---------*/
+    @include createBloqsCss($reverse, "bloq-botbloq-vehicle-move", $botbloq-car, $theme-color-botbloq-car);
+    @include createBloqsCss($reverse, "bloq-botbloq-vehicle-stop", $botbloq-car, $theme-color-botbloq-car);
     /*---- CONVERSIONS ---------*/
     @include createBloqsCss($reverse, "bloq-string-to-int", $conversions-color, $theme-color-conversions-color);
     /*---- EVOLUTION ---------*/
