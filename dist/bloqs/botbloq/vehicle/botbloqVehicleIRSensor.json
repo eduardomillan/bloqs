@@ -37,7 +37,7 @@
   },
   "python": {
     "libraries": [
-      "botbloqVehicle"
+      "BotbloqVehicle"
     ],
     "needInstanceOf": [
       {
@@ -47,7 +47,7 @@
     ],
     "codeLines": [
       {
-        "code": "botbloqVehicle.readIRSensor({SIDE})"
+        "code": "vehicle.readIRSensor(\"{SIDE}\")"
       }
     ]
   }

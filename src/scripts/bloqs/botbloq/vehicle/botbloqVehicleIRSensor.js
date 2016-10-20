@@ -42,13 +42,13 @@ var botbloqVehicleIRSensor = _.merge(_.clone(OutputBloq, true), {
         value: 'int'
     },
     python: {
-        libraries: ['botbloqVehicle'],
+        libraries: ['BotbloqVehicle'],
         needInstanceOf: [{
             name: 'vehicle',
             type: 'BotbloqVehicle'
         }],
         codeLines: [{
-            code: 'botbloqVehicle.readIRSensor({SIDE})'
+            code: 'vehicle.readIRSensor("{SIDE}")'
         }]
     }
 });

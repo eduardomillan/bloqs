@@ -29,6 +29,12 @@
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-stop textarea,
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-stop select {
       color: #60bcc9; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-ir {
+    color: #60bcc9; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-ir input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-ir textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-ir select {
+      color: #60bcc9; }
   #bloqs--field.theme-basic .bloq.bloq-string-to-int {
     color: #00CC11; }
     #bloqs--field.theme-basic .bloq.bloq-string-to-int input,
@@ -1210,6 +1216,39 @@
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled).bloq--output:before {
         background-color: #60bcc9; }
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #60bcc9; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) .bloqinput {
+      color: white;
+      background: #60bcc9;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) .bloqinput:before {
+        background: #60bcc9;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled).bloq--statement {
+      background-color: #60bcc9; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled).bloq--output {
+      background-color: #60bcc9; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled).bloq--output:before {
+        background-color: #60bcc9; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled).bloq--output:focus:not(.disabled):after {
         background-color: #60bcc9; }
   #bloqs--field.theme-colors .bloq.bloq-string-to-int:not(.disabled) {
     color: white; }

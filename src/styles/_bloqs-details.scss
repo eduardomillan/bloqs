@@ -35,6 +35,7 @@ $theme-color-botbloq-car: #60bcc9;
     /*---- BOTBLOQ - CAR ---------*/
     @include createBloqsCss($reverse, "bloq-botbloq-vehicle-move", $botbloq-car, $theme-color-botbloq-car);
     @include createBloqsCss($reverse, "bloq-botbloq-vehicle-stop", $botbloq-car, $theme-color-botbloq-car);
+    @include createBloqsCss($reverse, "bloq-botbloq-vehicle-ir", $botbloq-car, $theme-color-botbloq-car);
     /*---- CONVERSIONS ---------*/
     @include createBloqsCss($reverse, "bloq-string-to-int", $conversions-color, $theme-color-conversions-color);
     /*---- EVOLUTION ---------*/

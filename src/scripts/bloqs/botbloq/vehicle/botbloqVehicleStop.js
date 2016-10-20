@@ -6,13 +6,13 @@ var _ = require('lodash'),
     StatementBloq = require('./../../statementBloq');
 
 /**
-* Bloq name: botbloqVehicleStop
-*
-* Bloq type: Statement
-*
-* Description: Move the vehicle forward
-*
-*/
+ * Bloq name: botbloqVehicleStop
+ *
+ * Bloq type: Statement
+ *
+ * Description: Move the vehicle forward
+ *
+ */
 
 var botbloqVehicleStop = _.merge(_.clone(StatementBloq, true), {
 
@@ -26,8 +26,8 @@ var botbloqVehicleStop = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     python: {
-        libraries:['botbloqVehicle'],
-        needInstanceOf:[{
+        libraries: ['BotbloqVehicle'],
+        needInstanceOf: [{
             name: 'vehicle',
             type: 'BotbloqVehicle'
         }],
