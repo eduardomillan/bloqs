@@ -32,7 +32,7 @@ var botbloqVehicleStop = _.merge(_.clone(StatementBloq, true), {
             type: 'BotbloqVehicle'
         }],
         codeLines: [{
-            code: 'botbloqVehicle.parar()'
+            code: 'vehicle.stop()'
         }]
     }
 });

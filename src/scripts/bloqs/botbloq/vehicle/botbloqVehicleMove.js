@@ -24,16 +24,16 @@ var botbloqVehicleMove = _.merge(_.clone(StatementBloq, true), {
             alias: 'staticDropdown',
             options: [{
                 label: 'Avanzar',
-                value: 'forward'
+                value: 'FORWARD'
             }, {
                 label: 'Retroceder',
-                value: 'backward'
+                value: 'BACKWARD'
             }, {
                 label: 'Girar a la derecha',
-                value: 'right'
+                value: 'TURN_RIGHT'
             }, {
                 label: 'Girar a la izquierda',
-                value: 'left'
+                value: 'TURN_LEFT'
             }]
         }, {
             alias: 'text',
@@ -59,15 +59,7 @@ var botbloqVehicleMove = _.merge(_.clone(StatementBloq, true), {
             type: 'BotbloqVehicle'
         }],
         codeLines: [{
-            conditional: {
-                aliasId: 'MOVEMENT',
-                code: {
-                    'forward': 'vehicle.avanzar({DELAY},{SPEED})',
-                    'backward': 'vehicle.retroceder({DELAY},{SPEED})',
-                    'right': 'vehicle.girarDerecha({DELAY},{SPEED})',
-                    'left': 'vehicle.girarIzquierda({DELAY},{SPEED})'
-                }
-            }
+            code: 'vehicle.move("{DELAY}","{SPEED}","{MOVEMENT}")'
         }]
     }
 });
