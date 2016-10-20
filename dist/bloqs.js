@@ -1773,11 +1773,11 @@
 (function(arduinoGeneration) {
 
     var INDENT_DEFAULT_CHARACTER = '    ',
-        PARAMS_REGEXP = /{([^{].[^\s]*?)}/,
-        HARDWARE_INCLUDES_PARAMS_REGEXP = /\[(.[^\s\.]+?)(\.?)(.[^\s\.]*?)\]/,
+        PARAMS_REGEXP = /{([^{].[^(\s]*?)}/,
         BLOQS_HARDWARE_REGEXP = /º\[([^{].*?)\.(.*?)\]/,
         BLOQS_PARAMS_REGEXP = /@{([^{].*?)\.(.*?)}/,
-        BLOQS_FUNCTION_PARAMS_REGEXP = /¬{([^{].*?)\.(.*?)}/;
+        BLOQS_FUNCTION_PARAMS_REGEXP = /¬{([^{].*?)\.(.*?)}/,
+        CLASS_CONSTRUCTOR_REGEXP = /\${CLASS-OUTSIDE}/;
 
 
     var includes = {},
@@ -1785,6 +1785,7 @@
         setupExtraCodeList = {},
         programExtraCodeList = {},
         programFunctionDeclarationsList = {},
+        procesingProgram,
         bloqsFunctions = {
             withoutAsterisk: function(text) {
                 return text.replace('*', '');
@@ -1828,11 +1829,14 @@
 
     function getCode(arduinoMainBloqs, hardwareList) {
         //console.log('getting code', arduinoMainBloqs);
+        procesingProgram = arduinoMainBloqs;
         includes = {};
         instances = {};
         setupExtraCodeList = {};
         programExtraCodeList = {};
         programFunctionDeclarationsList = {};
+        hardwareList = hardwareList || { components: [] };
+
 
         var code = '';
 
@@ -1942,78 +1946,138 @@
         return result || '';
     }
 
-    function getCodeFromBloq(bloqFullStructure, hardwareList) {
-        //console.log('getting code from bloq', bloqFullStructure);
+    function searchClassName(constructorBloq) {
+        //buscar el bloque actual
+        //buscar el padre inmediato de tipo class y sacar
+        var found;
+        found = searchClassNameInBloq(constructorBloq, procesingProgram.varsBloq);
 
-        var aliases = bloqFullStructure.content[0],
-            childs = bloqFullStructure.childs,
-            childsCode = '',
-            aliasesValuesHashMap = {},
-            matchAliasOnInstance;
-
-        if (bloqFullStructure.arduino.includes) {
-            for (var i = 0; i < bloqFullStructure.arduino.includes.length; i++) {
-                includes[bloqFullStructure.arduino.includes[i]] = true;
-            }
+        if (!found) {
+            found = searchClassNameInBloq(constructorBloq, procesingProgram.setupBloq);
         }
 
-        if (aliases) {
-            for (var i = 0; i < aliases.length; i++) {
-                if (aliases[i].id) {
-                    aliasesValuesHashMap[aliases[i].id] = {
-                        value: aliases[i].value || ''
-                    };
-                } else if (aliases[i].bloqInputId) {
-                    aliasesValuesHashMap[aliases[i].bloqInputId] = {};
-                    if (aliases[i].value) {
-                        aliasesValuesHashMap[aliases[i].bloqInputId].value = getCodeFromBloq(aliases[i].value, hardwareList) || '';
+        if (!found) {
+            found = searchClassNameInBloq(constructorBloq, procesingProgram.loopBloq);
+        }
 
-                        if (aliases[i].value.returnType) {
-                            aliasesValuesHashMap[aliases[i].bloqInputId].returnType = getTypeFromBloq(aliases[i].value);
-                        }
-                    } else {
-                        aliasesValuesHashMap[aliases[i].bloqInputId].value = '';
-                        aliasesValuesHashMap[aliases[i].bloqInputId].returnType = '';
-                    }
+        return found;
+    }
+
+    function searchClassNameInBloq(constructorBloq, bloq) {
+        var result;
+        if (bloq.name === 'class') {
+            if (isTheConstructorHere(constructorBloq, bloq)) {
+                result = bloq.content[0][1].value;
+            }
+        }
+        if (!result && bloq.childs) {
+            var i = 0;
+            while (!result && (i < bloq.childs.length)) {
+                result = searchClassNameInBloq(constructorBloq, bloq.childs[i]);
+                i++;
+            }
+        }
+        return result;
+    }
+
+    function isTheConstructorHere(constructorBloq, bloq) {
+        var result;
+        if (constructorBloq === bloq) {
+            result = true;
+        } else {
+            if (bloq.childs) {
+                var i = 0;
+                while (!result && (i < bloq.childs.length)) {
+                    result = isTheConstructorHere(constructorBloq, bloq.childs[i]);
+                    i++;
                 }
             }
         }
-        if (childs) {
-            for (var i = 0; i < childs.length; i++) {
-                childsCode += getCodeFromBloq(childs[i], hardwareList);
-            }
-            aliasesValuesHashMap.STATEMENTS = {
-                value: childsCode
-            };
-        }
+        return result;
+    }
 
-        if (bloqFullStructure.arduino.needInstanceOf) {
-            var tempInstanceName,
-                tempInstanceId;
-
-            for (var i = 0; i < bloqFullStructure.arduino.needInstanceOf.length; i++) {
-                addInstance(bloqFullStructure.arduino.needInstanceOf[i], aliasesValuesHashMap, hardwareList);
-            }
-        }
-
-
-        if (bloqFullStructure.arduino.setupExtraCode) {
-            setupExtraCodeList[processCode(bloqFullStructure.arduino.setupExtraCode, aliasesValuesHashMap, hardwareList)] = true;
-        }
-
-
+    function getCodeFromBloq(bloqFullStructure, hardwareList) {
+        //console.log('getting code from bloq', bloqFullStructure);
         var code;
-        if (bloqFullStructure.arduino.conditional) {
-            code = bloqFullStructure.arduino.conditional.code[aliasesValuesHashMap[bloqFullStructure.arduino.conditional.aliasId].value];
+        if (bloqFullStructure.enable) {
+
+
+            var aliases = bloqFullStructure.content[0],
+                childs = bloqFullStructure.childs,
+                childsCode = '',
+                aliasesValuesHashMap = {},
+                matchAliasOnInstance;
+
+            if (bloqFullStructure.arduino.includes) {
+                for (var i = 0; i < bloqFullStructure.arduino.includes.length; i++) {
+                    includes[bloqFullStructure.arduino.includes[i]] = true;
+                }
+            }
+
+            if (aliases) {
+                for (var i = 0; i < aliases.length; i++) {
+                    if (aliases[i].id) {
+                        aliasesValuesHashMap[aliases[i].id] = {
+                            value: aliases[i].value || ''
+                        };
+                    } else if (aliases[i].bloqInputId) {
+                        aliasesValuesHashMap[aliases[i].bloqInputId] = {};
+                        if (aliases[i].value) {
+                            aliasesValuesHashMap[aliases[i].bloqInputId].value = getCodeFromBloq(aliases[i].value, hardwareList) || '';
+
+                            if (aliases[i].value.returnType) {
+                                aliasesValuesHashMap[aliases[i].bloqInputId].returnType = getTypeFromBloq(aliases[i].value);
+                            }
+                        } else {
+                            aliasesValuesHashMap[aliases[i].bloqInputId].value = '';
+                            aliasesValuesHashMap[aliases[i].bloqInputId].returnType = '';
+                        }
+                    }
+                }
+            }
+            if (childs) {
+                for (var i = 0; i < childs.length; i++) {
+                    childsCode += getCodeFromBloq(childs[i], hardwareList);
+                }
+                aliasesValuesHashMap.STATEMENTS = {
+                    value: childsCode
+                };
+            }
+
+            if (bloqFullStructure.arduino.needInstanceOf) {
+                var tempInstanceName,
+                    tempInstanceId;
+
+                for (var i = 0; i < bloqFullStructure.arduino.needInstanceOf.length; i++) {
+                    addInstance(bloqFullStructure.arduino.needInstanceOf[i], aliasesValuesHashMap, hardwareList);
+                }
+            }
+
+
+            if (bloqFullStructure.arduino.setupExtraCode) {
+                setupExtraCodeList[processCode(bloqFullStructure.arduino.setupExtraCode, aliasesValuesHashMap, hardwareList)] = true;
+            }
+
+            if (bloqFullStructure.name === 'constructorClass') {
+                var parentClassName = searchClassName(bloqFullStructure);
+                bloqFullStructure.arduino.code = bloqFullStructure.arduino.code.replace(CLASS_CONSTRUCTOR_REGEXP, parentClassName);
+            }
+
+
+            if (bloqFullStructure.arduino.conditional) {
+                code = bloqFullStructure.arduino.conditional.code[aliasesValuesHashMap[bloqFullStructure.arduino.conditional.aliasId].value];
+            } else {
+                code = bloqFullStructure.arduino.code;
+            }
+            code = code || '';
+
+            code = processCode(code, aliasesValuesHashMap, hardwareList);
+
+            if (bloqFullStructure.type !== 'output') {
+                code += '\n';
+            }
         } else {
-            code = bloqFullStructure.arduino.code;
-        }
-        code = code || '';
-
-        code = processCode(code, aliasesValuesHashMap, hardwareList);
-
-        if (bloqFullStructure.type !== 'output') {
-            code += '\n';
+            code = '';
         }
 
         return code;
@@ -2021,6 +2085,7 @@
 
     function processCode(code, aliasesValuesHashMap, hardwareList) {
         var match;
+
         //Especial @
         match = BLOQS_PARAMS_REGEXP.exec(code);
         while (match) {

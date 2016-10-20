@@ -22,7 +22,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "1be28d8b-90f0-483a-ab30-abf57149804c"
+      "name": "dabd9448-4ec6-414f-9491-ebaef27dcccc"
     }
   ],
   "bloqClass": "bloq-invoke-arguments-class",
@@ -62,7 +62,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "1be28d8b-90f0-483a-ab30-abf57149804c"
+        "name": "dabd9448-4ec6-414f-9491-ebaef27dcccc"
       }
     ]
   ],
@@ -71,5 +71,8 @@
   "returnType": {
     "type": "simple",
     "value": "var"
+  },
+  "arduino": {
+    "code": "{CLASS} {NAME}({ARGS});"
   }
 }

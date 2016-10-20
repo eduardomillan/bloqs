@@ -74,47 +74,28 @@
       },
       {
         "alias": "text",
-        "value": "beat"
+        "value": "durante"
       },
       {
-        "id": "BEAT",
-        "alias": "staticDropdown",
-        "options": [
-          {
-            "label": "doble",
-            "value": "2000"
-          },
-          {
-            "label": "entero",
-            "value": "1000"
-          },
-          {
-            "label": "medio",
-            "value": "500"
-          },
-          {
-            "label": "cuarto",
-            "value": "250"
-          },
-          {
-            "label": "octavo",
-            "value": "125"
-          }
-        ]
+        "id": "SECONDS",
+        "alias": "numberInput",
+        "value": 2000
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-ms"
       }
     ]
   ],
   "code": "",
   "arduino": {
-    "includes": [
-      "BitbloqMBot.h"
-    ],
     "needInstanceOf": [
       {
-        "name": "mBot",
-        "type": "MBot"
+        "name": "mBotBuzzerPin",
+        "type": "const int",
+        "equals": "8"
       }
     ],
-    "code": "mBot.tone({NOTE},{BEAT});"
+    "code": "tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
   }
 }

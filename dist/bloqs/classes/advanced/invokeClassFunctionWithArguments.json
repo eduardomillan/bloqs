@@ -22,7 +22,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "0b28a07b-f7d8-4fdf-9f65-f454fba541c8"
+      "name": "971a742d-6bad-46fd-8e50-462c9c064b06"
     }
   ],
   "bloqClass": "bloq-invoke-class-function-args",
@@ -62,7 +62,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "0b28a07b-f7d8-4fdf-9f65-f454fba541c8"
+        "name": "971a742d-6bad-46fd-8e50-462c9c064b06"
       }
     ]
   ],
@@ -70,5 +70,8 @@
   "dynamicDropdown": {
     "idDropdown": "FUNCTION",
     "options": "voidFunctions"
+  },
+  "arduino": {
+    "code": "{CLASS}.{FUNCTION}({ARGS});"
   }
 }

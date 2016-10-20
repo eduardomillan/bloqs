@@ -62,10 +62,11 @@
   ],
   "createDynamicContent": "classes",
   "code": "class {NAME} : public {PARENT}{{STATEMENTS}};",
-  "hCode": "class {NAME}: public {PARENT}{{STATEMENTS}};",
-  "cppCode": "",
   "returnType": {
     "type": "simple",
     "value": "class"
+  },
+  "arduino": {
+    "code": "class {NAME} : public {PARENT}{{STATEMENTS}};"
   }
 }

@@ -24,7 +24,7 @@
         "string",
         "stringSum"
       ],
-      "name": "80944056-9942-408a-9faf-acb261f08cc7"
+      "name": "882a3202-5b73-43d4-ae4e-94bdf4f65059"
     }
   ],
   "bloqClass": "bloq-set-class-variable",
@@ -66,9 +66,12 @@
           "string",
           "stringSum"
         ],
-        "name": "80944056-9942-408a-9faf-acb261f08cc7"
+        "name": "882a3202-5b73-43d4-ae4e-94bdf4f65059"
       }
     ]
   ],
-  "code": "{CLASS}.{NAME} = {VALUE};"
+  "code": "{CLASS}.{NAME} = {VALUE};",
+  "arduino": {
+    "code": "{CLASS}.{NAME} = {VALUE};"
+  }
 }

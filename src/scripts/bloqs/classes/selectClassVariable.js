@@ -42,6 +42,9 @@ var selectClassVariable = _.merge(_.clone(OutputBloq, true), {
         type: 'fromDynamicDropdown',
         idDropdown: 'VAR',
         options: 'softwareVars'
+    },
+    arduino: {
+        code: '{CLASS}.{VAR}'
     }
 });
 

@@ -7,14 +7,14 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: classChildren
- * 
+ *
  * Bloq type: Statement-Input
  *
  * Description: It defines a class which inherits, in a public, protected
  *              or private way, selectable from a first drop-down, the
  *              variables and functions from another class, selectable from
  *              a second drop-down.
- * 
+ *
  * Return type: none
  */
 
@@ -57,11 +57,12 @@ var classChildren = _.merge(_.clone(StatementInputBloq, true), {
     ],
     createDynamicContent: 'classes',
     code: 'class {NAME} : public {PARENT}{{STATEMENTS}};',
-    hCode: 'class {NAME}: public {PARENT}{{STATEMENTS}};',
-    cppCode: '',
     returnType: {
         type: 'simple',
         value: 'class'
+    },
+    arduino: {
+        code: 'class {NAME} : public {PARENT}{{STATEMENTS}};'
     }
 
 });

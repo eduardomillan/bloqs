@@ -7,12 +7,12 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: bloqPrivate
- * 
+ *
  * Bloq type: Statement-Input
  *
  * Description: It defines the private variables and functions of a class,
  *              which would not be accessible or visible from outside the class.
- * 
+ *
  * Return type: none
  */
 
@@ -27,9 +27,9 @@ var bloqPrivate = _.merge(_.clone(StatementInputBloq, true), {
         }]
     ],
     code: 'private : {STATEMENTS}',
-    hCode: 'private : {STATEMENTS}',
-    cppCode: ''
-
+    arduino: {
+        code: 'private : {STATEMENTS}'
+    }
 });
 
 utils.generateBloqInputConnectors(bloqPrivate);

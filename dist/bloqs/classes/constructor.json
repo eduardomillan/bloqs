@@ -25,6 +25,7 @@
     ]
   ],
   "code": "{CLASS-OUTSIDE}(){{STATEMENTS}};",
-  "hCode": "{CLASS-OUTSIDE} ();",
-  "cppCode": "{CLASS-OUTSIDE} :: {CLASS-OUTSIDE} (){{STATEMENTS}};"
+  "arduino": {
+    "code": "\n${CLASS-OUTSIDE}(){{STATEMENTS}};"
+  }
 }

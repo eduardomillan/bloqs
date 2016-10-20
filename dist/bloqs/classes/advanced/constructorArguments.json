@@ -27,7 +27,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "886046ff-3744-49e3-b32f-d0206e498991"
+      "name": "e4d7bc3d-1fcd-4dbe-8215-8bc7b22bb002"
     }
   ],
   "bloqClass": "bloq-constructor-arguments",
@@ -50,11 +50,12 @@
           "string",
           "selectVariable"
         ],
-        "name": "886046ff-3744-49e3-b32f-d0206e498991"
+        "name": "e4d7bc3d-1fcd-4dbe-8215-8bc7b22bb002"
       }
     ]
   ],
   "code": "{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};",
-  "hCode": "{CLASS-OUTSIDE} ({ARGS});",
-  "cppCode": "{CLASS-OUTSIDE} :: {CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};"
+  "arduino": {
+    "code": "{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};"
+  }
 }

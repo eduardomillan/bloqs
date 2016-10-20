@@ -28,8 +28,9 @@ var constructorClass = _.merge(_.clone(StatementInputBloq, true), {
         }]
     ],
     code: '{CLASS-OUTSIDE}(){{STATEMENTS}};',
-    hCode: '{CLASS-OUTSIDE} ();',
-    cppCode: '{CLASS-OUTSIDE} :: {CLASS-OUTSIDE} (){{STATEMENTS}};'
+    arduino: {
+        code: '\n${CLASS-OUTSIDE}(){{STATEMENTS}};'
+    }
 
 });
 

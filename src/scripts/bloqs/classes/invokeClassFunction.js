@@ -42,6 +42,9 @@ var invokeClassFunction = _.merge(_.clone(StatementBloq, true), {
     dynamicDropdown: {
         idDropdown: 'FUNCTION',
         options: 'voidFunctions'
+    },
+    arduino: {
+        code: '{CLASS}.{FUNCTION}();'
     }
 });
 

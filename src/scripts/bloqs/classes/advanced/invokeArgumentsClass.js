@@ -51,6 +51,9 @@ var invokeArgumentsClass = _.merge(_.clone(StatementBloq, true), {
     returnType: {
         type: 'simple',
         value: 'var'
+    },
+    arduino: {
+        code: '{CLASS} {NAME}({ARGS});'
     }
 });
 

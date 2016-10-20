@@ -33,8 +33,9 @@ var constructorClassArguments = _.merge(_.clone(StatementInputBloq, true), {
         }]
     ],
     code: '{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};',
-    hCode: '{CLASS-OUTSIDE} ({ARGS});',
-    cppCode: '{CLASS-OUTSIDE} :: {CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};'
+    arduino: {
+        code: '{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};'
+    }
 });
 
 utils.generateBloqInputConnectors(constructorClassArguments);

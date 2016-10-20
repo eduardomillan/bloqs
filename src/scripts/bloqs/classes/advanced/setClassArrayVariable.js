@@ -61,7 +61,10 @@ var setClassArrayVariable = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['number', 'basicOperations', 'string', 'stringSum']
         }]
     ],
-    code: '{CLASS}.{NAME}[{ITERATOR}] = {VALUE};'
+    code: '{CLASS}.{NAME}[{ITERATOR}] = {VALUE};',
+    arduino: {
+        code: '{CLASS}.{NAME}[{ITERATOR}] = {VALUE};'
+    }
 });
 
 utils.generateBloqInputConnectors(setClassArrayVariable);

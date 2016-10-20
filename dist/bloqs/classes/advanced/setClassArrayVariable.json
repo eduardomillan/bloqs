@@ -25,7 +25,7 @@
         "string",
         "stringSum"
       ],
-      "name": "797b45d8-7a60-4c9c-9c9e-013a771fef35"
+      "name": "8b3b35b3-cc3b-490b-ba58-25b669c07047"
     }
   ],
   "bloqClass": "bloq-set-class-variableArray",
@@ -81,9 +81,12 @@
           "string",
           "stringSum"
         ],
-        "name": "797b45d8-7a60-4c9c-9c9e-013a771fef35"
+        "name": "8b3b35b3-cc3b-490b-ba58-25b669c07047"
       }
     ]
   ],
-  "code": "{CLASS}.{NAME}[{ITERATOR}] = {VALUE};"
+  "code": "{CLASS}.{NAME}[{ITERATOR}] = {VALUE};",
+  "arduino": {
+    "code": "{CLASS}.{NAME}[{ITERATOR}] = {VALUE};"
+  }
 }

@@ -1,0 +1,36 @@
+{
+  "type": "statement",
+  "name": "mBotStop",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-mbot-stop",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Descansa"
+      }
+    ]
+  ],
+  "code": "",
+  "arduino": {
+    "includes": [
+      "BitbloqMBot.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "mBot",
+        "type": "MBot"
+      }
+    ],
+    "code": "mBot.move(1,0);"
+  }
+}

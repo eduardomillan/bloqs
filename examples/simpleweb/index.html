@@ -358,12 +358,14 @@
 
         var deprecated = ['declareVariable'];
 
-        var classs = [];
+        var classs = ['class', 'constructorClass', 'invokeClass', 'invokeClassFunction', 'invokeClassReturnFunction', 'selectClassVariable', 'setClassVariable', 'private', 'protected', 'public', 'voidFunction'];
+
+        var classs2 = ['arrayClassVariable', 'classChildren', 'constructorClassArguments', 'invokeArgumentsClass', 'invokeClassFunctionWithArguments', 'invokeClassReturnFunctionWithArguments', 'private', 'protected', 'public', 'setClassArrayVariable'];
 
         var testSet = ['declareVariable', 'serialReceive', 'serialReceiveInt', 'serialSend-v1'];
 
 
-        testSet = deprecated;
+        testSet = classs;
 
         for (var i = 0; i < testSet.length; i++) {
 

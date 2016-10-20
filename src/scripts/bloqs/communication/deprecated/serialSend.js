@@ -7,12 +7,12 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: serialSend
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It sends by the serial port what is input with
  *              or without newline end.
- * 
+ *
  * Return type: none
  */
 
@@ -44,7 +44,16 @@ var serialSend = _.merge(_.clone(StatementBloq, true), {
             }]
         }]
     ],
-    code: '{SERIAL}.{FUNCTION}({DATA});'
+    code: '{SERIAL}.{FUNCTION}({DATA});',
+    arduino: {
+        includes: ['BitbloqSoftwareSerial.h'],
+        needInstanceOf: [{
+            name: '{SERIAL}',
+            type: 'bqSoftwareSerial',
+            arguments: [0, 1, 'º[{SERIAL}.baudRate]']
+        }],
+        code: '{SERIAL}.{FUNCTION}({DATA});'
+    }
 });
 utils.generateBloqInputConnectors(serialSend);
 

@@ -35,5 +35,8 @@
     "type": "fromDynamicDropdown",
     "idDropdown": "VAR",
     "options": "softwareVars"
+  },
+  "arduino": {
+    "code": "{CLASS}.{VAR}"
   }
 }

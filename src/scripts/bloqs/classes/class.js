@@ -32,13 +32,13 @@ var bloqClass = _.merge(_.clone(StatementInputBloq, true), {
     ],
     createDynamicContent: 'classes',
     code: 'class {NAME}{{STATEMENTS}};',
-    hCode: 'class {NAME}{{STATEMENTS}};',
-    cppCode: '',
     returnType: {
         type: 'simple',
         value: 'class'
+    },
+    arduino: {
+        code: 'class {NAME}{{STATEMENTS}};'
     }
-
 });
 
 utils.generateBloqInputConnectors(bloqClass);
