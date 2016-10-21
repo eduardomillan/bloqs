@@ -7,12 +7,12 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: lcdWritePositionAdvanced
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It writes the given string on a specific LCD in a particular
  *              position.
- * 
+ *
  * Return type: none
  */
 
@@ -48,7 +48,10 @@ var lcdWritePositionAdvanced = _.merge(_.clone(StatementBloq, true), {
             value: 0
         }]
     ],
-    code: '{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});'
+    code: '{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});',
+    arduino: {
+        code: '{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});'
+    }
 
 });
 

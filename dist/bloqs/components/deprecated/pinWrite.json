@@ -16,7 +16,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "7b09cec2-03f9-4fce-8757-e22eeef2fa79"
+      "name": "c20a67da-e423-401c-afb3-e2a95b8efbcb"
     },
     {
       "type": "connector--input",
@@ -24,7 +24,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "ec4b7e61-3050-48dc-ac93-7b840761c26b"
+      "name": "13bf096a-6334-4dff-bd50-49e49102f4f8"
     }
   ],
   "bloqClass": "bloq-pin-writte-advanced",
@@ -40,7 +40,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "7b09cec2-03f9-4fce-8757-e22eeef2fa79"
+        "name": "c20a67da-e423-401c-afb3-e2a95b8efbcb"
       },
       {
         "alias": "text",
@@ -52,9 +52,12 @@
         "acceptType": [
           "all"
         ],
-        "name": "ec4b7e61-3050-48dc-ac93-7b840761c26b"
+        "name": "13bf096a-6334-4dff-bd50-49e49102f4f8"
       }
     ]
   ],
-  "code": "'{PIN}'.indexOf('A') === 0 ? 'analogWrite({PIN},{DATA});' : 'digitalWrite({PIN},{DATA});'"
+  "code": "'{PIN}'.indexOf('A') === 0 ? 'analogWrite({PIN},{DATA});' : 'digitalWrite({PIN},{DATA});'",
+  "arduino": {
+    "code": "digitalWrite({PIN},{DATA});"
+  }
 }

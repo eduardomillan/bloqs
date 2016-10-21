@@ -48,6 +48,9 @@ var clockRTC = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'String'
+    },
+    arduino: {
+        code: '{RTC}.{RTC_FUNC}()'
     }
 });
 

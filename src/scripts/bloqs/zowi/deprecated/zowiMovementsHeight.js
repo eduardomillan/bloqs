@@ -98,7 +98,17 @@ var zowiMovementsHeight = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-zowi-movements-height-endtext'
         }]
     ],
-    code: 'zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT},{DIR});'
+    code: 'zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT},{DIR});',
+    arduino: {
+        includes: ['BitbloqZowi.h', 'BitbloqUS.h', 'BitbloqBatteryReader.h',
+            'BitbloqLedMatrix.h', 'Servo.h', 'BitbloqOscillator.h', 'EEPROM.h'
+        ],
+        needInstanceOf: [{
+            name: 'zowi',
+            type: 'Zowi'
+        }],
+        code: 'zowi.{MOVEMENT}({STEPS}, {SPEED}, {HEIGHT}, {DIR});'
+    }
 });
 utils.generateBloqInputConnectors(zowiMovementsHeight);
 

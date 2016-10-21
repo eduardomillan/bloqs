@@ -12,7 +12,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "0958bcff-0b71-4962-9937-1954ea85b652"
+      "name": "f7af5e91-6e19-43a8-ac43-7adcbf4e9a53"
     }
   ],
   "bloqClass": "bloq-read-advanced",
@@ -28,7 +28,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "0958bcff-0b71-4962-9937-1954ea85b652"
+        "name": "f7af5e91-6e19-43a8-ac43-7adcbf4e9a53"
       }
     ]
   ],
@@ -37,5 +37,8 @@
     "type": "fromDynamicDropdown",
     "idDropdown": "SENSOR",
     "options": "sensors"
+  },
+  "arduino": {
+    "code": "¬{PIN.readSensor}"
   }
 }

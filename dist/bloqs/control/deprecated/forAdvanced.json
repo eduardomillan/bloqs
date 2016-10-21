@@ -20,7 +20,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "09b500d4-85da-40c0-a9dc-0291af98529c"
+      "name": "3e1e3d5f-8ded-4045-9090-93cf5d20984e"
     },
     {
       "type": "connector--input",
@@ -28,7 +28,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "6b9f9549-ccc0-4709-884a-a857d41ebe5d"
+      "name": "8ff34a58-8554-4821-9eab-43487a0c0e45"
     },
     {
       "type": "connector--input",
@@ -36,7 +36,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "ce7938d6-0b6e-4255-8b53-f6a360fa69d6"
+      "name": "f7c8a6ce-3fc0-44ce-8281-3e59d0b60132"
     }
   ],
   "bloqClass": "bloq-for deprecated",
@@ -52,7 +52,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "09b500d4-85da-40c0-a9dc-0291af98529c"
+        "name": "3e1e3d5f-8ded-4045-9090-93cf5d20984e"
       },
       {
         "alias": "text",
@@ -64,7 +64,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "6b9f9549-ccc0-4709-884a-a857d41ebe5d"
+        "name": "8ff34a58-8554-4821-9eab-43487a0c0e45"
       },
       {
         "alias": "text",
@@ -76,7 +76,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "ce7938d6-0b6e-4255-8b53-f6a360fa69d6"
+        "name": "f7c8a6ce-3fc0-44ce-8281-3e59d0b60132"
       },
       {
         "id": "MODE",
@@ -98,5 +98,14 @@
       }
     ]
   ],
-  "code": "for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}"
+  "code": "for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}",
+  "arduino": {
+    "conditional": {
+      "aliasId": "MODE",
+      "code": {
+        "+": "for({VAR}={INIT};{VAR} <= {FINAL};{VAR} += {ADD}){{STATEMENTS}}",
+        "-": "for({VAR}={INIT};{VAR} >= {FINAL};{VAR} -= {ADD}){{STATEMENTS}}"
+      }
+    }
+  }
 }

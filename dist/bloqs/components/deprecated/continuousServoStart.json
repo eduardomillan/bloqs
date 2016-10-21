@@ -45,5 +45,18 @@
       }
     ]
   ],
-  "code": "{SERVO}.write({DIRECTION});"
+  "code": "{SERVO}.write({DIRECTION});",
+  "arduino": {
+    "includes": [
+      "Servo.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "{SERVO}",
+        "type": "Servo"
+      }
+    ],
+    "setupExtraCode": "{SERVO}.attach(º[{SERVO}.pin.s]);",
+    "code": "{SERVO}.write({DIRECTION});"
+  }
 }

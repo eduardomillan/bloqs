@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: pinReadAdvanced
- * 
+ *
  * Bloq type: Output
  *
  * Description: It returns the read of a pin.
- * 
+ *
  * Return type: bool
  */
 
@@ -33,6 +33,9 @@ var pinReadAdvanced = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'bool'
+    },
+    arduino: {
+        code: '¬{PIN.readPin}'
     }
 });
 

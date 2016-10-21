@@ -20,7 +20,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "de7a16a6-84ca-4b57-a50c-91adc00076b9"
+      "name": "07051d0a-ed9a-4340-9f33-47a7ad84f3cf"
     }
   ],
   "bloqClass": "bloq-switch",
@@ -36,9 +36,12 @@
         "acceptType": [
           "all"
         ],
-        "name": "de7a16a6-84ca-4b57-a50c-91adc00076b9"
+        "name": "07051d0a-ed9a-4340-9f33-47a7ad84f3cf"
       }
     ]
   ],
-  "code": "switch (int({VAR})) {{STATEMENTS}}"
+  "code": "switch (int({VAR})) {{STATEMENTS}}",
+  "arduino": {
+    "code": "switch (int({VAR})) {{STATEMENTS}}"
+  }
 }

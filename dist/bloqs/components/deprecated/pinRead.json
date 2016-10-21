@@ -12,7 +12,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "b5dcaa4a-1408-416d-a428-7e0695b5c79e"
+      "name": "f5a983de-39a3-4399-a8d7-8ba4933f077f"
     }
   ],
   "bloqClass": "bloq-pin-read-advanced",
@@ -28,7 +28,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "b5dcaa4a-1408-416d-a428-7e0695b5c79e"
+        "name": "f5a983de-39a3-4399-a8d7-8ba4933f077f"
       }
     ]
   ],
@@ -36,5 +36,8 @@
   "returnType": {
     "type": "simple",
     "value": "bool"
+  },
+  "arduino": {
+    "code": "¬{PIN.readPin}"
   }
 }

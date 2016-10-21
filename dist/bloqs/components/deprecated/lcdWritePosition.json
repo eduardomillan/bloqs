@@ -16,7 +16,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "306a21a5-ac12-491c-a060-c23559ad4b1a"
+      "name": "5f93efb7-4f1f-45c2-aa3e-f843b0fd9e10"
     },
     {
       "type": "connector--input",
@@ -24,7 +24,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "2ec2286a-bf51-4646-bafb-72c131b9e89a"
+      "name": "88f36829-fc67-4998-a05a-c0da6118f9b5"
     }
   ],
   "bloqClass": "bloq-lcd-writte deprecated",
@@ -40,7 +40,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "306a21a5-ac12-491c-a060-c23559ad4b1a"
+        "name": "5f93efb7-4f1f-45c2-aa3e-f843b0fd9e10"
       },
       {
         "alias": "text",
@@ -52,7 +52,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "2ec2286a-bf51-4646-bafb-72c131b9e89a"
+        "name": "88f36829-fc67-4998-a05a-c0da6118f9b5"
       },
       {
         "alias": "text",
@@ -70,5 +70,8 @@
       }
     ]
   ],
-  "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});"
+  "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});",
+  "arduino": {
+    "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});"
+  }
 }

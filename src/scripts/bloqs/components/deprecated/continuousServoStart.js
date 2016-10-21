@@ -7,12 +7,12 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: continuousServoStartAdvanced
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It turns on a specific continuous servo in one of the two directions,
  *              selectable from a drop-down.
- * 
+ *
  * Return type: none
  */
 
@@ -43,7 +43,16 @@ var continuousServoStartAdvanced = _.merge(_.clone(StatementBloq, true), {
             }]
         }]
     ],
-    code: '{SERVO}.write({DIRECTION});'
+    code: '{SERVO}.write({DIRECTION});',
+    arduino: {
+        includes: ['Servo.h'],
+        needInstanceOf: [{
+            name: '{SERVO}',
+            type: 'Servo'
+        }],
+        setupExtraCode: '{SERVO}.attach(º[{SERVO}.pin.s]);',
+        code: '{SERVO}.write({DIRECTION});'
+    }
 });
 
 utils.generateBloqInputConnectors(continuousServoStartAdvanced);

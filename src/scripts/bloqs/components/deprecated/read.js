@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: readSensorAdvanced
- * 
+ *
  * Bloq type: Output
  *
  * Description: It returns the measurement of a specific sensor.
- * 
+ *
  * Return type: sensor's return type
  */
 
@@ -35,6 +35,9 @@ var readSensorAdvanced = _.merge(_.clone(OutputBloq, true), {
         type: 'fromDynamicDropdown',
         idDropdown: 'SENSOR',
         options: 'sensors'
+    },
+    arduino: {
+        code: '¬{PIN.readSensor}'
     }
 });
 

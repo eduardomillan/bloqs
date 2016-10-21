@@ -7,11 +7,11 @@ var _ = require('lodash'),
 
 /**
  * Bloq name: pinWriteAdvanced
- * 
+ *
  * Bloq type: Statement
  *
  * Description: It writes in a specific pin the given data.
- * 
+ *
  * Return type: none
  */
 
@@ -36,8 +36,10 @@ var pinWriteAdvanced = _.merge(_.clone(StatementBloq, true), {
             acceptType: ['all']
         }]
     ],
-    code: '\'{PIN}\'.indexOf(\'A\') === 0 ? \'analogWrite({PIN},{DATA});\' : \'digitalWrite({PIN},{DATA});\''
-
+    code: '\'{PIN}\'.indexOf(\'A\') === 0 ? \'analogWrite({PIN},{DATA});\' : \'digitalWrite({PIN},{DATA});\'',
+    arduino: {
+        code: 'digitalWrite({PIN},{DATA});'
+    }
 });
 
 utils.generateBloqInputConnectors(pinWriteAdvanced);

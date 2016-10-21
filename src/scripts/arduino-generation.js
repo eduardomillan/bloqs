@@ -25,6 +25,16 @@
                 }
                 return pin;
             },
+            readPin: function(pin) {
+                var result;
+
+                if (pin.indexOf('A') !== -1) {
+                    result = 'analogRead(' + pin + ')';
+                } else {
+                    result = 'digitalRead(' + pin + ')';
+                }
+                return result;
+            },
             readSensor: function(sensorName, aliasesValuesHashMap, hardwareList) {
                 var result;
                 var sensorData,

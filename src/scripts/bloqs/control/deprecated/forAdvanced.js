@@ -58,7 +58,16 @@ var forAdvanced = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-for-exec'
         }]
     ],
-    code: 'for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}'
+    code: 'for({VAR}={INIT};{VAR}<{FINAL};{VAR}{MODE}){{STATEMENTS}}',
+    arduino: {
+        conditional: {
+            aliasId: 'MODE',
+            code: {
+                '+': 'for({VAR}={INIT};{VAR} <= {FINAL};{VAR} += {ADD}){{STATEMENTS}}',
+                '-': 'for({VAR}={INIT};{VAR} >= {FINAL};{VAR} -= {ADD}){{STATEMENTS}}'
+            }
+        }
+    }
 });
 
 utils.generateBloqInputConnectors(forAdvanced);

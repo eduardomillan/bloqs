@@ -43,5 +43,8 @@
   "returnType": {
     "type": "simple",
     "value": "String"
+  },
+  "arduino": {
+    "code": "{RTC}.{RTC_FUNC}()"
   }
 }
