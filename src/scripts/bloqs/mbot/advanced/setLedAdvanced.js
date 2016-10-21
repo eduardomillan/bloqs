@@ -21,26 +21,26 @@ var mBotSetLedAdvanced = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Establecer '
+            value: 'bloq-mbot-setled-advanced-set'
         }, {
             id: 'LEDS',
             alias: 'staticDropdown',
             options: [{
-                label: 'todos los leds',
+                label: 'bloq-mbot-led-all',
                 value: '0'
             }, {
-                label: 'el led derecho',
+                label: 'bloq-mbot-led-right',
                 value: '1'
             }, {
-                label: 'el led izquierdo',
+                label: 'bloq-mbot-led-left',
                 value: '2'
             }]
         }, {
             alias: 'text',
-            value: 'con esta mezcla de colores:'
+            value: 'bloq-mbot-setled-advanced-colormix '
         }, {
             alias: 'text',
-            value: 'rojo:'
+            value: 'bloq-mbot-setled-advanced-red'
         }, {
             bloqInputId: 'RED',
             alias: 'bloqInput',
@@ -48,7 +48,7 @@ var mBotSetLedAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
-            value: 'verde:'
+            value: 'bloq-mbot-setled-advanced-green'
         }, {
             bloqInputId: 'GREEN',
             alias: 'bloqInput',
@@ -56,7 +56,7 @@ var mBotSetLedAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
-            value: 'azul:'
+            value: 'bloq-mbot-setled-advanced-blue'
         }, {
             bloqInputId: 'BLUE',
             alias: 'bloqInput',

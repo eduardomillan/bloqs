@@ -25,7 +25,7 @@ var mBotBuzzerAdvanced = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Hacer sonar la nota'
+            value: 'bloq-mbot-buzzer-advanced-play'
         }, {
             bloqInputId: 'NOTE',
             alias: 'bloqInput',
@@ -35,7 +35,7 @@ var mBotBuzzerAdvanced = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'beat'
         }, {
-            bloqInputId: 'BEAT',
+            bloqInputId: 'SECONDS',
             alias: 'bloqInput',
             acceptType: ['float'],
             suggestedBloqs: ['number', 'selectVariable']
@@ -43,12 +43,12 @@ var mBotBuzzerAdvanced = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        includes: ['BitbloqMBot.h'],
         needInstanceOf: [{
-            name: 'mBot',
-            type: 'MBot'
+            name: 'mBotBuzzerPin',
+            type: 'const int',
+            equals: '8'
         }],
-        code: 'mBot.tone({NOTE},{BEAT});'
+        code: 'tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});'
     }
 });
 utils.generateBloqInputConnectors(mBotBuzzerAdvanced);

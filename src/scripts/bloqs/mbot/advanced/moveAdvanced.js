@@ -23,21 +23,21 @@ var mBotMoveAdvanced = _.merge(_.clone(StatementBloq, true), {
             id: 'MOVEMENT',
             alias: 'staticDropdown',
             options: [{
-                label: 'Avanzar',
+                label: 'bloq-mbot-move-forward',
                 value: '1'
             }, {
-                label: 'Retroceder',
+                label: 'bloq-mbot-move-backward',
                 value: '2'
             }, {
-                label: 'Girar a la derecha',
+                label: 'bloq-mbot-move-turnright',
                 value: '3'
             }, {
-                label: 'Girar a la izquierda',
+                label: 'bloq-mbot-move-turnleft',
                 value: '4'
             }]
         }, {
             alias: 'text',
-            value: 'a una velocidad'
+            value: 'bloq-mbot-move-advanced-speed'
         }, {
             bloqInputId: 'SPEED',
             alias: 'bloqInput',

@@ -22,7 +22,7 @@ var mBotGetButtonStatus = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Leer estado del botón'
+            value: 'bloq-mbot-getbuttonstatus'
         }]
     ],
     code: '',

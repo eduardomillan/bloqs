@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "ec558a15-6b5e-4a45-abd6-9d3ffa34131c"
+      "name": "e6ac4f21-fe0f-40a7-84d4-98326b16558b"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "6d90e68b-003d-4c98-b681-9f91f2056184"
+      "name": "3a4f3a0d-b94d-4c65-9be4-3a53ac23dd5b"
     }
   ],
   "bloqClass": "bloq-mbot-buzzer",
@@ -40,7 +40,7 @@
     [
       {
         "alias": "text",
-        "value": "Hacer sonar la nota"
+        "value": "bloq-mbot-buzzer-advanced-play"
       },
       {
         "bloqInputId": "NOTE",
@@ -52,14 +52,14 @@
           "number",
           "selectVariable"
         ],
-        "name": "ec558a15-6b5e-4a45-abd6-9d3ffa34131c"
+        "name": "e6ac4f21-fe0f-40a7-84d4-98326b16558b"
       },
       {
         "alias": "text",
         "value": "beat"
       },
       {
-        "bloqInputId": "BEAT",
+        "bloqInputId": "SECONDS",
         "alias": "bloqInput",
         "acceptType": [
           "float"
@@ -68,21 +68,19 @@
           "number",
           "selectVariable"
         ],
-        "name": "6d90e68b-003d-4c98-b681-9f91f2056184"
+        "name": "3a4f3a0d-b94d-4c65-9be4-3a53ac23dd5b"
       }
     ]
   ],
   "code": "",
   "arduino": {
-    "includes": [
-      "BitbloqMBot.h"
-    ],
     "needInstanceOf": [
       {
-        "name": "mBot",
-        "type": "MBot"
+        "name": "mBotBuzzerPin",
+        "type": "const int",
+        "equals": "8"
       }
     ],
-    "code": "mBot.tone({NOTE},{BEAT});"
+    "code": "tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
   }
 }

@@ -23,32 +23,32 @@ var mBotMove = _.merge(_.clone(StatementBloq, true), {
             id: 'MOVEMENT',
             alias: 'staticDropdown',
             options: [{
-                label: 'Avanzar',
+                label: 'bloq-mbot-move-forward',
                 value: '1'
             }, {
-                label: 'Retroceder',
+                label: 'bloq-mbot-move-backward',
                 value: '2'
             }, {
-                label: 'Girar a la derecha',
+                label: 'bloq-mbot-move-turnright',
                 value: '3'
             }, {
-                label: 'Girar a la izquierda',
+                label: 'bloq-mbot-move-turnleft',
                 value: '4'
             }]
         }, {
             alias: 'text',
-            value: 'a una velocidad'
+            value: 'bloq-mbot-move-speed'
         }, {
             id: 'SPEED',
             alias: 'staticDropdown',
             options: [{
-                label: 'muy rápida',
+                label: 'bloq-mbot-move-speed-fast',
                 value: '255'
             }, {
-                label: 'normal',
+                label: 'bloq-mbot-move-speed-normal',
                 value: '100'
             }, {
-                label: 'lenta',
+                label: 'bloq-mbot-move-speed-slow',
                 value: '50'
             }]
         }]

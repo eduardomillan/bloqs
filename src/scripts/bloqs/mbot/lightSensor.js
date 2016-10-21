@@ -22,7 +22,7 @@ var mBotGetLightSensor = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Leer el sensor de luz'
+            value: 'bloq-mbot-getlightsensor'
         }]
     ],
     code: '',

@@ -21,18 +21,18 @@ var mBotTurnOffLed = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Apagar '
+            value: 'bloq-mbot-turnoffled-off'
         }, {
             id: 'LEDS',
             alias: 'staticDropdown',
             options: [{
-                label: 'todos los leds',
+                label: 'bloq-mbot-led-all',
                 value: '0'
             }, {
-                label: 'el led derecho',
+                label: 'bloq-mbot-led-right',
                 value: '1'
             }, {
-                label: 'el led izquierdo',
+                label: 'bloq-mbot-led-left',
                 value: '2'
             }]
         }]

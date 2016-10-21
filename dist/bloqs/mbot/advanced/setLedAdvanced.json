@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "ddecede7-a195-4144-9286-7b5da10c2ff5"
+      "name": "86671cdd-47f6-43a2-be03-e1c8be4726ba"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "84de24a4-d7f3-46e3-ae22-a52362bc22a0"
+      "name": "24adc40f-f291-4098-8773-810cb0d10a08"
     },
     {
       "type": "connector--input",
@@ -44,7 +44,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "a6c816e2-2de3-48ec-a52a-85d38346f318"
+      "name": "5961bdf7-f9c7-4e0e-8c5d-bd07e8aedd5d"
     }
   ],
   "bloqClass": "bloq-mbot-setled",
@@ -52,33 +52,33 @@
     [
       {
         "alias": "text",
-        "value": "Establecer "
+        "value": "bloq-mbot-setled-advanced-set"
       },
       {
         "id": "LEDS",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "todos los leds",
+            "label": "bloq-mbot-led-all",
             "value": "0"
           },
           {
-            "label": "el led derecho",
+            "label": "bloq-mbot-led-right",
             "value": "1"
           },
           {
-            "label": "el led izquierdo",
+            "label": "bloq-mbot-led-left",
             "value": "2"
           }
         ]
       },
       {
         "alias": "text",
-        "value": "con esta mezcla de colores:"
+        "value": "bloq-mbot-setled-advanced-colormix "
       },
       {
         "alias": "text",
-        "value": "rojo:"
+        "value": "bloq-mbot-setled-advanced-red"
       },
       {
         "bloqInputId": "RED",
@@ -90,11 +90,11 @@
           "number",
           "selectVariable"
         ],
-        "name": "ddecede7-a195-4144-9286-7b5da10c2ff5"
+        "name": "86671cdd-47f6-43a2-be03-e1c8be4726ba"
       },
       {
         "alias": "text",
-        "value": "verde:"
+        "value": "bloq-mbot-setled-advanced-green"
       },
       {
         "bloqInputId": "GREEN",
@@ -106,11 +106,11 @@
           "number",
           "selectVariable"
         ],
-        "name": "84de24a4-d7f3-46e3-ae22-a52362bc22a0"
+        "name": "24adc40f-f291-4098-8773-810cb0d10a08"
       },
       {
         "alias": "text",
-        "value": "azul:"
+        "value": "bloq-mbot-setled-advanced-blue"
       },
       {
         "bloqInputId": "BLUE",
@@ -122,7 +122,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "a6c816e2-2de3-48ec-a52a-85d38346f318"
+        "name": "5961bdf7-f9c7-4e0e-8c5d-bd07e8aedd5d"
       }
     ]
   ],

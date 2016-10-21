@@ -25,7 +25,7 @@ var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Hacer sonar la nota'
+            value: 'bloq-mbot-buzzer-note'
         }, {
             id: 'NOTE',
             alias: 'staticDropdown',
@@ -68,14 +68,14 @@ var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
             }]
         }, {
             alias: 'text',
-            value: 'durante'
+            value: 'bloq-mbot-buzzer-for'
         }, {
             id: 'SECONDS',
             alias: 'numberInput',
             value: 2000
         }, {
             alias: 'text',
-            value: 'bloq-buzzer-ms'
+            value: 'bloq-mbot-buzzer-ms'
         }]
     ],
     code: '',

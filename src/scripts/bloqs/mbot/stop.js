@@ -21,7 +21,7 @@ var mBotStop = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Descansa'
+            value: 'bloq-mbot-stop'
         }]
     ],
     code: '',

@@ -12,26 +12,26 @@
     [
       {
         "alias": "text",
-        "value": "Obtener la distancia del ultrasonidos en el"
+        "value": "bloq-mbot-getdistance-get"
       },
       {
         "id": "PORT",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "puerto 1",
+            "label": "bloq-mbot-port-1",
             "value": "1"
           },
           {
-            "label": "puerto 2",
+            "label": "bloq-mbot-port-2",
             "value": "2"
           },
           {
-            "label": "puerto 3",
+            "label": "bloq-mbot-port-3",
             "value": "3"
           },
           {
-            "label": "puerto 4",
+            "label": "bloq-mbot-port-4",
             "value": "4"
           }
         ]

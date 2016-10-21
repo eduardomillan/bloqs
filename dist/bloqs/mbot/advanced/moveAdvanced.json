@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "4a3ec657-a30c-45e3-87b7-7e1166dfeefe"
+      "name": "a2bbc811-4293-4a9f-b771-65282547cb86"
     }
   ],
   "bloqClass": "bloq-mbot-move",
@@ -31,26 +31,26 @@
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "Avanzar",
+            "label": "bloq-mbot-move-forward",
             "value": "1"
           },
           {
-            "label": "Retroceder",
+            "label": "bloq-mbot-move-backward",
             "value": "2"
           },
           {
-            "label": "Girar a la derecha",
+            "label": "bloq-mbot-move-turnright",
             "value": "3"
           },
           {
-            "label": "Girar a la izquierda",
+            "label": "bloq-mbot-move-turnleft",
             "value": "4"
           }
         ]
       },
       {
         "alias": "text",
-        "value": "a una velocidad"
+        "value": "bloq-mbot-move-advanced-speed"
       },
       {
         "bloqInputId": "SPEED",
@@ -62,7 +62,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "4a3ec657-a30c-45e3-87b7-7e1166dfeefe"
+        "name": "a2bbc811-4293-4a9f-b771-65282547cb86"
       }
     ]
   ],
