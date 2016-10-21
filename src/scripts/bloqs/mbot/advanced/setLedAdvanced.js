@@ -37,7 +37,7 @@ var mBotSetLedAdvanced = _.merge(_.clone(StatementBloq, true), {
             }]
         }, {
             alias: 'text',
-            value: 'bloq-mbot-setled-advanced-colormix '
+            value: 'bloq-mbot-setled-advanced-colormix'
         }, {
             alias: 'text',
             value: 'bloq-mbot-setled-advanced-red'

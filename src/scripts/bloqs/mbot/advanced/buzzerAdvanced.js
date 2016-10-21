@@ -33,12 +33,15 @@ var mBotBuzzerAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
-            value: 'beat'
+            value: 'bloq-mbot-buzzer-advanced-for'
         }, {
             bloqInputId: 'SECONDS',
             alias: 'bloqInput',
             acceptType: ['float'],
             suggestedBloqs: ['number', 'selectVariable']
+        }, {
+            alias: 'text',
+            value: 'bloq-mbot-buzzer-advanced-ms'
         }]
     ],
     code: '',
