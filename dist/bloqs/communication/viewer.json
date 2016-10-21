@@ -1,0 +1,27 @@
+{
+  "type": "statement",
+  "name": "viewer",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-viewer",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-viewer"
+      }
+    ]
+  ],
+  "code": "/*sendViewerData*/",
+  "arduino": {
+    "code": "/*sendViewerData*/"
+  }
+}
