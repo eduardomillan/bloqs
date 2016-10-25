@@ -535,7 +535,7 @@
                         break;
                     case 'servo':
                     case 'servocont':
-                        if (hardwareList.components[i].oscillator) {
+                        if (hardwareList.components[i].oscillator && (hardwareList.components[i].oscillator !== 'false')) {
                             tempIncludes = ['Servo.h', 'Wire.h', 'BitbloqOscillator.h'];
                             tempInstanceOf = {
                                 name: hardwareList.components[i].name,
