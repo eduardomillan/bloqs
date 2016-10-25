@@ -365,7 +365,7 @@
         var testSet = ['declareVariable', 'serialReceive', 'serialReceiveInt', 'serialSend-v1'];
 
 
-        testSet = classs;
+        testSet = comunicationBloqs;
 
         for (var i = 0; i < testSet.length; i++) {
 
@@ -404,65 +404,62 @@
                                     }
                                 },
 
-                                                                {
-                                                                    "id": "led",
-                                                                    "width": 55,
-                                                                    "height": 83,
-                                                                    "pins": {
-                                                                        "digital": [
-                                                                            "s"
-                                                                        ]
-                                                                    },
-                                                                    "dragtype": "components",
-                                                                    "coordinates": {
-                                                                        "x": 77.2,
-                                                                        "y": 13.203463203463203
-                                                                    },
-                                                                    "category": "leds",
-                                                                    "name": "led_1",
-                                                                    "connected": true,
-                                                                    "uid": "bfa1a548-8bc5-44b5-9e5e-d9e647db72b1",
-                                                                    "pin": {
-                                                                        "s": "7"
-                                                                    },
-                                                                    "endpoints": {
-                                                                        "s": {
-                                                                            "type": "digital",
-                                                                            "uid": "3fe14580-c769-4fb2-ac65-b614cd15e74c"
-                                                                        }
-                                                                    }
-                                                                },*/
-                {
-                    "category": "servos",
-                    "connected": true,
-                    "coordinates": {
-                        "x": 73.4,
-                        "y": 8.695652173913043
-                    },
-                    "dragtype": "components",
-                    "endpoints": {
-                        "s": {
-                            "type": "digital",
-                            "uid": "e6f64bd5-3327-49f3-8061-cc697daed825"
-                        }
-                    },
-                    "height": 106,
-                    "id": "servo",
-                    "name": "servo_0",
-                    "oscillator": "false",
-                    "pin": {
-                        "s": "6"
-                    },
-                    "pins": {
-                        "digital": [
-                            "s"
-                        ]
-                    },
-                    "uid": "bca89355-7619-4a14-bf0f-ba1aba694585",
-                    "width": 125
-                }
-                /*,
                                 {
+                                    "id": "led",
+                                    "width": 55,
+                                    "height": 83,
+                                    "pins": {
+                                        "digital": [
+                                            "s"
+                                        ]
+                                    },
+                                    "dragtype": "components",
+                                    "coordinates": {
+                                        "x": 77.2,
+                                        "y": 13.203463203463203
+                                    },
+                                    "category": "leds",
+                                    "name": "led_1",
+                                    "connected": true,
+                                    "uid": "bfa1a548-8bc5-44b5-9e5e-d9e647db72b1",
+                                    "pin": {
+                                        "s": "7"
+                                    },
+                                    "endpoints": {
+                                        "s": {
+                                            "type": "digital",
+                                            "uid": "3fe14580-c769-4fb2-ac65-b614cd15e74c"
+                                        }
+                                    }
+                                }, {
+                                    "category": "servos",
+                                    "connected": true,
+                                    "coordinates": {
+                                        "x": 73.4,
+                                        "y": 8.695652173913043
+                                    },
+                                    "dragtype": "components",
+                                    "endpoints": {
+                                        "s": {
+                                            "type": "digital",
+                                            "uid": "e6f64bd5-3327-49f3-8061-cc697daed825"
+                                        }
+                                    },
+                                    "height": 106,
+                                    "id": "servo",
+                                    "name": "servo_0",
+                                    "oscillator": "false",
+                                    "pin": {
+                                        "s": "6"
+                                    },
+                                    "pins": {
+                                        "digital": [
+                                            "s"
+                                        ]
+                                    },
+                                    "uid": "bca89355-7619-4a14-bf0f-ba1aba694585",
+                                    "width": 125
+                                }, {
                                     "category": "buzzers",
                                     "connected": true,
                                     "coordinates": {
@@ -490,300 +487,293 @@
                                     "type": "digital",
                                     "uid": "7e9daf0b-0c84-47da-a9ee-61f6998cfd48",
                                     "width": 85
-                                }
-                                ,
-                                                                                                {
-                                                                                                    "category": "continuousServos",
-                                                                                                    "connected": true,
-                                                                                                    "coordinates": {
-                                                                                                        "x": 13.100000000000001,
-                                                                                                        "y": 52.81385281385281
-                                                                                                    },
-                                                                                                    "dragtype": "components",
-                                                                                                    "endpoints": {
-                                                                                                        "s": {
-                                                                                                            "type": "digital",
-                                                                                                            "uid": "90a0ac6e-4385-4bec-95a8-bd0889ccfce2"
-                                                                                                        }
-                                                                                                    },
-                                                                                                    "height": 106,
-                                                                                                    "id": "servocont",
-                                                                                                    "name": "servo_continuo_0",
-                                                                                                    "pin": {
-                                                                                                        "s": "10"
-                                                                                                    },
-                                                                                                    "pins": {
-                                                                                                        "digital": [
-                                                                                                            "s"
-                                                                                                        ]
-                                                                                                    },
-                                                                                                    "uid": "fb243e14-853d-4b56-be71-22faa7b9ce14",
-                                                                                                    "width": 125
-                                                                                                },
-                                                                                                {
-                                                                                                    "category": "lcds",
-                                                                                                    "connected": true,
-                                                                                                    "coordinates": {
-                                                                                                        "x": 10.8,
-                                                                                                        "y": 77.66798418972331
-                                                                                                    },
-                                                                                                    "dragtype": "components",
-                                                                                                    "endpoints": {
-                                                                                                        "scl": {
-                                                                                                            "type": "i2c-5",
-                                                                                                            "uid": "32ada0d3-7990-476d-b6de-5d3d69353701"
-                                                                                                        },
-                                                                                                        "sda": {
-                                                                                                            "type": "i2c-4",
-                                                                                                            "uid": "033b409e-9573-4648-9e2f-656a9fdb79ec"
-                                                                                                        }
-                                                                                                    },
-                                                                                                    "height": 93,
-                                                                                                    "id": "lcd",
-                                                                                                    "name": "lcd_0",
-                                                                                                    "pin": {
-                                                                                                        "scl": "A5-H",
-                                                                                                        "sda": "A4"
-                                                                                                    },
-                                                                                                    "pins": {
-                                                                                                        "i2c-4": [
-                                                                                                            "sda"
-                                                                                                        ],
-                                                                                                        "i2c-5": [
-                                                                                                            "scl"
-                                                                                                        ]
-                                                                                                    },
-                                                                                                    "uid": "b0925be6-23b8-4999-a655-8e762d002b32",
-                                                                                                    "width": 170
-                                                                                                },
-                                                                                                {
-                                                                                                    "category": "leds",
-                                                                                                    "connected": true,
-                                                                                                    "coordinates": {
-                                                                                                        "x": 75.8,
-                                                                                                        "y": 8.441558441558442
-                                                                                                    },
-                                                                                                    "dragtype": "components",
-                                                                                                    "endpoints": {
-                                                                                                        "s": {
-                                                                                                            "type": "digital",
-                                                                                                            "uid": "577c2ae0-8673-46b4-90e5-2954b934d7b0"
-                                                                                                        }
-                                                                                                    },
-                                                                                                    "height": 83,
-                                                                                                    "id": "led",
-                                                                                                    "name": "led_0",
-                                                                                                    "pin": {
-                                                                                                        "s": "3"
-                                                                                                    },
-                                                                                                    "pins": {
-                                                                                                        "digital": [
-                                                                                                            "s"
-                                                                                                        ]
-                                                                                                    },
-                                                                                                    "uid": "e0f279ee-ac1a-4f29-9ed0-ddeefd44c441",
-                                                                                                    "width": 55
-                                                                                                },
-                                                                                                {
-                                                                                                    "baudRate": "9600",
-                                                                                                    "category": "serialElements",
-                                                                                                    "connected": true,
-                                                                                                    "coordinates": {
-                                                                                                        "x": 77.2,
-                                                                                                        "y": 11.778290993071593
-                                                                                                    },
-                                                                                                    "dragtype": "components",
-                                                                                                    "endpoints": {
-                                                                                                        "rx": {
-                                                                                                            "type": "digital",
-                                                                                                            "uid": "7d60a1d4-ddd9-48a1-855a-58d707ed17ad"
-                                                                                                        },
-                                                                                                        "tx": {
-                                                                                                            "type": "digital",
-                                                                                                            "uid": "daecc40c-3fd2-427c-8967-488640796906"
-                                                                                                        }
-                                                                                                    },
-                                                                                                    "height": 88,
-                                                                                                    "id": "bt",
-                                                                                                    "name": "bluetooth_0",
-                                                                                                    "pin": {
-                                                                                                        "rx": "2",
-                                                                                                        "tx": "4"
-                                                                                                    },
-                                                                                                    "pins": {
-                                                                                                        "digital": [
-                                                                                                            "rx",
-                                                                                                            "tx"
-                                                                                                        ]
-                                                                                                    },
-                                                                                                    "uid": "e1b1b18e-0a05-4507-a051-b28eea60caad",
-                                                                                                    "width": 115
-                                                                                                },
-                                                                {
-                                                                    "category": "sensors",
-                                                                    "connected": true,
-                                                                    "coordinates": {
-                                                                        "x": 72.7,
-                                                                        "y": 50.649350649350644
-                                                                    },
-                                                                    "dragtype": "components",
-                                                                    "endpoints": {
-                                                                        "s": {
-                                                                            "type": "analog",
-                                                                            "uid": "d25f2ee2-c7d2-42a5-92ab-42262223f1ad"
-                                                                        }
-                                                                    },
-                                                                    "height": 120,
-                                                                    "dataReturnType": "char",
-                                                                    "id": "buttons",
-                                                                    "name": "botonera_0",
-                                                                    "pin": {
-                                                                        "s": "A5"
-                                                                    },
-                                                                    "pins": {
-                                                                        "analog": [
-                                                                            "s"
-                                                                        ]
-                                                                    },
-                                                                    "type": "ButtonPad",
-                                                                    "uid": "bf454cc6-f519-4a7f-b996-e338169323e8",
-                                                                    "width": 165
-                                                                },
+                                }, {
+                                    "category": "continuousServos",
+                                    "connected": true,
+                                    "coordinates": {
+                                        "x": 13.100000000000001,
+                                        "y": 52.81385281385281
+                                    },
+                                    "dragtype": "components",
+                                    "endpoints": {
+                                        "s": {
+                                            "type": "digital",
+                                            "uid": "90a0ac6e-4385-4bec-95a8-bd0889ccfce2"
+                                        }
+                                    },
+                                    "height": 106,
+                                    "id": "servocont",
+                                    "name": "servo_continuo_0",
+                                    "pin": {
+                                        "s": "10"
+                                    },
+                                    "pins": {
+                                        "digital": [
+                                            "s"
+                                        ]
+                                    },
+                                    "uid": "fb243e14-853d-4b56-be71-22faa7b9ce14",
+                                    "width": 125
+                                }, {
+                                    "category": "lcds",
+                                    "connected": true,
+                                    "coordinates": {
+                                        "x": 10.8,
+                                        "y": 77.66798418972331
+                                    },
+                                    "dragtype": "components",
+                                    "endpoints": {
+                                        "scl": {
+                                            "type": "i2c-5",
+                                            "uid": "32ada0d3-7990-476d-b6de-5d3d69353701"
+                                        },
+                                        "sda": {
+                                            "type": "i2c-4",
+                                            "uid": "033b409e-9573-4648-9e2f-656a9fdb79ec"
+                                        }
+                                    },
+                                    "height": 93,
+                                    "id": "lcd",
+                                    "name": "lcd_0",
+                                    "pin": {
+                                        "scl": "A5-H",
+                                        "sda": "A4"
+                                    },
+                                    "pins": {
+                                        "i2c-4": [
+                                            "sda"
+                                        ],
+                                        "i2c-5": [
+                                            "scl"
+                                        ]
+                                    },
+                                    "uid": "b0925be6-23b8-4999-a655-8e762d002b32",
+                                    "width": 170
+                                }, {
+                                    "category": "leds",
+                                    "connected": true,
+                                    "coordinates": {
+                                        "x": 75.8,
+                                        "y": 8.441558441558442
+                                    },
+                                    "dragtype": "components",
+                                    "endpoints": {
+                                        "s": {
+                                            "type": "digital",
+                                            "uid": "577c2ae0-8673-46b4-90e5-2954b934d7b0"
+                                        }
+                                    },
+                                    "height": 83,
+                                    "id": "led",
+                                    "name": "led_0",
+                                    "pin": {
+                                        "s": "3"
+                                    },
+                                    "pins": {
+                                        "digital": [
+                                            "s"
+                                        ]
+                                    },
+                                    "uid": "e0f279ee-ac1a-4f29-9ed0-ddeefd44c441",
+                                    "width": 55
+                                }, {
+                                    "baudRate": "9600",
+                                    "category": "serialElements",
+                                    "connected": true,
+                                    "coordinates": {
+                                        "x": 77.2,
+                                        "y": 11.778290993071593
+                                    },
+                                    "dragtype": "components",
+                                    "endpoints": {
+                                        "rx": {
+                                            "type": "digital",
+                                            "uid": "7d60a1d4-ddd9-48a1-855a-58d707ed17ad"
+                                        },
+                                        "tx": {
+                                            "type": "digital",
+                                            "uid": "daecc40c-3fd2-427c-8967-488640796906"
+                                        }
+                                    },
+                                    "height": 88,
+                                    "id": "bt",
+                                    "name": "bluetooth_0",
+                                    "pin": {
+                                        "rx": "2",
+                                        "tx": "4"
+                                    },
+                                    "pins": {
+                                        "digital": [
+                                            "rx",
+                                            "tx"
+                                        ]
+                                    },
+                                    "uid": "e1b1b18e-0a05-4507-a051-b28eea60caad",
+                                    "width": 115
+                                }, {
+                                    "category": "sensors",
+                                    "connected": true,
+                                    "coordinates": {
+                                        "x": 72.7,
+                                        "y": 50.649350649350644
+                                    },
+                                    "dragtype": "components",
+                                    "endpoints": {
+                                        "s": {
+                                            "type": "analog",
+                                            "uid": "d25f2ee2-c7d2-42a5-92ab-42262223f1ad"
+                                        }
+                                    },
+                                    "height": 120,
+                                    "dataReturnType": "char",
+                                    "id": "buttons",
+                                    "name": "botonera_0",
+                                    "pin": {
+                                        "s": "A5"
+                                    },
+                                    "pins": {
+                                        "analog": [
+                                            "s"
+                                        ]
+                                    },
+                                    "type": "ButtonPad",
+                                    "uid": "bf454cc6-f519-4a7f-b996-e338169323e8",
+                                    "width": 165
+                                },
 
-                                                                {
-                                                                    "category": "sensors",
-                                                                    "connected": true,
-                                                                    "coordinates": {
-                                                                        "x": 73.7,
-                                                                        "y": 19.913419913419915
-                                                                    },
-                                                                    "dragtype": "components",
-                                                                    "endpoints": {
-                                                                        "s": {
-                                                                            "type": "digital",
-                                                                            "uid": "a7be6354-07f2-4a1b-aa36-9cf1d5f9d697"
-                                                                        }
-                                                                    },
-                                                                    "height": 73,
-                                                                    "id": "button",
-                                                                    "name": "button_0",
-                                                                    "dataReturnType": "float",
-                                                                    "pin": {
-                                                                        "s": "3"
-                                                                    },
-                                                                    "pins": {
-                                                                        "digital": [
-                                                                            "s"
-                                                                        ]
-                                                                    },
-                                                                    "type": "digital",
-                                                                    "uid": "1f72beb4-fbde-4952-ac5c-c4c0b43f3fd5",
-                                                                    "width": 90
-                                                                }, {
-                                                                    "category": "sensors",
-                                                                    "connected": true,
-                                                                    "coordinates": {
-                                                                        "x": 16.1,
-                                                                        "y": 17.786561264822133
-                                                                    },
-                                                                    "dragtype": "components",
-                                                                    "endpoints": {
-                                                                        "s1": {
-                                                                            "type": "digital",
-                                                                            "uid": "5af076c1-2e0c-4e5b-8961-f249f16aec6c"
-                                                                        },
-                                                                        "s2": {
-                                                                            "type": "digital",
-                                                                            "uid": "04ec26b6-bd9f-490d-adbc-f04da75134a8"
-                                                                        }
-                                                                    },
-                                                                    "height": 88,
-                                                                    "id": "irs2",
-                                                                    "dataReturnType": "float *",
-                                                                    "name": "siguelineas_0",
-                                                                    "pin": {
-                                                                        "s1": "11",
-                                                                        "s2": "10"
-                                                                    },
-                                                                    "pins": {
-                                                                        "digital": [
-                                                                            "s1",
-                                                                            "s2"
-                                                                        ]
-                                                                    },
-                                                                    "type": "LineFollower",
-                                                                    "uid": "a2a4e557-89d8-435c-bc98-25989edccac9",
-                                                                    "width": 97
-                                                                }, {
-                                                                    "category": "sensors",
-                                                                    "connected": true,
-                                                                    "coordinates": {
-                                                                        "x": 76.7,
-                                                                        "y": 7.142857142857142
-                                                                    },
-                                                                    "dragtype": "components",
-                                                                    "endpoints": {
-                                                                        "k": {
-                                                                            "type": "digital",
-                                                                            "uid": "4684f13b-b79f-4f7a-990e-eb35082f1b62"
-                                                                        },
-                                                                        "sa": {
-                                                                            "type": "digital",
-                                                                            "uid": "098d5fcf-442d-43a5-b0c0-602cc6fb1795"
-                                                                        },
-                                                                        "sb": {
-                                                                            "type": "digital",
-                                                                            "uid": "32353729-1455-4427-adf4-2f6cf37723fd"
-                                                                        }
-                                                                    },
-                                                                    "height": 84,
-                                                                    "id": "encoder",
-                                                                    "name": "encoder_1",
-                                                                    "pin": {
-                                                                        "k": "4",
-                                                                        "sa": "3",
-                                                                        "sb": "2"
-                                                                    },
-                                                                    "pins": {
-                                                                        "digital": [
-                                                                            "k",
-                                                                            "sa",
-                                                                            "sb"
-                                                                        ]
-                                                                    },
-                                                                    "type": "encoder",
-                                                                    "uid": "a1d88ec7-3bce-410d-9eca-792c0dd75a9e",
-                                                                    "width": 74
-                                                                }
-                                                                , {
-                                                                                                    "category": "sensors",
-                                                                                                    "connected": true,
-                                                                                                    "coordinates": {
-                                                                                                        "x": 79.7,
-                                                                                                        "y": 15.367965367965366
-                                                                                                    },
-                                                                                                    "dragtype": "components",
-                                                                                                    "endpoints": {
-                                                                                                        "s": {
-                                                                                                            "type": "digital",
-                                                                                                            "uid": "c29a4a33-b778-454d-9b77-0a1f46735427"
-                                                                                                        }
-                                                                                                    },
-                                                                                                    "height": 92,
-                                                                                                    "id": "limitswitch",
-                                                                                                    "name": "final_de_carrera_0",
-                                                                                                    "pin": {
-                                                                                                        "s": "2"
-                                                                                                    },
-                                                                                                    "pins": {
-                                                                                                        "digital": [
-                                                                                                            "s"
-                                                                                                        ]
-                                                                                                    },
-                                                                                                    "type": "digital",
-                                                                                                    "uid": "e2722753-b89a-41b3-bee3-10c44acd171c",
-                                                                                                    "width": 100
-                                                                                                }*/
+                                {
+                                    "category": "sensors",
+                                    "connected": true,
+                                    "coordinates": {
+                                        "x": 73.7,
+                                        "y": 19.913419913419915
+                                    },
+                                    "dragtype": "components",
+                                    "endpoints": {
+                                        "s": {
+                                            "type": "digital",
+                                            "uid": "a7be6354-07f2-4a1b-aa36-9cf1d5f9d697"
+                                        }
+                                    },
+                                    "height": 73,
+                                    "id": "button",
+                                    "name": "button_0",
+                                    "dataReturnType": "float",
+                                    "pin": {
+                                        "s": "3"
+                                    },
+                                    "pins": {
+                                        "digital": [
+                                            "s"
+                                        ]
+                                    },
+                                    "type": "digital",
+                                    "uid": "1f72beb4-fbde-4952-ac5c-c4c0b43f3fd5",
+                                    "width": 90
+                                }, {
+                                    "category": "sensors",
+                                    "connected": true,
+                                    "coordinates": {
+                                        "x": 16.1,
+                                        "y": 17.786561264822133
+                                    },
+                                    "dragtype": "components",
+                                    "endpoints": {
+                                        "s1": {
+                                            "type": "digital",
+                                            "uid": "5af076c1-2e0c-4e5b-8961-f249f16aec6c"
+                                        },
+                                        "s2": {
+                                            "type": "digital",
+                                            "uid": "04ec26b6-bd9f-490d-adbc-f04da75134a8"
+                                        }
+                                    },
+                                    "height": 88,
+                                    "id": "irs2",
+                                    "dataReturnType": "float *",
+                                    "name": "siguelineas_0",
+                                    "pin": {
+                                        "s1": "11",
+                                        "s2": "10"
+                                    },
+                                    "pins": {
+                                        "digital": [
+                                            "s1",
+                                            "s2"
+                                        ]
+                                    },
+                                    "type": "LineFollower",
+                                    "uid": "a2a4e557-89d8-435c-bc98-25989edccac9",
+                                    "width": 97
+                                }, {
+                                    "category": "sensors",
+                                    "connected": true,
+                                    "coordinates": {
+                                        "x": 76.7,
+                                        "y": 7.142857142857142
+                                    },
+                                    "dragtype": "components",
+                                    "endpoints": {
+                                        "k": {
+                                            "type": "digital",
+                                            "uid": "4684f13b-b79f-4f7a-990e-eb35082f1b62"
+                                        },
+                                        "sa": {
+                                            "type": "digital",
+                                            "uid": "098d5fcf-442d-43a5-b0c0-602cc6fb1795"
+                                        },
+                                        "sb": {
+                                            "type": "digital",
+                                            "uid": "32353729-1455-4427-adf4-2f6cf37723fd"
+                                        }
+                                    },
+                                    "height": 84,
+                                    "id": "encoder",
+                                    "name": "encoder_1",
+                                    "pin": {
+                                        "k": "4",
+                                        "sa": "3",
+                                        "sb": "2"
+                                    },
+                                    "pins": {
+                                        "digital": [
+                                            "k",
+                                            "sa",
+                                            "sb"
+                                        ]
+                                    },
+                                    "type": "encoder",
+                                    "uid": "a1d88ec7-3bce-410d-9eca-792c0dd75a9e",
+                                    "width": 74
+                                }, {
+                                    "category": "sensors",
+                                    "connected": true,
+                                    "coordinates": {
+                                        "x": 79.7,
+                                        "y": 15.367965367965366
+                                    },
+                                    "dragtype": "components",
+                                    "endpoints": {
+                                        "s": {
+                                            "type": "digital",
+                                            "uid": "c29a4a33-b778-454d-9b77-0a1f46735427"
+                                        }
+                                    },
+                                    "height": 92,
+                                    "id": "limitswitch",
+                                    "name": "final_de_carrera_0",
+                                    "pin": {
+                                        "s": "2"
+                                    },
+                                    "pins": {
+                                        "digital": [
+                                            "s"
+                                        ]
+                                    },
+                                    "type": "digital",
+                                    "uid": "e2722753-b89a-41b3-bee3-10c44acd171c",
+                                    "width": 100
+                                }*/
             ]
         };
 

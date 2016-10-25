@@ -45,6 +45,7 @@
         "type": "Zowi"
       }
     ],
+    "setupExtraCode": "zowi.init();",
     "code": " if(zowi.getNoise() >= 650){{STATEMENTS}}"
   }
 }

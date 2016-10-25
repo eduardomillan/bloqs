@@ -87,6 +87,7 @@
         "type": "Zowi"
       }
     ],
+    "setupExtraCode": "zowi.init();",
     "code": "zowi.playGesture({GESTURE});"
   }
 }

@@ -71,6 +71,7 @@
         "type": "Zowi"
       }
     ],
+    "setupExtraCode": "zowi.init();",
     "code": "zowi.putMouth({GESTURE}, false);"
   }
 }

@@ -107,6 +107,7 @@ var zowiMovementsHeight = _.merge(_.clone(StatementBloq, true), {
             name: 'zowi',
             type: 'Zowi'
         }],
+        setupExtraCode: 'zowi.init();',
         code: 'zowi.{MOVEMENT}({STEPS}, {SPEED}, {HEIGHT}, {DIR});'
     }
 });

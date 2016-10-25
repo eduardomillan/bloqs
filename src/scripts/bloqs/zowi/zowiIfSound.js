@@ -34,6 +34,7 @@ var zowiIfSound = _.merge(_.clone(StatementInputBloq, true), {
             name: 'zowi',
             type: 'Zowi'
         }],
+        setupExtraCode: 'zowi.init();',
         code: ' if(zowi.getNoise() >= 650){{STATEMENTS}}'
     }
 });

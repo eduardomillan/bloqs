@@ -87,6 +87,7 @@ var zowiMovementsHeightFront = _.merge(_.clone(StatementBloq, true), {
             name: 'zowi',
             type: 'Zowi'
         }],
+        setupExtraCode: 'zowi.init();',
         code: 'zowi.flapping({STEPS},{SPEED},{HEIGHT},{DIR});'
     }
 });

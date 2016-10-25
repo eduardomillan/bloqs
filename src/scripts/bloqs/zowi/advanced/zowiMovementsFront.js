@@ -70,6 +70,7 @@ var zowiMovementsFront = _.merge(_.clone(StatementBloq, true), {
             name: 'zowi',
             type: 'Zowi'
         }],
+        setupExtraCode: 'zowi.init();',
         code: 'zowi.walk({STEPS},{SPEED},{DIR});'
     }
 });

@@ -112,6 +112,7 @@
         "type": "Zowi"
       }
     ],
+    "setupExtraCode": "zowi.init();",
     "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT});"
   }
 }

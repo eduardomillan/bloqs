@@ -47,11 +47,6 @@ var serialSend = _.merge(_.clone(StatementBloq, true), {
     code: '{SERIAL}.{FUNCTION}({DATA});',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        needInstanceOf: [{
-            name: '{SERIAL}',
-            type: 'bqSoftwareSerial',
-            arguments: [0, 1, 'º[{SERIAL}.baudRate]']
-        }],
         code: '{SERIAL}.{FUNCTION}({DATA});'
     }
 });

@@ -49,6 +49,7 @@ var zowiButtons = _.merge(_.clone(OutputBloq, true), {
             name: 'zowi',
             type: 'Zowi'
         }],
+        setupExtraCode: 'zowi.init();',
         code: 'digitalRead({BUTTON})'
     }
 });

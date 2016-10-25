@@ -34,6 +34,7 @@ var zowiHome = _.merge(_.clone(StatementBloq, true), {
             name: 'zowi',
             type: 'Zowi'
         }],
+        setupExtraCode: 'zowi.init();',
         code: 'zowi.home();'
     }
 });

@@ -26,17 +26,6 @@
     "includes": [
       "BitbloqSoftwareSerial.h"
     ],
-    "needInstanceOf": [
-      {
-        "name": "{SERIAL}",
-        "type": "bqSoftwareSerial",
-        "arguments": [
-          0,
-          1,
-          "º[{SERIAL}.baudRate]"
-        ]
-      }
-    ],
     "code": "{SERIAL}.readString()"
   },
   "returnType": {

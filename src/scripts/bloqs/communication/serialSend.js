@@ -48,11 +48,6 @@ var serialSendV1 = _.merge(_.clone(StatementBloq, true), {
     code: '{SERIAL}.{LN}({DATA});',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        needInstanceOf: [{
-            name: '{SERIAL}',
-            type: 'bqSoftwareSerial',
-            arguments: [0, 1, 'º[{SERIAL}.baudRate]']
-        }],
         code: '{SERIAL}.{LN}({DATA});'
     }
 });

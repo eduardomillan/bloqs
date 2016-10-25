@@ -63,6 +63,7 @@
         "type": "Zowi"
       }
     ],
+    "setupExtraCode": "zowi.init();",
     "code": "if(digitalRead({BUTTON}) == 1){{STATEMENTS}}"
   }
 }

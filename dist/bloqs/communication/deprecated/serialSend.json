@@ -16,7 +16,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "03789d4f-82d0-4e0a-ba83-a238447b57af"
+      "name": "3f9dda86-0d1e-4139-bfcf-0b5d97861581"
     }
   ],
   "bloqClass": "bloq-serial-send",
@@ -37,7 +37,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "03789d4f-82d0-4e0a-ba83-a238447b57af"
+        "name": "3f9dda86-0d1e-4139-bfcf-0b5d97861581"
       },
       {
         "id": "FUNCTION",
@@ -59,17 +59,6 @@
   "arduino": {
     "includes": [
       "BitbloqSoftwareSerial.h"
-    ],
-    "needInstanceOf": [
-      {
-        "name": "{SERIAL}",
-        "type": "bqSoftwareSerial",
-        "arguments": [
-          0,
-          1,
-          "º[{SERIAL}.baudRate]"
-        ]
-      }
     ],
     "code": "{SERIAL}.{FUNCTION}({DATA});"
   }

@@ -38,6 +38,7 @@ var zowiSound = _.merge(_.clone(OutputBloq, true), {
             name: 'zowi',
             type: 'Zowi'
         }],
+        setupExtraCode: 'zowi.init();',
         code: 'zowi.getNoise()'
     }
 });

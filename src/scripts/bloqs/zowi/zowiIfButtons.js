@@ -49,6 +49,7 @@ var zowiIfButtons = _.merge(_.clone(StatementInputBloq, true), {
             name: 'zowi',
             type: 'Zowi'
         }],
+        setupExtraCode: 'zowi.init();',
         code: 'if(digitalRead({BUTTON}) == 1){{STATEMENTS}}'
     }
 });

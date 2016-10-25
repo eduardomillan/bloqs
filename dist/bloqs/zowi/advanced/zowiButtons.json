@@ -51,6 +51,7 @@
         "type": "Zowi"
       }
     ],
+    "setupExtraCode": "zowi.init();",
     "code": "digitalRead({BUTTON})"
   }
 }
