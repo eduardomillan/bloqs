@@ -1850,11 +1850,13 @@
 
         var code = '';
 
+        generateIndependentHardwareCode(hardwareList);
+
         var varsCode = getCodeFromBloq(arduinoMainBloqs.varsBloq, hardwareList);
         var setupCode = getCodeFromBloq(arduinoMainBloqs.setupBloq, hardwareList);
         var loopCode = getCodeFromBloq(arduinoMainBloqs.loopBloq, hardwareList);
 
-        generateIndependentHardwareCode(hardwareList);
+
         var prop;
         //after bloqscode to reuse the bucle to fill libraries and instance dependencies
         var includesCode = '';
