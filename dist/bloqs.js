@@ -2306,11 +2306,19 @@
                         break;
                     case 'servo':
                     case 'servocont':
-                        tempIncludes = ['Servo.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'Servo'
-                        };
+                        if (hardwareList.components[i].oscillator) {
+                            tempIncludes = ['Servo.h', 'Wire.h', 'BitbloqOscillator.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Oscillator'
+                            };
+                        } else {
+                            tempIncludes = ['Servo.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Servo'
+                            };
+                        }
                         tempSetupExtraCode = hardwareList.components[i].name + '.attach(' + hardwareList.components[i].pin.s + ');';
                         break;
                     case 'irs2':
