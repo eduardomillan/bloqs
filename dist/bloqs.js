@@ -1662,7 +1662,7 @@
     };
 
     var imports = {},
-    instances = {};
+        instances = {};
 
     function getCode(bloqFullStructure) {
         console.log('getting code', bloqFullStructure);
@@ -1675,13 +1675,13 @@
         var propiedad;
         //after bloqscode to reuse the bucle to fill libraries and instance dependencies
         var importsCode = '';
-        for(propiedad in imports){
+        for (propiedad in imports) {
             importsCode += 'import ' + propiedad + '\n';
         }
 
         var instancesCode = '';
-        for(propiedad in instances){
-            instancesCode += propiedad  + ' = ' + instances[propiedad] + '()\n';
+        for (propiedad in instances) {
+            instancesCode += propiedad + ' = ' + instances[propiedad] + '.' + instances[propiedad] + '()\n';
         }
 
 
@@ -1705,13 +1705,13 @@
             match,
             numberOfIndents;
 
-        if(bloqFullStructure.python.libraries){
+        if (bloqFullStructure.python.libraries) {
             for (var i = 0; i < bloqFullStructure.python.libraries.length; i++) {
                 imports[bloqFullStructure.python.libraries[i]] = true;
             }
         }
 
-        if(bloqFullStructure.python.needInstanceOf){
+        if (bloqFullStructure.python.needInstanceOf) {
             for (var i = 0; i < bloqFullStructure.python.needInstanceOf.length; i++) {
                 instances[bloqFullStructure.python.needInstanceOf[i].name] = bloqFullStructure.python.needInstanceOf[i].type;
             }
@@ -1767,7 +1767,6 @@
     return pythonGeneration;
 
 })(window.pythonGeneration = window.pythonGeneration || {}, undefined);
-
 
 'use strict';
 (function(arduinoGeneration) {
