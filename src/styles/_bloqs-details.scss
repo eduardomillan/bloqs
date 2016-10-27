@@ -14,6 +14,7 @@ $zowi-color: #60BCC9;
 $evolution-color: #9a0768;
 $mbot-color: #0076b4;
 $botbloq-car: #60bcc9;
+$botbloq-manipulator: #058723;
 
 /* COLOR THEME */
 
@@ -31,11 +32,17 @@ $theme-color-zowi-color: #60BCC9;
 $theme-color-evolution-color: #9a0768;
 $theme-color-mbot-color: #0076b4;
 $theme-color-botbloq-car: #60bcc9;
+$theme-color-botbloq-manipulator: #058723;
 @mixin createBloqsTheme ($reverse) {
     /*---- BOTBLOQ - CAR ---------*/
     @include createBloqsCss($reverse, "bloq-botbloq-vehicle-move", $botbloq-car, $theme-color-botbloq-car);
     @include createBloqsCss($reverse, "bloq-botbloq-vehicle-stop", $botbloq-car, $theme-color-botbloq-car);
     @include createBloqsCss($reverse, "bloq-botbloq-vehicle-ir", $botbloq-car, $theme-color-botbloq-car);
+    /*---- BOTBLOQ - MANIPULATOR ---------*/
+    @include createBloqsCss($reverse, "bloq-botbloq-manipulator-canmove", $botbloq-manipulator, $theme-color-botbloq-manipulator);
+    @include createBloqsCss($reverse, "bloq-botbloq-manipulator-moveonspace", $botbloq-manipulator, $theme-color-botbloq-manipulator);
+    @include createBloqsCss($reverse, "bloq-botbloq-manipulator-moveclamp", $botbloq-manipulator, $theme-color-botbloq-manipulator);
+    @include createBloqsCss($reverse, "bloq-botbloq-manipulator-rotatejoints", $botbloq-manipulator, $theme-color-botbloq-manipulator);
     /*---- CONVERSIONS ---------*/
     @include createBloqsCss($reverse, "bloq-string-to-int", $conversions-color, $theme-color-conversions-color);
     /*---- EVOLUTION ---------*/

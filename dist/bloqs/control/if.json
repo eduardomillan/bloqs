@@ -30,7 +30,7 @@
         "selectVariable",
         "readSensor"
       ],
-      "name": "26ac89ea-fb96-4519-a0fc-e69ecc5d218b"
+      "name": "36f054ea-0b60-4715-80da-4b11c75f11ef"
     },
     {
       "type": "connector--input",
@@ -41,10 +41,11 @@
       "suggestedBloqs": [
         "number",
         "string",
+        "boolean",
         "selectVariable",
         "readSensor"
       ],
-      "name": "f5ca673a-9e24-49b7-850c-001ac03095ce"
+      "name": "ae40fdfe-f4ce-4b9c-9563-7c6fc0c5f5b9"
     }
   ],
   "bloqClass": "bloq-if",
@@ -66,7 +67,7 @@
           "selectVariable",
           "readSensor"
         ],
-        "name": "26ac89ea-fb96-4519-a0fc-e69ecc5d218b"
+        "name": "36f054ea-0b60-4715-80da-4b11c75f11ef"
       },
       {
         "id": "OPERATOR",
@@ -107,10 +108,11 @@
         "suggestedBloqs": [
           "number",
           "string",
+          "boolean",
           "selectVariable",
           "readSensor"
         ],
-        "name": "f5ca673a-9e24-49b7-850c-001ac03095ce"
+        "name": "ae40fdfe-f4ce-4b9c-9563-7c6fc0c5f5b9"
       },
       {
         "alias": "text",

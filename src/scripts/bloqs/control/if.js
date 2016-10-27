@@ -55,7 +55,7 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
             acceptType: ['all'],
-            suggestedBloqs: ['number', 'string', 'selectVariable', 'readSensor']
+            suggestedBloqs: ['number', 'string', 'boolean', 'selectVariable', 'readSensor']
         }, {
             alias: 'text',
             value: 'bloq-if-exec'
