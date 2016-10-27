@@ -42,7 +42,7 @@ var botbloqManipulatorMoveClamp = _.merge(_.clone(StatementBloq, true), {
             type: 'BotbloqManipulator'
         }],
         codeLines: [{
-            code: 'manipulator.moveClamp({ACTION}}'
+            code: 'manipulator.moveClamp({ACTION})'
         }]
     }
 });
