@@ -3915,6 +3915,7 @@
                         selectedBloq.doConnectable();
                     }
                     connectBloq(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
+                    window.dispatchEvent(new CustomEvent('bloqs:suggestedAdded', { detail: bloq }));
                 }
                 bloqsSuggested.showSuggestedWindow(params);
             }
