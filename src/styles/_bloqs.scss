@@ -802,8 +802,11 @@
         position: absolute;
     }
     &.collapsed {
-        .bloq--extension {
+        .bloq--extension__content {
             display: none;
+        }
+        .bloq--extension--end {
+            height: 0;
         }
     }
 }

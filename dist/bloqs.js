@@ -2840,9 +2840,9 @@
         scrollTop = 0;
         var $dropConnector = $('.connector.available').first(),
             bloq = draggingBloq;
-        window.dispatchEvent(new CustomEvent('bloqs:dragend', { detail: bloq }));
-        connectBloq(bloq, $dropConnector);
 
+        connectBloq(bloq, $dropConnector);
+        window.dispatchEvent(new CustomEvent('bloqs:dragend', { detail: bloq }));
     };
 
     var connectBloq = function(bloq, $dropConnector) {

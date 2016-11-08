@@ -8167,8 +8167,11 @@
   z-index: 10;
   position: absolute; }
 
-.bloq.collapsed .bloq--extension {
+.bloq.collapsed .bloq--extension__content {
   display: none; }
+
+.bloq.collapsed .bloq--extension--end {
+  height: 0; }
 
 tester + span + .bloqinput {
   margin-left: 1.6em; }
