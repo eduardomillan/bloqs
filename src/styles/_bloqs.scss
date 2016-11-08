@@ -807,6 +807,13 @@
         }
         .bloq--extension--end {
             height: 0;
+            overflow: hidden;
+        }
+        .bloq--extension {
+            padding-top: 0;
+        }
+        .connector--root {
+            display: none;
         }
     }
 }

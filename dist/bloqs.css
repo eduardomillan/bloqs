@@ -8171,7 +8171,14 @@
   display: none; }
 
 .bloq.collapsed .bloq--extension--end {
-  height: 0; }
+  height: 0;
+  overflow: hidden; }
+
+.bloq.collapsed .bloq--extension {
+  padding-top: 0; }
+
+.bloq.collapsed .connector--root {
+  display: none; }
 
 tester + span + .bloqinput {
   margin-left: 1.6em; }
