@@ -1282,6 +1282,7 @@
                 } else if (connectors[bloqConnectorUuid]) {
                     params.suggestedBloqs = connectors[bloqConnectorUuid].data.suggestedBloqs;
                 }
+                params.suggestedBloqs = filterSuggestedBloqs(params.suggestedBloqs, componentsArray, softwareArrays);
                 params.showWindowCallback = function(selectedBloqId) {
                     var selectedBloq = bloqs[selectedBloqId];
                     if (!selectedBloq.isConnectable()) {
@@ -1293,6 +1294,27 @@
                 bloqsSuggested.showSuggestedWindow(params);
             }
         }
+    }
+
+    function filterSuggestedBloqs(suggestedBloqs, componentsArray, softwareArrays) {
+        var filteredItems = [];
+        for (var i = 0; i < suggestedBloqs.length; i++) {
+            switch (suggestedBloqs[i]) {
+                case 'selectVariable':
+                    if (softwareArrays.softwareVars.length > 0) {
+                        filteredItems.push(suggestedBloqs[i]);
+                    }
+                    break;
+                case 'readSensor':
+                    if (componentsArray.sensors.length > 0) {
+                        filteredItems.push(suggestedBloqs[i]);
+                    }
+                    break;
+                default:
+                    filteredItems.push(suggestedBloqs[i]);
+            }
+        };
+        return filteredItems;
     }
 
     var translateBloqs = function(newLang) {

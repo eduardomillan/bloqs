@@ -1,6 +1,6 @@
 {
   "type": "statement-input",
-  "name": "whileAdvanced",
+  "name": "magicForAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -21,39 +21,39 @@
         "all"
       ],
       "suggestedBloqs": [
-        "equalityOperations",
-        "logicOperations"
+        "selectVariable",
+        "number"
       ],
-      "name": "69589bf7-c420-4022-ac30-ab2536268858"
+      "name": "a556b2b4-c27d-4f53-a928-60d747c0703a"
     }
   ],
-  "bloqClass": "bloq-while",
+  "bloqClass": "bloq-magicfor",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-while-while"
+        "value": "bloq-magicfor-repeat"
       },
       {
-        "bloqInputId": "CONDITION",
+        "bloqInputId": "TIMES",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
-          "equalityOperations",
-          "logicOperations"
+          "selectVariable",
+          "number"
         ],
-        "name": "69589bf7-c420-4022-ac30-ab2536268858"
+        "name": "a556b2b4-c27d-4f53-a928-60d747c0703a"
       },
       {
         "alias": "text",
-        "value": "bloq-while-exec"
+        "value": "bloq-magicfor-times"
       }
     ]
   ],
-  "code": "while ({CONDITION}){{STATEMENTS}}",
+  "code": "",
   "arduino": {
-    "code": "while ({CONDITION}){{STATEMENTS}}"
+    "code": "for(int bitbloqForCounter=0;bitbloqForCounter <= {TIMES};bitbloqForCounter += 1){{STATEMENTS}}"
   }
 }
