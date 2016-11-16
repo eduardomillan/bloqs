@@ -34,7 +34,7 @@ var magicFor = _.merge(_.clone(StatementInputBloq, true), {
     ],
     code: '',
     arduino: {
-        code: 'for(int bitbloqForCounter=0;bitbloqForCounter <= {TIMES};bitbloqForCounter += 1){{STATEMENTS}}'
+        code: 'for(int bitbloqForCounter=0;bitbloqForCounter < {TIMES};bitbloqForCounter += 1){{STATEMENTS}}'
     }
 });
 

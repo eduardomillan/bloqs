@@ -24,7 +24,7 @@
         "selectVariable",
         "number"
       ],
-      "name": "b1018769-c478-4c03-9b49-dde09e21b950"
+      "name": "5e37e499-c400-49bc-ba3e-203b5bb9510a"
     }
   ],
   "bloqClass": "bloq-magicfor",
@@ -44,7 +44,7 @@
           "selectVariable",
           "number"
         ],
-        "name": "b1018769-c478-4c03-9b49-dde09e21b950"
+        "name": "5e37e499-c400-49bc-ba3e-203b5bb9510a"
       },
       {
         "alias": "text",
@@ -54,6 +54,6 @@
   ],
   "code": "",
   "arduino": {
-    "code": "for(int bitbloqForCounter=0;bitbloqForCounter <= {TIMES};bitbloqForCounter += 1){{STATEMENTS}}"
+    "code": "for(int bitbloqForCounter=0;bitbloqForCounter < {TIMES};bitbloqForCounter += 1){{STATEMENTS}}"
   }
 }
