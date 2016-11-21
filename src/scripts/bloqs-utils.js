@@ -899,6 +899,10 @@
                 includeCode += '#include <SoftwareSerial.h>\n#include <BitbloqSoftwareSerial.h>\n';
                 bitbloqLibs = true;
             }
+            if (componentsArray.phoneElements.length >= 1) {
+                includeCode += '#include <SoftwareSerial.h>\n#include <BitbloqSoftwareSerial.h>\n';
+                bitbloqLibs = true;
+            }
             if (componentsArray.clocks.length >= 1) {
                 if (includeCode.indexOf('#include <Wire.h>') === -1) {
                     includeCode += '#include <Wire.h>\n';
@@ -1027,6 +1031,18 @@
                         serialElement.pin.tx = '1';
                     }
                     globalVars += 'bqSoftwareSerial ' + serialElement.name + '(' + (serialElement.pin.rx || '') + ',' + (serialElement.pin.tx || '') + ',' + (serialElement.baudRate || '') + ');';
+                });
+            }
+
+            if (componentsArray.phoneElements.length >= 1) {
+                componentsArray.phoneElements.forEach(function(phoneElement) {
+                    if (phoneElement.pin.s === 'serial') {
+                        phoneElement.pin.rx = '0';
+                        phoneElement.pin.tx = '1';
+                    }
+                    globalVars += 'bqSoftwareSerial ' + phoneElement.name + '(' + (phoneElement.pin.rx || '') + ',' + (phoneElement.pin.tx || '') + ',' + (phoneElement.baudRate || '') + ');';
+                    console.log('globalVars');
+                    console.log(globalVars);
                 });
             }
             code = '\n/***   Included libraries  ***/\n' + includeCode + '\n\n/***   Global variables and function definition  ***/\n' + globalVars + bloqs.varsBloq.getCode() + '\n\n/***   Setup  ***/\n' + bloqs.setupBloq.getCode(setupCode) + '\n\n/***   Loop  ***/\n' + bloqs.loopBloq.getCode() + '' + finalFunctions;
@@ -1347,6 +1363,7 @@
             oscillators: [],
             lcds: [],
             serialElements: [],
+            phoneElements: [],
             clocks: [],
             hts221: [],
             barometer: [],

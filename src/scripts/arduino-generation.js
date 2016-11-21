@@ -74,7 +74,9 @@
         setupExtraCodeList = {};
         programExtraCodeList = {};
         programFunctionDeclarationsList = {};
-        hardwareList = hardwareList || { components: [] };
+        hardwareList = hardwareList || {
+            components: []
+        };
 
 
         var code = '';
@@ -402,6 +404,9 @@
                 tempProgramExtraCode = null;
                 tempProgramFunctionDeclaration = null;
                 tempIncludes = [];
+                console.log('hardwareList');
+                console.log(hardwareList);
+
                 switch (hardwareList.components[i].id) {
                     case 'led':
                         tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', OUTPUT);';
@@ -426,6 +431,18 @@
                         break;
 
                     case 'bt':
+                        tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'bqSoftwareSerial',
+                            arguments: [
+                                hardwareList.components[i].pin.rx,
+                                hardwareList.components[i].pin.tx,
+                                hardwareList.components[i].baudRate
+                            ]
+                        };
+                        break;
+                    case 'phone':
                         tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
                         tempInstanceOf = {
                             name: hardwareList.components[i].name,

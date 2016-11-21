@@ -907,6 +907,10 @@
                 includeCode += '#include <SoftwareSerial.h>\n#include <BitbloqSoftwareSerial.h>\n';
                 bitbloqLibs = true;
             }
+            if (componentsArray.phoneElements.length >= 1) {
+                includeCode += '#include <SoftwareSerial.h>\n#include <BitbloqSoftwareSerial.h>\n';
+                bitbloqLibs = true;
+            }
             if (componentsArray.clocks.length >= 1) {
                 if (includeCode.indexOf('#include <Wire.h>') === -1) {
                     includeCode += '#include <Wire.h>\n';
@@ -1035,6 +1039,18 @@
                         serialElement.pin.tx = '1';
                     }
                     globalVars += 'bqSoftwareSerial ' + serialElement.name + '(' + (serialElement.pin.rx || '') + ',' + (serialElement.pin.tx || '') + ',' + (serialElement.baudRate || '') + ');';
+                });
+            }
+
+            if (componentsArray.phoneElements.length >= 1) {
+                componentsArray.phoneElements.forEach(function(phoneElement) {
+                    if (phoneElement.pin.s === 'serial') {
+                        phoneElement.pin.rx = '0';
+                        phoneElement.pin.tx = '1';
+                    }
+                    globalVars += 'bqSoftwareSerial ' + phoneElement.name + '(' + (phoneElement.pin.rx || '') + ',' + (phoneElement.pin.tx || '') + ',' + (phoneElement.baudRate || '') + ');';
+                    console.log('globalVars');
+                    console.log(globalVars);
                 });
             }
             code = '\n/***   Included libraries  ***/\n' + includeCode + '\n\n/***   Global variables and function definition  ***/\n' + globalVars + bloqs.varsBloq.getCode() + '\n\n/***   Setup  ***/\n' + bloqs.setupBloq.getCode(setupCode) + '\n\n/***   Loop  ***/\n' + bloqs.loopBloq.getCode() + '' + finalFunctions;
@@ -1355,6 +1371,7 @@
             oscillators: [],
             lcds: [],
             serialElements: [],
+            phoneElements: [],
             clocks: [],
             hts221: [],
             barometer: [],
@@ -1595,6 +1612,7 @@
     return bloqsUtils;
 
 })(window.bloqsUtils = window.bloqsUtils || {}, _, undefined);
+
 
 'use strict';
 (function(bloqsTooltip) {
@@ -1844,7 +1862,9 @@
         setupExtraCodeList = {};
         programExtraCodeList = {};
         programFunctionDeclarationsList = {};
-        hardwareList = hardwareList || { components: [] };
+        hardwareList = hardwareList || {
+            components: []
+        };
 
 
         var code = '';
@@ -2172,6 +2192,9 @@
                 tempProgramExtraCode = null;
                 tempProgramFunctionDeclaration = null;
                 tempIncludes = [];
+                console.log('hardwareList');
+                console.log(hardwareList);
+
                 switch (hardwareList.components[i].id) {
                     case 'led':
                         tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', OUTPUT);';
@@ -2196,6 +2219,18 @@
                         break;
 
                     case 'bt':
+                        tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'bqSoftwareSerial',
+                            arguments: [
+                                hardwareList.components[i].pin.rx,
+                                hardwareList.components[i].pin.tx,
+                                hardwareList.components[i].baudRate
+                            ]
+                        };
+                        break;
+                    case 'phone':
                         tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
                         tempInstanceOf = {
                             name: hardwareList.components[i].name,
@@ -2395,6 +2430,7 @@
     return arduinoGeneration;
 
 })(window.arduinoGeneration = window.arduinoGeneration || {}, undefined);
+
 
 'use strict';
 (function(bloqsSuggested, bloqsLanguages, bloqsUtils) {
