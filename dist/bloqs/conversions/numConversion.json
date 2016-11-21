@@ -16,7 +16,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "414091fd-8b93-48db-b7fc-97136d1164eb"
+      "name": "2de9ed8e-0ec5-40f9-9ece-545f059745ed"
     }
   ],
   "bloqClass": "bloq-num-conversion",
@@ -36,7 +36,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "414091fd-8b93-48db-b7fc-97136d1164eb"
+        "name": "2de9ed8e-0ec5-40f9-9ece-545f059745ed"
       },
       {
         "alias": "text",
@@ -60,7 +60,7 @@
   ],
   "code": "({TYPE}) {NUMBER}",
   "arduino": {
-    "code": "({TYPE},{NUMBER})"
+    "code": "({TYPE}) {NUMBER}"
   },
   "returnType": {
     "type": "fromDropdown",
