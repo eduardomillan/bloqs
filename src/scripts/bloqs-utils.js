@@ -714,11 +714,34 @@
             case 'fromDropdown':
                 result = bloq.$bloq.find('[data-content-id="' + bloq.bloqData.returnType.idDropdown + '"]').val();
                 break;
+            case 'fromStaticDropdownProperty':
+                result = getTypeFromStaticDropdownProperty(bloq);
+                break;
             default:
                 throw 'we cant get the type from this bloq: ' + bloq.bloqData.name + ' ' + JSON.stringify(bloq.bloqData.returnType);
         }
         return result;
     };
+
+    var getTypeFromStaticDropdownProperty = function(bloq) {
+        var type = '';
+        var selectedValue = bloq.$bloq.find('[data-content-id="' + bloq.bloqData.returnType.idDropdown + '"]').val();
+        if (selectedValue) {
+            var dropdownData = _.find(bloq.bloqData.content[0], {
+                id: bloq.bloqData.returnType.idDropdown
+            });
+            var optionData = _.find(dropdownData.options, {
+                value: selectedValue
+            });
+            if (optionData.type) {
+                type = optionData.type;
+            }
+
+        }
+        return type;
+
+    };
+
     var occurrencesInString = function(string, subString, allowOverlapping) {
         string += '';
         subString += '';

@@ -175,6 +175,9 @@
                     contentId = bloq.returnType.idDropdown;
                     propertyName = 'id';
                     break;
+                case 'fromStaticDropdownProperty':
+                    result = getTypeFromStaticDropdownProperty(bloq);
+                    break;
             }
 
             while (!result && (i < bloq.content[0].length)) {
@@ -187,6 +190,22 @@
             }
         }
         return result || '';
+    }
+
+    function getTypeFromStaticDropdownProperty(bloq) {
+        var type = '';
+        var dropdownData = _.find(bloq.content[0], {
+            id: bloq.returnType.idDropdown
+        });
+        var selectedValue = dropdownData.value;
+        var optionData = _.find(dropdownData.options, {
+            value: selectedValue
+        });
+        if (optionData.type) {
+            type = optionData.type;
+        }
+
+        return type;
     }
 
     function searchClassName(constructorBloq) {
@@ -404,8 +423,8 @@
                 tempProgramExtraCode = null;
                 tempProgramFunctionDeclaration = null;
                 tempIncludes = [];
-                console.log('hardwareList');
-                console.log(hardwareList);
+                //console.log('hardwareList');
+                //console.log(hardwareList);
 
                 switch (hardwareList.components[i].id) {
                     case 'led':

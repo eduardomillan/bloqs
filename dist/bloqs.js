@@ -722,11 +722,34 @@
             case 'fromDropdown':
                 result = bloq.$bloq.find('[data-content-id="' + bloq.bloqData.returnType.idDropdown + '"]').val();
                 break;
+            case 'fromStaticDropdownProperty':
+                result = getTypeFromStaticDropdownProperty(bloq);
+                break;
             default:
                 throw 'we cant get the type from this bloq: ' + bloq.bloqData.name + ' ' + JSON.stringify(bloq.bloqData.returnType);
         }
         return result;
     };
+
+    var getTypeFromStaticDropdownProperty = function(bloq) {
+        var type = '';
+        var selectedValue = bloq.$bloq.find('[data-content-id="' + bloq.bloqData.returnType.idDropdown + '"]').val();
+        if (selectedValue) {
+            var dropdownData = _.find(bloq.bloqData.content[0], {
+                id: bloq.bloqData.returnType.idDropdown
+            });
+            var optionData = _.find(dropdownData.options, {
+                value: selectedValue
+            });
+            if (optionData.type) {
+                type = optionData.type;
+            }
+
+        }
+        return type;
+
+    };
+
     var occurrencesInString = function(string, subString, allowOverlapping) {
         string += '';
         subString += '';
@@ -1613,7 +1636,6 @@
 
 })(window.bloqsUtils = window.bloqsUtils || {}, _, undefined);
 
-
 'use strict';
 (function(bloqsTooltip) {
 
@@ -1963,6 +1985,9 @@
                     contentId = bloq.returnType.idDropdown;
                     propertyName = 'id';
                     break;
+                case 'fromStaticDropdownProperty':
+                    result = getTypeFromStaticDropdownProperty(bloq);
+                    break;
             }
 
             while (!result && (i < bloq.content[0].length)) {
@@ -1975,6 +2000,22 @@
             }
         }
         return result || '';
+    }
+
+    function getTypeFromStaticDropdownProperty(bloq) {
+        var type = '';
+        var dropdownData = _.find(bloq.content[0], {
+            id: bloq.returnType.idDropdown
+        });
+        var selectedValue = dropdownData.value;
+        var optionData = _.find(dropdownData.options, {
+            value: selectedValue
+        });
+        if (optionData.type) {
+            type = optionData.type;
+        }
+
+        return type;
     }
 
     function searchClassName(constructorBloq) {
@@ -2192,8 +2233,8 @@
                 tempProgramExtraCode = null;
                 tempProgramFunctionDeclaration = null;
                 tempIncludes = [];
-                console.log('hardwareList');
-                console.log(hardwareList);
+                //console.log('hardwareList');
+                //console.log(hardwareList);
 
                 switch (hardwareList.components[i].id) {
                     case 'led':
@@ -2430,7 +2471,6 @@
     return arduinoGeneration;
 
 })(window.arduinoGeneration = window.arduinoGeneration || {}, undefined);
-
 
 'use strict';
 (function(bloqsSuggested, bloqsLanguages, bloqsUtils) {

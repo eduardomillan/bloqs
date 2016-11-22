@@ -29,28 +29,36 @@ var clockRTCAdvanced = _.merge(_.clone(OutputBloq, true), {
             alias: 'staticDropdown',
             options: [{
                 label: 'bloq-rtc-date-2',
-                value: 'getDate'
+                value: 'getDate',
+                type: 'String'
             }, {
                 label: 'bloq-rtc-time-2',
-                value: 'getTime'
+                value: 'getTime',
+                type: 'String'
             }, {
                 label: 'bloq-rtc-hour',
-                value: 'getHour'
+                value: 'getHour',
+                type: 'float'
             }, {
                 label: 'bloq-rtc-minute',
-                value: 'getMinute'
+                value: 'getMinute',
+                type: 'float'
             }, {
                 label: 'bloq-rtc-second',
-                value: 'getSecond'
+                value: 'getSecond',
+                type: 'float'
             }, {
                 label: 'bloq-rtc-day',
-                value: 'getDay'
+                value: 'getDay',
+                type: 'float'
             }, {
                 label: 'bloq-rtc-month',
-                value: 'getMonth'
+                value: 'getMonth',
+                type: 'float'
             }, {
                 label: 'bloq-rtc-year',
-                value: 'getYear'
+                value: 'getYear',
+                type: 'float'
             }]
         }, {
             alias: 'text',
@@ -63,8 +71,9 @@ var clockRTCAdvanced = _.merge(_.clone(OutputBloq, true), {
     ],
     code: '{RTC}.{FUNCTION}()',
     returnType: {
-        type: 'simple',
-        value: 'int'
+        type: 'fromStaticDropdownProperty',
+        idDropdown: 'FUNCTION',
+        dropdownProperty: 'type'
     },
     arduino: {
         code: '{RTC}.{FUNCTION}()'
