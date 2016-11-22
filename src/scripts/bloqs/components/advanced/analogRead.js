@@ -27,7 +27,7 @@ var analogReadAdvanced = _.merge(_.clone(OutputBloq, true), {
             bloqInputId: 'PIN',
             alias: 'bloqInput',
             acceptType: ['all'],
-            suggestedBloqs: ['number', 'selectVariable']
+            suggestedBloqs: ['string', 'selectVariable']
         }]
     ],
     code: '\'{PIN}\'.indexOf(\'A\') !== -1 ? \'analogRead({PIN})\'.replace(/"/g, \'\') : \'analogRead({PIN})\'',
