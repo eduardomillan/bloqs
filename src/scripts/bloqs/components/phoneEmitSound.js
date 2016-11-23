@@ -18,7 +18,7 @@ var _ = require('lodash'),
 var phoneEmitSound = _.merge(_.clone(StatementBloq, true), {
 
     name: 'phoneEmitSound',
-    bloqClass: 'bloq-zowi-gestures',
+    bloqClass: 'bloq-phone-sound',
     content: [
         [{
             alias: 'text',
