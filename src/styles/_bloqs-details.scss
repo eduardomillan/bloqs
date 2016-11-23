@@ -168,6 +168,8 @@ $theme-color-botbloq-manipulator: #058723;
     @include createBloqsCss($reverse, "bloq-oscillator-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-oscillator-start-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-oscillator-stop-advanced", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-phone-sound", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-phone-write", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-pin-read-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-pin-writte-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-read-advanced", $components-color, $theme-color-components-color);
