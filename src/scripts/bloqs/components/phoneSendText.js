@@ -18,7 +18,7 @@ var _ = require('lodash'),
 var phoneSendText = _.merge(_.clone(StatementBloq, true), {
 
     name: 'phoneSendText',
-    bloqClass: 'bloq-phone-sound',
+    bloqClass: 'bloq-phone-write',
     content: [
         [{
             id: 'PHONE',
