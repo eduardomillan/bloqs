@@ -461,7 +461,7 @@
                             ]
                         };
                         break;
-                    case 'phone':
+                    case 'device':
                         tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
                         tempInstanceOf = {
                             name: hardwareList.components[i].name,

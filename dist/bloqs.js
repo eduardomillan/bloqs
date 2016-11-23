@@ -2271,7 +2271,7 @@
                             ]
                         };
                         break;
-                    case 'phone':
+                    case 'device':
                         tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
                         tempInstanceOf = {
                             name: hardwareList.components[i].name,
@@ -2471,6 +2471,7 @@
     return arduinoGeneration;
 
 })(window.arduinoGeneration = window.arduinoGeneration || {}, undefined);
+
 
 'use strict';
 (function(bloqsSuggested, bloqsLanguages, bloqsUtils) {
