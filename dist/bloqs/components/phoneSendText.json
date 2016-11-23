@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "serialSend-v1",
+  "name": "phoneSendText",
   "connectors": [
     {
       "type": "connector--top",
@@ -21,16 +21,16 @@
         "number",
         "selectVariable"
       ],
-      "name": "0d82fc43-e095-47ca-88fc-bc52712a1617"
+      "name": "f72660d3-4d0c-45cd-b1d4-537c41fdd2c1"
     }
   ],
   "bloqClass": "bloq-serial-send",
   "content": [
     [
       {
-        "id": "SERIAL",
+        "id": "PHONE",
         "alias": "dynamicDropdown",
-        "options": "serialElements"
+        "options": "phoneElements"
       },
       {
         "alias": "text",
@@ -47,29 +47,15 @@
           "number",
           "selectVariable"
         ],
-        "name": "0d82fc43-e095-47ca-88fc-bc52712a1617"
-      },
-      {
-        "id": "LN",
-        "alias": "staticDropdown",
-        "options": [
-          {
-            "label": "bloq-serial-send-println",
-            "value": "println"
-          },
-          {
-            "label": "bloq-serial-send-print",
-            "value": "print"
-          }
-        ]
+        "name": "f72660d3-4d0c-45cd-b1d4-537c41fdd2c1"
       }
     ]
   ],
-  "code": "{SERIAL}.{LN}({DATA});",
+  "code": "{PHONE}.println(\"write-\" + {DATA});",
   "arduino": {
     "includes": [
       "BitbloqSoftwareSerial.h"
     ],
-    "code": "{SERIAL}.{LN}({DATA});"
+    "code": "{PHONE}.println(String(\"write-\")+String({DATA}));"
   }
 }
