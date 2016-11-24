@@ -26,7 +26,7 @@ var phoneSendText = _.merge(_.clone(StatementBloq, true), {
             options: 'phoneElements'
         }, {
             alias: 'text',
-            value: 'bloq-serial-send-send'
+            value: 'bloq-phone-write-show'
         },
         {
             bloqInputId: 'DATA',
