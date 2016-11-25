@@ -1,0 +1,35 @@
+{
+  "type": "output",
+  "name": "phoneReceive",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-receive-device",
+  "content": [
+    [
+      {
+        "id": "DEVICE",
+        "alias": "dynamicDropdown",
+        "options": "phoneElements"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-phone-receive"
+      }
+    ]
+  ],
+  "code": "{DEVICE}.readString()",
+  "arduino": {
+    "includes": [
+      "BitbloqSoftwareSerial.h"
+    ],
+    "code": "{DEVICE}.readString()"
+  },
+  "returnType": {
+    "type": "simple",
+    "value": "String"
+  }
+}
