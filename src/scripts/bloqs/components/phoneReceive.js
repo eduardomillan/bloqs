@@ -18,10 +18,10 @@ var _ = require('lodash'),
 
 var phoneReceive = _.merge(_.clone(OutputBloq, true), {
     name: 'phoneReceive',
-    bloqClass: 'bloq-receive-device',
+    bloqClass: 'bloq-phone-receive',
     content: [
         [{
-            id: 'DEVICE',
+            id: 'PHONE',
             alias: 'dynamicDropdown',
             options: 'phoneElements'
         }, {
@@ -29,10 +29,10 @@ var phoneReceive = _.merge(_.clone(OutputBloq, true), {
             value: 'bloq-phone-receive'
         }]
     ],
-    code: '{DEVICE}.readString()',
+    code: '{PHONE}.readString()',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        code: '{DEVICE}.readString()'
+        code: '{PHONE}.readString()'
     },
     returnType: {
         type: 'simple',
