@@ -7,11 +7,11 @@
       "accept": "connector--input"
     }
   ],
-  "bloqClass": "bloq-receive-device",
+  "bloqClass": "bloq-phone-receive",
   "content": [
     [
       {
-        "id": "DEVICE",
+        "id": "PHONE",
         "alias": "dynamicDropdown",
         "options": "phoneElements"
       },
@@ -21,12 +21,12 @@
       }
     ]
   ],
-  "code": "{DEVICE}.readString()",
+  "code": "{PHONE}.readString()",
   "arduino": {
     "includes": [
       "BitbloqSoftwareSerial.h"
     ],
-    "code": "{DEVICE}.readString()"
+    "code": "{PHONE}.readString()"
   },
   "returnType": {
     "type": "simple",
