@@ -6,7 +6,7 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
- * Bloq name: phoneSendText
+ * Bloq name: phoneToggleLight
  *
  * Bloq type: Statement
  *
