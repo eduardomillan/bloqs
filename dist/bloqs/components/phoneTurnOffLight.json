@@ -1,0 +1,35 @@
+{
+  "type": "statement",
+  "name": "phoneTurnOffLight",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-phone-turnoff-light",
+  "content": [
+    [
+      {
+        "id": "PHONE",
+        "alias": "dynamicDropdown",
+        "options": "phoneElements"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-phone-turnoff-light"
+      }
+    ]
+  ],
+  "code": "{PHONE}.println(\"turnonFlashlight-\");",
+  "arduino": {
+    "includes": [
+      "BitbloqSoftwareSerial.h"
+    ],
+    "code": "{PHONE}.println(String(\"turnoffFlashlight-\"));"
+  }
+}
