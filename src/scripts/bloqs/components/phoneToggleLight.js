@@ -17,7 +17,7 @@ var _ = require('lodash'),
 
 var phoneToggleLight = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'phoneSendText',
+    name: 'phoneToggleLight',
     bloqClass: 'bloq-phone-toggle',
     content: [
         [{

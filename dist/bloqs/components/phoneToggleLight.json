@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "phoneSendText",
+  "name": "phoneToggleLight",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "0007bed9-9675-4268-ac50-eeb60d16ee00"
+      "name": "d2e073c9-2717-4db1-bd9e-554bfe42a86f"
     }
   ],
   "bloqClass": "bloq-phone-toggle",
@@ -45,7 +45,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "0007bed9-9675-4268-ac50-eeb60d16ee00"
+        "name": "d2e073c9-2717-4db1-bd9e-554bfe42a86f"
       },
       {
         "alias": "text",
