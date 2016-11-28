@@ -17,14 +17,13 @@
         "all"
       ],
       "suggestedBloqs": [
-        "string",
         "number",
         "selectVariable"
       ],
-      "name": "fdd289bc-739b-4513-9a2a-f8f26af88e39"
+      "name": "0007bed9-9675-4268-ac50-eeb60d16ee00"
     }
   ],
-  "bloqClass": "bloq-phone-write",
+  "bloqClass": "bloq-phone-toggle",
   "content": [
     [
       {
@@ -34,7 +33,7 @@
       },
       {
         "alias": "text",
-        "value": "bloq-phone-write-show"
+        "value": "bloq-phone-toggle-light"
       },
       {
         "bloqInputId": "DATA",
@@ -43,11 +42,14 @@
           "all"
         ],
         "suggestedBloqs": [
-          "string",
           "number",
           "selectVariable"
         ],
-        "name": "fdd289bc-739b-4513-9a2a-f8f26af88e39"
+        "name": "0007bed9-9675-4268-ac50-eeb60d16ee00"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-phone-toggle-units"
       }
     ]
   ],
@@ -56,6 +58,6 @@
     "includes": [
       "BitbloqSoftwareSerial.h"
     ],
-    "code": "{PHONE}.println(String(\"write-\")+String({DATA}));"
+    "code": "{PHONE}.println(String(\"toggleFlashlight-\")+String({DATA}));"
   }
 }
