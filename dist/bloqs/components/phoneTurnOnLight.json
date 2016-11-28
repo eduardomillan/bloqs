@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "serialSend-v1",
+  "name": "phoneTurnOnLight",
   "connectors": [
     {
       "type": "connector--top",
@@ -17,24 +17,27 @@
         "all"
       ],
       "suggestedBloqs": [
-        "string",
         "number",
         "selectVariable"
       ],
-      "name": "b6dddb4c-5cbc-4a0b-af85-6b189af3c3f1"
+      "name": "6f2a5632-e59c-4b97-b2d4-38741bc2115f"
     }
   ],
-  "bloqClass": "bloq-serial-send",
+  "bloqClass": "bloq-phone-turnon-light",
   "content": [
     [
       {
-        "id": "SERIAL",
+        "alias": "text",
+        "value": "bloq-phone-turnon-light"
+      },
+      {
+        "id": "PHONE",
         "alias": "dynamicDropdown",
-        "options": "serialElements"
+        "options": "phoneElements"
       },
       {
         "alias": "text",
-        "value": "bloq-serial-send-send"
+        "value": "bloq-phone-turnon-light"
       },
       {
         "bloqInputId": "DATA",
@@ -43,33 +46,22 @@
           "all"
         ],
         "suggestedBloqs": [
-          "string",
           "number",
           "selectVariable"
         ],
-        "name": "b6dddb4c-5cbc-4a0b-af85-6b189af3c3f1"
+        "name": "6f2a5632-e59c-4b97-b2d4-38741bc2115f"
       },
       {
-        "id": "LN",
-        "alias": "staticDropdown",
-        "options": [
-          {
-            "label": "bloq-serial-send-println",
-            "value": "println"
-          },
-          {
-            "label": "bloq-serial-send-print",
-            "value": "print"
-          }
-        ]
+        "alias": "text",
+        "value": "%"
       }
     ]
   ],
-  "code": "{SERIAL}.{LN}({DATA});",
+  "code": "{PHONE}.println(\"write-\" + {DATA});",
   "arduino": {
     "includes": [
       "BitbloqSoftwareSerial.h"
     ],
-    "code": "{SERIAL}.{LN}({DATA});"
+    "code": "{PHONE}.println(String(\"toggleFlashlight-\")+String({DATA}));"
   }
 }
