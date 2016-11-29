@@ -29,11 +29,11 @@ var phoneTurnOffLight = _.merge(_.clone(StatementBloq, true), {
             value: 'bloq-phone-turnoff-light'
         }]
     ],
-    code: '{PHONE}.println("turnoffFlashlight-");',
+    code: '{PHONE}.println("turnoffFlashlight-"); delay(500);',
 
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        code: '{PHONE}.println(String("turnoffFlashlight-"));'
+        code: '{PHONE}.println(String("turnoffFlashlight-")); delay(500);'
     }
 
 });

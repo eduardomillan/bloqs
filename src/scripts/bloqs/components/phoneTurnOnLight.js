@@ -37,11 +37,11 @@ var phoneTurnOnLight = _.merge(_.clone(StatementBloq, true), {
             value: '%'
         }]
     ],
-    code: '{PHONE}.println("turnonFlashlight-" + {DATA});',
+    code: '{PHONE}.println("turnonFlashlight-" + {DATA});  delay(500);',
 
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        code: '{PHONE}.println(String("turnonFlashlight-")+String({DATA}));'
+        code: '{PHONE}.println(String("turnonFlashlight-")+String({DATA}));  delay(500);'
     }
 
 });

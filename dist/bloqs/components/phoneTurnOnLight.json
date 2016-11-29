@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "cef8586f-0b8f-4431-93c9-3876f01eca2b"
+      "name": "4d7f9ef1-9219-476c-a1fc-74c1864f9565"
     }
   ],
   "bloqClass": "bloq-phone-turnon-light",
@@ -45,7 +45,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "cef8586f-0b8f-4431-93c9-3876f01eca2b"
+        "name": "4d7f9ef1-9219-476c-a1fc-74c1864f9565"
       },
       {
         "alias": "text",
@@ -53,11 +53,11 @@
       }
     ]
   ],
-  "code": "{PHONE}.println(\"turnonFlashlight-\" + {DATA});",
+  "code": "{PHONE}.println(\"turnonFlashlight-\" + {DATA});  delay(500);",
   "arduino": {
     "includes": [
       "BitbloqSoftwareSerial.h"
     ],
-    "code": "{PHONE}.println(String(\"turnonFlashlight-\")+String({DATA}));"
+    "code": "{PHONE}.println(String(\"turnonFlashlight-\")+String({DATA}));  delay(500);"
   }
 }
