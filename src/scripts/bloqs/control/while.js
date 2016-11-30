@@ -27,7 +27,7 @@ var bloqWhile = _.merge(_.clone(StatementInputBloq, true), {
             bloqInputId: 'ARG1',
             alias: 'bloqInput',
             acceptType: ['all'],
-            suggestedBloqs: ['number', 'string', 'selectVariable']
+            suggestedBloqs: ['number', 'string', 'selectVariable', 'readSensor']
         }, {
             id: 'OPERATOR',
             alias: 'staticDropdown',
@@ -54,7 +54,7 @@ var bloqWhile = _.merge(_.clone(StatementInputBloq, true), {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
             acceptType: ['all'],
-            suggestedBloqs: ['number', 'string', 'selectVariable']
+            suggestedBloqs: ['number', 'string', 'boolean', 'selectVariable', 'readSensor']
         }, {
             alias: 'text',
             value: 'bloq-while-exec'
