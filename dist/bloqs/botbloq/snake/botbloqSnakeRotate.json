@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "botbloqSnakeStop",
+  "name": "botbloqSnakeRotate",
   "connectors": [
     {
       "type": "connector--top",
@@ -11,12 +11,26 @@
       "accept": "connector--top"
     }
   ],
-  "bloqClass": "bloq-botbloq-snake-stop",
+  "bloqClass": "bloq-botbloq-snake-rotate",
   "content": [
     [
       {
         "alias": "text",
-        "value": "Detener"
+        "value": "Rotar hacia la"
+      },
+      {
+        "id": "SIDE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "derecha",
+            "value": "RIGHT"
+          },
+          {
+            "label": "izquierda",
+            "value": "LEFT"
+          }
+        ]
       }
     ]
   ],
@@ -33,7 +47,7 @@
     ],
     "codeLines": [
       {
-        "code": "snake.stop()"
+        "code": "snake.rotate(\"{SIDE}\")"
       }
     ]
   }

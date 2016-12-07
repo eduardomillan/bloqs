@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "botbloqSnakeStop",
+  "name": "botbloqHexapodStop",
   "connectors": [
     {
       "type": "connector--top",
@@ -11,7 +11,7 @@
       "accept": "connector--top"
     }
   ],
-  "bloqClass": "bloq-botbloq-snake-stop",
+  "bloqClass": "bloq-botbloq-hexapod-stop",
   "content": [
     [
       {
@@ -23,17 +23,17 @@
   "code": "",
   "python": {
     "libraries": [
-      "BotbloqSnake"
+      "BotbloqHexapod"
     ],
     "needInstanceOf": [
       {
-        "name": "snake",
-        "type": "BotbloqSnake"
+        "name": "hexapod",
+        "type": "BotbloqHexapod"
       }
     ],
     "codeLines": [
       {
-        "code": "snake.stop()"
+        "code": "hexapod.stop()"
       }
     ]
   }

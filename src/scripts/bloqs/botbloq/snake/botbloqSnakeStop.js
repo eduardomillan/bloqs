@@ -32,7 +32,7 @@ var botbloqSnakeStop = _.merge(_.clone(StatementBloq, true), {
             type: 'BotbloqSnake'
         }],
         codeLines: [{
-            code: 'snake.move("{MOVEMENT}")'
+            code: 'snake.stop()'
         }]
     }
 });
