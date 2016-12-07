@@ -23,11 +23,11 @@
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "derecha.",
+            "label": "derecha",
             "value": "RIGHT"
           },
           {
-            "label": "izquierda.",
+            "label": "izquierda",
             "value": "LEFT"
           }
         ]
@@ -47,7 +47,7 @@
     ],
     "codeLines": [
       {
-        "code": "human.lateralDisplacement({FOOT})"
+        "code": "human.lateralDisplacement(\"{FOOT}\")"
       }
     ]
   }

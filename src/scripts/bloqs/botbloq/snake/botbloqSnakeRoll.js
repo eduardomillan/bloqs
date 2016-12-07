@@ -6,24 +6,24 @@ var _ = require('lodash'),
     StatementBloq = require('./../../statementBloq');
 
 /**
- * Bloq name: botbloqHumanLateralDisplacement
+ * Bloq name: botbloqSnakeRoll
  *
  * Bloq type: Statement
  *
- * Description: Move the human
+ * Description: roll the snake
  *
  */
 
-var botbloqHumanLateralDisplacement = _.merge(_.clone(StatementBloq, true), {
+var botbloqSnakeRoll = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'botbloqHumanLateralDisplacement',
-    bloqClass: 'bloq-botbloq-human-lateraldisplacement',
+    name: 'botbloqSnakeRoll',
+    bloqClass: 'bloq-botbloq-snake-roll',
     content: [
         [{
             alias: 'text',
-            value: 'Moverse lateralmente hacia la'
+            value: 'Rodar hacia la'
         }, {
-            id: 'FOOT',
+            id: 'SIDE',
             alias: 'staticDropdown',
             options: [{
                 label: 'derecha',
@@ -36,17 +36,17 @@ var botbloqHumanLateralDisplacement = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     python: {
-        libraries: ['BotbloqHuman'],
+        libraries: ['BotbloqSnake'],
         needInstanceOf: [{
-            name: 'human',
-            type: 'BotbloqHuman'
+            name: 'snake',
+            type: 'BotbloqSnake'
         }],
         codeLines: [{
-            code: 'human.lateralDisplacement("{FOOT}")'
+            code: 'snake.roll("{SIDE}")'
         }]
     }
 });
 
-utils.preprocessBloq(botbloqHumanLateralDisplacement);
+utils.preprocessBloq(botbloqSnakeRoll);
 
-module.exports = botbloqHumanLateralDisplacement;
+module.exports = botbloqSnakeRoll;

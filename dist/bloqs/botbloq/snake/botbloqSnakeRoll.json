@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "botbloqHumanRotateByFoot",
+  "name": "botbloqSnakeRoll",
   "connectors": [
     {
       "type": "connector--top",
@@ -11,32 +11,23 @@
       "accept": "connector--top"
     }
   ],
-  "bloqClass": "bloq-botbloq-human-rotatefoot",
+  "bloqClass": "bloq-botbloq-snake-roll",
   "content": [
     [
       {
         "alias": "text",
-        "value": "Rotar"
+        "value": "Rodar hacia la"
       },
       {
-        "id": "DEGREES",
-        "alias": "numberInput",
-        "value": 45
-      },
-      {
-        "alias": "text",
-        "value": "° sobre el pie"
-      },
-      {
-        "id": "FOOT",
+        "id": "SIDE",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "derecho",
+            "label": "derecha",
             "value": "RIGHT"
           },
           {
-            "label": "izquierdo",
+            "label": "izquierda",
             "value": "LEFT"
           }
         ]
@@ -46,17 +37,17 @@
   "code": "",
   "python": {
     "libraries": [
-      "BotbloqHuman"
+      "BotbloqSnake"
     ],
     "needInstanceOf": [
       {
-        "name": "human",
-        "type": "BotbloqHuman"
+        "name": "snake",
+        "type": "BotbloqSnake"
       }
     ],
     "codeLines": [
       {
-        "code": "human.rotateByFoot({DEGREES},\"{FOOT}\")"
+        "code": "snake.roll(\"{SIDE}\")"
       }
     ]
   }

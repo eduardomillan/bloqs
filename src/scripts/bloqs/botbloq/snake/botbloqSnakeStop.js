@@ -6,18 +6,18 @@ var _ = require('lodash'),
     StatementBloq = require('./../../statementBloq');
 
 /**
- * Bloq name: botbloqHumanStop
+ * Bloq name: botbloqSnakeStop
  *
  * Bloq type: Statement
  *
- * Description: Stop the human
+ * Description: stop the snake
  *
  */
 
-var botbloqHumanStop = _.merge(_.clone(StatementBloq, true), {
+var botbloqSnakeStop = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'botbloqHumanStop',
-    bloqClass: 'bloq-botbloq-human-stop',
+    name: 'botbloqSnakeStop',
+    bloqClass: 'bloq-botbloq-snake-stop',
     content: [
         [{
             alias: 'text',
@@ -26,17 +26,17 @@ var botbloqHumanStop = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     python: {
-        libraries: ['BotbloqHuman'],
+        libraries: ['BotbloqSnake'],
         needInstanceOf: [{
-            name: 'human',
-            type: 'BotbloqHuman'
+            name: 'snake',
+            type: 'BotbloqSnake'
         }],
         codeLines: [{
-            code: 'human.stop()'
+            code: 'snake.move("{MOVEMENT}")'
         }]
     }
 });
 
-utils.preprocessBloq(botbloqHumanStop);
+utils.preprocessBloq(botbloqSnakeStop);
 
-module.exports = botbloqHumanStop;
+module.exports = botbloqSnakeStop;

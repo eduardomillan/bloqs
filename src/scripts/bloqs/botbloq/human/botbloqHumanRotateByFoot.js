@@ -33,10 +33,10 @@ var botbloqHumanRotateByFoot = _.merge(_.clone(StatementBloq, true), {
             id: 'FOOT',
             alias: 'staticDropdown',
             options: [{
-                label: 'derecho.',
+                label: 'derecho',
                 value: 'RIGHT'
             }, {
-                label: 'izquierdo.',
+                label: 'izquierdo',
                 value: 'LEFT'
             }]
         }]
@@ -49,7 +49,7 @@ var botbloqHumanRotateByFoot = _.merge(_.clone(StatementBloq, true), {
             type: 'BotbloqHuman'
         }],
         codeLines: [{
-            code: 'human.rotateByFoot({DEGREES},{FOOT})'
+            code: 'human.rotateByFoot({DEGREES},"{FOOT}")'
         }]
     }
 });

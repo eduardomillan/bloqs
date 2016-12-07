@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "botbloqHumanMove",
+  "name": "botbloqSnakeMove",
   "connectors": [
     {
       "type": "connector--top",
@@ -11,7 +11,7 @@
       "accept": "connector--top"
     }
   ],
-  "bloqClass": "bloq-botbloq-human-move",
+  "bloqClass": "bloq-botbloq-snake-move",
   "content": [
     [
       {
@@ -19,20 +19,12 @@
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "Avanzar",
+            "label": "Avanzar.",
             "value": "FORWARD"
           },
           {
-            "label": "Retroceder",
+            "label": "Retroceder.",
             "value": "BACKWARD"
-          },
-          {
-            "label": "Girar a la derecha",
-            "value": "TURN_RIGHT"
-          },
-          {
-            "label": "Girar a la izquierda",
-            "value": "TURN_LEFT"
           }
         ]
       }
@@ -41,17 +33,17 @@
   "code": "",
   "python": {
     "libraries": [
-      "BotbloqHuman"
+      "BotbloqSnake"
     ],
     "needInstanceOf": [
       {
-        "name": "human",
-        "type": "BotbloqHuman"
+        "name": "snake",
+        "type": "BotbloqSnake"
       }
     ],
     "codeLines": [
       {
-        "code": "human.move(\"{MOVEMENT}\")"
+        "code": "snake.move(\"{MOVEMENT}\")"
       }
     ]
   }

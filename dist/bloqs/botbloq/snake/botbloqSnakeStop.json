@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "botbloqHumanStop",
+  "name": "botbloqSnakeStop",
   "connectors": [
     {
       "type": "connector--top",
@@ -11,7 +11,7 @@
       "accept": "connector--top"
     }
   ],
-  "bloqClass": "bloq-botbloq-human-stop",
+  "bloqClass": "bloq-botbloq-snake-stop",
   "content": [
     [
       {
@@ -23,17 +23,17 @@
   "code": "",
   "python": {
     "libraries": [
-      "BotbloqHuman"
+      "BotbloqSnake"
     ],
     "needInstanceOf": [
       {
-        "name": "human",
-        "type": "BotbloqHuman"
+        "name": "snake",
+        "type": "BotbloqSnake"
       }
     ],
     "codeLines": [
       {
-        "code": "human.stop()"
+        "code": "snake.move(\"{MOVEMENT}\")"
       }
     ]
   }
