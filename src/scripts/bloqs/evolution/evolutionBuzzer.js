@@ -72,6 +72,6 @@ var evolutionBuzzer = _.merge(_.clone(StatementBloq, true), {
         code: 'evolution._tone({NOTE},{SECONDS});'
     }
 });
-utils.generateBloqInputConnectors(evolutionBuzzer);
+utils.preprocessBloq(evolutionBuzzer);
 
 module.exports = evolutionBuzzer;

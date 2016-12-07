@@ -16,7 +16,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "163536e5-4398-4e69-8bcf-f77a171fbcdb"
+      "name": "f335c963-e09f-4b38-add6-9a30ad45b82b"
     }
   ],
   "bloqClass": "bloq-num-conversion",
@@ -36,7 +36,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "163536e5-4398-4e69-8bcf-f77a171fbcdb"
+        "name": "f335c963-e09f-4b38-add6-9a30ad45b82b"
       },
       {
         "alias": "text",
@@ -65,5 +65,12 @@
   "returnType": {
     "type": "fromDropdown",
     "idDropdown": "TYPE"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"numConversion\" no preparado para generar código python"
+      }
+    ]
   }
 }

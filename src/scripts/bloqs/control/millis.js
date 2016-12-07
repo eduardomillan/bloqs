@@ -35,6 +35,6 @@ var millis = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(millis);
+utils.preprocessBloq(millis);
 
 module.exports = millis;

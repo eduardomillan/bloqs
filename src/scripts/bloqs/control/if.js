@@ -75,7 +75,7 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqIf);
+utils.preprocessBloq(bloqIf);
 bloqIf.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
 

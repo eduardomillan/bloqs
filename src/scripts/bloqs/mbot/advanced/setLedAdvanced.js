@@ -75,6 +75,6 @@ var mBotSetLedAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mBotSetLedAdvanced);
+utils.preprocessBloq(mBotSetLedAdvanced);
 
 module.exports = mBotSetLedAdvanced;

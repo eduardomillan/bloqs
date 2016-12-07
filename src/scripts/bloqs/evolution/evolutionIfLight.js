@@ -73,6 +73,6 @@ var evolutionIfLight = _.merge(_.clone(StatementInputBloq, true), {
 
 evolutionIfLight.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
-utils.generateBloqInputConnectors(evolutionIfLight);
+utils.preprocessBloq(evolutionIfLight);
 
 module.exports = evolutionIfLight;

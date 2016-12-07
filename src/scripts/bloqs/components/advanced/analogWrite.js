@@ -44,7 +44,7 @@ var analogWrite = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(analogWrite);
+utils.preprocessBloq(analogWrite);
 
 
 module.exports = analogWrite;

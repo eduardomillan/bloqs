@@ -25,7 +25,7 @@
         "string",
         "stringSum"
       ],
-      "name": "67d3a2cd-4277-4fd8-bfb6-4dd24247111a"
+      "name": "2b827cdc-a180-4f15-83e3-ed6e5c7c6daf"
     }
   ],
   "bloqClass": "bloq-set-class-variableArray",
@@ -81,12 +81,19 @@
           "string",
           "stringSum"
         ],
-        "name": "67d3a2cd-4277-4fd8-bfb6-4dd24247111a"
+        "name": "2b827cdc-a180-4f15-83e3-ed6e5c7c6daf"
       }
     ]
   ],
   "code": "{CLASS}.{NAME}[{ITERATOR}] = {VALUE};",
   "arduino": {
     "code": "{CLASS}.{NAME}[{ITERATOR}] = {VALUE};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"setClassArrayVariable\" no preparado para generar código python"
+      }
+    ]
   }
 }

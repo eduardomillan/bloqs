@@ -67,5 +67,12 @@
     ],
     "setupExtraCode": "{OSCILLATOR}.attach(º[{OSCILLATOR}.pin.s]);",
     "code": "{OSCILLATOR}.SetO({PHASE});{OSCILLATOR}.SetA({AMPLITUDE});{OSCILLATOR}.SetT({SPEED});{OSCILLATOR}.refresh();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillator\" no preparado para generar código python"
+      }
+    ]
   }
 }

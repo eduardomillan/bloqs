@@ -49,6 +49,6 @@ var invokeClass = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(invokeClass);
+utils.preprocessBloq(invokeClass);
 
 module.exports = invokeClass;

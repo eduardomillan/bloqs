@@ -40,5 +40,12 @@
     ],
     "setupExtraCode": "Wire.begin();\n{SENSOR}.begin();",
     "code": "{SENSOR}.getHumidity()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"hts221Humidity\" no preparado para generar código python"
+      }
+    ]
   }
 }

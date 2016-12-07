@@ -63,6 +63,6 @@ var returnFunctionWithArguments = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(returnFunctionWithArguments);
+utils.preprocessBloq(returnFunctionWithArguments);
 
 module.exports = returnFunctionWithArguments;

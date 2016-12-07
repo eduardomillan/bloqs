@@ -67,6 +67,6 @@ var setClassArrayVariable = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(setClassArrayVariable);
+utils.preprocessBloq(setClassArrayVariable);
 
 module.exports = setClassArrayVariable;

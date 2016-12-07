@@ -16,7 +16,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "9954d316-26bb-4019-ac28-5d8258d322ba"
+      "name": "6d265128-36b7-46e0-bf85-9eb3041cb0d4"
     }
   ],
   "bloqClass": "bloq-digital-read-advanced",
@@ -36,7 +36,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "9954d316-26bb-4019-ac28-5d8258d322ba"
+        "name": "6d265128-36b7-46e0-bf85-9eb3041cb0d4"
       }
     ]
   ],
@@ -47,5 +47,12 @@
   },
   "arduino": {
     "code": "digitalRead({PIN})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"digitalReadAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

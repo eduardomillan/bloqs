@@ -15,6 +15,9 @@ $evolution-color: #9a0768;
 $mbot-color: #0076b4;
 $botbloq-car: #60bcc9;
 $botbloq-manipulator: #058723;
+$botbloq-human: #058723;
+$botbloq-hex: #60bcc9;
+$botbloq-snake: #058723;
 
 /* COLOR THEME */
 
@@ -33,6 +36,9 @@ $theme-color-evolution-color: #9a0768;
 $theme-color-mbot-color: #0076b4;
 $theme-color-botbloq-car: #60bcc9;
 $theme-color-botbloq-manipulator: #058723;
+$theme-color-botbloq-human: #60bcc9;
+$theme-color-botbloq-hex: #058723;
+$theme-color-botbloq-snake: #60bcc9;
 @mixin createBloqsTheme ($reverse) {
     /*---- BOTBLOQ - CAR ---------*/
     @include createBloqsCss($reverse, "bloq-botbloq-vehicle-move", $botbloq-car, $theme-color-botbloq-car);
@@ -43,6 +49,17 @@ $theme-color-botbloq-manipulator: #058723;
     @include createBloqsCss($reverse, "bloq-botbloq-manipulator-moveonspace", $botbloq-manipulator, $theme-color-botbloq-manipulator);
     @include createBloqsCss($reverse, "bloq-botbloq-manipulator-moveclamp", $botbloq-manipulator, $theme-color-botbloq-manipulator);
     @include createBloqsCss($reverse, "bloq-botbloq-manipulator-rotatejoints", $botbloq-manipulator, $theme-color-botbloq-manipulator);
+    /*---- BOTBLOQ - HUMAN ---------*/
+    @include createBloqsCss($reverse, "bloq-botbloq-human-move", $botbloq-human, $theme-color-botbloq-human);
+    @include createBloqsCss($reverse, "bloq-botbloq-human-benddown", $botbloq-human, $theme-color-botbloq-human);
+    @include createBloqsCss($reverse, "bloq-botbloq-human-lateraldisplacement", $botbloq-human, $theme-color-botbloq-human);
+    @include createBloqsCss($reverse, "bloq-botbloq-human-rotatefoot", $botbloq-human, $theme-color-botbloq-human);
+    @include createBloqsCss($reverse, "bloq-botbloq-human-stop", $botbloq-human, $theme-color-botbloq-human);
+    @include createBloqsCss($reverse, "bloq-botbloq-human-upstairs", $botbloq-human, $theme-color-botbloq-human);
+    /*---- BOTBLOQ - HEX ---------*/
+    @include createBloqsCss($reverse, "bloq-botbloq-hex-move", $botbloq-hex, $theme-color-botbloq-hex);
+    /*---- BOTBLOQ - SNAKE ---------*/
+    @include createBloqsCss($reverse, "bloq-botbloq-snake-move", $botbloq-snake, $theme-color-botbloq-snake);
     /*---- CONVERSIONS ---------*/
     @include createBloqsCss($reverse, "bloq-string-to-int", $conversions-color, $theme-color-conversions-color);
     /*---- EVOLUTION ---------*/

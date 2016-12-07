@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "944f60f6-0a8f-4730-9991-d8adc66d5d0a"
+      "name": "8ed4d8d3-5070-4608-8321-b438073bf46a"
     }
   ],
   "bloqClass": "bloq-lcd-turn-on-off-advanced",
@@ -54,12 +54,19 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "944f60f6-0a8f-4730-9991-d8adc66d5d0a"
+        "name": "8ed4d8d3-5070-4608-8321-b438073bf46a"
       }
     ]
   ],
   "code": "{LCD}.setBacklight({STATE});",
   "arduino": {
     "code": "{LCD}.setBacklight({STATE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdTurnOnOffAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

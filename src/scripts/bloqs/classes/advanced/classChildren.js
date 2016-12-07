@@ -67,6 +67,6 @@ var classChildren = _.merge(_.clone(StatementInputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(classChildren);
+utils.preprocessBloq(classChildren);
 
 module.exports = classChildren;

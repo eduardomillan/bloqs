@@ -50,6 +50,6 @@ var serialSend = _.merge(_.clone(StatementBloq, true), {
         code: '{SERIAL}.{FUNCTION}({DATA});'
     }
 });
-utils.generateBloqInputConnectors(serialSend);
+utils.preprocessBloq(serialSend);
 
 module.exports = serialSend;

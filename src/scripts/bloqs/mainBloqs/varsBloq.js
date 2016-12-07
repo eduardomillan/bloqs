@@ -25,12 +25,12 @@
      descriptionText: 'bloq-var-description',
      content: [],
      code: '{STATEMENTS}',
-     arduino:{
-        code: '{STATEMENTS}'
-    }
+     arduino: {
+         code: '{STATEMENTS}'
+     }
  });
 
- utils.generateBloqInputConnectors(varsBloq);
+ utils.preprocessBloq(varsBloq);
 
 
  module.exports = varsBloq;

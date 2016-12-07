@@ -67,6 +67,6 @@ var evolutionIfLine = _.merge(_.clone(StatementInputBloq, true), {
 
 evolutionIfLine.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
-utils.generateBloqInputConnectors(evolutionIfLine);
+utils.preprocessBloq(evolutionIfLine);
 
 module.exports = evolutionIfLine;

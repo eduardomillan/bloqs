@@ -41,6 +41,6 @@ var hwVariable = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(hwVariable);
+utils.preprocessBloq(hwVariable);
 
 module.exports = hwVariable;

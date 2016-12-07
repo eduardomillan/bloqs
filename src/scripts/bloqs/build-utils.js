@@ -29,5 +29,24 @@ var generateBloqInputConnectors = function(bloq) {
     }
 };
 
+var addPythonWarning = function(bloq) {
+    if (!bloq.python) {
+        bloq.python = {
+            codeLines: [{
+                code: 'Bloque "' + bloq.name + '" no preparado para generar código python'
+            }]
+        }
+    }
+};
+
+
+var preprocessBloq = function(bloq) {
+    generateBloqInputConnectors(bloq);
+    addPythonWarning(bloq)
+
+};
+
 module.exports.generateBloqInputConnectors = generateBloqInputConnectors;
 module.exports.generateUUID = generateUUID;
+module.exports.addPythonWarning = addPythonWarning;
+module.exports.preprocessBloq = preprocessBloq;

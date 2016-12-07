@@ -64,6 +64,6 @@ var mBotMove = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mBotMove);
+utils.preprocessBloq(mBotMove);
 
 module.exports = mBotMove;

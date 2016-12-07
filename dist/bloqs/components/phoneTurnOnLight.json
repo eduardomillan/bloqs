@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "4d7f9ef1-9219-476c-a1fc-74c1864f9565"
+      "name": "b0d0d9b3-c87e-4561-8a6a-4c652f3d4c4d"
     }
   ],
   "bloqClass": "bloq-phone-turnon-light",
@@ -45,7 +45,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "4d7f9ef1-9219-476c-a1fc-74c1864f9565"
+        "name": "b0d0d9b3-c87e-4561-8a6a-4c652f3d4c4d"
       },
       {
         "alias": "text",
@@ -59,5 +59,12 @@
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{PHONE}.println(String(\"turnonFlashlight-\")+String({DATA}));  delay(500);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneTurnOnLight\" no preparado para generar código python"
+      }
+    ]
   }
 }

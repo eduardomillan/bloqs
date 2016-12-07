@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "87fb4e0e-9d9e-4a26-81c6-0c7ee19075b9"
+      "name": "2ebbab17-9e30-4252-b406-334143273a6f"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "456f817b-e281-41f3-b852-5f5e23495d3d"
+      "name": "4349b8d7-c5db-4f4c-ab6a-4edf7dc8f12f"
     },
     {
       "type": "connector--input",
@@ -44,7 +44,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "370f3e6e-0c79-4799-8745-ac393c08d790"
+      "name": "63872f8a-b6fc-4cba-b7b8-a60fd4eee46c"
     }
   ],
   "bloqClass": "bloq-mbot-setled",
@@ -90,7 +90,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "87fb4e0e-9d9e-4a26-81c6-0c7ee19075b9"
+        "name": "2ebbab17-9e30-4252-b406-334143273a6f"
       },
       {
         "alias": "text",
@@ -106,7 +106,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "456f817b-e281-41f3-b852-5f5e23495d3d"
+        "name": "4349b8d7-c5db-4f4c-ab6a-4edf7dc8f12f"
       },
       {
         "alias": "text",
@@ -122,7 +122,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "370f3e6e-0c79-4799-8745-ac393c08d790"
+        "name": "63872f8a-b6fc-4cba-b7b8-a60fd4eee46c"
       }
     ]
   ],
@@ -138,5 +138,12 @@
       }
     ],
     "code": "mBot.setLed({LEDS}, {RED}, {GREEN}, {BLUE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotSetLedAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

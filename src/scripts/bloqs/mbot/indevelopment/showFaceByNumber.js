@@ -58,6 +58,6 @@ var mBotShowFaceByNumber = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mBotShowFaceByNumber);
+utils.preprocessBloq(mBotShowFaceByNumber);
 
 module.exports = mBotShowFaceByNumber;

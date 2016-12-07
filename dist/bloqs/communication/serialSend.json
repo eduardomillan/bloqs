@@ -21,7 +21,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "d9daa1cb-f669-4a08-a37b-8f4f799c414d"
+      "name": "6018168e-c4a6-471c-a14a-592a236328fd"
     }
   ],
   "bloqClass": "bloq-serial-send",
@@ -47,7 +47,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "d9daa1cb-f669-4a08-a37b-8f4f799c414d"
+        "name": "6018168e-c4a6-471c-a14a-592a236328fd"
       },
       {
         "id": "LN",
@@ -71,5 +71,12 @@
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{SERIAL}.{LN}({DATA});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"serialSend-v1\" no preparado para generar código python"
+      }
+    ]
   }
 }

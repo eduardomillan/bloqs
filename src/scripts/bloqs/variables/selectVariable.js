@@ -45,7 +45,7 @@ var selectVariable = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(selectVariable);
+utils.preprocessBloq(selectVariable);
 
 
 module.exports = selectVariable;

@@ -101,6 +101,6 @@ var buzzer = _.merge(_.clone(StatementBloq, true), {
         code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'
     }
 });
-utils.generateBloqInputConnectors(buzzer);
+utils.preprocessBloq(buzzer);
 
 module.exports = buzzer;

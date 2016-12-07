@@ -40,6 +40,6 @@ var bloqLength = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqLength);
+utils.preprocessBloq(bloqLength);
 
 module.exports = bloqLength;

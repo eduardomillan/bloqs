@@ -41,6 +41,6 @@ var pinLevels = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(pinLevels);
+utils.preprocessBloq(pinLevels);
 
 module.exports = pinLevels;

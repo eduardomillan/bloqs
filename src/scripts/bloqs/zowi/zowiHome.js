@@ -38,6 +38,6 @@ var zowiHome = _.merge(_.clone(StatementBloq, true), {
         code: 'zowi.home();'
     }
 });
-utils.generateBloqInputConnectors(zowiHome);
+utils.preprocessBloq(zowiHome);
 
 module.exports = zowiHome;

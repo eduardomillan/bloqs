@@ -28,5 +28,12 @@
   "code": "{SERVO}.attach({SERVO.pin});",
   "arduino": {
     "code": "{SERVO}.attach(º[{SERVO}.pin.s]);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"servoAttach\" no preparado para generar código python"
+      }
+    ]
   }
 }

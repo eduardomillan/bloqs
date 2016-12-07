@@ -12,7 +12,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "72265ee5-72a2-4e5e-9b71-86239a8ba394"
+      "name": "3880fb02-8300-4dc1-b6fe-f958cc47600b"
     }
   ],
   "bloqClass": "bloq-boolArray-advanced",
@@ -28,7 +28,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "72265ee5-72a2-4e5e-9b71-86239a8ba394"
+        "name": "3880fb02-8300-4dc1-b6fe-f958cc47600b"
       },
       {
         "alias": "text",
@@ -43,5 +43,12 @@
   },
   "arduino": {
     "code": "(bool *)malloc({VALUE}*sizeof(bool))"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"boolArrayAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

@@ -41,6 +41,6 @@ var readSensorAdvanced = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(readSensorAdvanced);
+utils.preprocessBloq(readSensorAdvanced);
 
 module.exports = readSensorAdvanced;

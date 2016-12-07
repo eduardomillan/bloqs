@@ -48,6 +48,6 @@ var random = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(random);
+utils.preprocessBloq(random);
 
 module.exports = random;

@@ -32,5 +32,12 @@
   },
   "arduino": {
     "code": "(String *)malloc({VALUE}*sizeof(String))"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"stringArray\" no preparado para generar código python"
+      }
+    ]
   }
 }

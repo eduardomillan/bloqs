@@ -23,7 +23,7 @@
       "suggestedBloqs": [
         "selectVariable"
       ],
-      "name": "b6846803-356e-40e6-9341-60c6e4b90f40"
+      "name": "2def379a-23d0-40f4-acd7-2711f1cf3a9b"
     },
     {
       "type": "connector--input",
@@ -35,7 +35,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "16d689c7-18e9-4ee8-94b5-3967c8ee8081"
+      "name": "01d096bb-5826-4d37-a003-4682a94a86ab"
     },
     {
       "type": "connector--input",
@@ -47,7 +47,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "83453acb-c245-4b4a-b3c6-d19b6f116e9e"
+      "name": "8a35680e-c0ed-4b05-910f-7940bc2067d8"
     }
   ],
   "bloqClass": "bloq-for",
@@ -66,7 +66,7 @@
         "suggestedBloqs": [
           "selectVariable"
         ],
-        "name": "b6846803-356e-40e6-9341-60c6e4b90f40"
+        "name": "2def379a-23d0-40f4-acd7-2711f1cf3a9b"
       },
       {
         "alias": "text",
@@ -82,7 +82,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "16d689c7-18e9-4ee8-94b5-3967c8ee8081"
+        "name": "01d096bb-5826-4d37-a003-4682a94a86ab"
       },
       {
         "alias": "text",
@@ -98,7 +98,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "83453acb-c245-4b4a-b3c6-d19b6f116e9e"
+        "name": "8a35680e-c0ed-4b05-910f-7940bc2067d8"
       },
       {
         "id": "MODE",
@@ -134,5 +134,12 @@
         "-": "for({VAR}={INIT};{VAR} >= {FINAL};{VAR} -= {ADD}){{STATEMENTS}}"
       }
     }
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"forAdvanced-v1\" no preparado para generar código python"
+      }
+    ]
   }
 }

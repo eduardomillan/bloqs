@@ -31,6 +31,6 @@ var bloqBreak = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqBreak);
+utils.preprocessBloq(bloqBreak);
 
 module.exports = bloqBreak;

@@ -39,7 +39,7 @@ var stringToInt = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(stringToInt);
+utils.preprocessBloq(stringToInt);
 
 
 module.exports = stringToInt;

@@ -62,6 +62,6 @@ var argument = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(argument);
+utils.preprocessBloq(argument);
 
 module.exports = argument;

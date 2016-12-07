@@ -37,6 +37,6 @@ var waitAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(waitAdvanced);
+utils.preprocessBloq(waitAdvanced);
 
 module.exports = waitAdvanced;

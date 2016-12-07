@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "0c6f6672-39f6-41bd-a8f1-887ace9a5b37"
+      "name": "96b67a2c-6440-43d2-a31b-0d1ecb674cbf"
     }
   ],
   "bloqClass": "bloq-led-advanced",
@@ -54,12 +54,19 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "0c6f6672-39f6-41bd-a8f1-887ace9a5b37"
+        "name": "96b67a2c-6440-43d2-a31b-0d1ecb674cbf"
       }
     ]
   ],
   "code": "digitalWrite({LED},{STATE});",
   "arduino": {
     "code": "digitalWrite({LED},{STATE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"ledAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

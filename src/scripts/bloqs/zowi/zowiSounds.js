@@ -67,6 +67,6 @@ var zowiSounds = _.merge(_.clone(StatementBloq, true), {
         code: 'zowi.sing({SOUND});'
     }
 });
-utils.generateBloqInputConnectors(zowiSounds);
+utils.preprocessBloq(zowiSounds);
 
 module.exports = zowiSounds;

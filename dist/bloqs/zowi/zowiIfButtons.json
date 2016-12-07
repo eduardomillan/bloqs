@@ -65,5 +65,12 @@
     ],
     "setupExtraCode": "zowi.init();",
     "code": "if(digitalRead({BUTTON}) == 1){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiIfButtons\" no preparado para generar código python"
+      }
+    ]
   }
 }

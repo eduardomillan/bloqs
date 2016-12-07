@@ -65,5 +65,12 @@
     ],
     "setupExtraCode": "{LCD}.begin(16, 2);{LCD}.clear();",
     "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print(\"{TEXT}\");"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdWritePosition\" no preparado para generar código python"
+      }
+    ]
   }
 }

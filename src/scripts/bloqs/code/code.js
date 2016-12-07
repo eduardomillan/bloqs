@@ -37,5 +37,5 @@ var code = _.merge(_.clone(StatementBloq, true), {
         }]
     }
 });
-utils.generateBloqInputConnectors(code);
+utils.preprocessBloq(code);
 module.exports = code;

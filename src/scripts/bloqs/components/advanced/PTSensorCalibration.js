@@ -45,6 +45,6 @@ var PTSensorCalibration = _.merge(_.clone(StatementBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(PTSensorCalibration);
+utils.preprocessBloq(PTSensorCalibration);
 
 module.exports = PTSensorCalibration;

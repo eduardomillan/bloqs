@@ -42,6 +42,6 @@ var numberArray = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(numberArray);
+utils.preprocessBloq(numberArray);
 
 module.exports = numberArray;

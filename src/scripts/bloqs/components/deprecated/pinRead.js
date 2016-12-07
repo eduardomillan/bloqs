@@ -39,6 +39,6 @@ var pinReadAdvanced = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(pinReadAdvanced);
+utils.preprocessBloq(pinReadAdvanced);
 
 module.exports = pinReadAdvanced;

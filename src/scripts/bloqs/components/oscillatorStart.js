@@ -46,6 +46,6 @@ var oscillatorStart = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(oscillatorStart);
+utils.preprocessBloq(oscillatorStart);
 
 module.exports = oscillatorStart;

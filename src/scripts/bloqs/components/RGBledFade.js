@@ -58,6 +58,6 @@ var rgbLedFade = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(rgbLedFade);
+utils.preprocessBloq(rgbLedFade);
 
 module.exports = rgbLedFade;

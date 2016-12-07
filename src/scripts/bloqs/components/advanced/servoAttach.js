@@ -37,6 +37,6 @@ var servoAttach = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(servoAttach);
+utils.preprocessBloq(servoAttach);
 
 module.exports = servoAttach;

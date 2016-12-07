@@ -56,6 +56,6 @@ var lcdTurnOnOff = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(lcdTurnOnOff);
+utils.preprocessBloq(lcdTurnOnOff);
 
 module.exports = lcdTurnOnOff;

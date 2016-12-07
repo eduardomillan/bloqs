@@ -58,6 +58,6 @@ var phoneEmitSound = _.merge(_.clone(StatementBloq, true), {
         code: '{PHONE}.println(String("playSound-")+String({SOUND}));'
     }
 });
-utils.generateBloqInputConnectors(phoneEmitSound);
+utils.preprocessBloq(phoneEmitSound);
 
 module.exports = phoneEmitSound;

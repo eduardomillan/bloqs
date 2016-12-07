@@ -53,6 +53,6 @@ var numConversion = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(numConversion);
+utils.preprocessBloq(numConversion);
 
 module.exports = numConversion;

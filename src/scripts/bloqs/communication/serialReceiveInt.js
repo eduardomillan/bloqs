@@ -39,6 +39,6 @@ var serialReceiveInt = _.merge(_.clone(OutputBloq, true), {
         value: 'int'
     }
 });
-utils.generateBloqInputConnectors(serialReceiveInt);
+utils.preprocessBloq(serialReceiveInt);
 
 module.exports = serialReceiveInt;

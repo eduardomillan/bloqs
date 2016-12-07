@@ -54,6 +54,6 @@ var arrayVariableAdvanced = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(arrayVariableAdvanced);
+utils.preprocessBloq(arrayVariableAdvanced);
 
 module.exports = arrayVariableAdvanced;

@@ -91,6 +91,6 @@ var zowiMovementsHeightFront = _.merge(_.clone(StatementBloq, true), {
         code: 'zowi.flapping({STEPS},{SPEED},{HEIGHT},{DIR});'
     }
 });
-utils.generateBloqInputConnectors(zowiMovementsHeightFront);
+utils.preprocessBloq(zowiMovementsHeightFront);
 
 module.exports = zowiMovementsHeightFront;

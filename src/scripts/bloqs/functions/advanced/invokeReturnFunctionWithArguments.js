@@ -49,6 +49,6 @@ var invokeReturnFunctionWithArguments = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(invokeReturnFunctionWithArguments);
+utils.preprocessBloq(invokeReturnFunctionWithArguments);
 
 module.exports = invokeReturnFunctionWithArguments;

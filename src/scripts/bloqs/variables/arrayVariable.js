@@ -53,6 +53,6 @@ var bloq = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloq);
+utils.preprocessBloq(bloq);
 
 module.exports = bloq;

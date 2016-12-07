@@ -70,6 +70,6 @@ var bloqFor = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqFor);
+utils.preprocessBloq(bloqFor);
 
 module.exports = bloqFor;

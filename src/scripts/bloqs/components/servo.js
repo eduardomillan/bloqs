@@ -46,6 +46,6 @@ var servoNormal = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(servoNormal);
+utils.preprocessBloq(servoNormal);
 
 module.exports = servoNormal;

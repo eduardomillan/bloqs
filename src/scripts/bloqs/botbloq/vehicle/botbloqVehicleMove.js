@@ -64,6 +64,6 @@ var botbloqVehicleMove = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(botbloqVehicleMove);
+utils.preprocessBloq(botbloqVehicleMove);
 
 module.exports = botbloqVehicleMove;

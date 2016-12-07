@@ -38,6 +38,6 @@ var magicFor = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(magicFor);
+utils.preprocessBloq(magicFor);
 
 module.exports = magicFor;

@@ -55,6 +55,6 @@ var stringArrayAdvanced = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(stringArrayAdvanced);
+utils.preprocessBloq(stringArrayAdvanced);
 
 module.exports = stringArrayAdvanced;

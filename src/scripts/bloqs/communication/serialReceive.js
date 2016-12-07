@@ -39,6 +39,6 @@ var serialReceive = _.merge(_.clone(OutputBloq, true), {
         value: 'String'
     }
 });
-utils.generateBloqInputConnectors(serialReceive);
+utils.preprocessBloq(serialReceive);
 
 module.exports = serialReceive;

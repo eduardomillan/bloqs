@@ -36,6 +36,6 @@ var oscillatorStopAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 
 });
-utils.generateBloqInputConnectors(oscillatorStopAdvanced);
+utils.preprocessBloq(oscillatorStopAdvanced);
 
 module.exports = oscillatorStopAdvanced;

@@ -21,7 +21,7 @@
         "logicOperations",
         "equalityOperations"
       ],
-      "name": "436f0567-41de-41ec-8954-1a16a7294b00"
+      "name": "b10ff972-7b4a-4bc3-bf48-3ac234af1a1f"
     }
   ],
   "bloqClass": "bloq-return",
@@ -42,12 +42,19 @@
           "logicOperations",
           "equalityOperations"
         ],
-        "name": "436f0567-41de-41ec-8954-1a16a7294b00"
+        "name": "b10ff972-7b4a-4bc3-bf48-3ac234af1a1f"
       }
     ]
   ],
   "code": "return {RETURN};",
   "arduino": {
     "code": "return {RETURN};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"return\" no preparado para generar código python"
+      }
+    ]
   }
 }

@@ -29,7 +29,7 @@
      }
  });
 
- utils.generateBloqInputConnectors(loopBloq);
+ utils.preprocessBloq(loopBloq);
 
 
  module.exports = loopBloq;

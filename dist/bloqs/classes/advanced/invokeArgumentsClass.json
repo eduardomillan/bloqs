@@ -22,7 +22,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "1e216a2f-4d3d-4693-9f95-573af0485c89"
+      "name": "7c90a025-92a6-46d2-9098-81c12377837d"
     }
   ],
   "bloqClass": "bloq-invoke-arguments-class",
@@ -62,7 +62,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "1e216a2f-4d3d-4693-9f95-573af0485c89"
+        "name": "7c90a025-92a6-46d2-9098-81c12377837d"
       }
     ]
   ],
@@ -74,5 +74,12 @@
   },
   "arduino": {
     "code": "{CLASS} {NAME}({ARGS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"invokeArgumentsClass\" no preparado para generar código python"
+      }
+    ]
   }
 }

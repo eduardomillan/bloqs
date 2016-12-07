@@ -56,6 +56,6 @@ var invokeClassFunctionWithArguments = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(invokeClassFunctionWithArguments);
+utils.preprocessBloq(invokeClassFunctionWithArguments);
 
 module.exports = invokeClassFunctionWithArguments;

@@ -40,5 +40,12 @@
     ],
     "setupExtraCode": "Wire.begin();\n{SENSOR}.begin();",
     "code": "{SENSOR}.getTemperature()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"hts221Temperature\" no preparado para generar código python"
+      }
+    ]
   }
 }

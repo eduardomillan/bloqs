@@ -40,6 +40,6 @@ var stringCreate = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(stringCreate);
+utils.preprocessBloq(stringCreate);
 
 module.exports = stringCreate;

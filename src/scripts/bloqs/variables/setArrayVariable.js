@@ -60,6 +60,6 @@ var setArrayVariable = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(setArrayVariable);
+utils.preprocessBloq(setArrayVariable);
 
 module.exports = setArrayVariable;

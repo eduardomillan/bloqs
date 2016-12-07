@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "91308498-3867-49a0-ba7e-4072123360cb"
+      "name": "8d0fa87f-e2a1-4c33-9d8e-9c9343c4312e"
     }
   ],
   "bloqClass": "bloq-oscillator-stop-advanced",
@@ -40,12 +40,19 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "91308498-3867-49a0-ba7e-4072123360cb"
+        "name": "8d0fa87f-e2a1-4c33-9d8e-9c9343c4312e"
       }
     ]
   ],
   "code": "{OSCILLATOR}.stop()",
   "arduino": {
     "code": "{OSCILLATOR}.stop()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillatorStopAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

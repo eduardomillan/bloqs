@@ -53,6 +53,6 @@ var evolutionMovementsSimple = _.merge(_.clone(StatementBloq, true), {
         code: 'evolution.{MOVEMENT}();'
     }
 });
-utils.generateBloqInputConnectors(evolutionMovementsSimple);
+utils.preprocessBloq(evolutionMovementsSimple);
 
 module.exports = evolutionMovementsSimple;

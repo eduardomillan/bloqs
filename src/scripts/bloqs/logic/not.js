@@ -40,6 +40,6 @@ var not = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(not);
+utils.preprocessBloq(not);
 
 module.exports = not;

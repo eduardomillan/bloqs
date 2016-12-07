@@ -74,5 +74,12 @@
         "-": "for({VAR}={INIT};{VAR} >= {FINAL};{VAR} -= {ADD}){{STATEMENTS}}"
       }
     }
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"for\" no preparado para generar código python"
+      }
+    ]
   }
 }

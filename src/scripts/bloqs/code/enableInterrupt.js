@@ -61,6 +61,6 @@ var enableInterrupt = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(enableInterrupt);
+utils.preprocessBloq(enableInterrupt);
 
 module.exports = enableInterrupt;

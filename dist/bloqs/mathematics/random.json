@@ -16,7 +16,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "56f391cf-06f6-4183-ac55-5062e6bb35c2"
+      "name": "037c67f8-cebf-4dce-9377-84dae33c3b22"
     },
     {
       "type": "connector--input",
@@ -28,7 +28,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "631019bb-d4c3-4986-a781-3281895a7888"
+      "name": "009989ca-2cff-4ddf-b4a6-a34335276b55"
     }
   ],
   "bloqClass": "bloq-random",
@@ -48,7 +48,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "56f391cf-06f6-4183-ac55-5062e6bb35c2"
+        "name": "037c67f8-cebf-4dce-9377-84dae33c3b22"
       },
       {
         "alias": "text",
@@ -64,7 +64,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "631019bb-d4c3-4986-a781-3281895a7888"
+        "name": "009989ca-2cff-4ddf-b4a6-a34335276b55"
       }
     ]
   ],
@@ -75,5 +75,12 @@
   },
   "arduino": {
     "code": "random({ARG1},{ARG2}+1)"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"random\" no preparado para generar código python"
+      }
+    ]
   }
 }

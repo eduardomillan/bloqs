@@ -70,6 +70,6 @@ var declareArrayAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(declareArrayAdvanced);
+utils.preprocessBloq(declareArrayAdvanced);
 
 module.exports = declareArrayAdvanced;

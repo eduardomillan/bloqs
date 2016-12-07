@@ -31,7 +31,7 @@
         "number",
         "string"
       ],
-      "name": "99500f56-bb66-4ff3-9b49-c90101ff28fa"
+      "name": "bd059391-746f-4a04-a158-41e6282eb2d5"
     }
   ],
   "bloqClass": "bloq-case",
@@ -51,7 +51,7 @@
           "number",
           "string"
         ],
-        "name": "99500f56-bb66-4ff3-9b49-c90101ff28fa"
+        "name": "bd059391-746f-4a04-a158-41e6282eb2d5"
       },
       {
         "alias": "text",
@@ -62,5 +62,12 @@
   "code": "case {VALUE}:{STATEMENTS}break;",
   "arduino": {
     "code": "case {VALUE}:{STATEMENTS}break;"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"caseAdvanced-v1\" no preparado para generar código python"
+      }
+    ]
   }
 }

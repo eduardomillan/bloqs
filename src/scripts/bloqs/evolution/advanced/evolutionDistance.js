@@ -40,6 +40,6 @@ var evolutionDistance = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     }
 });
-utils.generateBloqInputConnectors(evolutionDistance);
+utils.preprocessBloq(evolutionDistance);
 
 module.exports = evolutionDistance;

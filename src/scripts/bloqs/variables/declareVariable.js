@@ -53,7 +53,7 @@ var declareVariable = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(declareVariable);
+utils.preprocessBloq(declareVariable);
 
 
 module.exports = declareVariable;

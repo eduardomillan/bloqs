@@ -20,7 +20,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "0458975f-a97b-4167-9564-30bc058619e9"
+      "name": "2de49317-44aa-4d47-adb3-a5f13ba278fb"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "7a6a323f-e1a8-463f-9258-d572fb80a1c4"
+      "name": "8880445a-0025-4f41-85ca-835271b408bb"
     }
   ],
   "bloqClass": "bloq-lcd-writte-advanced",
@@ -52,7 +52,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "0458975f-a97b-4167-9564-30bc058619e9"
+        "name": "2de49317-44aa-4d47-adb3-a5f13ba278fb"
       },
       {
         "alias": "text",
@@ -68,12 +68,19 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "7a6a323f-e1a8-463f-9258-d572fb80a1c4"
+        "name": "8880445a-0025-4f41-85ca-835271b408bb"
       }
     ]
   ],
   "code": "{LCD}.print({TEXT});",
   "arduino": {
     "code": "{LCD}.print({TEXT});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdWriteAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

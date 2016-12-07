@@ -12,7 +12,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "b5222c8e-80f8-4d48-9e02-9130dc75cee3"
+      "name": "6402c0d9-b1e1-4abb-8fe9-d09b55af2e66"
     }
   ],
   "bloqClass": "bloq-read-advanced",
@@ -28,7 +28,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "b5222c8e-80f8-4d48-9e02-9130dc75cee3"
+        "name": "6402c0d9-b1e1-4abb-8fe9-d09b55af2e66"
       }
     ]
   ],
@@ -40,5 +40,12 @@
   },
   "arduino": {
     "code": "¬{PIN.readSensor}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"readSensorAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "42e9a85e-7883-4186-97f3-c4914383abd7"
+      "name": "65c59558-485d-41b8-ad59-bf12bdd91ab2"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "bb36ac49-0b9e-4d51-8acb-e027b46eb93d"
+      "name": "819f6cba-951a-4f35-94d0-e0ec365b8905"
     }
   ],
   "bloqClass": "bloq-mbot-buzzer",
@@ -52,7 +52,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "42e9a85e-7883-4186-97f3-c4914383abd7"
+        "name": "65c59558-485d-41b8-ad59-bf12bdd91ab2"
       },
       {
         "alias": "text",
@@ -68,7 +68,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "bb36ac49-0b9e-4d51-8acb-e027b46eb93d"
+        "name": "819f6cba-951a-4f35-94d0-e0ec365b8905"
       },
       {
         "alias": "text",
@@ -86,5 +86,12 @@
       }
     ],
     "code": "tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotBuzzerAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

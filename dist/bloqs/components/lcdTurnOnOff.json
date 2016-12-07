@@ -56,5 +56,12 @@
     ],
     "setupExtraCode": "{LCD}.begin(16, 2);{LCD}.clear();",
     "code": "{LCD}.setBacklight({STATE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdTurnOnOff\" no preparado para generar código python"
+      }
+    ]
   }
 }

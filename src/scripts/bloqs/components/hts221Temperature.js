@@ -52,6 +52,6 @@ var hts221Temperature = _.merge(_.clone(OutputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(hts221Temperature);
+utils.preprocessBloq(hts221Temperature);
 
 module.exports = hts221Temperature;

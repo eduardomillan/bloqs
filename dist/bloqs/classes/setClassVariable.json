@@ -24,7 +24,7 @@
         "string",
         "stringSum"
       ],
-      "name": "16a1b977-1db4-4ff6-8c44-d5a524d73e8e"
+      "name": "6d1641db-268d-49a3-9119-ce1036f7eb2d"
     }
   ],
   "bloqClass": "bloq-set-class-variable",
@@ -66,12 +66,19 @@
           "string",
           "stringSum"
         ],
-        "name": "16a1b977-1db4-4ff6-8c44-d5a524d73e8e"
+        "name": "6d1641db-268d-49a3-9119-ce1036f7eb2d"
       }
     ]
   ],
   "code": "{CLASS}.{NAME} = {VALUE};",
   "arduino": {
     "code": "{CLASS}.{NAME} = {VALUE};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"setClassVariable\" no preparado para generar código python"
+      }
+    ]
   }
 }

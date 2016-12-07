@@ -45,7 +45,7 @@ var stringSum = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(stringSum);
+utils.preprocessBloq(stringSum);
 
 
 module.exports = stringSum;

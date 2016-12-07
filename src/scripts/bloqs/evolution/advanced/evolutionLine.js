@@ -54,6 +54,6 @@ var evolutionLine = _.merge(_.clone(OutputBloq, true), {
         value: 'int'
     }
 });
-utils.generateBloqInputConnectors(evolutionLine);
+utils.preprocessBloq(evolutionLine);
 
 module.exports = evolutionLine;

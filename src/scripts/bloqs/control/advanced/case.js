@@ -42,6 +42,6 @@ var bloqCaseAdvanced = _.merge(_.clone(StatementInputBloq, true), {
 bloqCaseAdvanced.connectors[0].acceptedAliases = ['switchChildren', 'case'];
 bloqCaseAdvanced.connectors[1].acceptedAliases = ['case'];
 
-utils.generateBloqInputConnectors(bloqCaseAdvanced);
+utils.preprocessBloq(bloqCaseAdvanced);
 
 module.exports = bloqCaseAdvanced;

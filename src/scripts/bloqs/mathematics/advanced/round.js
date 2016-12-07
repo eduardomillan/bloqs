@@ -57,6 +57,6 @@ var map = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(map);
+utils.preprocessBloq(map);
 
 module.exports = map;

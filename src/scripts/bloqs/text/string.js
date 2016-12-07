@@ -47,6 +47,6 @@ var string = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(string);
+utils.preprocessBloq(string);
 
 module.exports = string;

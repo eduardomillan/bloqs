@@ -58,6 +58,6 @@ var botbloqManipulatorMoveOnSpace = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(botbloqManipulatorMoveOnSpace);
+utils.preprocessBloq(botbloqManipulatorMoveOnSpace);
 
 module.exports = botbloqManipulatorMoveOnSpace;

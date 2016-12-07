@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "694f5bce-f1d3-4aa4-83d2-8fd324c1c22d"
+      "name": "d31c3175-4225-4c76-ae5c-cf1fbcdad49b"
     }
   ],
   "bloqClass": "bloq-phone-toggle",
@@ -45,7 +45,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "694f5bce-f1d3-4aa4-83d2-8fd324c1c22d"
+        "name": "d31c3175-4225-4c76-ae5c-cf1fbcdad49b"
       },
       {
         "alias": "text",
@@ -59,5 +59,12 @@
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{PHONE}.println(String(\"toggleFlashlight-\")+String({DATA}));"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneToggleLight\" no preparado para generar código python"
+      }
+    ]
   }
 }

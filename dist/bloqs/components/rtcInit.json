@@ -28,5 +28,12 @@
   "code": "{RTC}.adjust(DateTime(__DATE__, __TIME__));",
   "arduino": {
     "code": "{RTC}.adjust(DateTime(__DATE__, __TIME__));"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"clockRTCInit\" no preparado para generar código python"
+      }
+    ]
   }
 }

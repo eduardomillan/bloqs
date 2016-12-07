@@ -74,6 +74,6 @@ var bloqWhile = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqWhile);
+utils.preprocessBloq(bloqWhile);
 
 module.exports = bloqWhile;

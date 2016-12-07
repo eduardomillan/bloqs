@@ -31,7 +31,7 @@
      }
  });
 
- utils.generateBloqInputConnectors(pythonBloq);
+ utils.preprocessBloq(pythonBloq);
 
 
  module.exports = pythonBloq;

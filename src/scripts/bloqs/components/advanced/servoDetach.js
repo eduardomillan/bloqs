@@ -37,6 +37,6 @@ var servoDetach = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(servoDetach);
+utils.preprocessBloq(servoDetach);
 
 module.exports = servoDetach;

@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "963acabc-e386-4d43-97a0-920771e84152"
+      "name": "5eeaa897-c8d3-4cb6-a0e7-9fed0a079bb6"
     },
     {
       "type": "connector--input",
@@ -33,7 +33,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "989edb5b-f36d-401f-a10a-0ce0ca16b5b9"
+      "name": "37499073-e355-4bb4-9a25-4f88cd1e62c1"
     }
   ],
   "bloqClass": "bloq-pin-writte-advanced",
@@ -53,7 +53,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "963acabc-e386-4d43-97a0-920771e84152"
+        "name": "5eeaa897-c8d3-4cb6-a0e7-9fed0a079bb6"
       },
       {
         "alias": "text",
@@ -70,12 +70,19 @@
           "number",
           "selectVariable"
         ],
-        "name": "989edb5b-f36d-401f-a10a-0ce0ca16b5b9"
+        "name": "37499073-e355-4bb4-9a25-4f88cd1e62c1"
       }
     ]
   ],
   "code": "'{PIN}'.indexOf('A') !== -1 ? 'analogWrite({PIN},{DATA});'.replace(/\"/g, '') : 'analogWrite({PIN},{DATA});'",
   "arduino": {
     "code": "analogWrite(¬{PIN.formatPin}, {DATA});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"analogWrite\" no preparado para generar código python"
+      }
+    ]
   }
 }

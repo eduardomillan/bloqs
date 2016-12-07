@@ -97,6 +97,6 @@ var zowiMovements = _.merge(_.clone(StatementBloq, true), {
         code: 'zowi.{MOVEMENT}({STEPS}, {SPEED}, {DIR});'
     }
 });
-utils.generateBloqInputConnectors(zowiMovements);
+utils.preprocessBloq(zowiMovements);
 
 module.exports = zowiMovements;

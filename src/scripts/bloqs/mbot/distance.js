@@ -55,6 +55,6 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         code: 'mBot.getDistance({PORT})'
     }
 });
-utils.generateBloqInputConnectors(mBotGetDistance);
+utils.preprocessBloq(mBotGetDistance);
 
 module.exports = mBotGetDistance;

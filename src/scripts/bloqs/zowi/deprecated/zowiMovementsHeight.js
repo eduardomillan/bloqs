@@ -111,6 +111,6 @@ var zowiMovementsHeight = _.merge(_.clone(StatementBloq, true), {
         code: 'zowi.{MOVEMENT}({STEPS}, {SPEED}, {HEIGHT}, {DIR});'
     }
 });
-utils.generateBloqInputConnectors(zowiMovementsHeight);
+utils.preprocessBloq(zowiMovementsHeight);
 
 module.exports = zowiMovementsHeight;

@@ -16,7 +16,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "7062ca2a-2719-425d-849c-26b92aa47fad"
+      "name": "bae0205a-97af-48d2-b9cd-387f59d7fafc"
     },
     {
       "type": "connector--input",
@@ -24,7 +24,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "3e612d6f-9bbf-4647-b005-21b7357afa74"
+      "name": "1a0bcaea-288b-4867-a5ae-9944eca349ec"
     }
   ],
   "bloqClass": "bloq-pin-writte-advanced",
@@ -40,7 +40,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "7062ca2a-2719-425d-849c-26b92aa47fad"
+        "name": "bae0205a-97af-48d2-b9cd-387f59d7fafc"
       },
       {
         "alias": "text",
@@ -52,12 +52,19 @@
         "acceptType": [
           "all"
         ],
-        "name": "3e612d6f-9bbf-4647-b005-21b7357afa74"
+        "name": "1a0bcaea-288b-4867-a5ae-9944eca349ec"
       }
     ]
   ],
   "code": "'{PIN}'.indexOf('A') === 0 ? 'analogWrite({PIN},{DATA});' : 'digitalWrite({PIN},{DATA});'",
   "arduino": {
     "code": "digitalWrite({PIN},{DATA});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"pinWriteAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

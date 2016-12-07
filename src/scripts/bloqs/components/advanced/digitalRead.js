@@ -40,6 +40,6 @@ var digitalReadAdvanced = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(digitalReadAdvanced);
+utils.preprocessBloq(digitalReadAdvanced);
 
 module.exports = digitalReadAdvanced;

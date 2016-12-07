@@ -24,7 +24,7 @@
         "selectVariable",
         "number"
       ],
-      "name": "3c1dd5a7-4963-41fd-a188-e81bb28d0b96"
+      "name": "6d0c2bd6-d972-4de1-87e5-9271624f13a5"
     }
   ],
   "bloqClass": "bloq-magicfor",
@@ -44,7 +44,7 @@
           "selectVariable",
           "number"
         ],
-        "name": "3c1dd5a7-4963-41fd-a188-e81bb28d0b96"
+        "name": "6d0c2bd6-d972-4de1-87e5-9271624f13a5"
       },
       {
         "alias": "text",
@@ -55,5 +55,12 @@
   "code": "",
   "arduino": {
     "code": "for(int bitbloqForCounter=0;bitbloqForCounter < {TIMES};bitbloqForCounter += 1){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"magicForAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

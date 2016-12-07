@@ -37,6 +37,6 @@ var bloqReturn = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqReturn);
+utils.preprocessBloq(bloqReturn);
 
 module.exports = bloqReturn;

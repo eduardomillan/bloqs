@@ -42,6 +42,6 @@ var zowiDistance = _.merge(_.clone(OutputBloq, true), {
         code: 'zowi.getDistance()'
     }
 });
-utils.generateBloqInputConnectors(zowiDistance);
+utils.preprocessBloq(zowiDistance);
 
 module.exports = zowiDistance;

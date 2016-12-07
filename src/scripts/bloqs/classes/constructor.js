@@ -34,6 +34,6 @@ var constructorClass = _.merge(_.clone(StatementInputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(constructorClass);
+utils.preprocessBloq(constructorClass);
 
 module.exports = constructorClass;

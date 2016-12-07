@@ -16,7 +16,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "dc299c98-c3f9-496c-8741-103b372b4e57"
+      "name": "ea273ec0-7679-447b-9c50-dc0d566ae2cb"
     },
     {
       "type": "connector--input",
@@ -28,7 +28,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "ba5531ec-30e1-4734-bb58-8245e80a39c3"
+      "name": "331acebe-f891-420a-9c0c-27d569af08f7"
     }
   ],
   "bloqClass": "bloq-string-sum",
@@ -44,7 +44,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "dc299c98-c3f9-496c-8741-103b372b4e57"
+        "name": "ea273ec0-7679-447b-9c50-dc0d566ae2cb"
       },
       {
         "alias": "text",
@@ -60,7 +60,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "ba5531ec-30e1-4734-bb58-8245e80a39c3"
+        "name": "331acebe-f891-420a-9c0c-27d569af08f7"
       }
     ]
   ],
@@ -71,5 +71,12 @@
   },
   "arduino": {
     "code": "String({ARG1})+String({ARG2})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"stringSum\" no preparado para generar código python"
+      }
+    ]
   }
 }

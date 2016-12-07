@@ -61,6 +61,6 @@ var oscillatorAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(oscillatorAdvanced);
+utils.preprocessBloq(oscillatorAdvanced);
 
 module.exports = oscillatorAdvanced;

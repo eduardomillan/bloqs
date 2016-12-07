@@ -61,6 +61,6 @@ var convert = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     }
 });
-utils.generateBloqInputConnectors(convert);
+utils.preprocessBloq(convert);
 
 module.exports = convert;

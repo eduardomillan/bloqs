@@ -42,6 +42,6 @@ var ifAdvanced = _.merge(_.clone(StatementInputBloq, true), {
 
 ifAdvanced.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
-utils.generateBloqInputConnectors(ifAdvanced);
+utils.preprocessBloq(ifAdvanced);
 
 module.exports = ifAdvanced;

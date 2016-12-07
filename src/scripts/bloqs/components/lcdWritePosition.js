@@ -65,6 +65,6 @@ var lcdWritePosition = _.merge(_.clone(StatementBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(lcdWritePosition);
+utils.preprocessBloq(lcdWritePosition);
 
 module.exports = lcdWritePosition;

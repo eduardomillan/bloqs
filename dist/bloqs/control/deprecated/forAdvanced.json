@@ -20,7 +20,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "b51d0970-0157-40b2-8041-d081716cacff"
+      "name": "89758f17-ba66-4f11-b1ba-30a443c4fb7e"
     },
     {
       "type": "connector--input",
@@ -28,7 +28,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "645df895-e9e3-4767-b88e-5ca7d8824039"
+      "name": "4f083c1c-cb8d-401d-96c8-17b036ea1372"
     },
     {
       "type": "connector--input",
@@ -36,7 +36,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "7cdf3713-d5e5-4115-b405-a5ec9fba25aa"
+      "name": "e1ac9c16-d8c8-4600-88a4-1933b0a40e51"
     }
   ],
   "bloqClass": "bloq-for deprecated",
@@ -52,7 +52,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "b51d0970-0157-40b2-8041-d081716cacff"
+        "name": "89758f17-ba66-4f11-b1ba-30a443c4fb7e"
       },
       {
         "alias": "text",
@@ -64,7 +64,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "645df895-e9e3-4767-b88e-5ca7d8824039"
+        "name": "4f083c1c-cb8d-401d-96c8-17b036ea1372"
       },
       {
         "alias": "text",
@@ -76,7 +76,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "7cdf3713-d5e5-4115-b405-a5ec9fba25aa"
+        "name": "e1ac9c16-d8c8-4600-88a4-1933b0a40e51"
       },
       {
         "id": "MODE",
@@ -107,5 +107,12 @@
         "-": "for({VAR}={INIT};{VAR} >= {FINAL};{VAR} -= {ADD}){{STATEMENTS}}"
       }
     }
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"forAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

@@ -40,6 +40,6 @@ var analogReadAdvanced = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(analogReadAdvanced);
+utils.preprocessBloq(analogReadAdvanced);
 
 module.exports = analogReadAdvanced;

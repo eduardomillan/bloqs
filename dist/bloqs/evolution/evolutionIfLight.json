@@ -88,5 +88,12 @@
     ],
     "setupExtraCode": "evolution.init();",
     "code": "if(evolution.getLightRange(LEFT,{RANGELEFT}) && evolution.getLightRange(RIGHT,{RANGERIGHT})){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionIfLight\" no preparado para generar código python"
+      }
+    ]
   }
 }

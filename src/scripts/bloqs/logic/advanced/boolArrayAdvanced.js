@@ -42,6 +42,6 @@ var boolArrayAdvanced = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(boolArrayAdvanced);
+utils.preprocessBloq(boolArrayAdvanced);
 
 module.exports = boolArrayAdvanced;

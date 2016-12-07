@@ -50,6 +50,6 @@ var invokeClassReturnFunction = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(invokeClassReturnFunction);
+utils.preprocessBloq(invokeClassReturnFunction);
 
 module.exports = invokeClassReturnFunction;

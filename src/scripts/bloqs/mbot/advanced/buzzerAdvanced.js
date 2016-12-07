@@ -54,6 +54,6 @@ var mBotBuzzerAdvanced = _.merge(_.clone(StatementBloq, true), {
         code: 'tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});'
     }
 });
-utils.generateBloqInputConnectors(mBotBuzzerAdvanced);
+utils.preprocessBloq(mBotBuzzerAdvanced);
 
 module.exports = mBotBuzzerAdvanced;

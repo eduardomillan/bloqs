@@ -31,6 +31,6 @@ var bloqContinue = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqContinue);
+utils.preprocessBloq(bloqContinue);
 
 module.exports = bloqContinue;

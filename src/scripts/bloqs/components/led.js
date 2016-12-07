@@ -52,6 +52,6 @@ var led = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(led);
+utils.preprocessBloq(led);
 
 module.exports = led;

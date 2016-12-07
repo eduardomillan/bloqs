@@ -27,8 +27,7 @@ var phoneSendText = _.merge(_.clone(StatementBloq, true), {
         }, {
             alias: 'text',
             value: 'bloq-phone-write-show'
-        },
-        {
+        }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',
             acceptType: ['all'],
@@ -43,6 +42,6 @@ var phoneSendText = _.merge(_.clone(StatementBloq, true), {
     }
 
 });
-utils.generateBloqInputConnectors(phoneSendText);
+utils.preprocessBloq(phoneSendText);
 
 module.exports = phoneSendText;
