@@ -16,7 +16,7 @@
         "readSensor",
         "selectVariable"
       ],
-      "name": "8082cd87-f277-4c5c-8dff-c6aa86a7d38a"
+      "name": "ee502336-3735-4cda-a714-838ac70b3eb0"
     },
     {
       "type": "connector--input",
@@ -28,7 +28,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "b76f9329-1870-45b7-9aab-8c6802862151"
+      "name": "f6023eef-dfdd-460f-8fd5-a9dfb667d550"
     },
     {
       "type": "connector--input",
@@ -40,7 +40,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "59155ef2-987e-41aa-8105-301ed6a4ac62"
+      "name": "31d305fa-1022-4b53-8917-3a3f41ca3356"
     },
     {
       "type": "connector--input",
@@ -52,7 +52,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "3a4bdf35-2d3d-4ea4-bbf7-e02fcd5bcbd1"
+      "name": "017ae17f-058c-4e85-8883-84d20d05ef74"
     },
     {
       "type": "connector--input",
@@ -64,7 +64,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "4d4b6093-f1ec-4b86-a368-6dae2a58ad4c"
+      "name": "f30987b6-64bf-4514-846d-f8350d9f7a13"
     }
   ],
   "bloqClass": "bloq-map-advanced",
@@ -84,7 +84,7 @@
           "readSensor",
           "selectVariable"
         ],
-        "name": "8082cd87-f277-4c5c-8dff-c6aa86a7d38a"
+        "name": "ee502336-3735-4cda-a714-838ac70b3eb0"
       },
       {
         "alias": "text",
@@ -100,7 +100,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "b76f9329-1870-45b7-9aab-8c6802862151"
+        "name": "f6023eef-dfdd-460f-8fd5-a9dfb667d550"
       },
       {
         "alias": "text",
@@ -116,7 +116,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "59155ef2-987e-41aa-8105-301ed6a4ac62"
+        "name": "31d305fa-1022-4b53-8917-3a3f41ca3356"
       },
       {
         "alias": "text",
@@ -132,7 +132,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "3a4bdf35-2d3d-4ea4-bbf7-e02fcd5bcbd1"
+        "name": "017ae17f-058c-4e85-8883-84d20d05ef74"
       },
       {
         "alias": "text",
@@ -148,7 +148,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "4d4b6093-f1ec-4b86-a368-6dae2a58ad4c"
+        "name": "f30987b6-64bf-4514-846d-f8350d9f7a13"
       },
       {
         "alias": "text",
@@ -163,5 +163,12 @@
   },
   "arduino": {
     "code": "map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mapAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

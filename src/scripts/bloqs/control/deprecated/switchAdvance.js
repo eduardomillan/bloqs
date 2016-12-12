@@ -35,6 +35,6 @@ var switchAdvanced = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(switchAdvanced);
+utils.preprocessBloq(switchAdvanced);
 
 module.exports = switchAdvanced;

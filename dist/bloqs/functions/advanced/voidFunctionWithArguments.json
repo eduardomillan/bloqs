@@ -27,7 +27,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "b5ec976d-2993-4e6a-8244-12fd46d808ab"
+      "name": "4550f28f-1a6c-4e9b-a3f9-3ce939b03913"
     }
   ],
   "bloqClass": "bloq-void-function-with-arguments",
@@ -59,7 +59,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "b5ec976d-2993-4e6a-8244-12fd46d808ab"
+        "name": "4550f28f-1a6c-4e9b-a3f9-3ce939b03913"
       }
     ]
   ],
@@ -75,5 +75,12 @@
   "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}",
   "arduino": {
     "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"voidFunctionWithArguments\" no preparado para generar código python"
+      }
+    ]
   }
 }

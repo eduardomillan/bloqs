@@ -71,6 +71,6 @@ var declareVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(declareVariableAdvanced);
+utils.preprocessBloq(declareVariableAdvanced);
 
 module.exports = declareVariableAdvanced;

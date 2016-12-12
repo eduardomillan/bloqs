@@ -62,6 +62,6 @@ var zowiIfDistance = _.merge(_.clone(StatementInputBloq, true), {
 
 zowiIfDistance.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
-utils.generateBloqInputConnectors(zowiIfDistance);
+utils.preprocessBloq(zowiIfDistance);
 
 module.exports = zowiIfDistance;

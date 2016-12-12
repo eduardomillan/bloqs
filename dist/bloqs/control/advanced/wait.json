@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "b7b22b20-e9c4-494b-9cb1-285732e62a69"
+      "name": "a6befcaa-63f3-4d5e-ac5b-c10524a698bf"
     }
   ],
   "bloqClass": "bloq-wait",
@@ -40,12 +40,19 @@
           "number",
           "selectVariable"
         ],
-        "name": "b7b22b20-e9c4-494b-9cb1-285732e62a69"
+        "name": "a6befcaa-63f3-4d5e-ac5b-c10524a698bf"
       }
     ]
   ],
   "code": "delay({TIME});",
   "arduino": {
     "code": "delay({TIME});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"waitAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

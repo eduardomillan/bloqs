@@ -80,6 +80,6 @@ var clockRTCAdvanced = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(clockRTCAdvanced);
+utils.preprocessBloq(clockRTCAdvanced);
 
 module.exports = clockRTCAdvanced;

@@ -54,6 +54,6 @@ var lcdWrite = _.merge(_.clone(StatementBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(lcdWrite);
+utils.preprocessBloq(lcdWrite);
 
 module.exports = lcdWrite;

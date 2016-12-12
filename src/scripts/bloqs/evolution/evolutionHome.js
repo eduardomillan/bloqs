@@ -36,6 +36,6 @@ var evolutionHome = _.merge(_.clone(StatementBloq, true), {
         code: 'evolution.home();'
     }
 });
-utils.generateBloqInputConnectors(evolutionHome);
+utils.preprocessBloq(evolutionHome);
 
 module.exports = evolutionHome;

@@ -16,7 +16,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "3295a74b-695d-4a5c-8c05-61a761f524ae"
+      "name": "2a4fc2cf-99ee-4b88-ada4-9c9f9c2f714e"
     }
   ],
   "bloqClass": "bloq-stringArray-advanced",
@@ -36,7 +36,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "3295a74b-695d-4a5c-8c05-61a761f524ae"
+        "name": "2a4fc2cf-99ee-4b88-ada4-9c9f9c2f714e"
       },
       {
         "alias": "text",
@@ -66,5 +66,12 @@
   },
   "arduino": {
     "code": "({TYPE})malloc({VALUE}*sizeof(¬{TYPE.withoutAsterisk}))"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"stringArrayAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

@@ -54,6 +54,6 @@ var evolutionLight = _.merge(_.clone(OutputBloq, true), {
         value: 'int'
     }
 });
-utils.generateBloqInputConnectors(evolutionLight);
+utils.preprocessBloq(evolutionLight);
 
 module.exports = evolutionLight;

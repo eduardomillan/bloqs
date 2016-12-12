@@ -77,6 +77,6 @@ var forAdvancedV1 = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(forAdvancedV1);
+utils.preprocessBloq(forAdvancedV1);
 
 module.exports = forAdvancedV1;

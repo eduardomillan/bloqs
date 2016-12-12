@@ -40,6 +40,6 @@ var mBotGetButtonStatus = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mBotGetButtonStatus);
+utils.preprocessBloq(mBotGetButtonStatus);
 
 module.exports = mBotGetButtonStatus;

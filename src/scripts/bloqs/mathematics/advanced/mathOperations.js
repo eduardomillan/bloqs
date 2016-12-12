@@ -57,6 +57,6 @@ var mathOperations = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mathOperations);
+utils.preprocessBloq(mathOperations);
 
 module.exports = mathOperations;

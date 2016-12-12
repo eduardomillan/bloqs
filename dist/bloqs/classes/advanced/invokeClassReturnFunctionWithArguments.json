@@ -18,7 +18,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "03530e14-bd0a-4798-824c-3fd8f7199d64"
+      "name": "02bda00d-af6e-43af-8602-fba26104cf74"
     }
   ],
   "bloqClass": "bloq-invoke-class-return-function",
@@ -58,7 +58,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "03530e14-bd0a-4798-824c-3fd8f7199d64"
+        "name": "02bda00d-af6e-43af-8602-fba26104cf74"
       }
     ]
   ],
@@ -70,5 +70,12 @@
   },
   "arduino": {
     "code": "{CLASS}.{FUNCTION}({ARGS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"invokeClassReturnFunctionWithArguments\" no preparado para generar código python"
+      }
+    ]
   }
 }

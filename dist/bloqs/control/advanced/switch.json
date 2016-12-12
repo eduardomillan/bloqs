@@ -27,7 +27,7 @@
         "selectVariable",
         "readSensor"
       ],
-      "name": "8b643c49-9ad8-4f68-bf3f-4e182d0eb42e"
+      "name": "09bc3048-315a-4171-aa80-0feef096c4d0"
     }
   ],
   "bloqClass": "bloq-switch",
@@ -47,12 +47,19 @@
           "selectVariable",
           "readSensor"
         ],
-        "name": "8b643c49-9ad8-4f68-bf3f-4e182d0eb42e"
+        "name": "09bc3048-315a-4171-aa80-0feef096c4d0"
       }
     ]
   ],
   "code": "switch ({VAR}) {{STATEMENTS}}",
   "arduino": {
     "code": "switch ({VAR}) {{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"switchAdvanced-v2\" no preparado para generar código python"
+      }
+    ]
   }
 }

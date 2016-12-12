@@ -46,6 +46,6 @@ var bloqArguments = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqArguments);
+utils.preprocessBloq(bloqArguments);
 
 module.exports = bloqArguments;

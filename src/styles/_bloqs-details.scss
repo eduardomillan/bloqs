@@ -13,8 +13,11 @@ $conversions-color: #00CC11;
 $zowi-color: #60BCC9;
 $evolution-color: #9a0768;
 $mbot-color: #0076b4;
-$botbloq-car: #60bcc9;
+$botbloq-car: #4B0082;
 $botbloq-manipulator: #058723;
+$botbloq-human: #6495ED;
+$botbloq-hexapod: #FF6347;
+$botbloq-snake: #3CB371;
 
 /* COLOR THEME */
 
@@ -31,8 +34,11 @@ $theme-color-conversions-color: #00CC11;
 $theme-color-zowi-color: #60BCC9;
 $theme-color-evolution-color: #9a0768;
 $theme-color-mbot-color: #0076b4;
-$theme-color-botbloq-car: #60bcc9;
+$theme-color-botbloq-car: #4B0082;
 $theme-color-botbloq-manipulator: #058723;
+$theme-color-botbloq-human: #6495ED;
+$theme-color-botbloq-hexapod: #FF6347;
+$theme-color-botbloq-snake: #3CB371;
 @mixin createBloqsTheme ($reverse) {
     /*---- BOTBLOQ - CAR ---------*/
     @include createBloqsCss($reverse, "bloq-botbloq-vehicle-move", $botbloq-car, $theme-color-botbloq-car);
@@ -43,6 +49,23 @@ $theme-color-botbloq-manipulator: #058723;
     @include createBloqsCss($reverse, "bloq-botbloq-manipulator-moveonspace", $botbloq-manipulator, $theme-color-botbloq-manipulator);
     @include createBloqsCss($reverse, "bloq-botbloq-manipulator-moveclamp", $botbloq-manipulator, $theme-color-botbloq-manipulator);
     @include createBloqsCss($reverse, "bloq-botbloq-manipulator-rotatejoints", $botbloq-manipulator, $theme-color-botbloq-manipulator);
+    /*---- BOTBLOQ - HUMAN ---------*/
+    @include createBloqsCss($reverse, "bloq-botbloq-human-move", $botbloq-human, $theme-color-botbloq-human);
+    @include createBloqsCss($reverse, "bloq-botbloq-human-benddown", $botbloq-human, $theme-color-botbloq-human);
+    @include createBloqsCss($reverse, "bloq-botbloq-human-lateraldisplacement", $botbloq-human, $theme-color-botbloq-human);
+    @include createBloqsCss($reverse, "bloq-botbloq-human-rotatefoot", $botbloq-human, $theme-color-botbloq-human);
+    @include createBloqsCss($reverse, "bloq-botbloq-human-stop", $botbloq-human, $theme-color-botbloq-human);
+    @include createBloqsCss($reverse, "bloq-botbloq-human-upstairs", $botbloq-human, $theme-color-botbloq-human);
+    /*---- BOTBLOQ - HEXAPOD ---------*/
+    @include createBloqsCss($reverse, "bloq-botbloq-hexapod-move", $botbloq-hexapod, $theme-color-botbloq-hexapod);
+    @include createBloqsCss($reverse, "bloq-botbloq-hexapod-stop", $botbloq-hexapod, $theme-color-botbloq-hexapod);
+    @include createBloqsCss($reverse, "bloq-botbloq-hexapod-lateraldisplacement", $botbloq-hexapod, $theme-color-botbloq-hexapod);
+    /*---- BOTBLOQ - SNAKE ---------*/
+    @include createBloqsCss($reverse, "bloq-botbloq-snake-lateraldisplacement", $botbloq-snake, $theme-color-botbloq-snake);
+    @include createBloqsCss($reverse, "bloq-botbloq-snake-move", $botbloq-snake, $theme-color-botbloq-snake);
+    @include createBloqsCss($reverse, "bloq-botbloq-snake-roll", $botbloq-snake, $theme-color-botbloq-snake);
+    @include createBloqsCss($reverse, "bloq-botbloq-snake-rotate", $botbloq-snake, $theme-color-botbloq-snake);
+    @include createBloqsCss($reverse, "bloq-botbloq-snake-stop", $botbloq-snake, $theme-color-botbloq-snake);
     /*---- CONVERSIONS ---------*/
     @include createBloqsCss($reverse, "bloq-string-to-int", $conversions-color, $theme-color-conversions-color);
     /*---- EVOLUTION ---------*/

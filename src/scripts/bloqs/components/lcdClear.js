@@ -47,6 +47,6 @@ var lcdClear = _.merge(_.clone(StatementBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(lcdClear);
+utils.preprocessBloq(lcdClear);
 
 module.exports = lcdClear;

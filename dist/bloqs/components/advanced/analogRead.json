@@ -16,7 +16,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "25870af7-ad81-4d36-9723-561cfae24892"
+      "name": "12e22ca7-4d8d-4e89-b4b2-cbb8197556c5"
     }
   ],
   "bloqClass": "bloq-analog-read-advanced",
@@ -36,7 +36,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "25870af7-ad81-4d36-9723-561cfae24892"
+        "name": "12e22ca7-4d8d-4e89-b4b2-cbb8197556c5"
       }
     ]
   ],
@@ -47,5 +47,12 @@
   },
   "arduino": {
     "code": "analogRead(¬{PIN.formatPin})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"analogReadAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

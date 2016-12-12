@@ -33,6 +33,6 @@ var bloqPublic = _.merge(_.clone(StatementInputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(bloqPublic);
+utils.preprocessBloq(bloqPublic);
 
 module.exports = bloqPublic;

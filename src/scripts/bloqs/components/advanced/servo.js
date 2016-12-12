@@ -47,6 +47,6 @@ var servoNormalAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(servoNormalAdvanced);
+utils.preprocessBloq(servoNormalAdvanced);
 
 module.exports = servoNormalAdvanced;

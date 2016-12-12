@@ -50,5 +50,12 @@
     ],
     "setupExtraCode": "pinMode({LED}, OUTPUT);",
     "code": "digitalWrite({LED},{STATE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"led\" no preparado para generar código python"
+      }
+    ]
   }
 }

@@ -42,6 +42,6 @@ var stringArray = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(stringArray);
+utils.preprocessBloq(stringArray);
 
 module.exports = stringArray;

@@ -96,6 +96,6 @@ var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
         code: 'tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});'
     }
 });
-utils.generateBloqInputConnectors(mBotBuzzer);
+utils.preprocessBloq(mBotBuzzer);
 
 module.exports = mBotBuzzer;

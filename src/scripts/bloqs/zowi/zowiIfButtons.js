@@ -56,6 +56,6 @@ var zowiIfButtons = _.merge(_.clone(StatementInputBloq, true), {
 
 zowiIfButtons.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
-utils.generateBloqInputConnectors(zowiIfButtons);
+utils.preprocessBloq(zowiIfButtons);
 
 module.exports = zowiIfButtons;

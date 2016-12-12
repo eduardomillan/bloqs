@@ -73,6 +73,6 @@ var mBotSetMotor = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mBotSetMotor);
+utils.preprocessBloq(mBotSetMotor);
 
 module.exports = mBotSetMotor;

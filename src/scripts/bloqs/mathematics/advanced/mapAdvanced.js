@@ -76,6 +76,6 @@ var mapAdvanced = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mapAdvanced);
+utils.preprocessBloq(mapAdvanced);
 
 module.exports = mapAdvanced;

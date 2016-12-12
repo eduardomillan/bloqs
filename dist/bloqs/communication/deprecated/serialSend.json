@@ -16,7 +16,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "80d7dfc5-3378-4086-b42e-e47686bfda08"
+      "name": "d54314e6-e5c4-464c-bf46-1412588bbc95"
     }
   ],
   "bloqClass": "bloq-serial-send",
@@ -37,7 +37,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "80d7dfc5-3378-4086-b42e-e47686bfda08"
+        "name": "d54314e6-e5c4-464c-bf46-1412588bbc95"
       },
       {
         "id": "FUNCTION",
@@ -61,5 +61,12 @@
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{SERIAL}.{FUNCTION}({DATA});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"serialSend\" no preparado para generar código python"
+      }
+    ]
   }
 }

@@ -31,7 +31,7 @@ var number = _.merge(_.clone(OutputBloq, true), {
         type: 'simple',
         value: 'float'
     },
-    arduino:{
+    arduino: {
         code: '{VALUE}'
     },
     python: {
@@ -41,6 +41,6 @@ var number = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(number);
+utils.preprocessBloq(number);
 
 module.exports = number;

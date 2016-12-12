@@ -27,7 +27,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "108ef748-9c2e-4e39-b720-e92e4274ed61"
+      "name": "b0bdb697-4224-45dc-9a3f-738058f2f6c7"
     },
     {
       "type": "connector--input",
@@ -40,7 +40,7 @@
         "logicOperations",
         "equalityOperations"
       ],
-      "name": "73e12da6-ef60-4b24-b5bb-45ca25ef0bd5"
+      "name": "d1d849aa-7ad9-48a4-b6d3-18f0590831ba"
     }
   ],
   "bloqClass": "bloq-return-function-with-arguments",
@@ -72,7 +72,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "108ef748-9c2e-4e39-b720-e92e4274ed61"
+        "name": "b0bdb697-4224-45dc-9a3f-738058f2f6c7"
       },
       {
         "position": "DOWN",
@@ -91,7 +91,7 @@
           "logicOperations",
           "equalityOperations"
         ],
-        "name": "73e12da6-ef60-4b24-b5bb-45ca25ef0bd5"
+        "name": "d1d849aa-7ad9-48a4-b6d3-18f0590831ba"
       }
     ]
   ],
@@ -107,5 +107,12 @@
   "code": "{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}",
   "arduino": {
     "code": "@{RETURN.returnType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"returnFunctionWithArguments\" no preparado para generar código python"
+      }
+    ]
   }
 }

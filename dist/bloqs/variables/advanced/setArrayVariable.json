@@ -21,7 +21,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "2505fbf6-6801-4c0d-b2f2-89b27e1e879d"
+      "name": "e8829e92-5313-406c-bc71-0e59cdfafbe0"
     },
     {
       "type": "connector--input",
@@ -34,7 +34,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "ef4980da-1e05-46fd-bb9b-466335b4de74"
+      "name": "74c910c4-84d9-4938-b023-65a40317a585"
     }
   ],
   "bloqClass": "bloq-set-variableArray",
@@ -64,7 +64,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "2505fbf6-6801-4c0d-b2f2-89b27e1e879d"
+        "name": "e8829e92-5313-406c-bc71-0e59cdfafbe0"
       },
       {
         "alias": "text",
@@ -85,12 +85,19 @@
           "string",
           "selectVariable"
         ],
-        "name": "ef4980da-1e05-46fd-bb9b-466335b4de74"
+        "name": "74c910c4-84d9-4938-b023-65a40317a585"
       }
     ]
   ],
   "code": "{NAME}[{ITERATOR}] = {VALUE};",
   "arduino": {
     "code": "{NAME}[{ITERATOR}] = {VALUE};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"setArrayVariableAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

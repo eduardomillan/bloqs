@@ -18,7 +18,7 @@
         "selectVariable",
         "readSensor"
       ],
-      "name": "1d0de2e0-422a-4969-b4b0-dc02798fced0"
+      "name": "cc271a07-3ba4-4a3d-be7b-6c709364c718"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "selectVariable",
         "readSensor"
       ],
-      "name": "0231851a-57d1-4802-a613-886817961703"
+      "name": "2a12e555-ffd3-415e-b4e1-74981b64f7aa"
     }
   ],
   "bloqClass": "bloq-equality-operations",
@@ -50,7 +50,7 @@
           "selectVariable",
           "readSensor"
         ],
-        "name": "1d0de2e0-422a-4969-b4b0-dc02798fced0"
+        "name": "cc271a07-3ba4-4a3d-be7b-6c709364c718"
       },
       {
         "id": "OPERATOR",
@@ -94,7 +94,7 @@
           "selectVariable",
           "readSensor"
         ],
-        "name": "0231851a-57d1-4802-a613-886817961703"
+        "name": "2a12e555-ffd3-415e-b4e1-74981b64f7aa"
       }
     ]
   ],
@@ -105,5 +105,12 @@
   "returnType": {
     "type": "simple",
     "value": "bool"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"equalityOperations\" no preparado para generar código python"
+      }
+    ]
   }
 }

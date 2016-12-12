@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "6e9aa637-88b0-4c27-bd51-f692487efd32"
+      "name": "3a46bb71-1150-42d6-8a7f-c2c990476d72"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "0a42898e-2036-4df2-a51a-184efb087f20"
+      "name": "a499d758-acaa-4004-9395-9291b407ba90"
     },
     {
       "type": "connector--input",
@@ -44,7 +44,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "d91e8db9-3d88-4d64-a275-2bcf9bc6e90f"
+      "name": "6fd21c58-c46c-4b7b-a388-8704412fd923"
     },
     {
       "type": "connector--input",
@@ -56,7 +56,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "c58ff22b-8e56-4ff3-ae2d-93599de8e373"
+      "name": "cf6643e3-b2a1-46ac-a823-6dd2a4da741b"
     }
   ],
   "bloqClass": "bloq-oscillator-advanced",
@@ -76,7 +76,7 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "6e9aa637-88b0-4c27-bd51-f692487efd32"
+        "name": "3a46bb71-1150-42d6-8a7f-c2c990476d72"
       },
       {
         "alias": "text",
@@ -92,7 +92,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "0a42898e-2036-4df2-a51a-184efb087f20"
+        "name": "a499d758-acaa-4004-9395-9291b407ba90"
       },
       {
         "alias": "text",
@@ -108,7 +108,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "d91e8db9-3d88-4d64-a275-2bcf9bc6e90f"
+        "name": "6fd21c58-c46c-4b7b-a388-8704412fd923"
       },
       {
         "alias": "text",
@@ -124,12 +124,19 @@
           "number",
           "selectVariable"
         ],
-        "name": "c58ff22b-8e56-4ff3-ae2d-93599de8e373"
+        "name": "cf6643e3-b2a1-46ac-a823-6dd2a4da741b"
       }
     ]
   ],
   "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();",
   "arduino": {
     "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillatorAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

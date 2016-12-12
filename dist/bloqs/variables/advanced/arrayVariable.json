@@ -17,7 +17,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "531b9c97-1828-4190-8dba-18e678e4be01"
+      "name": "dc368f84-a94a-4db9-b63f-2db25add19fe"
     }
   ],
   "bloqClass": "bloq-array-variable",
@@ -47,7 +47,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "531b9c97-1828-4190-8dba-18e678e4be01"
+        "name": "dc368f84-a94a-4db9-b63f-2db25add19fe"
       },
       {
         "alias": "text",
@@ -64,5 +64,12 @@
   },
   "arduino": {
     "code": "{VAR}[{POSITION}]"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"arrayVariableAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

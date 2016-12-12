@@ -64,11 +64,11 @@ var declareArray = _.merge(_.clone(StatementBloq, true), {
         idDropdown: 'TYPE'
     },
     code: '{TYPE} {NAME} [{VALUE}];',
-    arduino:{
+    arduino: {
         code: '{TYPE} {NAME} [{VALUE}];'
     }
 });
 
-utils.generateBloqInputConnectors(declareArray);
+utils.preprocessBloq(declareArray);
 
 module.exports = declareArray;

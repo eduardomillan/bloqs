@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "9a410646-042e-4371-9947-426369ec52d1"
+      "name": "7e49f0a3-c389-4886-b5bf-ea023d4d9bc1"
     }
   ],
   "bloqClass": "bloq-oscillator-start-advanced",
@@ -40,12 +40,19 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "9a410646-042e-4371-9947-426369ec52d1"
+        "name": "7e49f0a3-c389-4886-b5bf-ea023d4d9bc1"
       }
     ]
   ],
   "code": "{OSCILLATOR}.start()",
   "arduino": {
     "code": "{OSCILLATOR}.start()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillatorStartAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

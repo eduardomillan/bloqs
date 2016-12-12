@@ -32,7 +32,7 @@ var phoneToggleLight = _.merge(_.clone(StatementBloq, true), {
             alias: 'bloqInput',
             acceptType: ['all'],
             suggestedBloqs: ['number', 'selectVariable']
-        },  {
+        }, {
             alias: 'text',
             value: 'bloq-phone-toggle-units'
         }]
@@ -45,6 +45,6 @@ var phoneToggleLight = _.merge(_.clone(StatementBloq, true), {
     }
 
 });
-utils.generateBloqInputConnectors(phoneToggleLight);
+utils.preprocessBloq(phoneToggleLight);
 
 module.exports = phoneToggleLight;

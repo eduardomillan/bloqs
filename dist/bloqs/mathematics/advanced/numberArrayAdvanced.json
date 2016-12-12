@@ -16,7 +16,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "92d24222-05e4-41c2-8878-50943371bfcb"
+      "name": "9232cc9a-08c9-4a96-8578-892c96ed1215"
     }
   ],
   "bloqClass": "bloq-numberArray-advanced",
@@ -36,7 +36,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "92d24222-05e4-41c2-8878-50943371bfcb"
+        "name": "9232cc9a-08c9-4a96-8578-892c96ed1215"
       },
       {
         "alias": "text",
@@ -66,5 +66,12 @@
   },
   "arduino": {
     "code": "({TYPE})malloc({VALUE}*sizeof(¬{TYPE.withoutAsterisk}))"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"numberArrayAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

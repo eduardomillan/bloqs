@@ -35,6 +35,6 @@ var randomSeed = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(randomSeed);
+utils.preprocessBloq(randomSeed);
 
 module.exports = randomSeed;

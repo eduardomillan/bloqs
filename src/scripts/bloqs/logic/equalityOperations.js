@@ -65,6 +65,6 @@ var equalityOperations = _.merge(_.clone(OutputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(equalityOperations);
+utils.preprocessBloq(equalityOperations);
 
 module.exports = equalityOperations;

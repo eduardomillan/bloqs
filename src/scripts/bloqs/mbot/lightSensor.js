@@ -40,6 +40,6 @@ var mBotGetLightSensor = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mBotGetLightSensor);
+utils.preprocessBloq(mBotGetLightSensor);
 
 module.exports = mBotGetLightSensor;

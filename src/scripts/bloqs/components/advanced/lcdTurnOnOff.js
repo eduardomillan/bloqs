@@ -47,6 +47,6 @@ var lcdTurnOnOffAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(lcdTurnOnOffAdvanced);
+utils.preprocessBloq(lcdTurnOnOffAdvanced);
 
 module.exports = lcdTurnOnOffAdvanced;

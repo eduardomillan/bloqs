@@ -47,6 +47,6 @@ var botbloqManipulatorMoveClamp = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(botbloqManipulatorMoveClamp);
+utils.preprocessBloq(botbloqManipulatorMoveClamp);
 
 module.exports = botbloqManipulatorMoveClamp;

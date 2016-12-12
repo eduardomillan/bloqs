@@ -29,6 +29,6 @@ var viewer = _.merge(_.clone(StatementBloq, true), {
         code: '/*sendViewerData*/'
     }
 });
-utils.generateBloqInputConnectors(viewer);
+utils.preprocessBloq(viewer);
 
 module.exports = viewer;

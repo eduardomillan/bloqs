@@ -39,6 +39,6 @@ var wait = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(wait);
+utils.preprocessBloq(wait);
 
 module.exports = wait;

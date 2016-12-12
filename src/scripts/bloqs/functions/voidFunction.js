@@ -49,6 +49,6 @@ var voidFunction = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(voidFunction);
+utils.preprocessBloq(voidFunction);
 
 module.exports = voidFunction;

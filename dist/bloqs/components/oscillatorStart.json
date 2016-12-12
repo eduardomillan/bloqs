@@ -40,5 +40,12 @@
     ],
     "setupExtraCode": "{OSCILLATOR}.attach(º[{OSCILLATOR}.pin.s]);",
     "code": "{OSCILLATOR}.Play();{OSCILLATOR}.refresh();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillatorStart\" no preparado para generar código python"
+      }
+    ]
   }
 }

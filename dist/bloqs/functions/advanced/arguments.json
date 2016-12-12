@@ -19,7 +19,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "ae530395-38b9-4614-9e62-956197577b09"
+      "name": "90d33d00-5c71-4606-892d-601226d35d50"
     },
     {
       "type": "connector--input",
@@ -34,7 +34,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "5333a834-31dc-482c-b766-c627403c89e6"
+      "name": "ec3e967f-5970-478a-8937-5cedbfb7e9f9"
     }
   ],
   "bloqClass": "bloq-arguments",
@@ -53,7 +53,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "ae530395-38b9-4614-9e62-956197577b09"
+        "name": "90d33d00-5c71-4606-892d-601226d35d50"
       },
       {
         "alias": "text",
@@ -72,7 +72,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "5333a834-31dc-482c-b766-c627403c89e6"
+        "name": "ec3e967f-5970-478a-8937-5cedbfb7e9f9"
       }
     ]
   ],
@@ -84,5 +84,12 @@
   },
   "arduino": {
     "code": "{ARG1},{ARG2}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"arguments\" no preparado para generar código python"
+      }
+    ]
   }
 }

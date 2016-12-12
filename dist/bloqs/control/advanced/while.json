@@ -24,7 +24,7 @@
         "equalityOperations",
         "logicOperations"
       ],
-      "name": "7cee72a1-c3ac-4ceb-8bac-c1e5623949e4"
+      "name": "00595cc1-dbdb-4698-9e90-03808ff88170"
     }
   ],
   "bloqClass": "bloq-while",
@@ -44,7 +44,7 @@
           "equalityOperations",
           "logicOperations"
         ],
-        "name": "7cee72a1-c3ac-4ceb-8bac-c1e5623949e4"
+        "name": "00595cc1-dbdb-4698-9e90-03808ff88170"
       },
       {
         "alias": "text",
@@ -55,5 +55,12 @@
   "code": "while ({CONDITION}){{STATEMENTS}}",
   "arduino": {
     "code": "while ({CONDITION}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"whileAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

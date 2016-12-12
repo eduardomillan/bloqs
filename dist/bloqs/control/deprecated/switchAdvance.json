@@ -20,7 +20,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "a42d2fcd-c812-4bda-b667-105fce1e0ac8"
+      "name": "10da563b-148e-4296-9c37-0516dccca935"
     }
   ],
   "bloqClass": "bloq-switch",
@@ -36,12 +36,19 @@
         "acceptType": [
           "all"
         ],
-        "name": "a42d2fcd-c812-4bda-b667-105fce1e0ac8"
+        "name": "10da563b-148e-4296-9c37-0516dccca935"
       }
     ]
   ],
   "code": "switch (int({VAR})) {{STATEMENTS}}",
   "arduino": {
     "code": "switch (int({VAR})) {{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"switchAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

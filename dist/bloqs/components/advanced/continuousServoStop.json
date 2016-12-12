@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "e5535128-1b52-4f42-b23a-2339c5afc735"
+      "name": "1dec1fd6-adb0-4ce0-aac8-7fafaf0e6e2e"
     }
   ],
   "bloqClass": "bloq-continuous-servo-stop-advanced",
@@ -40,12 +40,19 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "e5535128-1b52-4f42-b23a-2339c5afc735"
+        "name": "1dec1fd6-adb0-4ce0-aac8-7fafaf0e6e2e"
       }
     ]
   ],
   "code": "{SERVO}.write(90);",
   "arduino": {
     "code": "{SERVO}.write(90);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"continuousServoStopAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

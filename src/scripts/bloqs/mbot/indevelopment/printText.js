@@ -69,6 +69,6 @@ var mBotShowPrintText = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mBotShowPrintText);
+utils.preprocessBloq(mBotShowPrintText);
 
 module.exports = mBotShowPrintText;

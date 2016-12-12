@@ -56,6 +56,6 @@ var setArrayVariableAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(setArrayVariableAdvanced);
+utils.preprocessBloq(setArrayVariableAdvanced);
 
 module.exports = setArrayVariableAdvanced;

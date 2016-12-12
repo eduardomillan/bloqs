@@ -37,6 +37,6 @@ var rgbLedOff = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(rgbLedOff);
+utils.preprocessBloq(rgbLedOff);
 
 module.exports = rgbLedOff;

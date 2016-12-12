@@ -76,6 +76,6 @@ var oscillatorTimes = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(oscillatorTimes);
+utils.preprocessBloq(oscillatorTimes);
 
 module.exports = oscillatorTimes;

@@ -46,6 +46,6 @@ var ledAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(ledAdvanced);
+utils.preprocessBloq(ledAdvanced);
 
 module.exports = ledAdvanced;

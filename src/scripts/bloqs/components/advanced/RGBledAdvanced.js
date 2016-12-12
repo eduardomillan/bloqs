@@ -61,6 +61,6 @@ var rgbLedAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(rgbLedAdvanced);
+utils.preprocessBloq(rgbLedAdvanced);
 
 module.exports = rgbLedAdvanced;

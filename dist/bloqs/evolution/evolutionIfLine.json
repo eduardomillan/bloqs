@@ -80,5 +80,12 @@
     ],
     "setupExtraCode": "evolution.init();",
     "code": "if(evolution.getLine(LEFT) == {LINELEFT} && evolution.getLine(RIGHT) == {LINERIGHT}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionIfLine\" no preparado para generar código python"
+      }
+    ]
   }
 }

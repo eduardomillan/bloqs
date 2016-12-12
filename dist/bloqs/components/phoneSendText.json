@@ -21,7 +21,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "3c436331-242b-48ab-b22b-3b1e3e10d8cb"
+      "name": "1ff7940d-6ae7-4fbb-bf3a-0034a7ed0d5b"
     }
   ],
   "bloqClass": "bloq-phone-write",
@@ -47,7 +47,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "3c436331-242b-48ab-b22b-3b1e3e10d8cb"
+        "name": "1ff7940d-6ae7-4fbb-bf3a-0034a7ed0d5b"
       }
     ]
   ],
@@ -57,5 +57,12 @@
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{PHONE}.println(String(\"write-\")+String({DATA}));"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneSendText\" no preparado para generar código python"
+      }
+    ]
   }
 }

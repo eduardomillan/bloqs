@@ -42,6 +42,6 @@ var readSensor = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(readSensor);
+utils.preprocessBloq(readSensor);
 
 module.exports = readSensor;

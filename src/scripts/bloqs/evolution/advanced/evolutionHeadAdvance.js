@@ -62,6 +62,6 @@ var evolutionHeadAdvance = _.merge(_.clone(StatementBloq, true), {
         }
     }
 });
-utils.generateBloqInputConnectors(evolutionHeadAdvance);
+utils.preprocessBloq(evolutionHeadAdvance);
 
 module.exports = evolutionHeadAdvance;

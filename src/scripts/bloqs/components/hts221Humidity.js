@@ -52,6 +52,6 @@ var hts221Humidity = _.merge(_.clone(OutputBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(hts221Humidity);
+utils.preprocessBloq(hts221Humidity);
 
 module.exports = hts221Humidity;

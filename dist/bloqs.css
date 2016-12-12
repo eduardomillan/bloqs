@@ -3,6 +3,9 @@
 #bloqs--field.theme-basic .bloq {
   /*---- BOTBLOQ - CAR ---------*/
   /*---- BOTBLOQ - MANIPULATOR ---------*/
+  /*---- BOTBLOQ - HUMAN ---------*/
+  /*---- BOTBLOQ - HEXAPOD ---------*/
+  /*---- BOTBLOQ - SNAKE ---------*/
   /*---- CONVERSIONS ---------*/
   /*---- EVOLUTION ---------*/
   /*---- MBOT ---------*/
@@ -19,23 +22,23 @@
   /*---- OUTPUT BLOQ to avoid that a outputbloq take the extern bloq style------*/
   /*---- MATHS ------*/ }
   #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-move {
-    color: #60bcc9; }
+    color: #4B0082; }
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-move input,
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-move textarea,
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-move select {
-      color: #60bcc9; }
+      color: #4B0082; }
   #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-stop {
-    color: #60bcc9; }
+    color: #4B0082; }
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-stop input,
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-stop textarea,
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-stop select {
-      color: #60bcc9; }
+      color: #4B0082; }
   #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-ir {
-    color: #60bcc9; }
+    color: #4B0082; }
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-ir input,
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-ir textarea,
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-ir select {
-      color: #60bcc9; }
+      color: #4B0082; }
   #bloqs--field.theme-basic .bloq.bloq-botbloq-manipulator-canmove {
     color: #058723; }
     #bloqs--field.theme-basic .bloq.bloq-botbloq-manipulator-canmove input,
@@ -60,6 +63,90 @@
     #bloqs--field.theme-basic .bloq.bloq-botbloq-manipulator-rotatejoints textarea,
     #bloqs--field.theme-basic .bloq.bloq-botbloq-manipulator-rotatejoints select {
       color: #058723; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-human-move {
+    color: #6495ED; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-move input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-move textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-move select {
+      color: #6495ED; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-human-benddown {
+    color: #6495ED; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-benddown input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-benddown textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-benddown select {
+      color: #6495ED; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-human-lateraldisplacement {
+    color: #6495ED; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-lateraldisplacement input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-lateraldisplacement textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-lateraldisplacement select {
+      color: #6495ED; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-human-rotatefoot {
+    color: #6495ED; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-rotatefoot input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-rotatefoot textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-rotatefoot select {
+      color: #6495ED; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-human-stop {
+    color: #6495ED; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-stop input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-stop textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-stop select {
+      color: #6495ED; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-human-upstairs {
+    color: #6495ED; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-upstairs input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-upstairs textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-human-upstairs select {
+      color: #6495ED; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-move {
+    color: #FF6347; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-move input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-move textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-move select {
+      color: #FF6347; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-stop {
+    color: #FF6347; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-stop input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-stop textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-stop select {
+      color: #FF6347; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-lateraldisplacement {
+    color: #FF6347; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-lateraldisplacement input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-lateraldisplacement textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-hexapod-lateraldisplacement select {
+      color: #FF6347; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-lateraldisplacement {
+    color: #3CB371; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-lateraldisplacement input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-lateraldisplacement textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-lateraldisplacement select {
+      color: #3CB371; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-move {
+    color: #3CB371; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-move input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-move textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-move select {
+      color: #3CB371; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-roll {
+    color: #3CB371; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-roll input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-roll textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-roll select {
+      color: #3CB371; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-rotate {
+    color: #3CB371; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-rotate input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-rotate textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-rotate select {
+      color: #3CB371; }
+  #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-stop {
+    color: #3CB371; }
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-stop input,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-stop textarea,
+    #bloqs--field.theme-basic .bloq.bloq-botbloq-snake-stop select {
+      color: #3CB371; }
   #bloqs--field.theme-basic .bloq.bloq-string-to-int {
     color: #00CC11; }
     #bloqs--field.theme-basic .bloq.bloq-string-to-int input,
@@ -1231,6 +1318,9 @@
 #bloqs--field.theme-colors .bloq {
   /*---- BOTBLOQ - CAR ---------*/
   /*---- BOTBLOQ - MANIPULATOR ---------*/
+  /*---- BOTBLOQ - HUMAN ---------*/
+  /*---- BOTBLOQ - HEXAPOD ---------*/
+  /*---- BOTBLOQ - SNAKE ---------*/
   /*---- CONVERSIONS ---------*/
   /*---- EVOLUTION ---------*/
   /*---- MBOT ---------*/
@@ -1253,13 +1343,13 @@
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled) select,
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled) .bloqinput {
       color: white;
-      background: #60bcc9;
+      background: #4B0082;
       background-color: rgba(0, 0, 0, 0.2); }
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled) input:before,
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled) textarea:before,
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled) select:before,
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled) .bloqinput:before {
-        background: #60bcc9;
+        background: #4B0082;
         background-color: rgba(0, 0, 0, 0.2); }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled) ::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.5); }
@@ -1272,13 +1362,13 @@
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled) select option {
         color: black; }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled).bloq--statement {
-      background-color: #60bcc9; }
+      background-color: #4B0082; }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled).bloq--output {
-      background-color: #60bcc9; }
+      background-color: #4B0082; }
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled).bloq--output:before {
-        background-color: #60bcc9; }
+        background-color: #4B0082; }
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled).bloq--output:focus:not(.disabled):after {
-        background-color: #60bcc9; }
+        background-color: #4B0082; }
   #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled) input,
@@ -1286,13 +1376,13 @@
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled) select,
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled) .bloqinput {
       color: white;
-      background: #60bcc9;
+      background: #4B0082;
       background-color: rgba(0, 0, 0, 0.2); }
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled) input:before,
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled) textarea:before,
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled) select:before,
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled) .bloqinput:before {
-        background: #60bcc9;
+        background: #4B0082;
         background-color: rgba(0, 0, 0, 0.2); }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled) ::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.5); }
@@ -1305,13 +1395,13 @@
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled) select option {
         color: black; }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled).bloq--statement {
-      background-color: #60bcc9; }
+      background-color: #4B0082; }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled).bloq--output {
-      background-color: #60bcc9; }
+      background-color: #4B0082; }
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled).bloq--output:before {
-        background-color: #60bcc9; }
+        background-color: #4B0082; }
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-stop:not(.disabled).bloq--output:focus:not(.disabled):after {
-        background-color: #60bcc9; }
+        background-color: #4B0082; }
   #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) input,
@@ -1319,13 +1409,13 @@
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) select,
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) .bloqinput {
       color: white;
-      background: #60bcc9;
+      background: #4B0082;
       background-color: rgba(0, 0, 0, 0.2); }
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) input:before,
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) textarea:before,
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) select:before,
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) .bloqinput:before {
-        background: #60bcc9;
+        background: #4B0082;
         background-color: rgba(0, 0, 0, 0.2); }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) ::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.5); }
@@ -1338,13 +1428,13 @@
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled) select option {
         color: black; }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled).bloq--statement {
-      background-color: #60bcc9; }
+      background-color: #4B0082; }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled).bloq--output {
-      background-color: #60bcc9; }
+      background-color: #4B0082; }
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled).bloq--output:before {
-        background-color: #60bcc9; }
+        background-color: #4B0082; }
       #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-ir:not(.disabled).bloq--output:focus:not(.disabled):after {
-        background-color: #60bcc9; }
+        background-color: #4B0082; }
   #bloqs--field.theme-colors .bloq.bloq-botbloq-manipulator-canmove:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-manipulator-canmove:not(.disabled) input,
@@ -1477,6 +1567,468 @@
         background-color: #058723; }
       #bloqs--field.theme-colors .bloq.bloq-botbloq-manipulator-rotatejoints:not(.disabled).bloq--output:focus:not(.disabled):after {
         background-color: #058723; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) .bloqinput {
+      color: white;
+      background: #6495ED;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) .bloqinput:before {
+        background: #6495ED;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled).bloq--statement {
+      background-color: #6495ED; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled).bloq--output {
+      background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled).bloq--output:before {
+        background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-move:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #6495ED; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) .bloqinput {
+      color: white;
+      background: #6495ED;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) .bloqinput:before {
+        background: #6495ED;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled).bloq--statement {
+      background-color: #6495ED; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled).bloq--output {
+      background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled).bloq--output:before {
+        background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-benddown:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #6495ED; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) .bloqinput {
+      color: white;
+      background: #6495ED;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) .bloqinput:before {
+        background: #6495ED;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled).bloq--statement {
+      background-color: #6495ED; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled).bloq--output {
+      background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled).bloq--output:before {
+        background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-lateraldisplacement:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #6495ED; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) .bloqinput {
+      color: white;
+      background: #6495ED;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) .bloqinput:before {
+        background: #6495ED;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled).bloq--statement {
+      background-color: #6495ED; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled).bloq--output {
+      background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled).bloq--output:before {
+        background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-rotatefoot:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #6495ED; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) .bloqinput {
+      color: white;
+      background: #6495ED;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) .bloqinput:before {
+        background: #6495ED;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled).bloq--statement {
+      background-color: #6495ED; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled).bloq--output {
+      background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled).bloq--output:before {
+        background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-stop:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #6495ED; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) .bloqinput {
+      color: white;
+      background: #6495ED;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) .bloqinput:before {
+        background: #6495ED;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled).bloq--statement {
+      background-color: #6495ED; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled).bloq--output {
+      background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled).bloq--output:before {
+        background-color: #6495ED; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-human-upstairs:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #6495ED; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) .bloqinput {
+      color: white;
+      background: #FF6347;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) .bloqinput:before {
+        background: #FF6347;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled).bloq--statement {
+      background-color: #FF6347; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled).bloq--output {
+      background-color: #FF6347; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled).bloq--output:before {
+        background-color: #FF6347; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-move:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #FF6347; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) .bloqinput {
+      color: white;
+      background: #FF6347;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) .bloqinput:before {
+        background: #FF6347;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled).bloq--statement {
+      background-color: #FF6347; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled).bloq--output {
+      background-color: #FF6347; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled).bloq--output:before {
+        background-color: #FF6347; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-stop:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #FF6347; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) .bloqinput {
+      color: white;
+      background: #FF6347;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) .bloqinput:before {
+        background: #FF6347;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled).bloq--statement {
+      background-color: #FF6347; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled).bloq--output {
+      background-color: #FF6347; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled).bloq--output:before {
+        background-color: #FF6347; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-hexapod-lateraldisplacement:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #FF6347; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) .bloqinput {
+      color: white;
+      background: #3CB371;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) .bloqinput:before {
+        background: #3CB371;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled).bloq--statement {
+      background-color: #3CB371; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled).bloq--output {
+      background-color: #3CB371; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled).bloq--output:before {
+        background-color: #3CB371; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-lateraldisplacement:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #3CB371; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) .bloqinput {
+      color: white;
+      background: #3CB371;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) .bloqinput:before {
+        background: #3CB371;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled).bloq--statement {
+      background-color: #3CB371; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled).bloq--output {
+      background-color: #3CB371; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled).bloq--output:before {
+        background-color: #3CB371; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-move:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #3CB371; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) .bloqinput {
+      color: white;
+      background: #3CB371;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) .bloqinput:before {
+        background: #3CB371;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled).bloq--statement {
+      background-color: #3CB371; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled).bloq--output {
+      background-color: #3CB371; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled).bloq--output:before {
+        background-color: #3CB371; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-roll:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #3CB371; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) .bloqinput {
+      color: white;
+      background: #3CB371;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) .bloqinput:before {
+        background: #3CB371;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled).bloq--statement {
+      background-color: #3CB371; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled).bloq--output {
+      background-color: #3CB371; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled).bloq--output:before {
+        background-color: #3CB371; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-rotate:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #3CB371; }
+  #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) .bloqinput {
+      color: white;
+      background: #3CB371;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) .bloqinput:before {
+        background: #3CB371;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled).bloq--statement {
+      background-color: #3CB371; }
+    #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled).bloq--output {
+      background-color: #3CB371; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled).bloq--output:before {
+        background-color: #3CB371; }
+      #bloqs--field.theme-colors .bloq.bloq-botbloq-snake-stop:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #3CB371; }
   #bloqs--field.theme-colors .bloq.bloq-string-to-int:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-string-to-int:not(.disabled) input,

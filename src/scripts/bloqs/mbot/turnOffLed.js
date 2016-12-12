@@ -48,6 +48,6 @@ var mBotTurnOffLed = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mBotTurnOffLed);
+utils.preprocessBloq(mBotTurnOffLed);
 
 module.exports = mBotTurnOffLed;

@@ -45,6 +45,6 @@ var phoneTurnOnLight = _.merge(_.clone(StatementBloq, true), {
     }
 
 });
-utils.generateBloqInputConnectors(phoneTurnOnLight);
+utils.preprocessBloq(phoneTurnOnLight);
 
 module.exports = phoneTurnOnLight;

@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "c4da5299-09bb-49fc-a03c-06d7848b17d2"
+      "name": "18fd0e2e-79b8-4c34-83bb-8306c3a8ef1f"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "2df076a0-04b5-408d-a8e4-e7484e1ef024"
+      "name": "b113857d-5ce5-45ea-b3be-4b103d3d1294"
     }
   ],
   "bloqClass": "bloq-servo-advanced",
@@ -52,7 +52,7 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "c4da5299-09bb-49fc-a03c-06d7848b17d2"
+        "name": "18fd0e2e-79b8-4c34-83bb-8306c3a8ef1f"
       },
       {
         "alias": "text",
@@ -68,7 +68,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "2df076a0-04b5-408d-a8e4-e7484e1ef024"
+        "name": "b113857d-5ce5-45ea-b3be-4b103d3d1294"
       },
       {
         "alias": "text",
@@ -79,5 +79,12 @@
   "code": "{SERVO}.write({POSITION});",
   "arduino": {
     "code": "{SERVO}.write({POSITION});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"servoNormalAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

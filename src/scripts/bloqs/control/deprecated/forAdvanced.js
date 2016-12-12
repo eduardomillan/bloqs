@@ -70,6 +70,6 @@ var forAdvanced = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(forAdvanced);
+utils.preprocessBloq(forAdvanced);
 
 module.exports = forAdvanced;

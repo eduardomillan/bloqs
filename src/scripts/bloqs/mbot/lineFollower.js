@@ -55,6 +55,6 @@ var mBotLineFollower = _.merge(_.clone(OutputBloq, true), {
         code: 'mBot.getLineFollower({PORT})'
     }
 });
-utils.generateBloqInputConnectors(mBotLineFollower);
+utils.preprocessBloq(mBotLineFollower);
 
 module.exports = mBotLineFollower;

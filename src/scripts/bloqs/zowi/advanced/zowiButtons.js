@@ -54,6 +54,6 @@ var zowiButtons = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(zowiButtons);
+utils.preprocessBloq(zowiButtons);
 
 module.exports = zowiButtons;

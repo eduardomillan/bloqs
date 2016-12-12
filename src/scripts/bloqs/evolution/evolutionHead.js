@@ -50,6 +50,6 @@ var evolutionHead = _.merge(_.clone(StatementBloq, true), {
         code: 'evolution.turnHead({SIDE});'
     }
 });
-utils.generateBloqInputConnectors(evolutionHead);
+utils.preprocessBloq(evolutionHead);
 
 module.exports = evolutionHead;

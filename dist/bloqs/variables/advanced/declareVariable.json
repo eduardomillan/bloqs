@@ -24,7 +24,7 @@
         "char",
         "boolean"
       ],
-      "name": "93ad5afe-83f6-4325-b636-aecb4d0ef591"
+      "name": "7855f3b4-97d0-452b-86b5-ec1a6a243cd8"
     }
   ],
   "bloqClass": "bloq-declare-variable",
@@ -87,7 +87,7 @@
           "char",
           "boolean"
         ],
-        "name": "93ad5afe-83f6-4325-b636-aecb4d0ef591"
+        "name": "7855f3b4-97d0-452b-86b5-ec1a6a243cd8"
       }
     ]
   ],
@@ -99,5 +99,12 @@
   "code": "{TYPE} {NAME} = {VALUE};",
   "arduino": {
     "code": "{TYPE} {NAME} = {VALUE};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"declareVariableAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

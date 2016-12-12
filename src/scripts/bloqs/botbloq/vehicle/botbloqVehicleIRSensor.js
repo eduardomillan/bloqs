@@ -52,6 +52,6 @@ var botbloqVehicleIRSensor = _.merge(_.clone(OutputBloq, true), {
         }]
     }
 });
-utils.generateBloqInputConnectors(botbloqVehicleIRSensor);
+utils.preprocessBloq(botbloqVehicleIRSensor);
 
 module.exports = botbloqVehicleIRSensor;

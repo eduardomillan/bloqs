@@ -16,7 +16,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "eb00698d-2c0f-46ac-9b8b-7c4fbf4078a8"
+      "name": "1a63f4ca-955f-4a43-bf9b-c1f92e08575f"
     },
     {
       "type": "connector--input",
@@ -24,7 +24,7 @@
       "acceptType": [
         "all"
       ],
-      "name": "310b3288-cafe-48ed-8269-b75e447a0055"
+      "name": "109c5eed-e74b-4fdf-b8c4-f9a6e0876b61"
     }
   ],
   "bloqClass": "bloq-lcd-writte deprecated",
@@ -40,7 +40,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "eb00698d-2c0f-46ac-9b8b-7c4fbf4078a8"
+        "name": "1a63f4ca-955f-4a43-bf9b-c1f92e08575f"
       },
       {
         "alias": "text",
@@ -52,7 +52,7 @@
         "acceptType": [
           "all"
         ],
-        "name": "310b3288-cafe-48ed-8269-b75e447a0055"
+        "name": "109c5eed-e74b-4fdf-b8c4-f9a6e0876b61"
       },
       {
         "alias": "text",
@@ -73,5 +73,12 @@
   "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});",
   "arduino": {
     "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdWritePositionAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

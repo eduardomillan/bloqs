@@ -42,6 +42,6 @@ var boolArray = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(boolArray);
+utils.preprocessBloq(boolArray);
 
 module.exports = boolArray;

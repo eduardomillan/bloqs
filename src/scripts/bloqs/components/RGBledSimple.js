@@ -73,6 +73,6 @@ var rgbLedSimple = _.merge(_.clone(StatementBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(rgbLedSimple);
+utils.preprocessBloq(rgbLedSimple);
 
 module.exports = rgbLedSimple;

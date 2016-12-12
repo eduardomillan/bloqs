@@ -39,6 +39,6 @@ var magicForAdvanced = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(magicForAdvanced);
+utils.preprocessBloq(magicForAdvanced);
 
 module.exports = magicForAdvanced;

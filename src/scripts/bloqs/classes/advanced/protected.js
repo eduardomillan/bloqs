@@ -33,6 +33,6 @@ var bloqProtected = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqProtected);
+utils.preprocessBloq(bloqProtected);
 
 module.exports = bloqProtected;

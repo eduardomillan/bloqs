@@ -42,7 +42,7 @@ var pinWriteAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(pinWriteAdvanced);
+utils.preprocessBloq(pinWriteAdvanced);
 
 
 module.exports = pinWriteAdvanced;

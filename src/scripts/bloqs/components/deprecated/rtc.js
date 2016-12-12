@@ -54,6 +54,6 @@ var clockRTC = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(clockRTC);
+utils.preprocessBloq(clockRTC);
 
 module.exports = clockRTC;

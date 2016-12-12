@@ -75,7 +75,7 @@ var elseif = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(elseif);
+utils.preprocessBloq(elseif);
 
 elseif.connectors[0].acceptedAliases = ['ifDown', 'elseifDown'];
 elseif.connectors[1].acceptedAliases = ['all', 'elseifDown'];

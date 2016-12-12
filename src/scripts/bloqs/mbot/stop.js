@@ -35,6 +35,6 @@ var mBotStop = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mBotStop);
+utils.preprocessBloq(mBotStop);
 
 module.exports = mBotStop;

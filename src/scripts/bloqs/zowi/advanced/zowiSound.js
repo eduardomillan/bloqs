@@ -42,6 +42,6 @@ var zowiSound = _.merge(_.clone(OutputBloq, true), {
         code: 'zowi.getNoise()'
     }
 });
-utils.generateBloqInputConnectors(zowiSound);
+utils.preprocessBloq(zowiSound);
 
 module.exports = zowiSound;

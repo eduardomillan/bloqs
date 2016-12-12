@@ -16,7 +16,7 @@
         "readSensor",
         "selectVariable"
       ],
-      "name": "e1900f53-1a30-4361-a1e7-2ae755b15715"
+      "name": "9ad99a55-a497-433f-9380-e654b437c55c"
     },
     {
       "type": "connector--input",
@@ -28,7 +28,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "8fca113b-cec7-4384-86d5-ff148da1d1b1"
+      "name": "2147c8bc-da87-49dd-856a-58b9829f656b"
     }
   ],
   "bloqClass": "bloq-map",
@@ -48,7 +48,7 @@
           "readSensor",
           "selectVariable"
         ],
-        "name": "e1900f53-1a30-4361-a1e7-2ae755b15715"
+        "name": "9ad99a55-a497-433f-9380-e654b437c55c"
       },
       {
         "alias": "text",
@@ -64,7 +64,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "8fca113b-cec7-4384-86d5-ff148da1d1b1"
+        "name": "2147c8bc-da87-49dd-856a-58b9829f656b"
       },
       {
         "alias": "text",
@@ -79,5 +79,12 @@
   },
   "arduino": {
     "code": "map({VAR},0,1023,0,{MAXVAL})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"map\" no preparado para generar código python"
+      }
+    ]
   }
 }

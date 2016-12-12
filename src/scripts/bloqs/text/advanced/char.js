@@ -42,6 +42,6 @@ var bloqChar = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqChar);
+utils.preprocessBloq(bloqChar);
 
 module.exports = bloqChar;

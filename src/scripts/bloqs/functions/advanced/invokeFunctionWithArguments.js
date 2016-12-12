@@ -48,6 +48,6 @@ var invokeFunctionWithArguments = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(invokeFunctionWithArguments);
+utils.preprocessBloq(invokeFunctionWithArguments);
 
 module.exports = invokeFunctionWithArguments;

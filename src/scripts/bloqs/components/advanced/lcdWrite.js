@@ -45,6 +45,6 @@ var lcdWriteAdvanced = _.merge(_.clone(StatementBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(lcdWriteAdvanced);
+utils.preprocessBloq(lcdWriteAdvanced);
 
 module.exports = lcdWriteAdvanced;

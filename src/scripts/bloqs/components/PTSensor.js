@@ -60,6 +60,6 @@ var PTSensor = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(PTSensor);
+utils.preprocessBloq(PTSensor);
 
 module.exports = PTSensor;

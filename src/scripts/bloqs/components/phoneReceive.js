@@ -40,6 +40,6 @@ var phoneReceive = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(phoneReceive);
+utils.preprocessBloq(phoneReceive);
 
 module.exports = phoneReceive;

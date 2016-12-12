@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "f36f45ea-a265-4f21-ba35-bdc35f3bf454"
+      "name": "c21ea026-c398-4b70-9134-80f8a8689446"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "5103e034-906a-4473-8958-9aad1a85409b"
+      "name": "291a5030-8c05-479c-bfdc-eb4662ecb88f"
     }
   ],
   "bloqClass": "bloq-continuous-servo-start-advanced",
@@ -52,7 +52,7 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "f36f45ea-a265-4f21-ba35-bdc35f3bf454"
+        "name": "c21ea026-c398-4b70-9134-80f8a8689446"
       },
       {
         "alias": "text",
@@ -68,12 +68,19 @@
           "number",
           "selectVariable"
         ],
-        "name": "5103e034-906a-4473-8958-9aad1a85409b"
+        "name": "291a5030-8c05-479c-bfdc-eb4662ecb88f"
       }
     ]
   ],
   "code": "{SERVO}.write({DIRECTION});",
   "arduino": {
     "code": "{SERVO}.write({DIRECTION});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"continuousServoStartAdvanced-v1\" no preparado para generar código python"
+      }
+    ]
   }
 }

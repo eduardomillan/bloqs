@@ -25,12 +25,12 @@
      descriptionText: 'bloq-setup-description',
      content: [],
      code: 'void setup(){{STATEMENTS}}',
-     arduino:{
-        code: 'void setup(){{STATEMENTS}}'
-    }
+     arduino: {
+         code: 'void setup(){{STATEMENTS}}'
+     }
  });
 
- utils.generateBloqInputConnectors(setupBloq);
+ utils.preprocessBloq(setupBloq);
 
 
  module.exports = setupBloq;

@@ -60,6 +60,6 @@ var evolutionIfDistance = _.merge(_.clone(StatementInputBloq, true), {
 
 evolutionIfDistance.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
-utils.generateBloqInputConnectors(evolutionIfDistance);
+utils.preprocessBloq(evolutionIfDistance);
 
 module.exports = evolutionIfDistance;

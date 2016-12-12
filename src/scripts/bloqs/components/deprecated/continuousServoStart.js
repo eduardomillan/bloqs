@@ -55,7 +55,7 @@ var continuousServoStartAdvanced = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(continuousServoStartAdvanced);
+utils.preprocessBloq(continuousServoStartAdvanced);
 
 
 module.exports = continuousServoStartAdvanced;

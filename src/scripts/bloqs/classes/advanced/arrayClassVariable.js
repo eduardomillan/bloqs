@@ -60,6 +60,6 @@ var arrayClassVariable = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(arrayClassVariable);
+utils.preprocessBloq(arrayClassVariable);
 
 module.exports = arrayClassVariable;

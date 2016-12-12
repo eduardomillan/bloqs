@@ -32,6 +32,6 @@ var bloqPrivate = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqPrivate);
+utils.preprocessBloq(bloqPrivate);
 
 module.exports = bloqPrivate;

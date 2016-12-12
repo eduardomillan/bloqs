@@ -89,7 +89,7 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(basicOperations);
+utils.preprocessBloq(basicOperations);
 
 
 module.exports = basicOperations;

@@ -42,6 +42,6 @@ var bloqElse = _.merge(_.clone(StatementInputBloq, true), {
 
 bloqElse.connectors[0].acceptedAliases = ['ifDown', 'elseifDown'];
 
-utils.generateBloqInputConnectors(bloqElse);
+utils.preprocessBloq(bloqElse);
 
 module.exports = bloqElse;

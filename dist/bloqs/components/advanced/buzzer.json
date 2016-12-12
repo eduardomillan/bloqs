@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "55af730e-a551-42a3-84cd-894ee24c9e34"
+      "name": "92d7bf0f-93e3-4a3a-b5f3-91cdb8ae8636"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "0520117a-148a-49c7-bf9f-106a0250372a"
+      "name": "cc005943-5704-4c2c-ba9e-c2e5c431a81d"
     },
     {
       "type": "connector--input",
@@ -44,7 +44,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "a95c2a79-2ceb-4bf2-bd30-577177b56400"
+      "name": "151ae010-84fd-464f-8a21-ed772150253b"
     }
   ],
   "bloqClass": "bloq-buzzer-advance",
@@ -64,7 +64,7 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "55af730e-a551-42a3-84cd-894ee24c9e34"
+        "name": "92d7bf0f-93e3-4a3a-b5f3-91cdb8ae8636"
       },
       {
         "alias": "text",
@@ -80,7 +80,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "0520117a-148a-49c7-bf9f-106a0250372a"
+        "name": "cc005943-5704-4c2c-ba9e-c2e5c431a81d"
       },
       {
         "alias": "text",
@@ -96,7 +96,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "a95c2a79-2ceb-4bf2-bd30-577177b56400"
+        "name": "151ae010-84fd-464f-8a21-ed772150253b"
       },
       {
         "alias": "text",
@@ -107,5 +107,12 @@
   "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});",
   "arduino": {
     "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"buzzerAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

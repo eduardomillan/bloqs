@@ -68,6 +68,6 @@ var botbloqManipulatorCanMoveAdvanced = _.merge(_.clone(OutputBloq, true), {
         }]
     }
 });
-utils.generateBloqInputConnectors(botbloqManipulatorCanMoveAdvanced);
+utils.preprocessBloq(botbloqManipulatorCanMoveAdvanced);
 
 module.exports = botbloqManipulatorCanMoveAdvanced;

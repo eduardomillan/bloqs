@@ -39,6 +39,6 @@ var whileAdvanced = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(whileAdvanced);
+utils.preprocessBloq(whileAdvanced);
 
 module.exports = whileAdvanced;

@@ -42,6 +42,6 @@ var boolean = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(boolean);
+utils.preprocessBloq(boolean);
 
 module.exports = boolean;

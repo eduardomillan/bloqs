@@ -45,6 +45,6 @@ var invokeFunction = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(invokeFunction);
+utils.preprocessBloq(invokeFunction);
 
 module.exports = invokeFunction;

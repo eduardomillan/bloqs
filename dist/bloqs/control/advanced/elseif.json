@@ -32,7 +32,7 @@
         "equalityOperations",
         "logicOperations"
       ],
-      "name": "28c29426-b391-44e8-928c-0943a3d53902"
+      "name": "d10e331c-578c-4755-aad6-1f85671b5065"
     }
   ],
   "bloqClass": "bloq-else-if",
@@ -52,7 +52,7 @@
           "equalityOperations",
           "logicOperations"
         ],
-        "name": "28c29426-b391-44e8-928c-0943a3d53902"
+        "name": "d10e331c-578c-4755-aad6-1f85671b5065"
       },
       {
         "alias": "text",
@@ -63,5 +63,12 @@
   "code": "else if ({VAR}){{STATEMENTS}}",
   "arduino": {
     "code": "else if ({VAR}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"elseifAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

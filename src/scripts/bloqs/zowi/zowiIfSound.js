@@ -41,6 +41,6 @@ var zowiIfSound = _.merge(_.clone(StatementInputBloq, true), {
 
 zowiIfSound.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
-utils.generateBloqInputConnectors(zowiIfSound);
+utils.preprocessBloq(zowiIfSound);
 
 module.exports = zowiIfSound;

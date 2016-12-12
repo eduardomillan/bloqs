@@ -37,6 +37,6 @@ var clockRTCInit = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(clockRTCInit);
+utils.preprocessBloq(clockRTCInit);
 
 module.exports = clockRTCInit;

@@ -20,7 +20,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "ac204d08-fbc9-465a-893b-90b2ac4ee83a"
+      "name": "2c62030e-91fa-4bc3-bb9a-e01e9a3ffdf1"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "b98eac78-cfa6-4395-b09f-33d3c8786563"
+      "name": "bf993f78-24b3-4364-98fc-a5e5ffbf2119"
     },
     {
       "type": "connector--input",
@@ -44,7 +44,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "c1f19e1c-72dd-4fdc-ba48-2f56b5deae0e"
+      "name": "8b42cde2-c3c3-4359-b9e2-a6ba0e9f06e6"
     },
     {
       "type": "connector--input",
@@ -56,7 +56,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "5ab80f95-2767-4699-8d0d-279f3e11a158"
+      "name": "dfe815b2-0866-4799-b59b-895fa824b3da"
     }
   ],
   "bloqClass": "bloq-lcd-writte",
@@ -76,7 +76,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "ac204d08-fbc9-465a-893b-90b2ac4ee83a"
+        "name": "2c62030e-91fa-4bc3-bb9a-e01e9a3ffdf1"
       },
       {
         "alias": "text",
@@ -92,7 +92,7 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "b98eac78-cfa6-4395-b09f-33d3c8786563"
+        "name": "bf993f78-24b3-4364-98fc-a5e5ffbf2119"
       },
       {
         "alias": "text",
@@ -108,7 +108,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "c1f19e1c-72dd-4fdc-ba48-2f56b5deae0e"
+        "name": "8b42cde2-c3c3-4359-b9e2-a6ba0e9f06e6"
       },
       {
         "bloqInputId": "ROW",
@@ -120,12 +120,19 @@
           "number",
           "selectVariable"
         ],
-        "name": "5ab80f95-2767-4699-8d0d-279f3e11a158"
+        "name": "dfe815b2-0866-4799-b59b-895fa824b3da"
       }
     ]
   ],
   "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});",
   "arduino": {
     "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdWritePositionAdvanced-v1\" no preparado para generar código python"
+      }
+    ]
   }
 }

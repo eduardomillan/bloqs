@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "740007e7-7236-424a-b9ae-63e86a027a80"
+      "name": "e4adf666-8d15-4f37-aae8-8ee82b31746e"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "fbcf4551-1209-49a7-8e1d-ac37711e07e5"
+      "name": "11a0ab0d-7324-4705-a4bc-62fdc3c19c2b"
     },
     {
       "type": "connector--input",
@@ -44,7 +44,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "f0654907-191c-478c-ae76-35f6e17ee0db"
+      "name": "bfa3ac10-51d6-4d58-b1ff-ef2b732cc69d"
     }
   ],
   "bloqClass": "bloq-rgbLed-advanced",
@@ -73,7 +73,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "740007e7-7236-424a-b9ae-63e86a027a80"
+        "name": "e4adf666-8d15-4f37-aae8-8ee82b31746e"
       },
       {
         "alias": "text",
@@ -89,7 +89,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "fbcf4551-1209-49a7-8e1d-ac37711e07e5"
+        "name": "11a0ab0d-7324-4705-a4bc-62fdc3c19c2b"
       },
       {
         "alias": "text",
@@ -105,12 +105,19 @@
           "number",
           "selectVariable"
         ],
-        "name": "f0654907-191c-478c-ae76-35f6e17ee0db"
+        "name": "bfa3ac10-51d6-4d58-b1ff-ef2b732cc69d"
       }
     ]
   ],
   "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});",
   "arduino": {
     "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"rgbLedAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 }

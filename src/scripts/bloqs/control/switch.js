@@ -38,6 +38,6 @@ var bloqSwitch = _.merge(_.clone(StatementInputBloq, true), {
 
 bloqSwitch.connectors[2].acceptedAliases = ['switchChildren'];
 
-utils.generateBloqInputConnectors(bloqSwitch);
+utils.preprocessBloq(bloqSwitch);
 
 module.exports = bloqSwitch;

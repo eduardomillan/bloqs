@@ -57,6 +57,6 @@ var botbloqManipulatorRotateJoints = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(botbloqManipulatorRotateJoints);
+utils.preprocessBloq(botbloqManipulatorRotateJoints);
 
 module.exports = botbloqManipulatorRotateJoints;

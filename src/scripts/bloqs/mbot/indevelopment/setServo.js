@@ -86,6 +86,6 @@ var mBotSetServo = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(mBotSetServo);
+utils.preprocessBloq(mBotSetServo);
 
 module.exports = mBotSetServo;

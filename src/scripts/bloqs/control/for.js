@@ -88,6 +88,6 @@ var forV1 = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(forV1);
+utils.preprocessBloq(forV1);
 
 module.exports = forV1;

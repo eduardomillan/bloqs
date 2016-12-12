@@ -1,5 +1,452 @@
 db.bitbloq_Bloqs.remove({});
 db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqHexapodLateralDisplacement",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-hexapod-lateraldisplacement",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Moverse lateralmente hacia la"
+      },
+      {
+        "id": "SIDE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "derecha",
+            "value": "RIGHT"
+          },
+          {
+            "label": "izquierda",
+            "value": "LEFT"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqHexapod"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "hexapod",
+        "type": "BotbloqHexapod"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "hexapod.lateralDisplacement(\"{SIDE}\")"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqHexapodMove",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-hexapod-move",
+  "content": [
+    [
+      {
+        "id": "MOVEMENT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Avanzar",
+            "value": "FORWARD"
+          },
+          {
+            "label": "Retroceder",
+            "value": "BACKWARD"
+          },
+          {
+            "label": "Girar a la derecha",
+            "value": "TURN_RIGHT"
+          },
+          {
+            "label": "Girar a la izquierda",
+            "value": "TURN_LEFT"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqHexapod"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "hexapod",
+        "type": "BotbloqHexapod"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "hexapod.move(\"{MOVEMENT}\")"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqHexapodStop",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-hexapod-stop",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Detener"
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqHexapod"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "hexapod",
+        "type": "BotbloqHexapod"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "hexapod.stop()"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqHumanBendDown",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-human-benddown",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Agacharse"
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqHuman"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "human",
+        "type": "BotbloqHuman"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "human.benddown()"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqHumanLateralDisplacement",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-human-lateraldisplacement",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Moverse lateralmente hacia la"
+      },
+      {
+        "id": "FOOT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "derecha",
+            "value": "RIGHT"
+          },
+          {
+            "label": "izquierda",
+            "value": "LEFT"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqHuman"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "human",
+        "type": "BotbloqHuman"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "human.lateralDisplacement(\"{FOOT}\")"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqHumanMove",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-human-move",
+  "content": [
+    [
+      {
+        "id": "MOVEMENT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Avanzar",
+            "value": "FORWARD"
+          },
+          {
+            "label": "Retroceder",
+            "value": "BACKWARD"
+          },
+          {
+            "label": "Girar a la derecha",
+            "value": "TURN_RIGHT"
+          },
+          {
+            "label": "Girar a la izquierda",
+            "value": "TURN_LEFT"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqHuman"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "human",
+        "type": "BotbloqHuman"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "human.move(\"{MOVEMENT}\")"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqHumanRotateByFoot",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-human-rotatefoot",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Rotar"
+      },
+      {
+        "id": "DEGREES",
+        "alias": "numberInput",
+        "value": 45
+      },
+      {
+        "alias": "text",
+        "value": "° sobre el pie"
+      },
+      {
+        "id": "FOOT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "derecho",
+            "value": "RIGHT"
+          },
+          {
+            "label": "izquierdo",
+            "value": "LEFT"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqHuman"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "human",
+        "type": "BotbloqHuman"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "human.rotateByFoot({DEGREES},\"{FOOT}\")"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqHumanStop",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-human-stop",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Detener"
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqHuman"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "human",
+        "type": "BotbloqHuman"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "human.stop()"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqHumanUpstairs",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-human-upstairs",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Subir escaleras."
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqHuman"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "human",
+        "type": "BotbloqHuman"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "human.upstairs()"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
   "type": "output",
   "name": "botbloqManipulatorCanMoveAdvanced",
   "connectors": [
@@ -17,7 +464,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "06a32925-6db7-4117-afec-ea131d87e82e"
+      "name": "347609ec-eda4-4bf4-8ae3-7c1494c4643d"
     },
     {
       "type": "connector--input",
@@ -29,7 +476,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "362caa72-558b-45bc-bc8b-71e1b501ce6f"
+      "name": "acf863a9-0930-45f4-ab15-edb4e43bdf58"
     },
     {
       "type": "connector--input",
@@ -41,7 +488,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "bad7a4d4-bbef-45f7-85b6-2c655ac4b255"
+      "name": "862f8fac-ddf4-4681-9816-bfdbf2c66e29"
     }
   ],
   "bloqClass": "bloq-botbloq-manipulator-canmove",
@@ -65,7 +512,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "06a32925-6db7-4117-afec-ea131d87e82e"
+        "name": "347609ec-eda4-4bf4-8ae3-7c1494c4643d"
       },
       {
         "alias": "text",
@@ -81,7 +528,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "362caa72-558b-45bc-bc8b-71e1b501ce6f"
+        "name": "acf863a9-0930-45f4-ab15-edb4e43bdf58"
       },
       {
         "alias": "text",
@@ -97,7 +544,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "bad7a4d4-bbef-45f7-85b6-2c655ac4b255"
+        "name": "862f8fac-ddf4-4681-9816-bfdbf2c66e29"
       },
       {
         "alias": "text",
@@ -149,7 +596,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "f5566e81-165a-4b53-ae51-e29075fcbbaf"
+      "name": "db23d113-432a-44a7-b1d7-9472a7a2e020"
     },
     {
       "type": "connector--input",
@@ -161,7 +608,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "f88e2609-3fd8-48f4-b3f1-7290158b7874"
+      "name": "2031d057-d63b-44db-afce-7e44b6ff03b0"
     },
     {
       "type": "connector--input",
@@ -173,7 +620,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "aaa96f54-0c0c-41d1-a394-d72b3a5f2e5c"
+      "name": "30758290-a5fa-4968-87a7-99876e1ae69b"
     }
   ],
   "bloqClass": "bloq-botbloq-manipulator-moveonspace",
@@ -197,7 +644,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "f5566e81-165a-4b53-ae51-e29075fcbbaf"
+        "name": "db23d113-432a-44a7-b1d7-9472a7a2e020"
       },
       {
         "alias": "text",
@@ -213,7 +660,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "f88e2609-3fd8-48f4-b3f1-7290158b7874"
+        "name": "2031d057-d63b-44db-afce-7e44b6ff03b0"
       },
       {
         "alias": "text",
@@ -229,7 +676,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "aaa96f54-0c0c-41d1-a394-d72b3a5f2e5c"
+        "name": "30758290-a5fa-4968-87a7-99876e1ae69b"
       }
     ]
   ],
@@ -511,6 +958,258 @@ db.bitbloq_Bloqs.insert({
   }
 });
 db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqSnakeLateralDisplacement",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-snake-lateraldisplacement",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Moverse lateralmente hacia la"
+      },
+      {
+        "id": "SIDE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "derecha",
+            "value": "RIGHT"
+          },
+          {
+            "label": "izquierda",
+            "value": "LEFT"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqSnake"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "snake",
+        "type": "BotbloqSnake"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "snake.lateralDisplacement(\"{SIDE}\")"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqSnakeMove",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-snake-move",
+  "content": [
+    [
+      {
+        "id": "MOVEMENT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "Avanzar.",
+            "value": "FORWARD"
+          },
+          {
+            "label": "Retroceder.",
+            "value": "BACKWARD"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqSnake"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "snake",
+        "type": "BotbloqSnake"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "snake.move(\"{MOVEMENT}\")"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqSnakeRoll",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-snake-roll",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Rodar hacia la"
+      },
+      {
+        "id": "SIDE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "derecha",
+            "value": "RIGHT"
+          },
+          {
+            "label": "izquierda",
+            "value": "LEFT"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqSnake"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "snake",
+        "type": "BotbloqSnake"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "snake.roll(\"{SIDE}\")"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqSnakeRotate",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-snake-rotate",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Rotar hacia la"
+      },
+      {
+        "id": "SIDE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "derecha",
+            "value": "RIGHT"
+          },
+          {
+            "label": "izquierda",
+            "value": "LEFT"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqSnake"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "snake",
+        "type": "BotbloqSnake"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "snake.rotate(\"{SIDE}\")"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
+  "type": "statement",
+  "name": "botbloqSnakeStop",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-botbloq-snake-stop",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Detener"
+      }
+    ]
+  ],
+  "code": "",
+  "python": {
+    "libraries": [
+      "BotbloqSnake"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "snake",
+        "type": "BotbloqSnake"
+      }
+    ],
+    "codeLines": [
+      {
+        "code": "snake.stop()"
+      }
+    ]
+  }
+});
+db.bitbloq_Bloqs.insert({
   "type": "output",
   "name": "botbloqVehicleIRSensor",
   "connectors": [
@@ -734,6 +1433,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{CLASS}.{VAR}[{POSITION}]"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"arrayClassVariable\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -806,6 +1512,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "class {NAME} : public {PARENT}{{STATEMENTS}};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"classChildren\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -837,7 +1550,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "a8d35468-b479-4460-a9d5-563e3a41b333"
+      "name": "a925ee96-8bf1-4dac-acc5-a8ed3767fbaf"
     }
   ],
   "bloqClass": "bloq-constructor-arguments",
@@ -860,13 +1573,20 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "a8d35468-b479-4460-a9d5-563e3a41b333"
+        "name": "a925ee96-8bf1-4dac-acc5-a8ed3767fbaf"
       }
     ]
   ],
   "code": "{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};",
   "arduino": {
     "code": "{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"constructorClassArguments\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -893,7 +1613,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "2f569005-d571-43db-b232-049b8650d4d5"
+      "name": "a9ce341e-bb82-42c4-b3c7-70667d8397a8"
     }
   ],
   "bloqClass": "bloq-invoke-arguments-class",
@@ -933,7 +1653,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "2f569005-d571-43db-b232-049b8650d4d5"
+        "name": "a9ce341e-bb82-42c4-b3c7-70667d8397a8"
       }
     ]
   ],
@@ -945,6 +1665,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{CLASS} {NAME}({ARGS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"invokeArgumentsClass\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -971,7 +1698,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "bb53816d-5c24-454a-bfbd-82b3cc4c8df0"
+      "name": "2f31fb98-9b6f-451a-891f-0474f9fa0043"
     }
   ],
   "bloqClass": "bloq-invoke-class-function-args",
@@ -1011,7 +1738,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "bb53816d-5c24-454a-bfbd-82b3cc4c8df0"
+        "name": "2f31fb98-9b6f-451a-891f-0474f9fa0043"
       }
     ]
   ],
@@ -1022,6 +1749,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{CLASS}.{FUNCTION}({ARGS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"invokeClassFunctionWithArguments\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1044,7 +1778,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "03530e14-bd0a-4798-824c-3fd8f7199d64"
+      "name": "02bda00d-af6e-43af-8602-fba26104cf74"
     }
   ],
   "bloqClass": "bloq-invoke-class-return-function",
@@ -1084,7 +1818,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "03530e14-bd0a-4798-824c-3fd8f7199d64"
+        "name": "02bda00d-af6e-43af-8602-fba26104cf74"
       }
     ]
   ],
@@ -1096,6 +1830,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{CLASS}.{FUNCTION}({ARGS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"invokeClassReturnFunctionWithArguments\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1127,6 +1868,13 @@ db.bitbloq_Bloqs.insert({
   "code": "private : {STATEMENTS}",
   "arduino": {
     "code": "private : {STATEMENTS}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"private\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1158,6 +1906,13 @@ db.bitbloq_Bloqs.insert({
   "code": "protected : {STATEMENTS}",
   "arduino": {
     "code": "protected : {STATEMENTS}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"protected\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1189,6 +1944,13 @@ db.bitbloq_Bloqs.insert({
   "code": "public : {STATEMENTS}",
   "arduino": {
     "code": "public : {STATEMENTS}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"public\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1218,7 +1980,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "stringSum"
       ],
-      "name": "d0b3c3e5-4891-41bb-a5f9-0c2ee946096d"
+      "name": "b44eb034-fe7f-4128-be4f-2e4f31c8c5fc"
     }
   ],
   "bloqClass": "bloq-set-class-variableArray",
@@ -1274,13 +2036,20 @@ db.bitbloq_Bloqs.insert({
           "string",
           "stringSum"
         ],
-        "name": "d0b3c3e5-4891-41bb-a5f9-0c2ee946096d"
+        "name": "b44eb034-fe7f-4128-be4f-2e4f31c8c5fc"
       }
     ]
   ],
   "code": "{CLASS}.{NAME}[{ITERATOR}] = {VALUE};",
   "arduino": {
     "code": "{CLASS}.{NAME}[{ITERATOR}] = {VALUE};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"setClassArrayVariable\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1322,6 +2091,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "class {NAME}{{STATEMENTS}};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"class\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1353,6 +2129,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{CLASS-OUTSIDE}(){{STATEMENTS}};",
   "arduino": {
     "code": "\n${CLASS-OUTSIDE}(){{STATEMENTS}};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"constructorClass\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1399,6 +2182,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{CLASS} {NAME};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"invokeClass\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1444,6 +2234,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{CLASS}.{FUNCTION}();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"invokeClassFunction\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1486,6 +2283,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{CLASS}.{FUNCTION}()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"invokeClassReturnFunction\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1528,6 +2332,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{CLASS}.{VAR}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"selectClassVariable\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1556,7 +2367,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "stringSum"
       ],
-      "name": "1025b54a-d550-4457-84aa-04619b636729"
+      "name": "447e1262-a3db-483a-9210-b04a7e76ec31"
     }
   ],
   "bloqClass": "bloq-set-class-variable",
@@ -1598,13 +2409,20 @@ db.bitbloq_Bloqs.insert({
           "string",
           "stringSum"
         ],
-        "name": "1025b54a-d550-4457-84aa-04619b636729"
+        "name": "447e1262-a3db-483a-9210-b04a7e76ec31"
       }
     ]
   ],
   "code": "{CLASS}.{NAME} = {VALUE};",
   "arduino": {
     "code": "{CLASS}.{NAME} = {VALUE};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"setClassVariable\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1739,6 +2557,13 @@ db.bitbloq_Bloqs.insert({
   "code": "enableInterrupt({PIN}, {FUNC}, {STATE});",
   "arduino": {
     "code": "enableInterrupt({PIN}, {FUNC}, {STATE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"enableInterrupt\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1760,7 +2585,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "e3e05ebf-d669-494a-a5d4-b98661c13d4f"
+      "name": "1dd9f9ec-49a9-4941-89a8-fc2803575a4b"
     }
   ],
   "bloqClass": "bloq-convert",
@@ -1781,7 +2606,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "e3e05ebf-d669-494a-a5d4-b98661c13d4f"
+        "name": "1dd9f9ec-49a9-4941-89a8-fc2803575a4b"
       },
       {
         "alias": "text",
@@ -1818,6 +2643,13 @@ db.bitbloq_Bloqs.insert({
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"convert\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1838,7 +2670,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "80d7dfc5-3378-4086-b42e-e47686bfda08"
+      "name": "d54314e6-e5c4-464c-bf46-1412588bbc95"
     }
   ],
   "bloqClass": "bloq-serial-send",
@@ -1859,7 +2691,7 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "80d7dfc5-3378-4086-b42e-e47686bfda08"
+        "name": "d54314e6-e5c4-464c-bf46-1412588bbc95"
       },
       {
         "id": "FUNCTION",
@@ -1883,6 +2715,13 @@ db.bitbloq_Bloqs.insert({
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{SERIAL}.{FUNCTION}({DATA});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"serialSend\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1918,6 +2757,13 @@ db.bitbloq_Bloqs.insert({
   "returnType": {
     "type": "simple",
     "value": "String"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"serialReceive\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1953,6 +2799,13 @@ db.bitbloq_Bloqs.insert({
   "returnType": {
     "type": "simple",
     "value": "int"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"serialReceiveInt\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -1978,7 +2831,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "7c0b577b-6e10-4a0c-9fcb-7b30aaeccd21"
+      "name": "334ba65d-50b4-437d-ac39-cb3e69504558"
     }
   ],
   "bloqClass": "bloq-serial-send",
@@ -2004,7 +2857,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "7c0b577b-6e10-4a0c-9fcb-7b30aaeccd21"
+        "name": "334ba65d-50b4-437d-ac39-cb3e69504558"
       },
       {
         "id": "LN",
@@ -2028,6 +2881,13 @@ db.bitbloq_Bloqs.insert({
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{SERIAL}.{LN}({DATA});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"serialSend-v1\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2055,6 +2915,13 @@ db.bitbloq_Bloqs.insert({
   "code": "/*sendViewerData*/",
   "arduino": {
     "code": "/*sendViewerData*/"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"viewer\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2109,6 +2976,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{PTSENS}.{FUNCTION}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"PTSensor\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2168,6 +3042,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});",
   "arduino": {
     "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"rgbLed\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2227,6 +3108,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{LED}.crossFade({RED},{GREEN},{BLUE});",
   "arduino": {
     "code": "{LED}.crossFade({RED},{GREEN},{BLUE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"rgbLedFade\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2259,6 +3147,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{LED}.setRGBcolor(0,0,0);",
   "arduino": {
     "code": "{LED}.setRGBcolor(0,0,0);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"rgbLedOff\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2337,6 +3232,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{LED}.setRGBcolor({COLOR});",
   "arduino": {
     "code": "{LED}.setRGBcolor({COLOR});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"rgbLedSimple\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2378,6 +3280,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{PTSENS}.setSealevelPressure({VALUE});",
   "arduino": {
     "code": "{PTSENS}.setSealevelPressure({VALUE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"PTSensorCalibration\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2402,7 +3311,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "740007e7-7236-424a-b9ae-63e86a027a80"
+      "name": "e4adf666-8d15-4f37-aae8-8ee82b31746e"
     },
     {
       "type": "connector--input",
@@ -2414,7 +3323,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "fbcf4551-1209-49a7-8e1d-ac37711e07e5"
+      "name": "11a0ab0d-7324-4705-a4bc-62fdc3c19c2b"
     },
     {
       "type": "connector--input",
@@ -2426,7 +3335,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "f0654907-191c-478c-ae76-35f6e17ee0db"
+      "name": "bfa3ac10-51d6-4d58-b1ff-ef2b732cc69d"
     }
   ],
   "bloqClass": "bloq-rgbLed-advanced",
@@ -2455,7 +3364,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "740007e7-7236-424a-b9ae-63e86a027a80"
+        "name": "e4adf666-8d15-4f37-aae8-8ee82b31746e"
       },
       {
         "alias": "text",
@@ -2471,7 +3380,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "fbcf4551-1209-49a7-8e1d-ac37711e07e5"
+        "name": "11a0ab0d-7324-4705-a4bc-62fdc3c19c2b"
       },
       {
         "alias": "text",
@@ -2487,13 +3396,20 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "f0654907-191c-478c-ae76-35f6e17ee0db"
+        "name": "bfa3ac10-51d6-4d58-b1ff-ef2b732cc69d"
       }
     ]
   ],
   "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});",
   "arduino": {
     "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"rgbLedAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2514,7 +3430,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "25870af7-ad81-4d36-9723-561cfae24892"
+      "name": "12e22ca7-4d8d-4e89-b4b2-cbb8197556c5"
     }
   ],
   "bloqClass": "bloq-analog-read-advanced",
@@ -2534,7 +3450,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "25870af7-ad81-4d36-9723-561cfae24892"
+        "name": "12e22ca7-4d8d-4e89-b4b2-cbb8197556c5"
       }
     ]
   ],
@@ -2545,6 +3461,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "analogRead(¬{PIN.formatPin})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"analogReadAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2569,7 +3492,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "39ac062e-10a4-4af0-adab-7482afe1af5d"
+      "name": "839bb3fd-205b-42a0-af3c-fb249e858a32"
     },
     {
       "type": "connector--input",
@@ -2582,7 +3505,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "2708cd72-5c0d-47ea-889e-6c2172a8ffa2"
+      "name": "07b9e548-97a3-4968-8d93-787baf10fb41"
     }
   ],
   "bloqClass": "bloq-pin-writte-advanced",
@@ -2602,7 +3525,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "39ac062e-10a4-4af0-adab-7482afe1af5d"
+        "name": "839bb3fd-205b-42a0-af3c-fb249e858a32"
       },
       {
         "alias": "text",
@@ -2619,13 +3542,20 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "2708cd72-5c0d-47ea-889e-6c2172a8ffa2"
+        "name": "07b9e548-97a3-4968-8d93-787baf10fb41"
       }
     ]
   ],
   "code": "'{PIN}'.indexOf('A') !== -1 ? 'analogWrite({PIN},{DATA});'.replace(/\"/g, '') : 'analogWrite({PIN},{DATA});'",
   "arduino": {
     "code": "analogWrite(¬{PIN.formatPin}, {DATA});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"analogWrite\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2650,7 +3580,7 @@ db.bitbloq_Bloqs.insert({
         "hwVariable",
         "selectVariable"
       ],
-      "name": "55af730e-a551-42a3-84cd-894ee24c9e34"
+      "name": "92d7bf0f-93e3-4a3a-b5f3-91cdb8ae8636"
     },
     {
       "type": "connector--input",
@@ -2662,7 +3592,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "0520117a-148a-49c7-bf9f-106a0250372a"
+      "name": "cc005943-5704-4c2c-ba9e-c2e5c431a81d"
     },
     {
       "type": "connector--input",
@@ -2674,7 +3604,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "a95c2a79-2ceb-4bf2-bd30-577177b56400"
+      "name": "151ae010-84fd-464f-8a21-ed772150253b"
     }
   ],
   "bloqClass": "bloq-buzzer-advance",
@@ -2694,7 +3624,7 @@ db.bitbloq_Bloqs.insert({
           "hwVariable",
           "selectVariable"
         ],
-        "name": "55af730e-a551-42a3-84cd-894ee24c9e34"
+        "name": "92d7bf0f-93e3-4a3a-b5f3-91cdb8ae8636"
       },
       {
         "alias": "text",
@@ -2710,7 +3640,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "0520117a-148a-49c7-bf9f-106a0250372a"
+        "name": "cc005943-5704-4c2c-ba9e-c2e5c431a81d"
       },
       {
         "alias": "text",
@@ -2726,7 +3656,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "a95c2a79-2ceb-4bf2-bd30-577177b56400"
+        "name": "151ae010-84fd-464f-8a21-ed772150253b"
       },
       {
         "alias": "text",
@@ -2737,6 +3667,13 @@ db.bitbloq_Bloqs.insert({
   "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});",
   "arduino": {
     "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"buzzerAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2761,7 +3698,7 @@ db.bitbloq_Bloqs.insert({
         "hwVariable",
         "selectVariable"
       ],
-      "name": "f36f45ea-a265-4f21-ba35-bdc35f3bf454"
+      "name": "c21ea026-c398-4b70-9134-80f8a8689446"
     },
     {
       "type": "connector--input",
@@ -2773,7 +3710,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "5103e034-906a-4473-8958-9aad1a85409b"
+      "name": "291a5030-8c05-479c-bfdc-eb4662ecb88f"
     }
   ],
   "bloqClass": "bloq-continuous-servo-start-advanced",
@@ -2793,7 +3730,7 @@ db.bitbloq_Bloqs.insert({
           "hwVariable",
           "selectVariable"
         ],
-        "name": "f36f45ea-a265-4f21-ba35-bdc35f3bf454"
+        "name": "c21ea026-c398-4b70-9134-80f8a8689446"
       },
       {
         "alias": "text",
@@ -2809,13 +3746,20 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "5103e034-906a-4473-8958-9aad1a85409b"
+        "name": "291a5030-8c05-479c-bfdc-eb4662ecb88f"
       }
     ]
   ],
   "code": "{SERVO}.write({DIRECTION});",
   "arduino": {
     "code": "{SERVO}.write({DIRECTION});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"continuousServoStartAdvanced-v1\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2840,7 +3784,7 @@ db.bitbloq_Bloqs.insert({
         "hwVariable",
         "selectVariable"
       ],
-      "name": "e5535128-1b52-4f42-b23a-2339c5afc735"
+      "name": "1dec1fd6-adb0-4ce0-aac8-7fafaf0e6e2e"
     }
   ],
   "bloqClass": "bloq-continuous-servo-stop-advanced",
@@ -2860,13 +3804,20 @@ db.bitbloq_Bloqs.insert({
           "hwVariable",
           "selectVariable"
         ],
-        "name": "e5535128-1b52-4f42-b23a-2339c5afc735"
+        "name": "1dec1fd6-adb0-4ce0-aac8-7fafaf0e6e2e"
       }
     ]
   ],
   "code": "{SERVO}.write(90);",
   "arduino": {
     "code": "{SERVO}.write(90);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"continuousServoStopAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2887,7 +3838,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "e27a641f-4e88-4fba-9fc9-cfa0e7e810e9"
+      "name": "342d34ad-f172-4821-85fd-d9a2697ecd32"
     }
   ],
   "bloqClass": "bloq-digital-read-advanced",
@@ -2907,7 +3858,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "e27a641f-4e88-4fba-9fc9-cfa0e7e810e9"
+        "name": "342d34ad-f172-4821-85fd-d9a2697ecd32"
       }
     ]
   ],
@@ -2918,6 +3869,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "digitalRead({PIN})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"digitalReadAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -2942,7 +3900,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "6f66213c-54ee-4684-89fb-82cb9f8d1b10"
+      "name": "6555c203-3606-4625-b98d-d09790d00dbd"
     },
     {
       "type": "connector--input",
@@ -2955,7 +3913,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "d311db70-247e-4cb6-a51f-60e6128eeb44"
+      "name": "34b6ba84-6fb8-410a-9371-cf22458d67da"
     }
   ],
   "bloqClass": "bloq-pin-writte-advanced",
@@ -2975,7 +3933,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "6f66213c-54ee-4684-89fb-82cb9f8d1b10"
+        "name": "6555c203-3606-4625-b98d-d09790d00dbd"
       },
       {
         "alias": "text",
@@ -2992,13 +3950,20 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "d311db70-247e-4cb6-a51f-60e6128eeb44"
+        "name": "34b6ba84-6fb8-410a-9371-cf22458d67da"
       }
     ]
   ],
   "code": "digitalWrite({PIN},{DATA});",
   "arduino": {
     "code": "digitalWrite({PIN},{DATA});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"digitalWrite\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3023,7 +3988,7 @@ db.bitbloq_Bloqs.insert({
         "hwVariable",
         "selectVariable"
       ],
-      "name": "2b84a2c5-559e-4164-9acb-da3cb3ce5d32"
+      "name": "24cdc654-2bd4-49b2-895e-054ef42eb3cb"
     }
   ],
   "bloqClass": "bloq-lcd-turn-on-off-advanced",
@@ -3057,13 +4022,20 @@ db.bitbloq_Bloqs.insert({
           "hwVariable",
           "selectVariable"
         ],
-        "name": "2b84a2c5-559e-4164-9acb-da3cb3ce5d32"
+        "name": "24cdc654-2bd4-49b2-895e-054ef42eb3cb"
       }
     ]
   ],
   "code": "{LCD}.setBacklight({STATE});",
   "arduino": {
     "code": "{LCD}.setBacklight({STATE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdTurnOnOffAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3088,7 +4060,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "e2d374e9-bb22-42dc-b2da-a065740c320d"
+      "name": "e8843061-6d19-46d0-9e51-ce7a48808b11"
     },
     {
       "type": "connector--input",
@@ -3100,7 +4072,7 @@ db.bitbloq_Bloqs.insert({
         "hwVariable",
         "selectVariable"
       ],
-      "name": "0d920a17-3d24-42d4-8fe2-01cf30faf8e6"
+      "name": "60421483-13a2-4f4d-a9b2-b2a19ae99a95"
     }
   ],
   "bloqClass": "bloq-lcd-writte-advanced",
@@ -3120,7 +4092,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "e2d374e9-bb22-42dc-b2da-a065740c320d"
+        "name": "e8843061-6d19-46d0-9e51-ce7a48808b11"
       },
       {
         "alias": "text",
@@ -3136,13 +4108,20 @@ db.bitbloq_Bloqs.insert({
           "hwVariable",
           "selectVariable"
         ],
-        "name": "0d920a17-3d24-42d4-8fe2-01cf30faf8e6"
+        "name": "60421483-13a2-4f4d-a9b2-b2a19ae99a95"
       }
     ]
   ],
   "code": "{LCD}.print({TEXT});",
   "arduino": {
     "code": "{LCD}.print({TEXT});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdWriteAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3167,7 +4146,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "ac204d08-fbc9-465a-893b-90b2ac4ee83a"
+      "name": "2c62030e-91fa-4bc3-bb9a-e01e9a3ffdf1"
     },
     {
       "type": "connector--input",
@@ -3179,7 +4158,7 @@ db.bitbloq_Bloqs.insert({
         "hwVariable",
         "selectVariable"
       ],
-      "name": "b98eac78-cfa6-4395-b09f-33d3c8786563"
+      "name": "bf993f78-24b3-4364-98fc-a5e5ffbf2119"
     },
     {
       "type": "connector--input",
@@ -3191,7 +4170,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "c1f19e1c-72dd-4fdc-ba48-2f56b5deae0e"
+      "name": "8b42cde2-c3c3-4359-b9e2-a6ba0e9f06e6"
     },
     {
       "type": "connector--input",
@@ -3203,7 +4182,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "5ab80f95-2767-4699-8d0d-279f3e11a158"
+      "name": "dfe815b2-0866-4799-b59b-895fa824b3da"
     }
   ],
   "bloqClass": "bloq-lcd-writte",
@@ -3223,7 +4202,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "ac204d08-fbc9-465a-893b-90b2ac4ee83a"
+        "name": "2c62030e-91fa-4bc3-bb9a-e01e9a3ffdf1"
       },
       {
         "alias": "text",
@@ -3239,7 +4218,7 @@ db.bitbloq_Bloqs.insert({
           "hwVariable",
           "selectVariable"
         ],
-        "name": "b98eac78-cfa6-4395-b09f-33d3c8786563"
+        "name": "bf993f78-24b3-4364-98fc-a5e5ffbf2119"
       },
       {
         "alias": "text",
@@ -3255,7 +4234,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "c1f19e1c-72dd-4fdc-ba48-2f56b5deae0e"
+        "name": "8b42cde2-c3c3-4359-b9e2-a6ba0e9f06e6"
       },
       {
         "bloqInputId": "ROW",
@@ -3267,13 +4246,20 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "5ab80f95-2767-4699-8d0d-279f3e11a158"
+        "name": "dfe815b2-0866-4799-b59b-895fa824b3da"
       }
     ]
   ],
   "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});",
   "arduino": {
     "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdWritePositionAdvanced-v1\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3298,7 +4284,7 @@ db.bitbloq_Bloqs.insert({
         "hwVariable",
         "selectVariable"
       ],
-      "name": "cf532e7f-eba6-48e1-ab1c-fc860338df54"
+      "name": "975e921b-0424-4b22-91c0-697810fcc888"
     }
   ],
   "bloqClass": "bloq-led-advanced",
@@ -3332,13 +4318,20 @@ db.bitbloq_Bloqs.insert({
           "hwVariable",
           "selectVariable"
         ],
-        "name": "cf532e7f-eba6-48e1-ab1c-fc860338df54"
+        "name": "975e921b-0424-4b22-91c0-697810fcc888"
       }
     ]
   ],
   "code": "digitalWrite({LED},{STATE});",
   "arduino": {
     "code": "digitalWrite({LED},{STATE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"ledAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3363,7 +4356,7 @@ db.bitbloq_Bloqs.insert({
         "hwVariable",
         "selectVariable"
       ],
-      "name": "6e9aa637-88b0-4c27-bd51-f692487efd32"
+      "name": "3a46bb71-1150-42d6-8a7f-c2c990476d72"
     },
     {
       "type": "connector--input",
@@ -3375,7 +4368,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "0a42898e-2036-4df2-a51a-184efb087f20"
+      "name": "a499d758-acaa-4004-9395-9291b407ba90"
     },
     {
       "type": "connector--input",
@@ -3387,7 +4380,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "d91e8db9-3d88-4d64-a275-2bcf9bc6e90f"
+      "name": "6fd21c58-c46c-4b7b-a388-8704412fd923"
     },
     {
       "type": "connector--input",
@@ -3399,7 +4392,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "c58ff22b-8e56-4ff3-ae2d-93599de8e373"
+      "name": "cf6643e3-b2a1-46ac-a823-6dd2a4da741b"
     }
   ],
   "bloqClass": "bloq-oscillator-advanced",
@@ -3419,7 +4412,7 @@ db.bitbloq_Bloqs.insert({
           "hwVariable",
           "selectVariable"
         ],
-        "name": "6e9aa637-88b0-4c27-bd51-f692487efd32"
+        "name": "3a46bb71-1150-42d6-8a7f-c2c990476d72"
       },
       {
         "alias": "text",
@@ -3435,7 +4428,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "0a42898e-2036-4df2-a51a-184efb087f20"
+        "name": "a499d758-acaa-4004-9395-9291b407ba90"
       },
       {
         "alias": "text",
@@ -3451,7 +4444,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "d91e8db9-3d88-4d64-a275-2bcf9bc6e90f"
+        "name": "6fd21c58-c46c-4b7b-a388-8704412fd923"
       },
       {
         "alias": "text",
@@ -3467,13 +4460,20 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "c58ff22b-8e56-4ff3-ae2d-93599de8e373"
+        "name": "cf6643e3-b2a1-46ac-a823-6dd2a4da741b"
       }
     ]
   ],
   "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();",
   "arduino": {
     "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillatorAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3498,7 +4498,7 @@ db.bitbloq_Bloqs.insert({
         "hwVariable",
         "selectVariable"
       ],
-      "name": "9a410646-042e-4371-9947-426369ec52d1"
+      "name": "7e49f0a3-c389-4886-b5bf-ea023d4d9bc1"
     }
   ],
   "bloqClass": "bloq-oscillator-start-advanced",
@@ -3518,13 +4518,20 @@ db.bitbloq_Bloqs.insert({
           "hwVariable",
           "selectVariable"
         ],
-        "name": "9a410646-042e-4371-9947-426369ec52d1"
+        "name": "7e49f0a3-c389-4886-b5bf-ea023d4d9bc1"
       }
     ]
   ],
   "code": "{OSCILLATOR}.start()",
   "arduino": {
     "code": "{OSCILLATOR}.start()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillatorStartAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3549,7 +4556,7 @@ db.bitbloq_Bloqs.insert({
         "hwVariable",
         "selectVariable"
       ],
-      "name": "5e569e1e-9c3f-4eab-8eaa-ef1befe16d5f"
+      "name": "e5c6899e-b139-4f24-917c-e25b6546093f"
     }
   ],
   "bloqClass": "bloq-oscillator-stop-advanced",
@@ -3569,13 +4576,20 @@ db.bitbloq_Bloqs.insert({
           "hwVariable",
           "selectVariable"
         ],
-        "name": "5e569e1e-9c3f-4eab-8eaa-ef1befe16d5f"
+        "name": "e5c6899e-b139-4f24-917c-e25b6546093f"
       }
     ]
   ],
   "code": "{OSCILLATOR}.stop()",
   "arduino": {
     "code": "{OSCILLATOR}.stop()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillatorStopAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3613,6 +4627,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{STATE}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"pinLevels\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3637,7 +4658,7 @@ db.bitbloq_Bloqs.insert({
         "hwVariable",
         "selectVariable"
       ],
-      "name": "c4da5299-09bb-49fc-a03c-06d7848b17d2"
+      "name": "18fd0e2e-79b8-4c34-83bb-8306c3a8ef1f"
     },
     {
       "type": "connector--input",
@@ -3649,7 +4670,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "2df076a0-04b5-408d-a8e4-e7484e1ef024"
+      "name": "b113857d-5ce5-45ea-b3be-4b103d3d1294"
     }
   ],
   "bloqClass": "bloq-servo-advanced",
@@ -3669,7 +4690,7 @@ db.bitbloq_Bloqs.insert({
           "hwVariable",
           "selectVariable"
         ],
-        "name": "c4da5299-09bb-49fc-a03c-06d7848b17d2"
+        "name": "18fd0e2e-79b8-4c34-83bb-8306c3a8ef1f"
       },
       {
         "alias": "text",
@@ -3685,7 +4706,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "2df076a0-04b5-408d-a8e4-e7484e1ef024"
+        "name": "b113857d-5ce5-45ea-b3be-4b103d3d1294"
       },
       {
         "alias": "text",
@@ -3696,6 +4717,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{SERVO}.write({POSITION});",
   "arduino": {
     "code": "{SERVO}.write({POSITION});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"servoNormalAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3728,6 +4756,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{SERVO}.attach({SERVO.pin});",
   "arduino": {
     "code": "{SERVO}.attach(º[{SERVO}.pin.s]);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"servoAttach\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3760,6 +4795,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{SERVO}.detach();",
   "arduino": {
     "code": "{SERVO}.detach();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"servoDetach\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3870,6 +4912,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"buzzer\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3930,6 +4979,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "{SERVO}.attach(º[{SERVO}.pin.s]);",
     "code": "{SERVO}.write({DIRECTION});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"continuousServoStart\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -3972,6 +5028,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "{SERVO}.attach(º[{SERVO}.pin.s]);",
     "code": "{SERVO}.write(90);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"continuousServoStop\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4034,6 +5097,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "{SERVO}.attach(º[{SERVO}.pin.s]);",
     "code": "{SERVO}.write({DIRECTION});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"continuousServoStartAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4054,7 +5124,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "eb00698d-2c0f-46ac-9b8b-7c4fbf4078a8"
+      "name": "1a63f4ca-955f-4a43-bf9b-c1f92e08575f"
     },
     {
       "type": "connector--input",
@@ -4062,7 +5132,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "310b3288-cafe-48ed-8269-b75e447a0055"
+      "name": "109c5eed-e74b-4fdf-b8c4-f9a6e0876b61"
     }
   ],
   "bloqClass": "bloq-lcd-writte deprecated",
@@ -4078,7 +5148,7 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "eb00698d-2c0f-46ac-9b8b-7c4fbf4078a8"
+        "name": "1a63f4ca-955f-4a43-bf9b-c1f92e08575f"
       },
       {
         "alias": "text",
@@ -4090,7 +5160,7 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "310b3288-cafe-48ed-8269-b75e447a0055"
+        "name": "109c5eed-e74b-4fdf-b8c4-f9a6e0876b61"
       },
       {
         "alias": "text",
@@ -4111,6 +5181,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});",
   "arduino": {
     "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdWritePositionAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4127,7 +5204,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "a37d45e0-aa13-493b-a58f-3a6ef9a2616c"
+      "name": "c5e7e5ba-73d4-4a55-94d3-ac1e31169011"
     }
   ],
   "bloqClass": "bloq-pin-read-advanced",
@@ -4143,7 +5220,7 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "a37d45e0-aa13-493b-a58f-3a6ef9a2616c"
+        "name": "c5e7e5ba-73d4-4a55-94d3-ac1e31169011"
       }
     ]
   ],
@@ -4154,6 +5231,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "¬{PIN.readPin}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"pinReadAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4174,7 +5258,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "a05e8821-3299-4645-840c-c1e4573dcd17"
+      "name": "4694c8ec-cf4e-4afc-a36f-d50f8697f969"
     },
     {
       "type": "connector--input",
@@ -4182,7 +5266,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "c5719ff2-ec1d-44cd-85b1-f5b709818370"
+      "name": "5f235dcd-0fe9-4d81-8581-94c313017a41"
     }
   ],
   "bloqClass": "bloq-pin-writte-advanced",
@@ -4198,7 +5282,7 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "a05e8821-3299-4645-840c-c1e4573dcd17"
+        "name": "4694c8ec-cf4e-4afc-a36f-d50f8697f969"
       },
       {
         "alias": "text",
@@ -4210,13 +5294,20 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "c5719ff2-ec1d-44cd-85b1-f5b709818370"
+        "name": "5f235dcd-0fe9-4d81-8581-94c313017a41"
       }
     ]
   ],
   "code": "'{PIN}'.indexOf('A') === 0 ? 'analogWrite({PIN},{DATA});' : 'digitalWrite({PIN},{DATA});'",
   "arduino": {
     "code": "digitalWrite({PIN},{DATA});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"pinWriteAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4233,7 +5324,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "d652f655-0dab-4441-9354-524f39fb9b94"
+      "name": "6a5697fe-4376-4f76-b9f2-f2419e1209ee"
     }
   ],
   "bloqClass": "bloq-read-advanced",
@@ -4249,7 +5340,7 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "d652f655-0dab-4441-9354-524f39fb9b94"
+        "name": "6a5697fe-4376-4f76-b9f2-f2419e1209ee"
       }
     ]
   ],
@@ -4261,6 +5352,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "¬{PIN.readSensor}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"readSensorAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4311,6 +5409,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{RTC}.{RTC_FUNC}()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"clockRTC\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4355,6 +5460,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "Wire.begin();\n{SENSOR}.begin();",
     "code": "{SENSOR}.getHumidity()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"hts221Humidity\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4399,6 +5511,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "Wire.begin();\n{SENSOR}.begin();",
     "code": "{SENSOR}.getTemperature()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"hts221Temperature\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4445,6 +5564,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "{LCD}.begin(16, 2);{LCD}.clear();",
     "code": "{LCD}.clear();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdClear\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4505,6 +5631,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "{LCD}.begin(16, 2);{LCD}.clear();",
     "code": "{LCD}.setBacklight({STATE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdTurnOnOff\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4560,6 +5693,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "{LCD}.begin(16, 2);{LCD}.clear();",
     "code": "{LCD}.print(\"{TEXT}\");"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdWrite\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4629,6 +5769,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "{LCD}.begin(16, 2);{LCD}.clear();",
     "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print(\"{TEXT}\");"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdWritePosition\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4683,6 +5830,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "pinMode({LED}, OUTPUT);",
     "code": "digitalWrite({LED},{STATE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"led\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4754,6 +5908,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "{OSCILLATOR}.attach(º[{OSCILLATOR}.pin.s]);",
     "code": "{OSCILLATOR}.SetO({PHASE});{OSCILLATOR}.SetA({AMPLITUDE});{OSCILLATOR}.SetT({SPEED});{OSCILLATOR}.refresh();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillator\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4798,6 +5959,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "{OSCILLATOR}.attach(º[{OSCILLATOR}.pin.s]);",
     "code": "{OSCILLATOR}.Play();{OSCILLATOR}.refresh();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillatorStart\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4842,6 +6010,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "{OSCILLATOR}.attach(º[{OSCILLATOR}.pin.s]);",
     "code": "{OSCILLATOR}.Stop();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillatorStop\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -4922,6 +6097,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "{OSCILLATOR}.attach(º[{OSCILLATOR}.pin.s]);",
     "code": "oscillate({OSCILLATOR}, {AMPLITUDE}, {PHASE}, {SPEED}, {TIMES});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"oscillatorTimes\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5014,6 +6196,13 @@ db.bitbloq_Bloqs.insert({
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{PHONE}.println(String(\"playSound-\")+String({SOUND}));"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneEmitSound\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5049,6 +6238,13 @@ db.bitbloq_Bloqs.insert({
   "returnType": {
     "type": "simple",
     "value": "String"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneReceive\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5074,7 +6270,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "3c436331-242b-48ab-b22b-3b1e3e10d8cb"
+      "name": "1ff7940d-6ae7-4fbb-bf3a-0034a7ed0d5b"
     }
   ],
   "bloqClass": "bloq-phone-write",
@@ -5100,7 +6296,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "3c436331-242b-48ab-b22b-3b1e3e10d8cb"
+        "name": "1ff7940d-6ae7-4fbb-bf3a-0034a7ed0d5b"
       }
     ]
   ],
@@ -5110,6 +6306,13 @@ db.bitbloq_Bloqs.insert({
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{PHONE}.println(String(\"write-\")+String({DATA}));"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneSendText\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5134,7 +6337,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "65a0956e-a13b-42d6-987f-4bf8f49b46b6"
+      "name": "8e2005f3-ce82-4396-a0ec-964562a02ba3"
     }
   ],
   "bloqClass": "bloq-phone-toggle",
@@ -5159,7 +6362,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "65a0956e-a13b-42d6-987f-4bf8f49b46b6"
+        "name": "8e2005f3-ce82-4396-a0ec-964562a02ba3"
       },
       {
         "alias": "text",
@@ -5173,6 +6376,13 @@ db.bitbloq_Bloqs.insert({
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{PHONE}.println(String(\"toggleFlashlight-\")+String({DATA}));"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneToggleLight\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5208,6 +6418,13 @@ db.bitbloq_Bloqs.insert({
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{PHONE}.println(String(\"turnoffFlashlight-\")); delay(500);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneTurnOffLight\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5232,7 +6449,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "39746f94-3f2e-4b24-a0d0-1894811cb484"
+      "name": "f9d9d6df-88c5-4c4f-a194-97a7d679c7cb"
     }
   ],
   "bloqClass": "bloq-phone-turnon-light",
@@ -5257,7 +6474,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "39746f94-3f2e-4b24-a0d0-1894811cb484"
+        "name": "f9d9d6df-88c5-4c4f-a194-97a7d679c7cb"
       },
       {
         "alias": "text",
@@ -5271,6 +6488,13 @@ db.bitbloq_Bloqs.insert({
       "BitbloqSoftwareSerial.h"
     ],
     "code": "{PHONE}.println(String(\"turnonFlashlight-\")+String({DATA}));  delay(500);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneTurnOnLight\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5304,6 +6528,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "¬{SENSOR.readSensor}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"readSensor\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5387,6 +6618,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{RTC}.{FUNCTION}()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"clockRTCAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5419,6 +6657,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{RTC}.adjust(DateTime(__DATE__, __TIME__));",
   "arduino": {
     "code": "{RTC}.adjust(DateTime(__DATE__, __TIME__));"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"clockRTCInit\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5464,6 +6709,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{SERVO}.write({POSITION});",
   "arduino": {
     "code": "{SERVO}.write({POSITION});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"servoNormal\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5499,7 +6751,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "string"
       ],
-      "name": "60710ebc-7584-4e09-a15d-83b9c89fc1bd"
+      "name": "b3c2c53c-df36-40c8-88aa-f7c061a36271"
     }
   ],
   "bloqClass": "bloq-case",
@@ -5519,7 +6771,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "string"
         ],
-        "name": "60710ebc-7584-4e09-a15d-83b9c89fc1bd"
+        "name": "b3c2c53c-df36-40c8-88aa-f7c061a36271"
       },
       {
         "alias": "text",
@@ -5530,6 +6782,13 @@ db.bitbloq_Bloqs.insert({
   "code": "case {VALUE}:{STATEMENTS}break;",
   "arduino": {
     "code": "case {VALUE}:{STATEMENTS}break;"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"caseAdvanced-v1\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5566,7 +6825,7 @@ db.bitbloq_Bloqs.insert({
         "equalityOperations",
         "logicOperations"
       ],
-      "name": "28c29426-b391-44e8-928c-0943a3d53902"
+      "name": "d10e331c-578c-4755-aad6-1f85671b5065"
     }
   ],
   "bloqClass": "bloq-else-if",
@@ -5586,7 +6845,7 @@ db.bitbloq_Bloqs.insert({
           "equalityOperations",
           "logicOperations"
         ],
-        "name": "28c29426-b391-44e8-928c-0943a3d53902"
+        "name": "d10e331c-578c-4755-aad6-1f85671b5065"
       },
       {
         "alias": "text",
@@ -5597,6 +6856,13 @@ db.bitbloq_Bloqs.insert({
   "code": "else if ({VAR}){{STATEMENTS}}",
   "arduino": {
     "code": "else if ({VAR}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"elseifAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5624,7 +6890,7 @@ db.bitbloq_Bloqs.insert({
       "suggestedBloqs": [
         "selectVariable"
       ],
-      "name": "deb07cac-aef7-42b4-88fd-22818d37723b"
+      "name": "58924dbf-a435-4b2f-a21d-9a006078c2e8"
     },
     {
       "type": "connector--input",
@@ -5636,7 +6902,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "aa84814c-04ff-4e7c-83a7-49851496956e"
+      "name": "d326ff7b-aa84-468c-b644-2f264e99a3b6"
     },
     {
       "type": "connector--input",
@@ -5648,7 +6914,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "5a465220-fa58-4abc-84a3-2377d4673298"
+      "name": "261e1eaf-59b8-45ec-9ff7-ecd40cec673c"
     }
   ],
   "bloqClass": "bloq-for",
@@ -5667,7 +6933,7 @@ db.bitbloq_Bloqs.insert({
         "suggestedBloqs": [
           "selectVariable"
         ],
-        "name": "deb07cac-aef7-42b4-88fd-22818d37723b"
+        "name": "58924dbf-a435-4b2f-a21d-9a006078c2e8"
       },
       {
         "alias": "text",
@@ -5683,7 +6949,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "aa84814c-04ff-4e7c-83a7-49851496956e"
+        "name": "d326ff7b-aa84-468c-b644-2f264e99a3b6"
       },
       {
         "alias": "text",
@@ -5699,7 +6965,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "5a465220-fa58-4abc-84a3-2377d4673298"
+        "name": "261e1eaf-59b8-45ec-9ff7-ecd40cec673c"
       },
       {
         "id": "MODE",
@@ -5735,6 +7001,13 @@ db.bitbloq_Bloqs.insert({
         "-": "for({VAR}={INIT};{VAR} >= {FINAL};{VAR} -= {ADD}){{STATEMENTS}}"
       }
     }
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"forAdvanced-v1\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5767,7 +7040,7 @@ db.bitbloq_Bloqs.insert({
         "equalityOperations",
         "logicOperations"
       ],
-      "name": "0928546d-d515-4731-a6ec-9ff50ef5e036"
+      "name": "7d36f73b-3841-4818-8599-57b1bd056f7d"
     }
   ],
   "bloqClass": "bloq-if",
@@ -5787,7 +7060,7 @@ db.bitbloq_Bloqs.insert({
           "equalityOperations",
           "logicOperations"
         ],
-        "name": "0928546d-d515-4731-a6ec-9ff50ef5e036"
+        "name": "7d36f73b-3841-4818-8599-57b1bd056f7d"
       },
       {
         "alias": "text",
@@ -5798,6 +7071,13 @@ db.bitbloq_Bloqs.insert({
   "code": "if({CONDITION}){{STATEMENTS}}",
   "arduino": {
     "code": "if({CONDITION}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"ifAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5826,7 +7106,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "number"
       ],
-      "name": "0d0fc218-5914-45aa-87f3-d7ec8ba3c97d"
+      "name": "fb718b9d-13d5-47cc-96ad-3e7f0c492f4f"
     }
   ],
   "bloqClass": "bloq-magicfor",
@@ -5846,7 +7126,7 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "number"
         ],
-        "name": "0d0fc218-5914-45aa-87f3-d7ec8ba3c97d"
+        "name": "fb718b9d-13d5-47cc-96ad-3e7f0c492f4f"
       },
       {
         "alias": "text",
@@ -5857,6 +7137,13 @@ db.bitbloq_Bloqs.insert({
   "code": "",
   "arduino": {
     "code": "for(int bitbloqForCounter=0;bitbloqForCounter < {TIMES};bitbloqForCounter += 1){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"magicForAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5888,7 +7175,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "readSensor"
       ],
-      "name": "8b643c49-9ad8-4f68-bf3f-4e182d0eb42e"
+      "name": "09bc3048-315a-4171-aa80-0feef096c4d0"
     }
   ],
   "bloqClass": "bloq-switch",
@@ -5908,13 +7195,20 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "readSensor"
         ],
-        "name": "8b643c49-9ad8-4f68-bf3f-4e182d0eb42e"
+        "name": "09bc3048-315a-4171-aa80-0feef096c4d0"
       }
     ]
   ],
   "code": "switch ({VAR}) {{STATEMENTS}}",
   "arduino": {
     "code": "switch ({VAR}) {{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"switchAdvanced-v2\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5939,7 +7233,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "b7b22b20-e9c4-494b-9cb1-285732e62a69"
+      "name": "a6befcaa-63f3-4d5e-ac5b-c10524a698bf"
     }
   ],
   "bloqClass": "bloq-wait",
@@ -5959,13 +7253,20 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "b7b22b20-e9c4-494b-9cb1-285732e62a69"
+        "name": "a6befcaa-63f3-4d5e-ac5b-c10524a698bf"
       }
     ]
   ],
   "code": "delay({TIME});",
   "arduino": {
     "code": "delay({TIME});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"waitAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -5994,7 +7295,7 @@ db.bitbloq_Bloqs.insert({
         "equalityOperations",
         "logicOperations"
       ],
-      "name": "7cee72a1-c3ac-4ceb-8bac-c1e5623949e4"
+      "name": "00595cc1-dbdb-4698-9e90-03808ff88170"
     }
   ],
   "bloqClass": "bloq-while",
@@ -6014,7 +7315,7 @@ db.bitbloq_Bloqs.insert({
           "equalityOperations",
           "logicOperations"
         ],
-        "name": "7cee72a1-c3ac-4ceb-8bac-c1e5623949e4"
+        "name": "00595cc1-dbdb-4698-9e90-03808ff88170"
       },
       {
         "alias": "text",
@@ -6025,6 +7326,13 @@ db.bitbloq_Bloqs.insert({
   "code": "while ({CONDITION}){{STATEMENTS}}",
   "arduino": {
     "code": "while ({CONDITION}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"whileAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6052,6 +7360,13 @@ db.bitbloq_Bloqs.insert({
   "code": "break;",
   "arduino": {
     "code": "break;"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"break\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6099,6 +7414,13 @@ db.bitbloq_Bloqs.insert({
   "code": "case {VAR}:{STATEMENTS}break;",
   "arduino": {
     "code": "case {VAR}:{STATEMENTS}break;"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"case\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6134,6 +7456,13 @@ db.bitbloq_Bloqs.insert({
   "code": "default:{STATEMENTS}break;",
   "arduino": {
     "code": "default:{STATEMENTS}break;"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"caseDefault\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6161,6 +7490,13 @@ db.bitbloq_Bloqs.insert({
   "code": "continue;",
   "arduino": {
     "code": "continue;"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"continue\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6239,6 +7575,13 @@ db.bitbloq_Bloqs.insert({
         "-": "for({VAR}={INIT};{VAR} >= {FINAL};{VAR} -= {ADD}){{STATEMENTS}}"
       }
     }
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"for\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6263,7 +7606,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "2417d46c-110d-4eba-9832-e5fcef59dab4"
+      "name": "e93f703e-a595-4251-bbd8-ea9891f4717c"
     },
     {
       "type": "connector--input",
@@ -6271,7 +7614,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "745bbc8f-49a8-451a-9d4f-ef201719ae90"
+      "name": "68740b56-c815-46be-b183-cd6c1724b4ad"
     },
     {
       "type": "connector--input",
@@ -6279,7 +7622,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "39611866-6d25-4325-9ff1-d45278bbd5ad"
+      "name": "68fdba96-e157-401b-ad04-993dc99c1b81"
     }
   ],
   "bloqClass": "bloq-for deprecated",
@@ -6295,7 +7638,7 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "2417d46c-110d-4eba-9832-e5fcef59dab4"
+        "name": "e93f703e-a595-4251-bbd8-ea9891f4717c"
       },
       {
         "alias": "text",
@@ -6307,7 +7650,7 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "745bbc8f-49a8-451a-9d4f-ef201719ae90"
+        "name": "68740b56-c815-46be-b183-cd6c1724b4ad"
       },
       {
         "alias": "text",
@@ -6319,7 +7662,7 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "39611866-6d25-4325-9ff1-d45278bbd5ad"
+        "name": "68fdba96-e157-401b-ad04-993dc99c1b81"
       },
       {
         "id": "MODE",
@@ -6350,6 +7693,13 @@ db.bitbloq_Bloqs.insert({
         "-": "for({VAR}={INIT};{VAR} >= {FINAL};{VAR} -= {ADD}){{STATEMENTS}}"
       }
     }
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"forAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6374,7 +7724,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "a42d2fcd-c812-4bda-b667-105fce1e0ac8"
+      "name": "10da563b-148e-4296-9c37-0516dccca935"
     }
   ],
   "bloqClass": "bloq-switch",
@@ -6390,13 +7740,20 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "a42d2fcd-c812-4bda-b667-105fce1e0ac8"
+        "name": "10da563b-148e-4296-9c37-0516dccca935"
       }
     ]
   ],
   "code": "switch (int({VAR})) {{STATEMENTS}}",
   "arduino": {
     "code": "switch (int({VAR})) {{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"switchAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6481,7 +7838,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "readSensor"
       ],
-      "name": "7f59fa50-9610-483c-9649-d4395849c3cf"
+      "name": "3e056aba-e4c8-4060-83ef-d8d149c562ef"
     },
     {
       "type": "connector--input",
@@ -6495,7 +7852,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "readSensor"
       ],
-      "name": "1a8084b5-ba42-4fb2-80b8-9243dcb9784f"
+      "name": "790574df-082c-45eb-b2bc-43bcdba5f1a0"
     }
   ],
   "bloqClass": "bloq-else-if",
@@ -6517,7 +7874,7 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "readSensor"
         ],
-        "name": "7f59fa50-9610-483c-9649-d4395849c3cf"
+        "name": "3e056aba-e4c8-4060-83ef-d8d149c562ef"
       },
       {
         "id": "OPERATOR",
@@ -6561,7 +7918,7 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "readSensor"
         ],
-        "name": "1a8084b5-ba42-4fb2-80b8-9243dcb9784f"
+        "name": "790574df-082c-45eb-b2bc-43bcdba5f1a0"
       },
       {
         "alias": "text",
@@ -6717,7 +8074,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "readSensor"
       ],
-      "name": "fb704fe7-613d-46d9-a675-535053ba400a"
+      "name": "39a4e619-90bb-4e1c-9e4d-299f1a5d4b52"
     },
     {
       "type": "connector--input",
@@ -6732,7 +8089,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "readSensor"
       ],
-      "name": "cbee83a4-66ce-4356-a671-48fabcfdaa50"
+      "name": "88d2c188-4981-466e-964e-a58fbc3f728c"
     }
   ],
   "bloqClass": "bloq-if",
@@ -6754,7 +8111,7 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "readSensor"
         ],
-        "name": "fb704fe7-613d-46d9-a675-535053ba400a"
+        "name": "39a4e619-90bb-4e1c-9e4d-299f1a5d4b52"
       },
       {
         "id": "OPERATOR",
@@ -6799,7 +8156,7 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "readSensor"
         ],
-        "name": "cbee83a4-66ce-4356-a671-48fabcfdaa50"
+        "name": "88d2c188-4981-466e-964e-a58fbc3f728c"
       },
       {
         "alias": "text",
@@ -6861,6 +8218,13 @@ db.bitbloq_Bloqs.insert({
   "code": "",
   "arduino": {
     "code": "for(int bitbloqForCounter=0;bitbloqForCounter < {TIMES};bitbloqForCounter += 1){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"magicFor\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6888,6 +8252,13 @@ db.bitbloq_Bloqs.insert({
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"millis\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6927,6 +8298,13 @@ db.bitbloq_Bloqs.insert({
   "code": "switch (int({VAR})) {{STATEMENTS}}",
   "arduino": {
     "code": "switch (int({VAR})) {{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"switch\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6963,6 +8341,13 @@ db.bitbloq_Bloqs.insert({
   "code": "delay({TIME});",
   "arduino": {
     "code": "delay({TIME});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"wait\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -6990,9 +8375,10 @@ db.bitbloq_Bloqs.insert({
       "suggestedBloqs": [
         "number",
         "string",
-        "selectVariable"
+        "selectVariable",
+        "readSensor"
       ],
-      "name": "091b2ddd-8c83-4c99-8c15-58afc1c606db"
+      "name": "30347f2f-74a7-4178-aae2-a8a234736d9c"
     },
     {
       "type": "connector--input",
@@ -7003,9 +8389,11 @@ db.bitbloq_Bloqs.insert({
       "suggestedBloqs": [
         "number",
         "string",
-        "selectVariable"
+        "boolean",
+        "selectVariable",
+        "readSensor"
       ],
-      "name": "495880e5-0a9d-4161-a45f-c9de8e44fd57"
+      "name": "f4305370-9c47-465f-9ae6-110870e1e1c0"
     }
   ],
   "bloqClass": "bloq-while",
@@ -7024,9 +8412,10 @@ db.bitbloq_Bloqs.insert({
         "suggestedBloqs": [
           "number",
           "string",
-          "selectVariable"
+          "selectVariable",
+          "readSensor"
         ],
-        "name": "091b2ddd-8c83-4c99-8c15-58afc1c606db"
+        "name": "30347f2f-74a7-4178-aae2-a8a234736d9c"
       },
       {
         "id": "OPERATOR",
@@ -7067,9 +8456,11 @@ db.bitbloq_Bloqs.insert({
         "suggestedBloqs": [
           "number",
           "string",
-          "selectVariable"
+          "boolean",
+          "selectVariable",
+          "readSensor"
         ],
-        "name": "495880e5-0a9d-4161-a45f-c9de8e44fd57"
+        "name": "f4305370-9c47-465f-9ae6-110870e1e1c0"
       },
       {
         "alias": "text",
@@ -7111,7 +8502,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "1305315f-c45c-4323-a08b-d60fa4d3d42e"
+      "name": "e7a6b062-a657-46f6-88fc-2436dffbe288"
     }
   ],
   "bloqClass": "bloq-num-conversion",
@@ -7131,7 +8522,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "1305315f-c45c-4323-a08b-d60fa4d3d42e"
+        "name": "e7a6b062-a657-46f6-88fc-2436dffbe288"
       },
       {
         "alias": "text",
@@ -7160,6 +8551,13 @@ db.bitbloq_Bloqs.insert({
   "returnType": {
     "type": "fromDropdown",
     "idDropdown": "TYPE"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"numConversion\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7176,7 +8574,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "String"
       ],
-      "name": "2b31e542-03f6-4bc5-bd05-ddf3eda86b6b"
+      "name": "38b7a676-8c67-4672-a512-524af778cbbf"
     }
   ],
   "bloqClass": "bloq-string-to-int",
@@ -7192,7 +8590,7 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "String"
         ],
-        "name": "2b31e542-03f6-4bc5-bd05-ddf3eda86b6b"
+        "name": "38b7a676-8c67-4672-a512-524af778cbbf"
       }
     ]
   ],
@@ -7203,6 +8601,13 @@ db.bitbloq_Bloqs.insert({
   "returnType": {
     "type": "simple",
     "value": "int"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"stringToInt\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7243,6 +8648,13 @@ db.bitbloq_Bloqs.insert({
   "returnType": {
     "type": "simple",
     "value": "float"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionDistance\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7267,7 +8679,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "74fdc70c-ae4a-4bdf-af71-70ae70bb871c"
+      "name": "7486200c-98d6-49e0-bf5b-5c52cfb622cd"
     }
   ],
   "bloqClass": "bloq-evolution-head",
@@ -7287,7 +8699,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "74fdc70c-ae4a-4bdf-af71-70ae70bb871c"
+        "name": "7486200c-98d6-49e0-bf5b-5c52cfb622cd"
       },
       {
         "alias": "text",
@@ -7331,6 +8743,13 @@ db.bitbloq_Bloqs.insert({
         "HEAD_RIGHT": "evolution.turnHead(-{DEGREES});"
       }
     }
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionHeadAdvance\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7389,6 +8808,13 @@ db.bitbloq_Bloqs.insert({
   "returnType": {
     "type": "simple",
     "value": "int"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionLight\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7447,6 +8873,13 @@ db.bitbloq_Bloqs.insert({
   "returnType": {
     "type": "simple",
     "value": "int"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionLine\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7534,6 +8967,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "evolution.init();",
     "code": "evolution._tone({NOTE},{SECONDS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionBuzzer\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7592,6 +9032,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "evolution.init();",
     "code": "evolution.turnHead({SIDE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionHead\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7632,6 +9079,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "evolution.init();",
     "code": "evolution.home();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionHome\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7707,6 +9161,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "evolution.init();",
     "code": "if(evolution.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionIfDistance\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7799,6 +9260,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "evolution.init();",
     "code": "if(evolution.getLightRange(LEFT,{RANGELEFT}) && evolution.getLightRange(RIGHT,{RANGERIGHT})){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionIfLight\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7883,6 +9351,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "evolution.init();",
     "code": "if(evolution.getLine(LEFT) == {LINELEFT} && evolution.getLine(RIGHT) == {LINERIGHT}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionIfLine\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -7945,6 +9420,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "evolution.init();",
     "code": "evolution.{MOVEMENT}();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"evolutionMovementsSimple\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8005,6 +9487,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{TYPE} {VARNAME}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"argument\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8028,7 +9517,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "ae530395-38b9-4614-9e62-956197577b09"
+      "name": "90d33d00-5c71-4606-892d-601226d35d50"
     },
     {
       "type": "connector--input",
@@ -8043,7 +9532,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "5333a834-31dc-482c-b766-c627403c89e6"
+      "name": "ec3e967f-5970-478a-8937-5cedbfb7e9f9"
     }
   ],
   "bloqClass": "bloq-arguments",
@@ -8062,7 +9551,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "ae530395-38b9-4614-9e62-956197577b09"
+        "name": "90d33d00-5c71-4606-892d-601226d35d50"
       },
       {
         "alias": "text",
@@ -8081,7 +9570,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "5333a834-31dc-482c-b766-c627403c89e6"
+        "name": "ec3e967f-5970-478a-8937-5cedbfb7e9f9"
       }
     ]
   ],
@@ -8093,6 +9582,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{ARG1},{ARG2}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"arguments\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8119,7 +9615,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "arguments"
       ],
-      "name": "55026f0e-dc9d-49cd-a12a-3e6ebc20efac"
+      "name": "ab971d98-876c-4a40-b6cb-a028736f5666"
     }
   ],
   "bloqClass": "bloq-invoke-function-with-arguments",
@@ -8150,7 +9646,7 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "arguments"
         ],
-        "name": "55026f0e-dc9d-49cd-a12a-3e6ebc20efac"
+        "name": "ab971d98-876c-4a40-b6cb-a028736f5666"
       }
     ]
   ],
@@ -8161,6 +9657,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{FUNCTION}({ARGS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"invokeFunctionWithArguments\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8183,7 +9686,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "arguments"
       ],
-      "name": "65b0156a-4c62-4910-97a9-d7229f6c65d9"
+      "name": "c192e2d7-d646-48d7-826c-11858d12fa21"
     }
   ],
   "bloqClass": "bloq-invoke-return-function-with-arguments",
@@ -8214,7 +9717,7 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "arguments"
         ],
-        "name": "65b0156a-4c62-4910-97a9-d7229f6c65d9"
+        "name": "c192e2d7-d646-48d7-826c-11858d12fa21"
       }
     ]
   ],
@@ -8226,6 +9729,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{FUNCTION}({ARGS})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"invokeReturnFunctionWithArguments\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8251,7 +9761,7 @@ db.bitbloq_Bloqs.insert({
         "logicOperations",
         "equalityOperations"
       ],
-      "name": "faa4ceef-e8ec-403e-bb71-86adbe88ed9f"
+      "name": "8b700aa7-34aa-47ca-87d7-56b259c5af38"
     }
   ],
   "bloqClass": "bloq-return",
@@ -8272,13 +9782,20 @@ db.bitbloq_Bloqs.insert({
           "logicOperations",
           "equalityOperations"
         ],
-        "name": "faa4ceef-e8ec-403e-bb71-86adbe88ed9f"
+        "name": "8b700aa7-34aa-47ca-87d7-56b259c5af38"
       }
     ]
   ],
   "code": "return {RETURN};",
   "arduino": {
     "code": "return {RETURN};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"return\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8310,7 +9827,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "108ef748-9c2e-4e39-b720-e92e4274ed61"
+      "name": "b0bdb697-4224-45dc-9a3f-738058f2f6c7"
     },
     {
       "type": "connector--input",
@@ -8323,7 +9840,7 @@ db.bitbloq_Bloqs.insert({
         "logicOperations",
         "equalityOperations"
       ],
-      "name": "73e12da6-ef60-4b24-b5bb-45ca25ef0bd5"
+      "name": "d1d849aa-7ad9-48a4-b6d3-18f0590831ba"
     }
   ],
   "bloqClass": "bloq-return-function-with-arguments",
@@ -8355,7 +9872,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "108ef748-9c2e-4e39-b720-e92e4274ed61"
+        "name": "b0bdb697-4224-45dc-9a3f-738058f2f6c7"
       },
       {
         "position": "DOWN",
@@ -8374,7 +9891,7 @@ db.bitbloq_Bloqs.insert({
           "logicOperations",
           "equalityOperations"
         ],
-        "name": "73e12da6-ef60-4b24-b5bb-45ca25ef0bd5"
+        "name": "d1d849aa-7ad9-48a4-b6d3-18f0590831ba"
       }
     ]
   ],
@@ -8390,6 +9907,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{RETURN.connectionType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}",
   "arduino": {
     "code": "@{RETURN.returnType} {FUNCNAME} ({ARGS}) {{STATEMENTS}return {RETURN};}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"returnFunctionWithArguments\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8421,7 +9945,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "b5ec976d-2993-4e6a-8244-12fd46d808ab"
+      "name": "4550f28f-1a6c-4e9b-a3f9-3ce939b03913"
     }
   ],
   "bloqClass": "bloq-void-function-with-arguments",
@@ -8453,7 +9977,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "b5ec976d-2993-4e6a-8244-12fd46d808ab"
+        "name": "4550f28f-1a6c-4e9b-a3f9-3ce939b03913"
       }
     ]
   ],
@@ -8469,6 +9993,13 @@ db.bitbloq_Bloqs.insert({
   "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}",
   "arduino": {
     "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"voidFunctionWithArguments\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8581,7 +10112,7 @@ db.bitbloq_Bloqs.insert({
         "logicOperations",
         "equalityOperations"
       ],
-      "name": "76ca8ff7-384a-4d2d-a57b-90e2bc1d5e7b"
+      "name": "791940f5-8051-40e9-a253-5a7a008b37f4"
     }
   ],
   "bloqClass": "bloq-return-function",
@@ -8613,7 +10144,7 @@ db.bitbloq_Bloqs.insert({
           "logicOperations",
           "equalityOperations"
         ],
-        "name": "76ca8ff7-384a-4d2d-a57b-90e2bc1d5e7b"
+        "name": "791940f5-8051-40e9-a253-5a7a008b37f4"
       }
     ]
   ],
@@ -8724,7 +10255,7 @@ db.bitbloq_Bloqs.insert({
       "acceptType": [
         "all"
       ],
-      "name": "e1ed1c7e-c5f9-4da5-a857-4f49e0b866f0"
+      "name": "300018d6-5cc4-44db-9889-2672ad3f0a72"
     }
   ],
   "bloqClass": "bloq-boolArray-advanced",
@@ -8740,7 +10271,7 @@ db.bitbloq_Bloqs.insert({
         "acceptType": [
           "all"
         ],
-        "name": "e1ed1c7e-c5f9-4da5-a857-4f49e0b866f0"
+        "name": "300018d6-5cc4-44db-9889-2672ad3f0a72"
       },
       {
         "alias": "text",
@@ -8755,6 +10286,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "(bool *)malloc({VALUE}*sizeof(bool))"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"boolArrayAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8791,6 +10329,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "(bool *)malloc({VALUE}*sizeof(bool))"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"boolArray\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8828,6 +10373,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{STATE}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"boolean\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8850,7 +10402,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "readSensor"
       ],
-      "name": "1d0de2e0-422a-4969-b4b0-dc02798fced0"
+      "name": "cc271a07-3ba4-4a3d-be7b-6c709364c718"
     },
     {
       "type": "connector--input",
@@ -8864,7 +10416,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "readSensor"
       ],
-      "name": "0231851a-57d1-4802-a613-886817961703"
+      "name": "2a12e555-ffd3-415e-b4e1-74981b64f7aa"
     }
   ],
   "bloqClass": "bloq-equality-operations",
@@ -8882,7 +10434,7 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "readSensor"
         ],
-        "name": "1d0de2e0-422a-4969-b4b0-dc02798fced0"
+        "name": "cc271a07-3ba4-4a3d-be7b-6c709364c718"
       },
       {
         "id": "OPERATOR",
@@ -8926,7 +10478,7 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "readSensor"
         ],
-        "name": "0231851a-57d1-4802-a613-886817961703"
+        "name": "2a12e555-ffd3-415e-b4e1-74981b64f7aa"
       }
     ]
   ],
@@ -8937,6 +10489,13 @@ db.bitbloq_Bloqs.insert({
   "returnType": {
     "type": "simple",
     "value": "bool"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"equalityOperations\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -8958,7 +10517,7 @@ db.bitbloq_Bloqs.insert({
         "equalityOperations",
         "logicOperations"
       ],
-      "name": "13d4d749-9457-4596-a994-105ca1180f54"
+      "name": "ade556e8-bbfc-4543-b32c-75f934856f29"
     },
     {
       "type": "connector--input",
@@ -8971,7 +10530,7 @@ db.bitbloq_Bloqs.insert({
         "equalityOperations",
         "logicOperations"
       ],
-      "name": "4706cd28-1846-4373-b703-f291f7b6f7b5"
+      "name": "7daaffdd-a2e0-4d9e-a8cf-1a1b7dea51e8"
     }
   ],
   "bloqClass": "bloq-logic-operations",
@@ -8988,7 +10547,7 @@ db.bitbloq_Bloqs.insert({
           "equalityOperations",
           "logicOperations"
         ],
-        "name": "13d4d749-9457-4596-a994-105ca1180f54"
+        "name": "ade556e8-bbfc-4543-b32c-75f934856f29"
       },
       {
         "id": "OPERATOR",
@@ -9015,7 +10574,7 @@ db.bitbloq_Bloqs.insert({
           "equalityOperations",
           "logicOperations"
         ],
-        "name": "4706cd28-1846-4373-b703-f291f7b6f7b5"
+        "name": "7daaffdd-a2e0-4d9e-a8cf-1a1b7dea51e8"
       }
     ]
   ],
@@ -9026,6 +10585,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "({ARG1} {OPERATOR} {ARG2})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"logicOperations\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9045,7 +10611,7 @@ db.bitbloq_Bloqs.insert({
       "suggestedBloqs": [
         "selectVariable"
       ],
-      "name": "df97086b-17b4-4535-8df3-2447824550e4"
+      "name": "7f6cd215-982c-48b2-8051-d8b34e00eac8"
     }
   ],
   "bloqClass": "bloq-not",
@@ -9064,7 +10630,7 @@ db.bitbloq_Bloqs.insert({
         "suggestedBloqs": [
           "selectVariable"
         ],
-        "name": "df97086b-17b4-4535-8df3-2447824550e4"
+        "name": "7f6cd215-982c-48b2-8051-d8b34e00eac8"
       }
     ]
   ],
@@ -9075,6 +10641,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "!{CONDITION}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"not\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9099,6 +10672,13 @@ db.bitbloq_Bloqs.insert({
   "code": "void loop(){{STATEMENTS}}",
   "arduino": {
     "code": "void loop(){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"loopBloq\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9150,6 +10730,13 @@ db.bitbloq_Bloqs.insert({
   "code": "void setup(){{STATEMENTS}}",
   "arduino": {
     "code": "void setup(){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"setupBloq\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9174,6 +10761,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{STATEMENTS}",
   "arduino": {
     "code": "{STATEMENTS}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"varsBloq\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9194,7 +10788,7 @@ db.bitbloq_Bloqs.insert({
         "readSensor",
         "selectVariable"
       ],
-      "name": "8082cd87-f277-4c5c-8dff-c6aa86a7d38a"
+      "name": "ee502336-3735-4cda-a714-838ac70b3eb0"
     },
     {
       "type": "connector--input",
@@ -9206,7 +10800,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "b76f9329-1870-45b7-9aab-8c6802862151"
+      "name": "f6023eef-dfdd-460f-8fd5-a9dfb667d550"
     },
     {
       "type": "connector--input",
@@ -9218,7 +10812,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "59155ef2-987e-41aa-8105-301ed6a4ac62"
+      "name": "31d305fa-1022-4b53-8917-3a3f41ca3356"
     },
     {
       "type": "connector--input",
@@ -9230,7 +10824,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "3a4bdf35-2d3d-4ea4-bbf7-e02fcd5bcbd1"
+      "name": "017ae17f-058c-4e85-8883-84d20d05ef74"
     },
     {
       "type": "connector--input",
@@ -9242,7 +10836,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "4d4b6093-f1ec-4b86-a368-6dae2a58ad4c"
+      "name": "f30987b6-64bf-4514-846d-f8350d9f7a13"
     }
   ],
   "bloqClass": "bloq-map-advanced",
@@ -9262,7 +10856,7 @@ db.bitbloq_Bloqs.insert({
           "readSensor",
           "selectVariable"
         ],
-        "name": "8082cd87-f277-4c5c-8dff-c6aa86a7d38a"
+        "name": "ee502336-3735-4cda-a714-838ac70b3eb0"
       },
       {
         "alias": "text",
@@ -9278,7 +10872,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "b76f9329-1870-45b7-9aab-8c6802862151"
+        "name": "f6023eef-dfdd-460f-8fd5-a9dfb667d550"
       },
       {
         "alias": "text",
@@ -9294,7 +10888,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "59155ef2-987e-41aa-8105-301ed6a4ac62"
+        "name": "31d305fa-1022-4b53-8917-3a3f41ca3356"
       },
       {
         "alias": "text",
@@ -9310,7 +10904,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "3a4bdf35-2d3d-4ea4-bbf7-e02fcd5bcbd1"
+        "name": "017ae17f-058c-4e85-8883-84d20d05ef74"
       },
       {
         "alias": "text",
@@ -9326,7 +10920,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "4d4b6093-f1ec-4b86-a368-6dae2a58ad4c"
+        "name": "f30987b6-64bf-4514-846d-f8350d9f7a13"
       },
       {
         "alias": "text",
@@ -9341,6 +10935,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mapAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9361,7 +10962,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "d9601010-8bc4-434e-9ac3-36e98b944488"
+      "name": "8eccd90b-fb4e-4c6e-bcf0-c400c91ee808"
     }
   ],
   "bloqClass": "bloq-math-operations",
@@ -9403,7 +11004,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "d9601010-8bc4-434e-9ac3-36e98b944488"
+        "name": "8eccd90b-fb4e-4c6e-bcf0-c400c91ee808"
       }
     ]
   ],
@@ -9414,6 +11015,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{OPERATOR}({ARG})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mathOperations\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9434,7 +11042,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "92d24222-05e4-41c2-8878-50943371bfcb"
+      "name": "9232cc9a-08c9-4a96-8578-892c96ed1215"
     }
   ],
   "bloqClass": "bloq-numberArray-advanced",
@@ -9454,7 +11062,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "92d24222-05e4-41c2-8878-50943371bfcb"
+        "name": "9232cc9a-08c9-4a96-8578-892c96ed1215"
       },
       {
         "alias": "text",
@@ -9484,6 +11092,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "({TYPE})malloc({VALUE}*sizeof(¬{TYPE.withoutAsterisk}))"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"numberArrayAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9504,7 +11119,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "846cf77d-13ae-4846-b274-fa28a5ba0672"
+      "name": "3d263b19-9878-472a-9154-a4f7d5a20544"
     }
   ],
   "bloqClass": "bloq-round",
@@ -9546,7 +11161,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "846cf77d-13ae-4846-b274-fa28a5ba0672"
+        "name": "3d263b19-9878-472a-9154-a4f7d5a20544"
       }
     ]
   ],
@@ -9557,6 +11172,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{OPERATOR}({VAR})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"round-v1\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9578,7 +11200,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "basicOperations"
       ],
-      "name": "915f8bad-99e1-48ac-a125-f72c1a8e53ae"
+      "name": "fd4bc009-4d8b-412d-9e63-9abb85acba6e"
     },
     {
       "type": "connector--input",
@@ -9591,7 +11213,7 @@ db.bitbloq_Bloqs.insert({
         "selectVariable",
         "basicOperations"
       ],
-      "name": "1cb40df7-e422-49ec-9e32-e8a1ac2c1adf"
+      "name": "2b0f9260-658e-4a29-b958-1bc20ee23148"
     }
   ],
   "bloqClass": "bloq-basic-operations",
@@ -9608,7 +11230,7 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "basicOperations"
         ],
-        "name": "915f8bad-99e1-48ac-a125-f72c1a8e53ae"
+        "name": "fd4bc009-4d8b-412d-9e63-9abb85acba6e"
       },
       {
         "id": "OPERATOR",
@@ -9651,7 +11273,7 @@ db.bitbloq_Bloqs.insert({
           "selectVariable",
           "basicOperations"
         ],
-        "name": "1cb40df7-e422-49ec-9e32-e8a1ac2c1adf"
+        "name": "2b0f9260-658e-4a29-b958-1bc20ee23148"
       }
     ]
   ],
@@ -9709,7 +11331,7 @@ db.bitbloq_Bloqs.insert({
         "readSensor",
         "selectVariable"
       ],
-      "name": "e1900f53-1a30-4361-a1e7-2ae755b15715"
+      "name": "9ad99a55-a497-433f-9380-e654b437c55c"
     },
     {
       "type": "connector--input",
@@ -9721,7 +11343,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "8fca113b-cec7-4384-86d5-ff148da1d1b1"
+      "name": "2147c8bc-da87-49dd-856a-58b9829f656b"
     }
   ],
   "bloqClass": "bloq-map",
@@ -9741,7 +11363,7 @@ db.bitbloq_Bloqs.insert({
           "readSensor",
           "selectVariable"
         ],
-        "name": "e1900f53-1a30-4361-a1e7-2ae755b15715"
+        "name": "9ad99a55-a497-433f-9380-e654b437c55c"
       },
       {
         "alias": "text",
@@ -9757,7 +11379,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "8fca113b-cec7-4384-86d5-ff148da1d1b1"
+        "name": "2147c8bc-da87-49dd-856a-58b9829f656b"
       },
       {
         "alias": "text",
@@ -9772,6 +11394,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "map({VAR},0,1023,0,{MAXVAL})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"map\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9843,6 +11472,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "(float*)malloc({VALUE}*sizeof(float))"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"numberArray\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9863,7 +11499,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "2df33581-6b38-4552-8094-7e4914803adc"
+      "name": "1e9c4d16-5d53-41aa-8d47-abfdda4b3718"
     },
     {
       "type": "connector--input",
@@ -9875,7 +11511,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "a38c11a6-402c-4481-9171-b95fbc846c9f"
+      "name": "357e339f-e86a-4c38-841e-d3aa36796750"
     }
   ],
   "bloqClass": "bloq-random",
@@ -9895,7 +11531,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "2df33581-6b38-4552-8094-7e4914803adc"
+        "name": "1e9c4d16-5d53-41aa-8d47-abfdda4b3718"
       },
       {
         "alias": "text",
@@ -9911,7 +11547,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "a38c11a6-402c-4481-9171-b95fbc846c9f"
+        "name": "357e339f-e86a-4c38-841e-d3aa36796750"
       }
     ]
   ],
@@ -9922,6 +11558,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "random({ARG1},{ARG2}+1)"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"random\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9953,6 +11596,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "randomSeed(micros());"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"randomSeed\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -9977,7 +11627,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "299a618b-d368-4bca-9142-9ac8c4bc6033"
+      "name": "e22640f8-fbfd-4139-b121-a45edd6eb466"
     },
     {
       "type": "connector--input",
@@ -9989,7 +11639,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "6f19b98e-f248-448d-9c10-f07bf7cdea38"
+      "name": "20e72d35-e17d-4bef-a9cf-00d1dcfdfc53"
     }
   ],
   "bloqClass": "bloq-mbot-buzzer",
@@ -10009,7 +11659,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "299a618b-d368-4bca-9142-9ac8c4bc6033"
+        "name": "e22640f8-fbfd-4139-b121-a45edd6eb466"
       },
       {
         "alias": "text",
@@ -10025,7 +11675,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "6f19b98e-f248-448d-9c10-f07bf7cdea38"
+        "name": "20e72d35-e17d-4bef-a9cf-00d1dcfdfc53"
       },
       {
         "alias": "text",
@@ -10043,6 +11693,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotBuzzerAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10067,7 +11724,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "6dd1ba00-f9a7-4bd6-8463-4854fcbbf07e"
+      "name": "44a61869-2143-4ca6-9c67-36fe730d8db5"
     }
   ],
   "bloqClass": "bloq-mbot-move",
@@ -10109,7 +11766,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "6dd1ba00-f9a7-4bd6-8463-4854fcbbf07e"
+        "name": "44a61869-2143-4ca6-9c67-36fe730d8db5"
       }
     ]
   ],
@@ -10125,6 +11782,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.move({MOVEMENT},{SPEED});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotMoveAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10149,7 +11813,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "edf80e1b-9038-4a8f-ba99-31cee0b473ce"
+      "name": "72b3bf31-00bd-40e0-8b38-b4e9b1d8170a"
     },
     {
       "type": "connector--input",
@@ -10161,7 +11825,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "2ef115f9-309a-4c06-bcf3-218aca09604e"
+      "name": "ac73bb0d-94c3-40ea-a09f-d49f950cbf93"
     },
     {
       "type": "connector--input",
@@ -10173,7 +11837,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "1a6d3b47-ec2a-4065-a93b-65ed1308bd47"
+      "name": "d994df0e-9203-4d11-a05e-c1fe90d7a9aa"
     }
   ],
   "bloqClass": "bloq-mbot-setled",
@@ -10219,7 +11883,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "edf80e1b-9038-4a8f-ba99-31cee0b473ce"
+        "name": "72b3bf31-00bd-40e0-8b38-b4e9b1d8170a"
       },
       {
         "alias": "text",
@@ -10235,7 +11899,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "2ef115f9-309a-4c06-bcf3-218aca09604e"
+        "name": "ac73bb0d-94c3-40ea-a09f-d49f950cbf93"
       },
       {
         "alias": "text",
@@ -10251,7 +11915,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "1a6d3b47-ec2a-4065-a93b-65ed1308bd47"
+        "name": "d994df0e-9203-4d11-a05e-c1fe90d7a9aa"
       }
     ]
   ],
@@ -10267,6 +11931,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.setLed({LEDS}, {RED}, {GREEN}, {BLUE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotSetLedAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10368,6 +12039,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotBuzzer\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10426,6 +12104,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.getDistance({PORT})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotGetDistance\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10462,6 +12147,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.getButtonStatus()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotGetButtonStatus\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10543,6 +12235,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.print({PORT}, {TEXT}, {COLUMN}, {ROW});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotShowPrintText\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10631,6 +12330,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.setMotor({MOTOR},{SPEED});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotSetMotor\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10737,6 +12443,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.setServo({PORT}, {BANK}, {ANGLE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotSetServo\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10804,6 +12517,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.showFaceByNumber({PORT},{FACE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotShowFaceByNumber\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10840,6 +12560,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.getLightSensor()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotGetLightSensor\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10898,6 +12625,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.getLineFollower({PORT})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotLineFollower\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -10974,6 +12708,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.move({MOVEMENT},{SPEED});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotMove\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11059,6 +12800,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.setLed({LEDS}, {RED}, {GREEN}, {BLUE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotSetLed\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11095,6 +12843,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.move(1,0);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotStop\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11149,6 +12904,13 @@ db.bitbloq_Bloqs.insert({
       }
     ],
     "code": "mBot.setLed({LEDS}, 0, 0, 0);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotTurnOffLed\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11227,6 +12989,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "'{TEXT}'"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"char\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11247,7 +13016,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "3295a74b-695d-4a5c-8c05-61a761f524ae"
+      "name": "2a4fc2cf-99ee-4b88-ada4-9c9f9c2f714e"
     }
   ],
   "bloqClass": "bloq-stringArray-advanced",
@@ -11267,7 +13036,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "3295a74b-695d-4a5c-8c05-61a761f524ae"
+        "name": "2a4fc2cf-99ee-4b88-ada4-9c9f9c2f714e"
       },
       {
         "alias": "text",
@@ -11297,6 +13066,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "({TYPE})malloc({VALUE}*sizeof(¬{TYPE.withoutAsterisk}))"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"stringArrayAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11316,7 +13092,7 @@ db.bitbloq_Bloqs.insert({
       "suggestedBloqs": [
         "selectVariable"
       ],
-      "name": "e17ae21e-a55c-4142-8545-037d0e4176e0"
+      "name": "3e6a6507-7da8-487e-9300-a852e64d2a00"
     }
   ],
   "bloqClass": "bloq-length",
@@ -11335,7 +13111,7 @@ db.bitbloq_Bloqs.insert({
         "suggestedBloqs": [
           "selectVariable"
         ],
-        "name": "e17ae21e-a55c-4142-8545-037d0e4176e0"
+        "name": "3e6a6507-7da8-487e-9300-a852e64d2a00"
       }
     ]
   ],
@@ -11346,6 +13122,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{TEXT}.length()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"length\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11425,6 +13208,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "(String *)malloc({VALUE}*sizeof(String))"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"stringArray\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11444,7 +13234,7 @@ db.bitbloq_Bloqs.insert({
       "suggestedBloqs": [
         "selectVariable"
       ],
-      "name": "162d7a8d-af84-495f-9bf3-3ed4c137016a"
+      "name": "245c86d2-075a-4a8a-b4b5-06c77ed869a5"
     }
   ],
   "bloqClass": "bloq-string-create",
@@ -11463,7 +13253,7 @@ db.bitbloq_Bloqs.insert({
         "suggestedBloqs": [
           "selectVariable"
         ],
-        "name": "162d7a8d-af84-495f-9bf3-3ed4c137016a"
+        "name": "245c86d2-075a-4a8a-b4b5-06c77ed869a5"
       }
     ]
   ],
@@ -11474,6 +13264,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "String({TEXT})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"stringCreate\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11494,7 +13291,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "d1e9d4fa-f8ba-42ed-8012-f2c8e65da762"
+      "name": "005f65d1-5243-4fef-8cd2-c6f97a142e34"
     },
     {
       "type": "connector--input",
@@ -11506,7 +13303,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "d5a214fb-4a51-470d-9680-1f182fefaa48"
+      "name": "3337b5a4-55d2-4a87-9bf7-ee13d014fb22"
     }
   ],
   "bloqClass": "bloq-string-sum",
@@ -11522,7 +13319,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "d1e9d4fa-f8ba-42ed-8012-f2c8e65da762"
+        "name": "005f65d1-5243-4fef-8cd2-c6f97a142e34"
       },
       {
         "alias": "text",
@@ -11538,7 +13335,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "d5a214fb-4a51-470d-9680-1f182fefaa48"
+        "name": "3337b5a4-55d2-4a87-9bf7-ee13d014fb22"
       }
     ]
   ],
@@ -11549,6 +13346,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "String({ARG1})+String({ARG2})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"stringSum\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11570,7 +13374,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "531b9c97-1828-4190-8dba-18e678e4be01"
+      "name": "dc368f84-a94a-4db9-b63f-2db25add19fe"
     }
   ],
   "bloqClass": "bloq-array-variable",
@@ -11600,7 +13404,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "531b9c97-1828-4190-8dba-18e678e4be01"
+        "name": "dc368f84-a94a-4db9-b63f-2db25add19fe"
       },
       {
         "alias": "text",
@@ -11617,6 +13421,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{VAR}[{POSITION}]"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"arrayVariableAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11642,7 +13453,7 @@ db.bitbloq_Bloqs.insert({
         "number",
         "selectVariable"
       ],
-      "name": "2d5f202f-ea0c-4be0-9b97-35d255abcf80"
+      "name": "c3d277af-8579-46da-a808-3d50b164a01d"
     }
   ],
   "bloqClass": "bloq-declare-array",
@@ -11702,7 +13513,7 @@ db.bitbloq_Bloqs.insert({
           "number",
           "selectVariable"
         ],
-        "name": "2d5f202f-ea0c-4be0-9b97-35d255abcf80"
+        "name": "c3d277af-8579-46da-a808-3d50b164a01d"
       }
     ]
   ],
@@ -11714,6 +13525,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{TYPE} {NAME} [{VALUE}];",
   "arduino": {
     "code": "{TYPE} {NAME} [{VALUE}];"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"declareArrayAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11742,7 +13560,7 @@ db.bitbloq_Bloqs.insert({
         "char",
         "boolean"
       ],
-      "name": "93ad5afe-83f6-4325-b636-aecb4d0ef591"
+      "name": "7855f3b4-97d0-452b-86b5-ec1a6a243cd8"
     }
   ],
   "bloqClass": "bloq-declare-variable",
@@ -11805,7 +13623,7 @@ db.bitbloq_Bloqs.insert({
           "char",
           "boolean"
         ],
-        "name": "93ad5afe-83f6-4325-b636-aecb4d0ef591"
+        "name": "7855f3b4-97d0-452b-86b5-ec1a6a243cd8"
       }
     ]
   ],
@@ -11817,6 +13635,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{TYPE} {NAME} = {VALUE};",
   "arduino": {
     "code": "{TYPE} {NAME} = {VALUE};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"declareVariableAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11850,6 +13675,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{COMPONENT}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"hwVariable\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11875,7 +13707,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "2505fbf6-6801-4c0d-b2f2-89b27e1e879d"
+      "name": "e8829e92-5313-406c-bc71-0e59cdfafbe0"
     },
     {
       "type": "connector--input",
@@ -11888,7 +13720,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "ef4980da-1e05-46fd-bb9b-466335b4de74"
+      "name": "74c910c4-84d9-4938-b023-65a40317a585"
     }
   ],
   "bloqClass": "bloq-set-variableArray",
@@ -11918,7 +13750,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "2505fbf6-6801-4c0d-b2f2-89b27e1e879d"
+        "name": "e8829e92-5313-406c-bc71-0e59cdfafbe0"
       },
       {
         "alias": "text",
@@ -11939,13 +13771,20 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "ef4980da-1e05-46fd-bb9b-466335b4de74"
+        "name": "74c910c4-84d9-4938-b023-65a40317a585"
       }
     ]
   ],
   "code": "{NAME}[{ITERATOR}] = {VALUE};",
   "arduino": {
     "code": "{NAME}[{ITERATOR}] = {VALUE};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"setArrayVariableAdvanced\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -11993,6 +13832,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{VAR}[{POSITION}]"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"arrayVariable\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -12069,6 +13915,13 @@ db.bitbloq_Bloqs.insert({
   "code": "{TYPE} {NAME} [{VALUE}];",
   "arduino": {
     "code": "{TYPE} {NAME} [{VALUE}];"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"declareArray\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -12095,7 +13948,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "stringSum"
       ],
-      "name": "fd17073a-2fe2-4513-be6c-4781e7810599"
+      "name": "ab4208e6-5634-4733-9f9f-2e39550b7ea3"
     }
   ],
   "bloqClass": "bloq-declare-variable",
@@ -12126,7 +13979,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "stringSum"
         ],
-        "name": "fd17073a-2fe2-4513-be6c-4781e7810599"
+        "name": "ab4208e6-5634-4733-9f9f-2e39550b7ea3"
       }
     ]
   ],
@@ -12178,6 +14031,13 @@ db.bitbloq_Bloqs.insert({
   },
   "arduino": {
     "code": "{VALUE}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"swVariable\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -12246,7 +14106,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "selectVariable"
       ],
-      "name": "98dd4982-e78e-42a7-a091-abb2a80abf19"
+      "name": "4742da14-6e55-4a40-b647-1f554573f8cf"
     }
   ],
   "bloqClass": "bloq-set-variableArray",
@@ -12292,13 +14152,20 @@ db.bitbloq_Bloqs.insert({
           "string",
           "selectVariable"
         ],
-        "name": "98dd4982-e78e-42a7-a091-abb2a80abf19"
+        "name": "4742da14-6e55-4a40-b647-1f554573f8cf"
       }
     ]
   ],
   "code": "{NAME}[{ITERATOR}] = {VALUE};",
   "arduino": {
     "code": "{NAME}[{ITERATOR}] = {VALUE};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"setArrayVariable\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -12327,7 +14194,7 @@ db.bitbloq_Bloqs.insert({
         "string",
         "stringSum"
       ],
-      "name": "516ce51a-c591-404c-99d5-37023ec62e49"
+      "name": "6921bf30-3e8f-4928-b0fc-36d1a4b4b8cf"
     }
   ],
   "bloqClass": "bloq-set-variable",
@@ -12360,7 +14227,7 @@ db.bitbloq_Bloqs.insert({
           "string",
           "stringSum"
         ],
-        "name": "516ce51a-c591-404c-99d5-37023ec62e49"
+        "name": "6921bf30-3e8f-4928-b0fc-36d1a4b4b8cf"
       }
     ]
   ],
@@ -12431,6 +14298,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "digitalRead({BUTTON})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiButtons\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -12474,6 +14348,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.getDistance()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiDistance\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -12562,6 +14443,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.walk({STEPS},{SPEED},{DIR});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiMovementsFront\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -12672,6 +14560,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.flapping({STEPS},{SPEED},{HEIGHT},{DIR});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiMovementsHeightFront\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -12792,6 +14687,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT},{DIR});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiMovementsHeightSides\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -12910,6 +14812,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{HEIGHT});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiMovementsNoDir-v1\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13012,6 +14921,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.{MOVEMENT}({STEPS},{SPEED},{DIR});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiMovementsSides\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13055,6 +14971,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.getNoise()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiSound\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13173,6 +15096,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.{MOVEMENT}({STEPS}, {SPEED}, {DIR});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiMovements\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13309,6 +15239,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.{MOVEMENT}({STEPS}, {SPEED}, {HEIGHT}, {DIR});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiMovementsHeight\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13435,6 +15372,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.{MOVEMENT}({STEPS}, {SPEED}, {HEIGHT});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiMovementsNoDir\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13528,6 +15472,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.playGesture({GESTURE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiGestures\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13571,6 +15522,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.home();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiHome\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13640,6 +15598,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "if(digitalRead({BUTTON}) == 1){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiIfButtons\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13718,6 +15683,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "if(zowi.getDistance() {OPERATOR} {DISTANCE}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiIfDistance\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13769,6 +15741,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": " if(zowi.getNoise() >= 650){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiIfSound\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13846,6 +15825,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.putMouth({GESTURE}, false);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiMouth\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -13952,6 +15938,13 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.{MOVEMENT}({STEPS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiMovementsSimple\" no preparado para generar código python"
+      }
+    ]
   }
 });
 db.bitbloq_Bloqs.insert({
@@ -14033,5 +16026,12 @@ db.bitbloq_Bloqs.insert({
     ],
     "setupExtraCode": "zowi.init();",
     "code": "zowi.sing({SOUND});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"zowiSounds\" no preparado para generar código python"
+      }
+    ]
   }
 });

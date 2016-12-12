@@ -41,6 +41,6 @@ var bloqClass = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.generateBloqInputConnectors(bloqClass);
+utils.preprocessBloq(bloqClass);
 
 module.exports = bloqClass;

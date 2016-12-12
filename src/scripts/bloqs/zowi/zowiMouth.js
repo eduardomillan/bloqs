@@ -64,6 +64,6 @@ var zowiMouth = _.merge(_.clone(StatementBloq, true), {
         code: 'zowi.putMouth({GESTURE}, false);'
     }
 });
-utils.generateBloqInputConnectors(zowiMouth);
+utils.preprocessBloq(zowiMouth);
 
 module.exports = zowiMouth;

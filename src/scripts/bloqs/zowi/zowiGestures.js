@@ -76,6 +76,6 @@ var zowiGestures = _.merge(_.clone(StatementBloq, true), {
         code: 'zowi.playGesture({GESTURE});'
     }
 });
-utils.generateBloqInputConnectors(zowiGestures);
+utils.preprocessBloq(zowiGestures);
 
 module.exports = zowiGestures;

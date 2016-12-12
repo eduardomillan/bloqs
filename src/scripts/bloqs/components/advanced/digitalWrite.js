@@ -45,7 +45,7 @@ var digitalWrite = _.merge(_.clone(StatementBloq, true), {
 
 });
 
-utils.generateBloqInputConnectors(digitalWrite);
+utils.preprocessBloq(digitalWrite);
 
 
 module.exports = digitalWrite;
