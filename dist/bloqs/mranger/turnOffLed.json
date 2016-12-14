@@ -1,0 +1,61 @@
+{
+  "type": "statement",
+  "name": "mRangerTurnOffLed",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-mranger-turnoffled",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-mbot-turnoffled-off"
+      },
+      {
+        "id": "LEDS",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-mbot-led-all",
+            "value": "0"
+          },
+          {
+            "label": "bloq-mbot-led-right",
+            "value": "1"
+          },
+          {
+            "label": "bloq-mbot-led-left",
+            "value": "2"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "arduino": {
+    "includes": [
+      "BitbloqMRanger.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "mRanger",
+        "type": "MRanger"
+      }
+    ],
+    "code": "mRanger.setLed({LEDS}, 0, 0, 0);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mRangerTurnOffLed\" no preparado para generar código python"
+      }
+    ]
+  }
+}

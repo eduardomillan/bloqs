@@ -1,0 +1,69 @@
+{
+  "type": "output",
+  "name": "mRangerGetDistance",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-mranger-getdistance",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-mranger-getdistance-get"
+      },
+      {
+        "id": "PORT",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-mbot-port-6",
+            "value": "6"
+          },
+          {
+            "label": "bloq-mbot-port-7",
+            "value": "7"
+          },
+          {
+            "label": "bloq-mbot-port-8",
+            "value": "8"
+          },
+          {
+            "label": "bloq-mbot-port-9",
+            "value": "9"
+          },
+          {
+            "label": "bloq-mbot-port-10",
+            "value": "10"
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "arduino": {
+    "includes": [
+      "BitbloqMRanger.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "mRanger",
+        "type": "MRanger"
+      }
+    ],
+    "code": "mRanger.getDistance({PORT})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mRangerGetDistance\" no preparado para generar código python"
+      }
+    ]
+  }
+}

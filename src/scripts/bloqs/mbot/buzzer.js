@@ -79,14 +79,6 @@ var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     code: '',
-    // arduino: {
-    //     includes: ['BitbloqMBot.h'],
-    //     needInstanceOf: [{
-    //         name: 'mBot',
-    //         type: 'MBot'
-    //     }],
-    //     code: 'mBot.tone({NOTE},{BEAT});'
-    // }
     arduino: {
         needInstanceOf: [{
             name: 'mBotBuzzerPin',

@@ -1,0 +1,43 @@
+{
+  "type": "output",
+  "name": "mRangerGetLightSensor",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-mranger-getlightsensor",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-mranger-getlightsensor"
+      }
+    ]
+  ],
+  "code": "",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "arduino": {
+    "includes": [
+      "BitbloqMRanger.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "mRanger",
+        "type": "MRanger"
+      }
+    ],
+    "code": "mRanger.getLightSensor()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mRangerGetLightSensor\" no preparado para generar código python"
+      }
+    ]
+  }
+}
