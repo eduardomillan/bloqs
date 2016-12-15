@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "afef9a63-bea2-42e2-9f37-a08b44471d9d"
+      "name": "f7c4c0ec-bf90-464c-a5fc-8c112f0df95e"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "c5a148af-2452-4c1b-a58d-28561811ba6b"
+      "name": "66951a7d-813a-426f-9ab5-759c70f6b32e"
     }
   ],
   "bloqClass": "bloq-mranger-buzzer",
@@ -52,7 +52,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "afef9a63-bea2-42e2-9f37-a08b44471d9d"
+        "name": "f7c4c0ec-bf90-464c-a5fc-8c112f0df95e"
       },
       {
         "alias": "text",
@@ -68,7 +68,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "c5a148af-2452-4c1b-a58d-28561811ba6b"
+        "name": "66951a7d-813a-426f-9ab5-759c70f6b32e"
       },
       {
         "alias": "text",
@@ -82,7 +82,7 @@
       {
         "name": "mRangerBuzzerPin",
         "type": "const int",
-        "equals": "8"
+        "equals": "45"
       }
     ],
     "code": "tone(mRangerBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"

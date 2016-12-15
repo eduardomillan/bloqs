@@ -49,7 +49,7 @@ var mBotBuzzerAdvanced = _.merge(_.clone(StatementBloq, true), {
         needInstanceOf: [{
             name: 'mBotBuzzerPin',
             type: 'const int',
-            equals: '45'
+            equals: '8'
         }],
         code: 'tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});'
     }
