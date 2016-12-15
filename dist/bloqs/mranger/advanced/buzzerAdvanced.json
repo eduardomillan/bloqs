@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotBuzzerAdvanced",
+  "name": "mRangerBuzzerAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "c90f8d2d-752d-41d8-878d-a95c8a565f11"
+      "name": "f0f57217-fcad-4bee-b35b-f7a1ae889a2c"
     },
     {
       "type": "connector--input",
@@ -32,15 +32,15 @@
         "number",
         "selectVariable"
       ],
-      "name": "0e28a01a-c044-497d-aae1-156de696450f"
+      "name": "ca498eb0-6d10-463f-a787-78026ca04fbd"
     }
   ],
-  "bloqClass": "bloq-mbot-buzzer",
+  "bloqClass": "bloq-mranger-buzzer",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-mbot-buzzer-advanced-play"
+        "value": "bloq-mbot-buzzer-note"
       },
       {
         "bloqInputId": "NOTE",
@@ -52,11 +52,11 @@
           "number",
           "selectVariable"
         ],
-        "name": "c90f8d2d-752d-41d8-878d-a95c8a565f11"
+        "name": "f0f57217-fcad-4bee-b35b-f7a1ae889a2c"
       },
       {
         "alias": "text",
-        "value": "bloq-mbot-buzzer-advanced-for"
+        "value": "bloq-mbot-buzzer-for"
       },
       {
         "bloqInputId": "SECONDS",
@@ -68,11 +68,11 @@
           "number",
           "selectVariable"
         ],
-        "name": "0e28a01a-c044-497d-aae1-156de696450f"
+        "name": "ca498eb0-6d10-463f-a787-78026ca04fbd"
       },
       {
         "alias": "text",
-        "value": "bloq-mbot-buzzer-advanced-ms"
+        "value": "bloq-mbot-buzzer-ms"
       }
     ]
   ],
@@ -80,17 +80,17 @@
   "arduino": {
     "needInstanceOf": [
       {
-        "name": "mBotBuzzerPin",
+        "name": "mRangerBuzzerPin",
         "type": "const int",
         "equals": "8"
       }
     ],
-    "code": "tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
+    "code": "tone(mRangerBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotBuzzerAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mRangerBuzzerAdvanced\" no preparado para generar código python"
       }
     ]
   }

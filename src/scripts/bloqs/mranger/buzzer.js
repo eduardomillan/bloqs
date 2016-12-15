@@ -25,7 +25,7 @@ var mRangerBuzzer = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-mranger-buzzer-note'
+            value: 'bloq-mbot-buzzer-note'
         }, {
             id: 'NOTE',
             alias: 'staticDropdown',

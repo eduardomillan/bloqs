@@ -9,19 +9,19 @@
     body {
         margin: 0;
     }
-
+    
     #code--field {
         width: 100%;
         height: 500px;
     }
-
+    
     #bloqs--field {
         overflow-y: auto;
         background-color: #EBEBEB;
         width: 1500px;
         height: 650px;
     }
-
+    
     code[class*="language-"],
     pre[class*="language-"] {
         color: black;
@@ -39,13 +39,13 @@
         -ms-user-select: text;
         user-select: text;
     }
-
+    
     code[class*="language-"]::-moz-selection,
     pre[class*="language-"]::-moz-selection {
         color: #000;
         background-color: #fefefe;
     }
-
+    
     code[class*="language-"]::selection,
     pre[class*="language-"]::selection {
         color: #000;
@@ -380,11 +380,14 @@
             'setClassArrayVariable'
         ];
 
+        var mRanger = ['mRangerBuzzer', 'mRangerGetDistance', 'mRangerGetLightSensor', 'mRangerLineFollower', 'mRangerSetLed', 'mRangerTurnOffLed', 'mRangerBuzzerAdvanced', 'mRangerSetLedAdvanced'];
+
+
         var testSet = ['clockRTCAdvanced', 'declareVariable', 'declareVariable', 'selectVariable', 'setVariable'];
 
-        var testPhone = ['phoneSendText', 'phoneEmitSound','phoneReceive', 'declareVariable','phoneToggleLight','phoneTurnOnLight'];
+        var testPhone = ['phoneSendText', 'phoneEmitSound', 'phoneReceive', 'declareVariable', 'phoneToggleLight', 'phoneTurnOnLight'];
 
-        testSet = testPhone;
+        testSet = mRanger;
 
         for (var i = 0; i < testSet.length; i++) {
             createBloq(testSet[i]);

@@ -22,7 +22,7 @@ var mRangerGetLightSensor = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-mranger-getlightsensor'
+            value: 'bloq-mbot-getlightsensor'
         }]
     ],
     code: '',

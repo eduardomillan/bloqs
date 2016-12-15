@@ -22,7 +22,7 @@ var mRangerLineFollower = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-mranger-linefollower-text'
+            value: 'bloq-mbot-linefollower-text'
         }, {
             id: 'PORT',
             alias: 'staticDropdown',

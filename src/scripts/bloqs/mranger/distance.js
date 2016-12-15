@@ -22,7 +22,7 @@ var mRangerGetDistance = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-mranger-getdistance-get'
+            value: 'bloq-mbot-getdistance-get'
         }, {
             id: 'PORT',
             alias: 'staticDropdown',

@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "oscillatorAdvanced",
+  "name": "mRangerSetLedAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -14,128 +14,141 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
-        "all"
-      ],
-      "suggestedBloqs": [
-        "hwVariable",
-        "selectVariable"
-      ],
-      "name": "fdb70641-45a4-4113-a349-91bc9cc693d0"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": [
-        "all"
+        "float"
       ],
       "suggestedBloqs": [
         "number",
         "selectVariable"
       ],
-      "name": "b598e27b-a7fb-496e-9c0b-4b4237e9e1c0"
+      "name": "70a4ba3c-fd30-4f56-8f1b-9a52613ec631"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
-        "all"
+        "float"
       ],
       "suggestedBloqs": [
         "number",
         "selectVariable"
       ],
-      "name": "5b70237a-d0d8-44c2-b16f-ff2d065540d4"
+      "name": "08d3007c-6f40-4f9d-8361-7532d91f481d"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
-        "all"
+        "float"
       ],
       "suggestedBloqs": [
         "number",
         "selectVariable"
       ],
-      "name": "1164e8f4-a5e0-4633-8a77-44593c38105e"
+      "name": "affcaae6-9ec2-49ec-86df-c856044ea6fb"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "c2da17fa-65e8-4ac0-8c52-f6dff7a2c2aa"
     }
   ],
-  "bloqClass": "bloq-oscillator-advanced",
+  "bloqClass": "bloq-mranger-setled",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-oscillator-advanced-oscillate"
+        "value": "bloq-mbot-setled-set"
       },
       {
-        "bloqInputId": "OSCILLATOR",
+        "bloqInputId": "LEDS",
         "alias": "bloqInput",
         "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "hwVariable",
-          "selectVariable"
-        ],
-        "name": "fdb70641-45a4-4113-a349-91bc9cc693d0"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-oscillator-advanced-around"
-      },
-      {
-        "bloqInputId": "PHASE",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
+          "float"
         ],
         "suggestedBloqs": [
           "number",
           "selectVariable"
         ],
-        "name": "b598e27b-a7fb-496e-9c0b-4b4237e9e1c0"
+        "name": "70a4ba3c-fd30-4f56-8f1b-9a52613ec631"
       },
       {
         "alias": "text",
-        "value": "bloq-oscillator-advanced-amplitude"
+        "value": "bloq-mbot-setled-colormix"
       },
       {
-        "bloqInputId": "AMPLITUDE",
+        "alias": "text",
+        "value": "bloq-mbot-setled-red"
+      },
+      {
+        "bloqInputId": "RED",
         "alias": "bloqInput",
         "acceptType": [
-          "all"
+          "float"
         ],
         "suggestedBloqs": [
           "number",
           "selectVariable"
         ],
-        "name": "5b70237a-d0d8-44c2-b16f-ff2d065540d4"
+        "name": "08d3007c-6f40-4f9d-8361-7532d91f481d"
       },
       {
         "alias": "text",
-        "value": "bloq-oscillator-advanced-speed"
+        "value": "bloq-mbot-setled-green"
       },
       {
-        "bloqInputId": "SPEED",
+        "bloqInputId": "GREEN",
         "alias": "bloqInput",
         "acceptType": [
-          "all"
+          "float"
         ],
         "suggestedBloqs": [
           "number",
           "selectVariable"
         ],
-        "name": "1164e8f4-a5e0-4633-8a77-44593c38105e"
+        "name": "affcaae6-9ec2-49ec-86df-c856044ea6fb"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-mbot-setled-blue"
+      },
+      {
+        "bloqInputId": "BLUE",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "c2da17fa-65e8-4ac0-8c52-f6dff7a2c2aa"
       }
     ]
   ],
-  "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();",
+  "code": "",
   "arduino": {
-    "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();"
+    "includes": [
+      "BitbloqMRanger.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "mRanger",
+        "type": "MRanger"
+      }
+    ],
+    "code": "mRanger.setLed({LEDS}, {RED}, {GREEN}, {BLUE});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"oscillatorAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mRangerSetLedAdvanced\" no preparado para generar código python"
       }
     ]
   }
