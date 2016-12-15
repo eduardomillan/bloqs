@@ -23,6 +23,16 @@ var mRangerGetLightSensor = _.merge(_.clone(OutputBloq, true), {
         [{
             alias: 'text',
             value: 'bloq-mbot-getlightsensor'
+        }, {
+            id: 'NUMSENSOR',
+            alias: 'staticDropdown',
+            options: [{
+                label: '1',
+                value: '1'
+            }, {
+                label: '2',
+                value: '2'
+            }]
         }]
     ],
     code: '',
@@ -36,7 +46,7 @@ var mRangerGetLightSensor = _.merge(_.clone(OutputBloq, true), {
             name: 'mRanger',
             type: 'MRanger'
         }],
-        code: 'mRanger.getLightSensor()'
+        code: 'mRanger.getLightSensor({NUMSENSOR})'
     }
 });
 

@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "c90f8d2d-752d-41d8-878d-a95c8a565f11"
+      "name": "2dd5c720-ffb4-48a4-8654-708ca7d80ed2"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "0e28a01a-c044-497d-aae1-156de696450f"
+      "name": "947ec0b4-6fd4-4422-b88c-598233ff0289"
     }
   ],
   "bloqClass": "bloq-mbot-buzzer",
@@ -52,7 +52,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "c90f8d2d-752d-41d8-878d-a95c8a565f11"
+        "name": "2dd5c720-ffb4-48a4-8654-708ca7d80ed2"
       },
       {
         "alias": "text",
@@ -68,7 +68,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "0e28a01a-c044-497d-aae1-156de696450f"
+        "name": "947ec0b4-6fd4-4422-b88c-598233ff0289"
       },
       {
         "alias": "text",
@@ -82,7 +82,7 @@
       {
         "name": "mBotBuzzerPin",
         "type": "const int",
-        "equals": "8"
+        "equals": "45"
       }
     ],
     "code": "tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
