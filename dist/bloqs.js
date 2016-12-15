@@ -2856,7 +2856,9 @@
         var bloq = null;
         //actions to do before start to move
         if (mouseDownBloq) {
+
             bloq = bloqs[mouseDownBloq.getAttribute('data-bloq-id')];
+            window.dispatchEvent(new CustomEvent('bloqs:startMove', { detail: bloq }));
 
             if (!bloq.isConnectable()) {
                 //console.log('its not connectable');
