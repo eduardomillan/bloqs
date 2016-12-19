@@ -412,6 +412,7 @@
     var drawBranch = function(bloqs, connectors, topConnectorUuid) {
         var branchUuid = connectors[topConnectorUuid].bloqUuid;
         console.log('          ******* - branch - *********', branchUuid);
+        console.log('          ', bloqs[branchUuid].bloqData.name);
         console.log('          connector--top:', bloqs[branchUuid].connectors[0], 'connectedTo', connectors[bloqs[branchUuid].connectors[0]].connectedTo);
         console.log('          connector--bottom:', bloqs[branchUuid].connectors[1], 'connectedTo', connectors[bloqs[branchUuid].connectors[1]].connectedTo);
         if (bloqs[branchUuid].connectors[2]) {
@@ -433,15 +434,16 @@
      * @return {[type]}            [description]
      */
     var drawTree = function(bloqs, connectors) {
-        //console.log('drawtree');
+        console.log(bloqs);
         //buscamos los tipo statement q no tienen un top conectado
         for (var uuid in bloqs) {
             //console.log(bloqs[uuid]);
-            if (bloqs[uuid].droppable && bloqs[uuid].connectors[0] && !connectors[bloqs[uuid].connectors[0]].connectedTo) {
+            if (bloqs[uuid].connectors[0] && !connectors[bloqs[uuid].connectors[0]].connectedTo) {
                 switch (bloqs[uuid].bloqData.type) {
                     case 'statement':
                     case 'statement-input':
                         console.log('******* - tree - *********', uuid);
+                        console.log(bloqs[uuid].bloqData.name);
                         console.log('connector--top:', bloqs[uuid].connectors[0], 'connectedTo', connectors[bloqs[uuid].connectors[0]].connectedTo);
                         console.log('connector--bottom:', bloqs[uuid].connectors[1], 'connectedTo', connectors[bloqs[uuid].connectors[1]].connectedTo);
                         if (bloqs[uuid].connectors[2]) {
@@ -458,6 +460,7 @@
                         break;
                     case 'group':
                         console.log('******* - Group - *********', uuid);
+                        console.log(bloqs[uuid].bloqData.name);
                         console.log('connector--root:', bloqs[uuid].connectors[2], 'connectedTo', connectors[bloqs[uuid].connectors[2]].connectedTo);
                         console.log('           ccccccc -  content ccccccc');
                         if (connectors[bloqs[uuid].connectors[2]].connectedTo) {
