@@ -45,11 +45,14 @@ var oscillator = _.merge(_.clone(StatementBloq, true), {
             value: 90,
         }, {
             alias: 'text',
-            value: 'bloq-oscillator-speed'
+            value: 'bloq-common-every'
         }, {
             id: 'SPEED',
             alias: 'numberInput',
             value: 2000,
+        }, {
+            alias: 'text',
+            value: 'bloq-common-ms'
         }]
     ],
     code: '{OSCILLATOR}.SetO({PHASE});{OSCILLATOR}.SetA({AMPLITUDE});{OSCILLATOR}.SetT({SPEED});{OSCILLATOR}.refresh();',

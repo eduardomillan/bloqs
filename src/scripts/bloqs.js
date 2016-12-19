@@ -41,6 +41,7 @@
         startPreMouseMove = null,
         preMouseMoveX,
         preMouseMoveY,
+        shiftKeyDown,
         componentsArray = bloqsUtils.getEmptyComponentsArray();
 
     var setOptions = function(options) {
@@ -88,6 +89,7 @@
 
             mouseDownBloq = evt.currentTarget;
             startPreMouseMove = true;
+            shiftKeyDown = evt.shiftKey;
             document.addEventListener('mousemove', bloqPreMouseMove);
             document.addEventListener('mouseup', bloqMouseUpBeforeMove);
             document.addEventListener('touchmove', bloqPreMouseMove);
@@ -277,6 +279,20 @@
     var statementDragStart = function(bloq) {
 
         var previousConnector = connectors[bloq.connectors[0]].connectedTo;
+        var afterConnector;
+        if (shiftKeyDown) {
+            afterConnector = connectors[bloq.connectors[1]].connectedTo;
+            if (afterConnector) {
+                //test rompemos el enlace de abajo
+                connectors[afterConnector].connectedTo = previousConnector;
+                if (previousConnector) {
+                    connectors[previousConnector].connectedTo = afterConnector;
+                }
+                connectors[bloq.connectors[1]].connectedTo = null;
+                utils.redrawTree(bloqs[connectors[afterConnector].bloqUuid], bloqs, connectors);
+            }
+        }
+
 
         if (previousConnector) {
             var previousBloq = bloqs[connectors[previousConnector].bloqUuid];
@@ -284,20 +300,24 @@
             var itsInsideAConnectorRoot = utils.itsInsideAConnectorRoot(bloq, bloqs, connectors);
 
             //desenganchamos
-            connectors[previousConnector].connectedTo = null;
+            if (!afterConnector) {
+                connectors[previousConnector].connectedTo = null;
+            }
+
             connectors[bloq.connectors[0]].connectedTo = null;
+
+
 
             //miramos si estaba enganchado a un connector-root para sacarlo del parent
             if (itsInsideAConnectorRoot) {
 
-                //setTimeout(function() {
-                if (previousBloq.bloqData.type === 'group') {
+
+                if (previousBloq.bloqData.type === 'group' && !afterConnector) {
                     //remove class that show help on group bloqs
                     previousBloq.$bloq.removeClass('with--content');
                 }
                 removeFromStatementInput(bloq);
                 utils.redrawTree(previousBloq, bloqs, connectors);
-                // }, 0);
 
             }
         }

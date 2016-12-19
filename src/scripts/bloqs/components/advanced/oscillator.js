@@ -47,12 +47,15 @@ var oscillatorAdvanced = _.merge(_.clone(StatementBloq, true), {
             suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
-            value: 'bloq-oscillator-advanced-speed'
+            value: 'bloq-common-every'
         }, {
             bloqInputId: 'SPEED',
             alias: 'bloqInput',
             acceptType: ['all'],
             suggestedBloqs: ['number', 'selectVariable']
+        }, {
+            alias: 'text',
+            value: 'bloq-common-ms'
         }]
     ],
     code: '{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();',
