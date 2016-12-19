@@ -420,6 +420,7 @@
     var drawBranch = function(bloqs, connectors, topConnectorUuid) {
         var branchUuid = connectors[topConnectorUuid].bloqUuid;
         console.log('          ******* - branch - *********', branchUuid);
+        console.log('          ', bloqs[branchUuid].bloqData.name);
         console.log('          connector--top:', bloqs[branchUuid].connectors[0], 'connectedTo', connectors[bloqs[branchUuid].connectors[0]].connectedTo);
         console.log('          connector--bottom:', bloqs[branchUuid].connectors[1], 'connectedTo', connectors[bloqs[branchUuid].connectors[1]].connectedTo);
         if (bloqs[branchUuid].connectors[2]) {
@@ -441,15 +442,16 @@
      * @return {[type]}            [description]
      */
     var drawTree = function(bloqs, connectors) {
-        //console.log('drawtree');
+        console.log(bloqs);
         //buscamos los tipo statement q no tienen un top conectado
         for (var uuid in bloqs) {
             //console.log(bloqs[uuid]);
-            if (bloqs[uuid].droppable && bloqs[uuid].connectors[0] && !connectors[bloqs[uuid].connectors[0]].connectedTo) {
+            if (bloqs[uuid].connectors[0] && !connectors[bloqs[uuid].connectors[0]].connectedTo) {
                 switch (bloqs[uuid].bloqData.type) {
                     case 'statement':
                     case 'statement-input':
                         console.log('******* - tree - *********', uuid);
+                        console.log(bloqs[uuid].bloqData.name);
                         console.log('connector--top:', bloqs[uuid].connectors[0], 'connectedTo', connectors[bloqs[uuid].connectors[0]].connectedTo);
                         console.log('connector--bottom:', bloqs[uuid].connectors[1], 'connectedTo', connectors[bloqs[uuid].connectors[1]].connectedTo);
                         if (bloqs[uuid].connectors[2]) {
@@ -466,6 +468,7 @@
                         break;
                     case 'group':
                         console.log('******* - Group - *********', uuid);
+                        console.log(bloqs[uuid].bloqData.name);
                         console.log('connector--root:', bloqs[uuid].connectors[2], 'connectedTo', connectors[bloqs[uuid].connectors[2]].connectedTo);
                         console.log('           ccccccc -  content ccccccc');
                         if (connectors[bloqs[uuid].connectors[2]].connectedTo) {
@@ -3394,11 +3397,13 @@
         }
     }
 
-    var removeBloq = function(bloqUuid, redraw) {
-        //console.log('remove:', bloqUuid);
+    var removeBloq = function(bloqUuid, redraw, removeAllConnectedBloqs) {
+
         var bloq = bloqs[bloqUuid],
             i;
+        console.log('remove:', bloqUuid);
         if (bloq) {
+            console.log('remove bloq name:', bloq.bloqData.name);
             //disconnect
             var topConnector, bottomConnector, outputConnector;
             window.dispatchEvent(new Event('bloqs:bloqremoved'));
@@ -3425,6 +3430,7 @@
                 document.removeEventListener('touchmove', bloqMouseMove);
                 document.removeEventListener('touchend', bloqMouseUp);
             }
+            //no break sentences
             switch (bloq.bloqData.type) {
                 case 'statement-input':
                     bloq.$bloq.find('.btn-collapse')[0].removeEventListener('click', collapseButtonClick);
@@ -3435,41 +3441,66 @@
                     while (childConnector) {
                         tempBloq = utils.getBloqByConnectorUuid(childConnector, bloqs, connectors);
                         childConnector = connectors[tempBloq.connectors[1]].connectedTo;
-                        removeBloq(tempBloq.uuid);
+                        removeBloq(tempBloq.uuid, redraw, removeAllConnectedBloqs);
                     }
                     /* falls through */
                 case 'statement':
 
                     topConnector = connectors[bloq.connectors[0]].connectedTo;
                     bottomConnector = connectors[bloq.connectors[1]].connectedTo;
+                    var previousBloq;
+                    if (removeAllConnectedBloqs) {
+                        if (topConnector) {
+                            connectors[topConnector].connectedTo = null;
+                            if (connectors[topConnector].data.type === 'connector--root') {
+                                previousBloq = bloqs[connectors[topConnector].bloqUuid];
+                                if (previousBloq.bloqData.type === 'group') {
+                                    previousBloq.$bloq.removeClass('with--content');
+                                }
 
-                    if (topConnector && bottomConnector) {
-                        connectors[topConnector].connectedTo = bottomConnector;
-                        connectors[bottomConnector].connectedTo = topConnector;
+                                if (redraw) {
+                                    utils.redrawTree(utils.getBloqByConnectorUuid(topConnector, bloqs, connectors), bloqs, connectors);
+                                }
+                            } else {
+                                removeBloq(connectors[topConnector].bloqUuid, redraw, removeAllConnectedBloqs);
+                            }
 
-                        if (redraw) {
-                            utils.redrawTree(utils.getBloqByConnectorUuid(topConnector, bloqs, connectors), bloqs, connectors);
                         }
-
-                    } else if (topConnector) {
-                        connectors[topConnector].connectedTo = null;
-                        var previousBloq = bloqs[connectors[topConnector].bloqUuid];
-                        if (previousBloq.bloqData.type === 'group') {
-                            previousBloq.$bloq.removeClass('with--content');
+                        if (bottomConnector) {
+                            connectors[bottomConnector].connectedTo = null;
+                            removeBloq(connectors[bottomConnector].bloqUuid, redraw, removeAllConnectedBloqs);
                         }
+                    } else {
+                        if (topConnector && bottomConnector) {
+                            connectors[topConnector].connectedTo = bottomConnector;
+                            connectors[bottomConnector].connectedTo = topConnector;
 
-                        if (redraw) {
-                            utils.redrawTree(utils.getBloqByConnectorUuid(topConnector, bloqs, connectors), bloqs, connectors);
+                            if (redraw) {
+                                utils.redrawTree(utils.getBloqByConnectorUuid(topConnector, bloqs, connectors), bloqs, connectors);
+                            }
+
+                        } else if (topConnector) {
+                            connectors[topConnector].connectedTo = null;
+                            previousBloq = bloqs[connectors[topConnector].bloqUuid];
+                            if (previousBloq.bloqData.type === 'group') {
+                                previousBloq.$bloq.removeClass('with--content');
+                            }
+
+                            if (redraw) {
+                                utils.redrawTree(utils.getBloqByConnectorUuid(topConnector, bloqs, connectors), bloqs, connectors);
+                            }
+                        } else if (bottomConnector) {
+                            connectors[bottomConnector].connectedTo = null;
                         }
-                    } else if (bottomConnector) {
-                        connectors[bottomConnector].connectedTo = null;
                     }
+
+
                     //remove the inputs bloqs inside in 1 level
                     var uuid;
                     for (i = 0; i < bloq.IOConnectors.length; i++) {
                         uuid = bloq.IOConnectors[i];
                         if ((IOConnectors[uuid].data.type === 'connector--input') && IOConnectors[uuid].connectedTo) {
-                            removeBloq(IOConnectors[IOConnectors[uuid].connectedTo].bloqUuid);
+                            removeBloq(IOConnectors[IOConnectors[uuid].connectedTo].bloqUuid, redraw, removeAllConnectedBloqs);
                         }
                     }
                     break;
