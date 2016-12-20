@@ -320,6 +320,10 @@
                 setupExtraCodeList[processCode(bloqFullStructure.arduino.setupExtraCode, aliasesValuesHashMap, hardwareList)] = true;
             }
 
+            if (bloqFullStructure.arduino.extraFunctionCode) {
+                programFunctionDeclarationsList[bloqFullStructure.arduino.extraFunctionCode] = true;
+            }
+
             if (bloqFullStructure.name === 'constructorClass') {
                 var parentClassName = searchClassName(bloqFullStructure);
                 bloqFullStructure.arduino.code = bloqFullStructure.arduino.code.replace(CLASS_CONSTRUCTOR_REGEXP, parentClassName);
