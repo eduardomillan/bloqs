@@ -1,0 +1,65 @@
+{
+  "type": "output",
+  "name": "phoneReadLinearAccel",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-phone-read-laccel",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-phone-read"
+      },
+      {
+        "id": "PHONE",
+        "alias": "dynamicDropdown",
+        "options": "phoneElements"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-phone-lacceleration"
+      },
+      {
+        "id": "AXIS",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-phone-axis-x",
+            "value": "\"x\""
+          },
+          {
+            "label": "bloq-phone-axis-y",
+            "value": "\"y\""
+          },
+          {
+            "label": "bloq-phone-axis-z",
+            "value": "\"z\""
+          }
+        ]
+      }
+    ]
+  ],
+  "code": "{PHONE}.readString()",
+  "arduino": {
+    "includes": [
+      "BitbloqSoftwareSerial.h"
+    ],
+    "extraFunctionCode": "String getAcceleration(axis,phone){phone.println(String(\"readLAccel-\")+String(axis));String data=\"\";while(data==\"\"){data=phone.readString();}return data;}}",
+    "code": "getAcceleration({AXIS},{PHONE})"
+  },
+  "returnType": {
+    "type": "simple",
+    "value": "String"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneReadLinearAccel\" no preparado para generar código python"
+      }
+    ]
+  }
+}
