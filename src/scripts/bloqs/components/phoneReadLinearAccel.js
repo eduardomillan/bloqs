@@ -50,7 +50,7 @@ var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
     code: '{PHONE}.readString()',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        extraFunctionCode: 'String getAcceleration(String axis,bqSoftwareSerial & phone){phone.println(String("readLAccel-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
+        extraFunctionCode: 'float getAcceleration(String axis,bqSoftwareSerial & phone){phone.println(String("readLAccel-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
         code:'getAcceleration({AXIS}, {PHONE})'
     },
     returnType: {
