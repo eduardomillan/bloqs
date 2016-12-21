@@ -11,6 +11,7 @@
   /*---- MBOT ---------*/
   /*---- MRANGER ---------*/
   /*---- ZOWI ---------*/
+  /*---- ZOWI COMPONENTS---------*/
   /*---- CLASSES ---------*/
   /*---- FUNCTIONS ------*/
   /*---- CONTROL ------*/
@@ -480,6 +481,24 @@
     #bloqs--field.theme-basic .bloq.bloq-zowi-movements-no-dir-v1 input,
     #bloqs--field.theme-basic .bloq.bloq-zowi-movements-no-dir-v1 textarea,
     #bloqs--field.theme-basic .bloq.bloq-zowi-movements-no-dir-v1 select {
+      color: #60BCC9; }
+  #bloqs--field.theme-basic .bloq.bloq-zowicomponent-buzzer {
+    color: #60BCC9; }
+    #bloqs--field.theme-basic .bloq.bloq-zowicomponent-buzzer input,
+    #bloqs--field.theme-basic .bloq.bloq-zowicomponent-buzzer textarea,
+    #bloqs--field.theme-basic .bloq.bloq-zowicomponent-buzzer select {
+      color: #60BCC9; }
+  #bloqs--field.theme-basic .bloq.bloq-zowicomponent-buzzer-advance {
+    color: #60BCC9; }
+    #bloqs--field.theme-basic .bloq.bloq-zowicomponent-buzzer-advance input,
+    #bloqs--field.theme-basic .bloq.bloq-zowicomponent-buzzer-advance textarea,
+    #bloqs--field.theme-basic .bloq.bloq-zowicomponent-buzzer-advance select {
+      color: #60BCC9; }
+  #bloqs--field.theme-basic .bloq.bloq-zowicomponent-read-sensor {
+    color: #60BCC9; }
+    #bloqs--field.theme-basic .bloq.bloq-zowicomponent-read-sensor input,
+    #bloqs--field.theme-basic .bloq.bloq-zowicomponent-read-sensor textarea,
+    #bloqs--field.theme-basic .bloq.bloq-zowicomponent-read-sensor select {
       color: #60BCC9; }
   #bloqs--field.theme-basic .bloq.bloq-array-class-variable {
     color: #e30b9a; }
@@ -1369,6 +1388,7 @@
   /*---- MBOT ---------*/
   /*---- MRANGER ---------*/
   /*---- ZOWI ---------*/
+  /*---- ZOWI COMPONENTS---------*/
   /*---- CLASSES ---------*/
   /*---- FUNCTIONS ------*/
   /*---- CONTROL ------*/
@@ -3893,6 +3913,105 @@
       #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled).bloq--output:before {
         background-color: #60BCC9; }
       #bloqs--field.theme-colors .bloq.bloq-zowi-movements-no-dir-v1:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #60BCC9; }
+  #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) .bloqinput {
+      color: white;
+      background: #60BCC9;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) .bloqinput:before {
+        background: #60BCC9;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled).bloq--statement {
+      background-color: #60BCC9; }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled).bloq--output {
+      background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled).bloq--output:before {
+        background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #60BCC9; }
+  #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) .bloqinput {
+      color: white;
+      background: #60BCC9;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) .bloqinput:before {
+        background: #60BCC9;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled).bloq--statement {
+      background-color: #60BCC9; }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled).bloq--output {
+      background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled).bloq--output:before {
+        background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-buzzer-advance:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #60BCC9; }
+  #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) textarea,
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) .bloqinput {
+      color: white;
+      background: #60BCC9;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) textarea:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) .bloqinput:before {
+        background: #60BCC9;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled).bloq--statement {
+      background-color: #60BCC9; }
+    #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled).bloq--output {
+      background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled).bloq--output:before {
+        background-color: #60BCC9; }
+      #bloqs--field.theme-colors .bloq.bloq-zowicomponent-read-sensor:not(.disabled).bloq--output:focus:not(.disabled):after {
         background-color: #60BCC9; }
   #bloqs--field.theme-colors .bloq.bloq-array-class-variable:not(.disabled) {
     color: white; }

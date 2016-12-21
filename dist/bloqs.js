@@ -1862,7 +1862,7 @@
                     switch (sensorData.type) {
                         case 'analog':
                             result = 'analogRead(' + sensorName + ')';
-                            break
+                            break;
                         case 'digital':
                             result = 'digitalRead(' + sensorName + ')';
                             break;
@@ -1870,7 +1870,7 @@
                             result = '(float *) ' + sensorName + '.read()';
                             break;
                         default:
-                            result = sensorName + '.read()'
+                            result = sensorName + '.read()';
                     }
                 }
 
@@ -1936,7 +1936,7 @@
                 if (instances[instanceId].arguments.length > 0) {
                     instancesCode = instancesCode.slice(0, -1);
                 }
-                instancesCode += ');\n'
+                instancesCode += ');\n';
             } else if (instances[instanceId].equals) {
                 instancesCode += instances[instanceId].type + ' ' + instances[instanceId].realName + ' = ' + instances[instanceId].equals + ';\n';
             } else {
@@ -2134,7 +2134,7 @@
             }
 
             if (bloqFullStructure.arduino.extraFunctionCode) {
-                programFunctionDeclarationsList[bloqFullStructure.arduino.extraFunctionCode] = true;
+                programFunctionDeclarationsList[processCode(bloqFullStructure.arduino.extraFunctionCode, aliasesValuesHashMap, hardwareList)] = true;
             }
 
             if (bloqFullStructure.name === 'constructorClass') {
@@ -2478,6 +2478,7 @@
     return arduinoGeneration;
 
 })(window.arduinoGeneration = window.arduinoGeneration || {}, undefined);
+
 
 'use strict';
 (function(bloqsSuggested, bloqsLanguages, bloqsUtils) {
