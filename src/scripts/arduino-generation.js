@@ -321,7 +321,7 @@
             }
 
             if (bloqFullStructure.arduino.extraFunctionCode) {
-                programFunctionDeclarationsList[processCode(bloqFullStructure.arduino.extraFunctionCode, aliasesValuesHashMap, hardwareList)] = true;
+                programFunctionDeclarationsList[bloqFullStructure.arduino.extraFunctionCode] = true;
             }
 
             if (bloqFullStructure.name === 'constructorClass') {
