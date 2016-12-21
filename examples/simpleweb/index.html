@@ -372,7 +372,7 @@
 
         var zowi2 = ['declareVariable', 'zowiButtons', 'zowiDistance', 'zowiMovementsFront', 'zowiMovementsHeightFront', 'zowiMovementsHeightSides', 'zowiMovementsNoDir-v1', 'zowiMovementsSides', 'zowiSound'];
 
-        var zowiComponents = ['zowiComponentBuzzer', 'zowiComponentBuzzerAdvanced', 'zowiReadSensor', 'declareVariable'];
+        var zowiComponents = ['zowiComponentBuzzer', 'zowiComponentBuzzerAdvanced', 'zowiReadSensor', 'declareVariable', 'zowiComponentSerialSend', 'zowiSerialReceive', 'zowiSerialReceiveInt'];
 
         var deprecated = ['declareVariable'];
 
@@ -389,7 +389,7 @@
 
         var testPhone = ['phoneSendText', 'phoneEmitSound', 'phoneReceive', 'declareVariable', 'phoneToggleLight', 'phoneTurnOnLight', 'phoneReadLinearAccel'];
 
-        testSet = testPhone;
+        testSet = zowiComponents;
 
         for (var i = 0; i < testSet.length; i++) {
             createBloq(testSet[i]);

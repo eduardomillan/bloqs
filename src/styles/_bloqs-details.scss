@@ -129,6 +129,9 @@ $theme-color-botbloq-snake: #3CB371;
     @include createBloqsCss($reverse, "bloq-zowicomponent-buzzer", $zowi-color, $theme-color-zowi-color);
     @include createBloqsCss($reverse, "bloq-zowicomponent-buzzer-advance", $zowi-color, $theme-color-zowi-color);
     @include createBloqsCss($reverse, "bloq-zowicomponent-read-sensor", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-zowicomponent-serial-send", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-zowicomponent-serial-receiver", $zowi-color, $theme-color-zowi-color);
+    @include createBloqsCss($reverse, "bloq-zowicomponent-serial-receiver-int", $zowi-color, $theme-color-zowi-color);
     /*---- CLASSES ---------*/
     @include createBloqsCss($reverse, "bloq-array-class-variable", $classes-color, $theme-color-classes-color);
     @include createBloqsCss($reverse, "bloq-class", $classes-color, $theme-color-classes-color, true);

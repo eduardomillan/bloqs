@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "serialSend-v1",
+  "name": "zowiComponentSerialSend",
   "connectors": [
     {
       "type": "connector--top",
@@ -21,20 +21,15 @@
         "number",
         "selectVariable"
       ],
-      "name": "e146468f-c26e-4e33-9c09-761ba1c43fa8"
+      "name": "cd0967fd-fe71-41b8-af41-c4922cb495c3"
     }
   ],
-  "bloqClass": "bloq-serial-send",
+  "bloqClass": "bloq-zowicomponent-serial-send",
   "content": [
     [
       {
-        "id": "SERIAL",
-        "alias": "dynamicDropdown",
-        "options": "serialElements"
-      },
-      {
         "alias": "text",
-        "value": "bloq-serial-send-send"
+        "value": "bloq-zowicomponent-serial-send"
       },
       {
         "bloqInputId": "DATA",
@@ -47,7 +42,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "e146468f-c26e-4e33-9c09-761ba1c43fa8"
+        "name": "cd0967fd-fe71-41b8-af41-c4922cb495c3"
       },
       {
         "id": "LN",
@@ -55,27 +50,40 @@
         "options": [
           {
             "label": "bloq-serial-send-println",
-            "value": "println"
+            "value": "true"
           },
           {
             "label": "bloq-serial-send-print",
-            "value": "print"
+            "value": "false"
           }
         ]
       }
     ]
   ],
-  "code": "{SERIAL}.{LN}({DATA});",
+  "code": "",
   "arduino": {
     "includes": [
-      "BitbloqSoftwareSerial.h"
+      "BitbloqZowi.h",
+      "BitbloqUS.h",
+      "BitbloqBatteryReader.h",
+      "BitbloqLedMatrix.h",
+      "Servo.h",
+      "BitbloqOscillator.h",
+      "EEPROM.h"
     ],
-    "code": "{SERIAL}.{LN}({DATA});"
+    "needInstanceOf": [
+      {
+        "name": "zowi",
+        "type": "Zowi"
+      }
+    ],
+    "setupExtraCode": "zowi.init();",
+    "code": "zowi.serialSend({DATA}, {LN});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"serialSend-v1\" no preparado para generar código python"
+        "code": "Bloque \"zowiComponentSerialSend\" no preparado para generar código python"
       }
     ]
   }
