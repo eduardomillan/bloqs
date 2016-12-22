@@ -33,7 +33,7 @@ var phoneReadLight = _.merge(_.clone(OutputBloq, true), {
         },
          {
             alias: 'text',
-            value: 'lx'
+            value: '(lx)'
         },
       ]
     ],
