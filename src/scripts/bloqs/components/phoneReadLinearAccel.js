@@ -44,7 +44,11 @@ var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
                 label: '"z"',
                 value: '"z"'
             }]
-        }
+        },
+         {
+            alias: 'text',
+            value: 'm/s²'
+        },
       ]
     ],
     code: '{PHONE}.readString()',

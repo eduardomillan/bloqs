@@ -44,6 +44,10 @@ var phoneReadGyroscope = _.merge(_.clone(OutputBloq, true), {
                 label: '"z"',
                 value: '"z"'
             }]
+        },
+        {
+            alias: 'text',
+            value: '(rad/s)'
         }
       ]
     ],
