@@ -1,13 +1,13 @@
 {
   "type": "output",
-  "name": "phoneReadLinearAccel",
+  "name": "phoneReadGyroscope",
   "connectors": [
     {
       "type": "connector--output",
       "accept": "connector--input"
     }
   ],
-  "bloqClass": "bloq-phone-read-laccel",
+  "bloqClass": "bloq-phone-read-gyros",
   "content": [
     [
       {
@@ -21,7 +21,7 @@
       },
       {
         "alias": "text",
-        "value": "bloq-phone-lacceleration"
+        "value": "bloq-phone-gyroscope"
       },
       {
         "id": "AXIS",
@@ -43,13 +43,13 @@
       }
     ]
   ],
-  "code": "{PHONE}.readString()",
+  "code": "",
   "arduino": {
     "includes": [
       "BitbloqSoftwareSerial.h"
     ],
-    "extraFunctionCode": "float getAcceleration(String axis,bqSoftwareSerial & phone){phone.println(String(\"readLAccel-\")+String(axis));String data=\"\";while(data==\"\"){data=phone.readString();}return data.toFloat();}",
-    "code": "getAcceleration({AXIS}, {PHONE})"
+    "extraFunctionCode": "float getGyroscope(String axis,bqSoftwareSerial & phone){phone.println(String(\"readGyros-\")+String(axis));String data=\"\";while(data==\"\"){data=phone.readString();}return data.toFloat();}",
+    "code": "getGyroscope({AXIS}, {PHONE})"
   },
   "returnType": {
     "type": "simple",
@@ -58,7 +58,7 @@
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"phoneReadLinearAccel\" no preparado para generar código python"
+        "code": "Bloque \"phoneReadGyroscope\" no preparado para generar código python"
       }
     ]
   }

@@ -16,9 +16,9 @@ var _ = require('lodash'),
  * Return type: sensor's return type
  */
 
-var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
-    name: 'phoneReadLinearAccel',
-    bloqClass: 'bloq-phone-read-laccel',
+var phoneReadGyroscope = _.merge(_.clone(OutputBloq, true), {
+    name: 'phoneReadGyroscope',
+    bloqClass: 'bloq-phone-read-gyros',
     content: [
         [{
             alias: 'text',
@@ -29,7 +29,7 @@ var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
             options: 'phoneElements'
         }, {
             alias: 'text',
-            value: 'bloq-phone-lacceleration'
+            value: 'bloq-phone-gyroscope'
         },
         {
             id: 'AXIS',
@@ -47,11 +47,11 @@ var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
         }
       ]
     ],
-    code: '{PHONE}.readString()',
+    code: '',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        extraFunctionCode: 'float getAcceleration(String axis,bqSoftwareSerial & phone){phone.println(String("readLAccel-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
-        code:'getAcceleration({AXIS}, {PHONE})'
+        extraFunctionCode: 'float getGyroscope(String axis,bqSoftwareSerial & phone){phone.println(String("readGyros-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
+        code:'getGyroscope({AXIS}, {PHONE})'
     },
     returnType: {
         type: 'simple',
@@ -59,6 +59,6 @@ var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.preprocessBloq(phoneReadLinearAccel);
+utils.preprocessBloq(phoneReadGyroscope);
 
-module.exports = phoneReadLinearAccel;
+module.exports = phoneReadGyroscope;
