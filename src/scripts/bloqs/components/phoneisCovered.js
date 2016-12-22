@@ -33,10 +33,10 @@ var phoneisCovered = _.merge(_.clone(OutputBloq, true), {
             alias: 'staticDropdown',
             options: [{
                 label: 'bloq-phone-covered',
-                value: 'covered'
+                value: '"covered"'
             }, {
                 label: 'bloq-phone-not-covered',
-                value: 'ncovered'
+                value: '"ncovered"'
             }]
         }
       ]
