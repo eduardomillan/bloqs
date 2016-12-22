@@ -54,7 +54,7 @@ var phoneReadGravity = _.merge(_.clone(OutputBloq, true), {
     code: '{PHONE}.readString()',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        extraFunctionCode: 'float getGravity(String axis,bqSoftwareSerial & phone){phone.println(String("readLAccel-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
+        extraFunctionCode: 'float getGravity(String axis,bqSoftwareSerial & phone){phone.println(String("readGravity-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
         code:'getGravity({AXIS}, {PHONE})'
     },
     returnType: {
