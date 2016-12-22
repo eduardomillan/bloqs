@@ -1,0 +1,69 @@
+{
+  "type": "output",
+  "name": "phoneReadGravity",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-phone-read-gravity",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-phone-read"
+      },
+      {
+        "id": "PHONE",
+        "alias": "dynamicDropdown",
+        "options": "phoneElements"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-phone-gravity"
+      },
+      {
+        "id": "AXIS",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "\"x\"",
+            "value": "\"x\""
+          },
+          {
+            "label": "\"y\"",
+            "value": "\"y\""
+          },
+          {
+            "label": "\"z\"",
+            "value": "\"z\""
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "(m/s²)"
+      }
+    ]
+  ],
+  "code": "{PHONE}.readString()",
+  "arduino": {
+    "includes": [
+      "BitbloqSoftwareSerial.h"
+    ],
+    "extraFunctionCode": "float getGravity(String axis,bqSoftwareSerial & phone){phone.println(String(\"readLAccel-\")+String(axis));String data=\"\";while(data==\"\"){data=phone.readString();}return data.toFloat();}",
+    "code": "getGravity({AXIS}, {PHONE})"
+  },
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneReadGravity\" no preparado para generar código python"
+      }
+    ]
+  }
+}
