@@ -38,7 +38,7 @@ var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
                 label: '"x"',
                 value: '"x"'
             }, {
-                label: '"x"',
+                label: '"y"',
                 value: '"y"'
             }, {
                 label: '"z"',
@@ -47,7 +47,7 @@ var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
         },
          {
             alias: 'text',
-            value: 'm/s²'
+            value: '(m/s²)'
         },
       ]
     ],
