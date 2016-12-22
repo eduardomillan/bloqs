@@ -1,13 +1,13 @@
 {
   "type": "output",
-  "name": "phoneReadLinearAccel",
+  "name": "phoneReadAccel",
   "connectors": [
     {
       "type": "connector--output",
       "accept": "connector--input"
     }
   ],
-  "bloqClass": "bloq-phone-read-laccel",
+  "bloqClass": "bloq-phone-read-accel",
   "content": [
     [
       {
@@ -21,7 +21,7 @@
       },
       {
         "alias": "text",
-        "value": "bloq-phone-lacceleration"
+        "value": "bloq-phone-acceleration"
       },
       {
         "id": "AXIS",
@@ -52,8 +52,8 @@
     "includes": [
       "BitbloqSoftwareSerial.h"
     ],
-    "extraFunctionCode": "float getLAcceleration(String axis,bqSoftwareSerial & phone){phone.println(String(\"readLAccel-\")+String(axis));String data=\"\";while(data==\"\"){data=phone.readString();}return data.toFloat();}",
-    "code": "getLAcceleration({AXIS}, {PHONE})"
+    "extraFunctionCode": "float getAcceleration(String axis,bqSoftwareSerial & phone){phone.println(String(\"readAccel-\")+String(axis));String data=\"\";while(data==\"\"){data=phone.readString();}return data.toFloat();}",
+    "code": "getAcceleration({AXIS}, {PHONE})"
   },
   "returnType": {
     "type": "simple",
@@ -62,7 +62,7 @@
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"phoneReadLinearAccel\" no preparado para generar código python"
+        "code": "Bloque \"phoneReadAccel\" no preparado para generar código python"
       }
     ]
   }

@@ -16,9 +16,9 @@ var _ = require('lodash'),
  * Return type: sensor's return type
  */
 
-var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
-    name: 'phoneReadLinearAccel',
-    bloqClass: 'bloq-phone-read-laccel',
+var phoneReadAccel = _.merge(_.clone(OutputBloq, true), {
+    name: 'phoneReadAccel',
+    bloqClass: 'bloq-phone-read-accel',
     content: [
         [{
             alias: 'text',
@@ -29,7 +29,7 @@ var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
             options: 'phoneElements'
         }, {
             alias: 'text',
-            value: 'bloq-phone-lacceleration'
+            value: 'bloq-phone-acceleration'
         },
         {
             id: 'AXIS',
@@ -54,8 +54,8 @@ var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
     code: '{PHONE}.readString()',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        extraFunctionCode: 'float getLAcceleration(String axis,bqSoftwareSerial & phone){phone.println(String("readLAccel-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
-        code:'getLAcceleration({AXIS}, {PHONE})'
+        extraFunctionCode: 'float getAcceleration(String axis,bqSoftwareSerial & phone){phone.println(String("readAccel-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
+        code:'getAcceleration({AXIS}, {PHONE})'
     },
     returnType: {
         type: 'simple',
@@ -63,6 +63,6 @@ var phoneReadLinearAccel = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.preprocessBloq(phoneReadLinearAccel);
+utils.preprocessBloq(phoneReadAccel);
 
-module.exports = phoneReadLinearAccel;
+module.exports = phoneReadAccel;
