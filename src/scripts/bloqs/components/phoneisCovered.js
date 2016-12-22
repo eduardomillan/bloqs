@@ -44,7 +44,7 @@ var phoneisCovered = _.merge(_.clone(OutputBloq, true), {
     code: '{PHONE}.readString()',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        extraFunctionCode: 'boolean getProx(String cv,bqSoftwareSerial & phone){phone.println(String("readProx-")+String(cv));String data="";boolean result=false;while(data==""){data=phone.readString();}if(data.indexOf("true")>=0){result=true;}else{result=true;}return result;}',
+        extraFunctionCode: 'boolean getProx(String cv,bqSoftwareSerial & phone){phone.println(String("readProx-")+String(cv));String data="";boolean result=false;while(data==""){data=phone.readString();}if(data.indexOf("true")>=0){result=true;}else{result=false;}return result;}',
         code:'getProx({COVERED}, {PHONE})'
     },
     returnType: {
