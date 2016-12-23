@@ -1,0 +1,69 @@
+{
+  "type": "output",
+  "name": "phoneReadMagnetic",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-phone-read-magnetic",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-phone-read"
+      },
+      {
+        "id": "PHONE",
+        "alias": "dynamicDropdown",
+        "options": "phoneElements"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-phone-magnetic"
+      },
+      {
+        "id": "AXIS",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "\"x\"",
+            "value": "\"x\""
+          },
+          {
+            "label": "\"y\"",
+            "value": "\"y\""
+          },
+          {
+            "label": "\"z\"",
+            "value": "\"z\""
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "(μT)"
+      }
+    ]
+  ],
+  "code": "{PHONE}.readString()",
+  "arduino": {
+    "includes": [
+      "BitbloqSoftwareSerial.h"
+    ],
+    "extraFunctionCode": "float getMagneticField(String axis,bqSoftwareSerial & phone){phone.println(String(\"readMagnetic-\")+String(axis));String data=\"\";while(data==\"\"){data=phone.readString();}return data.toFloat();}",
+    "code": "getMagneticField({AXIS}, {PHONE})"
+  },
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneReadMagnetic\" no preparado para generar código python"
+      }
+    ]
+  }
+}

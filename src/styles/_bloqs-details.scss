@@ -220,6 +220,7 @@ $theme-color-botbloq-snake: #3CB371;
     @include createBloqsCss($reverse, "bloq-phone-read-gyros", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-phone-isCovered", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-phone-read-light", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-phone-read-magnetic", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-pin-read-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-pin-writte-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-read-advanced", $components-color, $theme-color-components-color);
