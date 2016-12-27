@@ -17,7 +17,7 @@ var _ = require('lodash'),
 
 var phoneSendTweet = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'phoneSendText',
+    name: 'phoneSendTweet',
     bloqClass: 'bloq-send-tweet',
     content: [
         [{

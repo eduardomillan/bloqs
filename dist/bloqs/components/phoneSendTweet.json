@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "phoneSendText",
+  "name": "phoneSendTweet",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "a78b15e4-7520-401f-926d-373caa32f8e1"
+      "name": "f50157a8-8bd1-40be-aad8-402b3cf5a9e7"
     }
   ],
   "bloqClass": "bloq-send-tweet",
@@ -45,7 +45,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "a78b15e4-7520-401f-926d-373caa32f8e1"
+        "name": "f50157a8-8bd1-40be-aad8-402b3cf5a9e7"
       }
     ]
   ],
@@ -59,7 +59,7 @@
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"phoneSendText\" no preparado para generar código python"
+        "code": "Bloque \"phoneSendTweet\" no preparado para generar código python"
       }
     ]
   }
