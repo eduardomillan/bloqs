@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "phoneToggleLight",
+  "name": "phoneSendText",
   "connectors": [
     {
       "type": "connector--top",
@@ -17,13 +17,13 @@
         "all"
       ],
       "suggestedBloqs": [
-        "number",
+        "string",
         "selectVariable"
       ],
-      "name": "5831ca85-a046-4586-a996-b36ca014de7b"
+      "name": "a78b15e4-7520-401f-926d-373caa32f8e1"
     }
   ],
-  "bloqClass": "bloq-phone-toggle",
+  "bloqClass": "bloq-send-tweet",
   "content": [
     [
       {
@@ -33,37 +33,33 @@
       },
       {
         "alias": "text",
-        "value": "bloq-phone-toggle-light"
+        "value": "bloq-send-tweet"
       },
       {
-        "bloqInputId": "DATA",
+        "bloqInputId": "TWEET",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
-          "number",
+          "string",
           "selectVariable"
         ],
-        "name": "5831ca85-a046-4586-a996-b36ca014de7b"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-phone-toggle-units"
+        "name": "a78b15e4-7520-401f-926d-373caa32f8e1"
       }
     ]
   ],
-  "code": "{PHONE}.println(\"write-\" + {DATA});",
+  "code": "{PHONE}.println(\"twitterSend-\" + {TWEET});",
   "arduino": {
     "includes": [
       "BitbloqSoftwareSerial.h"
     ],
-    "code": "{PHONE}.println(String(\"toggleFlashlight-\")+String({DATA}));"
+    "code": "{PHONE}.println(String(\"twitterSend-\")+String({TWEET}));"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"phoneToggleLight\" no preparado para generar código python"
+        "code": "Bloque \"phoneSendText\" no preparado para generar código python"
       }
     ]
   }
