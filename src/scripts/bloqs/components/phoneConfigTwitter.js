@@ -16,7 +16,7 @@ var _ = require('lodash'),
 
 var phoneConfigTwitter = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'twitter-config',
+    name: 'phoneConfigTwitter',
     bloqClass: 'bloq-twitter-config',
     content: [
         [{
