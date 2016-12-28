@@ -27,23 +27,26 @@ var phoneEmitSound = _.merge(_.clone(StatementBloq, true), {
             id: 'SOUND',
             alias: 'staticDropdown',
             options: [{
-                label: 'bloq-phone-sounds-bass-v1',
-                value: '"bass"'
-            }, {
-                label: 'bloq-phone-sounds-bongo-v1',
-                value: '"bongo"'
-            }, {
-                label: 'bloq-phone-sounds-highhat-v1',
-                value: '"highhat"'
-            }, {
-                label: 'bloq-phone-sounds-snare-v1',
-                value: '"snare"'
-            },{
-                label: 'bloq-phone-sounds-meow-v1',
-                value: '"meow"'
-            },
+                    label: 'bloq-phone-sounds-bass-v1',
+                    value: '"bass"'
+                }, {
+                    label: 'bloq-phone-sounds-bongo-v1',
+                    value: '"bongo"'
+                }, {
+                    label: 'bloq-phone-sounds-highhat-v1',
+                    value: '"highhat"'
+                }, {
+                    label: 'bloq-phone-sounds-snare-v1',
+                    value: '"snare"'
+                }, {
+                    label: 'bloq-phone-sounds-meow-v1',
+                    value: '"meow"'
+                }, {
+                    label: 'bloq-phone-sounds-joke-v1',
+                    value: '"joke"'
+                }
 
-          ]
+            ]
         }, {
             alias: 'text',
             value: 'bloq-phone-sounds-device'
