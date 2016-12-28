@@ -59,12 +59,12 @@
       }
     ]
   ],
-  "code": "{PHONE}.println(\"playSound-\" + {SOUND});",
+  "code": "{PHONE}.println(\"playSound-\" + {SOUND});delay(1000);",
   "arduino": {
     "includes": [
       "BitbloqSoftwareSerial.h"
     ],
-    "code": "{PHONE}.println(String(\"playSound-\")+String({SOUND}));"
+    "code": "{PHONE}.println(String(\"playSound-\")+String({SOUND}));delay(1000);"
   },
   "python": {
     "codeLines": [

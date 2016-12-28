@@ -56,11 +56,11 @@ var phoneEmitSound = _.merge(_.clone(StatementBloq, true), {
             options: 'phoneElements'
         }]
     ],
-    code: '{PHONE}.println("playSound-" + {SOUND});',
+    code: '{PHONE}.println("playSound-" + {SOUND});delay(1000);',
 
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        code: '{PHONE}.println(String("playSound-")+String({SOUND}));'
+        code: '{PHONE}.println(String("playSound-")+String({SOUND}));delay(1000);'
     }
 });
 utils.preprocessBloq(phoneEmitSound);
