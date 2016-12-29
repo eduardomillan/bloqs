@@ -37,10 +37,10 @@ var phoneReadOrientation = _.merge(_.clone(OutputBloq, true), {
                 label: 'bloq-phone-orientation-azimuth',
                 value: '"azimuth"'
             }, {
-                label: 'bloq-phone-sounds-roll',
+                label: 'bloq-phone-orientation-roll',
                 value: '"roll"'
             }, {
-                label: 'bloq-phone-sounds-pitch',
+                label: 'bloq-phone-orientation-pitch',
                 value: '"pitch"'
             }]
         }, {
