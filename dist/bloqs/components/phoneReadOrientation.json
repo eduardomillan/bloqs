@@ -1,0 +1,69 @@
+{
+  "type": "output",
+  "name": "phoneReadOrientation",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-phone-read-orientation",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-phone-read"
+      },
+      {
+        "id": "PHONE",
+        "alias": "dynamicDropdown",
+        "options": "phoneElements"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-value"
+      },
+      {
+        "id": "AXIS",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-phone-orientation-azimuth",
+            "value": "\"azimuth\""
+          },
+          {
+            "label": "bloq-phone-sounds-roll",
+            "value": "\"roll\""
+          },
+          {
+            "label": "bloq-phone-sounds-pitch",
+            "value": "\"pitch\""
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "(º)"
+      }
+    ]
+  ],
+  "code": "{PHONE}.readString()",
+  "arduino": {
+    "includes": [
+      "BitbloqSoftwareSerial.h"
+    ],
+    "extraFunctionCode": "float getOrientation(String axis,bqSoftwareSerial & phone){phone.println(String(\"readOrientation-\")+String(axis));String data=\"\";while(data==\"\"){data=phone.readString();}return data.toFloat();}",
+    "code": "getOrientation({AXIS}, {PHONE})"
+  },
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneReadOrientation\" no preparado para generar código python"
+      }
+    ]
+  }
+}
