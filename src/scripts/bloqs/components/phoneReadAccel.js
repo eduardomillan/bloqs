@@ -43,13 +43,13 @@ var phoneReadAccel = _.merge(_.clone(OutputBloq, true), {
             id: 'AXIS',
             alias: 'staticDropdown',
             options: [{
-                label: '"x"',
+                label: 'x',
                 value: '"x"'
             }, {
-                label: '"y"',
+                label: 'y',
                 value: '"y"'
             }, {
-                label: '"z"',
+                label: 'z',
                 value: '"z"'
             }]
         }, {

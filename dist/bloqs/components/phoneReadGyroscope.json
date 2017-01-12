@@ -12,15 +12,6 @@
     [
       {
         "alias": "text",
-        "value": "bloq-phone-read"
-      },
-      {
-        "id": "PHONE",
-        "alias": "dynamicDropdown",
-        "options": "phoneElements"
-      },
-      {
-        "alias": "text",
         "value": "bloq-phone-gyroscope"
       },
       {
@@ -28,18 +19,27 @@
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "\"x\"",
+            "label": "x",
             "value": "\"x\""
           },
           {
-            "label": "\"x\"",
+            "label": "x",
             "value": "\"y\""
           },
           {
-            "label": "\"z\"",
+            "label": "z",
             "value": "\"z\""
           }
         ]
+      },
+      {
+        "alias": "text",
+        "value": "bloq-phone-of"
+      },
+      {
+        "id": "PHONE",
+        "alias": "dynamicDropdown",
+        "options": "phoneElements"
       },
       {
         "alias": "text",
