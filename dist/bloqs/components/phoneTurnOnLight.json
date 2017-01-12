@@ -20,12 +20,16 @@
         "number",
         "selectVariable"
       ],
-      "name": "827cfed9-4108-47f7-8243-6ca20788f6c7"
+      "name": "21d8f902-069a-4002-9417-1d8396a26e64"
     }
   ],
   "bloqClass": "bloq-phone-turnon-light",
   "content": [
     [
+      {
+        "alias": "text",
+        "value": "bloq-phone-turnon-light"
+      },
       {
         "id": "PHONE",
         "alias": "dynamicDropdown",
@@ -33,7 +37,7 @@
       },
       {
         "alias": "text",
-        "value": "bloq-phone-turnon-light"
+        "value": "bloq-phone-light-intensity"
       },
       {
         "bloqInputId": "DATA",
@@ -45,7 +49,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "827cfed9-4108-47f7-8243-6ca20788f6c7"
+        "name": "21d8f902-069a-4002-9417-1d8396a26e64"
       },
       {
         "alias": "text",

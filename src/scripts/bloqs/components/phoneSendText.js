@@ -21,10 +21,6 @@ var phoneSendText = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-phone-write',
     content: [
         [{
-            id: 'PHONE',
-            alias: 'dynamicDropdown',
-            options: 'phoneElements'
-        }, {
             alias: 'text',
             value: 'bloq-phone-write-show'
         }, {
@@ -32,6 +28,13 @@ var phoneSendText = _.merge(_.clone(StatementBloq, true), {
             alias: 'bloqInput',
             acceptType: ['all'],
             suggestedBloqs: ['string', 'number', 'selectVariable']
+        }, {
+            alias: 'text',
+            value: 'bloq-phone-screen'
+        }, {
+            id: 'PHONE',
+            alias: 'dynamicDropdown',
+            options: 'phoneElements'
         }]
     ],
     code: '{PHONE}.println("write-" + {DATA});',

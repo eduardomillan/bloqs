@@ -22,16 +22,24 @@ var phoneReadAccel = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-phone-read'
-        },{
-            id: 'PHONE',
-            alias: 'dynamicDropdown',
-            options: 'phoneElements'
+            value: 'bloq-read-read'
+        }, {
+            id: 'MESSAGE',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'bloq-phone-acceleration',
+                value: '"readAccel-"'
+            }, {
+                label: 'bloq-phone-lacceleration',
+                value: '"readLAccel-"'
+            }, {
+                label: 'bloq-phone-gravity',
+                value: '"readGravity-"'
+            }]
         }, {
             alias: 'text',
-            value: 'bloq-phone-acceleration'
-        },
-        {
+            value: 'bloq-phone-axis'
+        }, {
             id: 'AXIS',
             alias: 'staticDropdown',
             options: [{
@@ -44,18 +52,23 @@ var phoneReadAccel = _.merge(_.clone(OutputBloq, true), {
                 label: '"z"',
                 value: '"z"'
             }]
-        },
-         {
+        }, {
+            alias: 'text',
+            value: 'bloq-phone-of'
+        }, {
+            id: 'PHONE',
+            alias: 'dynamicDropdown',
+            options: 'phoneElements'
+        }, {
             alias: 'text',
             value: '(m/s²)'
-        },
-      ]
+        }, ]
     ],
     code: '{PHONE}.readString()',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        extraFunctionCode: 'float getAcceleration(String axis,bqSoftwareSerial & phone){phone.println(String("readAccel-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
-        code:'getAcceleration({AXIS}, {PHONE})'
+        extraFunctionCode: 'float getAcceleration(String axis, String message, bqSoftwareSerial & phone){phone.println(String(message)+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
+        code: 'getAcceleration({AXIS}, {MESSAGE}, {PHONE})'
     },
     returnType: {
         type: 'simple',

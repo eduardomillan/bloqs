@@ -21,17 +21,21 @@ var phoneSendTweet = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-send-tweet',
     content: [
         [{
-            id: 'PHONE',
-            alias: 'dynamicDropdown',
-            options: 'phoneElements'
-        }, {
             alias: 'text',
             value: 'bloq-send-tweet'
-        }, {
+        },  {
             bloqInputId: 'TWEET',
             alias: 'bloqInput',
             acceptType: ['all'],
             suggestedBloqs: ['string', 'selectVariable']
+        },
+        {
+            alias: 'text',
+            value: 'bloq-from-device'
+        }, {
+            id: 'PHONE',
+            alias: 'dynamicDropdown',
+            options: 'phoneElements'
         }]
     ],
     code: '{PHONE}.println("twitterSend-" + {TWEET});',

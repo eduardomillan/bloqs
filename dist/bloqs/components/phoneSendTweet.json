@@ -20,17 +20,12 @@
         "string",
         "selectVariable"
       ],
-      "name": "981bcfcf-f21d-4d74-a6e6-2a6b54efdef7"
+      "name": "39a89116-5a0b-4c43-86c5-753b17ac802e"
     }
   ],
   "bloqClass": "bloq-send-tweet",
   "content": [
     [
-      {
-        "id": "PHONE",
-        "alias": "dynamicDropdown",
-        "options": "phoneElements"
-      },
       {
         "alias": "text",
         "value": "bloq-send-tweet"
@@ -45,7 +40,16 @@
           "string",
           "selectVariable"
         ],
-        "name": "981bcfcf-f21d-4d74-a6e6-2a6b54efdef7"
+        "name": "39a89116-5a0b-4c43-86c5-753b17ac802e"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-from-device"
+      },
+      {
+        "id": "PHONE",
+        "alias": "dynamicDropdown",
+        "options": "phoneElements"
       }
     ]
   ],

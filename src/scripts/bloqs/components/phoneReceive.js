@@ -20,13 +20,13 @@ var phoneReceive = _.merge(_.clone(OutputBloq, true), {
     name: 'phoneReceive',
     bloqClass: 'bloq-phone-receive',
     content: [
-        [{
+        [ {
+            alias: 'text',
+            value: 'bloq-phone-receive'
+        }, {
             id: 'PHONE',
             alias: 'dynamicDropdown',
             options: 'phoneElements'
-        }, {
-            alias: 'text',
-            value: 'bloq-phone-receive'
         }]
     ],
     code: '{PHONE}.readString()',

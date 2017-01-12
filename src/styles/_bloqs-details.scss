@@ -1,5 +1,4 @@
 /* BASIC THEME */
-
 $code-color: #58B42D;
 $classes-color: #e30b9a;
 $components-color: #cf1c22;
@@ -19,9 +18,7 @@ $botbloq-manipulator: #058723;
 $botbloq-human: #6495ED;
 $botbloq-hexapod: #FF6347;
 $botbloq-snake: #3CB371;
-
 /* COLOR THEME */
-
 $theme-color-classes-color: #e30b9a;
 $theme-color-functions-color: #dd5b0c;
 $theme-color-control-color: #114698;
@@ -210,14 +207,11 @@ $theme-color-botbloq-snake: #3CB371;
     @include createBloqsCss($reverse, "bloq-phone-sound", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-phone-write", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-phone-receive", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-toggle", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-phone-turnon-light", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-phone-turnoff-light", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-twitter-config", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-send-tweet", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-read-laccel", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-phone-read-accel", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-read-gravity", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-phone-read-gyros", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-phone-isCovered", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-phone-read-light", $components-color, $theme-color-components-color);
@@ -287,18 +281,19 @@ $theme-color-botbloq-snake: #3CB371;
     @include createBloqsCss($reverse, "bloq-basic-operations-v1", $maths-color, $theme-color-maths-color);
     @include createBloqsCss($reverse, "bloq-round", $maths-color, $theme-color-maths-color);
 }
-
 @mixin createBloqsCss($reverse, $className, $classColor, $themeColorClassColor, $statementInput:false) {
-    @if ($reverse) {
+     @if ($reverse){
         &.#{$className} {
             color: $classColor;
+
             input,
-            textarea,
-            select {
+            select,
+            textarea {
                 color: $classColor;
             }
             @if($statementInput) {
                 border-left: 5px solid $classColor;
+
                 & > .bloq--extension:before {
                     border-left: 5px solid $classColor;
                 }
@@ -308,40 +303,50 @@ $theme-color-botbloq-snake: #3CB371;
     @else {
         &.#{$className}:not(.disabled) {
             color: white;
+
+            .bloqinput,
             input,
-            textarea,
             select,
-            .bloqinput {
+            textarea {
                 color: white;
                 background: $themeColorClassColor;
                 background-color: rgba(0, 0, 0, 0.2);
+
                 &:before {
                     background: $themeColorClassColor;
                     background-color: rgba(0, 0, 0, 0.2);
                 }
             }
+
             ::-webkit-input-placeholder {
                 color: rgba(255, 255, 255, 0.5);
             }
+
             select {
                 background-image: url($whiteDownArrow);
                 background-repeat: no-repeat;
                 background-position: right 7px bottom 45%;
+
                 &.bloq__inner--first {
                     margin-left: 10px;
                 }
+
                 option {
                     color: black;
                 }
             }
+
             &.bloq--statement {
                 background-color: $themeColorClassColor;
             }
+
             &.bloq--output {
                 background-color: $themeColorClassColor;
+
                 &:before {
                     background-color: $themeColorClassColor;
                 }
+
                 &:focus:not(.disabled):after {
                     background-color: $themeColorClassColor;
                 }
@@ -352,25 +357,31 @@ $theme-color-botbloq-snake: #3CB371;
                     color: white;
                     background: $themeColorClassColor;
                     background-color: rgba(0, 0, 0, 0.2);
+
                     &:before {
                         background: $themeColorClassColor;
                         background-color: rgba(0, 0, 0, 0.2);
                     }
                 }
+
                 &:before {
                     background-color: $themeColorClassColor;
                 }
+
                 & > .bloq--statement-input__header {
                     background-color: $themeColorClassColor;
                 }
+
                 & > .bloq--extension {
                     &:before {
                         border-left: 5px solid $themeColorClassColor;
                     }
+
                     & > .bloq--extension--end {
                         background-color: $themeColorClassColor;
                     }
                 }
+
                 & > .bloq--extension:before {}
             }
         }

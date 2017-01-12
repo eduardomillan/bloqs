@@ -21,6 +21,9 @@ var phoneisCovered = _.merge(_.clone(OutputBloq, true), {
     bloqClass: 'bloq-phone-isCovered',
     content: [
         [{
+            alias: 'text',
+            value: 'bloq-the'
+        },{
             id: 'PHONE',
             alias: 'dynamicDropdown',
             options: 'phoneElements'
