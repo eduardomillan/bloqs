@@ -34,7 +34,7 @@ var phoneSendText = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'PHONE',
             alias: 'dynamicDropdown',
-            options: 'phoneElements'
+            options: 'serialElements'
         }]
     ],
     code: '{PHONE}.println("write-" + {DATA});',

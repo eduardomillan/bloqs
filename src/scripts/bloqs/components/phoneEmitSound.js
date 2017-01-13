@@ -45,7 +45,6 @@ var phoneEmitSound = _.merge(_.clone(StatementBloq, true), {
                     label: 'bloq-phone-sounds-joke-v1',
                     value: '"joke"'
                 }
-
             ]
         }, {
             alias: 'text',
@@ -53,7 +52,7 @@ var phoneEmitSound = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'PHONE',
             alias: 'dynamicDropdown',
-            options: 'phoneElements'
+            options: 'serialElements'
         }]
     ],
     code: '{PHONE}.println("playSound-" + {SOUND});delay(1000);',

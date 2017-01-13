@@ -26,7 +26,7 @@ var phoneTurnOnLight = _.merge(_.clone(StatementBloq, true), {
         },{
             id: 'PHONE',
             alias: 'dynamicDropdown',
-            options: 'phoneElements'
+            options: 'serialElements'
         }, {
             alias: 'text',
             value: 'bloq-phone-light-intensity'

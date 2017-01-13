@@ -26,7 +26,7 @@ var phoneTurnOffLight = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'PHONE',
             alias: 'dynamicDropdown',
-            options: 'phoneElements'
+            options: 'serialElements'
         }]
     ],
     code: '{PHONE}.println("turnoffFlashlight-"); delay(500);',

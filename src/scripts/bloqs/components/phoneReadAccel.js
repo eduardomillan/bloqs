@@ -58,7 +58,7 @@ var phoneReadAccel = _.merge(_.clone(OutputBloq, true), {
         }, {
             id: 'PHONE',
             alias: 'dynamicDropdown',
-            options: 'phoneElements'
+            options: 'serialElements'
         }, {
             alias: 'text',
             value: '(m/s²)'
