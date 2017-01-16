@@ -22,40 +22,37 @@ var phoneReadMagnetic = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-phone-read'
-        },{
-            id: 'PHONE',
-            alias: 'dynamicDropdown',
-            options: 'phoneElements'
-        }, {
-            alias: 'text',
             value: 'bloq-phone-magnetic'
-        },
-        {
+        },  {
             id: 'AXIS',
             alias: 'staticDropdown',
             options: [{
-                label: '"x"',
+                label: 'x',
                 value: '"x"'
             }, {
-                label: '"y"',
+                label: 'y',
                 value: '"y"'
             }, {
-                label: '"z"',
+                label: 'z',
                 value: '"z"'
             }]
-        },
-         {
+        },{
+            alias: 'text',
+            value: 'bloq-phone-of'
+        }, {
+            id: 'PHONE',
+            alias: 'dynamicDropdown',
+            options: 'serialElements'
+        },{
             alias: 'text',
             value: '(μT)'
-        },
-      ]
+        }, ]
     ],
     code: '{PHONE}.readString()',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
         extraFunctionCode: 'float getMagneticField(String axis,bqSoftwareSerial & phone){phone.println(String("readMagnetic-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
-        code:'getMagneticField({AXIS}, {PHONE})'
+        code: 'getMagneticField({AXIS}, {PHONE})'
     },
     returnType: {
         type: 'simple',

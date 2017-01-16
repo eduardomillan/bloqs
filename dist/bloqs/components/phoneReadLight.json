@@ -12,16 +12,12 @@
     [
       {
         "alias": "text",
-        "value": "bloq-phone-read"
+        "value": "bloq-phone-light"
       },
       {
         "id": "PHONE",
         "alias": "dynamicDropdown",
-        "options": "phoneElements"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-phone-light"
+        "options": "serialElements"
       },
       {
         "alias": "text",

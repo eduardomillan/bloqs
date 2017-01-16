@@ -21,12 +21,12 @@ var phoneTurnOffLight = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-phone-turnoff-light',
     content: [
         [{
-            id: 'PHONE',
-            alias: 'dynamicDropdown',
-            options: 'phoneElements'
-        }, {
             alias: 'text',
             value: 'bloq-phone-turnoff-light'
+        }, {
+            id: 'PHONE',
+            alias: 'dynamicDropdown',
+            options: 'serialElements'
         }]
     ],
     code: '{PHONE}.println("turnoffFlashlight-"); delay(500);',

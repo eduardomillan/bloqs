@@ -21,12 +21,15 @@ var phoneTurnOnLight = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-phone-turnon-light',
     content: [
         [{
-            id: 'PHONE',
-            alias: 'dynamicDropdown',
-            options: 'phoneElements'
-        }, {
             alias: 'text',
             value: 'bloq-phone-turnon-light'
+        },{
+            id: 'PHONE',
+            alias: 'dynamicDropdown',
+            options: 'serialElements'
+        }, {
+            alias: 'text',
+            value: 'bloq-phone-light-intensity'
         }, {
             bloqInputId: 'DATA',
             alias: 'bloqInput',

@@ -22,13 +22,6 @@ var phoneReadOrientation = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-phone-read'
-        }, {
-            id: 'PHONE',
-            alias: 'dynamicDropdown',
-            options: 'phoneElements'
-        }, {
-            alias: 'text',
             value: 'bloq-value'
         }, {
             id: 'AXIS',
@@ -43,6 +36,13 @@ var phoneReadOrientation = _.merge(_.clone(OutputBloq, true), {
                 label: 'bloq-phone-orientation-pitch',
                 value: '"pitch"'
             }]
+        }, {
+            alias: 'text',
+            value: 'bloq-phone-of'
+        }, {
+            id: 'PHONE',
+            alias: 'dynamicDropdown',
+            options: 'serialElements'
         }, {
             alias: 'text',
             value: '(º)'

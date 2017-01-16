@@ -465,18 +465,6 @@
                             ]
                         };
                         break;
-                    case 'device':
-                        tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'bqSoftwareSerial',
-                            arguments: [
-                                hardwareList.components[i].pin.rx,
-                                hardwareList.components[i].pin.tx,
-                                hardwareList.components[i].baudRate
-                            ]
-                        };
-                        break;
                     case 'sp':
                         tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
                         tempInstanceOf = {

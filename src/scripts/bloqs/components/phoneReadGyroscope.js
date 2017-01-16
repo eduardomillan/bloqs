@@ -21,41 +21,40 @@ var phoneReadGyroscope = _.merge(_.clone(OutputBloq, true), {
     bloqClass: 'bloq-phone-read-gyros',
     content: [
         [{
-            alias: 'text',
-            value: 'bloq-phone-read'
-        },{
-            id: 'PHONE',
-            alias: 'dynamicDropdown',
-            options: 'phoneElements'
-        }, {
-            alias: 'text',
-            value: 'bloq-phone-gyroscope'
-        },
-        {
-            id: 'AXIS',
-            alias: 'staticDropdown',
-            options: [{
-                label: '"x"',
-                value: '"x"'
+                alias: 'text',
+                value: 'bloq-phone-gyroscope'
             }, {
-                label: '"x"',
-                value: '"y"'
+                id: 'AXIS',
+                alias: 'staticDropdown',
+                options: [{
+                    label: 'x',
+                    value: '"x"'
+                }, {
+                    label: 'x',
+                    value: '"y"'
+                }, {
+                    label: 'z',
+                    value: '"z"'
+                }]
             }, {
-                label: '"z"',
-                value: '"z"'
-            }]
-        },
-        {
-            alias: 'text',
-            value: '(rad/s)'
-        }
-      ]
+                alias: 'text',
+                value: 'bloq-phone-of'
+            }, {
+                id: 'PHONE',
+                alias: 'dynamicDropdown',
+                options: 'serialElements'
+            },
+            {
+                alias: 'text',
+                value: '(rad/s)'
+            }
+        ]
     ],
     code: '',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
         extraFunctionCode: 'float getGyroscope(String axis,bqSoftwareSerial & phone){phone.println(String("readGyros-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
-        code:'getGyroscope({AXIS}, {PHONE})'
+        code: 'getGyroscope({AXIS}, {PHONE})'
     },
     returnType: {
         type: 'simple',
