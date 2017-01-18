@@ -21,34 +21,32 @@ var phoneReadGyroscope = _.merge(_.clone(OutputBloq, true), {
     bloqClass: 'bloq-phone-read-gyros',
     content: [
         [{
-                alias: 'text',
-                value: 'bloq-phone-gyroscope'
+            alias: 'text',
+            value: 'bloq-phone-gyroscope'
+        }, {
+            id: 'AXIS',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'x',
+                value: '"x"'
             }, {
-                id: 'AXIS',
-                alias: 'staticDropdown',
-                options: [{
-                    label: 'x',
-                    value: '"x"'
-                }, {
-                    label: 'x',
-                    value: '"y"'
-                }, {
-                    label: 'z',
-                    value: '"z"'
-                }]
+                label: 'y',
+                value: '"y"'
             }, {
-                alias: 'text',
-                value: 'bloq-phone-of'
-            }, {
-                id: 'PHONE',
-                alias: 'dynamicDropdown',
-                options: 'serialElements'
-            },
-            {
-                alias: 'text',
-                value: '(rad/s)'
-            }
-        ]
+                label: 'z',
+                value: '"z"'
+            }]
+        }, {
+            alias: 'text',
+            value: 'bloq-phone-of'
+        }, {
+            id: 'PHONE',
+            alias: 'dynamicDropdown',
+            options: 'serialElements'
+        }, {
+            alias: 'text',
+            value: '(rad/s)'
+        }]
     ],
     code: '',
     arduino: {
