@@ -455,6 +455,7 @@
 
                     case 'bt':
                         tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
+                        tempSetupExtraCode = hardwareList.components[i].name + '.begin(' + hardwareList.components[i].baudRate + ');';
                         tempInstanceOf = {
                             name: hardwareList.components[i].name,
                             type: 'bqSoftwareSerial',
