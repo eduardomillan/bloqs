@@ -27,24 +27,13 @@ var phoneTurnOnLight = _.merge(_.clone(StatementBloq, true), {
             id: 'PHONE',
             alias: 'dynamicDropdown',
             options: 'serialElements'
-        }, {
-            alias: 'text',
-            value: 'bloq-phone-light-intensity'
-        }, {
-            bloqInputId: 'DATA',
-            alias: 'bloqInput',
-            acceptType: ['all'],
-            suggestedBloqs: ['number', 'selectVariable']
-        }, {
-            alias: 'text',
-            value: '%'
         }]
     ],
-    code: '{PHONE}.println("turnonFlashlight-" + {DATA});  delay(500);',
+    code: '{PHONE}.println("turnonFlashlight-");  delay(500);',
 
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
-        code: '{PHONE}.println(String("turnonFlashlight-")+String({DATA}));  delay(500);'
+        code: '{PHONE}.println(String("turnonFlashlight-"));  delay(500);'
     }
 
 });
