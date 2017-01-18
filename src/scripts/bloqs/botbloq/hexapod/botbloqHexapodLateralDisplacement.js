@@ -32,6 +32,13 @@ var botbloqHexapodLateralDisplacement = _.merge(_.clone(StatementBloq, true), {
                 label: 'izquierda',
                 value: 'LEFT'
             }]
+        }, {
+            id: 'STEPS',
+            alias: 'numberInput',
+            value: 3
+        }, {
+            alias: 'text',
+            value: 'pasos'
         }]
     ],
     code: '',
@@ -42,7 +49,7 @@ var botbloqHexapodLateralDisplacement = _.merge(_.clone(StatementBloq, true), {
             type: 'BotbloqHexapod'
         }],
         codeLines: [{
-            code: 'hexapod.lateralDisplacement("{SIDE}")'
+            code: 'hexapod.lateralDisplacement("{SIDE}", {STEPS})'
         }]
     }
 });
