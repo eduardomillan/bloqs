@@ -29,6 +29,16 @@ var botbloqSnakeMove = _.merge(_.clone(StatementBloq, true), {
                 label: 'Retroceder.',
                 value: 'BACKWARD'
             }]
+        }, {
+            alias: 'text',
+            value: 'durante'
+        }, {
+            id: 'DELAY',
+            alias: 'numberInput',
+            value: 1000
+        }, {
+            alias: 'text',
+            value: 'ms'
         }]
     ],
     code: '',
@@ -39,7 +49,7 @@ var botbloqSnakeMove = _.merge(_.clone(StatementBloq, true), {
             type: 'BotbloqSnake'
         }],
         codeLines: [{
-            code: 'snake.move("{MOVEMENT}")'
+            code: 'snake.move("{MOVEMENT}", {DELAY})'
         }]
     }
 });

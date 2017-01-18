@@ -35,6 +35,15 @@
             "value": "TURN_LEFT"
           }
         ]
+      },
+      {
+        "id": "STEPS",
+        "alias": "numberInput",
+        "value": 3
+      },
+      {
+        "alias": "text",
+        "value": "pasos"
       }
     ]
   ],
@@ -51,7 +60,7 @@
     ],
     "codeLines": [
       {
-        "code": "human.move(\"{MOVEMENT}\")"
+        "code": "human.move(\"{MOVEMENT}\", {STEPS})"
       }
     ]
   }

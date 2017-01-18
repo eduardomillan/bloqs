@@ -32,6 +32,13 @@ var botbloqHumanLateralDisplacement = _.merge(_.clone(StatementBloq, true), {
                 label: 'izquierda',
                 value: 'LEFT'
             }]
+        }, {
+            id: 'STEPS',
+            alias: 'numberInput',
+            value: 3
+        }, {
+            alias: 'text',
+            value: 'pasos'
         }]
     ],
     code: '',
@@ -42,7 +49,7 @@ var botbloqHumanLateralDisplacement = _.merge(_.clone(StatementBloq, true), {
             type: 'BotbloqHuman'
         }],
         codeLines: [{
-            code: 'human.lateralDisplacement("{FOOT}")'
+            code: 'human.lateralDisplacement("{FOOT}", {STEPS})'
         }]
     }
 });

@@ -35,6 +35,13 @@ var botbloqHexapodMove = _.merge(_.clone(StatementBloq, true), {
                 label: 'Girar a la izquierda',
                 value: 'TURN_LEFT'
             }]
+        }, {
+            id: 'STEPS',
+            alias: 'numberInput',
+            value: 3
+        }, {
+            alias: 'text',
+            value: 'pasos'
         }]
     ],
     code: '',
@@ -45,7 +52,7 @@ var botbloqHexapodMove = _.merge(_.clone(StatementBloq, true), {
             type: 'BotbloqHexapod'
         }],
         codeLines: [{
-            code: 'hexapod.move("{MOVEMENT}")'
+            code: 'hexapod.move("{MOVEMENT}", {STEPS})'
         }]
     }
 });

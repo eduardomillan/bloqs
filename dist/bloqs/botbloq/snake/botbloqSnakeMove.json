@@ -27,6 +27,19 @@
             "value": "BACKWARD"
           }
         ]
+      },
+      {
+        "alias": "text",
+        "value": "durante"
+      },
+      {
+        "id": "DELAY",
+        "alias": "numberInput",
+        "value": 1000
+      },
+      {
+        "alias": "text",
+        "value": "ms"
       }
     ]
   ],
@@ -43,7 +56,7 @@
     ],
     "codeLines": [
       {
-        "code": "snake.move(\"{MOVEMENT}\")"
+        "code": "snake.move(\"{MOVEMENT}\", {DELAY})"
       }
     ]
   }

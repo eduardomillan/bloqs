@@ -32,6 +32,16 @@ var botbloqSnakeLateralDisplacement = _.merge(_.clone(StatementBloq, true), {
                 label: 'izquierda',
                 value: 'LEFT'
             }]
+        }, {
+            alias: 'text',
+            value: 'durante'
+        }, {
+            id: 'DELAY',
+            alias: 'numberInput',
+            value: 1000
+        }, {
+            alias: 'text',
+            value: 'ms'
         }]
     ],
     code: '',
@@ -42,7 +52,7 @@ var botbloqSnakeLateralDisplacement = _.merge(_.clone(StatementBloq, true), {
             type: 'BotbloqSnake'
         }],
         codeLines: [{
-            code: 'snake.lateralDisplacement("{SIDE}")'
+            code: 'snake.lateralDisplacement("{SIDE}", {DELAY})'
         }]
     }
 });

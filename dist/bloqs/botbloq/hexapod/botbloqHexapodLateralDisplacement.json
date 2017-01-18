@@ -31,6 +31,15 @@
             "value": "LEFT"
           }
         ]
+      },
+      {
+        "id": "STEPS",
+        "alias": "numberInput",
+        "value": 3
+      },
+      {
+        "alias": "text",
+        "value": "pasos"
       }
     ]
   ],
@@ -47,7 +56,7 @@
     ],
     "codeLines": [
       {
-        "code": "hexapod.lateralDisplacement(\"{SIDE}\")"
+        "code": "hexapod.lateralDisplacement(\"{SIDE}\", {STEPS})"
       }
     ]
   }
