@@ -440,6 +440,7 @@
                         };
                         break;
                     case 'button':
+                    case 'GroveShieldButton':
                     case 'limitswitch':
                     case 'pot':
                     case 'ldrs':
