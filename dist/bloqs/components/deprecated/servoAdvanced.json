@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "digitalWrite",
+  "name": "servoNormalAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -17,10 +17,10 @@
         "all"
       ],
       "suggestedBloqs": [
-        "number",
+        "hwVariable",
         "selectVariable"
       ],
-      "name": "adf29a70-6239-42fb-ab36-e854b6511f9f"
+      "name": "218dea80-eada-4a18-91ba-a8f5a4eeec4b"
     },
     {
       "type": "connector--input",
@@ -29,59 +29,61 @@
         "all"
       ],
       "suggestedBloqs": [
-        "pinLevels",
         "number",
         "selectVariable"
       ],
-      "name": "df39fbc1-f024-40f2-88a2-82ae82b53f6f"
+      "name": "1fb58a5c-1fee-41e1-9c26-7c8a2601e3e5"
     }
   ],
-  "bloqClass": "bloq-pin-writte-advanced",
+  "bloqClass": "bloq-servo-advanced",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-pin-digital-write"
+        "value": "bloq-servo-advanced-move"
       },
       {
-        "bloqInputId": "PIN",
+        "bloqInputId": "SERVO",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
-          "number",
+          "hwVariable",
           "selectVariable"
         ],
-        "name": "adf29a70-6239-42fb-ab36-e854b6511f9f"
+        "name": "218dea80-eada-4a18-91ba-a8f5a4eeec4b"
       },
       {
         "alias": "text",
-        "value": "bloq-pin-digital-write-data-V1"
+        "value": "bloq-servo-advanced-to"
       },
       {
-        "bloqInputId": "DATA",
+        "bloqInputId": "POSITION",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
-          "pinLevels",
           "number",
           "selectVariable"
         ],
-        "name": "df39fbc1-f024-40f2-88a2-82ae82b53f6f"
+        "name": "1fb58a5c-1fee-41e1-9c26-7c8a2601e3e5"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-servo-advanced-degrees"
       }
     ]
   ],
-  "code": "digitalWrite({PIN},{DATA});",
+  "code": "{SERVO}.write({POSITION});",
   "arduino": {
-    "code": "digitalWrite({PIN},{DATA});"
+    "code": "{SERVO}.write({POSITION});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"digitalWrite\" no preparado para generar código python"
+        "code": "Bloque \"servoNormalAdvanced\" no preparado para generar código python"
       }
     ]
   }
