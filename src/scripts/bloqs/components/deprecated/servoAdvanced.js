@@ -17,16 +17,17 @@ var _ = require('lodash'),
 
 var servoNormalAdvanced = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'servoNormalAdvanced-v2',
+    name: 'servoNormalAdvanced',
     bloqClass: 'bloq-servo-advanced',
     content: [
         [{
             alias: 'text',
             value: 'bloq-servo-advanced-move'
         }, {
-            id: 'SERVO',
-            alias: 'dynamicDropdown',
-            options: 'servos'
+            bloqInputId: 'SERVO',
+            alias: 'bloqInput',
+            acceptType: ['all'],
+            suggestedBloqs: ['hwVariable', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-servo-advanced-to'

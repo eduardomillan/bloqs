@@ -1,6 +1,6 @@
 {
   "type": "output",
-  "name": "length",
+  "name": "parenthesis",
   "connectors": [
     {
       "type": "connector--output",
@@ -10,46 +10,50 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
-        "String"
+        "all"
       ],
       "suggestedBloqs": [
-        "selectVariable"
+        "basicOperations"
       ],
-      "name": "32c22374-71c2-46d4-b442-9754f534d075"
+      "name": "ea88d9a3-ab6c-4e7d-a977-64bba40250c7"
     }
   ],
-  "bloqClass": "bloq-length",
+  "bloqClass": "bloq-parenthesis",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-length-length"
+        "value": "("
       },
       {
-        "bloqInputId": "TEXT",
+        "bloqInputId": "OPERATION",
         "alias": "bloqInput",
         "acceptType": [
-          "String"
+          "all"
         ],
         "suggestedBloqs": [
-          "selectVariable"
+          "basicOperations"
         ],
-        "name": "32c22374-71c2-46d4-b442-9754f534d075"
+        "name": "ea88d9a3-ab6c-4e7d-a977-64bba40250c7"
+      },
+      {
+        "alias": "text",
+        "value": ")"
       }
     ]
   ],
-  "code": "{TEXT}.length()",
+  "code": "",
   "returnType": {
     "type": "simple",
     "value": "float"
   },
   "arduino": {
-    "code": "{TEXT}.length()"
+    "code": "({OPERATION})"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"length\" no preparado para generar código python"
+        "code": "Bloque \"parenthesis\" no preparado para generar código python"
       }
     ]
   }
