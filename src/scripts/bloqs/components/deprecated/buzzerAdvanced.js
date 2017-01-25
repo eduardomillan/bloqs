@@ -18,16 +18,17 @@ var _ = require('lodash'),
 
 var buzzerAdvanced = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'buzzerAdvanced-v2',
+    name: 'buzzerAdvanced',
     bloqClass: 'bloq-buzzer-advance',
     content: [
         [{
             alias: 'text',
             value: 'bloq-buzzer-advance-sound'
         }, {
-            id: 'BUZZER',
-            alias: 'dynamicDropdown',
-            options: 'buzzers'
+            bloqInputId: 'BUZZER',
+            alias: 'bloqInput',
+            acceptType: ['all'],
+            suggestedBloqs: ['hwVariable', 'selectVariable']
         }, {
             alias: 'text',
             value: 'bloq-buzzer-advance-note'

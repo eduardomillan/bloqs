@@ -18,7 +18,7 @@ var _ = require('lodash'),
 
 var buzzerAdvanced = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'buzzerAdvanced-v2',
+    name: 'buzzerWithoutPauseAdvanced',
     bloqClass: 'bloq-buzzer-advance',
     content: [
         [{
@@ -47,11 +47,14 @@ var buzzerAdvanced = _.merge(_.clone(StatementBloq, true), {
         }, {
             alias: 'text',
             value: 'bloq-buzzer-advance-ms'
+        }, {
+            alias: 'text',
+            value: 'bloq-buzzer-without-pause'
         }]
     ],
-    code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});',
+    code: 'tone({BUZZER},{NOTE},{SECONDS});',
     arduino: {
-        code: 'tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});'
+        code: 'tone({BUZZER},{NOTE},{SECONDS});'
     }
 });
 utils.preprocessBloq(buzzerAdvanced);
