@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "oscillatorAdvanced",
+  "name": "buzzerAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "hwVariable",
         "selectVariable"
       ],
-      "name": "b6dfcbf1-41f3-43eb-9711-886696b627cb"
+      "name": "dc2dfb4a-4c2c-47dc-af05-6a18e5995083"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "c5fa0b1f-25e4-452a-bb6c-e6301faaabd2"
+      "name": "3b52bb1f-1d78-45ca-9091-7ef43dbaaf35"
     },
     {
       "type": "connector--input",
@@ -44,30 +44,18 @@
         "number",
         "selectVariable"
       ],
-      "name": "3292b58d-c257-4917-b668-15a3b9c6aec3"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": [
-        "all"
-      ],
-      "suggestedBloqs": [
-        "number",
-        "selectVariable"
-      ],
-      "name": "cda61450-d17f-41f2-bc93-30997fdc3ea5"
+      "name": "4226fc7a-9ec6-4ccc-ab2b-add84bfb602e"
     }
   ],
-  "bloqClass": "bloq-oscillator-advanced",
+  "bloqClass": "bloq-buzzer-advance",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-oscillator-advanced-oscillate"
+        "value": "bloq-buzzer-advance-sound"
       },
       {
-        "bloqInputId": "OSCILLATOR",
+        "bloqInputId": "BUZZER",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -76,14 +64,14 @@
           "hwVariable",
           "selectVariable"
         ],
-        "name": "b6dfcbf1-41f3-43eb-9711-886696b627cb"
+        "name": "dc2dfb4a-4c2c-47dc-af05-6a18e5995083"
       },
       {
         "alias": "text",
-        "value": "bloq-oscillator-advanced-around"
+        "value": "bloq-buzzer-advance-note"
       },
       {
-        "bloqInputId": "PHASE",
+        "bloqInputId": "NOTE",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -92,14 +80,14 @@
           "number",
           "selectVariable"
         ],
-        "name": "c5fa0b1f-25e4-452a-bb6c-e6301faaabd2"
+        "name": "3b52bb1f-1d78-45ca-9091-7ef43dbaaf35"
       },
       {
         "alias": "text",
-        "value": "bloq-oscillator-advanced-amplitude"
+        "value": "bloq-buzzer-advance-for"
       },
       {
-        "bloqInputId": "AMPLITUDE",
+        "bloqInputId": "SECONDS",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -108,38 +96,22 @@
           "number",
           "selectVariable"
         ],
-        "name": "3292b58d-c257-4917-b668-15a3b9c6aec3"
+        "name": "4226fc7a-9ec6-4ccc-ab2b-add84bfb602e"
       },
       {
         "alias": "text",
-        "value": "bloq-common-every"
-      },
-      {
-        "bloqInputId": "SPEED",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "cda61450-d17f-41f2-bc93-30997fdc3ea5"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-common-ms"
+        "value": "bloq-buzzer-advance-ms"
       }
     ]
   ],
-  "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();",
+  "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});",
   "arduino": {
-    "code": "{OSCILLATOR}.SetO({PHASE});\n{OSCILLATOR}.SetA({AMPLITUDE});\n{OSCILLATOR}.SetT({SPEED});\n{OSCILLATOR}.refresh();"
+    "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"oscillatorAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"buzzerAdvanced\" no preparado para generar código python"
       }
     ]
   }

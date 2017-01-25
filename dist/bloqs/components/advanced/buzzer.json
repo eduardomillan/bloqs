@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "buzzerAdvanced",
+  "name": "buzzerAdvanced-v2",
   "connectors": [
     {
       "type": "connector--top",
@@ -17,10 +17,10 @@
         "all"
       ],
       "suggestedBloqs": [
-        "hwVariable",
+        "number",
         "selectVariable"
       ],
-      "name": "858a877a-d343-40f6-8f58-76ec35ea5ef9"
+      "name": "042a22d6-d5e9-4cbe-9d3b-f21e719d6b8e"
     },
     {
       "type": "connector--input",
@@ -32,19 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "5bf775d5-bc3f-4794-af7d-b1f79c4985a9"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": [
-        "all"
-      ],
-      "suggestedBloqs": [
-        "number",
-        "selectVariable"
-      ],
-      "name": "13b09234-d7d3-4973-a87a-b3bb2cac26f6"
+      "name": "6b9f5f80-43a9-4bc1-aa8b-71deb039d13e"
     }
   ],
   "bloqClass": "bloq-buzzer-advance",
@@ -55,16 +43,9 @@
         "value": "bloq-buzzer-advance-sound"
       },
       {
-        "bloqInputId": "BUZZER",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "hwVariable",
-          "selectVariable"
-        ],
-        "name": "858a877a-d343-40f6-8f58-76ec35ea5ef9"
+        "id": "BUZZER",
+        "alias": "dynamicDropdown",
+        "options": "buzzers"
       },
       {
         "alias": "text",
@@ -80,7 +61,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "5bf775d5-bc3f-4794-af7d-b1f79c4985a9"
+        "name": "042a22d6-d5e9-4cbe-9d3b-f21e719d6b8e"
       },
       {
         "alias": "text",
@@ -96,7 +77,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "13b09234-d7d3-4973-a87a-b3bb2cac26f6"
+        "name": "6b9f5f80-43a9-4bc1-aa8b-71deb039d13e"
       },
       {
         "alias": "text",
@@ -111,7 +92,7 @@
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"buzzerAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"buzzerAdvanced-v2\" no preparado para generar código python"
       }
     ]
   }

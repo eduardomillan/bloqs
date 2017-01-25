@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "continuousServoStartAdvanced-v1",
+  "name": "buzzerWithoutPauseAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -17,10 +17,10 @@
         "all"
       ],
       "suggestedBloqs": [
-        "hwVariable",
+        "number",
         "selectVariable"
       ],
-      "name": "7e08353b-2d1b-4cad-85be-ac9481818e17"
+      "name": "44d7f0aa-312f-4a03-92dd-b34013da520a"
     },
     {
       "type": "connector--input",
@@ -32,34 +32,27 @@
         "number",
         "selectVariable"
       ],
-      "name": "04ac4ca8-4074-402b-b6c0-87032a952f15"
+      "name": "404ae804-2bc5-43ab-b3b5-5f09f6e1a68d"
     }
   ],
-  "bloqClass": "bloq-continuous-servo-start-advanced",
+  "bloqClass": "bloq-buzzer-advance",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-continuous-servo-start-advanced-turn"
+        "value": "bloq-buzzer-advance-sound"
       },
       {
-        "bloqInputId": "SERVO",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "hwVariable",
-          "selectVariable"
-        ],
-        "name": "7e08353b-2d1b-4cad-85be-ac9481818e17"
+        "id": "BUZZER",
+        "alias": "dynamicDropdown",
+        "options": "buzzers"
       },
       {
         "alias": "text",
-        "value": "bloq-continuous-servo-start-advanced-direction"
+        "value": "bloq-buzzer-advance-note"
       },
       {
-        "bloqInputId": "DIRECTION",
+        "bloqInputId": "NOTE",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -68,18 +61,42 @@
           "number",
           "selectVariable"
         ],
-        "name": "04ac4ca8-4074-402b-b6c0-87032a952f15"
+        "name": "44d7f0aa-312f-4a03-92dd-b34013da520a"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-advance-for"
+      },
+      {
+        "bloqInputId": "SECONDS",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "404ae804-2bc5-43ab-b3b5-5f09f6e1a68d"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-advance-ms"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-without-pause"
       }
     ]
   ],
-  "code": "{SERVO}.write({DIRECTION});",
+  "code": "tone({BUZZER},{NOTE},{SECONDS});",
   "arduino": {
-    "code": "{SERVO}.write({DIRECTION});"
+    "code": "tone({BUZZER},{NOTE},{SECONDS});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"continuousServoStartAdvanced-v1\" no preparado para generar código python"
+        "code": "Bloque \"buzzerWithoutPauseAdvanced\" no preparado para generar código python"
       }
     ]
   }
