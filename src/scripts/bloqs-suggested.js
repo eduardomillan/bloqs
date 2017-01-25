@@ -193,9 +193,9 @@
     }
 
     function onSuggestedBloqDragEnd(evt) {
-        console.log('onSuggestedBloqDragEnd', evt.detail);
+        console.log('onSuggestedBloqDragEnd', evt.detail.bloq);
         //comprobar si está encima del input que lo llamo, o relativamente cerca, de estarlo se conecta, si no, no se conecta ya que puede haberlo arrastrado a otro sitio
-        bloqSelected(evt.detail.uuid);
+        bloqSelected(evt.detail.bloq.uuid);
     }
 
     function onSuggestedBloqClick(evt) {

@@ -2649,9 +2649,9 @@
     }
 
     function onSuggestedBloqDragEnd(evt) {
-        console.log('onSuggestedBloqDragEnd', evt.detail);
+        console.log('onSuggestedBloqDragEnd', evt.detail.bloq);
         //comprobar si está encima del input que lo llamo, o relativamente cerca, de estarlo se conecta, si no, no se conecta ya que puede haberlo arrastrado a otro sitio
-        bloqSelected(evt.detail.uuid);
+        bloqSelected(evt.detail.bloq.uuid);
     }
 
     function onSuggestedBloqClick(evt) {
@@ -2682,6 +2682,7 @@
     return bloqsSuggested;
 
 })(window.bloqsSuggested = window.bloqsSuggested || {}, bloqsLanguages, bloqsUtils, undefined);
+
 
 'use strict';
 (function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested) {
@@ -2897,14 +2898,19 @@
 
     };
 
-    var bloqMouseUp = function() {
+    var bloqMouseUp = function(evt) {
         //console.log('bloqMouseUp');
         scrollTop = 0;
         var $dropConnector = $('.connector.available').first(),
             bloq = draggingBloq;
 
         connectBloq(bloq, $dropConnector);
-        window.dispatchEvent(new CustomEvent('bloqs:dragend', { detail: bloq }));
+        window.dispatchEvent(new CustomEvent('bloqs:dragend', {
+            detail: {
+                bloq: bloq,
+                mouseEvent: evt
+            }
+        }));
     };
 
     var connectBloq = function(bloq, $dropConnector) {

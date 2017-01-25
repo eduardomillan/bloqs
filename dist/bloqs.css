@@ -9206,17 +9206,6 @@
     top: -4px;
     z-index: -1; }
 
-.submenu__item {
-  display: -webkit-box;
-  margin: 1em; }
-  .submenu__item .bloq {
-    margin-left: 1em;
-    position: relative; }
-    .submenu__item .bloq:hover {
-      cursor: move; }
-  .submenu__item .bloqinput select {
-    margin-left: .5em; }
-
 #bloqs-context-menu {
   position: fixed;
   display: none;
@@ -9234,14 +9223,6 @@
       background-color: #ebebeb; }
   #bloqs-context-menu button {
     padding: 15px; }
-
-.submenu__item--component {
-  margin: 1em 1em 1em 10px; }
-  .submenu__item--component.indent-1 {
-    margin-left: 2.5em; }
-
-.submenu__item > .bloq--output {
-  margin-left: 2em; }
 
 .bloq--extension--info {
   background-color: #fcfcfc;

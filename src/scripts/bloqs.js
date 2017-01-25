@@ -212,14 +212,19 @@
 
     };
 
-    var bloqMouseUp = function() {
+    var bloqMouseUp = function(evt) {
         //console.log('bloqMouseUp');
         scrollTop = 0;
         var $dropConnector = $('.connector.available').first(),
             bloq = draggingBloq;
 
         connectBloq(bloq, $dropConnector);
-        window.dispatchEvent(new CustomEvent('bloqs:dragend', { detail: bloq }));
+        window.dispatchEvent(new CustomEvent('bloqs:dragend', {
+            detail: {
+                bloq: bloq,
+                mouseEvent: evt
+            }
+        }));
     };
 
     var connectBloq = function(bloq, $dropConnector) {
