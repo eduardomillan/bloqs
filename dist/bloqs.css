@@ -9187,6 +9187,25 @@
   .bloq--group.with--content .bloq--extension--info {
     display: none; }
 
+.submenu__item {
+  display: -webkit-box;
+  margin: 1em; }
+  .submenu__item .bloq {
+    margin-left: 1em;
+    position: relative; }
+    .submenu__item .bloq:hover {
+      cursor: move; }
+  .submenu__item .bloqinput select {
+    margin-left: .5em; }
+
+.submenu__item--component {
+  margin: 1em 1em 1em 10px; }
+  .submenu__item--component.indent-1 {
+    margin-left: 2.5em; }
+
+.submenu__item > .bloq--output {
+  margin-left: 2em; }
+
 .bloq--group--collapsed {
   min-height: 45px;
   max-height: 45px;
