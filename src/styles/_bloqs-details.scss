@@ -19,6 +19,7 @@ $botbloq-manipulator: #058723;
 $botbloq-human: #6495ED;
 $botbloq-hexapod: #FF6347;
 $botbloq-snake: #3CB371;
+$phone-color:#5d6069;
 
 /* COLOR THEME */
 
@@ -41,6 +42,7 @@ $theme-color-botbloq-manipulator: #058723;
 $theme-color-botbloq-human: #6495ED;
 $theme-color-botbloq-hexapod: #FF6347;
 $theme-color-botbloq-snake: #3CB371;
+$theme-color-phone-color:#5d6069;
 @mixin createBloqsTheme ($reverse) {
     /*---- BOTBLOQ - CAR ---------*/
     @include createBloqsCss($reverse, "bloq-botbloq-vehicle-move", $botbloq-car, $theme-color-botbloq-car);
@@ -207,19 +209,6 @@ $theme-color-botbloq-snake: #3CB371;
     @include createBloqsCss($reverse, "bloq-oscillator-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-oscillator-start-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-oscillator-stop-advanced", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-sound", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-write", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-receive", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-turnon-light", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-turnoff-light", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-twitter-config", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-send-tweet", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-read-accel", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-read-gyros", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-isCovered", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-read-light", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-read-magnetic", $components-color, $theme-color-components-color);
-    @include createBloqsCss($reverse, "bloq-phone-read-orientation", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-pin-read-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-pin-writte-advanced", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-read-advanced", $components-color, $theme-color-components-color);
@@ -243,6 +232,20 @@ $theme-color-botbloq-snake: #3CB371;
     @include createBloqsCss($reverse, "bloq-servo-detach", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-servo-attach", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-viewer", $components-color, $theme-color-components-color);
+    /*---- PHONE ------*/
+    @include createBloqsCss($reverse, "bloq-phone-sound", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-phone-write", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-phone-receive", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-phone-turnon-light", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-phone-turnoff-light", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-twitter-config", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-send-tweet", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-phone-read-accel", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-phone-read-gyros", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-phone-isCovered", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-phone-read-light", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-phone-read-magnetic", $phone-color, $theme-color-phone-color);
+    @include createBloqsCss($reverse, "bloq-phone-read-orientation", $phone-color, $theme-color-phone-color);
     /*---- LOGIC ------*/
     @include createBloqsCss($reverse, "bloq-boolean", $logic-color, $theme-color-logic-color);
     @include createBloqsCss($reverse, "bloq-equality-operations", $logic-color, $theme-color-logic-color);
