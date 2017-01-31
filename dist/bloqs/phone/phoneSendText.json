@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "phoneSendTweet",
+  "name": "phoneSendText",
   "connectors": [
     {
       "type": "connector--top",
@@ -18,33 +18,35 @@
       ],
       "suggestedBloqs": [
         "string",
+        "number",
         "selectVariable"
       ],
-      "name": "10edd757-6839-451b-84bd-c4f6783670ab"
+      "name": "baca01eb-dc87-4eb1-845b-3c7a920f7ce0"
     }
   ],
-  "bloqClass": "bloq-send-tweet",
+  "bloqClass": "bloq-phone-write",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-send-tweet"
+        "value": "bloq-phone-write-show"
       },
       {
-        "bloqInputId": "TWEET",
+        "bloqInputId": "DATA",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
           "string",
+          "number",
           "selectVariable"
         ],
-        "name": "10edd757-6839-451b-84bd-c4f6783670ab"
+        "name": "baca01eb-dc87-4eb1-845b-3c7a920f7ce0"
       },
       {
         "alias": "text",
-        "value": "bloq-from-device"
+        "value": "bloq-phone-screen"
       },
       {
         "id": "PHONE",
@@ -53,17 +55,17 @@
       }
     ]
   ],
-  "code": "{PHONE}.println(\"twitterSend-\" + {TWEET});",
+  "code": "{PHONE}.println(\"write-\" + {DATA});",
   "arduino": {
     "includes": [
       "BitbloqSoftwareSerial.h"
     ],
-    "code": "{PHONE}.println(String(\"twitterSend-\")+String({TWEET}));"
+    "code": "{PHONE}.println(String(\"write-\")+String({DATA}));"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"phoneSendTweet\" no preparado para generar código python"
+        "code": "Bloque \"phoneSendText\" no preparado para generar código python"
       }
     ]
   }
