@@ -432,6 +432,7 @@
 
                 switch (hardwareList.components[i].id) {
                     case 'led':
+                    case 'buzz':
                         tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', OUTPUT);';
                         tempInstanceOf = {
                             name: hardwareList.components[i].name,
@@ -591,13 +592,6 @@
                                 hardwareList.components[i].pin.s1,
                                 hardwareList.components[i].pin.s2
                             ]
-                        };
-                        break;
-                    case 'buzz':
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'const int',
-                            equals: hardwareList.components[i].pin.s
                         };
                         break;
                 }
