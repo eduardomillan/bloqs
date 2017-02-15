@@ -21,7 +21,7 @@ var botbloqHumanUpstairs = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Subir escaleras.'
+            value: 'upstairs'
         }]
     ],
     code: '',

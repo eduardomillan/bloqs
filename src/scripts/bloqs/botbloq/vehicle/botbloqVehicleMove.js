@@ -23,28 +23,28 @@ var botbloqVehicleMove = _.merge(_.clone(StatementBloq, true), {
             id: 'MOVEMENT',
             alias: 'staticDropdown',
             options: [{
-                label: 'Avanzar',
+                label: 'forward',
                 value: 'FORWARD'
             }, {
-                label: 'Retroceder',
+                label: 'backward',
                 value: 'BACKWARD'
             }, {
-                label: 'Girar a la derecha',
+                label: 'turn-right',
                 value: 'TURN_RIGHT'
             }, {
-                label: 'Girar a la izquierda',
+                label: 'turn-left',
                 value: 'TURN_LEFT'
             }]
         }, {
             alias: 'text',
-            value: 'durante'
+            value: 'move-for'
         }, {
             id: 'DELAY',
             alias: 'numberInput',
             value: 1000
         }, {
             alias: 'text',
-            value: 'ms a una velocidad de'
+            value: 'ms-at-speed-of'
         }, {
             id: 'SPEED',
             alias: 'numberInput',

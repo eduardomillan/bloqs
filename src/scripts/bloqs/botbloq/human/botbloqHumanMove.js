@@ -23,16 +23,16 @@ var botbloqHumanMove = _.merge(_.clone(StatementBloq, true), {
             id: 'MOVEMENT',
             alias: 'staticDropdown',
             options: [{
-                label: 'Avanzar',
+                label: 'forward',
                 value: 'FORWARD'
             }, {
-                label: 'Retroceder',
+                label: 'backward',
                 value: 'BACKWARD'
             }, {
-                label: 'Girar a la derecha',
+                label: 'turn-right',
                 value: 'TURN_RIGHT'
             }, {
-                label: 'Girar a la izquierda',
+                label: 'turn-left',
                 value: 'TURN_LEFT'
             }]
         }, {
@@ -41,7 +41,7 @@ var botbloqHumanMove = _.merge(_.clone(StatementBloq, true), {
             value: 3
         }, {
             alias: 'text',
-            value: 'pasos'
+            value: 'steps'
         }]
     ],
     code: '',

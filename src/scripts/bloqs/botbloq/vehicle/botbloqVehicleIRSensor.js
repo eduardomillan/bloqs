@@ -23,15 +23,15 @@ var botbloqVehicleIRSensor = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Leer sensor'
+            value: 'read-sensor'
         }, {
             id: 'SIDE',
             alias: 'staticDropdown',
             options: [{
-                label: 'derecho',
+                label: 'right',
                 value: 'RIGHT'
             }, {
-                label: 'izquierdo',
+                label: 'left',
                 value: 'LEFT'
             }]
         }]

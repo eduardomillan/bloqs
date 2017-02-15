@@ -23,15 +23,15 @@ var botbloqManipulatorMoveClamp = _.merge(_.clone(StatementBloq, true), {
             id: 'ACTION',
             alias: 'staticDropdown',
             options: [{
-                label: 'Abrir',
+                label: 'open',
                 value: true
             }, {
-                label: 'Cerrar',
+                label: 'close',
                 value: false
             }]
         }, {
             alias: 'text',
-            value: 'la pinza'
+            value: 'the-clamp'
         }]
     ],
     code: '',

@@ -21,20 +21,20 @@ var botbloqSnakeLateralDisplacement = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Moverse lateralmente hacia la'
+            value: 'lateraldisplacement-moveto'
         }, {
             id: 'SIDE',
             alias: 'staticDropdown',
             options: [{
-                label: 'derecha',
+                label: 'right',
                 value: 'RIGHT'
             }, {
-                label: 'izquierda',
+                label: 'left',
                 value: 'LEFT'
             }]
         }, {
             alias: 'text',
-            value: 'durante'
+            value: 'move-for'
         }, {
             id: 'DELAY',
             alias: 'numberInput',

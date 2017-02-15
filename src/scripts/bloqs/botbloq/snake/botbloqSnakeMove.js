@@ -23,15 +23,15 @@ var botbloqSnakeMove = _.merge(_.clone(StatementBloq, true), {
             id: 'MOVEMENT',
             alias: 'staticDropdown',
             options: [{
-                label: 'Avanzar.',
+                label: 'forward.',
                 value: 'FORWARD'
             }, {
-                label: 'Retroceder.',
+                label: 'backward.',
                 value: 'BACKWARD'
             }]
         }, {
             alias: 'text',
-            value: 'durante'
+            value: 'move-for'
         }, {
             id: 'DELAY',
             alias: 'numberInput',
