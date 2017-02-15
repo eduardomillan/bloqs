@@ -22,7 +22,7 @@ var botbloqManipulatorCanMoveAdvanced = _.merge(_.clone(OutputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: '¿Puede moverse a '
+            value: 'can-move-to'
         }, {
             alias: 'text',
             value: 'x:'

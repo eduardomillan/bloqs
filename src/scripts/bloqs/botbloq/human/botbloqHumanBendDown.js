@@ -21,7 +21,7 @@ var botbloqHumanBendDown = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Agacharse'
+            value: 'benddown'
         }]
     ],
     code: '',

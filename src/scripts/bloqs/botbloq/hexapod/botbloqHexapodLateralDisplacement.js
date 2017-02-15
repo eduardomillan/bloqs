@@ -21,15 +21,15 @@ var botbloqHexapodLateralDisplacement = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Moverse lateralmente hacia la'
+            value: 'lateraldisplacement-moveto'
         }, {
             id: 'SIDE',
             alias: 'staticDropdown',
             options: [{
-                label: 'derecha',
+                label: 'right',
                 value: 'RIGHT'
             }, {
-                label: 'izquierda',
+                label: 'left',
                 value: 'LEFT'
             }]
         }, {
@@ -38,7 +38,7 @@ var botbloqHexapodLateralDisplacement = _.merge(_.clone(StatementBloq, true), {
             value: 3
         }, {
             alias: 'text',
-            value: 'pasos'
+            value: 'steps'
         }]
     ],
     code: '',

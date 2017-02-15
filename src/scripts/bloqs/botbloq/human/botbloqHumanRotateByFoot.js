@@ -21,22 +21,22 @@ var botbloqHumanRotateByFoot = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Rotar'
+            value: 'rotate'
         }, {
             id: 'DEGREES',
             alias: 'numberInput',
             value: 45
         }, {
             alias: 'text',
-            value: '° sobre el pie'
+            value: 'rotate-grades-foot'
         }, {
             id: 'FOOT',
             alias: 'staticDropdown',
             options: [{
-                label: 'derecho',
+                label: 'right',
                 value: 'RIGHT'
             }, {
-                label: 'izquierdo',
+                label: 'left',
                 value: 'LEFT'
             }]
         }]

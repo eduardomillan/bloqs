@@ -21,7 +21,7 @@ var botbloqManipulatorRotateJoints = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mover la articulación'
+            value: 'move-joint'
         }, {
             id: 'JOINT_NUMBER',
             alias: 'staticDropdown',
@@ -41,7 +41,7 @@ var botbloqManipulatorRotateJoints = _.merge(_.clone(StatementBloq, true), {
             value: 0
         }, {
             alias: 'text',
-            value: 'grados'
+            value: 'degrees'
         }]
     ],
     code: '',

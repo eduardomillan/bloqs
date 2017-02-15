@@ -16,18 +16,18 @@
     [
       {
         "alias": "text",
-        "value": "Moverse lateralmente hacia la"
+        "value": "lateraldisplacement-moveto"
       },
       {
         "id": "FOOT",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "derecha",
+            "label": "right",
             "value": "RIGHT"
           },
           {
-            "label": "izquierda",
+            "label": "left",
             "value": "LEFT"
           }
         ]
@@ -39,7 +39,7 @@
       },
       {
         "alias": "text",
-        "value": "pasos"
+        "value": "steps"
       }
     ]
   ],

@@ -21,7 +21,7 @@ var botbloqHumanStop = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Detener'
+            value: 'stop'
         }]
     ],
     code: '',

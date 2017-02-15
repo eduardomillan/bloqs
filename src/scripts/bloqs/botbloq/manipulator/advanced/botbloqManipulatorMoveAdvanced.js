@@ -21,7 +21,7 @@ var botbloqManipulatorMoveOnSpaceAdvanced = _.merge(_.clone(StatementBloq, true)
     content: [
         [{
             alias: 'text',
-            value: 'Desplazarse a'
+            value: 'move-to'
         }, {
             alias: 'text',
             value: 'x:'

@@ -21,7 +21,7 @@ var botbloqVehicleStop = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Parar'
+            value: 'stop'
         }]
     ],
     code: '',
