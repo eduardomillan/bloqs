@@ -1385,7 +1385,8 @@
             clocks: [],
             hts221: [],
             barometer: [],
-            robot: []
+            robot: [],
+            mkb_sensors: []
         };
     };
 
@@ -1622,7 +1623,6 @@
     return bloqsUtils;
 
 })(window.bloqsUtils = window.bloqsUtils || {}, _, undefined);
-
 
 'use strict';
 (function(bloqsTooltip) {
