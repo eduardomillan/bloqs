@@ -50,9 +50,9 @@ var mBotLineFollower = _.merge(_.clone(OutputBloq, true), {
         includes: ['BitbloqMBot.h'],
         needInstanceOf: [{
             name: 'mBot',
-            type: 'MBot'
+            type: 'BitbloqMBot'
         }],
-        code: 'mBot.getLineFollower({PORT})'
+        code: 'mBot.setLineFollowerPort({PORT});mBot.readLineFollowerSensor();'
     }
 });
 utils.preprocessBloq(mBotLineFollower);
