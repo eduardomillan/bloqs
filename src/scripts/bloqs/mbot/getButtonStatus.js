@@ -34,9 +34,9 @@ var mBotGetButtonStatus = _.merge(_.clone(OutputBloq, true), {
         includes: ['BitbloqMBot.h'],
         needInstanceOf: [{
             name: 'mBot',
-            type: 'MBot'
+            type: 'BitbloqMBot'
         }],
-        code: 'mBot.getButtonStatus()'
+        code: 'mBot.readButtonStatus()'
     }
 });
 

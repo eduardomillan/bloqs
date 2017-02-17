@@ -28,10 +28,10 @@
     "needInstanceOf": [
       {
         "name": "mBot",
-        "type": "MBot"
+        "type": "BitbloqMBot"
       }
     ],
-    "code": "mBot.getButtonStatus()"
+    "code": "mBot.readButtonStatus()"
   },
   "python": {
     "codeLines": [
