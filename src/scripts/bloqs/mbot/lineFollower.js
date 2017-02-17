@@ -52,7 +52,8 @@ var mBotLineFollower = _.merge(_.clone(OutputBloq, true), {
             name: 'mBot',
             type: 'BitbloqMBot'
         }],
-        code: 'mBot.setLineFollowerPort({PORT});mBot.readLineFollowerSensor();'
+        setupExtraCode: 'mBot.setLineFollowerPort({PORT});',
+        code: 'mBot.readLineFollowerSensor()'
     }
 });
 utils.preprocessBloq(mBotLineFollower);

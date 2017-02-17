@@ -53,7 +53,8 @@
         "type": "BitbloqMBot"
       }
     ],
-    "code": "mBot.setLineFollowerPort({PORT});mBot.readLineFollowerSensor();"
+    "setupExtraCode": "mBot.setLineFollowerPort({PORT});",
+    "code": "mBot.readLineFollowerSensor()"
   },
   "python": {
     "codeLines": [
