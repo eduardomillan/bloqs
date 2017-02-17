@@ -50,10 +50,10 @@
     "needInstanceOf": [
       {
         "name": "mBot",
-        "type": "MBot"
+        "type": "BitbloqMBot"
       }
     ],
-    "code": "mBot.getLineFollower({PORT})"
+    "code": "mBot.setLineFollowerPort({PORT});mBot.readLineFollowerSensor();"
   },
   "python": {
     "codeLines": [
