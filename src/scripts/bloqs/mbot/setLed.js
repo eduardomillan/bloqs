@@ -66,7 +66,7 @@ var mBotSetLed = _.merge(_.clone(StatementBloq, true), {
         includes: ['BitbloqMBot.h'],
         needInstanceOf: [{
             name: 'mBot',
-            type: 'MBot'
+            type: 'BitbloqMBot'
         }],
         code: 'mBot.setLed({LEDS}, {RED}, {GREEN}, {BLUE});'
     }
