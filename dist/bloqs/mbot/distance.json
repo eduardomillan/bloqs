@@ -50,10 +50,11 @@
     "needInstanceOf": [
       {
         "name": "mBot",
-        "type": "MBot"
+        "type": "BitbloqMBot"
       }
     ],
-    "code": "mBot.getDistance({PORT})"
+    "setupExtraCode": "mBot.setUSPort({PORT});",
+    "code": "mBot.readUSMeasuredDistanceCM()"
   },
   "python": {
     "codeLines": [

@@ -50,9 +50,10 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         includes: ['BitbloqMBot.h'],
         needInstanceOf: [{
             name: 'mBot',
-            type: 'MBot'
+            type: 'BitbloqMBot'
         }],
-        code: 'mBot.getDistance({PORT})'
+        setupExtraCode: 'mBot.setUSPort({PORT});',
+        code: 'mBot.readUSMeasuredDistanceCM()'
     }
 });
 utils.preprocessBloq(mBotGetDistance);
