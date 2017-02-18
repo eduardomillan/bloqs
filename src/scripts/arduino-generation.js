@@ -11,10 +11,10 @@
 
     var includes = {},
         instances = {},
-        setupExtraCodeList = {},
-        setupCodeAtTheEndOfExtraCodeList = {},
-        programExtraCodeList = {},
-        programFunctionDeclarationsList = {},
+        setupExtraCodeMap = {},
+        setupCodeAtTheEndOfExtraCodeMap = {},
+        programExtraCodeMap = {},
+        programFunctionDeclarationsMap = {},
         procesingProgram,
         bloqsFunctions = {
             withoutAsterisk: function(text) {
@@ -72,10 +72,10 @@
         procesingProgram = arduinoMainBloqs;
         includes = {};
         instances = {};
-        setupExtraCodeList = {};
-        setupCodeAtTheEndOfExtraCodeList = {};
-        programExtraCodeList = {};
-        programFunctionDeclarationsList = {};
+        setupExtraCodeMap = {};
+        setupCodeAtTheEndOfExtraCodeMap = {};
+        programExtraCodeMap = {};
+        programFunctionDeclarationsMap = {};
         hardwareList = hardwareList || {
             components: []
         };
@@ -98,22 +98,22 @@
         }
 
         var setupCodeAtTheEndOfExtraCode = '';
-        for (prop in setupCodeAtTheEndOfExtraCodeList) {
+        for (prop in setupCodeAtTheEndOfExtraCodeMap) {
             setupCodeAtTheEndOfExtraCode += prop + '\n';
         }
 
         var setupExtraCode = '';
-        for (prop in setupExtraCodeList) {
+        for (prop in setupExtraCodeMap) {
             setupExtraCode += prop + '\n';
         }
 
         var programExtraCode = '';
-        for (prop in programExtraCodeList) {
+        for (prop in programExtraCodeMap) {
             programExtraCode += prop + '\n';
         }
 
         var programFunctionDeclarations = '';
-        for (prop in programFunctionDeclarationsList) {
+        for (prop in programFunctionDeclarationsMap) {
             programFunctionDeclarations += prop + '\n';
         }
 
@@ -325,15 +325,15 @@
 
 
             if (bloqFullStructure.arduino.setupExtraCode) {
-                setupExtraCodeList[processCode(bloqFullStructure.arduino.setupExtraCode, aliasesValuesHashMap, hardwareList)] = true;
+                setupExtraCodeMap[processCode(bloqFullStructure.arduino.setupExtraCode, aliasesValuesHashMap, hardwareList)] = true;
             }
 
             if (bloqFullStructure.arduino.setupCodeAtTheEndOfExtraCode) {
-                setupCodeAtTheEndOfExtraCodeList[processCode(bloqFullStructure.arduino.setupCodeAtTheEndOfExtraCode, aliasesValuesHashMap, hardwareList)] = true;
+                setupCodeAtTheEndOfExtraCodeMap[processCode(bloqFullStructure.arduino.setupCodeAtTheEndOfExtraCode, aliasesValuesHashMap, hardwareList)] = true;
             }
 
             if (bloqFullStructure.arduino.extraFunctionCode) {
-                programFunctionDeclarationsList[bloqFullStructure.arduino.extraFunctionCode] = true;
+                programFunctionDeclarationsMap[bloqFullStructure.arduino.extraFunctionCode] = true;
             }
 
             if (bloqFullStructure.name === 'constructorClass') {
@@ -431,6 +431,17 @@
             tempIncludes,
             tempProgramExtraCode,
             tempProgramFunctionDeclaration;
+
+        switch (hardwareList.board) {
+            case 'mcore':
+                includes['BitbloqMBot.h'] = true;
+                addInstance({
+                    name: 'mBot',
+                    type: 'BitbloqMBot'
+                }, {}, hardwareList);
+                setupCodeAtTheEndOfExtraCodeMap['mBot.setup();'] = true;
+                break;
+        }
 
         if (hardwareList.components) {
             for (var i = 0; i < hardwareList.components.length; i++) {
@@ -613,17 +624,16 @@
                 }
 
                 if (tempSetupExtraCode) {
-                    setupExtraCodeList[tempSetupExtraCode] = true;
+                    setupExtraCodeMap[tempSetupExtraCode] = true;
                 }
 
                 if (tempProgramExtraCode) {
-                    programExtraCodeList[tempProgramExtraCode] = true;
+                    programExtraCodeMap[tempProgramExtraCode] = true;
                 }
 
                 if (tempProgramFunctionDeclaration) {
-                    programFunctionDeclarationsList[tempProgramFunctionDeclaration] = true;
+                    programFunctionDeclarationsMap[tempProgramFunctionDeclaration] = true;
                 }
-
 
 
                 for (var j = 0; j < tempIncludes.length; j++) {
@@ -631,7 +641,6 @@
                 }
             }
         }
-
     }
 
     function addInstance(needInstanceOf, aliasesValuesHashMap, hardwareList) {

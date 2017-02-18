@@ -36,8 +36,8 @@
         "name": "{ULTRASOUND}",
         "type": "BitbloqUltrasound",
         "arguments": [
-          "MCORE::getPinFromPort(º[{ULTRASOUND}.pin.s], 2)",
-          "MCORE::getPinFromPort(º[{ULTRASOUND}.pin.s], 2)"
+          "MCORE::Port[º[{ULTRASOUND}.pin.s]][2]",
+          "MCORE::Port[º[{ULTRASOUND}.pin.s]][2]"
         ]
       },
       {
@@ -45,7 +45,7 @@
         "type": "BitbloqMBot"
       }
     ],
-    "setupCodeAtTheEndOfExtraCode": "mBot.setup();\n{ULTRASOUND}.setup();",
+    "setupCodeAtTheEndOfExtraCode": "{ULTRASOUND}.setup();",
     "code": "{ULTRASOUND}.read()"
   },
   "python": {
