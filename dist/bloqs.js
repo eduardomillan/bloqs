@@ -2416,6 +2416,17 @@
                             ]
                         };
                         break;
+                    case 'mkb_ultrasound':
+                        tempIncludes = ['BitbloqUS.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'BitbloqUltrasound',
+                            arguments: [
+                                'MCORE::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                'MCORE::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            ]
+                        };
+                        break;
                 }
 
                 if (tempInstanceOf) {
