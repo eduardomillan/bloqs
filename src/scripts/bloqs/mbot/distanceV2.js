@@ -39,7 +39,7 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         needInstanceOf: [{
             name: '{ULTRASOUND}',
             type: 'BitbloqUltrasound',
-            arguments: ['MCORE::Port[º[{ULTRASOUND}.pin.s]][2]', 'MCORE::Port[º[{ULTRASOUND}.pin.s]][2]']
+            arguments: ['MCORE::ports[º[{ULTRASOUND}.pin.s]][2]', 'MCORE::ports[º[{ULTRASOUND}.pin.s]][2]']
         }, {
             name: 'mBot',
             type: 'BitbloqMBot'

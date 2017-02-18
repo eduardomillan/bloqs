@@ -36,8 +36,8 @@
         "name": "{ULTRASOUND}",
         "type": "BitbloqUltrasound",
         "arguments": [
-          "MCORE::Port[º[{ULTRASOUND}.pin.s]][2]",
-          "MCORE::Port[º[{ULTRASOUND}.pin.s]][2]"
+          "MCORE::ports[º[{ULTRASOUND}.pin.s]][2]",
+          "MCORE::ports[º[{ULTRASOUND}.pin.s]][2]"
         ]
       },
       {
