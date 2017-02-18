@@ -38,14 +38,14 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         includes: ['BitbloqUS.h', 'BitbloqMBot.h'],
         needInstanceOf: [{
             name: '{ULTRASONIC}',
-            type: 'US'
+            type: 'US*'
         }, {
             name: 'mBot',
             type: 'BitbloqMBot'
         }],
         setupCodeAtTheEndOfExtraCode: 'mBot.setup();',
         setupExtraCode: '{ULTRASONIC} = new US(mBot.getPinFromPort(º[{ULTRASONIC}.pin.s],2),mBot.getPinFromPort(º[{ULTRASONIC}.pin.s],2));',
-        code: '{ULTRASONIC}.read()'
+        code: '{ULTRASONIC}->read()'
     }
 });
 utils.preprocessBloq(mBotGetDistance);

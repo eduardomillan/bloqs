@@ -34,7 +34,7 @@
     "needInstanceOf": [
       {
         "name": "{ULTRASONIC}",
-        "type": "US"
+        "type": "US*"
       },
       {
         "name": "mBot",
@@ -43,7 +43,7 @@
     ],
     "setupCodeAtTheEndOfExtraCode": "mBot.setup();",
     "setupExtraCode": "{ULTRASONIC} = new US(mBot.getPinFromPort(º[{ULTRASONIC}.pin.s],2),mBot.getPinFromPort(º[{ULTRASONIC}.pin.s],2));",
-    "code": "{ULTRASONIC}.read()"
+    "code": "{ULTRASONIC}->read()"
   },
   "python": {
     "codeLines": [
