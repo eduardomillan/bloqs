@@ -1385,9 +1385,7 @@
             clocks: [],
             hts221: [],
             barometer: [],
-            robot: [],
-            mkb_sensors: [], //remove
-            mkb_ultrasound: []
+            robot: []
         };
     };
 
@@ -2422,10 +2420,11 @@
                             name: hardwareList.components[i].name,
                             type: 'BitbloqUltrasound',
                             arguments: [
-                                'MCORE::ports[' + hardwareList.components[i].pin.s + '][2]',
-                                'MCORE::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                'BitbloqMCore::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                'BitbloqMCore::ports[' + hardwareList.components[i].pin.s + '][2]'
                             ]
                         };
+                        setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
                         break;
                 }
 

@@ -1377,9 +1377,7 @@
             clocks: [],
             hts221: [],
             barometer: [],
-            robot: [],
-            mkb_sensors: [], //remove
-            mkb_ultrasound: []
+            robot: []
         };
     };
 
