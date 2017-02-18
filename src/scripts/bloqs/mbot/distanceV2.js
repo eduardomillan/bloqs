@@ -44,7 +44,6 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
             name: 'mBot',
             type: 'BitbloqMBot'
         }],
-        setupExtraCode: '{ULTRASOUND} = new US(mBot.getPinFromPort(º[{ULTRASOUND}.pin.s],2),mBot.getPinFromPort(º[{ULTRASOUND}.pin.s],2));',
         setupCodeAtTheEndOfExtraCode: 'mBot.setup();\n{ULTRASOUND}.setup();',
         code: '{ULTRASOUND}.read()'
     }
