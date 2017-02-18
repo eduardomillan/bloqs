@@ -1378,7 +1378,8 @@
             hts221: [],
             barometer: [],
             robot: [],
-            mkb_sensors: []
+            mkb_sensors: [], //remove
+            mkb_ultrasonic: []
         };
     };
 
