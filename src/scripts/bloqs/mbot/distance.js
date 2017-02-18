@@ -52,7 +52,7 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
             name: 'mBotv1',
             type: 'MBot'
         }],
-        code: 'mBot.getDistance({PORT})'
+        code: 'mBotv1.getDistance({PORT})'
     }
 });
 utils.preprocessBloq(mBotGetDistance);
