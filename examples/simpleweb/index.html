@@ -158,10 +158,10 @@
             }
         };
 
-        componentsArray.mkb_ultrasound.push({
+        componentsArray.sensors.push({
             id: "mkb_ultrasound",
             name: "ultrasonidos_0",
-
+            dataReturnType: "float",
             pin: {
                 s: "3"
             }
@@ -402,7 +402,7 @@
         var mRanger = ['mRangerBuzzer', 'mRangerGetDistance', 'mRangerGetLightSensor', 'mRangerLineFollower', 'mRangerSetLed', 'mRangerTurnOffLed', 'mRangerBuzzerAdvanced', 'mRangerSetLedAdvanced'];
 
 
-        var testSet = ['mBotGetDistance-v2', 'declareVariable'];
+        var testSet = ['readSensor', 'declareVariable'];
 
         var testPhone = ['phoneSendText', 'phoneEmitSound', 'phoneReceive', 'declareVariable', 'phoneToggleLight', 'phoneTurnOnLight', 'phoneReadLinearAccel'];
 
@@ -444,7 +444,7 @@
                     }
                 }, {
                     "id": "mkb_ultrasound",
-                    "category": "mkb_ultrasound",
+                    "category": "sensors",
                     "manufacter": "makeblock",
                     "width": 134.5,
                     "height": 106.2,
