@@ -1810,6 +1810,7 @@
     var includes = {},
         instances = {},
         setupExtraCodeList = {},
+        setupCodeAtTheEndOfExtraCodeList = {},
         programExtraCodeList = {},
         programFunctionDeclarationsList = {},
         procesingProgram,
@@ -1870,6 +1871,7 @@
         includes = {};
         instances = {};
         setupExtraCodeList = {};
+        setupCodeAtTheEndOfExtraCodeList = {};
         programExtraCodeList = {};
         programFunctionDeclarationsList = {};
         hardwareList = hardwareList || {
@@ -1891,6 +1893,11 @@
         var includesCode = '';
         for (prop in includes) {
             includesCode += '#include <' + prop + '>\n';
+        }
+
+        var setupCodeAtTheEndOfExtraCode = '';
+        for (prop in setupCodeAtTheEndOfExtraCodeList) {
+            setupCodeAtTheEndOfExtraCode += prop + '\n';
         }
 
         var setupExtraCode = '';
@@ -1935,13 +1942,14 @@
         code += programFunctionDeclarations + '\n';
         code += instancesCode + '\n';
         code += varsCode + '\n\n';
-        code += '/***   Setup  ***/' + addSetupCode(setupCode, setupExtraCode) + '\n\n';
+        code += '/***   Setup  ***/' + addSetupCode(setupCode, setupExtraCode + setupCodeAtTheEndOfExtraCode) + '\n\n';
         code += '/***   Loop  ***/' + loopCode + '\n\n';
         code += programExtraCode + '\n\n';
         return code;
     }
 
     function addSetupCode(setupCode, setupExtraCode) {
+        //after void setup(){, we add code in position 13
         var positionToAdd = 13;
         setupExtraCode = '\n' + setupExtraCode + '\n';
         return [setupCode.slice(0, positionToAdd), setupExtraCode, setupCode.slice(positionToAdd)].join('');
@@ -2116,6 +2124,10 @@
 
             if (bloqFullStructure.arduino.setupExtraCode) {
                 setupExtraCodeList[processCode(bloqFullStructure.arduino.setupExtraCode, aliasesValuesHashMap, hardwareList)] = true;
+            }
+
+            if (bloqFullStructure.arduino.setupCodeAtTheEndOfExtraCode) {
+                setupCodeAtTheEndOfExtraCodeList[processCode(bloqFullStructure.arduino.setupCodeAtTheEndOfExtraCode, aliasesValuesHashMap, hardwareList)] = true;
             }
 
             if (bloqFullStructure.arduino.extraFunctionCode) {

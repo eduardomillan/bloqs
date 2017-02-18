@@ -47,13 +47,12 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     },
     arduino: {
-        includes: ['BitbloqMBot.h'],
+        includes: ['BitbloqMBotOrigin.h'],
         needInstanceOf: [{
             name: 'mBot',
-            type: 'BitbloqMBot'
+            type: 'MBot'
         }],
-        setupExtraCode: 'mBot.setUSPort({PORT});',
-        code: 'mBot.readUSMeasuredDistanceCM()'
+        code: 'mBot.getDistance({PORT})'
     }
 });
 utils.preprocessBloq(mBotGetDistance);

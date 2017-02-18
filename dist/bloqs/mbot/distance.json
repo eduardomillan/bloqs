@@ -45,16 +45,15 @@
   },
   "arduino": {
     "includes": [
-      "BitbloqMBot.h"
+      "BitbloqMBotOrigin.h"
     ],
     "needInstanceOf": [
       {
         "name": "mBot",
-        "type": "BitbloqMBot"
+        "type": "MBot"
       }
     ],
-    "setupExtraCode": "mBot.setUSPort({PORT});",
-    "code": "mBot.readUSMeasuredDistanceCM()"
+    "code": "mBot.getDistance({PORT})"
   },
   "python": {
     "codeLines": [
