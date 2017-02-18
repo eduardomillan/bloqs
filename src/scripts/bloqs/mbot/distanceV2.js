@@ -35,12 +35,16 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     },
     arduino: {
-        includes: ['BitbloqUS.h'],
+        includes: ['BitbloqUS.h', 'BitbloqMBot.h'],
         needInstanceOf: [{
             name: '{ULTRASONIC}',
             type: 'US'
+        }, {
+            name: 'mBot',
+            type: 'BitbloqMBot'
         }],
-        setupExtraCode: '{ULTRASONIC} = new US(getPinFromPort(º[{ULTRASONIC}.pin.s],2),getPinFromPort(º[{ULTRASONIC}.pin.s],2));',
+        setupCodeAtTheEndOfExtraCode: 'mBot.setup();',
+        setupExtraCode: '{ULTRASONIC} = new US(mBot.getPinFromPort(º[{ULTRASONIC}.pin.s],2),mBot.getPinFromPort(º[{ULTRASONIC}.pin.s],2));',
         code: '{ULTRASONIC}.read()'
     }
 });
