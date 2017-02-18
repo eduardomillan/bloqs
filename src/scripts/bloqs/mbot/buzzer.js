@@ -80,12 +80,12 @@ var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
+        includes: ['BitbloqMBot.h'],
         needInstanceOf: [{
-            name: 'mBotBuzzerPin',
-            type: 'const int',
-            equals: '8'
+            name: 'mBot',
+            type: 'BitbloqMBot'
         }],
-        code: 'tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});'
+        code: 'mBot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});'
     }
 });
 utils.preprocessBloq(mBotBuzzer);

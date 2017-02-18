@@ -1379,7 +1379,7 @@
             barometer: [],
             robot: [],
             mkb_sensors: [], //remove
-            mkb_ultrasonic: []
+            mkb_ultrasound: []
         };
     };
 

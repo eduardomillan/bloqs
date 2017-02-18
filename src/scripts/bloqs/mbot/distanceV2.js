@@ -24,9 +24,9 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
             alias: 'text',
             value: 'bloq-mbot-getdistance'
         }, {
-            id: 'ULTRASONIC',
+            id: 'ULTRASOUND',
             alias: 'dynamicDropdown',
-            options: 'mkb_ultrasonic'
+            options: 'mkb_ultrasound'
         }]
     ],
     code: '',
@@ -37,15 +37,16 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
     arduino: {
         includes: ['BitbloqUS.h', 'BitbloqMBot.h'],
         needInstanceOf: [{
-            name: '{ULTRASONIC}',
-            type: 'US*'
+            name: '{ULTRASOUND}',
+            type: 'BitbloqUltrasound',
+            arguments: ['MCORE::getPinFromPort(º[{ULTRASOUND}.pin.s], 2)', 'MCORE::getPinFromPort(º[{ULTRASOUND}.pin.s], 2)']
         }, {
             name: 'mBot',
             type: 'BitbloqMBot'
         }],
-        setupCodeAtTheEndOfExtraCode: 'mBot.setup();',
-        setupExtraCode: '{ULTRASONIC} = new US(mBot.getPinFromPort(º[{ULTRASONIC}.pin.s],2),mBot.getPinFromPort(º[{ULTRASONIC}.pin.s],2));',
-        code: '{ULTRASONIC}->read()'
+        setupExtraCode: '{ULTRASOUND} = new US(mBot.getPinFromPort(º[{ULTRASOUND}.pin.s],2),mBot.getPinFromPort(º[{ULTRASOUND}.pin.s],2));',
+        setupCodeAtTheEndOfExtraCode: 'mBot.setup();\n{ULTRASOUND}.setup();',
+        code: '{ULTRASOUND}.read()'
     }
 });
 utils.preprocessBloq(mBotGetDistance);
