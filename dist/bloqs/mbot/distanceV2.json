@@ -1,0 +1,49 @@
+{
+  "type": "output",
+  "name": "mBotGetDistance-v2",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-mbot-getdistance",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-mbot-getdistance"
+      },
+      {
+        "id": "ULTRASONIC",
+        "alias": "dynamicDropdown",
+        "options": "mkb_ultrasonic"
+      }
+    ]
+  ],
+  "code": "",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "arduino": {
+    "includes": [
+      "BitbloqUS.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "{ULTRASONIC}",
+        "type": "US"
+      }
+    ],
+    "setupExtraCode": "{ULTRASONIC} = new US(getPinFromPort(º[{ULTRASONIC}.pin.s],2),getPinFromPort(º[{ULTRASONIC}.pin.s],2));",
+    "code": "{ULTRASONIC}.read()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotGetDistance-v2\" no preparado para generar código python"
+      }
+    ]
+  }
+}
