@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../build-utils'),
+    StatementBloq = require('./../../statementBloq');
 
 /**
  * Bloq name: mBotBuzzer
@@ -80,12 +80,12 @@ var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        includes: ['BitbloqMBot.h'],
         needInstanceOf: [{
-            name: 'mBot',
-            type: 'BitbloqMBot'
+            name: 'mBotBuzzerPin',
+            type: 'const int',
+            equals: '8'
         }],
-        code: 'mBot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});'
+        code: 'tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});'
     }
 });
 utils.preprocessBloq(mBotBuzzer);

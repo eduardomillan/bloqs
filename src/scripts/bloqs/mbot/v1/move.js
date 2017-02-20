@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../build-utils'),
+    StatementBloq = require('./../../statementBloq');
 
 /**
  * Bloq name: mBotMove
@@ -55,12 +55,12 @@ var mBotMove = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        includes: ['BitbloqMBot.h'],
+        includes: ['BitbloqMBotOrigin.h'],
         needInstanceOf: [{
-            name: 'mBot',
+            name: 'mBotv1',
             type: 'MBot'
         }],
-        code: 'mBot.move({MOVEMENT},{SPEED});'
+        code: 'mBotv1.move({MOVEMENT},{SPEED});'
     }
 });
 

@@ -45,16 +45,16 @@
   },
   "arduino": {
     "includes": [
-      "BitbloqMBot.h"
+      "BitbloqMBotOrigin.h"
     ],
     "needInstanceOf": [
       {
-        "name": "mBot",
-        "type": "BitbloqMBot"
+        "name": "mBotv1",
+        "type": "MBot"
       }
     ],
-    "setupExtraCode": "mBot.setLineFollowerPort({PORT});",
-    "code": "mBot.readLineFollowerSensor()"
+    "setupExtraCode": "mBotv1.setLineFollowerPort({PORT});",
+    "code": "mBotv1.readLineFollowerSensor()"
   },
   "python": {
     "codeLines": [

@@ -1854,6 +1854,8 @@
                         case 'LineFollower':
                             result = '(float *) ' + sensorName + '.read()';
                             break;
+                        case 'mkb_linefollower':
+                            result = 'digitalRead(BitbloqMCore::ports[' + sensorData.pin.s + '][2]) * 2 + digitalRead(BitbloqMCore::ports[' + sensorData.pin.s + '][2])';
                         default:
                             result = sensorName + '.read()';
                     }
@@ -2227,7 +2229,8 @@
             tempInstanceOf,
             tempIncludes,
             tempProgramExtraCode,
-            tempProgramFunctionDeclaration;
+            tempProgramFunctionDeclaration,
+            makeblockBoardLibrary;
 
         switch (hardwareList.board) {
             case 'mcore':
@@ -2237,6 +2240,7 @@
                     type: 'BitbloqMBot'
                 }, {}, hardwareList);
                 setupCodeAtTheEndOfExtraCodeMap['mBot.setup();'] = true;
+                mkbBoardLibrary = 'MCORE';
                 break;
         }
 
@@ -2420,8 +2424,20 @@
                             name: hardwareList.components[i].name,
                             type: 'BitbloqUltrasound',
                             arguments: [
-                                'BitbloqMCore::ports[' + hardwareList.components[i].pin.s + '][2]',
-                                'BitbloqMCore::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                mkbBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                mkbBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            ]
+                        };
+                        setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+                        break;
+                    case 'mkb_infrared':
+
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'BitbloqUltrasound',
+                            arguments: [
+                                mkbBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                mkbBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
                             ]
                         };
                         setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;

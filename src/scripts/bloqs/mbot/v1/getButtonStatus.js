@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    OutputBloq = require('./../outputBloq');
+    utils = require('./../../build-utils'),
+    OutputBloq = require('./../../outputBloq');
 
 /**
  * Bloq name: mBotGetButtonStatus
@@ -31,12 +31,12 @@ var mBotGetButtonStatus = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     },
     arduino: {
-        includes: ['BitbloqMBot.h'],
+        includes: ['BitbloqMBotOrigin.h'],
         needInstanceOf: [{
-            name: 'mBot',
-            type: 'BitbloqMBot'
+            name: 'mBotv1',
+            type: 'MBot'
         }],
-        code: 'mBot.readButtonStatus()'
+        code: 'mBotv1.getButtonStatus()'
     }
 });
 

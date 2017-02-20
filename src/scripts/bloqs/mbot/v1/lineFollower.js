@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    OutputBloq = require('./../outputBloq');
+    utils = require('./../../build-utils'),
+    OutputBloq = require('./../../outputBloq');
 
 /**
  * Bloq name: mBotLineFollower
@@ -47,13 +47,13 @@ var mBotLineFollower = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     },
     arduino: {
-        includes: ['BitbloqMBot.h'],
+        includes: ['BitbloqMBotOrigin.h'],
         needInstanceOf: [{
-            name: 'mBot',
-            type: 'BitbloqMBot'
+            name: 'mBotv1',
+            type: 'MBot'
         }],
-        setupExtraCode: 'mBot.setLineFollowerPort({PORT});',
-        code: 'mBot.readLineFollowerSensor()'
+        setupExtraCode: 'mBotv1.setLineFollowerPort({PORT});',
+        code: 'mBotv1.readLineFollowerSensor()'
     }
 });
 utils.preprocessBloq(mBotLineFollower);

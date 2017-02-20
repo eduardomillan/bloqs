@@ -63,15 +63,15 @@
   "code": "",
   "arduino": {
     "includes": [
-      "BitbloqMBot.h"
+      "BitbloqMBotOrigin.h"
     ],
     "needInstanceOf": [
       {
-        "name": "mBot",
+        "name": "mBotv1",
         "type": "MBot"
       }
     ],
-    "code": "mBot.move({MOVEMENT},{SPEED});"
+    "code": "mBotv1.move({MOVEMENT},{SPEED});"
   },
   "python": {
     "codeLines": [

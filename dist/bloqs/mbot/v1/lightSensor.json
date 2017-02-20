@@ -1,18 +1,18 @@
 {
   "type": "output",
-  "name": "mBotGetButtonStatus",
+  "name": "mBotGetLightSensor",
   "connectors": [
     {
       "type": "connector--output",
       "accept": "connector--input"
     }
   ],
-  "bloqClass": "bloq-mbot-getbuttonstatus",
+  "bloqClass": "bloq-mbot-getlightsensor",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-mbot-getbuttonstatus"
+        "value": "bloq-mbot-getlightsensor"
       }
     ]
   ],
@@ -23,20 +23,20 @@
   },
   "arduino": {
     "includes": [
-      "BitbloqMBot.h"
+      "BitbloqMBotOrigin.h"
     ],
     "needInstanceOf": [
       {
-        "name": "mBot",
-        "type": "BitbloqMBot"
+        "name": "mBotv1",
+        "type": "MBot"
       }
     ],
-    "code": "mBot.readButtonStatus()"
+    "code": "mBotv1.getLightSensor()"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotGetButtonStatus\" no preparado para generar código python"
+        "code": "Bloque \"mBotGetLightSensor\" no preparado para generar código python"
       }
     ]
   }

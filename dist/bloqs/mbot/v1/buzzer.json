@@ -89,16 +89,14 @@
   ],
   "code": "",
   "arduino": {
-    "includes": [
-      "BitbloqMBot.h"
-    ],
     "needInstanceOf": [
       {
-        "name": "mBot",
-        "type": "BitbloqMBot"
+        "name": "mBotBuzzerPin",
+        "type": "const int",
+        "equals": "8"
       }
     ],
-    "code": "mBot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});"
+    "code": "tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
   },
   "python": {
     "codeLines": [
