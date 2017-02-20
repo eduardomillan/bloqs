@@ -52,8 +52,8 @@ var mBotLineFollower = _.merge(_.clone(OutputBloq, true), {
             name: 'mBotv1',
             type: 'MBot'
         }],
-        setupExtraCode: 'mBotv1.setLineFollowerPort({PORT});',
-        code: 'mBotv1.readLineFollowerSensor()'
+        code: 'mBotv1.getLineFollower({PORT})'
+
     }
 });
 utils.preprocessBloq(mBotLineFollower);

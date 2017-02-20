@@ -53,8 +53,7 @@
         "type": "MBot"
       }
     ],
-    "setupExtraCode": "mBotv1.setLineFollowerPort({PORT});",
-    "code": "mBotv1.readLineFollowerSensor()"
+    "code": "mBotv1.getLineFollower({PORT})"
   },
   "python": {
     "codeLines": [
