@@ -55,7 +55,7 @@ var mBotMove = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        includes: ['BitbloqMBotOrigin.h'],
+        includes: ['BitbloqMBotDeprecated.h'],
         needInstanceOf: [{
             name: 'mBotv1',
             type: 'MBot'

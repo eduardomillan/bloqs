@@ -47,7 +47,7 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     },
     arduino: {
-        includes: ['BitbloqMBotOrigin.h'],
+        includes: ['BitbloqMBotDeprecated.h'],
         needInstanceOf: [{
             name: 'mBotv1',
             type: 'MBot'
