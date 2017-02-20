@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "66a0cb5e-0f6d-4a4b-a531-c9f536e7bd3d"
+      "name": "0e352d49-9776-4544-926a-3213419e45bc"
     }
   ],
   "bloqClass": "bloq-mbot-move",
@@ -62,22 +62,22 @@
           "number",
           "selectVariable"
         ],
-        "name": "66a0cb5e-0f6d-4a4b-a531-c9f536e7bd3d"
+        "name": "0e352d49-9776-4544-926a-3213419e45bc"
       }
     ]
   ],
   "code": "",
   "arduino": {
     "includes": [
-      "BitbloqMBot.h"
+      "BitbloqMBotDeprecated.h"
     ],
     "needInstanceOf": [
       {
-        "name": "mBot",
+        "name": "mBotv1",
         "type": "MBot"
       }
     ],
-    "code": "mBot.move({MOVEMENT},{SPEED});"
+    "code": "mBotv1.move({MOVEMENT},{SPEED});"
   },
   "python": {
     "codeLines": [
