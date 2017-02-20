@@ -443,7 +443,7 @@
                     type: 'BitbloqMBot'
                 }, {}, hardwareList);
                 setupCodeAtTheEndOfExtraCodeMap['mBot.setup();'] = true;
-                mkbBoardLibrary = 'MCORE';
+                makeblockBoardLibrary = 'MCORE';
                 break;
         }
 
@@ -627,8 +627,8 @@
                             name: hardwareList.components[i].name,
                             type: 'BitbloqUltrasound',
                             arguments: [
-                                mkbBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
-                                mkbBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
                             ]
                         };
                         setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
@@ -639,8 +639,8 @@
                             name: hardwareList.components[i].name,
                             type: 'BitbloqUltrasound',
                             arguments: [
-                                mkbBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
-                                mkbBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
                             ]
                         };
                         setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
