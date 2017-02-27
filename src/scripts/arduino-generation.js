@@ -443,7 +443,7 @@
                     type: 'BitbloqMBot'
                 }, {}, hardwareList);
                 setupCodeAtTheEndOfExtraCodeMap['mBot.setup();'] = true;
-                makeblockBoardLibrary = 'MCORE';
+                makeblockBoardLibrary = 'BitbloqMCore';
                 break;
         }
 

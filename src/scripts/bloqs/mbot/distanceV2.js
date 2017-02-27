@@ -48,16 +48,6 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     },
     arduino: {
-        includes: ['BitbloqUS.h', 'BitbloqMBot.h'],
-        needInstanceOf: [{
-            name: 'mBot',
-            type: 'BitbloqMBot'
-        }, {
-            name: '{ULTRASOUND}',
-            type: 'BitbloqUltrasound',
-            arguments: ['mBot::ports[º[{ULTRASOUND}.pin.s]][2]', 'mBot::ports[º[{ULTRASOUND}.pin.s]][2]']
-        }],
-        setupCodeAtTheEndOfExtraCode: '{ULTRASOUND}.setup();',
         conditional: {
             aliasId: 'MAGNITUDE',
             code: {
