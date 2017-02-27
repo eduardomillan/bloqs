@@ -401,12 +401,13 @@
 
         var mRanger = ['mRangerBuzzer', 'mRangerGetDistance', 'mRangerGetLightSensor', 'mRangerLineFollower', 'mRangerSetLed', 'mRangerTurnOffLed', 'mRangerBuzzerAdvanced', 'mRangerSetLedAdvanced'];
 
-
-        var testSet = ['readSensor', 'declareVariable'];
+        var mbotv2 = ['declareVariable', 'mBotBuzzer-v2', 'mBotGetDistance-v2'];
 
         var testPhone = ['phoneSendText', 'phoneEmitSound', 'phoneReceive', 'declareVariable', 'phoneToggleLight', 'phoneTurnOnLight', 'phoneReadLinearAccel'];
 
-        testSet = testSet;
+        var testSet = ['readSensor', 'declareVariable'];
+
+        testSet = mbotv2;
 
         for (var i = 0; i < testSet.length; i++) {
             createBloq(testSet[i]);

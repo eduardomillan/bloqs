@@ -27,6 +27,19 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
             id: 'ULTRASOUND',
             alias: 'dynamicDropdown',
             options: 'sensors'
+        }, {
+            alias: 'text',
+            value: 'in'
+        }, {
+            id: 'MAGNITUDE',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'cm',
+                value: 'cm'
+            }, {
+                label: 'inches',
+                value: 'inches'
+            }]
         }]
     ],
     code: '',
@@ -45,7 +58,13 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
             type: 'BitbloqMBot'
         }],
         setupCodeAtTheEndOfExtraCode: '{ULTRASOUND}.setup();',
-        code: '{ULTRASOUND}.read()'
+        conditional: {
+            aliasId: 'MAGNITUDE',
+            code: {
+                'cm': '{ULTRASOUND}.readDistanceInCM()',
+                'inches': '{ULTRASOUND}.readDistanceInInches()'
+            }
+        }
     }
 });
 utils.preprocessBloq(mBotGetDistance);
