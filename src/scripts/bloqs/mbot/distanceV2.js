@@ -26,7 +26,7 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         }, {
             id: 'ULTRASOUND',
             alias: 'dynamicDropdown',
-            options: 'mkb_ultrasound'
+            options: 'sensors'
         }]
     ],
     code: '',
