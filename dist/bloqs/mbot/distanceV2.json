@@ -51,16 +51,16 @@
     ],
     "needInstanceOf": [
       {
+        "name": "mBot",
+        "type": "BitbloqMBot"
+      },
+      {
         "name": "{ULTRASOUND}",
         "type": "BitbloqUltrasound",
         "arguments": [
-          "MCORE::ports[º[{ULTRASOUND}.pin.s]][2]",
-          "MCORE::ports[º[{ULTRASOUND}.pin.s]][2]"
+          "mBot::ports[º[{ULTRASOUND}.pin.s]][2]",
+          "mBot::ports[º[{ULTRASOUND}.pin.s]][2]"
         ]
-      },
-      {
-        "name": "mBot",
-        "type": "BitbloqMBot"
       }
     ],
     "setupCodeAtTheEndOfExtraCode": "{ULTRASOUND}.setup();",
