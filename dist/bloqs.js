@@ -1845,6 +1845,7 @@
                     i++;
                 }
                 if (sensorData) {
+                    var makeblockBoardLibraryName = getBoardLibraryName(hardwareList.board);
                     switch (sensorData.type) {
                         case 'analog':
                             result = 'analogRead(' + sensorName + ')';
@@ -1856,7 +1857,8 @@
                             result = '(float *) ' + sensorName + '.read()';
                             break;
                         case 'mkb_linefollower':
-                            result = 'digitalRead(BitbloqMCore::ports[' + sensorData.pin.s + '][2]) * 2 + digitalRead(BitbloqMCore::ports[' + sensorData.pin.s + '][2])';
+                            result = 'digitalRead(' + makeblockBoardLibraryName + '::ports[' + sensorData.pin.s + '][2]) * 2 + digitalRead(' + makeblockBoardLibraryName + '::ports[' + sensorData.pin.s + '][2])';
+                            break;
                         default:
                             result = sensorName + '.read()';
                     }
@@ -2224,6 +2226,18 @@
         return result;
     }
 
+    function getBoardLibraryName(board) {
+        var result;
+        switch (board) {
+            case 'mcore':
+                result = 'BitbloqMCore';
+                break;
+            default:
+                console.log('bloqs::BoardWithoutLibrary');
+        }
+        return result;
+    }
+
     function generateIndependentHardwareCode(hardwareList) {
 
         var tempSetupExtraCode,
@@ -2231,7 +2245,7 @@
             tempIncludes,
             tempProgramExtraCode,
             tempProgramFunctionDeclaration,
-            makeblockBoardLibrary;
+            makeblockBoardLibrary = getBoardLibraryName(hardwareList.board);
 
         switch (hardwareList.board) {
             case 'mcore':
@@ -2241,7 +2255,6 @@
                     type: 'BitbloqMBot'
                 }, {}, hardwareList);
                 setupCodeAtTheEndOfExtraCodeMap['mBot.setup();'] = true;
-                makeblockBoardLibrary = 'BitbloqMCore';
                 break;
         }
 
