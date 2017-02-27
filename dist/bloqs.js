@@ -2431,18 +2431,6 @@
                         };
                         setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
                         break;
-                    case 'mkb_infrared':
-
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'BitbloqUltrasound',
-                            arguments: [
-                                makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
-                                makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
-                            ]
-                        };
-                        setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
-                        break;
                 }
 
                 if (tempInstanceOf) {

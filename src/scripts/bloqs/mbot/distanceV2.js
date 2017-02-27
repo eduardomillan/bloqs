@@ -18,7 +18,7 @@ var _ = require('lodash'),
 var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
 
     name: 'mBotGetDistance-v2',
-    bloqClass: 'bloq-mbot-getdistance',
+    bloqClass: 'bloq-mbot-getdistance-v2',
     content: [
         [{
             alias: 'text',
