@@ -481,6 +481,7 @@
                         };
                         break;
                     case 'button':
+                    case 'analogButton':
                     case 'GroveShieldButton':
                     case 'limitswitch':
                     case 'pot':
