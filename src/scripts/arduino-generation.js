@@ -61,6 +61,12 @@
                         case 'mkb_linefollower':
                             result = 'digitalRead(' + sensorName + '_1) * 2 + digitalRead(' + sensorName + '_2)';
                             break;
+                        case 'mkb_integrated_analogPinButton':
+                            result = 'mBot.isButtonPushed()';
+                            break;
+                        case 'mkb_integrated_lightsensor':
+                            result = 'mBot.readLightSensor()';
+                            break;
                         default:
                             result = sensorName + '.read()';
                     }
@@ -662,7 +668,7 @@
                         tempInstanceOf = {
                             name: hardwareList.components[i].name + '_2',
                             type: 'const int',
-                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
                         };
                         tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_2 , INPUT);';
                         break;

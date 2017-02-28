@@ -234,6 +234,7 @@ $theme-color-phone-color:#5d6069;
     @include createBloqsCss($reverse, "bloq-servo-attach", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-viewer", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-mbot-getdistance-v2", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-mbot-buzzer-v2", $components-color, $theme-color-components-color);
     /*---- PHONE ------*/
     @include createBloqsCss($reverse, "bloq-phone-sound", $phone-color, $theme-color-phone-color);
     @include createBloqsCss($reverse, "bloq-phone-write", $phone-color, $theme-color-phone-color);
