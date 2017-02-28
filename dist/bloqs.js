@@ -1386,8 +1386,7 @@
             hts221: [],
             barometer: [],
             robot: [],
-            mkb_ultrasound: [],
-            mkb_integrated_buzz: []
+            mkb_ultrasound: []
         };
     };
 
