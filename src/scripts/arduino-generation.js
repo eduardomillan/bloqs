@@ -11,9 +11,10 @@
 
     var includes = {},
         instances = {},
-        setupExtraCodeList = {},
-        programExtraCodeList = {},
-        programFunctionDeclarationsList = {},
+        setupExtraCodeMap = {},
+        setupCodeAtTheEndOfExtraCodeMap = {},
+        programExtraCodeMap = {},
+        programFunctionDeclarationsMap = {},
         procesingProgram,
         bloqsFunctions = {
             withoutAsterisk: function(text) {
@@ -46,6 +47,7 @@
                     i++;
                 }
                 if (sensorData) {
+                    var makeblockBoardLibraryName = getBoardLibraryName(hardwareList.board);
                     switch (sensorData.type) {
                         case 'analog':
                             result = 'analogRead(' + sensorName + ')';
@@ -55,6 +57,15 @@
                             break;
                         case 'LineFollower':
                             result = '(float *) ' + sensorName + '.read()';
+                            break;
+                        case 'mkb_linefollower':
+                            result = 'digitalRead(' + sensorName + '_1) + digitalRead(' + sensorName + '_2) * 2';
+                            break;
+                        case 'mkb_integrated_analogPinButton':
+                            result = 'mBot.isButtonPushed()';
+                            break;
+                        case 'mkb_integrated_lightsensor':
+                            result = 'mBot.readLightSensor()';
                             break;
                         default:
                             result = sensorName + '.read()';
@@ -71,9 +82,10 @@
         procesingProgram = arduinoMainBloqs;
         includes = {};
         instances = {};
-        setupExtraCodeList = {};
-        programExtraCodeList = {};
-        programFunctionDeclarationsList = {};
+        setupExtraCodeMap = {};
+        setupCodeAtTheEndOfExtraCodeMap = {};
+        programExtraCodeMap = {};
+        programFunctionDeclarationsMap = {};
         hardwareList = hardwareList || {
             components: []
         };
@@ -95,18 +107,23 @@
             includesCode += '#include <' + prop + '>\n';
         }
 
+        var setupCodeAtTheEndOfExtraCode = '';
+        for (prop in setupCodeAtTheEndOfExtraCodeMap) {
+            setupCodeAtTheEndOfExtraCode += prop + '\n';
+        }
+
         var setupExtraCode = '';
-        for (prop in setupExtraCodeList) {
+        for (prop in setupExtraCodeMap) {
             setupExtraCode += prop + '\n';
         }
 
         var programExtraCode = '';
-        for (prop in programExtraCodeList) {
+        for (prop in programExtraCodeMap) {
             programExtraCode += prop + '\n';
         }
 
         var programFunctionDeclarations = '';
-        for (prop in programFunctionDeclarationsList) {
+        for (prop in programFunctionDeclarationsMap) {
             programFunctionDeclarations += prop + '\n';
         }
 
@@ -137,13 +154,14 @@
         code += programFunctionDeclarations + '\n';
         code += instancesCode + '\n';
         code += varsCode + '\n\n';
-        code += '/***   Setup  ***/' + addSetupCode(setupCode, setupExtraCode) + '\n\n';
+        code += '/***   Setup  ***/' + addSetupCode(setupCode, setupExtraCode + setupCodeAtTheEndOfExtraCode) + '\n\n';
         code += '/***   Loop  ***/' + loopCode + '\n\n';
         code += programExtraCode + '\n\n';
         return code;
     }
 
     function addSetupCode(setupCode, setupExtraCode) {
+        //after void setup(){, we add code in position 13
         var positionToAdd = 13;
         setupExtraCode = '\n' + setupExtraCode + '\n';
         return [setupCode.slice(0, positionToAdd), setupExtraCode, setupCode.slice(positionToAdd)].join('');
@@ -317,11 +335,15 @@
 
 
             if (bloqFullStructure.arduino.setupExtraCode) {
-                setupExtraCodeList[processCode(bloqFullStructure.arduino.setupExtraCode, aliasesValuesHashMap, hardwareList)] = true;
+                setupExtraCodeMap[processCode(bloqFullStructure.arduino.setupExtraCode, aliasesValuesHashMap, hardwareList)] = true;
+            }
+
+            if (bloqFullStructure.arduino.setupCodeAtTheEndOfExtraCode) {
+                setupCodeAtTheEndOfExtraCodeMap[processCode(bloqFullStructure.arduino.setupCodeAtTheEndOfExtraCode, aliasesValuesHashMap, hardwareList)] = true;
             }
 
             if (bloqFullStructure.arduino.extraFunctionCode) {
-                programFunctionDeclarationsList[bloqFullStructure.arduino.extraFunctionCode] = true;
+                programFunctionDeclarationsMap[bloqFullStructure.arduino.extraFunctionCode] = true;
             }
 
             if (bloqFullStructure.name === 'constructorClass') {
@@ -412,13 +434,37 @@
         return result;
     }
 
+    function getBoardLibraryName(board) {
+        var result;
+        switch (board) {
+            case 'mcore':
+                result = 'BitbloqMCore';
+                break;
+            default:
+                console.log('bloqs::BoardWithoutLibrary');
+        }
+        return result;
+    }
+
     function generateIndependentHardwareCode(hardwareList) {
 
         var tempSetupExtraCode,
             tempInstanceOf,
             tempIncludes,
             tempProgramExtraCode,
-            tempProgramFunctionDeclaration;
+            tempProgramFunctionDeclaration,
+            makeblockBoardLibrary = getBoardLibraryName(hardwareList.board);
+
+        switch (hardwareList.board) {
+            case 'mcore':
+                includes['BitbloqMBot.h'] = true;
+                addInstance({
+                    name: 'mBot',
+                    type: 'BitbloqMBot'
+                }, {}, hardwareList);
+                setupCodeAtTheEndOfExtraCodeMap['mBot.setup();'] = true;
+                break;
+        }
 
         if (hardwareList.components) {
             for (var i = 0; i < hardwareList.components.length; i++) {
@@ -441,6 +487,7 @@
                         };
                         break;
                     case 'button':
+                    case 'analogButton':
                     case 'GroveShieldButton':
                     case 'limitswitch':
                     case 'pot':
@@ -594,6 +641,37 @@
                             ]
                         };
                         break;
+                    case 'mkb_ultrasound':
+                        tempIncludes = ['BitbloqUS.h'];
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'BitbloqUltrasound',
+                            arguments: [
+                                makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            ]
+                        };
+                        setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+                        break;
+                    case 'mkb_linefollower':
+
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name + '_1',
+                            type: 'const int',
+                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                        };
+                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_1 , INPUT);';
+
+                        addInstance(tempInstanceOf, {}, hardwareList);
+                        setupExtraCodeMap[tempSetupExtraCode] = true;
+
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name + '_2',
+                            type: 'const int',
+                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                        };
+                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_2 , INPUT);';
+                        break;
                 }
 
                 if (tempInstanceOf) {
@@ -601,17 +679,16 @@
                 }
 
                 if (tempSetupExtraCode) {
-                    setupExtraCodeList[tempSetupExtraCode] = true;
+                    setupExtraCodeMap[tempSetupExtraCode] = true;
                 }
 
                 if (tempProgramExtraCode) {
-                    programExtraCodeList[tempProgramExtraCode] = true;
+                    programExtraCodeMap[tempProgramExtraCode] = true;
                 }
 
                 if (tempProgramFunctionDeclaration) {
-                    programFunctionDeclarationsList[tempProgramFunctionDeclaration] = true;
+                    programFunctionDeclarationsMap[tempProgramFunctionDeclaration] = true;
                 }
-
 
 
                 for (var j = 0; j < tempIncludes.length; j++) {
@@ -619,7 +696,6 @@
                 }
             }
         }
-
     }
 
     function addInstance(needInstanceOf, aliasesValuesHashMap, hardwareList) {

@@ -100,6 +100,7 @@ $theme-color-phone-color:#5d6069;
     @include createBloqsCss($reverse, "bloq-mbot-linefollower", $mbot-color, $theme-color-mbot-color);
     @include createBloqsCss($reverse, "bloq-mbot-turnoffled", $mbot-color, $theme-color-mbot-color);
     @include createBloqsCss($reverse, "bloq-mbot-stop", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-somethingnear", $mbot-color, $theme-color-mbot-color, true);
     /*---- MRANGER ---------*/
     @include createBloqsCss($reverse, "bloq-mranger-buzzer", $mranger-color, $theme-color-mranger-color);
     @include createBloqsCss($reverse, "bloq-mranger-getdistance", $mranger-color, $theme-color-mranger-color);
@@ -232,6 +233,8 @@ $theme-color-phone-color:#5d6069;
     @include createBloqsCss($reverse, "bloq-servo-detach", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-servo-attach", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-viewer", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-mbot-getdistance-v2", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-mbot-buzzer-v2", $components-color, $theme-color-components-color);
     /*---- PHONE ------*/
     @include createBloqsCss($reverse, "bloq-phone-sound", $phone-color, $theme-color-phone-color);
     @include createBloqsCss($reverse, "bloq-phone-write", $phone-color, $theme-color-phone-color);

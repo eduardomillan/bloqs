@@ -45,15 +45,15 @@
   },
   "arduino": {
     "includes": [
-      "BitbloqMBot.h"
+      "BitbloqMBotDeprecated.h"
     ],
     "needInstanceOf": [
       {
-        "name": "mBot",
+        "name": "mBotv1",
         "type": "MBot"
       }
     ],
-    "code": "mBot.getLineFollower({PORT})"
+    "code": "mBotv1.getLineFollower({PORT})"
   },
   "python": {
     "codeLines": [

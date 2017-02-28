@@ -6,7 +6,7 @@ var _ = require('lodash'),
     StatementBloq = require('./../../statementBloq');
 
 /**
- * Bloq name: mBotMoveAdvanced
+ * Bloq name: mBotMove
  *
  * Bloq type: Statement
  *
@@ -14,9 +14,9 @@ var _ = require('lodash'),
  *
  */
 
-var mBotMoveAdvanced = _.merge(_.clone(StatementBloq, true), {
+var mBotMove = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'mBotMoveAdvanced',
+    name: 'mBotMove',
     bloqClass: 'bloq-mbot-move',
     content: [
         [{
@@ -37,25 +37,33 @@ var mBotMoveAdvanced = _.merge(_.clone(StatementBloq, true), {
             }]
         }, {
             alias: 'text',
-            value: 'bloq-mbot-move-advanced-speed'
+            value: 'bloq-mbot-move-speed'
         }, {
-            bloqInputId: 'SPEED',
-            alias: 'bloqInput',
-            acceptType: ['float'],
-            suggestedBloqs: ['number', 'selectVariable']
+            id: 'SPEED',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'bloq-mbot-move-speed-fast',
+                value: '255'
+            }, {
+                label: 'bloq-mbot-move-speed-normal',
+                value: '100'
+            }, {
+                label: 'bloq-mbot-move-speed-slow',
+                value: '50'
+            }]
         }]
     ],
     code: '',
     arduino: {
-        includes: ['BitbloqMBot.h'],
+        includes: ['BitbloqMBotDeprecated.h'],
         needInstanceOf: [{
-            name: 'mBot',
+            name: 'mBotv1',
             type: 'MBot'
         }],
-        code: 'mBot.move({MOVEMENT},{SPEED});'
+        code: 'mBotv1.move({MOVEMENT},{SPEED});'
     }
 });
 
-utils.preprocessBloq(mBotMoveAdvanced);
+utils.preprocessBloq(mBotMove);
 
-module.exports = mBotMoveAdvanced;
+module.exports = mBotMove;

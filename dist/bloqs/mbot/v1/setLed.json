@@ -72,15 +72,15 @@
   "code": "",
   "arduino": {
     "includes": [
-      "BitbloqMBot.h"
+      "BitbloqMBotDeprecated.h"
     ],
     "needInstanceOf": [
       {
-        "name": "mBot",
+        "name": "mBotv1",
         "type": "MBot"
       }
     ],
-    "code": "mBot.setLed({LEDS}, {RED}, {GREEN}, {BLUE});"
+    "code": "mBotv1.setLed({LEDS}, {RED}, {GREEN}, {BLUE});"
   },
   "python": {
     "codeLines": [

@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotMove",
+  "name": "mBotMove-v2",
   "connectors": [
     {
       "type": "connector--top",
@@ -68,7 +68,7 @@
     "needInstanceOf": [
       {
         "name": "mBot",
-        "type": "MBot"
+        "type": "BitbloqMBot"
       }
     ],
     "code": "mBot.move({MOVEMENT},{SPEED});"
@@ -76,7 +76,7 @@
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotMove\" no preparado para generar código python"
+        "code": "Bloque \"mBotMove-v2\" no preparado para generar código python"
       }
     ]
   }

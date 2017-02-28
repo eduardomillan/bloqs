@@ -1,7 +1,7 @@
 {
     "name": "bloqs",
     "description": "Library to create bloqs in bitbloq",
-    "version": "v0.11.6",
+    "version": "v0.12.0",
     "main": [
         "dist/bloqs.min.js",
         "dist/bloqs.css"
@@ -30,11 +30,14 @@
     ],
     "dependencies": {
         "jquery": ">= 2.1.0",
-        "lodash": "~3.10.0",
+        "lodash": "^4.17.4",
         "jquery-auto-grow-input": "*",
         "autogrow": "~1.0.3"
     },
     "moduleType": [
         "amd"
-    ]
+    ],
+    "resolutions": {
+        "lodash": "^4.17.4"
+    }
 }

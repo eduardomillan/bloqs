@@ -9,19 +9,19 @@
     body {
         margin: 0;
     }
-    
+
     #code--field {
         width: 100%;
         height: 500px;
     }
-    
+
     #bloqs--field {
         overflow-y: auto;
         background-color: #EBEBEB;
         width: 1500px;
         height: 650px;
     }
-    
+
     code[class*="language-"],
     pre[class*="language-"] {
         color: black;
@@ -39,13 +39,13 @@
         -ms-user-select: text;
         user-select: text;
     }
-    
+
     code[class*="language-"]::-moz-selection,
     pre[class*="language-"]::-moz-selection {
         color: #000;
         background-color: #fefefe;
     }
-    
+
     code[class*="language-"]::selection,
     pre[class*="language-"]::selection {
         color: #000;
@@ -68,7 +68,7 @@
     <script src="http://localhost:9000/livereload.js"></script>
     <!--Load Scripts-->
     <script src="./../../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="./../../bower_components/lodash/lodash.min.js"></script>
+    <script src="./../../bower_components/lodash/dist/lodash.min.js"></script>
     <script src="./../../bower_components/autogrow/autogrow.min.js"></script>
     <script src="./../../bower_components/jquery-auto-grow-input/jquery.auto-grow-input.min.js"></script>
     <!--Add bloqs js compiled-->
@@ -158,6 +158,15 @@
             }
         };
 
+        componentsArray.sensors.push({
+            id: "mkb_ultrasound",
+            name: "ultrasonidos_0",
+            dataReturnType: "float",
+            pin: {
+                s: "3"
+            }
+        });
+
         /*componentsArray.phoneElements[0] = {
             id: "phoneElement",
             name: "phone_0",
@@ -240,6 +249,14 @@
             id: "irs2",
             name: "siguelineas_0",
             dataReturnType: "float *",
+            pin: {
+                s: "A5"
+            }
+        });
+        componentsArray.sensors.push({
+            id: "irs2",
+            name: "siguelineas_0",
+            dataReturnType: "float",
             pin: {
                 s: "A5"
             }
@@ -384,18 +401,20 @@
 
         var mRanger = ['mRangerBuzzer', 'mRangerGetDistance', 'mRangerGetLightSensor', 'mRangerLineFollower', 'mRangerSetLed', 'mRangerTurnOffLed', 'mRangerBuzzerAdvanced', 'mRangerSetLedAdvanced'];
 
-
-        var testSet = ['stopBuzzer', 'buzzerWithoutPause', 'buzzerWithoutPauseAdvanced', 'parenthesis', 'declareVariable', 'servoNormalAdvanced', 'servoNormalAdvanced-v2', 'buzzerAdvanced', 'buzzerAdvanced-v2'];
+        var mbotv2 = ['declareVariable', 'readSensor'];
 
         var testPhone = ['phoneSendText', 'phoneEmitSound', 'phoneReceive', 'declareVariable', 'phoneToggleLight', 'phoneTurnOnLight', 'phoneReadLinearAccel'];
 
-        testSet = testPhone;
+        var testSet = ['readSensor', 'declareVariable'];
+
+        testSet = mbotv2;
 
         for (var i = 0; i < testSet.length; i++) {
             createBloq(testSet[i]);
         }
 
         var hardwareSchema = {
+            "board": "mcore",
             "components": [{
                     "id": "sp",
                     "baudRate": "9600",
@@ -422,6 +441,34 @@
                         "s": {
                             "type": "serial",
                             "uid": "67eed2ae-74a8-4916-a26d-0f75bbaff2dc"
+                        }
+                    }
+                }, {
+                    "id": "mkb_ultrasound",
+                    "category": "sensors",
+                    "manufacter": "makeblock",
+                    "width": 134.5,
+                    "height": 106.2,
+                    "dataReturnType": "float",
+                    "pins": {
+                        "yellow": [
+                            "s"
+                        ]
+                    },
+                    "name": "ultrasonidos_mbot",
+                    "coordinates": {
+                        "x": 61.75548589341693,
+                        "y": 19.46564885496183
+                    },
+                    "connected": true,
+                    "uid": "8592f42f-89a7-4704-8208-3f787c943c14",
+                    "pin": {
+                        "s": "3"
+                    },
+                    "endpoints": {
+                        "s": {
+                            "uid": "3633453a-cc71-4172-a3ce-4959ffbb0f63",
+                            "type": "yellow"
                         }
                     }
                 }

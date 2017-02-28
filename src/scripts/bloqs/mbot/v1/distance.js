@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    OutputBloq = require('./../outputBloq');
+    utils = require('./../../build-utils'),
+    OutputBloq = require('./../../outputBloq');
 
 /**
  * Bloq name: mBotGetDistance
@@ -47,12 +47,12 @@ var mBotGetDistance = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     },
     arduino: {
-        includes: ['BitbloqMBot.h'],
+        includes: ['BitbloqMBotDeprecated.h'],
         needInstanceOf: [{
-            name: 'mBot',
+            name: 'mBotv1',
             type: 'MBot'
         }],
-        code: 'mBot.getDistance({PORT})'
+        code: 'mBotv1.getDistance({PORT})'
     }
 });
 utils.preprocessBloq(mBotGetDistance);

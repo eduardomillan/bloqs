@@ -45,15 +45,15 @@
   },
   "arduino": {
     "includes": [
-      "BitbloqMBot.h"
+      "BitbloqMBotDeprecated.h"
     ],
     "needInstanceOf": [
       {
-        "name": "mBot",
+        "name": "mBotv1",
         "type": "MBot"
       }
     ],
-    "code": "mBot.getDistance({PORT})"
+    "code": "mBotv1.getDistance({PORT})"
   },
   "python": {
     "codeLines": [

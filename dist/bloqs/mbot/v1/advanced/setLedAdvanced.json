@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "7321b474-c879-40c5-a686-b59ef7051cba"
+      "name": "116e05cb-bd7d-4532-8fb3-946d1751d575"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "c93ee10a-a4a5-4f26-8be1-81ccef016a27"
+      "name": "14f8803a-66a6-44f3-ad50-661700977ecf"
     },
     {
       "type": "connector--input",
@@ -44,7 +44,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "98a88cd5-166c-46c8-be6d-9f733c96cc20"
+      "name": "54ff1808-6c7e-4e59-aa64-0b160b902585"
     }
   ],
   "bloqClass": "bloq-mbot-setled",
@@ -90,7 +90,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "7321b474-c879-40c5-a686-b59ef7051cba"
+        "name": "116e05cb-bd7d-4532-8fb3-946d1751d575"
       },
       {
         "alias": "text",
@@ -106,7 +106,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "c93ee10a-a4a5-4f26-8be1-81ccef016a27"
+        "name": "14f8803a-66a6-44f3-ad50-661700977ecf"
       },
       {
         "alias": "text",
@@ -122,22 +122,22 @@
           "number",
           "selectVariable"
         ],
-        "name": "98a88cd5-166c-46c8-be6d-9f733c96cc20"
+        "name": "54ff1808-6c7e-4e59-aa64-0b160b902585"
       }
     ]
   ],
   "code": "",
   "arduino": {
     "includes": [
-      "BitbloqMBot.h"
+      "BitbloqMBotDeprecated.h"
     ],
     "needInstanceOf": [
       {
-        "name": "mBot",
+        "name": "mBotv1",
         "type": "MBot"
       }
     ],
-    "code": "mBot.setLed({LEDS}, {RED}, {GREEN}, {BLUE});"
+    "code": "mBotv1.setLed({LEDS}, {RED}, {GREEN}, {BLUE});"
   },
   "python": {
     "codeLines": [

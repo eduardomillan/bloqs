@@ -1377,7 +1377,9 @@
             clocks: [],
             hts221: [],
             barometer: [],
-            robot: []
+            robot: [],
+            mkb_ultrasound: [],
+            mkb_integrated_buzz: []
         };
     };
 

@@ -23,15 +23,15 @@
   },
   "arduino": {
     "includes": [
-      "BitbloqMBot.h"
+      "BitbloqMBotDeprecated.h"
     ],
     "needInstanceOf": [
       {
-        "name": "mBot",
+        "name": "mBotv1",
         "type": "MBot"
       }
     ],
-    "code": "mBot.getLightSensor()"
+    "code": "mBotv1.getLightSensor()"
   },
   "python": {
     "codeLines": [

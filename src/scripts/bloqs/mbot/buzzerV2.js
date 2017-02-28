@@ -6,7 +6,7 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
- * Bloq name: mBotBuzzer
+ * Bloq name: buzzer
  *
  * Bloq type: Statement
  *
@@ -18,14 +18,17 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
+var mBotBuzzerV2 = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'mBotBuzzer',
-    bloqClass: 'bloq-mbot-buzzer',
+    name: 'mBotBuzzer-v2',
+    bloqClass: 'bloq-mbot-buzzer-v2',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-mbot-buzzer-note'
+            value: 'bloq-buzzer-sound'
+        }, {
+            alias: 'text',
+            value: 'bloq-buzzer-note'
         }, {
             id: 'NOTE',
             alias: 'staticDropdown',
@@ -68,26 +71,21 @@ var mBotBuzzer = _.merge(_.clone(StatementBloq, true), {
             }]
         }, {
             alias: 'text',
-            value: 'bloq-mbot-buzzer-for'
+            value: 'bloq-buzzer-for'
         }, {
             id: 'SECONDS',
             alias: 'numberInput',
             value: 2000
         }, {
             alias: 'text',
-            value: 'bloq-mbot-buzzer-ms'
+            value: 'bloq-buzzer-ms'
         }]
     ],
     code: '',
     arduino: {
-        needInstanceOf: [{
-            name: 'mBotBuzzerPin',
-            type: 'const int',
-            equals: '8'
-        }],
-        code: 'tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});'
+        code: 'mBot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});'
     }
 });
-utils.preprocessBloq(mBotBuzzer);
+utils.preprocessBloq(mBotBuzzerV2);
 
-module.exports = mBotBuzzer;
+module.exports = mBotBuzzerV2;
