@@ -31,7 +31,7 @@ var bloqMBotSomethingNear = _.merge(_.clone(StatementInputBloq, true), {
     ],
     code: '',
     arduino: {
-        code: 'if({ULTRASOUND}.readDistanceInCM() > 10){{STATEMENTS}}'
+        code: 'if({ULTRASOUND}.readDistanceInCM() < 5){{STATEMENTS}}'
     }
 });
 

@@ -325,11 +325,14 @@
     #bloqs--field.theme-basic .bloq.bloq-mbot-stop textarea {
       color: #0076b4; }
   #bloqs--field.theme-basic .bloq.bloq-mbot-somethingnear {
-    color: #0076b4; }
+    color: #0076b4;
+    border-left: 5px solid #0076b4; }
     #bloqs--field.theme-basic .bloq.bloq-mbot-somethingnear input,
     #bloqs--field.theme-basic .bloq.bloq-mbot-somethingnear select,
     #bloqs--field.theme-basic .bloq.bloq-mbot-somethingnear textarea {
       color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-somethingnear > .bloq--extension:before {
+      border-left: 5px solid #0076b4; }
   #bloqs--field.theme-basic .bloq.bloq-mranger-buzzer {
     color: #0076b4; }
     #bloqs--field.theme-basic .bloq.bloq-mranger-buzzer input,
@@ -3145,6 +3148,21 @@
         background-color: #0076b4; }
       #bloqs--field.theme-colors .bloq.bloq-mbot-somethingnear:not(.disabled).bloq--output:focus:not(.disabled):after {
         background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-somethingnear:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-somethingnear:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-somethingnear:not(.disabled):before {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-somethingnear:not(.disabled) > .bloq--statement-input__header {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-somethingnear:not(.disabled) > .bloq--extension:before {
+      border-left: 5px solid #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-somethingnear:not(.disabled) > .bloq--extension > .bloq--extension--end {
+      background-color: #0076b4; }
   #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) .bloqinput,
