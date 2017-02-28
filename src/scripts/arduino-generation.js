@@ -59,7 +59,7 @@
                             result = '(float *) ' + sensorName + '.read()';
                             break;
                         case 'mkb_linefollower':
-                            result = 'digitalRead(' + makeblockBoardLibraryName + '::ports[' + sensorData.pin.s + '][1]) * 2 + digitalRead(' + makeblockBoardLibraryName + '::ports[' + sensorData.pin.s + '][2])';
+                            result = 'digitalRead(' + sensorName + '_1) * 2 + digitalRead(' + sensorName + '_2)';
                             break;
                         default:
                             result = sensorName + '.read()';
@@ -646,6 +646,25 @@
                             ]
                         };
                         setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+                        break;
+                    case 'mkb_linefollower':
+
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name + '_1',
+                            type: 'const int',
+                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                        };
+                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_1 , INPUT);';
+
+                        addInstance(tempInstanceOf, {}, hardwareList);
+                        setupExtraCodeMap[tempSetupExtraCode] = true;
+
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name + '_2',
+                            type: 'const int',
+                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                        };
+                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_2 , INPUT);';
                         break;
                 }
 
