@@ -22,19 +22,19 @@ var bloqMBotSomethingNear = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Si se detecta un obstaculo'
+            value: 'Si'
         }, {
-            id: 'OPERATOR',
+            id: 'OPERATION',
             alias: 'staticDropdown',
             options: [{
                 label: 'se detecta un obstáculo a poca distancia',
-                value: '< 5'
+                value: '{ULTRASOUND}.readDistanceInCM() < 8'
             }, {
                 label: 'se detecta un obstáculo a mucha distancia',
-                value: '< 20'
+                value: '({ULTRASOUND}.readDistanceInCM() >= 8) && ({ULTRASOUND}.readDistanceInCM() < 513)'
             }, {
                 label: 'no se detecta un obstáculo',
-                value: '> 513'
+                value: '{ULTRASOUND}.readDistanceInCM() >= 513'
             }]
         }, {
             alias: 'text',
@@ -47,7 +47,7 @@ var bloqMBotSomethingNear = _.merge(_.clone(StatementInputBloq, true), {
     ],
     code: '',
     arduino: {
-        code: 'if({ULTRASOUND}.readDistanceInCM() {OPERATOR}){{STATEMENTS}}'
+        code: 'if({OPERATION}){{STATEMENTS}}'
     }
 });
 
