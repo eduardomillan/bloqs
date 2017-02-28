@@ -1857,7 +1857,7 @@
                             result = '(float *) ' + sensorName + '.read()';
                             break;
                         case 'mkb_linefollower':
-                            result = 'digitalRead(' + makeblockBoardLibraryName + '::ports[' + sensorData.pin.s + '][2]) * 2 + digitalRead(' + makeblockBoardLibraryName + '::ports[' + sensorData.pin.s + '][2])';
+                            result = 'digitalRead(' + makeblockBoardLibraryName + '::ports[' + sensorData.pin.s + '][1]) * 2 + digitalRead(' + makeblockBoardLibraryName + '::ports[' + sensorData.pin.s + '][2])';
                             break;
                         default:
                             result = sensorName + '.read()';
