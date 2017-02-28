@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotMoveAdvanced",
+  "name": "mBotMove-v2",
   "connectors": [
     {
       "type": "connector--top",
@@ -9,18 +9,6 @@
     {
       "type": "connector--bottom",
       "accept": "connector--top"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": [
-        "float"
-      ],
-      "suggestedBloqs": [
-        "number",
-        "selectVariable"
-      ],
-      "name": "4ac5e7af-8c72-4cde-b925-5031e50e0841"
     }
   ],
   "bloqClass": "bloq-mbot-move",
@@ -50,39 +38,45 @@
       },
       {
         "alias": "text",
-        "value": "bloq-mbot-move-advanced-speed"
+        "value": "bloq-mbot-move-speed"
       },
       {
-        "bloqInputId": "SPEED",
-        "alias": "bloqInput",
-        "acceptType": [
-          "float"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "4ac5e7af-8c72-4cde-b925-5031e50e0841"
+        "id": "SPEED",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-mbot-move-speed-fast",
+            "value": "255"
+          },
+          {
+            "label": "bloq-mbot-move-speed-normal",
+            "value": "100"
+          },
+          {
+            "label": "bloq-mbot-move-speed-slow",
+            "value": "50"
+          }
+        ]
       }
     ]
   ],
   "code": "",
   "arduino": {
     "includes": [
-      "BitbloqMBotDeprecated.h"
+      "BitbloqMBot.h"
     ],
     "needInstanceOf": [
       {
-        "name": "mBotv1",
-        "type": "MBot"
+        "name": "mBot",
+        "type": "BitbloqMBot"
       }
     ],
-    "code": "mBotv1.move({MOVEMENT},{SPEED});"
+    "code": "mBot.move({MOVEMENT},{SPEED});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotMoveAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mBotMove-v2\" no preparado para generar código python"
       }
     ]
   }

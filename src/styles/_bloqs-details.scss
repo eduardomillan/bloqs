@@ -100,6 +100,7 @@ $theme-color-phone-color:#5d6069;
     @include createBloqsCss($reverse, "bloq-mbot-linefollower", $mbot-color, $theme-color-mbot-color);
     @include createBloqsCss($reverse, "bloq-mbot-turnoffled", $mbot-color, $theme-color-mbot-color);
     @include createBloqsCss($reverse, "bloq-mbot-stop", $mbot-color, $theme-color-mbot-color);
+    @include createBloqsCss($reverse, "bloq-mbot-somethingnear", $mbot-color, $theme-color-mbot-color);
     /*---- MRANGER ---------*/
     @include createBloqsCss($reverse, "bloq-mranger-buzzer", $mranger-color, $theme-color-mranger-color);
     @include createBloqsCss($reverse, "bloq-mranger-getdistance", $mranger-color, $theme-color-mranger-color);

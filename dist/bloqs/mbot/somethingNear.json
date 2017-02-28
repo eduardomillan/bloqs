@@ -1,0 +1,47 @@
+{
+  "type": "statement-input",
+  "name": "mbot-somethingnear",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top",
+      "acceptedAliases": [
+        "all",
+        "ifDown"
+      ]
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-mbot-somethingnear",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Si se detecta un obstaculo a poca distancia con "
+      },
+      {
+        "id": "ULTRASOUND",
+        "alias": "dynamicDropdown",
+        "options": "mkb_ultrasound"
+      }
+    ]
+  ],
+  "code": "",
+  "arduino": {
+    "code": "if({ULTRASOUND}.readDistanceInCM() > 10){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mbot-somethingnear\" no preparado para generar código python"
+      }
+    ]
+  }
+}
