@@ -1858,7 +1858,7 @@
                             result = '(float *) ' + sensorName + '.read()';
                             break;
                         case 'mkb_linefollower':
-                            result = 'digitalRead(' + sensorName + '_1) * 2 + digitalRead(' + sensorName + '_2)';
+                            result = 'digitalRead(' + sensorName + '_1) + digitalRead(' + sensorName + '_2) * 2';
                             break;
                         case 'mkb_integrated_analogPinButton':
                             result = 'mBot.isButtonPushed()';
