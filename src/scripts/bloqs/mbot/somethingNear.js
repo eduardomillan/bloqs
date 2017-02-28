@@ -17,7 +17,7 @@ var _ = require('lodash'),
 
 var bloqMBotSomethingNear = _.merge(_.clone(StatementInputBloq, true), {
 
-    name: 'mbot-somethingnear',
+    name: 'mBotSomethingNear',
     bloqClass: 'bloq-mbot-somethingnear',
     content: [
         [{
