@@ -22,7 +22,23 @@ var bloqMBotSomethingNear = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Si se detecta un obstaculo a poca distancia con '
+            value: 'Si se detecta un obstaculo'
+        }, {
+            id: 'OPERATOR',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'se detecta un obstáculo a poca distancia',
+                value: '< 5'
+            }, {
+                label: 'se detecta un obstáculo a mucha distancia',
+                value: '< 20'
+            }, {
+                label: 'no se detecta un obstáculo',
+                value: '> 513'
+            }]
+        }, {
+            alias: 'text',
+            value: 'con el '
         }, {
             id: 'ULTRASOUND',
             alias: 'dynamicDropdown',
@@ -31,7 +47,7 @@ var bloqMBotSomethingNear = _.merge(_.clone(StatementInputBloq, true), {
     ],
     code: '',
     arduino: {
-        code: 'if({ULTRASOUND}.readDistanceInCM() < 5){{STATEMENTS}}'
+        code: 'if({ULTRASOUND}.readDistanceInCM() {OPERATOR}){{STATEMENTS}}'
     }
 });
 
