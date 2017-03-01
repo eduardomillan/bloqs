@@ -492,6 +492,7 @@
                     case 'limitswitch':
                     case 'pot':
                     case 'ldrs':
+                    case 'mkb_lightsensor':
                     case 'sound':
                     case 'irs':
                         tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
