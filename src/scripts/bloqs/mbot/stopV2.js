@@ -28,10 +28,10 @@ var mBotStop = _.merge(_.clone(StatementBloq, true), {
     arduino: {
         includes: ['BitbloqMBot.h'],
         needInstanceOf: [{
-            name: 'mBot',
+            name: 'robot',
             type: 'BitbloqMBot'
         }],
-        code: 'mBot.move(1,0);'
+        code: 'robot.move(1,0);'
     }
 });
 

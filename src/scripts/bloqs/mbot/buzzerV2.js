@@ -83,7 +83,7 @@ var mBotBuzzerV2 = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        code: 'mBot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});'
+        code: 'robot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});'
     }
 });
 utils.preprocessBloq(mBotBuzzerV2);

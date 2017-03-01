@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotMove-v2",
+  "name": "mStarterMove",
   "connectors": [
     {
       "type": "connector--top",
@@ -11,7 +11,7 @@
       "accept": "connector--top"
     }
   ],
-  "bloqClass": "bloq-mbot-move",
+  "bloqClass": "bloq-mstarter-move",
   "content": [
     [
       {
@@ -63,12 +63,12 @@
   "code": "",
   "arduino": {
     "includes": [
-      "BitbloqMBot.h"
+      "BitbloqMStarter.h"
     ],
     "needInstanceOf": [
       {
         "name": "robot",
-        "type": "BitbloqMBot"
+        "type": "BitbloqMStarter"
       }
     ],
     "code": "robot.move({MOVEMENT},{SPEED});"
@@ -76,7 +76,7 @@
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotMove-v2\" no preparado para generar código python"
+        "code": "Bloque \"mStarterMove\" no preparado para generar código python"
       }
     ]
   }

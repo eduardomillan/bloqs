@@ -93,7 +93,7 @@
   ],
   "code": "",
   "arduino": {
-    "code": "mBot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});"
+    "code": "robot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});"
   },
   "python": {
     "codeLines": [

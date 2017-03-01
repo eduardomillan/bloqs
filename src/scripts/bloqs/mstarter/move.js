@@ -6,7 +6,7 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
- * Bloq name: mBotMove
+ * Bloq name: mStarterMove
  *
  * Bloq type: Statement
  *
@@ -14,10 +14,10 @@ var _ = require('lodash'),
  *
  */
 
-var mBotMove = _.merge(_.clone(StatementBloq, true), {
+var mStarterMove = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'mBotMove-v2',
-    bloqClass: 'bloq-mbot-move',
+    name: 'mStarterMove',
+    bloqClass: 'bloq-mstarter-move',
     content: [
         [{
             id: 'MOVEMENT',
@@ -55,15 +55,15 @@ var mBotMove = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        includes: ['BitbloqMBot.h'],
+        includes: ['BitbloqMStarter.h'],
         needInstanceOf: [{
             name: 'robot',
-            type: 'BitbloqMBot'
+            type: 'BitbloqMStarter'
         }],
         code: 'robot.move({MOVEMENT},{SPEED});'
     }
 });
 
-utils.preprocessBloq(mBotMove);
+utils.preprocessBloq(mStarterMove);
 
-module.exports = mBotMove;
+module.exports = mStarterMove;

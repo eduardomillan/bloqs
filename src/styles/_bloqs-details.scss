@@ -108,6 +108,8 @@ $theme-color-phone-color:#5d6069;
     @include createBloqsCss($reverse, "bloq-mranger-linefollower", $mranger-color, $theme-color-mranger-color);
     @include createBloqsCss($reverse, "bloq-mranger-setled", $mranger-color, $theme-color-mranger-color);
     @include createBloqsCss($reverse, "bloq-mranger-turnoffled", $mranger-color, $theme-color-mranger-color);
+    /*---- MSTARTER ---------*/
+    @include createBloqsCss($reverse, "bloq-mstarter-move", $mranger-color, $theme-color-mranger-color);
     /*---- ZOWI ---------*/
     @include createBloqsCss($reverse, "bloq-zowi-gestures", $zowi-color, $theme-color-zowi-color);
     @include createBloqsCss($reverse, "bloq-zowi-rest", $zowi-color, $theme-color-zowi-color);
