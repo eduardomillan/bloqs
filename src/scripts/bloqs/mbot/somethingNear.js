@@ -22,23 +22,23 @@ var bloqMBotSomethingNear = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Si'
+            value: 'if'
         }, {
             id: 'OPERATION',
             alias: 'staticDropdown',
             options: [{
-                label: 'se detecta un obstáculo a poca distancia',
+                label: 'bloq-mbot-somethingnear-operation-near',
                 value: '{ULTRASOUND}.readDistanceInCM() < 8'
             }, {
-                label: 'se detecta un obstáculo a mucha distancia',
+                label: 'bloq-mbot-somethingnear-operation-faraway',
                 value: '({ULTRASOUND}.readDistanceInCM() >= 8) && ({ULTRASOUND}.readDistanceInCM() < 513)'
             }, {
-                label: 'no se detecta un obstáculo',
+                label: 'bloq-mbot-somethingnear-operation-nodetect',
                 value: '{ULTRASOUND}.readDistanceInCM() >= 513'
             }]
         }, {
             alias: 'text',
-            value: 'con el '
+            value: 'with-the'
         }, {
             id: 'ULTRASOUND',
             alias: 'dynamicDropdown',
