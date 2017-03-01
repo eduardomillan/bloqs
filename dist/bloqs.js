@@ -2291,7 +2291,6 @@
                     case 'limitswitch':
                     case 'pot':
                     case 'ldrs':
-                    case 'mkb_lightsensor':
                     case 'sound':
                     case 'irs':
                         tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
@@ -2471,6 +2470,14 @@
                             equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
                         };
                         tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_2 , INPUT);';
+                        break;
+                    case 'mkb_lightsensor':
+                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
+                        tempInstanceOf = {
+                            name: hardwareList.components[i].name,
+                            type: 'const int',
+                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                        };
                         break;
                 }
 
