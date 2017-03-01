@@ -677,7 +677,7 @@
                         tempInstanceOf = {
                             name: hardwareList.components[i].name,
                             type: 'const int',
-                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
                         };
                         break;
                 }
