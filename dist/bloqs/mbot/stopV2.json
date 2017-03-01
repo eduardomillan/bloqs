@@ -22,15 +22,6 @@
   ],
   "code": "",
   "arduino": {
-    "includes": [
-      "BitbloqMBot.h"
-    ],
-    "needInstanceOf": [
-      {
-        "name": "robot",
-        "type": "BitbloqMBot"
-      }
-    ],
     "code": "robot.move(1,0);"
   },
   "python": {
