@@ -443,6 +443,9 @@
             case 'meorion':
                 result = 'BitbloqOrion';
                 break;
+            case 'meauriga':
+                result = 'BitbloqMBotRanger';
+                break;
             default:
                 console.log('bloqs::BoardWithoutLibrary');
         }
@@ -472,6 +475,13 @@
                 addInstance({
                     name: 'robot',
                     type: 'BitbloqMStarter'
+                }, {}, hardwareList);
+                setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
+            case 'meauriga':
+                includes['BitbloqMBotRanger.h'] = true;
+                addInstance({
+                    name: 'robot',
+                    type: 'BitbloqMBotRanger'
                 }, {}, hardwareList);
                 setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
                 break;
