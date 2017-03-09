@@ -9,7 +9,6 @@
   /*---- CONVERSIONS ---------*/
   /*---- EVOLUTION ---------*/
   /*---- MBOT ---------*/
-  /*---- MRANGER ---------*/
   /*---- ZOWI ---------*/
   /*---- ZOWI COMPONENTS---------*/
   /*---- CLASSES ---------*/
@@ -333,42 +332,24 @@
       color: #0076b4; }
     #bloqs--field.theme-basic .bloq.bloq-mbot-somethingnear > .bloq--extension:before {
       border-left: 5px solid #0076b4; }
-  #bloqs--field.theme-basic .bloq.bloq-mranger-buzzer {
-    color: #0076b4; }
-    #bloqs--field.theme-basic .bloq.bloq-mranger-buzzer input,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-buzzer select,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-buzzer textarea {
+  #bloqs--field.theme-basic .bloq.bloq-mbot-ifthereisalotoflight {
+    color: #0076b4;
+    border-left: 5px solid #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-ifthereisalotoflight input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-ifthereisalotoflight select,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-ifthereisalotoflight textarea {
       color: #0076b4; }
-  #bloqs--field.theme-basic .bloq.bloq-mranger-getdistance {
-    color: #0076b4; }
-    #bloqs--field.theme-basic .bloq.bloq-mranger-getdistance input,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-getdistance select,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-getdistance textarea {
+    #bloqs--field.theme-basic .bloq.bloq-mbot-ifthereisalotoflight > .bloq--extension:before {
+      border-left: 5px solid #0076b4; }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-iffollowlines {
+    color: #0076b4;
+    border-left: 5px solid #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-iffollowlines input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-iffollowlines select,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-iffollowlines textarea {
       color: #0076b4; }
-  #bloqs--field.theme-basic .bloq.bloq-mranger-getlightsensor {
-    color: #0076b4; }
-    #bloqs--field.theme-basic .bloq.bloq-mranger-getlightsensor input,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-getlightsensor select,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-getlightsensor textarea {
-      color: #0076b4; }
-  #bloqs--field.theme-basic .bloq.bloq-mranger-linefollower {
-    color: #0076b4; }
-    #bloqs--field.theme-basic .bloq.bloq-mranger-linefollower input,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-linefollower select,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-linefollower textarea {
-      color: #0076b4; }
-  #bloqs--field.theme-basic .bloq.bloq-mranger-setled {
-    color: #0076b4; }
-    #bloqs--field.theme-basic .bloq.bloq-mranger-setled input,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-setled select,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-setled textarea {
-      color: #0076b4; }
-  #bloqs--field.theme-basic .bloq.bloq-mranger-turnoffled {
-    color: #0076b4; }
-    #bloqs--field.theme-basic .bloq.bloq-mranger-turnoffled input,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-turnoffled select,
-    #bloqs--field.theme-basic .bloq.bloq-mranger-turnoffled textarea {
-      color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-iffollowlines > .bloq--extension:before {
+      border-left: 5px solid #0076b4; }
   #bloqs--field.theme-basic .bloq.bloq-zowi-gestures {
     color: #60BCC9; }
     #bloqs--field.theme-basic .bloq.bloq-zowi-gestures input,
@@ -1462,7 +1443,6 @@
   /*---- CONVERSIONS ---------*/
   /*---- EVOLUTION ---------*/
   /*---- MBOT ---------*/
-  /*---- MRANGER ---------*/
   /*---- ZOWI ---------*/
   /*---- ZOWI COMPONENTS---------*/
   /*---- CLASSES ---------*/
@@ -3169,204 +3149,102 @@
       border-left: 5px solid #0076b4; }
     #bloqs--field.theme-colors .bloq.bloq-mbot-somethingnear:not(.disabled) > .bloq--extension > .bloq--extension--end {
       background-color: #0076b4; }
-  #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) {
+  #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) {
     color: white; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) .bloqinput,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) input,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) select,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) textarea {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) .bloqinput,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) textarea {
       color: white;
       background: #0076b4;
       background-color: rgba(0, 0, 0, 0.2); }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) .bloqinput:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) input:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) select:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) textarea:before {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) .bloqinput:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) textarea:before {
         background: #0076b4;
         background-color: rgba(0, 0, 0, 0.2); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) ::-webkit-input-placeholder {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) ::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.5); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) select {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) select {
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
       background-repeat: no-repeat;
       background-position: right 7px bottom 45%; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) select.bloq__inner--first {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) select.bloq__inner--first {
         margin-left: 10px; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled) select option {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) select option {
         color: black; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled).bloq--statement {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled).bloq--statement {
       background-color: #0076b4; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled).bloq--output {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled).bloq--output {
       background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled).bloq--output:before {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled).bloq--output:before {
         background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-buzzer:not(.disabled).bloq--output:focus:not(.disabled):after {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled).bloq--output:focus:not(.disabled):after {
         background-color: #0076b4; }
-  #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) {
-    color: white; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) .bloqinput,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) input,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) select,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) textarea {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) .bloqinput {
       color: white;
       background: #0076b4;
       background-color: rgba(0, 0, 0, 0.2); }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) .bloqinput:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) input:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) select:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) textarea:before {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) .bloqinput:before {
         background: #0076b4;
         background-color: rgba(0, 0, 0, 0.2); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) ::-webkit-input-placeholder {
-      color: rgba(255, 255, 255, 0.5); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) select {
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 7px bottom 45%; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) select.bloq__inner--first {
-        margin-left: 10px; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled) select option {
-        color: black; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled).bloq--statement {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled):before {
       background-color: #0076b4; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled).bloq--output {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) > .bloq--statement-input__header {
       background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled).bloq--output:before {
-        background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getdistance:not(.disabled).bloq--output:focus:not(.disabled):after {
-        background-color: #0076b4; }
-  #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) > .bloq--extension:before {
+      border-left: 5px solid #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-ifthereisalotoflight:not(.disabled) > .bloq--extension > .bloq--extension--end {
+      background-color: #0076b4; }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) {
     color: white; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) .bloqinput,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) input,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) select,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) textarea {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) .bloqinput,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) textarea {
       color: white;
       background: #0076b4;
       background-color: rgba(0, 0, 0, 0.2); }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) .bloqinput:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) input:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) select:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) textarea:before {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) .bloqinput:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) textarea:before {
         background: #0076b4;
         background-color: rgba(0, 0, 0, 0.2); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) ::-webkit-input-placeholder {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) ::-webkit-input-placeholder {
       color: rgba(255, 255, 255, 0.5); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) select {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) select {
       background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
       background-repeat: no-repeat;
       background-position: right 7px bottom 45%; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) select.bloq__inner--first {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) select.bloq__inner--first {
         margin-left: 10px; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled) select option {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) select option {
         color: black; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled).bloq--statement {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled).bloq--statement {
       background-color: #0076b4; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled).bloq--output {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled).bloq--output {
       background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled).bloq--output:before {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled).bloq--output:before {
         background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-getlightsensor:not(.disabled).bloq--output:focus:not(.disabled):after {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled).bloq--output:focus:not(.disabled):after {
         background-color: #0076b4; }
-  #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) {
-    color: white; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) .bloqinput,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) input,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) select,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) textarea {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) .bloqinput {
       color: white;
       background: #0076b4;
       background-color: rgba(0, 0, 0, 0.2); }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) .bloqinput:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) input:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) select:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) textarea:before {
+      #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) .bloqinput:before {
         background: #0076b4;
         background-color: rgba(0, 0, 0, 0.2); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) ::-webkit-input-placeholder {
-      color: rgba(255, 255, 255, 0.5); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) select {
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 7px bottom 45%; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) select.bloq__inner--first {
-        margin-left: 10px; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled) select option {
-        color: black; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled).bloq--statement {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled):before {
       background-color: #0076b4; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled).bloq--output {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) > .bloq--statement-input__header {
       background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled).bloq--output:before {
-        background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-linefollower:not(.disabled).bloq--output:focus:not(.disabled):after {
-        background-color: #0076b4; }
-  #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) {
-    color: white; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) .bloqinput,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) input,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) select,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) textarea {
-      color: white;
-      background: #0076b4;
-      background-color: rgba(0, 0, 0, 0.2); }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) .bloqinput:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) input:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) select:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) textarea:before {
-        background: #0076b4;
-        background-color: rgba(0, 0, 0, 0.2); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) ::-webkit-input-placeholder {
-      color: rgba(255, 255, 255, 0.5); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) select {
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 7px bottom 45%; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) select.bloq__inner--first {
-        margin-left: 10px; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled) select option {
-        color: black; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled).bloq--statement {
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) > .bloq--extension:before {
+      border-left: 5px solid #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-iffollowlines:not(.disabled) > .bloq--extension > .bloq--extension--end {
       background-color: #0076b4; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled).bloq--output {
-      background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled).bloq--output:before {
-        background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-setled:not(.disabled).bloq--output:focus:not(.disabled):after {
-        background-color: #0076b4; }
-  #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) {
-    color: white; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) .bloqinput,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) input,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) select,
-    #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) textarea {
-      color: white;
-      background: #0076b4;
-      background-color: rgba(0, 0, 0, 0.2); }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) .bloqinput:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) input:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) select:before,
-      #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) textarea:before {
-        background: #0076b4;
-        background-color: rgba(0, 0, 0, 0.2); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) ::-webkit-input-placeholder {
-      color: rgba(255, 255, 255, 0.5); }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) select {
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 7px bottom 45%; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) select.bloq__inner--first {
-        margin-left: 10px; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled) select option {
-        color: black; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled).bloq--statement {
-      background-color: #0076b4; }
-    #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled).bloq--output {
-      background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled).bloq--output:before {
-        background-color: #0076b4; }
-      #bloqs--field.theme-colors .bloq.bloq-mranger-turnoffled:not(.disabled).bloq--output:focus:not(.disabled):after {
-        background-color: #0076b4; }
   #bloqs--field.theme-colors .bloq.bloq-zowi-gestures:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-zowi-gestures:not(.disabled) .bloqinput,

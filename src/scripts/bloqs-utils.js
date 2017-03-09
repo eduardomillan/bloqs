@@ -1379,7 +1379,9 @@
             barometer: [],
             robot: [],
             mkb_ultrasound: [],
-            mkb_integrated_buzz: []
+            mkb_integrated_buzz: [],
+            mkb_lightsensor: [],
+            mkb_linefollower: []
         };
     };
 

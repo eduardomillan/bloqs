@@ -62,10 +62,10 @@
                             result = 'digitalRead(' + sensorName + '_1) + digitalRead(' + sensorName + '_2) * 2';
                             break;
                         case 'mkb_integrated_analogPinButton':
-                            result = 'mBot.isButtonPushed()';
+                            result = 'robot.isButtonPushed()';
                             break;
                         case 'mkb_integrated_lightsensor':
-                            result = 'mBot.readLightSensor()';
+                            result = 'robot.readLightSensor()';
                             break;
                         default:
                             result = sensorName + '.read()';
@@ -440,6 +440,12 @@
             case 'mcore':
                 result = 'BitbloqMCore';
                 break;
+            case 'meorion':
+                result = 'BitbloqOrion';
+                break;
+            case 'meauriga':
+                result = 'BitbloqMBotRanger';
+                break;
             default:
                 console.log('bloqs::BoardWithoutLibrary');
         }
@@ -459,10 +465,25 @@
             case 'mcore':
                 includes['BitbloqMBot.h'] = true;
                 addInstance({
-                    name: 'mBot',
+                    name: 'robot',
                     type: 'BitbloqMBot'
                 }, {}, hardwareList);
-                setupCodeAtTheEndOfExtraCodeMap['mBot.setup();'] = true;
+                setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
+                break;
+            case 'meorion':
+                includes['BitbloqMStarter.h'] = true;
+                addInstance({
+                    name: 'robot',
+                    type: 'BitbloqMStarter'
+                }, {}, hardwareList);
+                setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
+            case 'meauriga':
+                includes['BitbloqMBotRanger.h'] = true;
+                addInstance({
+                    name: 'robot',
+                    type: 'BitbloqMBotRanger'
+                }, {}, hardwareList);
+                setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
                 break;
         }
 

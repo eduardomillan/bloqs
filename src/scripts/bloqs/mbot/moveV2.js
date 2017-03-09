@@ -55,12 +55,7 @@ var mBotMove = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        includes: ['BitbloqMBot.h'],
-        needInstanceOf: [{
-            name: 'mBot',
-            type: 'BitbloqMBot'
-        }],
-        code: 'mBot.move({MOVEMENT},{SPEED});'
+        code: 'robot.move({MOVEMENT},{SPEED});'
     }
 });
 
