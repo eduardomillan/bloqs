@@ -22,7 +22,7 @@ var bloqMBotIfFollowLines = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-mbot-iffollowlines-if' //si detecta línea
+            value: 'bloq-mbot-iffollowlines-if'
         }, {
             id: 'LINELEFT',
             alias: 'staticDropdown',
@@ -35,7 +35,7 @@ var bloqMBotIfFollowLines = _.merge(_.clone(StatementInputBloq, true), {
             }]
         }, {
             alias: 'text',
-            value: 'bloq-mbot-iffollowlines-and' //en el sensor izquierdo y línea
+            value: 'bloq-mbot-iffollowlines-and'
         }, {
             id: 'LINERIGHT',
             alias: 'staticDropdown',
@@ -48,7 +48,7 @@ var bloqMBotIfFollowLines = _.merge(_.clone(StatementInputBloq, true), {
             }]
         }, {
             alias: 'text',
-            value: 'bloq-mbot-iffollowlines-withsensor' //en el sensor derecho del
+            value: 'bloq-mbot-iffollowlines-withsensor'
         }, {
             id: 'LINEFOLLOWER',
             alias: 'dynamicDropdown',

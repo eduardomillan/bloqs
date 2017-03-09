@@ -28,13 +28,13 @@ var bloqMBotIfThereIsALotOfLight = _.merge(_.clone(StatementInputBloq, true), {
             alias: 'staticDropdown',
             options: [{
                 label: 'bloq-mbot-ifthereisalotoflight-alot',
-                value: 'analogRead({LIGHTSENSOR}) > 200'
+                value: '+'
             }, {
                 label: 'bloq-mbot-ifthereisalotoflight-low',
-                value: '(analogRead({LIGHTSENSOR}) > 0) && (analogRead({LIGHTSENSOR}) <= 200)'
+                value: '-'
             }, {
                 label: 'bloq-mbot-ifthereisalotoflight-operation-nodetect',
-                value: 'analogRead({LIGHTSENSOR}) <= 0'
+                value: '*'
             }]
         }, {
             alias: 'text',
@@ -48,6 +48,16 @@ var bloqMBotIfThereIsALotOfLight = _.merge(_.clone(StatementInputBloq, true), {
     code: '',
     arduino: {
         code: 'if({OPERATION}){{STATEMENTS}}'
+    },
+    arduino: {
+        conditional: {
+            aliasId: 'OPERATION',
+            code: {
+                '+': 'if(¬{LIGHTSENSOR.readSensor} > 200){{STATEMENTS}}',
+                '-': 'if((¬{LIGHTSENSOR.readSensor} > 0) && (¬{LIGHTSENSOR.readSensor} <= 200)){{STATEMENTS}}',
+                '*': 'if(¬{LIGHTSENSOR.readSensor} <= 0){{STATEMENTS}}'
+            }
+        }
     }
 });
 
