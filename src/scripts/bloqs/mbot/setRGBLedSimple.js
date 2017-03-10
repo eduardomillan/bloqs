@@ -67,7 +67,7 @@ var mBotSetRGBLedSimple = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        code: 'robot.setLed(º[{BUZZER}.pin.s],{COLOR});'
+        code: 'robot.setLed(º[{LED}.pin.s],{COLOR});'
     }
 
 });
