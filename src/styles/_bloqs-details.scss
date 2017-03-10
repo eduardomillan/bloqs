@@ -105,7 +105,6 @@ $theme-color-phone-color:#5d6069;
     @include createBloqsCss($reverse, "bloq-mbot-iffollowlines", $mbot-color, $theme-color-mbot-color, true);
     @include createBloqsCss($reverse, "bloq-mbot-setrgbLed-simple", $mbot-color, $theme-color-mbot-color);
     @include createBloqsCss($reverse, "bloq-mbot-rgbLedsimple-off", $mbot-color, $theme-color-mbot-color);
-    @include createBloqsCss($reverse, "bloq-mbot-setrgbLed", $mbot-color, $theme-color-mbot-color);
     /*---- ZOWI ---------*/
     @include createBloqsCss($reverse, "bloq-zowi-gestures", $zowi-color, $theme-color-zowi-color);
     @include createBloqsCss($reverse, "bloq-zowi-rest", $zowi-color, $theme-color-zowi-color);
@@ -233,6 +232,7 @@ $theme-color-phone-color:#5d6069;
     @include createBloqsCss($reverse, "bloq-viewer", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-mbot-getdistance-v2", $components-color, $theme-color-components-color);
     @include createBloqsCss($reverse, "bloq-mbot-buzzer-v2", $components-color, $theme-color-components-color);
+    @include createBloqsCss($reverse, "bloq-mbot-setrgbLed", $components-color, $theme-color-components-color);
     /*---- PHONE ------*/
     @include createBloqsCss($reverse, "bloq-phone-sound", $phone-color, $theme-color-phone-color);
     @include createBloqsCss($reverse, "bloq-phone-write", $phone-color, $theme-color-phone-color);

@@ -24,7 +24,7 @@ var rgbLedOff = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-rgbLed-off'
+            value: 'bloq-mbot-turnoffled-off'
         }, {
             id: 'LED',
             alias: 'dynamicDropdown',
