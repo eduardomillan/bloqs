@@ -47,7 +47,6 @@
                     i++;
                 }
                 if (sensorData) {
-                    var makeblockBoardLibraryName = getBoardLibraryName(hardwareList.board);
                     switch (sensorData.type) {
                         case 'analog':
                             result = 'analogRead(' + sensorName + ')';

@@ -103,6 +103,7 @@ $theme-color-phone-color:#5d6069;
     @include createBloqsCss($reverse, "bloq-mbot-somethingnear", $mbot-color, $theme-color-mbot-color, true);
     @include createBloqsCss($reverse, "bloq-mbot-ifthereisalotoflight", $mbot-color, $theme-color-mbot-color, true);
     @include createBloqsCss($reverse, "bloq-mbot-iffollowlines", $mbot-color, $theme-color-mbot-color, true);
+    @include createBloqsCss($reverse, "bloq-mbot-setrgbLed-simple", $mbot-color, $theme-color-mbot-color);
     /*---- ZOWI ---------*/
     @include createBloqsCss($reverse, "bloq-zowi-gestures", $zowi-color, $theme-color-zowi-color);
     @include createBloqsCss($reverse, "bloq-zowi-rest", $zowi-color, $theme-color-zowi-color);

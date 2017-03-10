@@ -1381,7 +1381,8 @@
             mkb_ultrasound: [],
             mkb_integrated_buzz: [],
             mkb_lightsensor: [],
-            mkb_linefollower: []
+            mkb_linefollower: [],
+            mkb_integrated_RGB: []
         };
     };
 
