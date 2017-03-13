@@ -1898,9 +1898,11 @@
                                 attributeValue = this.$bloq.find('select[data-content-id="' + this.bloqData.content[0][i].id + '"][data-dropdowncontent="' + this.bloqData.content[0][i].options + '"]').attr('data-value');
                                 selectedValue = this.$bloq.find('select[data-content-id="' + this.bloqData.content[0][i].id + '"][data-dropdowncontent="' + this.bloqData.content[0][i].options + '"]').val();
                                 //only software Vars get value from val(), hardware, use attribute or val()
-                                var variableType = this.bloqData.content[0][i].options;
-                                var itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType);
-                                var valueType, j;
+                                var variableType = this.bloqData.content[0][i].options,
+                                    itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType),
+                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor.concat(componentsArray.mkb_linefollower));
+                                valueType, j;
+
                                 if (itsSoftwareValue !== -1) {
                                     value = selectedValue;
                                     j = 0;
@@ -1914,9 +1916,9 @@
                                     value = selectedValue;
 
                                     j = 0;
-                                    while (!valueType && (j < componentsArray.sensors.length)) {
-                                        if (componentsArray.sensors[j].name === value) {
-                                            valueType = componentsArray.sensors[j].dataReturnType;
+                                    while (!valueType && (j < sensorsComponentsArray.sensors.length)) {
+                                        if (sensorsComponentsArray.sensors[j].name === value) {
+                                            valueType = sensorsComponentsArray.sensors[j].dataReturnType;
                                         }
                                         j++;
                                     }
