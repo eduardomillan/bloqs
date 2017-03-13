@@ -1481,7 +1481,7 @@
             updateBloqsTimeout = setTimeout(function() {
                 updateBloqsTimeout = null;
                 updateBloqs(componentsArray);
-            }, 500);
+            }, 200);
         }
     };
 
