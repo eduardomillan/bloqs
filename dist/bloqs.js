@@ -2096,6 +2096,7 @@
                     type: 'BitbloqMStarter'
                 }, {}, hardwareList);
                 setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
+                break;
             case 'meauriga':
                 includes['BitbloqMBotRanger.h'] = true;
                 addInstance({
