@@ -4260,15 +4260,15 @@
         return result;
     };
 
-    var updateBloqsTimeout,
-        timerSaveComponentsArray;
+    var updateBloqsTimeout;
 
     var startBloqsUpdate = function(componentsArray) {
-        timerSaveComponentsArray = componentsArray;
+        componentsArray = componentsArray;
+
         if (!updateBloqsTimeout) {
             updateBloqsTimeout = setTimeout(function() {
                 updateBloqsTimeout = null;
-                updateBloqs(timerSaveComponentsArray);
+                updateBloqs(componentsArray);
             }, 500);
         }
     };
