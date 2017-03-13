@@ -2790,6 +2790,7 @@
 (function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested) {
     /**
      * Events
+     * bloqs:created
      * bloqs:connect
      * bloqs:dragend
      * bloqs:bloqremoved
@@ -4259,6 +4260,91 @@
         return result;
     };
 
+    var updateBloqsTimeout,
+        timerSaveComponentsArray;
+
+    var startBloqsUpdate = function(componentsArray) {
+        timerSaveComponentsArray = componentsArray;
+        if (!updateBloqsTimeout) {
+            updateBloqsTimeout = setTimeout(function() {
+                updateBloqsTimeout = null;
+                updateBloqs(timerSaveComponentsArray);
+            }, 500);
+        }
+    };
+
+    var updateBloqs = function(componentsArray) {
+
+
+        var allBloqs = exports.bloqs;
+        var allComponents = [];
+
+        function _resetDropdown(element, list) {
+            if (list[0]) {
+                element.dataset.reference = list[0].uid;
+                element.dataset.value = list[0].name;
+                element.value = list[0].name;
+            } else {
+                delete element.dataset.reference;
+                delete element.dataset.value;
+            }
+            element.selectedIndex = 0;
+        }
+
+        var updateBloq = function(element, list) {
+
+            var componentRef = list.find(function(comp) {
+                return comp.uid === element.dataset.reference;
+            });
+
+            bloqsUtils.drawDropdownOptions($(element), list);
+
+            if (componentRef) {
+                element.value = componentRef.name;
+                element.dataset.reference = componentRef.uid;
+                element.dataset.value = componentRef.name;
+            } else {
+                $log.debug('dropdown not selected or reference was lost');
+                _resetDropdown(element, list);
+            }
+        };
+        var bloqCanvasEl = null,
+            componentsList;
+        //Update dropdowns values from bloqs canvas
+        for (var type in componentsArray) {
+            bloqCanvasEl = document.getElementsByClassName('bloqs-tab')[0];
+            var nodeList = bloqCanvasEl.querySelectorAll('select[data-dropdowncontent="' + type + '"]');
+
+            if (type === 'sensors') {
+                /*jshint camelcase: false */
+                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor.concat(componentsArray.mkb_linefollower));
+                /*jshint camelcase: true */
+            } else {
+                componentsList = componentsArray[type];
+            }
+            for (var i = 0, len = nodeList.length; i < len; i++) {
+                updateBloq(nodeList[i], componentsList);
+            }
+            allComponents = allComponents.concat(componentsArray[type]);
+        }
+        //Update dropdowns from bloqs of toolbox
+        if (bloqCanvasEl) {
+            var toolboxNodeList = bloqCanvasEl.querySelectorAll('select[data-dropdowncontent="varComponents"]');
+            for (var j = 0, len2 = toolboxNodeList.length; j < len2; j++) {
+                updateBloq(toolboxNodeList[j], allComponents);
+            }
+
+            var varServos = [];
+            varServos = varServos.concat(componentsArray.servos, componentsArray.oscillators, componentsArray.continuousServos);
+            var servosNodeList = bloqCanvasEl.querySelectorAll('select[data-dropdowncontent="allServos"]');
+            for (var y = 0, lenServo = servosNodeList.length; y < lenServo; y++) {
+                updateBloq(servosNodeList[y], varServos);
+            }
+        }
+
+
+    };
+
     var updateDropdowns = function() {
         var key;
         for (key in softwareArrays) {
@@ -4822,7 +4908,11 @@
 
                 return result;
             };
-
+            window.dispatchEvent(new CustomEvent('bloqs:created', {
+                detail: {
+                    bloq: this
+                }
+            }));
             return this;
         } else {
             console.error('the bloqData its empty.');
@@ -4935,6 +5025,7 @@
     exports.setOptions = setOptions;
     exports.buildBloqWithContent = buildBloqWithContent;
     exports.clearSoftwareArrays = clearSoftwareArrays;
+    exports.startBloqsUpdate = startBloqsUpdate;
 
     return exports;
 
