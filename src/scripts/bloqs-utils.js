@@ -794,9 +794,8 @@
         });
         if (connector && connector.connectedTo) {
             var childBloq = getBloqByConnectorUuid(connector.connectedTo, bloqs, IOConnectors);
-            var code = childBloq.getCode();
             result = {
-                code: code,
+                code: 'any code here',
                 bloq: childBloq.uuid,
                 funcName: '',
                 size: occurrencesInString(code, ',', false) + 1
@@ -880,187 +879,6 @@
         }
 
         return component;
-    };
-
-    var getCode = function(componentsArray, bloqs) {
-        var includeCode = '',
-            globalVars = '',
-            code = '',
-            setupCode = '',
-            bitbloqLibs = false,
-            finalFunctions = '';
-        if (bloqs.varsBloq && bloqs.setupBloq && bloqs.loopBloq && componentsArray) {
-            //TODO: put this initialization inside bloqs somehow
-            //*******INCLUDES*******//
-            if (componentsArray.robot.length >= 1) {
-                if (componentsArray.robot[0] === 'zowi') {
-                    includeCode += '#include <BitbloqZowi.h>\n#include <BitbloqUS.h>\n#include <BitbloqBatteryReader.h>\n#include <BitbloqLedMatrix.h>\n#include <Servo.h>\n#include <BitbloqOscillator.h>\n#include <EEPROM.h>\n';
-                    globalVars += 'Zowi zowi;';
-                    setupCode += 'zowi.init();';
-                }
-                if (componentsArray.robot[0] === 'evolution') {
-                    includeCode += '#include <BitbloqEvolution.h>\n#include <BitbloqUS.h>\n#include <Servo.h>\n#include <BitbloqOscillator.h>\n';
-                    globalVars += 'Evolution evolution;';
-                    setupCode += 'evolution.init();';
-                }
-            }
-            if (componentsArray.continuousServos.length >= 1 || componentsArray.servos.length >= 1 || componentsArray.oscillators.length >= 1) {
-                includeCode += '#include <Servo.h>\n';
-            }
-            if (componentsArray.oscillators.length >= 1) {
-                if (includeCode.indexOf('#include <Wire.h>') === -1) {
-                    includeCode += '#include <Wire.h>\n';
-                }
-                includeCode += '#include <BitbloqOscillator.h>\n';
-                bitbloqLibs = true;
-            }
-            if (componentsArray.lcds.length >= 1) {
-                if (includeCode.indexOf('#include <Wire.h>') === -1) {
-                    includeCode += '#include <Wire.h>\n';
-                }
-                includeCode += '#include <BitbloqLiquidCrystal.h>\n';
-                bitbloqLibs = true;
-            }
-            if (componentsArray.serialElements.length >= 1) {
-                includeCode += '#include <SoftwareSerial.h>\n#include <BitbloqSoftwareSerial.h>\n';
-                bitbloqLibs = true;
-            }
-            if (componentsArray.clocks.length >= 1) {
-                if (includeCode.indexOf('#include <Wire.h>') === -1) {
-                    includeCode += '#include <Wire.h>\n';
-                }
-                includeCode += '#include <BitbloqRTC.h>\n';
-                bitbloqLibs = true;
-            }
-            if (componentsArray.hts221.length >= 1) {
-                if (includeCode.indexOf('#include <Wire.h>') === -1) {
-                    includeCode += '#include <Wire.h>\n';
-                }
-                includeCode += '#include <BitbloqHTS221.h>\n#include <HTS221_Registers.h>\n';
-                bitbloqLibs = true;
-
-                componentsArray.hts221.forEach(function(sensor) {
-                    globalVars += 'HTS221 ' + sensor.name + ';';
-                    setupCode += 'Wire.begin();' + sensor.name + '.begin();';
-                });
-            }
-            if (componentsArray.barometer.length >= 1) {
-                if (includeCode.indexOf('#include <Wire.h>') === -1) {
-                    includeCode += '#include <Wire.h>\n';
-                }
-                includeCode += '#include <BitbloqBMP180.h>\n';
-                bitbloqLibs = true;
-
-                componentsArray.barometer.forEach(function(sensor) {
-                    globalVars += 'BMP180 ' + sensor.name + ';';
-                    setupCode += sensor.name + '.init();';
-                });
-            }
-            if (componentsArray.sensors.length >= 1) {
-                componentsArray.sensors.forEach(function(sensor) {
-                    if (sensor.type === 'Joystick') {
-                        includeCode += '#include <BitbloqJoystick.h>\n';
-                        bitbloqLibs = true;
-                    } else if (sensor.type === 'ButtonPad') {
-                        includeCode += '#include <BitbloqButtonPad.h>\n';
-                        bitbloqLibs = true;
-                    } else if (sensor.type === 'LineFollower') {
-                        includeCode += '#include <BitbloqLineFollower.h>\n';
-                        bitbloqLibs = true;
-                    } else if (sensor.type === 'US') {
-                        includeCode += '#include <BitbloqUS.h>\n';
-                        bitbloqLibs = true;
-                    } else if (sensor.type === 'encoder') {
-                        includeCode += '#include <BitbloqEncoder.h>\n';
-                        bitbloqLibs = true;
-                    }
-                });
-            }
-            //*******BUZZERS*******//
-            if (componentsArray.buzzers.length >= 1) {
-                componentsArray.buzzers.forEach(function(buzzer) {
-                    globalVars += 'const int ' + buzzer.name + ' = ' + (buzzer.pin.s || '') + ';';
-                });
-            }
-            //*******CLOCKS*******//
-            if (componentsArray.clocks.length >= 1) {
-                componentsArray.clocks.forEach(function(clock) {
-                    globalVars += 'RTC_DS1307 ' + clock.name + ';';
-                });
-            }
-            //*******CONTINUOUSSERVOS*******//
-            if (componentsArray.continuousServos.length >= 1) {
-                componentsArray.continuousServos.forEach(function(continuousServo) {
-                    globalVars += 'Servo ' + continuousServo.name + ';';
-                    setupCode += continuousServo.name + '.attach(' + (continuousServo.pin.s || '') + ');';
-                });
-            }
-            if (componentsArray.servos.length >= 1) {
-                componentsArray.servos.forEach(function(servo) {
-                    globalVars += 'Servo ' + servo.name + ';';
-                    setupCode += servo.name + '.attach(' + (servo.pin.s || '') + ');';
-                });
-            }
-            if (componentsArray.lcds.length >= 1) {
-                componentsArray.lcds.forEach(function(lcd) {
-                    globalVars += 'LiquidCrystal ' + lcd.name + '(0);';
-                    setupCode += lcd.name + '.begin(16, 2);' + lcd.name + '.clear();';
-                });
-            }
-            if (componentsArray.leds.length >= 1) {
-                componentsArray.leds.forEach(function(leds) {
-                    globalVars += 'const int ' + leds.name + ' = ' + (leds.pin.s || '') + ';';
-                    setupCode += 'pinMode(' + leds.name + ', OUTPUT);';
-                });
-            }
-            if (componentsArray.rgbs.length >= 1) {
-                componentsArray.rgbs.forEach(function(rgbs) {
-                    if (includeCode.indexOf('#include <BitbloqRGB.h>') === -1) {
-                        includeCode += '#include <BitbloqRGB.h>\n';
-                    }
-                    globalVars += 'ZumRGB ' + rgbs.name + '(' + (rgbs.pin.r || '') + ',' + (rgbs.pin.g || '') + ',' + (rgbs.pin.b || '') + ');';
-                });
-            }
-            if (componentsArray.oscillators.length >= 1) {
-                componentsArray.oscillators.forEach(function(oscillator) {
-                    globalVars += 'Oscillator ' + oscillator.name + ';';
-                    setupCode += oscillator.name + '.attach(' + (oscillator.pin.s || '') + ');';
-                });
-            }
-            if (componentsArray.sensors.length >= 1) {
-                componentsArray.sensors.forEach(function(sensor) {
-                    if (sensor.type === 'analog' || sensor.type === 'digital') {
-                        globalVars += 'const int ' + sensor.name + ' = ' + (sensor.pin.s || '') + ';';
-                        setupCode += 'pinMode(' + sensor.name + ', INPUT);';
-                    } else if (sensor.type === 'Joystick') {
-                        globalVars += 'Joystick ' + sensor.name + '(' + (sensor.pin.x || '') + ',' + (sensor.pin.y || '') + ',' + (sensor.pin.k || '') + ');';
-                    } else if (sensor.type === 'ButtonPad') {
-                        globalVars += 'ButtonPad ' + sensor.name + '(' + (sensor.pin.s || '') + ');';
-                    } else if (sensor.type === 'LineFollower') {
-                        globalVars += 'LineFollower ' + sensor.name + '(' + (sensor.pin.s1 || '') + ',' + (sensor.pin.s2 || '') + ');';
-                    } else if (sensor.type === 'US') {
-                        globalVars += 'US ' + sensor.name + '(' + (sensor.pin.trigger || '') + ',' + (sensor.pin.echo || '') + ');';
-                    } else if (sensor.type === 'encoder') {
-                        globalVars += 'Encoder ' + sensor.name + '(encoderUpdaterWrapper,' + (sensor.pin.k || '') + ',' + (sensor.pin.sa || '') + ',' + (sensor.pin.sb || '') + ');';
-                        finalFunctions += 'void encoderUpdaterWrapper(){' + sensor.name + '.update();}';
-                    }
-                });
-            }
-            if (componentsArray.serialElements.length >= 1) {
-                componentsArray.serialElements.forEach(function(serialElement) {
-                    if (serialElement.pin.s === 'serial') {
-                        serialElement.pin.rx = '0';
-                        serialElement.pin.tx = '1';
-                    }
-                    globalVars += 'bqSoftwareSerial ' + serialElement.name + '(' + (serialElement.pin.rx || '') + ',' + (serialElement.pin.tx || '') + ',' + (serialElement.baudRate || '') + ');';
-                });
-            }
-
-            code = '\n/***   Included libraries  ***/\n' + includeCode + '\n\n/***   Global variables and function definition  ***/\n' + globalVars + bloqs.varsBloq.getCode() + '\n\n/***   Setup  ***/\n' + bloqs.setupBloq.getCode(setupCode) + '\n\n/***   Loop  ***/\n' + bloqs.loopBloq.getCode() + '' + finalFunctions;
-        } else {
-            console.log('cant generate code');
-        }
-        return code;
     };
 
     var splice = function(string, idx, rem, s) {
@@ -1381,7 +1199,8 @@
             mkb_ultrasound: [],
             mkb_integrated_buzz: [],
             mkb_lightsensor: [],
-            mkb_linefollower: []
+            mkb_linefollower: [],
+            mkb_integrated_RGB: []
         };
     };
 
@@ -1600,7 +1419,6 @@
     bloqsUtils.getArgsFromBloq = getArgsFromBloq;
     bloqsUtils.removeInputsConnectorsFromBloq = removeInputsConnectorsFromBloq;
     bloqsUtils.getParent = getParent;
-    bloqsUtils.getCode = getCode;
     bloqsUtils.checkPins = checkPins;
     bloqsUtils.splice = splice;
     bloqsUtils.translateRegExp = translateRegExp;

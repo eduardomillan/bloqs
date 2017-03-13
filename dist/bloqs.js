@@ -802,9 +802,8 @@
         });
         if (connector && connector.connectedTo) {
             var childBloq = getBloqByConnectorUuid(connector.connectedTo, bloqs, IOConnectors);
-            var code = childBloq.getCode();
             result = {
-                code: code,
+                code: 'any code here',
                 bloq: childBloq.uuid,
                 funcName: '',
                 size: occurrencesInString(code, ',', false) + 1
@@ -888,187 +887,6 @@
         }
 
         return component;
-    };
-
-    var getCode = function(componentsArray, bloqs) {
-        var includeCode = '',
-            globalVars = '',
-            code = '',
-            setupCode = '',
-            bitbloqLibs = false,
-            finalFunctions = '';
-        if (bloqs.varsBloq && bloqs.setupBloq && bloqs.loopBloq && componentsArray) {
-            //TODO: put this initialization inside bloqs somehow
-            //*******INCLUDES*******//
-            if (componentsArray.robot.length >= 1) {
-                if (componentsArray.robot[0] === 'zowi') {
-                    includeCode += '#include <BitbloqZowi.h>\n#include <BitbloqUS.h>\n#include <BitbloqBatteryReader.h>\n#include <BitbloqLedMatrix.h>\n#include <Servo.h>\n#include <BitbloqOscillator.h>\n#include <EEPROM.h>\n';
-                    globalVars += 'Zowi zowi;';
-                    setupCode += 'zowi.init();';
-                }
-                if (componentsArray.robot[0] === 'evolution') {
-                    includeCode += '#include <BitbloqEvolution.h>\n#include <BitbloqUS.h>\n#include <Servo.h>\n#include <BitbloqOscillator.h>\n';
-                    globalVars += 'Evolution evolution;';
-                    setupCode += 'evolution.init();';
-                }
-            }
-            if (componentsArray.continuousServos.length >= 1 || componentsArray.servos.length >= 1 || componentsArray.oscillators.length >= 1) {
-                includeCode += '#include <Servo.h>\n';
-            }
-            if (componentsArray.oscillators.length >= 1) {
-                if (includeCode.indexOf('#include <Wire.h>') === -1) {
-                    includeCode += '#include <Wire.h>\n';
-                }
-                includeCode += '#include <BitbloqOscillator.h>\n';
-                bitbloqLibs = true;
-            }
-            if (componentsArray.lcds.length >= 1) {
-                if (includeCode.indexOf('#include <Wire.h>') === -1) {
-                    includeCode += '#include <Wire.h>\n';
-                }
-                includeCode += '#include <BitbloqLiquidCrystal.h>\n';
-                bitbloqLibs = true;
-            }
-            if (componentsArray.serialElements.length >= 1) {
-                includeCode += '#include <SoftwareSerial.h>\n#include <BitbloqSoftwareSerial.h>\n';
-                bitbloqLibs = true;
-            }
-            if (componentsArray.clocks.length >= 1) {
-                if (includeCode.indexOf('#include <Wire.h>') === -1) {
-                    includeCode += '#include <Wire.h>\n';
-                }
-                includeCode += '#include <BitbloqRTC.h>\n';
-                bitbloqLibs = true;
-            }
-            if (componentsArray.hts221.length >= 1) {
-                if (includeCode.indexOf('#include <Wire.h>') === -1) {
-                    includeCode += '#include <Wire.h>\n';
-                }
-                includeCode += '#include <BitbloqHTS221.h>\n#include <HTS221_Registers.h>\n';
-                bitbloqLibs = true;
-
-                componentsArray.hts221.forEach(function(sensor) {
-                    globalVars += 'HTS221 ' + sensor.name + ';';
-                    setupCode += 'Wire.begin();' + sensor.name + '.begin();';
-                });
-            }
-            if (componentsArray.barometer.length >= 1) {
-                if (includeCode.indexOf('#include <Wire.h>') === -1) {
-                    includeCode += '#include <Wire.h>\n';
-                }
-                includeCode += '#include <BitbloqBMP180.h>\n';
-                bitbloqLibs = true;
-
-                componentsArray.barometer.forEach(function(sensor) {
-                    globalVars += 'BMP180 ' + sensor.name + ';';
-                    setupCode += sensor.name + '.init();';
-                });
-            }
-            if (componentsArray.sensors.length >= 1) {
-                componentsArray.sensors.forEach(function(sensor) {
-                    if (sensor.type === 'Joystick') {
-                        includeCode += '#include <BitbloqJoystick.h>\n';
-                        bitbloqLibs = true;
-                    } else if (sensor.type === 'ButtonPad') {
-                        includeCode += '#include <BitbloqButtonPad.h>\n';
-                        bitbloqLibs = true;
-                    } else if (sensor.type === 'LineFollower') {
-                        includeCode += '#include <BitbloqLineFollower.h>\n';
-                        bitbloqLibs = true;
-                    } else if (sensor.type === 'US') {
-                        includeCode += '#include <BitbloqUS.h>\n';
-                        bitbloqLibs = true;
-                    } else if (sensor.type === 'encoder') {
-                        includeCode += '#include <BitbloqEncoder.h>\n';
-                        bitbloqLibs = true;
-                    }
-                });
-            }
-            //*******BUZZERS*******//
-            if (componentsArray.buzzers.length >= 1) {
-                componentsArray.buzzers.forEach(function(buzzer) {
-                    globalVars += 'const int ' + buzzer.name + ' = ' + (buzzer.pin.s || '') + ';';
-                });
-            }
-            //*******CLOCKS*******//
-            if (componentsArray.clocks.length >= 1) {
-                componentsArray.clocks.forEach(function(clock) {
-                    globalVars += 'RTC_DS1307 ' + clock.name + ';';
-                });
-            }
-            //*******CONTINUOUSSERVOS*******//
-            if (componentsArray.continuousServos.length >= 1) {
-                componentsArray.continuousServos.forEach(function(continuousServo) {
-                    globalVars += 'Servo ' + continuousServo.name + ';';
-                    setupCode += continuousServo.name + '.attach(' + (continuousServo.pin.s || '') + ');';
-                });
-            }
-            if (componentsArray.servos.length >= 1) {
-                componentsArray.servos.forEach(function(servo) {
-                    globalVars += 'Servo ' + servo.name + ';';
-                    setupCode += servo.name + '.attach(' + (servo.pin.s || '') + ');';
-                });
-            }
-            if (componentsArray.lcds.length >= 1) {
-                componentsArray.lcds.forEach(function(lcd) {
-                    globalVars += 'LiquidCrystal ' + lcd.name + '(0);';
-                    setupCode += lcd.name + '.begin(16, 2);' + lcd.name + '.clear();';
-                });
-            }
-            if (componentsArray.leds.length >= 1) {
-                componentsArray.leds.forEach(function(leds) {
-                    globalVars += 'const int ' + leds.name + ' = ' + (leds.pin.s || '') + ';';
-                    setupCode += 'pinMode(' + leds.name + ', OUTPUT);';
-                });
-            }
-            if (componentsArray.rgbs.length >= 1) {
-                componentsArray.rgbs.forEach(function(rgbs) {
-                    if (includeCode.indexOf('#include <BitbloqRGB.h>') === -1) {
-                        includeCode += '#include <BitbloqRGB.h>\n';
-                    }
-                    globalVars += 'ZumRGB ' + rgbs.name + '(' + (rgbs.pin.r || '') + ',' + (rgbs.pin.g || '') + ',' + (rgbs.pin.b || '') + ');';
-                });
-            }
-            if (componentsArray.oscillators.length >= 1) {
-                componentsArray.oscillators.forEach(function(oscillator) {
-                    globalVars += 'Oscillator ' + oscillator.name + ';';
-                    setupCode += oscillator.name + '.attach(' + (oscillator.pin.s || '') + ');';
-                });
-            }
-            if (componentsArray.sensors.length >= 1) {
-                componentsArray.sensors.forEach(function(sensor) {
-                    if (sensor.type === 'analog' || sensor.type === 'digital') {
-                        globalVars += 'const int ' + sensor.name + ' = ' + (sensor.pin.s || '') + ';';
-                        setupCode += 'pinMode(' + sensor.name + ', INPUT);';
-                    } else if (sensor.type === 'Joystick') {
-                        globalVars += 'Joystick ' + sensor.name + '(' + (sensor.pin.x || '') + ',' + (sensor.pin.y || '') + ',' + (sensor.pin.k || '') + ');';
-                    } else if (sensor.type === 'ButtonPad') {
-                        globalVars += 'ButtonPad ' + sensor.name + '(' + (sensor.pin.s || '') + ');';
-                    } else if (sensor.type === 'LineFollower') {
-                        globalVars += 'LineFollower ' + sensor.name + '(' + (sensor.pin.s1 || '') + ',' + (sensor.pin.s2 || '') + ');';
-                    } else if (sensor.type === 'US') {
-                        globalVars += 'US ' + sensor.name + '(' + (sensor.pin.trigger || '') + ',' + (sensor.pin.echo || '') + ');';
-                    } else if (sensor.type === 'encoder') {
-                        globalVars += 'Encoder ' + sensor.name + '(encoderUpdaterWrapper,' + (sensor.pin.k || '') + ',' + (sensor.pin.sa || '') + ',' + (sensor.pin.sb || '') + ');';
-                        finalFunctions += 'void encoderUpdaterWrapper(){' + sensor.name + '.update();}';
-                    }
-                });
-            }
-            if (componentsArray.serialElements.length >= 1) {
-                componentsArray.serialElements.forEach(function(serialElement) {
-                    if (serialElement.pin.s === 'serial') {
-                        serialElement.pin.rx = '0';
-                        serialElement.pin.tx = '1';
-                    }
-                    globalVars += 'bqSoftwareSerial ' + serialElement.name + '(' + (serialElement.pin.rx || '') + ',' + (serialElement.pin.tx || '') + ',' + (serialElement.baudRate || '') + ');';
-                });
-            }
-
-            code = '\n/***   Included libraries  ***/\n' + includeCode + '\n\n/***   Global variables and function definition  ***/\n' + globalVars + bloqs.varsBloq.getCode() + '\n\n/***   Setup  ***/\n' + bloqs.setupBloq.getCode(setupCode) + '\n\n/***   Loop  ***/\n' + bloqs.loopBloq.getCode() + '' + finalFunctions;
-        } else {
-            console.log('cant generate code');
-        }
-        return code;
     };
 
     var splice = function(string, idx, rem, s) {
@@ -1389,7 +1207,8 @@
             mkb_ultrasound: [],
             mkb_integrated_buzz: [],
             mkb_lightsensor: [],
-            mkb_linefollower: []
+            mkb_linefollower: [],
+            mkb_integrated_RGB: []
         };
     };
 
@@ -1608,7 +1427,6 @@
     bloqsUtils.getArgsFromBloq = getArgsFromBloq;
     bloqsUtils.removeInputsConnectorsFromBloq = removeInputsConnectorsFromBloq;
     bloqsUtils.getParent = getParent;
-    bloqsUtils.getCode = getCode;
     bloqsUtils.checkPins = checkPins;
     bloqsUtils.splice = splice;
     bloqsUtils.translateRegExp = translateRegExp;
@@ -1848,7 +1666,6 @@
                     i++;
                 }
                 if (sensorData) {
-                    var makeblockBoardLibraryName = getBoardLibraryName(hardwareList.board);
                     switch (sensorData.type) {
                         case 'analog':
                             result = 'analogRead(' + sensorName + ')';
@@ -2790,6 +2607,7 @@
 (function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested) {
     /**
      * Events
+     * bloqs:created
      * bloqs:connect
      * bloqs:dragend
      * bloqs:bloqremoved
@@ -4259,6 +4077,90 @@
         return result;
     };
 
+    var updateBloqsTimeout;
+
+    var startBloqsUpdate = function(componentsArray) {
+        componentsArray = componentsArray;
+
+        if (!updateBloqsTimeout) {
+            updateBloqsTimeout = setTimeout(function() {
+                updateBloqsTimeout = null;
+                updateBloqs(componentsArray);
+            }, 500);
+        }
+    };
+
+    var updateBloqs = function(componentsArray) {
+
+
+        var allBloqs = exports.bloqs;
+        var allComponents = [];
+
+        function _resetDropdown(element, list) {
+            if (list[0]) {
+                element.dataset.reference = list[0].uid;
+                element.dataset.value = list[0].name;
+                element.value = list[0].name;
+            } else {
+                delete element.dataset.reference;
+                delete element.dataset.value;
+            }
+            element.selectedIndex = 0;
+        }
+
+        var updateBloq = function(element, list) {
+
+            var componentRef = list.find(function(comp) {
+                return comp.uid === element.dataset.reference;
+            });
+
+            bloqsUtils.drawDropdownOptions($(element), list);
+
+            if (componentRef) {
+                element.value = componentRef.name;
+                element.dataset.reference = componentRef.uid;
+                element.dataset.value = componentRef.name;
+            } else {
+                _resetDropdown(element, list);
+            }
+        };
+        var bloqCanvasEl = null,
+            componentsList;
+        //Update dropdowns values from bloqs canvas
+        for (var type in componentsArray) {
+            bloqCanvasEl = document.getElementsByClassName('bloqs-tab')[0];
+            var nodeList = bloqCanvasEl.querySelectorAll('select[data-dropdowncontent="' + type + '"]');
+
+            if (type === 'sensors') {
+                /*jshint camelcase: false */
+                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor.concat(componentsArray.mkb_linefollower));
+                /*jshint camelcase: true */
+            } else {
+                componentsList = componentsArray[type];
+            }
+            for (var i = 0, len = nodeList.length; i < len; i++) {
+                updateBloq(nodeList[i], componentsList);
+            }
+            allComponents = allComponents.concat(componentsArray[type]);
+        }
+        //Update dropdowns from bloqs of toolbox
+        if (bloqCanvasEl) {
+            var toolboxNodeList = bloqCanvasEl.querySelectorAll('select[data-dropdowncontent="varComponents"]');
+            for (var j = 0, len2 = toolboxNodeList.length; j < len2; j++) {
+                updateBloq(toolboxNodeList[j], allComponents);
+            }
+
+            var varServos = [];
+            varServos = varServos.concat(componentsArray.servos, componentsArray.oscillators, componentsArray.continuousServos);
+            var servosNodeList = bloqCanvasEl.querySelectorAll('select[data-dropdowncontent="allServos"]');
+            for (var y = 0, lenServo = servosNodeList.length; y < lenServo; y++) {
+                updateBloq(servosNodeList[y], varServos);
+            }
+        }
+
+
+    };
+
     var updateDropdowns = function() {
         var key;
         for (key in softwareArrays) {
@@ -4533,159 +4435,6 @@
                 return result;
             };
 
-            /**
-             * Get the bloq's code, substituting each input's value
-             * @return {[type]} code            [description]
-             */
-            this.getCode = function(previousCode) {
-                var code = this.bloqData.code;
-                var childBloq, childConnectorId;
-                var elementTags = _.without(_.pluck(this.bloqData.content[0], 'id'), undefined);
-                var childrenTags = _.without(_.pluck(this.bloqData.content[0], 'bloqInputId'), undefined);
-                var value = '',
-                    type = '';
-                var connectionType = '';
-
-                elementTags.forEach(function(elem) {
-                    var element = this.$contentContainer.find('> [data-content-id="' + elem + '"]');
-                    if (element.length === 0) {
-                        element = this.$contentContainer.find('[data-content-id="' + elem + '"]');
-                    }
-                    value = element.val() || '';
-                    //hardcoded!!
-                    if (!window.bloqs.componentsArray) {
-                        window.bloqs.componentsArray = bloqsUtils.getEmptyComponentsArray();
-                    }
-                    var j;
-                    for (j = 0; j < window.bloqs.componentsArray.sensors.length; j++) {
-                        if (value === window.bloqs.componentsArray.sensors[j].name) {
-                            type = window.bloqs.componentsArray.sensors[j].type;
-                            if (type === 'analog') {
-                                value = 'analogRead(' + window.bloqs.componentsArray.sensors[j].name + ')';
-                            } else if (type === 'digital') {
-                                value = 'digitalRead(' + window.bloqs.componentsArray.sensors[j].name + ')';
-                            } else if (type === 'LineFollower') { // patch. When the new Web2Board is launched with float * as return, remove this
-                                value = '(float *)' + window.bloqs.componentsArray.sensors[j].name + '.read()';
-                            } else {
-                                value = window.bloqs.componentsArray.sensors[j].name + '.read()';
-                            }
-                            code = code.replace(new RegExp('{' + elem + '.type}', 'g'), value);
-                        }
-                    }
-                    for (j = 0; j < window.bloqs.componentsArray.servos.length; j++) {
-                        if (value === window.bloqs.componentsArray.servos[j].name) {
-                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), window.bloqs.componentsArray.servos[j].pin.s);
-                        }
-                    }
-                    for (j = 0; j < window.bloqs.componentsArray.continuousServos.length; j++) {
-                        if (value === window.bloqs.componentsArray.continuousServos[j].name) {
-                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), window.bloqs.componentsArray.continuousServos[j].pin.s);
-                        }
-                    }
-                    for (j = 0; j < window.bloqs.componentsArray.oscillators.length; j++) {
-                        if (value === window.bloqs.componentsArray.oscillators[j].name) {
-                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), window.bloqs.componentsArray.oscillators[j].pin.s);
-                        }
-                    }
-                    if (element.attr('data-content-type') === 'stringInput') {
-                        value = utils.validString(value);
-                    } else if (element.attr('data-content-type') === 'charInput') {
-                        value = utils.validChar(value);
-                    } else if (element.attr('data-content-type') === 'multilineCommentInput') {
-                        value = utils.validComment(value);
-                    }
-                    var valueWithoutAsterisk = value.replace(' *', '');
-                    code = code.replace(new RegExp('{' + elem + '}.withoutAsterisk', 'g'), valueWithoutAsterisk);
-                    code = code.replace(new RegExp('{' + elem + '}', 'g'), value);
-                }.bind(this));
-
-                var bloqInputConnectors = utils.getInputsConnectorsFromBloq(IOConnectors, bloqs, this);
-                if (childrenTags.length > 0) {
-                    // search for child bloqs:
-                    for (var k = 0; k < bloqInputConnectors.length; k++) {
-
-                        value = '';
-                        connectionType = '';
-                        type = '';
-                        var a = IOConnectors[bloqInputConnectors[k]];
-                        if (a) {
-                            childConnectorId = a.connectedTo;
-                            if (childConnectorId !== null) {
-                                childBloq = utils.getBloqByConnectorUuid(childConnectorId, bloqs, IOConnectors);
-                                value = childBloq.getCode();
-                                type = childBloq.bloqData.returnType;
-                            }
-                            if (type.type === 'fromDynamicDropdown') {
-                                connectionType = utils.getFromDynamicDropdownType(childBloq || this, type.idDropdown, type.options, softwareArrays, componentsArray);
-                            } else if (type.type === 'fromDropdown') {
-                                connectionType = utils.getTypeFromBloq(childBloq || this, bloqs, IOConnectors, softwareArrays, componentsArray);
-                            } else {
-                                connectionType = type.value;
-                                if (connectionType === 'string') {
-                                    connectionType = 'String';
-                                }
-                            }
-                        }
-                        if (connectionType === undefined) {
-                            connectionType = '';
-                        }
-                        code = code.replace(new RegExp('{' + childrenTags[k] + '.connectionType}', 'g'), connectionType);
-                        code = code.replace(new RegExp('{' + childrenTags[k] + '}', 'g'), value);
-
-                    }
-                }
-                //search for regular expressions:
-                var reg = /(.*)\?(.*):(.*)/g;
-                if (reg.test(code)) {
-                    code = eval(code); // jshint ignore:line
-                }
-                var children = [];
-                if (this.connectors[2]) {
-                    value = '';
-                    childConnectorId = connectors[this.connectors[2]].connectedTo;
-                    if (childConnectorId) {
-                        childBloq = utils.getBloqByConnectorUuid(childConnectorId, bloqs, connectors);
-                        var branchConnectors = utils.getBranchsConnectorsNoChildren(childBloq.uuid, connectors, bloqs);
-
-                        branchConnectors.forEach(function(branchConnector) {
-                            if (utils.itsInsideAConnectorRoot(bloqs[connectors[branchConnector].bloqUuid], bloqs, connectors)) {
-                                var bloqId = connectors[branchConnector].bloqUuid;
-                                if (bloqId !== children[children.length - 1]) {
-                                    children.push(bloqId);
-                                }
-                            }
-                        });
-                    }
-                    children.forEach(function(elem) {
-                        value += bloqs[elem].getCode();
-                    });
-                    // if (children.length >= 1) {
-                    //     for (i in children) {
-                    //         value += bloqs[children[i]].getCode();
-                    //     }
-                    // }
-                    code = code.replace(new RegExp('{STATEMENTS}', 'g'), value);
-                }
-                if (code.indexOf('{CLASS-OUTSIDE}') >= 0) {
-                    var rootParentName = utils.getClassName(this, bloqs, connectors);
-                    if (rootParentName) {
-                        code = code.replace(new RegExp('{CLASS-OUTSIDE}', 'g'), rootParentName);
-                    }
-                    code = code.replace(new RegExp('{CLASS-OUTSIDE}', 'g'), '');
-                }
-                if (previousCode === undefined) {
-                    previousCode = '';
-                } else { //the previousCode is always (from now) inserted after the void setup(){ string
-                    code = bloqsUtils.splice(code, code.indexOf('{') + 1, 0, previousCode);
-                }
-                if (!this.itsEnabled()) {
-                    //TODO: search highest parent disabled and add the comment characters
-                    // code = '/*' + code + '*/';
-                    code = '';
-                }
-                return code;
-            };
-
             this.getBloqsStructure = function(fullStructure) {
                 var result,
                     tempBloq;
@@ -4822,7 +4571,11 @@
 
                 return result;
             };
-
+            window.dispatchEvent(new CustomEvent('bloqs:created', {
+                detail: {
+                    bloq: this
+                }
+            }));
             return this;
         } else {
             console.error('the bloqData its empty.');
@@ -4935,6 +4688,7 @@
     exports.setOptions = setOptions;
     exports.buildBloqWithContent = buildBloqWithContent;
     exports.clearSoftwareArrays = clearSoftwareArrays;
+    exports.startBloqsUpdate = startBloqsUpdate;
 
     return exports;
 

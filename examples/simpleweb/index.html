@@ -122,6 +122,11 @@
             console.log('bloqs:change');
         });
 
+        window.addEventListener('bloqs:created', function(evt) {
+            console.log('bloqs:created');
+            console.log(evt);
+        });
+
         /**
          * Components array its the hardware elements
          * {
@@ -312,6 +317,7 @@
             };
             //now you can store that project and load in another moment.
             console.log(JSON.stringify(actualProjectSoftware));
+            window.bloqs.startBloqsUpdate();
         });
         //start build bloqs!
         var createBloq = function(name) {
@@ -401,7 +407,7 @@
 
         var mRanger = ['mRangerBuzzer', 'mRangerGetDistance', 'mRangerGetLightSensor', 'mRangerLineFollower', 'mRangerSetLed', 'mRangerTurnOffLed', 'mRangerBuzzerAdvanced', 'mRangerSetLedAdvanced'];
 
-        var mbotv2 = ['declareVariable', 'readSensor', 'mBotIfThereIsALotOfLight', 'mBotIfFollowLines'];
+        var mbotv2 = ['declareVariable', 'readSensor', 'mBotIfThereIsALotOfLight', 'mBotIfFollowLines', 'mBotSetRGBLedSimple', 'mBotSetRGBLed'];
 
         var testPhone = ['phoneSendText', 'phoneEmitSound', 'phoneReceive', 'declareVariable', 'phoneToggleLight', 'phoneTurnOnLight', 'phoneReadLinearAccel'];
 

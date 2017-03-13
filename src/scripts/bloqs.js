@@ -2,6 +2,7 @@
 (function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested) {
     /**
      * Events
+     * bloqs:created
      * bloqs:connect
      * bloqs:dragend
      * bloqs:bloqremoved
@@ -1471,6 +1472,90 @@
         return result;
     };
 
+    var updateBloqsTimeout;
+
+    var startBloqsUpdate = function(componentsArray) {
+        componentsArray = componentsArray;
+
+        if (!updateBloqsTimeout) {
+            updateBloqsTimeout = setTimeout(function() {
+                updateBloqsTimeout = null;
+                updateBloqs(componentsArray);
+            }, 500);
+        }
+    };
+
+    var updateBloqs = function(componentsArray) {
+
+
+        var allBloqs = exports.bloqs;
+        var allComponents = [];
+
+        function _resetDropdown(element, list) {
+            if (list[0]) {
+                element.dataset.reference = list[0].uid;
+                element.dataset.value = list[0].name;
+                element.value = list[0].name;
+            } else {
+                delete element.dataset.reference;
+                delete element.dataset.value;
+            }
+            element.selectedIndex = 0;
+        }
+
+        var updateBloq = function(element, list) {
+
+            var componentRef = list.find(function(comp) {
+                return comp.uid === element.dataset.reference;
+            });
+
+            bloqsUtils.drawDropdownOptions($(element), list);
+
+            if (componentRef) {
+                element.value = componentRef.name;
+                element.dataset.reference = componentRef.uid;
+                element.dataset.value = componentRef.name;
+            } else {
+                _resetDropdown(element, list);
+            }
+        };
+        var bloqCanvasEl = null,
+            componentsList;
+        //Update dropdowns values from bloqs canvas
+        for (var type in componentsArray) {
+            bloqCanvasEl = document.getElementsByClassName('bloqs-tab')[0];
+            var nodeList = bloqCanvasEl.querySelectorAll('select[data-dropdowncontent="' + type + '"]');
+
+            if (type === 'sensors') {
+                /*jshint camelcase: false */
+                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor.concat(componentsArray.mkb_linefollower));
+                /*jshint camelcase: true */
+            } else {
+                componentsList = componentsArray[type];
+            }
+            for (var i = 0, len = nodeList.length; i < len; i++) {
+                updateBloq(nodeList[i], componentsList);
+            }
+            allComponents = allComponents.concat(componentsArray[type]);
+        }
+        //Update dropdowns from bloqs of toolbox
+        if (bloqCanvasEl) {
+            var toolboxNodeList = bloqCanvasEl.querySelectorAll('select[data-dropdowncontent="varComponents"]');
+            for (var j = 0, len2 = toolboxNodeList.length; j < len2; j++) {
+                updateBloq(toolboxNodeList[j], allComponents);
+            }
+
+            var varServos = [];
+            varServos = varServos.concat(componentsArray.servos, componentsArray.oscillators, componentsArray.continuousServos);
+            var servosNodeList = bloqCanvasEl.querySelectorAll('select[data-dropdowncontent="allServos"]');
+            for (var y = 0, lenServo = servosNodeList.length; y < lenServo; y++) {
+                updateBloq(servosNodeList[y], varServos);
+            }
+        }
+
+
+    };
+
     var updateDropdowns = function() {
         var key;
         for (key in softwareArrays) {
@@ -1745,159 +1830,6 @@
                 return result;
             };
 
-            /**
-             * Get the bloq's code, substituting each input's value
-             * @return {[type]} code            [description]
-             */
-            this.getCode = function(previousCode) {
-                var code = this.bloqData.code;
-                var childBloq, childConnectorId;
-                var elementTags = _.without(_.pluck(this.bloqData.content[0], 'id'), undefined);
-                var childrenTags = _.without(_.pluck(this.bloqData.content[0], 'bloqInputId'), undefined);
-                var value = '',
-                    type = '';
-                var connectionType = '';
-
-                elementTags.forEach(function(elem) {
-                    var element = this.$contentContainer.find('> [data-content-id="' + elem + '"]');
-                    if (element.length === 0) {
-                        element = this.$contentContainer.find('[data-content-id="' + elem + '"]');
-                    }
-                    value = element.val() || '';
-                    //hardcoded!!
-                    if (!window.bloqs.componentsArray) {
-                        window.bloqs.componentsArray = bloqsUtils.getEmptyComponentsArray();
-                    }
-                    var j;
-                    for (j = 0; j < window.bloqs.componentsArray.sensors.length; j++) {
-                        if (value === window.bloqs.componentsArray.sensors[j].name) {
-                            type = window.bloqs.componentsArray.sensors[j].type;
-                            if (type === 'analog') {
-                                value = 'analogRead(' + window.bloqs.componentsArray.sensors[j].name + ')';
-                            } else if (type === 'digital') {
-                                value = 'digitalRead(' + window.bloqs.componentsArray.sensors[j].name + ')';
-                            } else if (type === 'LineFollower') { // patch. When the new Web2Board is launched with float * as return, remove this
-                                value = '(float *)' + window.bloqs.componentsArray.sensors[j].name + '.read()';
-                            } else {
-                                value = window.bloqs.componentsArray.sensors[j].name + '.read()';
-                            }
-                            code = code.replace(new RegExp('{' + elem + '.type}', 'g'), value);
-                        }
-                    }
-                    for (j = 0; j < window.bloqs.componentsArray.servos.length; j++) {
-                        if (value === window.bloqs.componentsArray.servos[j].name) {
-                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), window.bloqs.componentsArray.servos[j].pin.s);
-                        }
-                    }
-                    for (j = 0; j < window.bloqs.componentsArray.continuousServos.length; j++) {
-                        if (value === window.bloqs.componentsArray.continuousServos[j].name) {
-                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), window.bloqs.componentsArray.continuousServos[j].pin.s);
-                        }
-                    }
-                    for (j = 0; j < window.bloqs.componentsArray.oscillators.length; j++) {
-                        if (value === window.bloqs.componentsArray.oscillators[j].name) {
-                            code = code.replace(new RegExp('{' + elem + '.pin}', 'g'), window.bloqs.componentsArray.oscillators[j].pin.s);
-                        }
-                    }
-                    if (element.attr('data-content-type') === 'stringInput') {
-                        value = utils.validString(value);
-                    } else if (element.attr('data-content-type') === 'charInput') {
-                        value = utils.validChar(value);
-                    } else if (element.attr('data-content-type') === 'multilineCommentInput') {
-                        value = utils.validComment(value);
-                    }
-                    var valueWithoutAsterisk = value.replace(' *', '');
-                    code = code.replace(new RegExp('{' + elem + '}.withoutAsterisk', 'g'), valueWithoutAsterisk);
-                    code = code.replace(new RegExp('{' + elem + '}', 'g'), value);
-                }.bind(this));
-
-                var bloqInputConnectors = utils.getInputsConnectorsFromBloq(IOConnectors, bloqs, this);
-                if (childrenTags.length > 0) {
-                    // search for child bloqs:
-                    for (var k = 0; k < bloqInputConnectors.length; k++) {
-
-                        value = '';
-                        connectionType = '';
-                        type = '';
-                        var a = IOConnectors[bloqInputConnectors[k]];
-                        if (a) {
-                            childConnectorId = a.connectedTo;
-                            if (childConnectorId !== null) {
-                                childBloq = utils.getBloqByConnectorUuid(childConnectorId, bloqs, IOConnectors);
-                                value = childBloq.getCode();
-                                type = childBloq.bloqData.returnType;
-                            }
-                            if (type.type === 'fromDynamicDropdown') {
-                                connectionType = utils.getFromDynamicDropdownType(childBloq || this, type.idDropdown, type.options, softwareArrays, componentsArray);
-                            } else if (type.type === 'fromDropdown') {
-                                connectionType = utils.getTypeFromBloq(childBloq || this, bloqs, IOConnectors, softwareArrays, componentsArray);
-                            } else {
-                                connectionType = type.value;
-                                if (connectionType === 'string') {
-                                    connectionType = 'String';
-                                }
-                            }
-                        }
-                        if (connectionType === undefined) {
-                            connectionType = '';
-                        }
-                        code = code.replace(new RegExp('{' + childrenTags[k] + '.connectionType}', 'g'), connectionType);
-                        code = code.replace(new RegExp('{' + childrenTags[k] + '}', 'g'), value);
-
-                    }
-                }
-                //search for regular expressions:
-                var reg = /(.*)\?(.*):(.*)/g;
-                if (reg.test(code)) {
-                    code = eval(code); // jshint ignore:line
-                }
-                var children = [];
-                if (this.connectors[2]) {
-                    value = '';
-                    childConnectorId = connectors[this.connectors[2]].connectedTo;
-                    if (childConnectorId) {
-                        childBloq = utils.getBloqByConnectorUuid(childConnectorId, bloqs, connectors);
-                        var branchConnectors = utils.getBranchsConnectorsNoChildren(childBloq.uuid, connectors, bloqs);
-
-                        branchConnectors.forEach(function(branchConnector) {
-                            if (utils.itsInsideAConnectorRoot(bloqs[connectors[branchConnector].bloqUuid], bloqs, connectors)) {
-                                var bloqId = connectors[branchConnector].bloqUuid;
-                                if (bloqId !== children[children.length - 1]) {
-                                    children.push(bloqId);
-                                }
-                            }
-                        });
-                    }
-                    children.forEach(function(elem) {
-                        value += bloqs[elem].getCode();
-                    });
-                    // if (children.length >= 1) {
-                    //     for (i in children) {
-                    //         value += bloqs[children[i]].getCode();
-                    //     }
-                    // }
-                    code = code.replace(new RegExp('{STATEMENTS}', 'g'), value);
-                }
-                if (code.indexOf('{CLASS-OUTSIDE}') >= 0) {
-                    var rootParentName = utils.getClassName(this, bloqs, connectors);
-                    if (rootParentName) {
-                        code = code.replace(new RegExp('{CLASS-OUTSIDE}', 'g'), rootParentName);
-                    }
-                    code = code.replace(new RegExp('{CLASS-OUTSIDE}', 'g'), '');
-                }
-                if (previousCode === undefined) {
-                    previousCode = '';
-                } else { //the previousCode is always (from now) inserted after the void setup(){ string
-                    code = bloqsUtils.splice(code, code.indexOf('{') + 1, 0, previousCode);
-                }
-                if (!this.itsEnabled()) {
-                    //TODO: search highest parent disabled and add the comment characters
-                    // code = '/*' + code + '*/';
-                    code = '';
-                }
-                return code;
-            };
-
             this.getBloqsStructure = function(fullStructure) {
                 var result,
                     tempBloq;
@@ -2034,7 +1966,11 @@
 
                 return result;
             };
-
+            window.dispatchEvent(new CustomEvent('bloqs:created', {
+                detail: {
+                    bloq: this
+                }
+            }));
             return this;
         } else {
             console.error('the bloqData its empty.');
@@ -2147,6 +2083,7 @@
     exports.setOptions = setOptions;
     exports.buildBloqWithContent = buildBloqWithContent;
     exports.clearSoftwareArrays = clearSoftwareArrays;
+    exports.startBloqsUpdate = startBloqsUpdate;
 
     return exports;
 
