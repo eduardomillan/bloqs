@@ -4506,8 +4506,9 @@
                                 //only software Vars get value from val(), hardware, use attribute or val()
                                 var variableType = this.bloqData.content[0][i].options,
                                     itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType),
-                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor.concat(componentsArray.mkb_linefollower));
-                                valueType, j;
+                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor.concat(componentsArray.mkb_linefollower)),
+                                    valueType,
+                                    j;
 
                                 if (itsSoftwareValue !== -1) {
                                     value = selectedValue;
