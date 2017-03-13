@@ -4304,7 +4304,6 @@
                 element.dataset.reference = componentRef.uid;
                 element.dataset.value = componentRef.name;
             } else {
-                $log.debug('dropdown not selected or reference was lost');
                 _resetDropdown(element, list);
             }
         };
