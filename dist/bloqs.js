@@ -1683,7 +1683,8 @@
                             result = 'robot.isButtonPushed()';
                             break;
                         case 'mkb_integrated_lightsensor':
-                            result = 'robot.readLightSensor()';
+                            var pin = sensorData.pin.s || '';
+                            result = 'robot.readLightSensor(' + pin + ')';
                             break;
                         default:
                             result = sensorName + '.read()';
