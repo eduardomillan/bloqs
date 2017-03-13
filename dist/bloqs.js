@@ -4523,9 +4523,9 @@
                                     value = selectedValue;
 
                                     j = 0;
-                                    while (!valueType && (j < sensorsComponentsArray.sensors.length)) {
-                                        if (sensorsComponentsArray.sensors[j].name === value) {
-                                            valueType = sensorsComponentsArray.sensors[j].dataReturnType;
+                                    while (!valueType && (j < sensorsComponentsArray.length)) {
+                                        if (sensorsComponentsArray[j].name === value) {
+                                            valueType = sensorsComponentsArray[j].dataReturnType;
                                         }
                                         j++;
                                     }
