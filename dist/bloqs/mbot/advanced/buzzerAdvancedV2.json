@@ -1,10 +1,14 @@
 {
-  "type": "output",
-  "name": "arguments",
+  "type": "statement",
+  "name": "mBotBuzzerAdvanced-v2",
   "connectors": [
     {
-      "type": "connector--output",
-      "accept": "connector--input"
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
     },
     {
       "type": "connector--input",
@@ -13,13 +17,10 @@
         "all"
       ],
       "suggestedBloqs": [
-        "argument",
-        "arguments",
         "number",
-        "string",
         "selectVariable"
       ],
-      "name": "6f100214-31ec-42a3-8415-f49ad1a5a9c4"
+      "name": "1d3a54f0-8de8-4db9-a756-4b63cd524d25"
     },
     {
       "type": "connector--input",
@@ -28,67 +29,65 @@
         "all"
       ],
       "suggestedBloqs": [
-        "argument",
-        "arguments",
         "number",
-        "string",
         "selectVariable"
       ],
-      "name": "f00f58b6-383d-4792-9947-af59347024aa"
+      "name": "d075e235-d13d-49f2-9a18-9235ca6c7ac3"
     }
   ],
-  "bloqClass": "bloq-arguments",
+  "bloqClass": "bloq-mbot-buzzer-v2",
   "content": [
     [
       {
-        "bloqInputId": "ARG1",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "argument",
-          "arguments",
-          "number",
-          "string",
-          "selectVariable"
-        ],
-        "name": "6f100214-31ec-42a3-8415-f49ad1a5a9c4"
+        "alias": "text",
+        "value": "bloq-buzzer-sound"
       },
       {
         "alias": "text",
-        "value": ","
+        "value": "bloq-buzzer-note"
       },
       {
-        "bloqInputId": "ARG2",
+        "bloqInputId": "NOTE",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
-          "argument",
-          "arguments",
           "number",
-          "string",
           "selectVariable"
         ],
-        "name": "f00f58b6-383d-4792-9947-af59347024aa"
+        "name": "1d3a54f0-8de8-4db9-a756-4b63cd524d25"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-for"
+      },
+      {
+        "bloqInputId": "SECONDS",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "d075e235-d13d-49f2-9a18-9235ca6c7ac3"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-ms"
       }
     ]
   ],
-  "createDynamicContent": "softwareVars",
-  "code": "{ARG1},{ARG2}",
-  "returnType": {
-    "type": "simple",
-    "value": "var"
-  },
+  "code": "",
   "arduino": {
-    "code": "{ARG1},{ARG2}"
+    "code": "robot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"arguments\" no preparado para generar código python"
+        "code": "Bloque \"mBotBuzzerAdvanced-v2\" no preparado para generar código python"
       }
     ]
   }

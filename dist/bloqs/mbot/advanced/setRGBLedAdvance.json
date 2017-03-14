@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "setArrayVariableAdvanced",
+  "name": "mBotSetRGBLedAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -18,10 +18,9 @@
       ],
       "suggestedBloqs": [
         "number",
-        "string",
         "selectVariable"
       ],
-      "name": "8c617708-bcdb-46c1-935b-93a234acb6c6"
+      "name": "5ac40bcf-4fab-4274-a94b-fb6669bef42c"
     },
     {
       "type": "connector--input",
@@ -31,72 +30,93 @@
       ],
       "suggestedBloqs": [
         "number",
-        "string",
         "selectVariable"
       ],
-      "name": "546bf7fb-80d2-4725-b8b8-8bf8f4c24835"
+      "name": "f9f036e8-26e0-4578-bcc3-266ebebec040"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "9c025f70-0060-4a6e-8abe-3da8ff7de2fa"
     }
   ],
-  "bloqClass": "bloq-set-variableArray",
+  "bloqClass": "bloq-mbot-setrgbLed",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-set-variableArray-variable"
+        "value": "bloq-mbot-setled-set"
       },
       {
-        "id": "NAME",
+        "id": "LED",
         "alias": "dynamicDropdown",
-        "options": "softwareVars"
+        "options": "mkb_integrated_RGB"
       },
       {
         "alias": "text",
-        "value": "["
+        "value": "bloq-rgbLed-red"
       },
       {
-        "bloqInputId": "ITERATOR",
+        "bloqInputId": "RED",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
           "number",
-          "string",
           "selectVariable"
         ],
-        "name": "8c617708-bcdb-46c1-935b-93a234acb6c6"
+        "name": "5ac40bcf-4fab-4274-a94b-fb6669bef42c"
       },
       {
         "alias": "text",
-        "value": "]"
+        "value": "bloq-rgbLed-green"
       },
       {
-        "alias": "text",
-        "value": "="
-      },
-      {
-        "bloqInputId": "VALUE",
+        "bloqInputId": "GREEN",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
           "number",
-          "string",
           "selectVariable"
         ],
-        "name": "546bf7fb-80d2-4725-b8b8-8bf8f4c24835"
+        "name": "f9f036e8-26e0-4578-bcc3-266ebebec040"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-rgbLed-blue"
+      },
+      {
+        "bloqInputId": "BLUE",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "9c025f70-0060-4a6e-8abe-3da8ff7de2fa"
       }
     ]
   ],
-  "code": "{NAME}[{ITERATOR}] = {VALUE};",
+  "code": "",
   "arduino": {
-    "code": "{NAME}[{ITERATOR}] = {VALUE};"
+    "code": "robot.setLed(º[{LED}.pin.s],{RED}, {GREEN}, {BLUE});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"setArrayVariableAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mBotSetRGBLedAdvanced\" no preparado para generar código python"
       }
     ]
   }

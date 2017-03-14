@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotMoveAdvanced",
+  "name": "mBotMoveAdvanced-v2",
   "connectors": [
     {
       "type": "connector--top",
@@ -14,13 +14,13 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
-        "float"
+        "all"
       ],
       "suggestedBloqs": [
         "number",
         "selectVariable"
       ],
-      "name": "5386547f-8c7b-4f46-b163-4188e733f6ce"
+      "name": "880fe841-c4b4-4374-aab4-e77800946c76"
     }
   ],
   "bloqClass": "bloq-mbot-move",
@@ -50,39 +50,30 @@
       },
       {
         "alias": "text",
-        "value": "bloq-mbot-move-advanced-speed"
+        "value": "bloq-mbot-move-speed"
       },
       {
         "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": [
-          "float"
+          "all"
         ],
         "suggestedBloqs": [
           "number",
           "selectVariable"
         ],
-        "name": "5386547f-8c7b-4f46-b163-4188e733f6ce"
+        "name": "880fe841-c4b4-4374-aab4-e77800946c76"
       }
     ]
   ],
   "code": "",
   "arduino": {
-    "includes": [
-      "BitbloqMBotDeprecated.h"
-    ],
-    "needInstanceOf": [
-      {
-        "name": "mBotv1",
-        "type": "MBot"
-      }
-    ],
-    "code": "mBotv1.move({MOVEMENT},{SPEED});"
+    "code": "robot.move({MOVEMENT},{SPEED});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotMoveAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mBotMoveAdvanced-v2\" no preparado para generar código python"
       }
     ]
   }
