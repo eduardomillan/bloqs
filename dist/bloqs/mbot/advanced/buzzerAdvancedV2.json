@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotBuzzerAdvanced",
+  "name": "mBotBuzzerAdvanced-v2",
   "connectors": [
     {
       "type": "connector--top",
@@ -14,83 +14,80 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
-        "float"
+        "all"
       ],
       "suggestedBloqs": [
         "number",
         "selectVariable"
       ],
-      "name": "fdb65fa1-d4da-4f57-875e-0d3a3caac2d3"
+      "name": "1965bfc7-a5f3-41aa-991a-52aa86501227"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
-        "float"
+        "all"
       ],
       "suggestedBloqs": [
         "number",
         "selectVariable"
       ],
-      "name": "53166155-e56f-46a0-9a41-71547e0ac2fc"
+      "name": "febd05ee-adc9-48ec-9072-91a50599b037"
     }
   ],
-  "bloqClass": "bloq-mbot-buzzer",
+  "bloqClass": "bloq-mbot-buzzer-v2",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-mbot-buzzer-advanced-play"
+        "value": "bloq-buzzer-sound"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-note"
       },
       {
         "bloqInputId": "NOTE",
         "alias": "bloqInput",
         "acceptType": [
-          "float"
+          "all"
         ],
         "suggestedBloqs": [
           "number",
           "selectVariable"
         ],
-        "name": "fdb65fa1-d4da-4f57-875e-0d3a3caac2d3"
+        "name": "1965bfc7-a5f3-41aa-991a-52aa86501227"
       },
       {
         "alias": "text",
-        "value": "bloq-mbot-buzzer-advanced-for"
+        "value": "bloq-buzzer-for"
       },
       {
         "bloqInputId": "SECONDS",
         "alias": "bloqInput",
         "acceptType": [
-          "float"
+          "all"
         ],
         "suggestedBloqs": [
           "number",
           "selectVariable"
         ],
-        "name": "53166155-e56f-46a0-9a41-71547e0ac2fc"
+        "name": "febd05ee-adc9-48ec-9072-91a50599b037"
       },
       {
         "alias": "text",
-        "value": "bloq-mbot-buzzer-advanced-ms"
+        "value": "bloq-buzzer-ms"
       }
     ]
   ],
   "code": "",
   "arduino": {
-    "needInstanceOf": [
-      {
-        "name": "mBotBuzzerPin",
-        "type": "const int",
-        "equals": "8"
-      }
-    ],
-    "code": "tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
+    "code": "robot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotBuzzerAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mBotBuzzerAdvanced-v2\" no preparado para generar código python"
       }
     ]
   }

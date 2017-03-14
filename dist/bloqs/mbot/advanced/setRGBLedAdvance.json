@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "rgbLedAdvanced",
+  "name": "mBotSetRGBLedAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "81bace10-b15f-4bf9-956a-74092789d316"
+      "name": "ed94bb97-f955-48c9-b00f-271d7304c39c"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "80b6a84f-7271-43ff-9716-5ca04e463725"
+      "name": "c5c51fc6-f652-4ccf-b6d4-def9aa6b19b9"
     },
     {
       "type": "connector--input",
@@ -44,20 +44,20 @@
         "number",
         "selectVariable"
       ],
-      "name": "8cbc4392-8a1d-47e1-82b4-befbe89a511a"
+      "name": "e94556c7-b576-4e3a-a8f7-938005f404ba"
     }
   ],
-  "bloqClass": "bloq-rgbLed-advanced",
+  "bloqClass": "bloq-mbot-setrgbLed",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-rgbLed"
+        "value": "bloq-mbot-setled-set"
       },
       {
         "id": "LED",
         "alias": "dynamicDropdown",
-        "options": "rgbs"
+        "options": "mkb_integrated_RGB"
       },
       {
         "alias": "text",
@@ -73,7 +73,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "81bace10-b15f-4bf9-956a-74092789d316"
+        "name": "ed94bb97-f955-48c9-b00f-271d7304c39c"
       },
       {
         "alias": "text",
@@ -89,7 +89,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "80b6a84f-7271-43ff-9716-5ca04e463725"
+        "name": "c5c51fc6-f652-4ccf-b6d4-def9aa6b19b9"
       },
       {
         "alias": "text",
@@ -105,18 +105,18 @@
           "number",
           "selectVariable"
         ],
-        "name": "8cbc4392-8a1d-47e1-82b4-befbe89a511a"
+        "name": "e94556c7-b576-4e3a-a8f7-938005f404ba"
       }
     ]
   ],
-  "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});",
+  "code": "",
   "arduino": {
-    "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});"
+    "code": "robot.setLed(º[{LED}.pin.s],{RED}, {GREEN}, {BLUE});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"rgbLedAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mBotSetRGBLedAdvanced\" no preparado para generar código python"
       }
     ]
   }

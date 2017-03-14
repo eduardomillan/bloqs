@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "ledAdvanced",
+  "name": "mBotMoveAdvanced-v2",
   "connectors": [
     {
       "type": "connector--top",
@@ -17,55 +17,63 @@
         "all"
       ],
       "suggestedBloqs": [
-        "hwVariable",
+        "number",
         "selectVariable"
       ],
-      "name": "e41d634e-2f34-4e8c-bd64-079f743ba42e"
+      "name": "d69ed77d-90e4-485d-b16a-b7acc2077175"
     }
   ],
-  "bloqClass": "bloq-led-advanced",
+  "bloqClass": "bloq-mbot-move",
   "content": [
     [
       {
-        "id": "STATE",
+        "id": "MOVEMENT",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "bloq-led-advanced-turnon",
-            "value": "HIGH"
+            "label": "bloq-mbot-move-forward",
+            "value": "1"
           },
           {
-            "label": "bloq-led-advanced-turnoff",
-            "value": "LOW"
+            "label": "bloq-mbot-move-backward",
+            "value": "2"
+          },
+          {
+            "label": "bloq-mbot-move-turnright",
+            "value": "3"
+          },
+          {
+            "label": "bloq-mbot-move-turnleft",
+            "value": "4"
           }
         ]
       },
       {
         "alias": "text",
-        "value": "bloq-led-advanced-theLED"
+        "value": "bloq-mbot-move-speed"
       },
       {
-        "bloqInputId": "LED",
+        "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
-          "hwVariable",
+          "number",
           "selectVariable"
         ],
-        "name": "e41d634e-2f34-4e8c-bd64-079f743ba42e"
+        "name": "d69ed77d-90e4-485d-b16a-b7acc2077175"
       }
     ]
   ],
-  "code": "digitalWrite({LED},{STATE});",
+  "code": "",
   "arduino": {
-    "code": "digitalWrite({LED},{STATE});"
+    "code": "robot.move({MOVEMENT},{SPEED});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"ledAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mBotMoveAdvanced-v2\" no preparado para generar código python"
       }
     ]
   }
