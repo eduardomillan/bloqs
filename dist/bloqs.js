@@ -4600,7 +4600,7 @@
     var buildBloqWithContent = function(data, componentsArray, schemas, $field) {
 
         var tempBloq,
-            originalBloqSchema = schemas[data.name],
+            originalBloqSchema = _.cloneDeep(schemas[data.name]),
             bloqSchema,
             lastBottomConnector,
             tempNodeBloq,
