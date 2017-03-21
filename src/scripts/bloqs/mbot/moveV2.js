@@ -43,13 +43,13 @@ var mBotMove = _.merge(_.clone(StatementBloq, true), {
             alias: 'staticDropdown',
             options: [{
                 label: 'bloq-mbot-move-speed-fast',
-                value: '255'
+                value: '210'
             }, {
                 label: 'bloq-mbot-move-speed-normal',
-                value: '100'
+                value: '160'
             }, {
                 label: 'bloq-mbot-move-speed-slow',
-                value: '50'
+                value: '100'
             }]
         }]
     ],
