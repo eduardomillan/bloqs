@@ -43,6 +43,9 @@ var mBotMoveAdvanced = _.merge(_.clone(StatementBloq, true), {
             alias: 'bloqInput',
             acceptType: ['all'],
             suggestedBloqs: ['number', 'selectVariable']
+        }, {
+            alias: 'text',
+            value: '(0-255)'
         }]
     ],
     code: '',
