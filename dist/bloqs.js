@@ -2109,240 +2109,231 @@
 
         if (hardwareList.components) {
             for (var i = 0; i < hardwareList.components.length; i++) {
-                tempSetupExtraCode = null;
-                tempInstanceOf = null;
-                tempProgramExtraCode = null;
-                tempProgramFunctionDeclaration = null;
-                tempIncludes = [];
-                //console.log('hardwareList');
-                //console.log(hardwareList);
+                if (!hardwareList.components[i].integratedComponent) {
 
-                switch (hardwareList.components[i].id) {
-                    case 'led':
-                    case 'buzz':
-                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', OUTPUT);';
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'const int',
-                            equals: hardwareList.components[i].pin.s
-                        };
-                        break;
-                    case 'button':
-                    case 'analogButton':
-                    case 'GroveShieldButton':
-                    case 'limitswitch':
-                    case 'pot':
-                    case 'ldrs':
-                    case 'sound':
-                    case 'irs':
-                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'const int',
-                            equals: hardwareList.components[i].pin.s
-                        };
-                        break;
 
-                    case 'bt':
-                        tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
-                        tempSetupExtraCode = hardwareList.components[i].name + '.begin(' + hardwareList.components[i].baudRate + ');';
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'bqSoftwareSerial',
-                            arguments: [
-                                hardwareList.components[i].pin.rx,
-                                hardwareList.components[i].pin.tx,
-                                hardwareList.components[i].baudRate
-                            ]
-                        };
-                        break;
-                    case 'sp':
-                        tempIncludes = ['SoftwareSerial.h', 'BitbloqSoftwareSerial.h'];
-                        tempSetupExtraCode = hardwareList.components[i].name + '.begin(' + hardwareList.components[i].baudRate + ');';
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'bqSoftwareSerial',
-                            arguments: [
-                                0,
-                                1,
-                                hardwareList.components[i].baudRate
-                            ]
-                        };
-                        break;
-                    case 'buttons':
-                        tempIncludes = ['BitbloqButtonPad.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'ButtonPad',
-                            arguments: [
-                                hardwareList.components[i].pin.s
-                            ]
-                        };
-                        break;
-                    case 'encoder':
-                        tempIncludes = ['BitbloqEncoder.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'Encoder',
-                            arguments: [
-                                'encoderUpdaterWrapper',
-                                hardwareList.components[i].pin.k,
-                                hardwareList.components[i].pin.sa,
-                                hardwareList.components[i].pin.sb
-                            ]
-                        };
-                        tempProgramFunctionDeclaration = 'void encoderUpdaterWrapper();';
-                        tempProgramExtraCode = 'void encoderUpdaterWrapper() {\n' + hardwareList.components[i].name + '.update();\n}';
-                        break;
-                    case 'joystick':
-                        tempIncludes = ['BitbloqJoystick.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'Joystick',
-                            arguments: [
-                                hardwareList.components[i].pin.x,
-                                hardwareList.components[i].pin.y,
-                                hardwareList.components[i].pin.k
-                            ]
-                        };
-                        break;
-                    case 'lcd':
-                        tempIncludes = ['Wire.h', 'BitbloqLiquidCrystal.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'LiquidCrystal',
-                            arguments: [
-                                '0'
-                            ]
-                        };
-                        tempSetupExtraCode = hardwareList.components[i].name + '.begin(16, 2);' + hardwareList.components[i].name + '.clear();';
-                        break;
-                    case 'RGBled':
-                        tempIncludes = ['BitbloqRGB.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'ZumRGB',
-                            arguments: [
-                                hardwareList.components[i].pin.r,
-                                hardwareList.components[i].pin.g,
-                                hardwareList.components[i].pin.b
-                            ]
-                        };
-                        break;
-                    case 'rtc':
-                        tempIncludes = ['Wire.h', 'BitbloqRTC.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'RTC_DS1307'
-                        };
-                        break;
-                    case 'hts221':
-                        tempIncludes = ['Wire.h', 'BitbloqHTS221.h', 'HTS221_Registers.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'HTS221'
-                        };
-                        tempSetupExtraCode = 'Wire.begin();\n' + hardwareList.components[i].name + '.begin();';
-                        break;
-                    case 'us':
-                        tempIncludes = ['BitbloqUS.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'US',
-                            arguments: [
-                                hardwareList.components[i].pin.trigger,
-                                hardwareList.components[i].pin.echo
-                            ]
-                        };
-                        break;
-                    case 'servo':
-                    case 'servocont':
-                        if (hardwareList.components[i].oscillator && (hardwareList.components[i].oscillator !== 'false')) {
-                            tempIncludes = ['Servo.h', 'Wire.h', 'BitbloqOscillator.h'];
+                    tempSetupExtraCode = null;
+                    tempInstanceOf = null;
+                    tempProgramExtraCode = null;
+                    tempProgramFunctionDeclaration = null;
+                    tempIncludes = [];
+                    //console.log('hardwareList');
+                    //console.log(hardwareList);
+
+                    switch (hardwareList.components[i].id) {
+                        case 'led':
+                        case 'buzz':
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', OUTPUT);';
                             tempInstanceOf = {
                                 name: hardwareList.components[i].name,
-                                type: 'Oscillator'
+                                type: 'const int',
+                                equals: hardwareList.components[i].pin.s
                             };
-                        } else {
-                            tempIncludes = ['Servo.h'];
+                            break;
+                        case 'button':
+                        case 'analogButton':
+                        case 'GroveShieldButton':
+                        case 'limitswitch':
+                        case 'pot':
+                        case 'ldrs':
+                        case 'sound':
+                        case 'irs':
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
                             tempInstanceOf = {
                                 name: hardwareList.components[i].name,
-                                type: 'Servo'
+                                type: 'const int',
+                                equals: hardwareList.components[i].pin.s
                             };
-                        }
-                        tempSetupExtraCode = hardwareList.components[i].name + '.attach(' + hardwareList.components[i].pin.s + ');';
-                        break;
-                    case 'irs2':
-                        tempIncludes = ['BitbloqLineFollower.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'LineFollower',
-                            arguments: [
-                                hardwareList.components[i].pin.s1,
-                                hardwareList.components[i].pin.s2
-                            ]
-                        };
-                        break;
-                    case 'mkb_ultrasound':
-                        tempIncludes = ['BitbloqUS.h'];
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'BitbloqUltrasound',
-                            arguments: [
-                                makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
-                                makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
-                            ]
-                        };
-                        setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
-                        break;
-                    case 'mkb_linefollower':
+                            break;
 
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name + '_1',
-                            type: 'const int',
-                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
-                        };
-                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_1 , INPUT);';
+                        case 'bt':
+                        case 'sp':
+                            tempIncludes = ['BitbloqSoftwareSerial.h'];
+                            tempSetupExtraCode = hardwareList.components[i].name + '.begin(' + hardwareList.components[i].baudRate + ');';
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'bqSoftwareSerial',
+                                arguments: [
+                                    hardwareList.components[i].pin.rx,
+                                    hardwareList.components[i].pin.tx,
+                                    hardwareList.components[i].baudRate
+                                ]
+                            };
+                            break;
+                        case 'buttons':
+                            tempIncludes = ['BitbloqButtonPad.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'ButtonPad',
+                                arguments: [
+                                    hardwareList.components[i].pin.s
+                                ]
+                            };
+                            break;
+                        case 'encoder':
+                            tempIncludes = ['BitbloqEncoder.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Encoder',
+                                arguments: [
+                                    'encoderUpdaterWrapper',
+                                    hardwareList.components[i].pin.k,
+                                    hardwareList.components[i].pin.sa,
+                                    hardwareList.components[i].pin.sb
+                                ]
+                            };
+                            tempProgramFunctionDeclaration = 'void encoderUpdaterWrapper();';
+                            tempProgramExtraCode = 'void encoderUpdaterWrapper() {\n' + hardwareList.components[i].name + '.update();\n}';
+                            break;
+                        case 'joystick':
+                            tempIncludes = ['BitbloqJoystick.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Joystick',
+                                arguments: [
+                                    hardwareList.components[i].pin.x,
+                                    hardwareList.components[i].pin.y,
+                                    hardwareList.components[i].pin.k
+                                ]
+                            };
+                            break;
+                        case 'lcd':
+                            tempIncludes = ['Wire.h', 'BitbloqLiquidCrystal.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'LiquidCrystal',
+                                arguments: [
+                                    '0'
+                                ]
+                            };
+                            tempSetupExtraCode = hardwareList.components[i].name + '.begin(16, 2);' + hardwareList.components[i].name + '.clear();';
+                            break;
+                        case 'RGBled':
+                            tempIncludes = ['BitbloqRGB.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'ZumRGB',
+                                arguments: [
+                                    hardwareList.components[i].pin.r,
+                                    hardwareList.components[i].pin.g,
+                                    hardwareList.components[i].pin.b
+                                ]
+                            };
+                            break;
+                        case 'rtc':
+                            tempIncludes = ['Wire.h', 'BitbloqRTC.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'RTC_DS1307'
+                            };
+                            break;
+                        case 'hts221':
+                            tempIncludes = ['Wire.h', 'BitbloqHTS221.h', 'HTS221_Registers.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'HTS221'
+                            };
+                            tempSetupExtraCode = 'Wire.begin();\n' + hardwareList.components[i].name + '.begin();';
+                            break;
+                        case 'us':
+                            tempIncludes = ['BitbloqUS.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'US',
+                                arguments: [
+                                    hardwareList.components[i].pin.trigger,
+                                    hardwareList.components[i].pin.echo
+                                ]
+                            };
+                            break;
+                        case 'servo':
+                        case 'servocont':
+                            if (hardwareList.components[i].oscillator && (hardwareList.components[i].oscillator !== 'false')) {
+                                tempIncludes = ['Servo.h', 'Wire.h', 'BitbloqOscillator.h'];
+                                tempInstanceOf = {
+                                    name: hardwareList.components[i].name,
+                                    type: 'Oscillator'
+                                };
+                            } else {
+                                tempIncludes = ['Servo.h'];
+                                tempInstanceOf = {
+                                    name: hardwareList.components[i].name,
+                                    type: 'Servo'
+                                };
+                            }
+                            tempSetupExtraCode = hardwareList.components[i].name + '.attach(' + hardwareList.components[i].pin.s + ');';
+                            break;
+                        case 'irs2':
+                            tempIncludes = ['BitbloqLineFollower.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'LineFollower',
+                                arguments: [
+                                    hardwareList.components[i].pin.s1,
+                                    hardwareList.components[i].pin.s2
+                                ]
+                            };
+                            break;
+                        case 'mkb_ultrasound':
+                            tempIncludes = ['BitbloqUS.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'BitbloqUltrasound',
+                                arguments: [
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                ]
+                            };
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+                            break;
+                        case 'mkb_linefollower':
 
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name + '_1',
+                                type: 'const int',
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                            };
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_1 , INPUT);';
+
+                            addInstance(tempInstanceOf, {}, hardwareList);
+                            setupExtraCodeMap[tempSetupExtraCode] = true;
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name + '_2',
+                                type: 'const int',
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            };
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_2 , INPUT);';
+                            break;
+                        case 'mkb_lightsensor':
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'const int',
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            };
+                            break;
+                    }
+
+                    if (tempInstanceOf) {
                         addInstance(tempInstanceOf, {}, hardwareList);
+                    }
+
+                    if (tempSetupExtraCode) {
                         setupExtraCodeMap[tempSetupExtraCode] = true;
+                    }
 
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name + '_2',
-                            type: 'const int',
-                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
-                        };
-                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_2 , INPUT);';
-                        break;
-                    case 'mkb_lightsensor':
-                        tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
-                        tempInstanceOf = {
-                            name: hardwareList.components[i].name,
-                            type: 'const int',
-                            equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
-                        };
-                        break;
-                }
+                    if (tempProgramExtraCode) {
+                        programExtraCodeMap[tempProgramExtraCode] = true;
+                    }
 
-                if (tempInstanceOf) {
-                    addInstance(tempInstanceOf, {}, hardwareList);
-                }
+                    if (tempProgramFunctionDeclaration) {
+                        programFunctionDeclarationsMap[tempProgramFunctionDeclaration] = true;
+                    }
 
-                if (tempSetupExtraCode) {
-                    setupExtraCodeMap[tempSetupExtraCode] = true;
-                }
-
-                if (tempProgramExtraCode) {
-                    programExtraCodeMap[tempProgramExtraCode] = true;
-                }
-
-                if (tempProgramFunctionDeclaration) {
-                    programFunctionDeclarationsMap[tempProgramFunctionDeclaration] = true;
-                }
-
-
-                for (var j = 0; j < tempIncludes.length; j++) {
-                    includes[tempIncludes[j]] = true;
+                    for (var j = 0; j < tempIncludes.length; j++) {
+                        includes[tempIncludes[j]] = true;
+                    }
                 }
             }
         }
