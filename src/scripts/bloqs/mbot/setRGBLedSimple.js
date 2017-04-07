@@ -52,7 +52,7 @@ var mBotSetRGBLedSimple = _.merge(_.clone(StatementBloq, true), {
                 value: '0,255,0'
             }, {
                 label: 'bloq-rgbLed-simple-dark-green',
-                value: '0,60,102'
+                value: '0,61,4'
             }, {
                 label: 'bloq-rgbLed-simple-blue',
                 value: '40,40,255'
