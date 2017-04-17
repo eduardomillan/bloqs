@@ -4071,15 +4071,15 @@
         return result;
     };
 
-    var updateBloqsTimeout;
+    var updateBloqsTimeout, tempComponentsArray;
 
     var startBloqsUpdate = function(componentsArray) {
-        componentsArray = componentsArray;
+        tempComponentsArray = componentsArray;
 
         if (!updateBloqsTimeout) {
             updateBloqsTimeout = setTimeout(function() {
                 updateBloqsTimeout = null;
-                updateBloqs(componentsArray);
+                updateBloqs(tempComponentsArray);
             }, 200);
         }
     };
