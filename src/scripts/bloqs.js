@@ -1474,8 +1474,8 @@
 
     var updateBloqsTimeout;
 
-    var startBloqsUpdate = function(componentsArray) {
-        componentsArray = componentsArray;
+    var startBloqsUpdate = function(componentsArrayUpdated) {
+        componentsArray = componentsArrayUpdated;
 
         if (!updateBloqsTimeout) {
             updateBloqsTimeout = setTimeout(function() {
