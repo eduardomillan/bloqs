@@ -2154,8 +2154,8 @@
                                 name: hardwareList.components[i].name,
                                 type: 'bqSoftwareSerial',
                                 arguments: [
-                                    hardwareList.components[i].pin.rx,
-                                    hardwareList.components[i].pin.tx,
+                                    hardwareList.components[i].pin.rx || 0,
+                                    hardwareList.components[i].pin.tx || 1,
                                     hardwareList.components[i].baudRate
                                 ]
                             };
