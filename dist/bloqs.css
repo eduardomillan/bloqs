@@ -10196,7 +10196,9 @@ tester + span + .bloqinput {
   .suggestion-window.top .triangle.bottom {
     display: block; }
   .suggestion-window .bloqs-container {
-    margin: 7px 0px; }
+    margin: 7px 0; }
+    .suggestion-window .bloqs-container p {
+      margin: 10px 14px; }
   .suggestion-window .bloq-container {
     position: relative;
     overflow: hidden; }

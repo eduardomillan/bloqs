@@ -40,6 +40,7 @@
         mouseDownBloq = null,
         draggingBloq = null,
         startPreMouseMove = null,
+        availableBloqs,
         preMouseMoveX,
         preMouseMoveY,
         shiftKeyDown,
@@ -50,6 +51,7 @@
         fieldOffsetLeft = options.fieldOffsetLeft || fieldOffsetLeft || 0;
         fieldOffsetRight = options.fieldOffsetRight || fieldOffsetRight || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || fieldOffsetTopForced || 0;
+        availableBloqs = options.availableBloqs;
 
         if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
             forcedScrollTop = options.forcedScrollTop;
@@ -86,7 +88,9 @@
             //to avoid mousemove event on children and parents at the same time
             evt.stopPropagation();
             //launch another event
-            window.dispatchEvent(new CustomEvent('bloqs:mousedown', { detail: event.target }));
+            window.dispatchEvent(new CustomEvent('bloqs:mousedown', {
+                detail: event.target
+            }));
 
             mouseDownBloq = evt.currentTarget;
             startPreMouseMove = true;
@@ -157,7 +161,9 @@
         if (mouseDownBloq) {
 
             bloq = bloqs[mouseDownBloq.getAttribute('data-bloq-id')];
-            window.dispatchEvent(new CustomEvent('bloqs:startMove', { detail: bloq }));
+            window.dispatchEvent(new CustomEvent('bloqs:startMove', {
+                detail: bloq
+            }));
 
             if (!bloq.isConnectable()) {
                 //console.log('its not connectable');
@@ -1316,6 +1322,7 @@
                 var workspaceRect = $field[0].getBoundingClientRect();
                 var params = {
                     suggestedText: translateBloq(lang, 'suggested'),
+                    noSuggestedText: translateBloq(lang, 'no-suggested'),
                     launcherTopPoint: {
                         top: launcherRect.top,
                         left: launcherRect.left
@@ -1331,45 +1338,51 @@
                     fieldOffsetLeft: fieldOffsetLeft,
                     fieldOffsetRight: fieldOffsetRight,
                     fieldScrollTop: $field[0].scrollTop,
-                    fieldScrollLeft: $field[0].scrollLeft
+                    fieldScrollLeft: $field[0].scrollLeft,
+                    availableBloqs: availableBloqs
                 };
                 if (IOConnectors[bloqConnectorUuid]) {
                     params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
                 } else if (connectors[bloqConnectorUuid]) {
                     params.suggestedBloqs = connectors[bloqConnectorUuid].data.suggestedBloqs;
                 }
-                params.suggestedBloqs = filterSuggestedBloqs(params.suggestedBloqs, componentsArray, softwareArrays);
+                params.suggestedBloqs = filterSuggestedBloqs(params.suggestedBloqs, componentsArray, softwareArrays, params.availableBloqs);
                 params.showWindowCallback = function(selectedBloqId) {
                     var selectedBloq = bloqs[selectedBloqId];
                     if (!selectedBloq.isConnectable()) {
                         selectedBloq.doConnectable();
                     }
                     connectBloq(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
-                    window.dispatchEvent(new CustomEvent('bloqs:suggestedAdded', { detail: bloq }));
+                    window.dispatchEvent(new CustomEvent('bloqs:suggestedAdded', {
+                        detail: bloq
+                    }));
                 }
                 bloqsSuggested.showSuggestedWindow(params);
             }
         }
     }
 
-    function filterSuggestedBloqs(suggestedBloqs, componentsArray, softwareArrays) {
+    function filterSuggestedBloqs(suggestedBloqs, componentsArray, softwareArrays, availableBloqs) {
         var filteredItems = [];
         for (var i = 0; i < suggestedBloqs.length; i++) {
-            switch (suggestedBloqs[i]) {
-                case 'selectVariable':
-                    if (softwareArrays.softwareVars.length > 0) {
+            if (!availableBloqs || (availableBloqs && availableBloqs.indexOf(suggestedBloqs[i]) > -1)) {
+                switch (suggestedBloqs[i]) {
+                    case 'selectVariable':
+                        if (softwareArrays.softwareVars.length > 0) {
+                            filteredItems.push(suggestedBloqs[i]);
+                        }
+                        break;
+                    case 'readSensor':
+                        if (componentsArray.sensors.length > 0) {
+                            filteredItems.push(suggestedBloqs[i]);
+                        }
+                        break;
+                    default:
                         filteredItems.push(suggestedBloqs[i]);
-                    }
-                    break;
-                case 'readSensor':
-                    if (componentsArray.sensors.length > 0) {
-                        filteredItems.push(suggestedBloqs[i]);
-                    }
-                    break;
-                default:
-                    filteredItems.push(suggestedBloqs[i]);
+                }
             }
-        };
+
+        }
         return filteredItems;
     }
 
