@@ -501,7 +501,7 @@
                     //console.log('hardwareList');
                     //console.log(hardwareList);
 
-                    switch (hardwareList.components[i].id) {
+                    switch (hardwareList.components[i].uuid) {
                         case 'led':
                         case 'buzz':
                             tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', OUTPUT);';
