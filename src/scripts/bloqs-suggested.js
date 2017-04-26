@@ -38,29 +38,30 @@
 
             showWindowCallback = params.showWindowCallback;
             console.log('params.suggestedBloqs', params.suggestedBloqs);
+            showWindow();
+            if (params.suggestedText) {
+                setSuggestedText(params.suggestedText);
+            }
+            moveWindow({
+                launcherTopPoint: params.launcherTopPoint,
+                launcherHeight: params.launcherHeight,
+                launcherBottomPoint: params.launcherBottomPoint,
+                suggestedWindowWidth: suggestedWindow.offsetWidth,
+                suggestedWindowHeight: suggestedWindow.offsetHeight,
+                workspaceHeight: params.workspaceHeight,
+                workspaceWidth: params.workspaceWidth,
+                fieldOffsetTop: params.fieldOffsetTop,
+                fieldOffsetLeft: params.fieldOffsetLeft,
+                fieldOffsetRight: params.fieldOffsetRight,
+                fieldScrollTop: params.fieldScrollTop,
+                fieldScrollLeft: params.fieldScrollLeft
+            });
+
             if (params.suggestedBloqs && (params.suggestedBloqs.length > 0)) {
-                showWindow();
-                if (params.suggestedText) {
-                    setSuggestedText(params.suggestedText);
-                }
-
-
                 createBloqsInside(params.suggestedBloqs);
-                moveWindow({
-                    launcherTopPoint: params.launcherTopPoint,
-                    launcherHeight: params.launcherHeight,
-                    launcherBottomPoint: params.launcherBottomPoint,
-                    suggestedWindowWidth: suggestedWindow.offsetWidth,
-                    suggestedWindowHeight: suggestedWindow.offsetHeight,
-                    workspaceHeight: params.workspaceHeight,
-                    workspaceWidth: params.workspaceWidth,
-                    fieldOffsetTop: params.fieldOffsetTop,
-                    fieldOffsetLeft: params.fieldOffsetLeft,
-                    fieldOffsetRight: params.fieldOffsetRight,
-                    fieldScrollTop: params.fieldScrollTop,
-                    fieldScrollLeft: params.fieldScrollLeft
-                });
+
             } else {
+                setNoBloqsSuggestedText(params.noSuggestedText);
                 console.log('no bloqs suggested');
             }
 
@@ -148,6 +149,14 @@
     function setSuggestedText(text) {
         if (headerTitle) {
             headerTitle.innerHTML = text;
+        }
+    }
+
+    function setNoBloqsSuggestedText(text) {
+        var noSuggested = document.createElement('p');
+        noSuggested.innerHTML = text;
+        if (bloqsContainer) {
+            bloqsContainer.appendChild(noSuggested);
         }
     }
 
