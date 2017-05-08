@@ -51,6 +51,16 @@ var phoneReadGyroscope = _.merge(_.clone(OutputBloq, true), {
     code: '',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
+        setupExtraCode: '{PHONE}.begin(º[{PHONE}.baudRate]);',
+        needInstanceOf: [{
+            name: '{PHONE}',
+            type: 'bqSoftwareSerial',
+            arguments: [
+                'º[{PHONE}.pin.rx]',
+                'º[{PHONE}.pin.tx]',
+                'º[{PHONE}.baudRate]'
+            ]
+        }],
         extraFunctionCode: 'float getGyroscope(String axis,bqSoftwareSerial & phone){phone.println(String("readGyros-")+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
         code: 'getGyroscope({AXIS}, {PHONE})'
     },

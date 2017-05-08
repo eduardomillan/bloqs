@@ -67,6 +67,16 @@ var phoneReadAccel = _.merge(_.clone(OutputBloq, true), {
     code: '{PHONE}.readString()',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
+        setupExtraCode: '{PHONE}.begin(º[{PHONE}.baudRate]);',
+        needInstanceOf: [{
+            name: '{PHONE}',
+            type: 'bqSoftwareSerial',
+            arguments: [
+                'º[{PHONE}.pin.rx]',
+                'º[{PHONE}.pin.tx]',
+                'º[{PHONE}.baudRate]'
+            ]
+        }],
         extraFunctionCode: 'float getAcceleration(String axis, String message, bqSoftwareSerial & phone){phone.println(String(message)+String(axis));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
         code: 'getAcceleration({AXIS}, {MESSAGE}, {PHONE})'
     },
