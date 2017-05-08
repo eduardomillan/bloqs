@@ -20,7 +20,7 @@ var phoneReceive = _.merge(_.clone(OutputBloq, true), {
     name: 'phoneReceive',
     bloqClass: 'bloq-phone-receive',
     content: [
-        [ {
+        [{
             alias: 'text',
             value: 'bloq-phone-receive'
         }, {
@@ -32,6 +32,16 @@ var phoneReceive = _.merge(_.clone(OutputBloq, true), {
     code: '{PHONE}.readString()',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
+        setupExtraCode: '{PHONE}.begin(º[{PHONE}.baudRate]);',
+        needInstanceOf: [{
+            name: '{PHONE}',
+            type: 'bqSoftwareSerial',
+            arguments: [
+                'º[{PHONE}.pin.rx]',
+                'º[{PHONE}.pin.tx]',
+                'º[{PHONE}.baudRate]'
+            ]
+        }],
         code: '{PHONE}.readString()'
     },
     returnType: {

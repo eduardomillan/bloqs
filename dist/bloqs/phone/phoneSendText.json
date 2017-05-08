@@ -21,7 +21,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "9ed1a9e2-f8a3-4bf8-a255-a4e701db4279"
+      "name": "641df9d7-40e9-4c06-b2f6-1c21f044d37b"
     }
   ],
   "bloqClass": "bloq-phone-write",
@@ -42,7 +42,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "9ed1a9e2-f8a3-4bf8-a255-a4e701db4279"
+        "name": "641df9d7-40e9-4c06-b2f6-1c21f044d37b"
       },
       {
         "alias": "text",
@@ -59,6 +59,18 @@
   "arduino": {
     "includes": [
       "BitbloqSoftwareSerial.h"
+    ],
+    "setupExtraCode": "{PHONE}.begin(º[{PHONE}.baudRate]);",
+    "needInstanceOf": [
+      {
+        "name": "{PHONE}",
+        "type": "bqSoftwareSerial",
+        "arguments": [
+          "º[{PHONE}.pin.rx]",
+          "º[{PHONE}.pin.tx]",
+          "º[{PHONE}.baudRate]"
+        ]
+      }
     ],
     "code": "{PHONE}.println(String(\"write-\")+String({DATA}));"
   },

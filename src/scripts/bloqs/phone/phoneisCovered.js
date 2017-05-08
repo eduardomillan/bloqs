@@ -21,34 +21,44 @@ var phoneisCovered = _.merge(_.clone(OutputBloq, true), {
     bloqClass: 'bloq-phone-isCovered',
     content: [
         [{
-            alias: 'text',
-            value: 'bloq-the'
-        },{
-            id: 'PHONE',
-            alias: 'dynamicDropdown',
-            options: 'serialElements'
-        }, {
-            alias: 'text',
-            value: 'bloq-phone-is'
-        },
-        {
-            id: 'COVERED',
-            alias: 'staticDropdown',
-            options: [{
-                label: 'bloq-phone-covered',
-                value: '"covered"'
+                alias: 'text',
+                value: 'bloq-the'
             }, {
-                label: 'bloq-phone-not-covered',
-                value: '"ncovered"'
-            }]
-        }
-      ]
+                id: 'PHONE',
+                alias: 'dynamicDropdown',
+                options: 'serialElements'
+            }, {
+                alias: 'text',
+                value: 'bloq-phone-is'
+            },
+            {
+                id: 'COVERED',
+                alias: 'staticDropdown',
+                options: [{
+                    label: 'bloq-phone-covered',
+                    value: '"covered"'
+                }, {
+                    label: 'bloq-phone-not-covered',
+                    value: '"ncovered"'
+                }]
+            }
+        ]
     ],
     code: '{PHONE}.readString()',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
+        setupExtraCode: '{PHONE}.begin(º[{PHONE}.baudRate]);',
+        needInstanceOf: [{
+            name: '{PHONE}',
+            type: 'bqSoftwareSerial',
+            arguments: [
+                'º[{PHONE}.pin.rx]',
+                'º[{PHONE}.pin.tx]',
+                'º[{PHONE}.baudRate]'
+            ]
+        }],
         extraFunctionCode: 'boolean getProx(String cv,bqSoftwareSerial & phone){phone.println(String("readProx-")+String(cv));String data="";boolean result=false;while(data==""){data=phone.readString();}if(data.indexOf("true")>=0){result=true;}else{result=false;}return result;}',
-        code:'getProx({COVERED}, {PHONE})'
+        code: 'getProx({COVERED}, {PHONE})'
     },
     returnType: {
         type: 'simple',

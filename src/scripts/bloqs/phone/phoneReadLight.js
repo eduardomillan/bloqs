@@ -35,6 +35,16 @@ var phoneReadLight = _.merge(_.clone(OutputBloq, true), {
     code: '{PHONE}.readString()',
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
+        setupExtraCode: '{PHONE}.begin(º[{PHONE}.baudRate]);',
+        needInstanceOf: [{
+            name: '{PHONE}',
+            type: 'bqSoftwareSerial',
+            arguments: [
+                'º[{PHONE}.pin.rx]',
+                'º[{PHONE}.pin.tx]',
+                'º[{PHONE}.baudRate]'
+            ]
+        }],
         extraFunctionCode: 'float getLight(bqSoftwareSerial & phone){phone.println(String("readLight-"));String data="";while(data==""){data=phone.readString();}return data.toFloat();}',
         code: 'getLight({PHONE})'
     },

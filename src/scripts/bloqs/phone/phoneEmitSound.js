@@ -27,25 +27,24 @@ var phoneEmitSound = _.merge(_.clone(StatementBloq, true), {
             id: 'SOUND',
             alias: 'staticDropdown',
             options: [{
-                    label: 'bloq-phone-sounds-bass-v1',
-                    value: '"bass"'
-                }, {
-                    label: 'bloq-phone-sounds-bongo-v1',
-                    value: '"bongo"'
-                }, {
-                    label: 'bloq-phone-sounds-highhat-v1',
-                    value: '"highhat"'
-                }, {
-                    label: 'bloq-phone-sounds-snare-v1',
-                    value: '"snare"'
-                }, {
-                    label: 'bloq-phone-sounds-meow-v1',
-                    value: '"meow"'
-                }, {
-                    label: 'bloq-phone-sounds-joke-v1',
-                    value: '"joke"'
-                }
-            ]
+                label: 'bloq-phone-sounds-bass-v1',
+                value: '"bass"'
+            }, {
+                label: 'bloq-phone-sounds-bongo-v1',
+                value: '"bongo"'
+            }, {
+                label: 'bloq-phone-sounds-highhat-v1',
+                value: '"highhat"'
+            }, {
+                label: 'bloq-phone-sounds-snare-v1',
+                value: '"snare"'
+            }, {
+                label: 'bloq-phone-sounds-meow-v1',
+                value: '"meow"'
+            }, {
+                label: 'bloq-phone-sounds-joke-v1',
+                value: '"joke"'
+            }]
         }, {
             alias: 'text',
             value: 'bloq-phone-sounds-device'
@@ -59,6 +58,16 @@ var phoneEmitSound = _.merge(_.clone(StatementBloq, true), {
 
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
+        setupExtraCode: '{PHONE}.begin(º[{PHONE}.baudRate]);',
+        needInstanceOf: [{
+            name: '{PHONE}',
+            type: 'bqSoftwareSerial',
+            arguments: [
+                'º[{PHONE}.pin.rx]',
+                'º[{PHONE}.pin.tx]',
+                'º[{PHONE}.baudRate]'
+            ]
+        }],
         code: '{PHONE}.println(String("playSound-")+String({SOUND}));delay(1000);'
     }
 });

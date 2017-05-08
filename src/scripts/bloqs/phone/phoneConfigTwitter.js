@@ -26,6 +26,17 @@ var phoneConfigTwitter = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '/*sendTwitterAppConfig*/',
     arduino: {
+        includes: ['BitbloqSoftwareSerial.h'],
+        setupExtraCode: '{PHONE}.begin(º[{PHONE}.baudRate]);',
+        needInstanceOf: [{
+            name: '{PHONE}',
+            type: 'bqSoftwareSerial',
+            arguments: [
+                'º[{PHONE}.pin.rx]',
+                'º[{PHONE}.pin.tx]',
+                'º[{PHONE}.baudRate]'
+            ]
+        }],
         code: '/*sendTwitterAppConfig*/'
     }
 });

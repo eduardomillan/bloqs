@@ -21,27 +21,38 @@ var phoneSendTweet = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-send-tweet',
     content: [
         [{
-            alias: 'text',
-            value: 'bloq-send-tweet'
-        },  {
-            bloqInputId: 'TWEET',
-            alias: 'bloqInput',
-            acceptType: ['all'],
-            suggestedBloqs: ['string', 'selectVariable']
-        },
-        {
-            alias: 'text',
-            value: 'bloq-from-device'
-        }, {
-            id: 'PHONE',
-            alias: 'dynamicDropdown',
-            options: 'serialElements'
-        }]
+                alias: 'text',
+                value: 'bloq-send-tweet'
+            }, {
+                bloqInputId: 'TWEET',
+                alias: 'bloqInput',
+                acceptType: ['all'],
+                suggestedBloqs: ['string', 'selectVariable']
+            },
+            {
+                alias: 'text',
+                value: 'bloq-from-device'
+            }, {
+                id: 'PHONE',
+                alias: 'dynamicDropdown',
+                options: 'serialElements'
+            }
+        ]
     ],
     code: '{PHONE}.println("twitterSend-" + {TWEET});',
 
     arduino: {
         includes: ['BitbloqSoftwareSerial.h'],
+        setupExtraCode: '{PHONE}.begin(º[{PHONE}.baudRate]);',
+        needInstanceOf: [{
+            name: '{PHONE}',
+            type: 'bqSoftwareSerial',
+            arguments: [
+                'º[{PHONE}.pin.rx]',
+                'º[{PHONE}.pin.tx]',
+                'º[{PHONE}.baudRate]'
+            ]
+        }],
         code: '{PHONE}.println(String("twitterSend-")+String({TWEET}));'
     }
 
