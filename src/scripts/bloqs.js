@@ -250,7 +250,7 @@
             }
             window.dispatchEvent(new Event('bloqs:connect'));
 
-            if (!bloq.$bloq.closest('.bloq--group')[0]) {
+            if (!bloq.$bloq.closest('.bloq--group')[0] || (bloq.$bloq.closest('.inside-bloq.disabled')[0] && !_.isEqual(bloq.$bloq.closest('.inside-bloq.disabled')[0], bloq.$bloq[0]))) {
                 bloq.disable();
                 if ((bloq.bloqData.type === 'statement') || (bloq.bloqData.type === 'statement-input')) {
                     utils.executeFunctionOnConnectedStatementBloqs('disable', bloq, bloqs, connectors);
