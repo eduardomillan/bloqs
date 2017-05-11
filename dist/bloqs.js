@@ -1212,6 +1212,7 @@
             robot: [],
             mkb_ultrasound: [],
             mkb_integrated_buzz: [],
+            mkb_joystick: [],
             mkb_lightsensor: [],
             mkb_linefollower: [],
             mkb_integrated_RGB: []
