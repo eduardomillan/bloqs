@@ -1260,8 +1260,9 @@
                 });
                 //Transform the name to create valid function / variables names
                 $element.keyup(function() {
+                    console.log(bloq);
                     bloqsUtils.delay(function() {
-                        var name = utils.validName($element.val(), softwareArrays);
+                        var name = utils.validName($element.val(), bloq.uuid, softwareArrays);
                         $element.val(name);
                         if (name) {
                             updateSoftVar(bloq, name);
@@ -1820,7 +1821,7 @@
             }
 
             if (this.bloqData.createDynamicContent) {
-                var name = utils.validName(this.$bloq.find('input.var--input').val());
+                var name = utils.validName(this.$bloq.find('input.var--input').val(), this.uuid);
                 if (name) {
                     updateSoftVar(this, name);
                 } else {
