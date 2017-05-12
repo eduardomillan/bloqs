@@ -134,7 +134,7 @@
      * Transform a function or variable name to make it "legal" in Arduino coding language
      * @param  name
      */
-    var validName = function(name, softwareArrays) {
+    var validName = function(name, bloqUuid, softwareArrays) {
         var reservedWords = 'setup,loop,if,else,for,switch,case,while,do,break,continue,return,goto,define,include,HIGH,LOW,INPUT,OUTPUT,INPUT_PULLUP,true,false,interger, constants,floating,point,void,bool,char,unsigned,byte,int,word,long,float,double,string,String,array,static, volatile,const,sizeof,pinMode,digitalWrite,digitalRead,analogReference,analogRead,analogWrite,tone,noTone,shiftOut,shitIn,pulseIn,millis,micros,delay,delayMicroseconds,min,max,abs,constrain,map,pow,sqrt,sin,cos,tan,randomSeed,random,lowByte,highByte,bitRead,bitWrite,bitSet,bitClear,bit,attachInterrupt,detachInterrupt,interrupts,noInterrupts';
         reservedWords = reservedWords.split(',');
         if (name && name.length > 0) {
@@ -163,38 +163,27 @@
                     break;
                 }
             }
-            var counter = [];
+            var names = {},
+                regexp = /(\D+)(\d+)$/,
+                variableSufixNumber = '';
+
             if (softwareArrays) {
                 var softwareVars = softwareArrays.softwareVars.concat(softwareArrays.voidFunctions, softwareArrays.returnFunctions);
-                for (j = 0; j < softwareVars.length; j++) {
-                    if (name === softwareVars[j].name) {
-                        counter.push(j);
 
+                for (j = 0; j < softwareVars.length; j++) {
+                    if (softwareVars[j].bloqUuid !== bloqUuid) {
+                        names[softwareVars[j].name] = true;
                     }
                 }
-                if (counter.length >= 1) {
-                    j = counter[1];
-                    //  console.log('name === softwareVars[j].name', name === softwareVars[j].name, name, softwareVars[j].name);
-                    if (isNaN(name[name.length - 1])) {
-                        name += '1';
-                    } else {
-                        i = 0;
-                        var number, it;
-                        while (isNaN(name[i])) {
-                            it = i;
-                            i++;
-                        }
-                        number = parseInt(name.substring(it + 1, name.length), 10);
-                        number += 1;
-                        name = name.substring(0, it + 1);
-                        name += number.toString();
-                        var repeatedVars = _.filter(softwareArrays.softwareVars, function(variable) {
-                            return variable.name === name;
-                        });
-                        if (repeatedVars.length >= 1) {
-                            name = validName(name, softwareArrays);
-                        }
-                    }
+                var regexpResult = regexp.exec(name);
+                if (regexpResult) {
+                    variableSufixNumber = regexpResult[2];
+                }
+                var variableName = name.substring(0, name.length - variableSufixNumber.length);
+                variableSufixNumber = Number(variableSufixNumber);
+                while (names[name]) {
+                    variableSufixNumber++;
+                    name = variableName + variableSufixNumber
                 }
             }
         }
@@ -1450,7 +1439,6 @@
     return bloqsUtils;
 
 })(window.bloqsUtils = window.bloqsUtils || {}, _, undefined);
-
 
 'use strict';
 (function(bloqsTooltip) {
@@ -3875,8 +3863,9 @@
                 });
                 //Transform the name to create valid function / variables names
                 $element.keyup(function() {
+                    console.log(bloq);
                     bloqsUtils.delay(function() {
-                        var name = utils.validName($element.val(), softwareArrays);
+                        var name = utils.validName($element.val(), bloq.uuid, softwareArrays);
                         $element.val(name);
                         if (name) {
                             updateSoftVar(bloq, name);
@@ -4435,7 +4424,7 @@
             }
 
             if (this.bloqData.createDynamicContent) {
-                var name = utils.validName(this.$bloq.find('input.var--input').val());
+                var name = utils.validName(this.$bloq.find('input.var--input').val(), this.uuid);
                 if (name) {
                     updateSoftVar(this, name);
                 } else {
