@@ -668,7 +668,6 @@
                             setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
                             break;
                         case 'mkb_linefollower':
-
                             tempInstanceOf = {
                                 name: hardwareList.components[i].name + '_1',
                                 type: 'const int',
@@ -692,6 +691,32 @@
                                 name: hardwareList.components[i].name,
                                 type: 'const int',
                                 equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            };
+                            break;
+                        case 'mkb_joystick':
+                            tempIncludes = ['BitbloqJoystick.h'];
+
+                            var portNumber = 2,
+                                index;
+                            for (index= 0; index<portNumber; index++){
+                                tempInstanceOf = {
+                                    name: hardwareList.components[i].name + '_'+ (index+1),
+                                    type: 'const int',
+                                    equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][' + (index+1) + ']'
+                                };
+                                tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_' + (index+1) +' , INPUT);';
+                                addInstance(tempInstanceOf, {}, hardwareList);
+                                setupExtraCodeMap[tempSetupExtraCode] = true;
+                            }
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Joystick',
+                                arguments: [
+                                    hardwareList.components[i].name + '_1',
+                                    hardwareList.components[i].name + '_2',
+                                    0
+                                ]
                             };
                             break;
                     }
