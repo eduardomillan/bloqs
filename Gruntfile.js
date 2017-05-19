@@ -15,6 +15,7 @@ module.exports = function(grunt) {
                     'src/scripts/python-generation.js',
                     'src/scripts/arduino-generation.js',
                     'src/scripts/bloqs-suggested.js',
+                    'src/scripts/bloqs-dotsMatrix.js',
                     'src/scripts/bloqs.js'
                 ],
                 dest: 'dist/<%= pkg.name %>.js'

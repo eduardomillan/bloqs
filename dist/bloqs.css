@@ -10156,7 +10156,8 @@ tester + span + .bloqinput {
     border-width: 10px 10px 0 10px;
     border-color: #000000 transparent transparent transparent; }
 
-.suggestion-window {
+.suggestion-window,
+.dotsMatrix-window {
   position: absolute;
   background-color: #FFF;
   top: 0;
@@ -10165,47 +10166,77 @@ tester + span + .bloqinput {
   box-shadow: 2px 2px 6px 0 rgba(50, 50, 50, 0.35);
   min-width: 350px;
   border-radius: 5px; }
-  .suggestion-window .sugg-header {
+  .suggestion-window .sugg-header,
+  .dotsMatrix-window .sugg-header {
     background-color: #eaebec;
     width: 100%;
     position: relative;
     overflow: hidden;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px; }
-    .suggestion-window .sugg-header h3 {
+    .suggestion-window .sugg-header h3,
+    .dotsMatrix-window .sugg-header h3 {
       margin: 10px 14px; }
-  .suggestion-window .triangle {
+  .suggestion-window .triangle,
+  .dotsMatrix-window .triangle {
     width: 0;
     height: 0;
     position: absolute;
     margin-left: 32px;
     border-left: 14px solid transparent;
     border-right: 14px solid transparent; }
-    .suggestion-window .triangle.top {
+    .suggestion-window .triangle.top,
+    .dotsMatrix-window .triangle.top {
       top: -13px;
       border-bottom: 14px solid #eaebec; }
-    .suggestion-window .triangle.bottom {
+    .suggestion-window .triangle.bottom,
+    .dotsMatrix-window .triangle.bottom {
       display: none;
       bottom: -13px;
       border-top: 14px solid #ffffff; }
-  .suggestion-window.right .triangle {
+  .suggestion-window.right .triangle,
+  .dotsMatrix-window.right .triangle {
     margin-left: auto;
     margin-right: 23px; }
-  .suggestion-window.top .triangle.top {
+  .suggestion-window.top .triangle.top,
+  .dotsMatrix-window.top .triangle.top {
     display: none; }
-  .suggestion-window.top .triangle.bottom {
+  .suggestion-window.top .triangle.bottom,
+  .dotsMatrix-window.top .triangle.bottom {
     display: block; }
-  .suggestion-window .bloqs-container {
+  .suggestion-window .bloqs-container,
+  .dotsMatrix-window .bloqs-container {
     margin: 7px 0; }
-    .suggestion-window .bloqs-container p {
+    .suggestion-window .bloqs-container p,
+    .dotsMatrix-window .bloqs-container p {
       margin: 10px 14px; }
-  .suggestion-window .bloq-container {
+  .suggestion-window .bloq-container,
+  .dotsMatrix-window .bloq-container {
     position: relative;
     overflow: hidden; }
-    .suggestion-window .bloq-container .bloq {
+    .suggestion-window .bloq-container .bloq,
+    .dotsMatrix-window .bloq-container .bloq {
       position: relative;
       margin: 7px 25px; }
-      .suggestion-window .bloq-container .bloq .bloq--statement-input__header {
+      .suggestion-window .bloq-container .bloq .bloq--statement-input__header,
+      .dotsMatrix-window .bloq-container .bloq .bloq--statement-input__header {
         position: static !important; }
-  .suggestion-window.hide {
+  .suggestion-window.hide,
+  .dotsMatrix-window.hide {
     display: none; }
+
+.bloqs-dotsMatrix {
+  width: 100px;
+  height: 100px;
+  background-color: #000FFF; }
+
+.dotsMatrix-window .dots-container {
+  margin: 7px 0; }
+  .dotsMatrix-window .dots-container .bloqs-dots-dot {
+    background-color: #000FFF;
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin: 5px; }
+    .dotsMatrix-window .dots-container .bloqs-dots-dot.active {
+      background-color: #FFF000; }

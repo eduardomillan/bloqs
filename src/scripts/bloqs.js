@@ -1,5 +1,5 @@
 'use strict';
-(function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested) {
+(function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix) {
     /**
      * Events
      * bloqs:created
@@ -57,6 +57,7 @@
             forcedScrollTop = options.forcedScrollTop;
         }
         bloqsSuggested.init(options.suggestionWindowParent, options.bloqSchemas);
+        bloqsDotsMatrix.init(options.dotsMatrixWindowParent);
 
         lang = options.lang || 'es-ES';
     };
@@ -1299,11 +1300,45 @@
                 $element = $('<p>').html(elementSchema.value);
                 $element.addClass('descriptionText');
                 break;
+            case 'dotsMatrix':
+                $element = $('<div class="bloqs-dotsMatrix">');
+                $element.click(function(evt) {
+                    showDotsMatrix(elementSchema, bloq, evt);
+                });
+                break;
             default:
                 throw 'elementSchema not defined: ' + elementSchema.alias;
         }
 
         return $element;
+    };
+
+    function showDotsMatrix(elementSchema, bloq, evt) {
+        var launcherRect = evt.target.getBoundingClientRect();
+        var workspaceRect = $field[0].getBoundingClientRect();
+        var params = {
+            launcherTopPoint: {
+                top: launcherRect.top,
+                left: launcherRect.left
+            },
+            launcherBottomPoint: {
+                top: launcherRect.bottom,
+                left: launcherRect.left
+            },
+            launcherHeight: launcherRect.height,
+            workspaceHeight: workspaceRect.height,
+            workspaceWidth: workspaceRect.width,
+            fieldOffsetTop: getFieldOffsetTop(fieldOffsetTopSource),
+            fieldOffsetLeft: fieldOffsetLeft,
+            fieldOffsetRight: fieldOffsetRight,
+            fieldScrollTop: $field[0].scrollTop,
+            fieldScrollLeft: $field[0].scrollLeft,
+            dotsMatrixOptions: elementSchema
+        };
+        params.showWindowCallback = function() {
+            console.log('showWindowCallback');
+        };
+        bloqsDotsMatrix.showDotsWindow(params);
     };
 
     function showSuggestedWindow(evt) {
@@ -2104,4 +2139,4 @@
 
     return exports;
 
-})(window.bloqs = window.bloqs || {}, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, undefined);
+})(window.bloqs = window.bloqs || {}, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix, undefined);

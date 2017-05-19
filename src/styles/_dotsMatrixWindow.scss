@@ -1,0 +1,21 @@
+.bloqs-dotsMatrix {
+    width: 100px;
+    height: 100px;
+    background-color: #000FFF;
+}
+
+.dotsMatrix-window {
+    .dots-container {
+        margin: 7px 0;
+        .bloqs-dots-dot {
+            background-color: #000FFF;
+            width: 15px;
+            height: 15px;
+            float: left;
+            margin: 5px;
+            &.active {
+                background-color: #FFF000;
+            }
+        }
+    }
+}
