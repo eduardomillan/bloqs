@@ -3,7 +3,7 @@
 
 var _ = require('lodash'),
     utils = require('./../../build-utils'),
-    StatementInputBloq = require('./../../statementInputBloq');
+    OutputBloq = require('./../../outputBloq');
 
 /**
  * Bloq name: mbot-SomethingNear
@@ -15,7 +15,7 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var bloqMBotSomethingNear = _.merge(_.clone(StatementInputBloq, true), {
+var bloqMBotSomethingNear = _.merge(_.clone(OutputBloq, true), {
 
     name: 'redJoystickXY',
     bloqClass: 'bloq-mbot-somethingnear',
@@ -39,10 +39,14 @@ var bloqMBotSomethingNear = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             id: 'JOYSTICK',
             alias: 'dynamicDropdown',
-            options: 'joystick'
+            options: 'joystick' //category
         }]
     ],
     code: '',
+    returnType: {
+        type: 'simple',
+        value: 'float'
+    },
     arduino: {
         conditional: {
             aliasId: 'OPERATION',
@@ -55,7 +59,5 @@ var bloqMBotSomethingNear = _.merge(_.clone(StatementInputBloq, true), {
 });
 
 utils.preprocessBloq(bloqMBotSomethingNear);
-bloqMBotSomethingNear.connectors[1].acceptedAliases = ['all', 'ifDown'];
-
 
 module.exports = bloqMBotSomethingNear;

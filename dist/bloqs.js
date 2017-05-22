@@ -1199,9 +1199,9 @@
             hts221: [],
             barometer: [],
             robot: [],
+            joystick: [],
             mkb_ultrasound: [],
             mkb_integrated_buzz: [],
-            mkb_joystick: [],
             mkb_lightsensor: [],
             mkb_linefollower: [],
             mkb_integrated_RGB: [],
@@ -4447,7 +4447,7 @@
 
             if (type === 'sensors') {
                 /*jshint camelcase: false */
-                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor.concat(componentsArray.mkb_linefollower).concat(componentsArray.mkb_soundsensor));
+                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor.concat(componentsArray.mkb_linefollower).concat(componentsArray.mkb_soundsensor).concat(componentsArray.joystick));
                 /*jshint camelcase: true */
             } else {
                 componentsList = componentsArray[type];

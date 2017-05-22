@@ -1,22 +1,10 @@
 {
-  "type": "statement-input",
+  "type": "output",
   "name": "redJoystickXY",
   "connectors": [
     {
-      "type": "connector--top",
-      "accept": "connector--bottom"
-    },
-    {
-      "type": "connector--bottom",
-      "accept": "connector--top",
-      "acceptedAliases": [
-        "all",
-        "ifDown"
-      ]
-    },
-    {
-      "type": "connector--root",
-      "accept": "connector--top"
+      "type": "connector--output",
+      "accept": "connector--input"
     }
   ],
   "bloqClass": "bloq-mbot-somethingnear",
@@ -52,6 +40,10 @@
     ]
   ],
   "code": "",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
   "arduino": {
     "conditional": {
       "aliasId": "OPERATION",
