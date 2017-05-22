@@ -1,0 +1,94 @@
+{
+  "type": "statement",
+  "name": "mBotBuzzerAdvanced-v2",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "575bc8db-ed91-44fa-b225-3889cf3d8a53"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "a2d2f7f6-7615-44dd-9e51-bc2718c1f69f"
+    }
+  ],
+  "bloqClass": "bloq-mbot-buzzer-v2",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-sound"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-note"
+      },
+      {
+        "bloqInputId": "NOTE",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "575bc8db-ed91-44fa-b225-3889cf3d8a53"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-for"
+      },
+      {
+        "bloqInputId": "SECONDS",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "a2d2f7f6-7615-44dd-9e51-bc2718c1f69f"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-buzzer-ms"
+      }
+    ]
+  ],
+  "code": "",
+  "arduino": {
+    "code": "robot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotBuzzerAdvanced-v2\" no preparado para generar código python"
+      }
+    ]
+  }
+}

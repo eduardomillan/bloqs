@@ -1,0 +1,97 @@
+{
+  "type": "statement",
+  "name": "mBotBuzzerAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "2e552e37-7425-4765-8e1c-7132db5adc84"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "262210d6-1710-48cd-8926-5f9f10c762b1"
+    }
+  ],
+  "bloqClass": "bloq-mbot-buzzer",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-mbot-buzzer-advanced-play"
+      },
+      {
+        "bloqInputId": "NOTE",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "2e552e37-7425-4765-8e1c-7132db5adc84"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-mbot-buzzer-advanced-for"
+      },
+      {
+        "bloqInputId": "SECONDS",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "262210d6-1710-48cd-8926-5f9f10c762b1"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-mbot-buzzer-advanced-ms"
+      }
+    ]
+  ],
+  "code": "",
+  "arduino": {
+    "needInstanceOf": [
+      {
+        "name": "mBotBuzzerPin",
+        "type": "const int",
+        "equals": "8"
+      }
+    ],
+    "code": "tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotBuzzerAdvanced\" no preparado para generar código python"
+      }
+    ]
+  }
+}
