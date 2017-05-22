@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../build-utils'),
-    StatementBloq = require('./../../statementBloq');
+    utils = require('./../../../build-utils'),
+    StatementBloq = require('./../../../statementBloq');
 
 /**
  * Bloq name: buzzer
@@ -25,7 +25,7 @@ var mBotLedMatrix = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'mostrar'
+            value: 'Dibujar'
         }, {
             id: 'DRAW',
             alias: 'dotsMatrix',
@@ -35,7 +35,7 @@ var mBotLedMatrix = _.merge(_.clone(StatementBloq, true), {
             }
         }, {
             alias: 'text',
-            value: 'en el'
+            value: 'en la'
         }, {
             id: 'LEDMATRIX',
             alias: 'dynamicDropdown',
@@ -44,7 +44,7 @@ var mBotLedMatrix = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        code: 'robot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});'
+        code: '{LEDMATRIX}.drawBitmap(0,0, 16, {DRAW});'
     }
 });
 utils.preprocessBloq(mBotLedMatrix);

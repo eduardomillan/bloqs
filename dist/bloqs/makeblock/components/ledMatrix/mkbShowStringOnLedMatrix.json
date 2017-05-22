@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotLedMatrix",
+  "name": "mBotShowStringOnLedMatrix",
   "connectors": [
     {
       "type": "connector--top",
@@ -16,19 +16,15 @@
     [
       {
         "alias": "text",
-        "value": "mostrar"
+        "value": "Escribir"
       },
       {
-        "id": "DRAW",
-        "alias": "dotsMatrix",
-        "options": {
-          "rows": 8,
-          "columns": 16
-        }
+        "id": "TEXT",
+        "alias": "stringInput"
       },
       {
         "alias": "text",
-        "value": "en el"
+        "value": "en la"
       },
       {
         "id": "LEDMATRIX",
@@ -39,12 +35,12 @@
   ],
   "code": "",
   "arduino": {
-    "code": "robot.playTone({NOTE},{SECONDS});\ndelay({SECONDS});"
+    "code": "{LEDMATRIX}.drawStr(0,7,\"{TEXT}\");"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotLedMatrix\" no preparado para generar código python"
+        "code": "Bloque \"mBotShowStringOnLedMatrix\" no preparado para generar código python"
       }
     ]
   }
