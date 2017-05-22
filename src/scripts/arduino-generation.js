@@ -725,7 +725,7 @@
                                 type: 'const int',
                                 equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
                             };
-                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_1 , INPUT);';
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
 
                             addInstance(tempInstanceOf, {}, hardwareList);
                             setupExtraCodeMap[tempSetupExtraCode] = true;
