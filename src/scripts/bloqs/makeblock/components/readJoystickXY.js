@@ -49,10 +49,10 @@ var bloqMBotSomethingNear = _.merge(_.clone(OutputBloq, true), {
     },
     arduino: {
         conditional: {
-            aliasId: 'OPERATION',
+            aliasId: 'OPTION',
             code: {
-                'X': '{{JOYSTICK}}.readPinX()',
-                'Y': '{{JOYSTICK}}.readPinY()'
+                'X': '{JOYSTICK}.readPinX()',
+                'Y': '{JOYSTICK}.readPinY()'
             }
         }
     }
