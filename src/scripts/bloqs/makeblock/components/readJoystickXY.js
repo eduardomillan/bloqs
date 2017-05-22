@@ -17,8 +17,8 @@ var _ = require('lodash'),
 
 var bloqMBotSomethingNear = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'redJoystickXY',
-    bloqClass: 'bloq-mbot-somethingnear',
+    name: 'readJoystickXY',
+    bloqClass: 'bloq-components-color',
     content: [
         [{
             alias: 'text',
