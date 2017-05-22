@@ -2010,6 +2010,7 @@
                                         value: value
                                     };
                                 }
+                                break;
                             default:
                                 throw 'I dont know how to get the structure from this contentType :( ' + this.bloqData.content[0][i].alias;
                         }
