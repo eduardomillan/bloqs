@@ -409,11 +409,14 @@
     #bloqs--field.theme-basic .bloq.bloq-mbot-rgbLedsimple-off textarea {
       color: #0076b4; }
   #bloqs--field.theme-basic .bloq.bloq-makeblock-ifnoise {
-    color: #0076b4; }
+    color: #0076b4;
+    border-left: 5px solid #0076b4; }
     #bloqs--field.theme-basic .bloq.bloq-makeblock-ifnoise input,
     #bloqs--field.theme-basic .bloq.bloq-makeblock-ifnoise select,
     #bloqs--field.theme-basic .bloq.bloq-makeblock-ifnoise textarea {
       color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-makeblock-ifnoise > .bloq--extension:before {
+      border-left: 5px solid #0076b4; }
   #bloqs--field.theme-basic .bloq.bloq-zowi-gestures {
     color: #60BCC9; }
     #bloqs--field.theme-basic .bloq.bloq-zowi-gestures input,
@@ -3658,6 +3661,21 @@
         background-color: #0076b4; }
       #bloqs--field.theme-colors .bloq.bloq-makeblock-ifnoise:not(.disabled).bloq--output:focus:not(.disabled):after {
         background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-makeblock-ifnoise:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-makeblock-ifnoise:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-makeblock-ifnoise:not(.disabled):before {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-makeblock-ifnoise:not(.disabled) > .bloq--statement-input__header {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-makeblock-ifnoise:not(.disabled) > .bloq--extension:before {
+      border-left: 5px solid #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-makeblock-ifnoise:not(.disabled) > .bloq--extension > .bloq--extension--end {
+      background-color: #0076b4; }
   #bloqs--field.theme-colors .bloq.bloq-zowi-gestures:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-zowi-gestures:not(.disabled) .bloqinput,
