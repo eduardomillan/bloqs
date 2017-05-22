@@ -2351,21 +2351,15 @@
                             break;
                         case 'mkb_soundsensor':
                             tempInstanceOf = {
-                                name: hardwareList.components[i].name + '_1',
+                                name: hardwareList.components[i].name,
                                 type: 'const int',
-                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + ']'
                             };
                             tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_1 , INPUT);';
 
                             addInstance(tempInstanceOf, {}, hardwareList);
                             setupExtraCodeMap[tempSetupExtraCode] = true;
 
-                            tempInstanceOf = {
-                                name: hardwareList.components[i].name + '_2',
-                                type: 'const int',
-                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
-                            };
-                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_2 , INPUT);';
                             break;
 
                     }
