@@ -1,6 +1,7 @@
 /* BASIC THEME */
 /* COLOR THEME */
 #bloqs--field.theme-basic .bloq {
+  /*--- GENERIC ---*/
   /*---- BOTBLOQ - CAR ---------*/
   /*---- BOTBLOQ - MANIPULATOR ---------*/
   /*---- BOTBLOQ - HUMAN ---------*/
@@ -23,6 +24,51 @@
   /*---- VARIABLES ------*/
   /*---- OUTPUT BLOQ to avoid that a outputbloq take the extern bloq style------*/
   /*---- MATHS ------*/ }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-color {
+    color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-color input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-color select,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-color textarea {
+      color: #0076b4; }
+  #bloqs--field.theme-basic .bloq.bloq-mbot-color {
+    color: #0076b4;
+    border-left: 5px solid #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-color input,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-color select,
+    #bloqs--field.theme-basic .bloq.bloq-mbot-color textarea {
+      color: #0076b4; }
+    #bloqs--field.theme-basic .bloq.bloq-mbot-color > .bloq--extension:before {
+      border-left: 5px solid #0076b4; }
+  #bloqs--field.theme-basic .bloq.bloq-code-color {
+    color: #58B42D; }
+    #bloqs--field.theme-basic .bloq.bloq-code-color input,
+    #bloqs--field.theme-basic .bloq.bloq-code-color select,
+    #bloqs--field.theme-basic .bloq.bloq-code-color textarea {
+      color: #58B42D; }
+  #bloqs--field.theme-basic .bloq.bloq-code-color {
+    color: #58B42D;
+    border-left: 5px solid #58B42D; }
+    #bloqs--field.theme-basic .bloq.bloq-code-color input,
+    #bloqs--field.theme-basic .bloq.bloq-code-color select,
+    #bloqs--field.theme-basic .bloq.bloq-code-color textarea {
+      color: #58B42D; }
+    #bloqs--field.theme-basic .bloq.bloq-code-color > .bloq--extension:before {
+      border-left: 5px solid #58B42D; }
+  #bloqs--field.theme-basic .bloq.bloq-components-color {
+    color: #cf1c22; }
+    #bloqs--field.theme-basic .bloq.bloq-components-color input,
+    #bloqs--field.theme-basic .bloq.bloq-components-color select,
+    #bloqs--field.theme-basic .bloq.bloq-components-color textarea {
+      color: #cf1c22; }
+  #bloqs--field.theme-basic .bloq.bloq-components-color {
+    color: #cf1c22;
+    border-left: 5px solid #cf1c22; }
+    #bloqs--field.theme-basic .bloq.bloq-components-color input,
+    #bloqs--field.theme-basic .bloq.bloq-components-color select,
+    #bloqs--field.theme-basic .bloq.bloq-components-color textarea {
+      color: #cf1c22; }
+    #bloqs--field.theme-basic .bloq.bloq-components-color > .bloq--extension:before {
+      border-left: 5px solid #cf1c22; }
   #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-move {
     color: #4B0082; }
     #bloqs--field.theme-basic .bloq.bloq-botbloq-vehicle-move input,
@@ -1453,6 +1499,7 @@
       color: #01C0C8; }
 
 #bloqs--field.theme-colors .bloq {
+  /*--- GENERIC ---*/
   /*---- BOTBLOQ - CAR ---------*/
   /*---- BOTBLOQ - MANIPULATOR ---------*/
   /*---- BOTBLOQ - HUMAN ---------*/
@@ -1475,6 +1522,249 @@
   /*---- VARIABLES ------*/
   /*---- OUTPUT BLOQ to avoid that a outputbloq take the extern bloq style------*/
   /*---- MATHS ------*/ }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) .bloqinput,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) textarea {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) .bloqinput:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) textarea:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled).bloq--statement {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled).bloq--output {
+      background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled).bloq--output:before {
+        background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #0076b4; }
+  #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) .bloqinput,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) textarea {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) .bloqinput:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) textarea:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled).bloq--statement {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled).bloq--output {
+      background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled).bloq--output:before {
+        background-color: #0076b4; }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) .bloqinput {
+      color: white;
+      background: #0076b4;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) .bloqinput:before {
+        background: #0076b4;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled):before {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) > .bloq--statement-input__header {
+      background-color: #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) > .bloq--extension:before {
+      border-left: 5px solid #0076b4; }
+    #bloqs--field.theme-colors .bloq.bloq-mbot-color:not(.disabled) > .bloq--extension > .bloq--extension--end {
+      background-color: #0076b4; }
+  #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) .bloqinput,
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) textarea {
+      color: white;
+      background: #59b52e;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) .bloqinput:before,
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) textarea:before {
+        background: #59b52e;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled).bloq--statement {
+      background-color: #59b52e; }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled).bloq--output {
+      background-color: #59b52e; }
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled).bloq--output:before {
+        background-color: #59b52e; }
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #59b52e; }
+  #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) .bloqinput,
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) textarea {
+      color: white;
+      background: #59b52e;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) .bloqinput:before,
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) textarea:before {
+        background: #59b52e;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled).bloq--statement {
+      background-color: #59b52e; }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled).bloq--output {
+      background-color: #59b52e; }
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled).bloq--output:before {
+        background-color: #59b52e; }
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #59b52e; }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) .bloqinput {
+      color: white;
+      background: #59b52e;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) .bloqinput:before {
+        background: #59b52e;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled):before {
+      background-color: #59b52e; }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) > .bloq--statement-input__header {
+      background-color: #59b52e; }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) > .bloq--extension:before {
+      border-left: 5px solid #59b52e; }
+    #bloqs--field.theme-colors .bloq.bloq-code-color:not(.disabled) > .bloq--extension > .bloq--extension--end {
+      background-color: #59b52e; }
+  #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) .bloqinput,
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) textarea {
+      color: white;
+      background: #ce1c23;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) .bloqinput:before,
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) textarea:before {
+        background: #ce1c23;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled).bloq--statement {
+      background-color: #ce1c23; }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled).bloq--output {
+      background-color: #ce1c23; }
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled).bloq--output:before {
+        background-color: #ce1c23; }
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #ce1c23; }
+  #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) {
+    color: white; }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) .bloqinput,
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) input,
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) select,
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) textarea {
+      color: white;
+      background: #ce1c23;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) .bloqinput:before,
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) input:before,
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) select:before,
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) textarea:before {
+        background: #ce1c23;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) ::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) select {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="9" height="5" viewBox="0 0 9 5">  <defs>    <style>      .cls-2 {        fill: #ffffff;      }    </style>  </defs>  <path d="M8.085,-0.009 C9.214,-0.009 9.043,0.604 8.780,0.838 C8.780,0.838 4.964,4.828 4.964,4.828 C4.701,5.062 4.274,5.062 4.010,4.828 C4.010,4.828 0.195,0.838 0.195,0.838 C-0.069,0.604 -0.239,-0.009 0.895,-0.009 C0.895,-0.009 8.085,-0.009 8.085,-0.009 Z" id="path-1" class="cls-2" fill-rule="evenodd" fill="#8c919b"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 7px bottom 45%; }
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) select.bloq__inner--first {
+        margin-left: 10px; }
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) select option {
+        color: black; }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled).bloq--statement {
+      background-color: #ce1c23; }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled).bloq--output {
+      background-color: #ce1c23; }
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled).bloq--output:before {
+        background-color: #ce1c23; }
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled).bloq--output:focus:not(.disabled):after {
+        background-color: #ce1c23; }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) .bloqinput {
+      color: white;
+      background: #ce1c23;
+      background-color: rgba(0, 0, 0, 0.2); }
+      #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) .bloqinput:before {
+        background: #ce1c23;
+        background-color: rgba(0, 0, 0, 0.2); }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled):before {
+      background-color: #ce1c23; }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) > .bloq--statement-input__header {
+      background-color: #ce1c23; }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) > .bloq--extension:before {
+      border-left: 5px solid #ce1c23; }
+    #bloqs--field.theme-colors .bloq.bloq-components-color:not(.disabled) > .bloq--extension > .bloq--extension--end {
+      background-color: #ce1c23; }
   #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled) {
     color: white; }
     #bloqs--field.theme-colors .bloq.bloq-botbloq-vehicle-move:not(.disabled) .bloqinput,
@@ -10226,17 +10516,20 @@ tester + span + .bloqinput {
     display: none; }
 
 .bloqs-dotsMatrix {
-  width: 100px;
-  height: 100px;
-  background-color: #000FFF; }
+  background-image: url('data:image/svg+xml;utf8,<svg version="1.1" id="Ebene_1" xmlns:x="http://ns.adobe.com/Extensibility/1.0/" xmlns:i="http://ns.adobe.com/AdobeIllustrator/10.0/" xmlns:graph="http://ns.adobe.com/Graphs/1.0/" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-592.2 346.1 124.3 119.2" enable-background="new -592.2 346.1 124.3 119.2" xml:space="preserve"><switch><g i:extraneous="self"><path fill-rule="evenodd" clip-rule="evenodd" fill="#D7D7D7" d="M-472.9,346.1h-114.2c-2.8,0-5.1,2.1-5.1,4.7v109.9c0,2.6,2.3,4.7,5.1,4.7h52.6c0-2.3,2-4.1,4.5-4.1s4.5,1.8,4.5,4.1h52.6c2.8,0,5.1-2.1,5.1-4.7V350.7C-467.8,348.1-470.1,346.1-472.9,346.1z" /><g><path fill="#FFFFFF" d="M-482.9,356.1h-13.9c-2.8,0-5.1,2.3-5.1,5.1v2.3c0,1.1-0.9,2-2,2h-52.2c-1.1,0-2-0.9-2-2v-2.3c0-2.8-2.3-5.1-5.1-5.1h-13.9c-2.8,0-5.1,2.3-5.1,5.1v9.3v1.3v56.6c0,2.8,2.3,5.1,5.1,5.1h94.1c2.8,0,5.1-2.3,5.1-5.1v-56.6v-1.3v-9.3C-477.8,358.4-480.1,356.1-482.9,356.1z M-578.6,360.6c0-0.9,0.8-1.7,1.7-1.7h13.5c0.9,0,1.7,0.8,1.7,1.7v2.3c0,0.9-0.8,1.7-1.7,1.7h-13.5c-0.9,0-1.7-0.8-1.7-1.7V360.6z M-498.4,360.6c0-0.9,0.8-1.7,1.7-1.7h13.5c0.9,0,1.7,0.8,1.7,1.7v2.3c0,0.9-0.8,1.7-1.7,1.7h-13.5c-0.9,0-1.7-0.8-1.7-1.7V360.6z" /><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#EAEAEA" cx="-578.6" cy="377.4" r="2.1" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#EAEAEA" cx="-578.6" cy="420.1" r="2.1" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#EAEAEA" cx="-481.4" cy="377.4" r="2.1" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#EAEAEA" cx="-481.4" cy="420.1" r="2.1" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#BFBFBF" cx="-538.5" cy="429.1" r="3.5" /><polygon fill-rule="evenodd" clip-rule="evenodd" fill="#9B9A9A" points="-537.7,427.8 -539.3,427.8 -540.1,429.1 -539.3,430.5 -537.7,430.5 -536.9,429.1" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#BFBFBF" cx="-521.5" cy="429.1" r="3.5" /><polygon fill-rule="evenodd" clip-rule="evenodd" fill="#9B9A9A" points="-520.7,427.8 -522.3,427.8 -523.1,429.1 -522.3,430.5 -520.7,430.5 -519.9,429.1" /></g><g><g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-568" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-562.8" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-557.7" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-552.5" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-547.3" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-542.1" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-537" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-531.8" cy="380.2" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-568" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-562.8" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-557.7" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-552.5" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-547.3" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-542.1" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-537" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-531.8" cy="385.2" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-568" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-562.8" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-557.7" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-552.5" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-547.3" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-542.1" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-537" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-531.8" cy="390.2" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-568" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-562.8" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-557.7" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-552.5" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-547.3" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-542.1" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-537" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-531.8" cy="395.2" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-568" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-562.8" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-557.7" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-552.5" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-547.3" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-542.1" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-537" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-531.8" cy="400.2" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-568" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-562.8" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-557.7" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-552.5" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-547.3" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-542.1" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-537" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-531.8" cy="405.1" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-568" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-562.8" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-557.7" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-552.5" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-547.3" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-542.1" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-537" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-531.8" cy="410.1" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-568" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-562.8" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-557.7" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-552.5" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-547.3" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-542.1" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-537" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-531.8" cy="415.1" r="1.5" /></g></g><g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-526.5" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-521.4" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-516.2" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-511" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-505.8" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-500.6" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-495.5" cy="380.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-490.3" cy="380.2" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-526.5" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-521.4" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-516.2" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-511" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-505.8" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-500.6" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-495.5" cy="385.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-490.3" cy="385.2" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-526.5" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-521.4" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-516.2" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-511" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-505.8" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-500.6" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-495.5" cy="390.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-490.3" cy="390.2" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-526.5" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-521.4" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-516.2" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-511" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-505.8" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-500.6" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-495.5" cy="395.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-490.3" cy="395.2" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-526.5" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-521.4" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-516.2" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-511" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-505.8" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-500.6" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-495.5" cy="400.2" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-490.3" cy="400.2" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-526.5" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-521.4" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-516.2" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-511" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-505.8" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-500.6" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-495.5" cy="405.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-490.3" cy="405.1" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-526.5" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-521.4" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-516.2" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-511" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-505.8" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-500.6" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-495.5" cy="410.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-490.3" cy="410.1" r="1.5" /></g><g><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-526.5" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-521.4" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-516.2" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-511" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-505.8" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-500.6" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-495.5" cy="415.1" r="1.5" /><circle fill-rule="evenodd" clip-rule="evenodd" fill="#2986D3" stroke="#FCFCFC" stroke-width="0.75" stroke-miterlimit="10" cx="-490.3" cy="415.1" r="1.5" /></g></g></g></g><g><path fill-rule="evenodd" clip-rule="evenodd" fill="#1D6BDD" d="M-538,450.1c-1.1,0-2-0.9-2-2V434h20.1v14.1c0,1.1-0.9,2-2,2H-538z" /><path fill="#2D2929" d="M-520.5,434.5v13.6c0,0.8-0.7,1.5-1.5,1.5h-16c-0.8,0-1.5-0.7-1.5-1.5v-13.6H-520.5 M-519.5,433.5h-21.1v14.6c0,1.4,1.1,2.5,2.5,2.5h16c1.4,0,2.5-1.1,2.5-2.5V433.5L-519.5,433.5z" /></g></g></switch></svg>');
+  background-repeat: no-repeat;
+  width: 41px;
+  height: 35px; }
 
 .dotsMatrix-window .dots-container {
-  margin: 7px 0; }
+  margin: 15px;
+  overflow: hidden; }
   .dotsMatrix-window .dots-container .bloqs-dots-dot {
     background-color: #000FFF;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     float: left;
-    margin: 5px; }
+    margin: 5px;
+    cursor: pointer; }
     .dotsMatrix-window .dots-container .bloqs-dots-dot.active {
       background-color: #FFF000; }
