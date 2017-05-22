@@ -2353,7 +2353,7 @@
                             tempInstanceOf = {
                                 name: hardwareList.components[i].name,
                                 type: 'const int',
-                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + ']'
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
                             };
                             tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_1 , INPUT);';
 
