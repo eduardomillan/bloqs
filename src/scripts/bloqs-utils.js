@@ -1376,6 +1376,18 @@
         return result;
     }
 
+    function createMatrix(rows, columns) {
+        var result = [];
+        for (var i = 0; i < rows; i++) {
+            result[i] = [];
+            for (var j = 0; j < columns; j++) {
+                result[i][j] = false;
+            }
+        }
+        return result;
+    }
+
+
     bloqsUtils.validString = validString;
     bloqsUtils.validChar = validChar;
     bloqsUtils.validComment = validComment;
@@ -1428,7 +1440,7 @@
     bloqsUtils.canConnectAliases = canConnectAliases;
     bloqsUtils.canConnectStatementBloqs = canConnectStatementBloqs;
     bloqsUtils.findAncestor = findAncestor;
-
+    bloqsUtils.createMatrix = createMatrix;
 
     return bloqsUtils;
 

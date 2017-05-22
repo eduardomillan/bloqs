@@ -1,18 +1,21 @@
 .bloqs-dotsMatrix {
-    width: 100px;
-    height: 100px;
-    background-color: #000FFF;
+    background-image: url($mbotLedMatrix);
+    background-repeat: no-repeat;
+    width: 41px;
+    height: 35px;
 }
 
 .dotsMatrix-window {
     .dots-container {
-        margin: 7px 0;
+        margin: 15px;
+        overflow: hidden;
         .bloqs-dots-dot {
             background-color: #000FFF;
-            width: 15px;
-            height: 15px;
+            width: 20px;
+            height: 20px;
             float: left;
             margin: 5px;
+            cursor: pointer;
             &.active {
                 background-color: #FFF000;
             }

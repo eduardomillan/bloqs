@@ -1303,7 +1303,7 @@
             case 'dotsMatrix':
                 $element = $('<div class="bloqs-dotsMatrix">');
                 $element.click(function(evt) {
-                    showDotsMatrix(elementSchema, bloq, evt);
+                    showDotsMatrix(elementSchema, evt);
                 });
                 break;
             default:
@@ -1313,7 +1313,7 @@
         return $element;
     };
 
-    function showDotsMatrix(elementSchema, bloq, evt) {
+    function showDotsMatrix(elementSchema, evt) {
         var launcherRect = evt.target.getBoundingClientRect();
         var workspaceRect = $field[0].getBoundingClientRect();
         var params = {
@@ -1335,8 +1335,8 @@
             fieldScrollLeft: $field[0].scrollLeft,
             dotsMatrixOptions: elementSchema
         };
-        params.showWindowCallback = function() {
-            console.log('showWindowCallback');
+        params.showWindowCallback = function(response) {
+            elementSchema.value = response;
         };
         bloqsDotsMatrix.showDotsWindow(params);
     };
@@ -1656,7 +1656,7 @@
                 bloqsTooltip.addBloqsTooltip($field);
             }
 
-            this.bloqData = params.bloqData;
+            this.bloqData = _.cloneDeep(params.bloqData);
             componentsArray = params.componentsArray || componentsArray;
 
             this.connectors = [];
@@ -2001,6 +2001,15 @@
                             case 'text':
                                 //we dont catch this field
                                 break;
+                            case 'dotsMatrix':
+                                value = this.bloqData.content[0][i].value;
+                                if (value) {
+                                    tempObject = {
+                                        alias: this.bloqData.content[0][i].alias,
+                                        id: this.bloqData.content[0][i].id,
+                                        value: value
+                                    };
+                                }
                             default:
                                 throw 'I dont know how to get the structure from this contentType :( ' + this.bloqData.content[0][i].alias;
                         }

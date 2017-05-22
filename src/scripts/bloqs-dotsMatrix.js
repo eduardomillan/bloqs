@@ -33,7 +33,7 @@
         showWindowCallback = params.showWindowCallback;
 
         showWindow(params);
-
+        setMatrix(params.dotsMatrixOptions.value, params.dotsMatrixOptions.options);
         moveWindow({
             launcherTopPoint: params.launcherTopPoint,
             launcherHeight: params.launcherHeight,
@@ -61,7 +61,6 @@
                 tempDotContainer = document.createElement('div');
                 tempDotContainer.className += 'bloqs-dots-dot';
                 dots[i].push(tempDotContainer);
-                //dots[i][j].addEventListener('click', toggleDot);
                 dots[i][j].addEventListener('mouseover', overDot);
 
                 tempRowContainer.appendChild(tempDotContainer);
@@ -69,6 +68,23 @@
             dotsContainer.appendChild(tempRowContainer); //TODO just 1 append function on bloqsutils
         }
     };
+
+    function setMatrix(matrix, options) {
+        console.log('setMatrix', matrix);
+        matrix = matrix || bloqsUtils.createMatrix(options.rows, options.columns);
+        for (var i = 0; i < dots.length; i++) {
+            for (var j = 0; j < dots[i].length; j++) {
+                if (matrix[i][j]) {
+                    if (dots[i][j].className.indexOf('active') === -1) {
+                        dots[i][j].className += ' active';
+                    }
+                } else {
+                    dots[i][j].className = dots[i][j].className.replace('active', '');
+                }
+
+            }
+        }
+    }
 
     function getMatrix() {
         var result = [];
@@ -122,13 +138,14 @@
                 bloqsWindow.addEventListener('mouseup', function() {
                     _userIsDragging = false;
                 });
-                bloqsWindow.addEventListener('mouseleave', function() {
-                    _userIsDragging = false;
-                });
                 _userIsDragging = true;
                 toggleDot(evt);
                 console.log('activating');
 
+            });
+            bloqsWindow.addEventListener('mouseleave', function() {
+                _userIsDragging = false;
+                hideWindow();
             });
 
             bloqsWindow.appendChild(topTriangle);
@@ -140,9 +157,7 @@
         } else {
             bloqsWindow.className = bloqsWindow.className.replace('hide', '');
         }
-        document.addEventListener('mousedown', actionWithWindowOpenListener);
-        document.addEventListener('touchstart', actionWithWindowOpenListener);
-        window.addEventListener('bloqs:mousedown', actionWithWindowOpenListener);
+
 
         return bloqsWindow;
     }
@@ -151,10 +166,7 @@
         if (bloqsWindow.className.indexOf('hide') === -1) {
             bloqsWindow.className += ' hide';
         }
-        document.removeEventListener('mousedown', actionWithWindowOpenListener);
-        document.removeEventListener('touchstart', actionWithWindowOpenListener);
-        window.removeEventListener('bloqs:mousedown', actionWithWindowOpenListener);
-        window.removeEventListener('bloqs:dragend', onSuggestedBloqDragEnd);
+        showWindowCallback(getMatrix());
     }
 
     function moveWindow(params) {
@@ -190,30 +202,6 @@
         bloqsWindow.style.transform = 'translate(' + finalPoint.left + 'px,' + finalPoint.top + 'px)';
     }
 
-
-    function actionWithWindowOpenListener(evt) {
-        console.log('actionWithWindowOpenListener', evt);
-        var el;
-        if (evt.detail !== 1) {
-            el = evt.detail;
-        } else {
-            el = evt.target;
-        }
-    }
-
-
-    function onSuggestedBloqDragEnd(evt) {
-        console.log('onSuggestedBloqDragEnd', evt.detail.bloq);
-        //comprobar si está encima del input que lo llamo, o relativamente cerca, de estarlo se conecta, si no, no se conecta ya que puede haberlo arrastrado a otro sitio
-        bloqSelected(evt.detail.bloq.uuid);
-    }
-
-
-    function close() {
-        dotsContainer.innerHTML = '';
-        showWindowCallback();
-        hideWindow();
-    }
 
     bloqsDotsMatrix.init = init;
     bloqsDotsMatrix.showDotsWindow = showDotsWindow;

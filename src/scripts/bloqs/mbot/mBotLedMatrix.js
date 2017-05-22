@@ -21,7 +21,7 @@ var _ = require('lodash'),
 var mBotLedMatrix = _.merge(_.clone(StatementBloq, true), {
 
     name: 'mBotLedMatrix',
-    bloqClass: 'mbot-blue',
+    bloqClass: 'bloq-mbot-color',
     content: [
         [{
             alias: 'text',
@@ -30,8 +30,6 @@ var mBotLedMatrix = _.merge(_.clone(StatementBloq, true), {
             id: 'DRAW',
             alias: 'dotsMatrix',
             options: {
-                width: 100,
-                height: 100,
                 rows: 8,
                 columns: 16
             }
