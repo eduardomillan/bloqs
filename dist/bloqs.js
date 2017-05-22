@@ -1205,6 +1205,7 @@
             mkb_lightsensor: [],
             mkb_linefollower: [],
             mkb_integrated_RGB: [],
+            mkb_soundsensor: [],
             ledMatrix: []
         };
     };
@@ -1453,6 +1454,7 @@
     return bloqsUtils;
 
 })(window.bloqsUtils = window.bloqsUtils || {}, _, undefined);
+
 
 'use strict';
 (function(bloqsTooltip) {
@@ -2326,13 +2328,13 @@
 
                             var portNumber = 2,
                                 index;
-                            for (index= 0; index<portNumber; index++){
+                            for (index = 0; index < portNumber; index++) {
                                 tempInstanceOf = {
-                                    name: hardwareList.components[i].name + '_'+ (index+1),
+                                    name: hardwareList.components[i].name + '_' + (index + 1),
                                     type: 'const int',
-                                    equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][' + (index+1) + ']'
+                                    equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][' + (index + 1) + ']'
                                 };
-                                tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_' + (index+1) +' , INPUT);';
+                                tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_' + (index + 1) + ' , INPUT);';
                                 addInstance(tempInstanceOf, {}, hardwareList);
                                 setupExtraCodeMap[tempSetupExtraCode] = true;
                             }
@@ -2347,6 +2349,25 @@
                                 ]
                             };
                             break;
+                        case 'mkb_soundsensor':
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name + '_1',
+                                type: 'const int',
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                            };
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_1 , INPUT);';
+
+                            addInstance(tempInstanceOf, {}, hardwareList);
+                            setupExtraCodeMap[tempSetupExtraCode] = true;
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name + '_2',
+                                type: 'const int',
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            };
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_2 , INPUT);';
+                            break;
+
                     }
 
                     if (tempInstanceOf) {
@@ -2400,6 +2421,7 @@
     return arduinoGeneration;
 
 })(window.arduinoGeneration = window.arduinoGeneration || {}, undefined);
+
 
 'use strict';
 (function(bloqsSuggested, bloqsLanguages, bloqsUtils) {

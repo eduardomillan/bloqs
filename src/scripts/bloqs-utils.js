@@ -1197,6 +1197,7 @@
             mkb_lightsensor: [],
             mkb_linefollower: [],
             mkb_integrated_RGB: [],
+            mkb_soundsensor: [],
             ledMatrix: []
         };
     };
