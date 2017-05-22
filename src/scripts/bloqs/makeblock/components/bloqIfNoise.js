@@ -17,7 +17,7 @@ var _ = require('lodash'),
 
 var bloqIfNoise = _.merge(_.clone(StatementInputBloq, true), {
     name: 'makeblockIfNoise',
-    bloqClass: 'bloq-makeblock-ifnoise',
+    bloqClass: 'bloq-mbot-color',
     content: [
         [{
             alias: 'text',
