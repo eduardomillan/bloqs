@@ -16,6 +16,7 @@
         programExtraCodeMap = {},
         programFunctionDeclarationsMap = {},
         procesingProgram,
+        bitmapUuids = {},
         bloqsFunctions = {
             withoutAsterisk: function(text) {
                 return text.replace('*', '');
@@ -35,6 +36,9 @@
                     result = 'digitalRead(' + pin + ')';
                 }
                 return result;
+            },
+            getHashCodeFromString: function(hexArray) {
+                return hexArray.replace('{', '').replace('}', '').replace(/ /g, '').replace(/0x/g, '').replace(/,/g, '');
             },
             readSensor: function(sensorName, aliasesValuesHashMap, hardwareList) {
                 var result;
