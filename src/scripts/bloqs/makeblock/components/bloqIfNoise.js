@@ -49,9 +49,9 @@ var bloqIfNoise = _.merge(_.clone(StatementInputBloq, true), {
         conditional: {
             aliasId: 'OPERATION',
             code: {
-                '+': 'if(¬{SOUNDSENSOR.readSensor} > 200){{STATEMENTS}}',
-                '-': 'if((¬{SOUNDSENSOR.readSensor} > 0) && (¬{SOUNDSENSOR.readSensor} <= 200)){{STATEMENTS}}',
-                '*': 'if(¬{SOUNDSENSOR.readSensor} <= 0){{STATEMENTS}}'
+                '+': 'if(¬{SOUNDSENSOR.readSensor} > 360){{STATEMENTS}}',
+                '-': 'if((¬{SOUNDSENSOR.readSensor} > 115) && (¬{SOUNDSENSOR.readSensor} <= 360)){{STATEMENTS}}',
+                '*': 'if(¬{SOUNDSENSOR.readSensor} <= 115){{STATEMENTS}}'
             }
         }
     }
