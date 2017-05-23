@@ -846,6 +846,7 @@
                     case 'staticDropdown':
                     case 'multilineCodeInput':
                     case 'multilineCommentInput':
+                    case 'dotsMatrix':
                         k = 0;
                         found = false;
                         while (!found && (k < bloqSchema.content[0].length)) {
@@ -1206,7 +1207,7 @@
             mkb_linefollower: [],
             mkb_integrated_RGB: [],
             mkb_soundsensor: [],
-            dotsMatrix: []
+            ledMatrix: []
         };
     };
 
