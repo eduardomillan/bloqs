@@ -1206,7 +1206,7 @@
             mkb_linefollower: [],
             mkb_integrated_RGB: [],
             mkb_soundsensor: [],
-            ledMatrix: []
+            dotsMatrix: []
         };
     };
 
@@ -1454,7 +1454,6 @@
     return bloqsUtils;
 
 })(window.bloqsUtils = window.bloqsUtils || {}, _, undefined);
-
 
 'use strict';
 (function(bloqsTooltip) {
