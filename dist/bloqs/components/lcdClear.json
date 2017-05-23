@@ -1,0 +1,53 @@
+{
+  "type": "statement",
+  "name": "lcdClear",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-lcd-clear",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-lcd-clear"
+      },
+      {
+        "id": "LCD",
+        "alias": "dynamicDropdown",
+        "options": "lcds"
+      }
+    ]
+  ],
+  "code": "{LCD}.clear();",
+  "arduino": {
+    "includes": [
+      "Wire.h",
+      "BitbloqLiquidCrystal.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "{LCD}",
+        "type": "LiquidCrystal",
+        "arguments": [
+          0
+        ]
+      }
+    ],
+    "setupExtraCode": "{LCD}.begin(16, 2);{LCD}.clear();",
+    "code": "{LCD}.clear();"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdClear\" no preparado para generar código python"
+      }
+    ]
+  }
+}

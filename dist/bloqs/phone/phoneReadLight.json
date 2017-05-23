@@ -1,0 +1,59 @@
+{
+  "type": "output",
+  "name": "phoneReadLight",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-phone-read-light",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-phone-light"
+      },
+      {
+        "id": "PHONE",
+        "alias": "dynamicDropdown",
+        "options": "serialElements"
+      },
+      {
+        "alias": "text",
+        "value": "(lx)"
+      }
+    ]
+  ],
+  "code": "{PHONE}.readString()",
+  "arduino": {
+    "includes": [
+      "BitbloqSoftwareSerial.h"
+    ],
+    "setupExtraCode": "{PHONE}.begin(º[{PHONE}.baudRate]);",
+    "needInstanceOf": [
+      {
+        "name": "{PHONE}",
+        "type": "bqSoftwareSerial",
+        "arguments": [
+          "º[{PHONE}.pin.rx]",
+          "º[{PHONE}.pin.tx]",
+          "º[{PHONE}.baudRate]"
+        ]
+      }
+    ],
+    "extraFunctionCode": "float getLight(bqSoftwareSerial & phone){phone.println(String(\"readLight-\"));String data=\"\";while(data==\"\"){data=phone.readString();}return data.toFloat();}",
+    "code": "getLight({PHONE})"
+  },
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"phoneReadLight\" no preparado para generar código python"
+      }
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "type": "statement",
+  "name": "lcdWritePositionAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "name": "05569e16-f9e7-41e1-a4a8-e4da08d77133"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "name": "b0f9c723-f99f-42e3-9831-52bfb18628da"
+    }
+  ],
+  "bloqClass": "bloq-lcd-writte deprecated",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-lcd-writte-write"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "name": "05569e16-f9e7-41e1-a4a8-e4da08d77133"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-lcd-writte-inLCD"
+      },
+      {
+        "bloqInputId": "LCD",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "name": "b0f9c723-f99f-42e3-9831-52bfb18628da"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-lcd-writte-advanced-inPosition"
+      },
+      {
+        "id": "COLUMN",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "id": "ROW",
+        "alias": "numberInput",
+        "value": 0
+      }
+    ]
+  ],
+  "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});",
+  "arduino": {
+    "code": "{LCD}.setCursor({COLUMN},{ROW});{LCD}.print({TEXT});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"lcdWritePositionAdvanced\" no preparado para generar código python"
+      }
+    ]
+  }
+}
