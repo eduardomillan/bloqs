@@ -99,7 +99,7 @@
         "type": "BitbloqFreaksCar"
       }
     ],
-    "setupExtraCode": "robot.init();",
+    "setupExtraCode": "robot.setup();",
     "code": "robot.playTone({NOTE},{SECONDS});"
   },
   "python": {

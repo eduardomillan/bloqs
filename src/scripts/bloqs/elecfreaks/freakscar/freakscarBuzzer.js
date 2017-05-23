@@ -87,7 +87,7 @@ var freakscarBuzzer = _.merge(_.clone(StatementBloq, true), {
             name: 'robot',
             type: 'BitbloqFreaksCar'
         }],
-        setupExtraCode: 'robot.init();',
+        setupExtraCode: 'robot.setup();',
         code: 'robot.playTone({NOTE},{SECONDS});'
     }
 });
