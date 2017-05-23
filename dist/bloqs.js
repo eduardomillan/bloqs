@@ -2763,14 +2763,37 @@
 
     function getMatrix() {
         var result = [];
+        var binaries = [];
+        //init array
+        for (var k = 0; k < dots[0].length; k++) {
+            binaries[k] = '';
+        }
+
         for (var i = 0; i < dots.length; i++) {
             result[i] = [];
+
             for (var j = 0; j < dots[i].length; j++) {
                 result[i][j] = (dots[i][j].className.indexOf('active') !== -1);
+                if (result[i][j]) {
+                    binaries[j] += '1';
+                } else {
+                    binaries[j] += '0';
+                }
+
             }
         }
-        console.log(result);
-        return result;
+        //console.log(binaries);
+        //parse to hex
+        for (var l = 0; l < binaries.length; l++) {
+            binaries[l] = '0x' + parseInt(binaries[l], 2).toString(16);
+        }
+
+        //console.log(result);
+        console.log(binaries);
+        binaries = '{ ' + binaries + ' }';
+        console.log(binaries);
+
+        return binaries;
     }
 
     function toggleDot(evt) {

@@ -44,7 +44,13 @@ var mBotLedMatrix = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        code: '{LEDMATRIX}.drawBitmap(0,0, 16, {DRAW});'
+        needInstanceOf: [{
+            name: '{LEDMATRIX}_bitmap[16]',
+            type: 'uint8_t',
+            equals: '{DRAW}'
+
+        }],
+        code: '{LEDMATRIX}.drawBitmap(0,0, sizeof({LEDMATRIX}_bitmap), {LEDMATRIX}_bitmap);'
     }
 });
 utils.preprocessBloq(mBotLedMatrix);
