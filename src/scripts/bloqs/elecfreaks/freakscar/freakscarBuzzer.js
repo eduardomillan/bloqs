@@ -22,44 +22,63 @@ var freakscarBuzzer = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-freakscar-color',
     content: [
         [{
-            alias: 'text',
-            value: 'bloq-evolution-buzzer'
-        }, {
-            id: 'NOTE',
-            alias: 'staticDropdown',
-            options: [{
-                label: 'bloq-evolution-buzzer-do',
-                value: 'note_C4'
+                alias: 'text',
+                value: 'bloq-evolution-buzzer'
             }, {
-                label: 'bloq-evolution-buzzer-re',
-                value: 'note_D4'
-            }, {
-                label: 'bloq-evolution-buzzer-mi',
-                value: 'note_E4'
-            }, {
-                label: 'bloq-evolution-buzzer-fa',
-                value: 'note_F4'
-            }, {
-                label: 'bloq-evolution-buzzer-sol',
-                value: 'note_G4'
-            }, {
-                label: 'bloq-evolution-buzzer-la',
-                value: 'note_A4'
-            }, {
-                label: 'bloq-evolution-buzzer-si',
-                value: 'note_B4'
-            }]
-        }, {
-            alias: 'text',
-            value: 'bloq-evolution-buzzer-for'
-        }, {
-            id: 'SECONDS',
-            alias: 'numberInput',
-            value: 1000
-        }, {
-            alias: 'text',
-            value: 'bloq-evolution-buzzer-ms'
-        }]
+                id: 'NOTE',
+                alias: 'staticDropdown',
+                options: [{
+                    label: 'bloq-buzzer-do',
+                    value: '261'
+                }, {
+                    label: 'bloq-buzzer-re',
+                    value: '293'
+                }, {
+                    label: 'bloq-buzzer-mi',
+                    value: '329'
+                }, {
+                    label: 'bloq-buzzer-fa',
+                    value: '349'
+                }, {
+                    label: 'bloq-buzzer-sol',
+                    value: '392'
+                }, {
+                    label: 'bloq-buzzer-la',
+                    value: '440'
+                }, {
+                    label: 'bloq-buzzer-si',
+                    value: '494'
+                }, {
+                    label: 'bloq-buzzer-do-#',
+                    value: '277'
+                }, {
+                    label: 'bloq-buzzer-re-#',
+                    value: '311'
+                }, {
+                    label: 'bloq-buzzer-fa-#',
+                    value: '370'
+                }, {
+                    label: 'bloq-buzzer-sol-#',
+                    value: '415'
+                }, {
+                    label: 'bloq-buzzer-la-#',
+                    value: '466'
+                }]
+            },
+            {
+                alias: 'text',
+                value: 'bloq-evolution-buzzer-for'
+            },
+            {
+                id: 'SECONDS',
+                alias: 'numberInput',
+                value: 1000
+            },
+            {
+                alias: 'text',
+                value: 'bloq-evolution-buzzer-ms'
+            }
+        ]
     ],
     code: 'robot.playTone({NOTE},{SECONDS});',
     arduino: {
