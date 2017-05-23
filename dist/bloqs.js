@@ -2744,9 +2744,46 @@
         }
     };
 
+    function convertHexArrayToMatrix(hexArray, rows, columns) {
+        //"{ 0xff,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0 }"
+        var matrix = bloqsUtils.createMatrix(rows, columns);
+        var hexArrayItems = hexArray.replace('{', '').replace('}', '').replace(/ /g, '').replace(/0x/g, '').split(',');
+        for (var i = 0; i < hexArrayItems.length; i++) {
+            hexArrayItems[i] = parseInt(hexArrayItems[i], 16).toString(2);
+            hexArrayItems[i] = hexArrayItems[i].split('').reverse().join('');
+        }
+        console.log(hexArrayItems[i]);
+        for (var j = 0; j < hexArrayItems.length; j++) {
+            for (var k = 0; k < rows; k++) {
+                if (hexArrayItems[j].charAt(k) === '1') {
+                    matrix[(rows - 1 - k)][j] = true;
+                } else {
+                    matrix[(rows - 1 - k)][j] = false;
+                }
+
+            }
+            //hexArrayItems[i]
+        }
+        /*for (var j = 0; j < matrix.length; j++) {
+            for (var k = 0; k < matrix[j].length; k++) {
+                if (hexArrayItems[j].charAt(k) === '1') {
+                    matrix[j][k] = true;
+                } else {
+                    matrix[j][k] = false;
+                }
+            }
+        }*/
+        return matrix;
+    };
+
     function setMatrix(matrix, options) {
         console.log('setMatrix', matrix);
-        matrix = matrix || bloqsUtils.createMatrix(options.rows, options.columns);
+        if (matrix) {
+            matrix = convertHexArrayToMatrix(matrix, options.rows, options.columns);
+        } else {
+            matrix = bloqsUtils.createMatrix(options.rows, options.columns);
+        }
+
         for (var i = 0; i < dots.length; i++) {
             for (var j = 0; j < dots[i].length; j++) {
                 if (matrix[i][j]) {
