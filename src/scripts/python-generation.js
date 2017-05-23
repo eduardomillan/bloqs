@@ -3,6 +3,9 @@
 
     var INDENT_DEFAULT_CHARACTER = '    ';
     var PARAMS_REGEXP = /{(.*?)}/;
+    var HEADERCODE = '#!/usr/bin/python\n\nfrom __future__ import absolute_import, print_function, unicode_literals\n\nfrom optparse import OptionParser, make_option\nimport os\nimport sys\nimport socket\nimport uuid\nimport dbus\nimport dbus.service\nimport dbus.mainloop.glib\ntry:\n  from gi.repository import GObject\nexcept ImportError:\n  import gobject as GObject\n\nimport time\n\n###bloques bitbloq para bluetooth###\n\n#escribir un texto en la pantalla del dispositivo movil\ndef escribe_texto(server_sock,texto):\n    server_sock.send("%s\n" % texto)\n\n#movil emite un sonido\ndef emitir_sonido(server_sock, sonido ):\n    server_sock.send("playSound-%s\n" % sonido)\n    time.sleep(1)\n\n#recibe datos por voz o texto\ndef recibe_texto(server_sock):\n    data = server_sock.recv(1024)\n    return data\n\n#enciende/apaga linterna del dispositivo\n#enciende la linterna\ndef enciende_linterna(server_sock):\n    server_sock.send("turnonFlashlight-\n")\n\n#apaga la linterna\ndef apaga_linterna(server_sock):\n    server_sock.send("turnoffFlashlight-\n")\n\n#leer luz ambiente\ndef leer_luz(server_sock):\n    server_sock.send("readLight-\n")\n    dato = recibe_texto(server_sock)\n    print("nivel luz: %s" %dato)\n    return dato\n';
+    var CLASSES_CODE = '';
+    var FINAL_CODE = '';
     var params = {
         indentCharacter: INDENT_DEFAULT_CHARACTER
     };
@@ -14,8 +17,6 @@
         console.log('getting code', bloqFullStructure);
         imports = {};
         instances = {};
-
-        var code = '# coding=utf-8\n\n';
 
         var bloqsCode = getCodeFromBLoq(bloqFullStructure);
         var propiedad;
@@ -30,7 +31,8 @@
             instancesCode += propiedad + ' = ' + instances[propiedad] + '.' + instances[propiedad] + '()\n';
         }
 
-
+        var code = '# coding=utf-8\n\n';
+        code += HEADERCODE + '\n\n';
         code += importsCode + '\n\n';
         code += instancesCode + '\n\n';
         code += bloqsCode + '\n\n';
