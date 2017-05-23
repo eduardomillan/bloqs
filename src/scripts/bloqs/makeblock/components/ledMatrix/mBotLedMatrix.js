@@ -45,12 +45,12 @@ var mBotLedMatrix = _.merge(_.clone(StatementBloq, true), {
     code: '',
     arduino: {
         needInstanceOf: [{
-            name: '{LEDMATRIX}_bitmap_¬{DRAW.getHashCodeFromString}[16]',
+            name: '{LEDMATRIX}_bitmap[16]',
             type: 'uint8_t',
-            equals: '{DRAW}'
+            equals: '{ 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}'
 
         }],
-        code: '{LEDMATRIX}.drawBitmap(0,0, sizeof({LEDMATRIX}_bitmap_¬{DRAW.getHashCodeFromString}), {LEDMATRIX}_bitmap_¬{DRAW.getHashCodeFromString});'
+        code: '{LEDMATRIX}_bitmap = {DRAW};\n{LEDMATRIX}.drawBitmap(0,0, sizeof({LEDMATRIX}_bitmap), {LEDMATRIX}_bitmap);'
     }
 });
 utils.preprocessBloq(mBotLedMatrix);
