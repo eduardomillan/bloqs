@@ -1,0 +1,63 @@
+{
+  "type": "statement",
+  "name": "freakscarBuzzer",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    }
+  ],
+  "bloqClass": "bloq-freakscar-color",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-freakscar-buzzer"
+      },
+      {
+        "id": "FREQUENCY",
+        "alias": "numberInput",
+        "value": 261
+      },
+      {
+        "alias": "text",
+        "value": "bloq-evolution-buzzer-for"
+      },
+      {
+        "id": "SECONDS",
+        "alias": "numberInput",
+        "value": 1000
+      },
+      {
+        "alias": "text",
+        "value": "bloq-evolution-buzzer-ms"
+      }
+    ]
+  ],
+  "code": "robot.playTone({FREQUENCY},{SECONDS});",
+  "arduino": {
+    "includes": [
+      "BitbloqFreaksCar.h",
+      "BitbloqUS.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "robot",
+        "type": "BitbloqFreaksCar"
+      }
+    ],
+    "setupExtraCode": "robot.setup();",
+    "code": "robot.playTone({FREQUENCY},{SECONDS});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"freakscarBuzzer\" no preparado para generar código python"
+      }
+    ]
+  }
+}
