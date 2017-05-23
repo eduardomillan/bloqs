@@ -16,9 +16,9 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var freakscarBuzzer = _.merge(_.clone(StatementBloq, true), {
+var advancedBuzzer = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'freakscarBuzzer',
+    name: 'advancedBuzzer',
     bloqClass: 'bloq-freakscar-color',
     content: [
         [{
@@ -55,6 +55,6 @@ var freakscarBuzzer = _.merge(_.clone(StatementBloq, true), {
         code: 'robot.playTone({FREQUENCY},{SECONDS});'
     }
 });
-utils.preprocessBloq(freakscarBuzzer);
+utils.preprocessBloq(advancedBuzzer);
 
-module.exports = freakscarBuzzer;
+module.exports = advancedBuzzer;
