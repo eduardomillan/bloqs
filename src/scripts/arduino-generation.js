@@ -533,6 +533,7 @@
 
                         case 'bt':
                         case 'sp':
+                        case 'mkb_bluetooth':
                             tempIncludes = ['BitbloqSoftwareSerial.h'];
                             tempSetupExtraCode = hardwareList.components[i].name + '.begin(' + hardwareList.components[i].baudRate + ');';
                             tempInstanceOf = {
