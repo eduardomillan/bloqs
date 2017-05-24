@@ -32,7 +32,8 @@ var mBotLedMatrix = _.merge(_.clone(StatementBloq, true), {
             options: {
                 rows: 8,
                 columns: 16
-            }
+            },
+            value: '0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0'
         }, {
             alias: 'text',
             value: 'en la'
