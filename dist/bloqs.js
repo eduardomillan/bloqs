@@ -2831,7 +2831,8 @@
 
         //console.log(result);
         console.log(binaries);
-        binaries = '{ ' + binaries + ' }';
+        //binaries = '{ ' + binaries + ' }';
+        binaries = binaries.toString();
         console.log(binaries);
 
         return binaries;
