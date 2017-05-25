@@ -216,18 +216,43 @@
 
             _windowParent.appendChild(bloqsWindow);
         } else {
-            bloqsWindow.className = bloqsWindow.className.replace('hide', '');
+            changeShowWindowsClass();
         }
 
 
         return bloqsWindow;
     }
 
+    var timeoutId;
+
     function hideWindow() {
-        if (bloqsWindow.className.indexOf('hide') === -1) {
-            bloqsWindow.className += ' hide';
+        if (!timeoutId) {
+            bloqsWindow.addEventListener('mouseover', cancelHideTimeout);
+            if (bloqsWindow.className.indexOf('opacity0') === -1) {
+                bloqsWindow.className += ' opacity0';
+            }
+            timeoutId = setTimeout(function() {
+                timeoutId = null;
+                if (bloqsWindow.className.indexOf('hide') === -1) {
+                    bloqsWindow.className += ' hide';
+                }
+                bloqsWindow.removeEventListener('mouseover', cancelHideTimeout);
+                showWindowCallback(getMatrix());
+            }, 500);
         }
-        showWindowCallback(getMatrix());
+
+    }
+
+    function cancelHideTimeout() {
+        bloqsWindow.removeEventListener('mouseover', cancelHideTimeout);
+        console.log('mouseover cancel hide');
+        changeShowWindowsClass();
+        clearTimeout(timeoutId);
+        timeoutId = null;
+    }
+
+    function changeShowWindowsClass() {
+        bloqsWindow.className = bloqsWindow.className.replace('opacity0', '').replace('hide', '');
     }
 
     function moveWindow(params) {
@@ -235,8 +260,8 @@
         bloqsWindow.className = bloqsWindow.className.replace(' right', '');
         bloqsWindow.className = bloqsWindow.className.replace(' top', '');
 
-        var heightExtraOffset = 6,
-            widthExtraOffset = 21,
+        var heightExtraOffset = 0,
+            widthExtraOffset = 31,
             finalPoint = {},
             bottomFreeSpace = params.workspaceHeight + params.fieldOffsetTop - params.launcherBottomPoint.top,
             topFreeSpace = params.launcherTopPoint.top - params.fieldOffsetTop,

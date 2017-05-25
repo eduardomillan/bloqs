@@ -10635,15 +10635,20 @@ tester + span + .bloqinput {
   width: 32px;
   height: 21px; }
 
-.dotsMatrix-window .dots-container {
-  margin: 15px;
-  overflow: hidden; }
-  .dotsMatrix-window .dots-container .bloqs-dots-dot {
-    background-color: #000FFF;
-    width: 20px;
-    height: 20px;
-    float: left;
-    margin: 5px;
-    cursor: pointer; }
-    .dotsMatrix-window .dots-container .bloqs-dots-dot.active {
-      background-color: #FFF000; }
+.dotsMatrix-window {
+  opacity: 1;
+  transition: opacity .5s ease; }
+  .dotsMatrix-window .dots-container {
+    margin: 15px;
+    overflow: hidden; }
+    .dotsMatrix-window .dots-container .bloqs-dots-dot {
+      background-color: #EBEBEB;
+      width: 25px;
+      height: 25px;
+      float: left;
+      margin: 5px;
+      cursor: pointer; }
+      .dotsMatrix-window .dots-container .bloqs-dots-dot.active {
+        background-color: #00b8ff; }
+  .dotsMatrix-window.opacity0 {
+    opacity: 0; }
