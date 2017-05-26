@@ -2418,19 +2418,17 @@
             for (var i = 0; i < needInstanceOf.arguments.length; i++) {
                 needInstanceOf.arguments[i] = processCode(needInstanceOf.arguments[i], aliasesValuesHashMap, hardwareList);
             }
-        }
-
-
-        if (needInstanceOf.arguments.indexOf("undefined") > -1) {
-            var tempInstanceCopy = _.clone(needInstanceOf.arguments);
-            for (var index = 0; index < tempInstanceCopy.length; index++) {
-                if (tempInstanceCopy[index] === "undefined") {
-                    tempInstanceCopy[index] = String(index);
+            if (needInstanceOf.arguments.indexOf("undefined") > -1) {
+                var tempInstanceCopy = _.clone(needInstanceOf.arguments);
+                for (var index = 0; index < tempInstanceCopy.length; index++) {
+                    if (tempInstanceCopy[index] === "undefined") {
+                        tempInstanceCopy[index] = String(index);
+                    }
                 }
+                var tempInstanceCopyId = tempInstanceName + String(tempInstanceCopy || '');
             }
-            var tempInstanceCopyId = tempInstanceName + String(tempInstanceCopy || '');
         }
-
+        
         var tempInstanceId = tempInstanceName + String(needInstanceOf.arguments || '');
 
         if (!tempInstanceCopyId || !instances[tempInstanceCopyId]) {
