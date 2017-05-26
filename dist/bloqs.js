@@ -4043,6 +4043,11 @@
 
                         arrayOptions = arrayOptions.concat(componentsArray.servos, componentsArray.oscillators, componentsArray.continuousServos);
                         break;
+                    case 'sensors':
+                        arrayOptions = [];
+
+                        arrayOptions = arrayOptions.concat(componentsArray.sensors, componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick);
+                        break;
                     case 'varComponents':
                         arrayOptions = [];
 
