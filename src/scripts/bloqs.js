@@ -1577,7 +1577,7 @@
 
             if (type === 'sensors') {
                 /*jshint camelcase: false */
-                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor.concat(componentsArray.mkb_linefollower).concat(componentsArray.mkb_soundsensor).concat(componentsArray.joystick));
+                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor).concat(componentsArray.mkb_linefollower).concat(componentsArray.mkb_soundsensor).concat(componentsArray.joystick);
                 /*jshint camelcase: true */
             } else {
                 componentsList = componentsArray[type];
@@ -1949,7 +1949,7 @@
                                 //only software Vars get value from val(), hardware, use attribute or val()
                                 var variableType = this.bloqData.content[0][i].options,
                                     itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType),
-                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor.concat(componentsArray.mkb_linefollower)),
+                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor).concat(componentsArray.mkb_linefollower).concat(componentsArray.mkb_soundsensor).concat(componentsArray.joystick),
                                     valueType,
                                     j;
 
