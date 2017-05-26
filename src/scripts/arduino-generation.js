@@ -91,8 +91,8 @@
         programExtraCodeMap = {};
         programFunctionDeclarationsMap = {};
         hardwareList = hardwareList || {
-            components: []
-        };
+                components: []
+            };
 
 
         var code = '';
@@ -130,7 +130,6 @@
         for (prop in programFunctionDeclarationsMap) {
             programFunctionDeclarations += prop + '\n';
         }
-
 
 
         var instancesCode = '',
@@ -785,18 +784,28 @@
             for (var i = 0; i < needInstanceOf.arguments.length; i++) {
                 needInstanceOf.arguments[i] = processCode(needInstanceOf.arguments[i], aliasesValuesHashMap, hardwareList);
             }
+            if (needInstanceOf.arguments.indexOf("undefined") > -1) {
+                var tempInstanceCopy = _.clone(needInstanceOf.arguments);
+                for (var index = 0; index < tempInstanceCopy.length; index++) {
+                    if (tempInstanceCopy[index] === "undefined") {
+                        tempInstanceCopy[index] = String(index);
+                    }
+                }
+                var tempInstanceCopyId = tempInstanceName + String(tempInstanceCopy || '');
+            }
         }
-
-
+        
         var tempInstanceId = tempInstanceName + String(needInstanceOf.arguments || '');
 
-        instances[tempInstanceId] = {
-            equals: processCode(needInstanceOf.equals, aliasesValuesHashMap, hardwareList),
-            type: needInstanceOf.type,
-            name: needInstanceOf.name,
-            realName: tempInstanceName,
-            arguments: needInstanceOf.arguments
-        };
+        if (!tempInstanceCopyId || !instances[tempInstanceCopyId]) {
+            instances[tempInstanceId] = {
+                equals: processCode(needInstanceOf.equals, aliasesValuesHashMap, hardwareList),
+                type: needInstanceOf.type,
+                name: needInstanceOf.name,
+                realName: tempInstanceName,
+                arguments: needInstanceOf.arguments
+            };
+        }
     }
 
     arduinoGeneration.getCode = getCode;
