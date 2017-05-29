@@ -2395,8 +2395,6 @@
                             setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
 
                             addInstance(tempInstanceOf, {}, hardwareList);
-                            setupExtraCodeMap[tempSetupExtraCode] = true;
-
                             break;
                         case 'mkb_ledmatrix':
                             tempIncludes = ['BitbloqMeLEDMatrix.h'];
