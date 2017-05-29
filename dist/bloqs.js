@@ -1725,8 +1725,8 @@
         programExtraCodeMap = {};
         programFunctionDeclarationsMap = {};
         hardwareList = hardwareList || {
-                components: []
-            };
+            components: []
+        };
 
 
         var code = '';
@@ -2369,6 +2369,18 @@
                             setupExtraCodeMap[tempSetupExtraCode] = true;
 
                             break;
+                        case 'mkb_pot':
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'const int',
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            };
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
+
+                            addInstance(tempInstanceOf, {}, hardwareList);
+                            setupExtraCodeMap[tempSetupExtraCode] = true;
+
+                            break;
                         case 'mkb_ledmatrix':
                             tempIncludes = ['BitbloqMeLEDMatrix.h'];
 
@@ -2428,7 +2440,7 @@
                 var tempInstanceCopyId = tempInstanceName + String(tempInstanceCopy || '');
             }
         }
-        
+
         var tempInstanceId = tempInstanceName + String(needInstanceOf.arguments || '');
 
         if (!tempInstanceCopyId || !instances[tempInstanceCopyId]) {
@@ -2447,6 +2459,7 @@
     return arduinoGeneration;
 
 })(window.arduinoGeneration = window.arduinoGeneration || {}, undefined);
+
 
 'use strict';
 (function(bloqsSuggested, bloqsLanguages, bloqsUtils) {
