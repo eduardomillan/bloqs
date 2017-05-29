@@ -1207,6 +1207,7 @@
             mkb_linefollower: [],
             mkb_integrated_RGB: [],
             mkb_soundsensor: [],
+            mkb_4buttonKeyPad: [],
             ledMatrix: []
         };
     };
@@ -1455,6 +1456,7 @@
     return bloqsUtils;
 
 })(window.bloqsUtils = window.bloqsUtils || {}, _, undefined);
+
 
 'use strict';
 (function(bloqsTooltip) {
@@ -2376,6 +2378,21 @@
                                 equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
                             };
                             tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
+
+                            addInstance(tempInstanceOf, {}, hardwareList);
+                            setupExtraCodeMap[tempSetupExtraCode] = true;
+
+                            break;
+
+                        case 'mkb_4buttonKeyPad':
+                            tempIncludes = ['BitbloqButtonPad.h'];
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'const int',
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            };
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
 
                             addInstance(tempInstanceOf, {}, hardwareList);
                             setupExtraCodeMap[tempSetupExtraCode] = true;

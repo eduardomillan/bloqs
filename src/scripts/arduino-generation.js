@@ -747,6 +747,21 @@
                             setupExtraCodeMap[tempSetupExtraCode] = true;
 
                             break;
+
+                        case 'mkb_4buttonKeyPad':
+                            tempIncludes = ['BitbloqButtonPad.h'];
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'const int',
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            };
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+
+                            addInstance(tempInstanceOf, {}, hardwareList);
+                            setupExtraCodeMap[tempSetupExtraCode] = true;
+
+                            break;
                         case 'mkb_ledmatrix':
                             tempIncludes = ['BitbloqMeLEDMatrix.h'];
 
