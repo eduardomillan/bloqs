@@ -775,7 +775,20 @@
 
                             setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();\n' + hardwareList.components[i].name + '.setBrightness(6);\n' + hardwareList.components[i].name + '.setColorIndex(1);'] = true;
                             break;
+                        case 'mkb_display7seg':
+                            tempIncludes = ['Bitbloq7SegmentDisplay.h'];
 
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Bitbloq7SegmentDisplay',
+                                arguments: [
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]',
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                ]
+                            };
+
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+                            break;
                     }
 
                     if (tempInstanceOf) {

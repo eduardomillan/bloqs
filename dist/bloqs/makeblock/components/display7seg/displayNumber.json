@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "waitAdvanced",
+  "name": "displayNumber",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,18 +20,18 @@
         "number",
         "selectVariable"
       ],
-      "name": "47ba6e8b-c848-45c0-a9e5-f18c924a308c"
+      "name": "e7602dc2-d94b-40de-97aa-7fd7c8a20a70"
     }
   ],
-  "bloqClass": "bloq-wait",
+  "bloqClass": "bloq-mbot-color",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-wait-wait"
+        "value": "bloq-display-show"
       },
       {
-        "bloqInputId": "TIME",
+        "bloqInputId": "VALUE",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -40,18 +40,27 @@
           "number",
           "selectVariable"
         ],
-        "name": "47ba6e8b-c848-45c0-a9e5-f18c924a308c"
+        "name": "e7602dc2-d94b-40de-97aa-7fd7c8a20a70"
+      },
+      {
+        "alias": "text",
+        "value": "in"
+      },
+      {
+        "id": "DISPLAY",
+        "alias": "dynamicDropdown",
+        "options": "mkb_display7seg"
       }
     ]
   ],
-  "code": "delay({TIME});",
+  "code": "",
   "arduino": {
-    "code": "delay({TIME});"
+    "code": "{DISPLAY}.display({VALUE})"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"waitAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"displayNumber\" no preparado para generar código python"
       }
     ]
   }
