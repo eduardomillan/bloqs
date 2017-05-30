@@ -42,7 +42,7 @@ var displayNumber = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        code: '{DISPLAY}.display({VALUE})'
+        code: '{DISPLAY}.display({VALUE});'
     }
 });
 utils.preprocessBloq(displayNumber);
