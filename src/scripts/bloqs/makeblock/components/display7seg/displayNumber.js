@@ -37,7 +37,7 @@ var displayNumber = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'DISPLAY',
             alias: 'dynamicDropdown',
-            options: 'mkb_display7seg'
+            options: 'display7seg'
         }]
     ],
     code: '',
