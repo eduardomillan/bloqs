@@ -61,12 +61,7 @@
   ],
   "code": "",
   "arduino": {
-    "conditional": {
-      "aliasId": "OPERATION",
-      "code": {
-        "+": "if(¬{BUTTONPAD.readSensor} == {BUTTON}){{STATEMENTS}}"
-      }
-    }
+    "code": "if(¬{BUTTONPAD.readSensor} == {BUTTON}){{STATEMENTS}}"
   },
   "python": {
     "codeLines": [

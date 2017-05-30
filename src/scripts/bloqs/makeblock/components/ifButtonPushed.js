@@ -52,15 +52,7 @@ var ifButtonPushed = _.merge(_.clone(StatementInputBloq, true), {
     ],
     code: '',
     arduino: {
-        code: 'if({OPERATION}){{STATEMENTS}}'
-    },
-    arduino: {
-        conditional: {
-            aliasId: 'OPERATION',
-            code: {
-                '+': 'if(¬{BUTTONPAD.readSensor} == {BUTTON}){{STATEMENTS}}'
-            }
-        }
+        code: 'if(¬{BUTTONPAD.readSensor} == {BUTTON}){{STATEMENTS}}'
     }
 });
 
