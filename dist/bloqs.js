@@ -1208,7 +1208,8 @@
             mkb_integrated_RGB: [],
             mkb_soundsensor: [],
             mkb_4buttonKeyPad: [],
-            ledMatrix: []
+            ledMatrix: [],
+            display7seg: []
         };
     };
 
