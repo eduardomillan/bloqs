@@ -58,7 +58,7 @@ var ifButtonPushed = _.merge(_.clone(StatementInputBloq, true), {
         conditional: {
             aliasId: 'OPERATION',
             code: {
-                '+': 'if(¬{BUTTONPAD.readSensor} == {{BUTTON}}){{STATEMENTS}}'
+                '+': 'if(¬{BUTTONPAD.readSensor} == {BUTTON}){{STATEMENTS}}'
             }
         }
     }
