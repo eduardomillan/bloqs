@@ -1,0 +1,95 @@
+{
+  "type": "statement",
+  "name": "mBotShowTimeOnLedMatrixAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "ae3635aa-84f4-4e60-9bb3-4e8f633df066"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "2d1bbb7f-31a0-484a-b43e-8b0b37de4ca8"
+    }
+  ],
+  "bloqClass": "bloq-mbot-color",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-makeblock-ledmatrix-writeTime"
+      },
+      {
+        "bloqInputId": "HOUR",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "ae3635aa-84f4-4e60-9bb3-4e8f633df066"
+      },
+      {
+        "alias": "text",
+        "value": ":"
+      },
+      {
+        "bloqInputId": "MINUTES",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "2d1bbb7f-31a0-484a-b43e-8b0b37de4ca8"
+      },
+      {
+        "alias": "text",
+        "value": "in-the"
+      },
+      {
+        "id": "LEDMATRIX",
+        "alias": "dynamicDropdown",
+        "options": "ledMatrix"
+      }
+    ]
+  ],
+  "code": "",
+  "arduino": {
+    "code": "{LEDMATRIX}.showClock({HOUR},{MINUTES},1);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotShowTimeOnLedMatrixAdvanced\" no preparado para generar código python"
+      }
+    ]
+  }
+}

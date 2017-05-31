@@ -1,0 +1,67 @@
+{
+  "type": "statement",
+  "name": "displayNumber",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "ca8d5ce4-8b4f-4ae9-9041-bd97b74755ec"
+    }
+  ],
+  "bloqClass": "bloq-mbot-color",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-display-show"
+      },
+      {
+        "bloqInputId": "VALUE",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "ca8d5ce4-8b4f-4ae9-9041-bd97b74755ec"
+      },
+      {
+        "alias": "text",
+        "value": "in"
+      },
+      {
+        "id": "DISPLAY",
+        "alias": "dynamicDropdown",
+        "options": "display7seg"
+      }
+    ]
+  ],
+  "code": "",
+  "arduino": {
+    "code": "{DISPLAY}.display({VALUE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"displayNumber\" no preparado para generar código python"
+      }
+    ]
+  }
+}

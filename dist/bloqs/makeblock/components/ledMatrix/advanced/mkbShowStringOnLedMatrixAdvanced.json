@@ -1,0 +1,67 @@
+{
+  "type": "statement",
+  "name": "mBotShowStringOnLedMatrixAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "string",
+        "selectVariable"
+      ],
+      "name": "5aeb95c0-8681-4404-8005-f686dbc567c7"
+    }
+  ],
+  "bloqClass": "bloq-mbot-color",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-makeblock-ledmatrix-write"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "string",
+          "selectVariable"
+        ],
+        "name": "5aeb95c0-8681-4404-8005-f686dbc567c7"
+      },
+      {
+        "alias": "text",
+        "value": "in-the"
+      },
+      {
+        "id": "LEDMATRIX",
+        "alias": "dynamicDropdown",
+        "options": "ledMatrix"
+      }
+    ]
+  ],
+  "code": "",
+  "arduino": {
+    "code": "char char_array[(String({TEXT}).length() + 1)];String({TEXT}).toCharArray(char_array, String({TEXT}).length() + 1);{LEDMATRIX}.drawStr(0,7,char_array);"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotShowStringOnLedMatrixAdvanced\" no preparado para generar código python"
+      }
+    ]
+  }
+}

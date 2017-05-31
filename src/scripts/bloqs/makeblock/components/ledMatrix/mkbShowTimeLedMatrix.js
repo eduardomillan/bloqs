@@ -21,7 +21,7 @@ var mBotShowTimeOnLedMatrix = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mostrar la hora'
+            value: 'bloq-makeblock-ledmatrix-writeTime'
         }, {
             id: 'HOUR',
             alias: 'numberInput',
@@ -35,7 +35,7 @@ var mBotShowTimeOnLedMatrix = _.merge(_.clone(StatementBloq, true), {
             value: 0
         }, {
             alias: 'text',
-            value: 'en la'
+            value: 'in-the'
         }, {
             id: 'LEDMATRIX',
             alias: 'dynamicDropdown',

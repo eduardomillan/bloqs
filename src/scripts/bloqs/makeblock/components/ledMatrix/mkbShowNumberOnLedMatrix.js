@@ -21,14 +21,14 @@ var mBotShowNumberOnLedMatrix = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Mostrar el número'
+            value: 'bloq-makeblock-ledmatrix-writeNumber'
         }, {
             id: 'NUMBER',
             alias: 'numberInput',
             value: 0
         }, {
             alias: 'text',
-            value: 'en la'
+            value: 'in-the'
         }, {
             id: 'LEDMATRIX',
             alias: 'dynamicDropdown',

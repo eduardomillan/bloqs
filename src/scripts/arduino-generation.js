@@ -71,6 +71,9 @@
                             var pin = sensorData.pin.s || '';
                             result = 'robot.readLightSensor(' + pin + ')';
                             break;
+                        case 'remote':
+                            result = hardwareList.board + '.getInfraredControlCommand()';
+                            break;
                         default:
                             result = sensorName + '.read()';
                     }
@@ -91,8 +94,8 @@
         programExtraCodeMap = {};
         programFunctionDeclarationsMap = {};
         hardwareList = hardwareList || {
-                components: []
-            };
+            components: []
+        };
 
 
         var code = '';
@@ -735,6 +738,32 @@
                             setupExtraCodeMap[tempSetupExtraCode] = true;
 
                             break;
+                        case 'mkb_pot':
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'const int',
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            };
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ', INPUT);';
+
+                            addInstance(tempInstanceOf, {}, hardwareList);
+                            setupExtraCodeMap[tempSetupExtraCode] = true;
+
+                            break;
+
+                        case 'mkb_4buttonKeyPad':
+                            tempIncludes = ['BitbloqButtonPad.h'];
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'BitbloqMe4ButtonPad',
+                                arguments: [
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                ]
+                            };
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+
+                            break;
                         case 'mkb_ledmatrix':
                             tempIncludes = ['BitbloqMeLEDMatrix.h'];
 
@@ -749,7 +778,30 @@
 
                             setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();\n' + hardwareList.components[i].name + '.setBrightness(6);\n' + hardwareList.components[i].name + '.setColorIndex(1);'] = true;
                             break;
+                        case 'mkb_display7seg':
+                            tempIncludes = ['Bitbloq7SegmentDisplay.h'];
 
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Bitbloq7SegmentDisplay',
+                                arguments: [
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]',
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                ]
+                            };
+
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+                            break;
+
+                        case 'mkb_remote':
+                            tempIncludes = ['IRremoteInt.h', 'IRremote.h', 'BitbloqIRControl.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.board,
+                                type: makeblockBoardLibrary
+                            };
+
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.board + '.setup();'] = true;
+                            break;
                     }
 
                     if (tempInstanceOf) {
@@ -794,7 +846,7 @@
                 var tempInstanceCopyId = tempInstanceName + String(tempInstanceCopy || '');
             }
         }
-        
+
         var tempInstanceId = tempInstanceName + String(needInstanceOf.arguments || '');
 
         if (!tempInstanceCopyId || !instances[tempInstanceCopyId]) {

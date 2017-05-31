@@ -21,13 +21,13 @@ var mBotShowStringOnLedMatrix = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Escribir'
+            value: 'bloq-makeblock-ledmatrix-write'
         }, {
             id: 'TEXT',
             alias: 'stringInput'
         }, {
             alias: 'text',
-            value: 'en la'
+            value: 'in-the'
         }, {
             id: 'LEDMATRIX',
             alias: 'dynamicDropdown',
