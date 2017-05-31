@@ -18,9 +18,10 @@
       ],
       "suggestedBloqs": [
         "string",
+        "number",
         "selectVariable"
       ],
-      "name": "80df97e7-08d0-4872-beaa-9dba4fcc26f9"
+      "name": "1b384613-6a81-4f6c-9c40-18b4db89ca0e"
     }
   ],
   "bloqClass": "bloq-mbot-color",
@@ -38,9 +39,10 @@
         ],
         "suggestedBloqs": [
           "string",
+          "number",
           "selectVariable"
         ],
-        "name": "80df97e7-08d0-4872-beaa-9dba4fcc26f9"
+        "name": "1b384613-6a81-4f6c-9c40-18b4db89ca0e"
       },
       {
         "alias": "text",
@@ -55,7 +57,7 @@
   ],
   "code": "",
   "arduino": {
-    "code": "{LEDMATRIX}.drawStr(0,7,\"{TEXT}\");"
+    "code": "{LEDMATRIX}.drawStr(0,7,{TEXT});"
   },
   "python": {
     "codeLines": [

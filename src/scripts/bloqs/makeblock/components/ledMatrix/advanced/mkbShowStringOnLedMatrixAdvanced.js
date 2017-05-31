@@ -26,7 +26,7 @@ var mBotShowStringOnLedMatrixAdvanced = _.merge(_.clone(StatementBloq, true), {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
             acceptType: ['all'],
-            suggestedBloqs: ['string', 'selectVariable']
+            suggestedBloqs: ['string', 'number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'in-the'
@@ -38,7 +38,7 @@ var mBotShowStringOnLedMatrixAdvanced = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        code: '{LEDMATRIX}.drawStr(0,7,"{TEXT}");'
+        code: '{LEDMATRIX}.drawStr(0,7,{TEXT});'
     }
 });
 utils.preprocessBloq(mBotShowStringOnLedMatrixAdvanced);
