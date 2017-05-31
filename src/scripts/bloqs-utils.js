@@ -2,7 +2,6 @@
 (function(bloqsUtils, _) {
 
 
-
     var isNumeric = function(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
     };
@@ -1201,7 +1200,8 @@
             mkb_soundsensor: [],
             mkb_4buttonKeyPad: [],
             ledMatrix: [],
-            display7seg: []
+            display7seg: [],
+            remoteControl: []
         };
     };
 
@@ -1232,7 +1232,8 @@
                 code = code.replace(new RegExp('{' + contents[i].id + '\.withoutAsterisk}', 'g'), (contents[i].value || '').replace(/ \*/g, ''));
                 code = code.replace(new RegExp('{' + contents[i].id + '\.connectionType}', 'g'), contents[i].connectionType || '');
                 code = code.replace(new RegExp('{' + contents[i].id + '}( )*', 'g'), contents[i].value || '');
-            };
+            }
+            ;
 
             //search for regular expressions:
             var reg = /(.*)\?(.*):(.*)/g;
