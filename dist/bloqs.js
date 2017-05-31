@@ -4103,7 +4103,7 @@
                     case 'sensors':
                         arrayOptions = [];
 
-                        arrayOptions = arrayOptions.concat(componentsArray.sensors, componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remote);
+                        arrayOptions = arrayOptions.concat(componentsArray.sensors, componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl);
                         break;
                     case 'varComponents':
                         arrayOptions = [];
@@ -4626,7 +4626,7 @@
 
             if (type === 'sensors') {
                 /*jshint camelcase: false */
-                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor).concat(componentsArray.mkb_linefollower).concat(componentsArray.mkb_soundsensor).concat(componentsArray.joystick).concat(componentsArray.mkb_4buttonKeyPad).concat(componentsArray.remote);
+                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor).concat(componentsArray.mkb_linefollower).concat(componentsArray.mkb_soundsensor).concat(componentsArray.joystick).concat(componentsArray.mkb_4buttonKeyPad).concat(componentsArray.remoteControl);
                 /*jshint camelcase: true */
             } else {
                 componentsList = componentsArray[type];
@@ -4998,7 +4998,7 @@
                                 //only software Vars get value from val(), hardware, use attribute or val()
                                 var variableType = this.bloqData.content[0][i].options,
                                     itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType),
-                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor).concat(componentsArray.mkb_linefollower).concat(componentsArray.mkb_soundsensor).concat(componentsArray.joystick).concat(componentsArray.mkb_4buttonKeyPad).concat(componentsArray.remote),
+                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor).concat(componentsArray.mkb_linefollower).concat(componentsArray.mkb_soundsensor).concat(componentsArray.joystick).concat(componentsArray.mkb_4buttonKeyPad).concat(componentsArray.remoteControl),
                                     valueType,
                                     j;
 
