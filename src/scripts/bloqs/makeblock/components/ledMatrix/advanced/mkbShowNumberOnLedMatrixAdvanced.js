@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../../build-utils'),
-    StatementBloq = require('./../../../statementBloq');
+    utils = require('./../../../../build-utils'),
+    StatementBloq = require('./../../../../statementBloq');
 
 /**
  * Bloq name: show time on led matrix
@@ -14,18 +14,19 @@ var _ = require('lodash'),
  *
  */
 
-var mBotShowNumberOnLedMatrix = _.merge(_.clone(StatementBloq, true), {
+var mBotShowNumberOnLedMatrixAdvanced = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'mBotShowNumberOnLedMatrix',
+    name: 'mBotShowNumberOnLedMatrixAdvanced',
     bloqClass: 'bloq-mbot-color',
     content: [
         [{
             alias: 'text',
             value: 'bloq-makeblock-ledmatrix-writeNumber'
         }, {
-            id: 'NUMBER',
-            alias: 'numberInput',
-            value: 0
+            bloqInputId: 'NUMBER',
+            alias: 'bloqInput',
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'in-the'
@@ -40,6 +41,6 @@ var mBotShowNumberOnLedMatrix = _.merge(_.clone(StatementBloq, true), {
         code: '{LEDMATRIX}.showNum({NUMBER});'
     }
 });
-utils.preprocessBloq(mBotShowNumberOnLedMatrix);
+utils.preprocessBloq(mBotShowNumberOnLedMatrixAdvanced);
 
-module.exports = mBotShowNumberOnLedMatrix;
+module.exports = mBotShowNumberOnLedMatrixAdvanced;

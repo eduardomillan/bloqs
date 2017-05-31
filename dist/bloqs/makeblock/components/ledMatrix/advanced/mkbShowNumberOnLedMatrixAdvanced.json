@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "continuousServoStopAdvanced",
+  "name": "mBotShowNumberOnLedMatrixAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -17,41 +17,50 @@
         "all"
       ],
       "suggestedBloqs": [
-        "hwVariable",
+        "number",
         "selectVariable"
       ],
-      "name": "cc4b02ef-efce-49ca-ae38-cb8421933b75"
+      "name": "2ce63f7e-6c6b-4ab0-a75e-9ff541e34bbe"
     }
   ],
-  "bloqClass": "bloq-continuous-servo-stop-advanced",
+  "bloqClass": "bloq-mbot-color",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-continuous-servo-stop-advanced-stop"
+        "value": "bloq-makeblock-ledmatrix-writeNumber"
       },
       {
-        "bloqInputId": "SERVO",
+        "bloqInputId": "NUMBER",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
-          "hwVariable",
+          "number",
           "selectVariable"
         ],
-        "name": "cc4b02ef-efce-49ca-ae38-cb8421933b75"
+        "name": "2ce63f7e-6c6b-4ab0-a75e-9ff541e34bbe"
+      },
+      {
+        "alias": "text",
+        "value": "in-the"
+      },
+      {
+        "id": "LEDMATRIX",
+        "alias": "dynamicDropdown",
+        "options": "ledMatrix"
       }
     ]
   ],
-  "code": "{SERVO}.write(90);",
+  "code": "",
   "arduino": {
-    "code": "{SERVO}.write(90);"
+    "code": "{LEDMATRIX}.showNum({NUMBER});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"continuousServoStopAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mBotShowNumberOnLedMatrixAdvanced\" no preparado para generar código python"
       }
     ]
   }

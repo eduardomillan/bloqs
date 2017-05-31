@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "continuousServoStopAdvanced",
+  "name": "mBotSetLedMatrixBrightnessAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -17,41 +17,50 @@
         "all"
       ],
       "suggestedBloqs": [
-        "hwVariable",
+        "number",
         "selectVariable"
       ],
-      "name": "cc4b02ef-efce-49ca-ae38-cb8421933b75"
+      "name": "6e20dd67-fd32-4341-8161-f1e35d3f788a"
     }
   ],
-  "bloqClass": "bloq-continuous-servo-stop-advanced",
+  "bloqClass": "bloq-components-color",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-continuous-servo-stop-advanced-stop"
+        "value": "bloq-makeblock-ledmatrix-setLight"
       },
       {
-        "bloqInputId": "SERVO",
+        "id": "LEDMATRIX",
+        "alias": "dynamicDropdown",
+        "options": "ledMatrix"
+      },
+      {
+        "alias": "text",
+        "value": "to"
+      },
+      {
+        "bloqInputId": "BRIGHTNESSLEVEL",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
-          "hwVariable",
+          "number",
           "selectVariable"
         ],
-        "name": "cc4b02ef-efce-49ca-ae38-cb8421933b75"
+        "name": "6e20dd67-fd32-4341-8161-f1e35d3f788a"
       }
     ]
   ],
-  "code": "{SERVO}.write(90);",
+  "code": "",
   "arduino": {
-    "code": "{SERVO}.write(90);"
+    "code": "{LEDMATRIX}.setBrightness({BRIGHTNESSLEVEL});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"continuousServoStopAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mBotSetLedMatrixBrightnessAdvanced\" no preparado para generar código python"
       }
     ]
   }

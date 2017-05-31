@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotShowStringOnLedMatrix",
+  "name": "mBotShowStringOnLedMatrixAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -9,6 +9,18 @@
     {
       "type": "connector--bottom",
       "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "string",
+        "selectVariable"
+      ],
+      "name": "80df97e7-08d0-4872-beaa-9dba4fcc26f9"
     }
   ],
   "bloqClass": "bloq-mbot-color",
@@ -19,8 +31,16 @@
         "value": "bloq-makeblock-ledmatrix-write"
       },
       {
-        "id": "TEXT",
-        "alias": "stringInput"
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "string",
+          "selectVariable"
+        ],
+        "name": "80df97e7-08d0-4872-beaa-9dba4fcc26f9"
       },
       {
         "alias": "text",
@@ -40,7 +60,7 @@
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotShowStringOnLedMatrix\" no preparado para generar código python"
+        "code": "Bloque \"mBotShowStringOnLedMatrixAdvanced\" no preparado para generar código python"
       }
     ]
   }

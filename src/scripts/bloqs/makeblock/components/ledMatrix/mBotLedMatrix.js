@@ -25,7 +25,7 @@ var mBotLedMatrix = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Dibujar'
+            value: 'bloq-makeblock-ledmatrix-draw'
         }, {
             id: 'DRAW',
             alias: 'dotsMatrix',
@@ -36,7 +36,7 @@ var mBotLedMatrix = _.merge(_.clone(StatementBloq, true), {
             value: '0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0'
         }, {
             alias: 'text',
-            value: 'en la'
+            value: 'in-the'
         }, {
             id: 'LEDMATRIX',
             alias: 'dynamicDropdown',

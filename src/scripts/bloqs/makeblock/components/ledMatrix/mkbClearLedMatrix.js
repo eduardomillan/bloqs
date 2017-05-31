@@ -21,7 +21,7 @@ var mBotClearLedMatrix = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Limpiar la'
+            value: 'bloq-makeblock-ledmatrix-clear'
         }, {
             id: 'LEDMATRIX',
             alias: 'dynamicDropdown',

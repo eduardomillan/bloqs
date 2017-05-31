@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotBuzzerAdvanced",
+  "name": "mBotShowTimeOnLedMatrixAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -14,83 +14,81 @@
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
-        "float"
+        "all"
       ],
       "suggestedBloqs": [
         "number",
         "selectVariable"
       ],
-      "name": "2c547078-891c-40b1-853f-65a0bbddef4e"
+      "name": "35fc308d-48c3-4cea-9d05-a662064a4695"
     },
     {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
-        "float"
+        "all"
       ],
       "suggestedBloqs": [
         "number",
         "selectVariable"
       ],
-      "name": "0be618e1-b8d3-4196-918c-6bf7579daa1e"
+      "name": "38dc0a0a-2a03-4c0f-a4df-f3a991ca7fdb"
     }
   ],
-  "bloqClass": "bloq-mbot-buzzer",
+  "bloqClass": "bloq-mbot-color",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-mbot-buzzer-advanced-play"
+        "value": "bloq-makeblock-ledmatrix-writeTime"
       },
       {
-        "bloqInputId": "NOTE",
+        "bloqInputId": "HOUR",
         "alias": "bloqInput",
         "acceptType": [
-          "float"
+          "all"
         ],
         "suggestedBloqs": [
           "number",
           "selectVariable"
         ],
-        "name": "2c547078-891c-40b1-853f-65a0bbddef4e"
+        "name": "35fc308d-48c3-4cea-9d05-a662064a4695"
       },
       {
         "alias": "text",
-        "value": "bloq-mbot-buzzer-advanced-for"
+        "value": ":"
       },
       {
-        "bloqInputId": "SECONDS",
+        "bloqInputId": "MINUTES",
         "alias": "bloqInput",
         "acceptType": [
-          "float"
+          "all"
         ],
         "suggestedBloqs": [
           "number",
           "selectVariable"
         ],
-        "name": "0be618e1-b8d3-4196-918c-6bf7579daa1e"
+        "name": "38dc0a0a-2a03-4c0f-a4df-f3a991ca7fdb"
       },
       {
         "alias": "text",
-        "value": "bloq-mbot-buzzer-advanced-ms"
+        "value": "in-the"
+      },
+      {
+        "id": "LEDMATRIX",
+        "alias": "dynamicDropdown",
+        "options": "ledMatrix"
       }
     ]
   ],
   "code": "",
   "arduino": {
-    "needInstanceOf": [
-      {
-        "name": "mBotBuzzerPin",
-        "type": "const int",
-        "equals": "8"
-      }
-    ],
-    "code": "tone(mBotBuzzerPin,{NOTE},{SECONDS});\ndelay({SECONDS});"
+    "code": "{LEDMATRIX}.showClock({HOUR},{MINUTES},1);"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotBuzzerAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mBotShowTimeOnLedMatrixAdvanced\" no preparado para generar código python"
       }
     ]
   }

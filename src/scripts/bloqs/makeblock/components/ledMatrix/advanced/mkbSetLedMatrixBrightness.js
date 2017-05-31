@@ -21,7 +21,7 @@ var mBotSetLedMatrixBrightness = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Establecer la luz de la'
+            value: 'bloq-makeblock-ledmatrix-setLight'
 
         }, {
             id: 'LEDMATRIX',
@@ -29,7 +29,7 @@ var mBotSetLedMatrixBrightness = _.merge(_.clone(StatementBloq, true), {
             options: 'ledMatrix'
         }, {
             alias: 'text',
-            value: 'a'
+            value: 'to'
         }, {
             id: 'BRIGHTNESSLEVEL',
             alias: 'staticDropdown',

@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../../build-utils'),
-    StatementBloq = require('./../../../statementBloq');
+    utils = require('./../../../../build-utils'),
+    StatementBloq = require('./../../../../statementBloq');
 
 /**
  * Bloq name: show time on led matrix
@@ -14,25 +14,27 @@ var _ = require('lodash'),
  *
  */
 
-var mBotShowTimeOnLedMatrix = _.merge(_.clone(StatementBloq, true), {
+var mBotShowTimeOnLedMatrixAdvanced = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'mBotShowTimeOnLedMatrix',
+    name: 'mBotShowTimeOnLedMatrixAdvanced',
     bloqClass: 'bloq-mbot-color',
     content: [
         [{
             alias: 'text',
             value: 'bloq-makeblock-ledmatrix-writeTime'
         }, {
-            id: 'HOUR',
-            alias: 'numberInput',
-            value: 0
+            bloqInputId: 'HOUR',
+            alias: 'bloqInput',
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: ':'
         }, {
-            id: 'MINUTES',
-            alias: 'numberInput',
-            value: 0
+            bloqInputId: 'MINUTES',
+            alias: 'bloqInput',
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'in-the'
@@ -47,6 +49,6 @@ var mBotShowTimeOnLedMatrix = _.merge(_.clone(StatementBloq, true), {
         code: '{LEDMATRIX}.showClock({HOUR},{MINUTES},1);'
     }
 });
-utils.preprocessBloq(mBotShowTimeOnLedMatrix);
+utils.preprocessBloq(mBotShowTimeOnLedMatrixAdvanced);
 
-module.exports = mBotShowTimeOnLedMatrix;
+module.exports = mBotShowTimeOnLedMatrixAdvanced;
