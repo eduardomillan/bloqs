@@ -71,6 +71,9 @@
                             var pin = sensorData.pin.s || '';
                             result = 'robot.readLightSensor(' + pin + ')';
                             break;
+                        case 'remote':
+                            result = hardwareList.board + '.getInfraredControlCommand()';
+                            break;
                         default:
                             result = sensorName + '.read()';
                     }
@@ -788,6 +791,16 @@
                             };
 
                             setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+                            break;
+
+                        case 'mkb_remote':
+                            tempIncludes = ['IRremoteInt.h', 'IRremote.h', 'BitbloqIRControl.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.board,
+                                type: makeblockBoardLibrary
+                            };
+
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.board + '.setup();'] = true;
                             break;
                     }
 
