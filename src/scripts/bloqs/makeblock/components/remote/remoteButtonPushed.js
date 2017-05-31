@@ -35,6 +35,10 @@ var remoteButtonPushed = _.merge(_.clone(StatementInputBloq, true), {
                     value: "'M'"
                 },
                 {
+                    label: 'OK',
+                    value: "'S'"
+                },
+                {
                     label: '+',
                     value: "'+'"
                 },
