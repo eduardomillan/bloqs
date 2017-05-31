@@ -26,7 +26,7 @@ var mBotShowStringOnLedMatrixAdvanced = _.merge(_.clone(StatementBloq, true), {
             bloqInputId: 'TEXT',
             alias: 'bloqInput',
             acceptType: ['all'],
-            suggestedBloqs: ['string', 'number', 'selectVariable']
+            suggestedBloqs: ['string', 'selectVariable']
         }, {
             alias: 'text',
             value: 'in-the'
