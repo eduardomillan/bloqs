@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "displayNumber",
+  "name": "displayNumberInPosition",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "d66b5426-2c04-4a37-aa74-2a8b400b2417"
+      "name": "96f72ed7-f847-4806-9be6-49f75c60d921"
     }
   ],
   "bloqClass": "bloq-mbot-color",
@@ -40,7 +40,33 @@
           "number",
           "selectVariable"
         ],
-        "name": "d66b5426-2c04-4a37-aa74-2a8b400b2417"
+        "name": "96f72ed7-f847-4806-9be6-49f75c60d921"
+      },
+      {
+        "alias": "text",
+        "value": "in-position"
+      },
+      {
+        "id": "POSITION",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "0",
+            "value": 0
+          },
+          {
+            "label": "1",
+            "value": 1
+          },
+          {
+            "label": "2",
+            "value": 2
+          },
+          {
+            "label": "3",
+            "value": 3
+          }
+        ]
       },
       {
         "alias": "text",
@@ -55,12 +81,12 @@
   ],
   "code": "",
   "arduino": {
-    "code": "{DISPLAY}.display({VALUE});"
+    "code": "{DISPLAY}.display((uint8_t){POSITION},{VALUE});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"displayNumber\" no preparado para generar código python"
+        "code": "Bloque \"displayNumberInPosition\" no preparado para generar código python"
       }
     ]
   }
