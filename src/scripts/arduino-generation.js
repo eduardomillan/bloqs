@@ -802,6 +802,34 @@
 
                             setupCodeAtTheEndOfExtraCodeMap[hardwareList.board + '.setup();'] = true;
                             break;
+
+                        case 'mkb_motionSensor':
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name + '_mode',
+                                type: 'const int',
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                            };
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + '_mode , OUTPUT);';
+
+                            addInstance(tempInstanceOf, {}, hardwareList);
+                            setupExtraCodeMap[tempSetupExtraCode] = true;
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'const int',
+                                equals: makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                            };
+                            tempSetupExtraCode = 'pinMode(' + hardwareList.components[i].name + ' , INPUT);';
+
+                            addInstance(tempInstanceOf, {}, hardwareList);
+                            setupExtraCodeMap[tempSetupExtraCode] = true;
+
+                            tempSetupExtraCode = 'digitalWrite(' + hardwareList.components[i].name + '_mode , 0);';
+
+                            addInstance(tempInstanceOf, {}, hardwareList);
+                            setupExtraCodeMap[tempSetupExtraCode] = true;
+
+                            break;
                     }
 
                     if (tempInstanceOf) {
