@@ -1207,6 +1207,7 @@
             mkb_integrated_RGB: [],
             mkb_soundsensor: [],
             mkb_4buttonKeyPad: [],
+            mkb_motionSensor: [],
             ledMatrix: [],
             display7seg: [],
             remoteControl: []
