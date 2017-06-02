@@ -26,7 +26,7 @@ var setDisplayBrightness = _.merge(_.clone(StatementBloq, true), {
         }, {
             id: 'DISPLAY',
             alias: 'dynamicDropdown',
-            options: 'ledMatrix'
+            options: 'display7seg'
         }, {
             alias: 'text',
             value: 'to'
