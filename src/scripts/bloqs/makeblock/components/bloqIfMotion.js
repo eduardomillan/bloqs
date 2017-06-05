@@ -43,8 +43,8 @@ var bloqIfNoise = _.merge(_.clone(StatementInputBloq, true), {
         conditional: {
             aliasId: 'OPERATION',
             code: {
-                '0': 'if(¬{MOTIONSENSOR.readSensor}){{STATEMENTS}}',
-                '1': 'if(¬{MOTIONSENSOR.readSensor} === false){{STATEMENTS}}'
+                '1': 'if(¬{MOTIONSENSOR.readSensor}){{STATEMENTS}}',
+                '0': 'if(¬{MOTIONSENSOR.readSensor} === false){{STATEMENTS}}'
             }
         }
     }
