@@ -20,7 +20,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "40049ec4-207c-4383-a580-4a5adf3d75b9"
+      "name": "597b2706-dc1f-4fc1-8c4d-f70e651b35b6"
     }
   ],
   "bloqClass": "bloq-mbot-color",
@@ -40,7 +40,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "40049ec4-207c-4383-a580-4a5adf3d75b9"
+        "name": "597b2706-dc1f-4fc1-8c4d-f70e651b35b6"
       },
       {
         "alias": "text",
@@ -55,7 +55,7 @@
   ],
   "code": "",
   "arduino": {
-    "code": "{LEDMATRIX}.drawStr(0,7,\"{TEXT}\");"
+    "code": "{LEDMATRIX}.drawStr(0,7,{TEXT});"
   },
   "python": {
     "codeLines": [
