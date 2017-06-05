@@ -1532,7 +1532,7 @@
         componentsArray = componentsArrayUpdated;
 
         if (!updateBloqsTimeout) {
-            var deferredUpdateBloqs = Q.defer();
+            deferredUpdateBloqs = Q.defer();
             updateBloqsTimeout = setTimeout(function() {
                 updateBloqsTimeout = null;
                 updateBloqs(componentsArray);
