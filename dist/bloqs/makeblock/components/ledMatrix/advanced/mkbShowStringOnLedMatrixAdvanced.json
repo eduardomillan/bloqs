@@ -20,7 +20,11 @@
         "string",
         "selectVariable"
       ],
+<<<<<<< Updated upstream
       "name": "ece1ad98-1959-4dab-a93e-0504dab32415"
+=======
+      "name": "12ac73ff-df98-42a4-9622-0d052cac9ce8"
+>>>>>>> Stashed changes
     }
   ],
   "bloqClass": "bloq-mbot-color",
@@ -40,7 +44,11 @@
           "string",
           "selectVariable"
         ],
+<<<<<<< Updated upstream
         "name": "ece1ad98-1959-4dab-a93e-0504dab32415"
+=======
+        "name": "12ac73ff-df98-42a4-9622-0d052cac9ce8"
+>>>>>>> Stashed changes
       },
       {
         "alias": "text",
@@ -55,7 +63,7 @@
   ],
   "code": "",
   "arduino": {
-    "code": "char char_array[(String({TEXT}).length() + 1)];String({TEXT}).toCharArray(char_array, String({TEXT}).length() + 1);{LEDMATRIX}.drawStr(0,7,char_array);"
+    "code": "{LEDMATRIX}.drawStr(0,7,\"{TEXT}\");"
   },
   "python": {
     "codeLines": [
