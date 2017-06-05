@@ -3072,7 +3072,7 @@
 })(window.bloqsDotsMatrix = window.bloqsDotsMatrix || {}, bloqsLanguages, bloqsUtils, undefined);
 
 'use strict';
-(function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix) {
+(function(exports, _, Q, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix) {
     /**
      * Events
      * bloqs:created
@@ -4600,16 +4600,19 @@
     };
 
     var updateBloqsTimeout;
-
+    var deferredUpdateBloqs;
     var startBloqsUpdate = function(componentsArrayUpdated) {
         componentsArray = componentsArrayUpdated;
 
         if (!updateBloqsTimeout) {
+            var deferredUpdateBloqs = Q.defer();
             updateBloqsTimeout = setTimeout(function() {
                 updateBloqsTimeout = null;
                 updateBloqs(componentsArray);
+                deferredUpdateBloqs.resolve();
             }, 200);
         }
+        return deferredUpdateBloqs.promise;
     };
 
     var updateBloqs = function(componentsArray) {
@@ -5227,4 +5230,4 @@
 
     return exports;
 
-})(window.bloqs = window.bloqs || {}, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix, undefined);
+})(window.bloqs = window.bloqs || {}, _, Q, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix, undefined);
