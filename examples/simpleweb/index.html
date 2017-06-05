@@ -75,7 +75,7 @@
     <!--<script src="./../../dist/bloqs.min.js"></script>-->
     <!--Or add bloqs js without compile-->
     <script src="beautify.js"></script>
-    <script src="./../../node_modules/q/q.js"></script>
+    <script src="./../../bower_components/q/q.js"></script>
     <script src="./../../src/scripts/bloqs-languages.js"></script>
     <script src="./../../src/scripts/bloqs-utils.js"></script>
     <script src="./../../src/scripts/bloqs-tooltip.js"></script>
@@ -341,7 +341,9 @@
             };
             //now you can store that project and load in another moment.
             console.log(JSON.stringify(actualProjectSoftware));
-            window.bloqs.startBloqsUpdate();
+            window.bloqs.startBloqsUpdate().then(function() {
+                console.log('bloqs updated!');
+            });
         });
         //start build bloqs!
         var createBloq = function(name) {
