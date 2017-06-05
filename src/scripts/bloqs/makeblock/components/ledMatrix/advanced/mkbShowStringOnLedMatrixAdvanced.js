@@ -38,7 +38,7 @@ var mBotShowStringOnLedMatrixAdvanced = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        code: 'char char_array[(String({TEXT}).length() + 1)];String({TEXT}).toCharArray(char_array, String({TEXT}).length() + 1);{LEDMATRIX}.drawStr(0,7,char_array);'
+        code: '{LEDMATRIX}.drawStr(0,7,{TEXT});'
     }
 });
 utils.preprocessBloq(mBotShowStringOnLedMatrixAdvanced);

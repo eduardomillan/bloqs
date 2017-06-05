@@ -1,6 +1,6 @@
 {
     "name": "bloqs",
-    "version": "0.13.12",
+    "version": "0.14.0",
     "bitbloqLibsVersion": "v0.1.2",
     "main": [
         "dist/bloqs.min.js",
@@ -44,5 +44,8 @@
     "engines": {
         "node": ">=0.10.0",
         "npm": ">=2.4.1"
+    },
+    "dependencies": {
+        "q": "^1.5.0"
     }
 }

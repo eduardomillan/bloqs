@@ -1,5 +1,5 @@
 'use strict';
-(function(exports, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix) {
+(function(exports, _, Q, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix) {
     /**
      * Events
      * bloqs:created
@@ -1059,7 +1059,7 @@
                     case 'sensors':
                         arrayOptions = [];
 
-                        arrayOptions = arrayOptions.concat(componentsArray.sensors, componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl);
+                        arrayOptions = arrayOptions.concat(componentsArray.sensors, componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor);
                         break;
                     case 'varComponents':
                         arrayOptions = [];
@@ -1527,16 +1527,19 @@
     };
 
     var updateBloqsTimeout;
-
+    var deferredUpdateBloqs;
     var startBloqsUpdate = function(componentsArrayUpdated) {
         componentsArray = componentsArrayUpdated;
 
         if (!updateBloqsTimeout) {
+            var deferredUpdateBloqs = Q.defer();
             updateBloqsTimeout = setTimeout(function() {
                 updateBloqsTimeout = null;
                 updateBloqs(componentsArray);
+                deferredUpdateBloqs.resolve();
             }, 200);
         }
+        return deferredUpdateBloqs.promise;
     };
 
     var updateBloqs = function(componentsArray) {
@@ -1582,7 +1585,7 @@
 
             if (type === 'sensors') {
                 /*jshint camelcase: false */
-                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor).concat(componentsArray.mkb_linefollower).concat(componentsArray.mkb_soundsensor).concat(componentsArray.joystick).concat(componentsArray.mkb_4buttonKeyPad).concat(componentsArray.remoteControl);
+                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor);
                 /*jshint camelcase: true */
             } else {
                 componentsList = componentsArray[type];
@@ -1797,7 +1800,7 @@
 
             this.autoRemove = function() {
                 removeBloq(this.uuid);
-            }
+            };
 
             //creation
             this.$bloq = $('<div>').attr({
@@ -1954,7 +1957,7 @@
                                 //only software Vars get value from val(), hardware, use attribute or val()
                                 var variableType = this.bloqData.content[0][i].options,
                                     itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType),
-                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor).concat(componentsArray.mkb_linefollower).concat(componentsArray.mkb_soundsensor).concat(componentsArray.joystick).concat(componentsArray.mkb_4buttonKeyPad).concat(componentsArray.remoteControl),
+                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor),
                                     valueType,
                                     j;
 
@@ -2154,4 +2157,4 @@
 
     return exports;
 
-})(window.bloqs = window.bloqs || {}, _, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix, undefined);
+})(window.bloqs = window.bloqs || {}, _, Q, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix, undefined);
