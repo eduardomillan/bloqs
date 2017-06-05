@@ -1,6 +1,6 @@
 {
-  "type": "statement-input",
-  "name": "constructorClassArguments",
+  "type": "statement",
+  "name": "setDisplayBrightnessAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -11,57 +11,56 @@
       "accept": "connector--top"
     },
     {
-      "type": "connector--root",
-      "accept": "connector--top"
-    },
-    {
       "type": "connector--input",
       "accept": "connector--output",
       "acceptType": [
         "all"
       ],
       "suggestedBloqs": [
-        "argument",
-        "arguments",
         "number",
-        "string",
         "selectVariable"
       ],
-      "name": "260a1f8c-d4eb-4649-8e09-5031709ea23f"
+      "name": "9913baab-ffb7-4bed-99a9-5caa62070790"
     }
   ],
-  "bloqClass": "bloq-constructor-arguments",
+  "bloqClass": "bloq-components-color",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-constructor-arguments"
+        "value": "bloq-makeblock-7segment-setLight"
       },
       {
-        "bloqInputId": "ARGS",
+        "id": "DISPLAY",
+        "alias": "dynamicDropdown",
+        "options": "display7seg"
+      },
+      {
+        "alias": "text",
+        "value": "to"
+      },
+      {
+        "bloqInputId": "BRIGHTNESSLEVEL",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
-          "argument",
-          "arguments",
           "number",
-          "string",
           "selectVariable"
         ],
-        "name": "260a1f8c-d4eb-4649-8e09-5031709ea23f"
+        "name": "9913baab-ffb7-4bed-99a9-5caa62070790"
       }
     ]
   ],
-  "code": "{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};",
+  "code": "",
   "arduino": {
-    "code": "{CLASS-OUTSIDE} ({ARGS}){{STATEMENTS}};"
+    "code": "{DISPLAY}.setBrightness({BRIGHTNESSLEVEL});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"constructorClassArguments\" no preparado para generar código python"
+        "code": "Bloque \"setDisplayBrightnessAdvanced\" no preparado para generar código python"
       }
     ]
   }
