@@ -22,7 +22,6 @@ var setDisplayBrightness = _.merge(_.clone(StatementBloq, true), {
         [{
             alias: 'text',
             value: 'bloq-makeblock-7segment-setLight'
-
         }, {
             id: 'DISPLAY',
             alias: 'dynamicDropdown',
