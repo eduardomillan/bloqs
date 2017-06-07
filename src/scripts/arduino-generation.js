@@ -467,6 +467,17 @@
             tempProgramFunctionDeclaration,
             makeblockBoardLibrary = getBoardLibraryName(hardwareList.board);
 
+
+        switch (hardwareList.robot) {
+            case 'freakscar':
+                includes['BitbloqFreaksCar.h'] = true;
+                addInstance({
+                    name: 'robot',
+                    type: 'BitbloqFreaksCar'
+                }, {}, hardwareList);
+                setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
+                break;
+        }
         switch (hardwareList.board) {
             case 'mcore':
                 includes['BitbloqMBot.h'] = true;
