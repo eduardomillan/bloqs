@@ -106,6 +106,7 @@ var freakscarIfRemote = _.merge(_.clone(StatementInputBloq, true), {
     ],
     code: '',
     arduino: {
+        includes: ['BitbloqIRControl.h'],
         code: 'if(robot.getInfraredControlCommand() == {BUTTON}){{STATEMENTS}}'
     }
 });

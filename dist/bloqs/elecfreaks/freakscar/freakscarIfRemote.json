@@ -120,6 +120,9 @@
   ],
   "code": "",
   "arduino": {
+    "includes": [
+      "BitbloqIRControl.h"
+    ],
     "code": "if(robot.getInfraredControlCommand() == {BUTTON}){{STATEMENTS}}"
   },
   "python": {
