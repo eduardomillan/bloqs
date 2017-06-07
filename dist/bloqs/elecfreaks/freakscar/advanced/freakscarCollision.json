@@ -1,6 +1,6 @@
 {
-  "type": "statement-input",
-  "name": "freakscarIfDistance",
+  "type": "statement",
+  "name": "freakscarCollision",
   "connectors": [
     {
       "type": "connector--top",
@@ -8,14 +8,6 @@
     },
     {
       "type": "connector--bottom",
-      "accept": "connector--top",
-      "acceptedAliases": [
-        "all",
-        "ifDown"
-      ]
-    },
-    {
-      "type": "connector--root",
       "accept": "connector--top"
     }
   ],
@@ -35,7 +27,7 @@
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"freakscarIfDistance\" no preparado para generar código python"
+        "code": "Bloque \"freakscarCollision\" no preparado para generar código python"
       }
     ]
   }

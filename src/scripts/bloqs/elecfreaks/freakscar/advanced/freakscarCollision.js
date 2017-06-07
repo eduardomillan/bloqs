@@ -3,7 +3,7 @@
 
 var _ = require('lodash'),
     utils = require('./../../../build-utils'),
-    StatementInputBloq = require('./../../../statementInputBloq');
+    StatementBloq = require('./../../../statementBloq');
 
 /**
  * Bloq name: evolutionIfDistance
@@ -16,9 +16,9 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var freakscarCollision = _.merge(_.clone(StatementInputBloq, true), {
+var freakscarCollision = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'freakscarIfDistance',
+    name: 'freakscarCollision',
     bloqClass: 'bloq-freakscar-color',
     content: [
         [{
@@ -32,8 +32,6 @@ var freakscarCollision = _.merge(_.clone(StatementInputBloq, true), {
 
     }
 });
-
-freakscarCollision.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
 utils.preprocessBloq(freakscarCollision);
 
