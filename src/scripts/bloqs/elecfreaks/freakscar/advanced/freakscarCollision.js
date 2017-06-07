@@ -28,11 +28,8 @@ var freakscarCollision = _.merge(_.clone(StatementInputBloq, true), {
     ],
     code: '',
     arduino: {
-        conditional: {
-            aliasId: 'MAGNITUDE',
-            code: 'if(robot.readEndStop() == HIGH){{STATEMENTS}}'
+        code: 'if(robot.readEndStop() == HIGH){{STATEMENTS}}'
 
-        }
     }
 });
 

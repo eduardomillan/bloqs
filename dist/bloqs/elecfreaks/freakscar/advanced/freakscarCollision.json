@@ -30,10 +30,7 @@
   ],
   "code": "",
   "arduino": {
-    "conditional": {
-      "aliasId": "MAGNITUDE",
-      "code": "if(robot.readEndStop() == HIGH){{STATEMENTS}}"
-    }
+    "code": "if(robot.readEndStop() == HIGH){{STATEMENTS}}"
   },
   "python": {
     "codeLines": [
