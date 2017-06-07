@@ -1,5 +1,5 @@
 {
-  "type": "statement",
+  "type": "statement-input",
   "name": "freakscarCollision",
   "connectors": [
     {
@@ -8,6 +8,14 @@
     },
     {
       "type": "connector--bottom",
+      "accept": "connector--top",
+      "acceptedAliases": [
+        "all",
+        "ifDown"
+      ]
+    },
+    {
+      "type": "connector--root",
       "accept": "connector--top"
     }
   ],
@@ -16,7 +24,7 @@
     [
       {
         "alias": "text",
-        "value": "bloq-evolution-if-collision"
+        "value": "bloq-freakscar-if-collision"
       }
     ]
   ],

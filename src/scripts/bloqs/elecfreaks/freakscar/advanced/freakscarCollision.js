@@ -3,35 +3,35 @@
 
 var _ = require('lodash'),
     utils = require('./../../../build-utils'),
-    StatementBloq = require('./../../../statementBloq');
+    StatementInputBloq = require('./../../../statementInputBloq');
 
 /**
- * Bloq name: evolutionIfDistance
+ * Bloq name: zowiIfSound
  *
  * Bloq type: Statement-Input
  *
- * Description: It executes the following code only if Evolution detects
- *              a specific distance.
+ * Description: It executes the following code only if Zowi heards a sound.
  *
  * Return type: none
  */
 
-var freakscarCollision = _.merge(_.clone(StatementBloq, true), {
+var freakscarCollision = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'freakscarCollision',
     bloqClass: 'bloq-freakscar-color',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-evolution-if-collision'
-        }]
+            value: 'bloq-freakscar-if-collision'
+        }, ]
     ],
     code: '',
     arduino: {
         code: 'if(robot.readEndStop() == HIGH){{STATEMENTS}}'
-
     }
 });
+
+freakscarCollision.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
 utils.preprocessBloq(freakscarCollision);
 
