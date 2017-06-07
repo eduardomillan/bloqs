@@ -83,6 +83,11 @@ var phoneReadAccel = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    python: {
+        codeLines: [{
+            code: 'recibir_aceleracion(server_sock, {MESSAGE}, {AXIS})'
+        }]
     }
 });
 

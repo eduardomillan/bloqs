@@ -67,6 +67,11 @@ var phoneReadGyroscope = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    python: {
+        codeLines: [{
+            code: 'recibir_giroscopio(server_sock, {AXIS})'
+        }]
     }
 });
 

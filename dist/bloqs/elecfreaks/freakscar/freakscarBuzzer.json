@@ -90,8 +90,7 @@
   "code": "robot.playTone({NOTE},{SECONDS});",
   "arduino": {
     "includes": [
-      "BitbloqFreaksCar.h",
-      "BitbloqUS.h"
+      "BitbloqFreaksCar.h"
     ],
     "needInstanceOf": [
       {
