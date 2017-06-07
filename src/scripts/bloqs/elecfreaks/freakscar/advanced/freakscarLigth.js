@@ -19,7 +19,7 @@ var _ = require('lodash'),
 var evolutionLight = _.merge(_.clone(OutputBloq, true), {
 
     name: 'freakscarLight',
-    bloqClass: 'bloq-freakscar-light',
+    bloqClass: 'bloq-freakscar-color',
     content: [
         [{
             alias: 'text',
