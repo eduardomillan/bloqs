@@ -1,0 +1,60 @@
+{
+  "type": "output",
+  "name": "parenthesis",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "basicOperations"
+      ],
+      "name": "fc36271e-90f2-42f0-8d5e-f48a39dfb898"
+    }
+  ],
+  "bloqClass": "bloq-parenthesis",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "("
+      },
+      {
+        "bloqInputId": "OPERATION",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "basicOperations"
+        ],
+        "name": "fc36271e-90f2-42f0-8d5e-f48a39dfb898"
+      },
+      {
+        "alias": "text",
+        "value": ")"
+      }
+    ]
+  ],
+  "code": "",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "arduino": {
+    "code": "({OPERATION})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"parenthesis\" no preparado para generar código python"
+      }
+    ]
+  }
+}

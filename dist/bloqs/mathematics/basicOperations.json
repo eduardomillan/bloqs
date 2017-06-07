@@ -1,0 +1,136 @@
+{
+  "type": "output",
+  "name": "basicOperations",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable",
+        "basicOperations",
+        "parenthesis"
+      ],
+      "name": "8bc224e6-56ef-48f5-8b2c-b8de34636901"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable",
+        "basicOperations",
+        "parenthesis"
+      ],
+      "name": "6dd6f167-1b3b-4ec2-8f81-4aa01a09de2f"
+    }
+  ],
+  "bloqClass": "bloq-basic-operations",
+  "content": [
+    [
+      {
+        "bloqInputId": "ARG1",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable",
+          "basicOperations",
+          "parenthesis"
+        ],
+        "name": "8bc224e6-56ef-48f5-8b2c-b8de34636901"
+      },
+      {
+        "id": "OPERATOR",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "+",
+            "value": "+"
+          },
+          {
+            "label": "-",
+            "value": "-"
+          },
+          {
+            "label": "x",
+            "value": "*"
+          },
+          {
+            "label": "/",
+            "value": "/"
+          },
+          {
+            "label": "^",
+            "value": "^"
+          },
+          {
+            "label": "%",
+            "value": "%"
+          }
+        ]
+      },
+      {
+        "bloqInputId": "ARG2",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable",
+          "basicOperations",
+          "parenthesis"
+        ],
+        "name": "6dd6f167-1b3b-4ec2-8f81-4aa01a09de2f"
+      }
+    ]
+  ],
+  "code": "'{OPERATOR}' === '^'? 'pow({ARG1},{ARG2})' : '({ARG1} {OPERATOR} {ARG2})'",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "conditional": {
+          "aliasId": "OPERATOR",
+          "code": {
+            "+": "{ARG1} {OPERATOR} {ARG2}",
+            "-": "{ARG1} {OPERATOR} {ARG2}",
+            "*": "{ARG1} {OPERATOR} {ARG2}",
+            "/": "{ARG1} {OPERATOR} {ARG2}",
+            "^": "{ARG1} ** {ARG2}",
+            "%": "{ARG1} {OPERATOR} {ARG2}"
+          }
+        }
+      }
+    ]
+  },
+  "arduino": {
+    "conditional": {
+      "aliasId": "OPERATOR",
+      "code": {
+        "+": "{ARG1} {OPERATOR} {ARG2}",
+        "-": "{ARG1} {OPERATOR} {ARG2}",
+        "*": "{ARG1} {OPERATOR} {ARG2}",
+        "/": "{ARG1} {OPERATOR} {ARG2}",
+        "^": "{ARG1} ** {ARG2}",
+        "%": "{ARG1} {OPERATOR} {ARG2}"
+      }
+    }
+  }
+}

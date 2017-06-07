@@ -1,0 +1,90 @@
+{
+  "type": "output",
+  "name": "map",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "readSensor",
+        "selectVariable"
+      ],
+      "name": "9d5165d4-0e0a-48f1-b5d2-698003c1d125"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "b48eb5da-cddd-40b3-bbb1-a7ed70a6c459"
+    }
+  ],
+  "bloqClass": "bloq-map",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-map-map"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "readSensor",
+          "selectVariable"
+        ],
+        "name": "9d5165d4-0e0a-48f1-b5d2-698003c1d125"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-map-value"
+      },
+      {
+        "bloqInputId": "MAXVAL",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "b48eb5da-cddd-40b3-bbb1-a7ed70a6c459"
+      },
+      {
+        "alias": "text",
+        "value": "]"
+      }
+    ]
+  ],
+  "code": "map({VAR},0,1023,0,{MAXVAL})",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "arduino": {
+    "code": "map({VAR},0,1023,0,{MAXVAL})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"map\" no preparado para generar código python"
+      }
+    ]
+  }
+}

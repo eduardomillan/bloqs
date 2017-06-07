@@ -1,0 +1,86 @@
+{
+  "type": "statement-input",
+  "name": "voidFunctionWithArguments",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--root",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "argument",
+        "arguments",
+        "number",
+        "string",
+        "selectVariable"
+      ],
+      "name": "7a5047b9-c766-4bec-ad56-28ce9b65f326"
+    }
+  ],
+  "bloqClass": "bloq-void-function-with-arguments",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-void-function-with-arguments-declare"
+      },
+      {
+        "id": "FUNCNAME",
+        "alias": "varInput",
+        "placeholder": "bloq-functions-default"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-void-function-with-arguments-count"
+      },
+      {
+        "bloqInputId": "ARGS",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "argument",
+          "arguments",
+          "number",
+          "string",
+          "selectVariable"
+        ],
+        "name": "7a5047b9-c766-4bec-ad56-28ce9b65f326"
+      }
+    ]
+  ],
+  "createDynamicContent": "voidFunctions",
+  "returnType": {
+    "type": "simple",
+    "value": "void"
+  },
+  "arguments": {
+    "type": "fromInput",
+    "bloqInputId": "ARGS"
+  },
+  "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}",
+  "arduino": {
+    "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"voidFunctionWithArguments\" no preparado para generar código python"
+      }
+    ]
+  }
+}

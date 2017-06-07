@@ -1,0 +1,76 @@
+{
+  "type": "statement",
+  "name": "declareVariable",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "basicOperations",
+        "string",
+        "stringSum"
+      ],
+      "name": "1d899cc6-1f39-4b8b-bb18-6703fccb18bd"
+    }
+  ],
+  "bloqClass": "bloq-declare-variable",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-declare-variable-declare"
+      },
+      {
+        "id": "NAME",
+        "alias": "varInput",
+        "placeholder": "bloq-name-default"
+      },
+      {
+        "alias": "text",
+        "value": "="
+      },
+      {
+        "bloqInputId": "VALUE",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "basicOperations",
+          "string",
+          "stringSum"
+        ],
+        "name": "1d899cc6-1f39-4b8b-bb18-6703fccb18bd"
+      }
+    ]
+  ],
+  "returnType": {
+    "type": "fromInput",
+    "bloqInputId": "VALUE"
+  },
+  "createDynamicContent": "softwareVars",
+  "code": "{VALUE.connectionType} {NAME} = {VALUE};",
+  "arduino": {
+    "code": "@{VALUE.returnType} {NAME} = {VALUE};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "{NAME} = {VALUE}"
+      }
+    ]
+  }
+}

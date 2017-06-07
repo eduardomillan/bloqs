@@ -1,0 +1,149 @@
+{
+  "type": "statement",
+  "name": "mBotSetLedAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "45d28cce-c8cf-46bd-94ee-0e8f179623db"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "571d172f-0418-47e6-8552-0bce23d1032e"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "ed77d862-2ec6-4563-b975-fcf642e9f47c"
+    }
+  ],
+  "bloqClass": "bloq-mbot-setled",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-mbot-setled-advanced-set"
+      },
+      {
+        "id": "LEDS",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-mbot-led-all",
+            "value": "0"
+          },
+          {
+            "label": "bloq-mbot-led-right",
+            "value": "1"
+          },
+          {
+            "label": "bloq-mbot-led-left",
+            "value": "2"
+          }
+        ]
+      },
+      {
+        "alias": "text",
+        "value": "bloq-mbot-setled-advanced-colormix"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-mbot-setled-advanced-red"
+      },
+      {
+        "bloqInputId": "RED",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "45d28cce-c8cf-46bd-94ee-0e8f179623db"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-mbot-setled-advanced-green"
+      },
+      {
+        "bloqInputId": "GREEN",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "571d172f-0418-47e6-8552-0bce23d1032e"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-mbot-setled-advanced-blue"
+      },
+      {
+        "bloqInputId": "BLUE",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "ed77d862-2ec6-4563-b975-fcf642e9f47c"
+      }
+    ]
+  ],
+  "code": "",
+  "arduino": {
+    "includes": [
+      "BitbloqMBotDeprecated.h"
+    ],
+    "needInstanceOf": [
+      {
+        "name": "mBotv1",
+        "type": "MBot"
+      }
+    ],
+    "code": "mBotv1.setLed({LEDS}, {RED}, {GREEN}, {BLUE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotSetLedAdvanced\" no preparado para generar código python"
+      }
+    ]
+  }
+}

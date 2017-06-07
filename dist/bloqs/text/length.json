@@ -1,0 +1,56 @@
+{
+  "type": "output",
+  "name": "length",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "String"
+      ],
+      "suggestedBloqs": [
+        "selectVariable"
+      ],
+      "name": "02d11f95-770b-467b-9688-e44c5c34965c"
+    }
+  ],
+  "bloqClass": "bloq-length",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-length-length"
+      },
+      {
+        "bloqInputId": "TEXT",
+        "alias": "bloqInput",
+        "acceptType": [
+          "String"
+        ],
+        "suggestedBloqs": [
+          "selectVariable"
+        ],
+        "name": "02d11f95-770b-467b-9688-e44c5c34965c"
+      }
+    ]
+  ],
+  "code": "{TEXT}.length()",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "arduino": {
+    "code": "{TEXT}.length()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"length\" no preparado para generar código python"
+      }
+    ]
+  }
+}

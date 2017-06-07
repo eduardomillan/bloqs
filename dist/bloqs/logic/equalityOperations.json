@@ -1,0 +1,116 @@
+{
+  "type": "output",
+  "name": "equalityOperations",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "string",
+        "selectVariable",
+        "readSensor"
+      ],
+      "name": "a96bf3c1-dd6d-455f-89f2-7f185a12f5be"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "string",
+        "selectVariable",
+        "readSensor"
+      ],
+      "name": "c422096a-d5cc-4d49-b232-d8ee010344b8"
+    }
+  ],
+  "bloqClass": "bloq-equality-operations",
+  "content": [
+    [
+      {
+        "bloqInputId": "ARG1",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "string",
+          "selectVariable",
+          "readSensor"
+        ],
+        "name": "a96bf3c1-dd6d-455f-89f2-7f185a12f5be"
+      },
+      {
+        "id": "OPERATOR",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "=",
+            "value": "=="
+          },
+          {
+            "label": "!=",
+            "value": "!="
+          },
+          {
+            "label": ">",
+            "value": ">"
+          },
+          {
+            "label": ">=",
+            "value": ">="
+          },
+          {
+            "label": "<",
+            "value": "<"
+          },
+          {
+            "label": "<=",
+            "value": "<="
+          }
+        ]
+      },
+      {
+        "bloqInputId": "ARG2",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "string",
+          "selectVariable",
+          "readSensor"
+        ],
+        "name": "c422096a-d5cc-4d49-b232-d8ee010344b8"
+      }
+    ]
+  ],
+  "code": "({ARG1} {OPERATOR} {ARG2})",
+  "arduino": {
+    "code": "({ARG1} {OPERATOR} {ARG2})"
+  },
+  "returnType": {
+    "type": "simple",
+    "value": "bool"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"equalityOperations\" no preparado para generar código python"
+      }
+    ]
+  }
+}

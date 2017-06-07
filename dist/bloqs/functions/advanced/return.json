@@ -1,0 +1,60 @@
+{
+  "type": "statement",
+  "name": "return",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "selectVariable",
+        "logicOperations",
+        "equalityOperations"
+      ],
+      "name": "5d40e0d4-a14c-459c-986e-b1bbb54bc64b"
+    }
+  ],
+  "bloqClass": "bloq-return",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-return-return"
+      },
+      {
+        "bloqInputId": "RETURN",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "selectVariable",
+          "logicOperations",
+          "equalityOperations"
+        ],
+        "name": "5d40e0d4-a14c-459c-986e-b1bbb54bc64b"
+      }
+    ]
+  ],
+  "code": "return {RETURN};",
+  "arduino": {
+    "code": "return {RETURN};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"return\" no preparado para generar código python"
+      }
+    ]
+  }
+}

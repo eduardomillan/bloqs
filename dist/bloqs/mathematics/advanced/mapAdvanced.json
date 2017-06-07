@@ -1,0 +1,174 @@
+{
+  "type": "output",
+  "name": "mapAdvanced",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "readSensor",
+        "selectVariable"
+      ],
+      "name": "73f4213c-0a3e-4071-96da-d9098c4d397d"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "2efb468f-efac-448c-9134-6a5bcedbd8f4"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "2617ff2a-1cd1-4adf-b2a5-adcca0c31b79"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "62d5ace1-dcb3-4805-b561-9b16e85865a8"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "float"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "e11ae4e5-fd89-47e5-bfea-7d19ecfab0cf"
+    }
+  ],
+  "bloqClass": "bloq-map-advanced",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-map-advanced-map"
+      },
+      {
+        "bloqInputId": "VAR",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "readSensor",
+          "selectVariable"
+        ],
+        "name": "73f4213c-0a3e-4071-96da-d9098c4d397d"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-map-advanced-value"
+      },
+      {
+        "bloqInputId": "INITMIN",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "2efb468f-efac-448c-9134-6a5bcedbd8f4"
+      },
+      {
+        "alias": "text",
+        "value": "-"
+      },
+      {
+        "bloqInputId": "INITMAX",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "2617ff2a-1cd1-4adf-b2a5-adcca0c31b79"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-map-advanced-and"
+      },
+      {
+        "bloqInputId": "FINMIN",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "62d5ace1-dcb3-4805-b561-9b16e85865a8"
+      },
+      {
+        "alias": "text",
+        "value": "-"
+      },
+      {
+        "bloqInputId": "FINMAX",
+        "alias": "bloqInput",
+        "acceptType": [
+          "float"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "e11ae4e5-fd89-47e5-bfea-7d19ecfab0cf"
+      },
+      {
+        "alias": "text",
+        "value": "]"
+      }
+    ]
+  ],
+  "code": "map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX})",
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "arduino": {
+    "code": "map({VAR},{INITMIN},{INITMAX},{FINMIN},{FINMAX})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mapAdvanced\" no preparado para generar código python"
+      }
+    ]
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "type": "statement",
+  "name": "setArrayVariableAdvanced",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "string",
+        "selectVariable"
+      ],
+      "name": "eb4a4e19-9523-49d0-bdd1-945bb44aff4c"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "string",
+        "selectVariable"
+      ],
+      "name": "38fbf368-54be-4930-aa85-e549ed1be67d"
+    }
+  ],
+  "bloqClass": "bloq-set-variableArray",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-set-variableArray-variable"
+      },
+      {
+        "id": "NAME",
+        "alias": "dynamicDropdown",
+        "options": "softwareVars"
+      },
+      {
+        "alias": "text",
+        "value": "["
+      },
+      {
+        "bloqInputId": "ITERATOR",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "string",
+          "selectVariable"
+        ],
+        "name": "eb4a4e19-9523-49d0-bdd1-945bb44aff4c"
+      },
+      {
+        "alias": "text",
+        "value": "]"
+      },
+      {
+        "alias": "text",
+        "value": "="
+      },
+      {
+        "bloqInputId": "VALUE",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "string",
+          "selectVariable"
+        ],
+        "name": "38fbf368-54be-4930-aa85-e549ed1be67d"
+      }
+    ]
+  ],
+  "code": "{NAME}[{ITERATOR}] = {VALUE};",
+  "arduino": {
+    "code": "{NAME}[{ITERATOR}] = {VALUE};"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"setArrayVariableAdvanced\" no preparado para generar código python"
+      }
+    ]
+  }
+}
