@@ -21,7 +21,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "ad48eed0-3cf0-4045-950f-d0cac173f6bd"
+      "name": "232ac9a3-2793-42ce-b9b3-f9f26decf00c"
     }
   ],
   "bloqClass": "bloq-phone-write",
@@ -42,7 +42,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "ad48eed0-3cf0-4045-950f-d0cac173f6bd"
+        "name": "232ac9a3-2793-42ce-b9b3-f9f26decf00c"
       },
       {
         "alias": "text",
@@ -77,7 +77,7 @@
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"phoneSendText\" no preparado para generar código python"
+        "code": "escribe_texto(server_sock, {DATA})"
       }
     ]
   }

@@ -44,6 +44,11 @@ var phoneTurnOnLight = _.merge(_.clone(StatementBloq, true), {
             ]
         }],
         code: '{PHONE}.println(String("turnonFlashlight-"));  delay(500);'
+    },
+    python: {
+        codeLines: [{
+            code: 'enciende_linterna(server_sock)'
+        }]
     }
 
 });

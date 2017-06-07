@@ -47,6 +47,11 @@ var phoneReceive = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'String'
+    },
+    python: {
+        codeLines: [{
+            code: 'recibe_texto(server_sock)'
+        }]
     }
 });
 

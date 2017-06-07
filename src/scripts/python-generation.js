@@ -100,9 +100,8 @@
                 match = PARAMS_REGEXP.exec(tempCode);
             }
 
-            tempCode = tempCode.replace(/^/gm, params.indentCharacter.repeat(numberOfIndents));
-
-            if (bloqFullStructure.type != 'output') {
+            if (bloqFullStructure.type !== 'output') {
+                tempCode = tempCode.replace(/^/gm, params.indentCharacter.repeat(numberOfIndents));
                 tempCode += '\n';
             }
 

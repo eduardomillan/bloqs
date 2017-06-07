@@ -14,12 +14,14 @@
         width: 100%;
         height: 500px;
         display: block;
+        overflow: auto;
     }
     
     #bloqs--field {
         overflow-y: auto;
         background-color: #EBEBEB;
         width: 1500px;
+        overflow: auto;
     }
     
     code[class*="language-"],
@@ -67,18 +69,22 @@
     <script src="http://localhost:9000/livereload.js"></script>
     <!--Load Scripts-->
     <script src="./../../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="./../../bower_components/lodash/lodash.min.js"></script>
+    <script src="./../../bower_components/lodash/dist/lodash.min.js"></script>
     <script src="./../../bower_components/autogrow/autogrow.min.js"></script>
     <script src="./../../bower_components/jquery-auto-grow-input/jquery.auto-grow-input.min.js"></script>
     <!--Add bloqs js compiled-->
-    <script src="./../../dist/bloqs.min.js"></script>
+    <!--<script src="./../../dist/bloqs.min.js"></script>-->
     <!--Or add bloqs js without compile-->
     <script src="beautify.js"></script>
-    <!-- <script src="./../../src/scripts/bloqs-languages.js"></script>
+    <script src="./../../bower_components/q/q.js"></script>
+    <script src="./../../src/scripts/bloqs-languages.js"></script>
     <script src="./../../src/scripts/bloqs-utils.js"></script>
     <script src="./../../src/scripts/bloqs-tooltip.js"></script>
     <script src="./../../src/scripts/python-generation.js"></script>
-    <script src="./../../src/scripts/bloqs.js"></script>-->
+    <script src="./../../src/scripts/bloqs-suggested.js"></script>
+    <script src="./../../src/scripts/bloqs-dotsMatrix.js"></script>
+    <script src="./../../src/scripts/arduino-generation.js"></script>
+    <script src="./../../src/scripts/bloqs.js"></script>
     <script>
     console.log(window.bloqs);
     console.log(window.bloqsLanguages);
@@ -145,6 +151,7 @@
             var bloqFullDefinition = pythonMainBloq.getBloqsStructure(true);
             var code = window.pythonGeneration.getCode(bloqFullDefinition);
             //code = js_beautify(code);
+            console.log(code);
             $('#code--field').text(code);
         });
 
@@ -200,12 +207,12 @@
         createBloq('botbloqManipulatorRotateJoints');
         createBloq('if');*/
 
-        createBloq('botbloqHumanBendDown');
+        /*createBloq('botbloqHumanBendDown');
         createBloq('botbloqHumanLateralDisplacement');
         createBloq('botbloqHumanMove');
         createBloq('botbloqHumanRotateByFoot');
         createBloq('botbloqHumanStop');
-        createBloq('botbloqHumanUpstairs');
+        createBloq('botbloqHumanUpstairs');*/
 
         /*createBloq('botbloqSnakeLateralDisplacement');
         createBloq('botbloqSnakeMove');
@@ -216,6 +223,18 @@
         /*createBloq('botbloqHexapodLateralDisplacement');
         createBloq('botbloqHexapodMove');
         createBloq('botbloqHexapodStop');*/
+
+
+        createBloq('botbloqManipulatorCanMoveAdvanced');
+        createBloq('declareVariable');
+        createBloq('phoneSendText');
+        createBloq('phoneEmitSound');
+        createBloq('phoneReceive');
+        createBloq('phoneTurnOnLight');
+        createBloq('phoneTurnOffLight');
+        createBloq('phoneReadLight');
+
+
 
 
     });
