@@ -1,0 +1,37 @@
+{
+  "type": "output",
+  "name": "freakscarRemote",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-freakscar-color",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-freakscar-read-remote"
+      }
+    ]
+  ],
+  "code": "",
+  "returnType": {
+    "type": "simple",
+    "value": "char"
+  },
+  "arduino": {
+    "includes": [
+      "BitbloqIRControl.h"
+    ],
+    "code": "robot.getInfraredControlCommand()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"freakscarRemote\" no preparado para generar código python"
+      }
+    ]
+  }
+}
