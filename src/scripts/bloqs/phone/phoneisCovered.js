@@ -21,28 +21,26 @@ var phoneisCovered = _.merge(_.clone(OutputBloq, true), {
     bloqClass: 'bloq-phone-isCovered',
     content: [
         [{
-                alias: 'text',
-                value: 'bloq-the'
+            alias: 'text',
+            value: 'bloq-the'
+        }, {
+            id: 'PHONE',
+            alias: 'dynamicDropdown',
+            options: 'serialElements'
+        }, {
+            alias: 'text',
+            value: 'bloq-phone-is'
+        }, {
+            id: 'COVERED',
+            alias: 'staticDropdown',
+            options: [{
+                label: 'bloq-phone-covered',
+                value: '"covered"'
             }, {
-                id: 'PHONE',
-                alias: 'dynamicDropdown',
-                options: 'serialElements'
-            }, {
-                alias: 'text',
-                value: 'bloq-phone-is'
-            },
-            {
-                id: 'COVERED',
-                alias: 'staticDropdown',
-                options: [{
-                    label: 'bloq-phone-covered',
-                    value: '"covered"'
-                }, {
-                    label: 'bloq-phone-not-covered',
-                    value: '"ncovered"'
-                }]
-            }
-        ]
+                label: 'bloq-phone-not-covered',
+                value: '"ncovered"'
+            }]
+        }]
     ],
     code: '{PHONE}.readString()',
     arduino: {
@@ -63,6 +61,11 @@ var phoneisCovered = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'boolean'
+    },
+    python: {
+        codeLines: [{
+            code: 'recibir_estacubierto(server_sock, {COVERED})'
+        }]
     }
 });
 

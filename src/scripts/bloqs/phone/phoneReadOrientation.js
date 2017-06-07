@@ -67,6 +67,11 @@ var phoneReadOrientation = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    python: {
+        codeLines: [{
+            code: 'recibir_orientacion(server_sock, {AXIS})'
+        }]
     }
 });
 

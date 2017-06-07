@@ -67,6 +67,11 @@ var phoneReadMagnetic = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    python: {
+        codeLines: [{
+            code: 'recibir_campomagnetico(server_sock, {AXIS})'
+        }]
     }
 });
 

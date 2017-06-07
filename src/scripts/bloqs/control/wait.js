@@ -36,6 +36,11 @@ var wait = _.merge(_.clone(StatementBloq, true), {
     code: 'delay({TIME});',
     arduino: {
         code: 'delay({TIME});'
+    },
+    python: {
+        codeLines: [{
+            code: 'time.sleep({TIME}/1000)'
+        }]
     }
 });
 
