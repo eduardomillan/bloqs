@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotMoveAdvanced-v2",
+  "name": "freakscarMove",
   "connectors": [
     {
       "type": "connector--top",
@@ -9,21 +9,9 @@
     {
       "type": "connector--bottom",
       "accept": "connector--top"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": [
-        "all"
-      ],
-      "suggestedBloqs": [
-        "number",
-        "selectVariable"
-      ],
-      "name": "13458bd2-20b8-46bc-8822-d312a6e8b6f0"
     }
   ],
-  "bloqClass": "bloq-mbot-move",
+  "bloqClass": "bloq-freakscar-color",
   "content": [
     [
       {
@@ -53,31 +41,36 @@
         "value": "bloq-mbot-move-speed"
       },
       {
-        "bloqInputId": "SPEED",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "13458bd2-20b8-46bc-8822-d312a6e8b6f0"
-      },
-      {
-        "alias": "text",
-        "value": "(0-255)"
+        "id": "SPEED",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-mbot-move-speed-fast",
+            "value": "255"
+          },
+          {
+            "label": "bloq-mbot-move-speed-normal",
+            "value": "200"
+          },
+          {
+            "label": "bloq-mbot-move-speed-slow",
+            "value": "50"
+          }
+        ]
       }
     ]
   ],
   "code": "",
   "arduino": {
+    "includes": [
+      "BitbloqDCMotor.h"
+    ],
     "code": "robot.move({MOVEMENT},{SPEED});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotMoveAdvanced-v2\" no preparado para generar código python"
+        "code": "Bloque \"freakscarMove\" no preparado para generar código python"
       }
     ]
   }
