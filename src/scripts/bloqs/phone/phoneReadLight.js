@@ -51,6 +51,11 @@ var phoneReadLight = _.merge(_.clone(OutputBloq, true), {
     returnType: {
         type: 'simple',
         value: 'float'
+    },
+    python: {
+        codeLines: [{
+            code: 'leer_luz(server_sock)'
+        }]
     }
 });
 

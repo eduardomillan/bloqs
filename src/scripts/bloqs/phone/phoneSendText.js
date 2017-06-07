@@ -52,6 +52,11 @@ var phoneSendText = _.merge(_.clone(StatementBloq, true), {
             ]
         }],
         code: '{PHONE}.println(String("write-")+String({DATA}));'
+    },
+    python: {
+        codeLines: [{
+            code: 'escribe_texto(server_sock, {DATA})'
+        }]
     }
 
 });

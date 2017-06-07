@@ -69,6 +69,11 @@ var phoneEmitSound = _.merge(_.clone(StatementBloq, true), {
             ]
         }],
         code: '{PHONE}.println(String("playSound-")+String({SOUND}));delay(1000);'
+    },
+    python: {
+        codeLines: [{
+            code: 'emitir_sonido(server_sock, {SOUND})'
+        }]
     }
 });
 utils.preprocessBloq(phoneEmitSound);
