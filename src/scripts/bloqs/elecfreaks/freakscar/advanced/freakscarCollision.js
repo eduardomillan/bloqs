@@ -27,7 +27,7 @@ var freakscarCollision = _.merge(_.clone(StatementInputBloq, true), {
     ],
     code: '',
     arduino: {
-        code: 'if(robot.readEndStop() == HIGH){{STATEMENTS}}'
+        code: 'if(robot.readEndStop() == LOW){{STATEMENTS}}'
     }
 });
 
