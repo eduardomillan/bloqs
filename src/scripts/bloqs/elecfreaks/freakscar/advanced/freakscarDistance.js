@@ -6,7 +6,7 @@ var _ = require('lodash'),
     OutputBloq = require('./../../../outputBloq');
 
 /**
- * Bloq name: evolutionDistance
+ * Bloq name: freakscarDistance
  *
  * Bloq type: Output
  *

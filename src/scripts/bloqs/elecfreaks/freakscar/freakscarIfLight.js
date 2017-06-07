@@ -6,7 +6,7 @@ var _ = require('lodash'),
     StatementInputBloq = require('./../../statementInputBloq');
 
 /**
- * Bloq name: evolutionIfLight
+ * Bloq name: freakscarIfLight
  *
  * Bloq type: Statement-Input
  *
