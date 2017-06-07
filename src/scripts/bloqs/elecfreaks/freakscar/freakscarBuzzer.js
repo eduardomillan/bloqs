@@ -82,12 +82,6 @@ var freakscarBuzzer = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'robot.playTone({NOTE},{SECONDS});',
     arduino: {
-        includes: ['BitbloqFreaksCar.h'],
-        needInstanceOf: [{
-            name: 'robot',
-            type: 'BitbloqFreaksCar'
-        }],
-        setupExtraCode: 'robot.setup();',
         code: 'robot.playTone({NOTE},{SECONDS});'
     }
 });

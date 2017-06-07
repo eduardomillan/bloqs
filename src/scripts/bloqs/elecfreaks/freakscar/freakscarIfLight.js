@@ -61,12 +61,6 @@ var freakscarIfLight = _.merge(_.clone(StatementInputBloq, true), {
     ],
     code: '',
     arduino: {
-        includes: ['BitbloqFreaksCar.h'],
-        needInstanceOf: [{
-            name: 'robot',
-            type: 'BitbloqFreaksCar'
-        }],
-        setupExtraCode: 'robot.setup();',
         code: 'if(robot.getLightRange(LEFT,{RANGELEFT}) && robot.getLightRange(RIGHT,{RANGERIGHT})){{STATEMENTS}}'
     }
 });
