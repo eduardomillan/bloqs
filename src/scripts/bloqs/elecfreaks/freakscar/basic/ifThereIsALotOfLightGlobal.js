@@ -43,9 +43,9 @@ var bloqMBotIfThereIsALotOfLight = _.merge(_.clone(StatementInputBloq, true), {
         conditional: {
             aliasId: 'OPERATION',
             code: {
-                '+': 'if((robot.readLDRRight() + robot.readLDRLeft())/2) > 250){{STATEMENTS}}',
-                '-': 'if(((robot.readLDRRight() + robot.readLDRLeft())/2) > 10) && ((robot.readLDRRight() + robot.readLDRLeft())/2) <= 250)){{STATEMENTS}}',
-                '*': 'if((robot.readLDRRight() + robot.readLDRLeft())/2) <= 10){{STATEMENTS}}'
+                '+': 'if(((robot.readLDRRight() + robot.readLDRLeft())/2) > 250){{STATEMENTS}}',
+                '-': 'if(((robot.readLDRRight() + robot.readLDRLeft())/2) > 10 && ((robot.readLDRRight() + robot.readLDRLeft())/2) <= 250){{STATEMENTS}}',
+                '*': 'if(((robot.readLDRRight() + robot.readLDRLeft())/2) <= 10){{STATEMENTS}}'
             }
         }
     }
