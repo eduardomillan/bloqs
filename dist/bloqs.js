@@ -1210,7 +1210,10 @@
             mkb_motionSensor: [],
             ledMatrix: [],
             display7seg: [],
-            remoteControl: []
+            remoteControl: [],
+            freakscar_integrated_remote: [],
+            freakscar_integrated_lightsensor: [],
+            freakscar_integrated_sp: []
         };
     };
 
@@ -1241,8 +1244,7 @@
                 code = code.replace(new RegExp('{' + contents[i].id + '\.withoutAsterisk}', 'g'), (contents[i].value || '').replace(/ \*/g, ''));
                 code = code.replace(new RegExp('{' + contents[i].id + '\.connectionType}', 'g'), contents[i].connectionType || '');
                 code = code.replace(new RegExp('{' + contents[i].id + '}( )*', 'g'), contents[i].value || '');
-            }
-            ;
+            };
 
             //search for regular expressions:
             var reg = /(.*)\?(.*):(.*)/g;
@@ -4146,7 +4148,7 @@
                     case 'sensors':
                         arrayOptions = [];
 
-                        arrayOptions = arrayOptions.concat(componentsArray.sensors, componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor);
+                        arrayOptions = arrayOptions.concat(componentsArray.sensors, componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor, componentsArray.freakscar_integrated_remote, componentsArray.freakscar_integrated_lightsensor);
                         break;
                     case 'varComponents':
                         arrayOptions = [];
@@ -4672,7 +4674,7 @@
 
             if (type === 'sensors') {
                 /*jshint camelcase: false */
-                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor);
+                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor, componentsArray.freakscar_integrated_lightsensor, componentsArray.freakscar_integrated_remote);
                 /*jshint camelcase: true */
             } else {
                 componentsList = componentsArray[type];
@@ -5044,7 +5046,7 @@
                                 //only software Vars get value from val(), hardware, use attribute or val()
                                 var variableType = this.bloqData.content[0][i].options,
                                     itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType),
-                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor),
+                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor, componentsArray.freakscar_integrated_remote, componentsArray.freakscar_integrated_lightsensor),
                                     valueType,
                                     j;
 
