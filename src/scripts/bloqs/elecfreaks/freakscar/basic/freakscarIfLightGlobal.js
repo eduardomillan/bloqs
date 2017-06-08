@@ -29,13 +29,13 @@ var freakscarIfLight = _.merge(_.clone(StatementInputBloq, true), {
             id: 'OPERATOR',
             alias: 'staticDropdown',
             options: [{
-                label: 'more',
+                label: 'bloq-logic-operations-more',
                 value: 'robot.readLDRRight() > robot.readLDRLeft()'
             }, {
-                label: 'less',
+                label: 'bloq-logic-operations-less',
                 value: 'robot.readLDRRight() < robot.readLDRLeft()'
             }, {
-                label: 'equals',
+                label: 'bloq-logic-operations-equals',
                 value: 'robot.readLDRRight() == robot.readLDRLeft()'
             }]
         }, {

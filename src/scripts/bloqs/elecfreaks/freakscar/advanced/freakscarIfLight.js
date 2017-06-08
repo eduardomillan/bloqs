@@ -45,10 +45,10 @@ var freakscarIfLight = _.merge(_.clone(StatementInputBloq, true), {
             id: 'OPERATOR',
             alias: 'staticDropdown',
             options: [{
-                label: 'and',
+                label: 'bloq-logic-operations-and',
                 value: '&&'
             }, {
-                label: 'or',
+                label: 'bloq-logic-operations-or',
                 value: '||'
             }]
         }, {
