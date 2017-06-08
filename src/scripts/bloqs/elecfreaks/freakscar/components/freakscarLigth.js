@@ -16,7 +16,7 @@ var _ = require('lodash'),
  * Return type: float
  */
 
-var evolutionLight = _.merge(_.clone(OutputBloq, true), {
+var freakscarLight = _.merge(_.clone(OutputBloq, true), {
 
     name: 'freakscarLight',
     bloqClass: 'bloq-components-color',
@@ -60,6 +60,6 @@ var evolutionLight = _.merge(_.clone(OutputBloq, true), {
         value: 'int'
     }
 });
-utils.preprocessBloq(evolutionLight);
+utils.preprocessBloq(freakscarLight);
 
-module.exports = evolutionLight;
+module.exports = freakscarLight;

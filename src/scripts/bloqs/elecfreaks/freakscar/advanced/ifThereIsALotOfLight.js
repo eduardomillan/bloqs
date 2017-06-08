@@ -15,7 +15,7 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var bloqMBotIfThereIsALotOfLight = _.merge(_.clone(StatementInputBloq, true), {
+var freakscarIfThereIsALotOfLight = _.merge(_.clone(StatementInputBloq, true), {
 
     name: 'freakscarIfThereIsALotOfLight',
     bloqClass: 'bloq-freakscar-color',
@@ -58,8 +58,8 @@ var bloqMBotIfThereIsALotOfLight = _.merge(_.clone(StatementInputBloq, true), {
     }
 });
 
-utils.preprocessBloq(bloqMBotIfThereIsALotOfLight);
-bloqMBotIfThereIsALotOfLight.connectors[1].acceptedAliases = ['all', 'ifDown'];
+utils.preprocessBloq(freakscarIfThereIsALotOfLight);
+freakscarIfThereIsALotOfLight.connectors[1].acceptedAliases = ['all', 'ifDown'];
 
 
-module.exports = bloqMBotIfThereIsALotOfLight;
+module.exports = freakscarIfThereIsALotOfLight;
