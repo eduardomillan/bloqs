@@ -18,7 +18,7 @@ var _ = require('lodash'),
 var freakscarDistance = _.merge(_.clone(OutputBloq, true), {
 
     name: 'freakscarDistance',
-    bloqClass: 'bloq-freakscar-color',
+    bloqClass: 'bloq-components-color',
     content: [
         [{
             alias: 'text',
