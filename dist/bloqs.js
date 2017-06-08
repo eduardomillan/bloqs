@@ -1721,9 +1721,9 @@
                             result = 'robot.getInfraredControlCommand()';
                             break;
                         case 'freakscar_integrated_lightsensor':
-                            if (sensorName.substr(sensorName.length - 1) === '1') {
+                            if (sensorData.uid.substr(sensorData.uid.length - 1) === '1') {
                                 result = 'robot.readLDRRight()';
-                            } else if (sensorName.substr(sensorName.length - 1) === '2') {
+                            } else if (sensorData.uid.substr(sensorData.uid.length - 1) === '2') {
                                 result = 'robot.readLDRLeft()';
                             }
                             break;
