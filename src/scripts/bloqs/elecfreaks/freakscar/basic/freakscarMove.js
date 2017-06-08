@@ -6,7 +6,7 @@ var _ = require('lodash'),
     StatementBloq = require('./../../../statementBloq');
 
 /**
- * Bloq name: mBotMove
+ * Bloq name: freakscarMove
  *
  * Bloq type: Statement
  *
