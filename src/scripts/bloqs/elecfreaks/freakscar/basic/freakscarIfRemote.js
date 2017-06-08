@@ -48,13 +48,13 @@ var freakscarIfRemote = _.merge(_.clone(StatementInputBloq, true), {
                 },
                 {
                     label: 'key-return',
-                    value: "'B'"
+                    value: "'R'"
                 }, {
                     label: 'key-arrow-up',
                     value: "'F'"
                 }, {
                     label: 'key-arrow-down',
-                    value: "'D'"
+                    value: "'T'"
                 }, {
                     label: 'key-arrow-right',
                     value: "'R'"
