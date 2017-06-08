@@ -74,6 +74,9 @@
                         case 'remote':
                             result = hardwareList.board + '.getInfraredControlCommand()';
                             break;
+                        case 'freakscar_integrated_remote':
+                            result = 'robot.getInfraredControlCommand()';
+                            break;
                         default:
                             result = sensorName + '.read()';
                     }

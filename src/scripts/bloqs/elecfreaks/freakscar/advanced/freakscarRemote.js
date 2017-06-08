@@ -21,9 +21,15 @@ var freakscarRemote = _.merge(_.clone(OutputBloq, true), {
     bloqClass: 'bloq-freakscar-color',
     content: [
         [{
-            alias: 'text',
-            value: 'bloq-freakscar-read-remote'
-        }]
+                alias: 'text',
+                value: 'bloq-freakscar-read-remote'
+            },
+            {
+                id: 'REMOTE',
+                alias: 'dynamicDropdown',
+                options: 'freakscar_integrated_remote'
+            }
+        ]
     ],
     code: '',
     returnType: {
