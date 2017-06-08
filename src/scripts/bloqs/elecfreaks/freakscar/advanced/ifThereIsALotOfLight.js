@@ -42,7 +42,7 @@ var freakscarIfThereIsALotOfLight = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             id: 'LIGHTSENSOR',
             alias: 'dynamicDropdown',
-            options: 'lightsensor'
+            options: 'freakscar_integrated_lightsensor'
         }]
     ],
     code: '',

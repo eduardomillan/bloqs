@@ -39,6 +39,9 @@ var freakscarIfLight = _.merge(_.clone(StatementInputBloq, true), {
                 value: 'robot.readLDRRight() < 10'
             }]
         }, {
+            alias: 'text',
+            value: 'bloq-freakscar-light-right'
+        },{
             id: 'OPERATOR',
             alias: 'staticDropdown',
             options: [{
@@ -61,6 +64,9 @@ var freakscarIfLight = _.merge(_.clone(StatementInputBloq, true), {
                 label: 'bloq-mbot-ifthereisalotoflight-operation-nodetect',
                 value: 'robot.readLDRLeft() < 10'
             }]
+        }, {
+            alias: 'text',
+            value: 'bloq-freakscar-light-left'
         }]
     ],
     code: '',

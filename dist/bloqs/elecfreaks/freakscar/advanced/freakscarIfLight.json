@@ -45,6 +45,10 @@
         ]
       },
       {
+        "alias": "text",
+        "value": "bloq-freakscar-light-right"
+      },
+      {
         "id": "OPERATOR",
         "alias": "staticDropdown",
         "options": [
@@ -75,6 +79,10 @@
             "value": "robot.readLDRLeft() < 10"
           }
         ]
+      },
+      {
+        "alias": "text",
+        "value": "bloq-freakscar-light-left"
       }
     ]
   ],
