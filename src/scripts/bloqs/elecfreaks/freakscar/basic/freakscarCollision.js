@@ -23,7 +23,7 @@ var freakscarCollision = _.merge(_.clone(StatementInputBloq, true), {
         [{
             alias: 'text',
             value: 'bloq-freakscar-if-collision'
-        }, ]
+        } ]
     ],
     code: '',
     arduino: {
