@@ -6,7 +6,7 @@ var _ = require('lodash'),
     OutputBloq = require('./../../../outputBloq');
 
 /**
- * Bloq name: evolutionDistance
+ * Bloq name: freakscarDistance
  *
  * Bloq type: Output
  *
@@ -18,7 +18,7 @@ var _ = require('lodash'),
 var freakscarDistance = _.merge(_.clone(OutputBloq, true), {
 
     name: 'freakscarDistance',
-    bloqClass: 'bloq-freakscar-color',
+    bloqClass: 'bloq-components-color',
     content: [
         [{
             alias: 'text',

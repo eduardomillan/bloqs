@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../build-utils'),
-    StatementBloq = require('./../../statementBloq');
+    utils = require('./../../../build-utils'),
+    StatementBloq = require('./../../../statementBloq');
 
 /**
  * Bloq name: freakscarBuzzer
@@ -19,7 +19,7 @@ var _ = require('lodash'),
 var freakscarBuzzer = _.merge(_.clone(StatementBloq, true), {
 
     name: 'freakscarBuzzer',
-    bloqClass: 'bloq-freakscar-color',
+    bloqClass: 'bloq-components-color',
     content: [
         [{
                 alias: 'text',
@@ -82,12 +82,6 @@ var freakscarBuzzer = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'robot.playTone({NOTE},{SECONDS});',
     arduino: {
-        includes: ['BitbloqFreaksCar.h'],
-        needInstanceOf: [{
-            name: 'robot',
-            type: 'BitbloqFreaksCar'
-        }],
-        setupExtraCode: 'robot.setup();',
         code: 'robot.playTone({NOTE},{SECONDS});'
     }
 });

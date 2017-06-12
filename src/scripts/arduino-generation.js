@@ -74,6 +74,16 @@
                         case 'remote':
                             result = hardwareList.board + '.getInfraredControlCommand()';
                             break;
+                        case 'freakscar_integrated_remote':
+                            result = 'robot.getInfraredControlCommand()';
+                            break;
+                        case 'freakscar_integrated_lightsensor':
+                            if (sensorData.uid.substr(sensorData.uid.length - 1) === '1') {
+                                result = 'robot.readLDRRight()';
+                            } else if (sensorData.uid.substr(sensorData.uid.length - 1) === '2') {
+                                result = 'robot.readLDRLeft()';
+                            }
+                            break;
                         default:
                             result = sensorName + '.read()';
                     }
@@ -468,16 +478,6 @@
             makeblockBoardLibrary = getBoardLibraryName(hardwareList.board);
 
 
-        switch (hardwareList.robot) {
-            case 'freakscar':
-                includes['BitbloqFreaksCar.h'] = true;
-                addInstance({
-                    name: 'robot',
-                    type: 'BitbloqFreaksCar'
-                }, {}, hardwareList);
-                setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
-                break;
-        }
         switch (hardwareList.board) {
             case 'mcore':
                 includes['BitbloqMBot.h'] = true;
@@ -500,6 +500,14 @@
                 addInstance({
                     name: 'robot',
                     type: 'BitbloqMBotRanger'
+                }, {}, hardwareList);
+                setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
+                break;
+            case 'freakscar':
+                includes['BitbloqFreaksCar.h'] = true;
+                addInstance({
+                    name: 'robot',
+                    type: 'BitbloqFreaksCar'
                 }, {}, hardwareList);
                 setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
                 break;

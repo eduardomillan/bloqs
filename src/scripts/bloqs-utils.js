@@ -1202,7 +1202,10 @@
             mkb_motionSensor: [],
             ledMatrix: [],
             display7seg: [],
-            remoteControl: []
+            remoteControl: [],
+            freakscar_integrated_remote: [],
+            freakscar_integrated_lightsensor: [],
+            freakscar_integrated_sp: []
         };
     };
 
@@ -1233,8 +1236,7 @@
                 code = code.replace(new RegExp('{' + contents[i].id + '\.withoutAsterisk}', 'g'), (contents[i].value || '').replace(/ \*/g, ''));
                 code = code.replace(new RegExp('{' + contents[i].id + '\.connectionType}', 'g'), contents[i].connectionType || '');
                 code = code.replace(new RegExp('{' + contents[i].id + '}( )*', 'g'), contents[i].value || '');
-            }
-            ;
+            };
 
             //search for regular expressions:
             var reg = /(.*)\?(.*):(.*)/g;

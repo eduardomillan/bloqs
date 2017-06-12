@@ -59,7 +59,7 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             alias: 'text',
             value: 'bloq-if-exec'
-        }, ]
+        } ]
     ],
     code: 'if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}',
     arduino: {
