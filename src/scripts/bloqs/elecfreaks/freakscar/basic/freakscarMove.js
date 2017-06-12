@@ -43,13 +43,13 @@ var freakscarMove = _.merge(_.clone(StatementBloq, true), {
             alias: 'staticDropdown',
             options: [{
                 label: 'bloq-mbot-move-speed-fast',
-                value: '255'
+                value: '250'
             }, {
                 label: 'bloq-mbot-move-speed-normal',
-                value: '200'
+                value: '150'
             }, {
                 label: 'bloq-mbot-move-speed-slow',
-                value: '50'
+                value: '80'
             }]
         }]
     ],
