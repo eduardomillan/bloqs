@@ -480,7 +480,7 @@
 
         switch (hardwareList.board) {
             case 'mcore':
-                includes['BitbloqMBot.h'] = true;
+                includes['BitbloqMBotV2.h'] = true;
                 addInstance({
                     name: 'robot',
                     type: 'BitbloqMBot'
