@@ -2123,7 +2123,7 @@
 
         switch (hardwareList.board) {
             case 'mcore':
-                includes['BitbloqMBot.h'] = true;
+                includes['BitbloqMBotV2.h'] = true;
                 addInstance({
                     name: 'robot',
                     type: 'BitbloqMBot'
@@ -2555,7 +2555,6 @@
     return arduinoGeneration;
 
 })(window.arduinoGeneration = window.arduinoGeneration || {}, undefined);
-
 
 'use strict';
 (function(bloqsSuggested, bloqsLanguages, bloqsUtils) {
