@@ -40,7 +40,8 @@ var digitalWrite = _.merge(_.clone(StatementBloq, true), {
     ],
     code: 'digitalWrite({PIN},{DATA});',
     arduino: {
-        code: 'digitalWrite({PIN},{DATA});'
+        code: 'digitalWrite({PIN},{DATA});',
+        setupExtraCode: 'pinMode({PIN}, OUTPUT);'
     }
 
 });
