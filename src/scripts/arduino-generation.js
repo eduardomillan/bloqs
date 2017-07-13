@@ -72,8 +72,6 @@
                             result = 'robot.readLightSensor(' + pin + ')';
                             break;
                         case 'remote':
-                            result = hardwareList.board + '.getInfraredControlCommand()';
-                            break;
                         case 'freakscar_integrated_remote':
                             result = 'robot.getInfraredControlCommand()';
                             break;
@@ -811,17 +809,6 @@
 
                             setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
                             break;
-
-                        case 'mkb_remote':
-                            tempIncludes = ['IRremoteInt.h', 'IRremote.h', 'BitbloqIRControl.h'];
-                            tempInstanceOf = {
-                                name: hardwareList.board,
-                                type: makeblockBoardLibrary
-                            };
-
-                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.board + '.setup();'] = true;
-                            break;
-
                         case 'mkb_motionSensor':
                             tempInstanceOf = {
                                 name: hardwareList.components[i].name + '_mode',

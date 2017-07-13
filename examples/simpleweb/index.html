@@ -439,11 +439,13 @@
 
         var mbotLedMatrix = ['mBotLedMatrix', 'mBotLedMatrix', 'mBotClearLedMatrix', 'mBotShowTimeOnLedMatrix', 'mBotShowNumberOnLedMatrix', 'mBotShowStringOnLedMatrix', 'mBotSetLedMatrixBrightness'];
 
-        var testSet2 = ['mBotLedMatrix', 'digitalWrite'];
-
         var readJoystickXY = ['declareVariable', 'readJoystickXY'];
 
-        testSet = testSet2;
+        var mbotSwitch = ['remoteButtonPushedSwitch', 'remoteButtonPushedCase', 'remoteButtonPushedCase', 'switch', 'case', 'mBotSetLedMatrixBrightness', 'mBotSetRGBLed', 'remoteButtonPushedCaseDefault'];
+
+        var testSet2 = ['mBotLedMatrix', 'digitalWrite'];
+
+        testSet = mbotSwitch;
 
         for (var i = 0; i < testSet.length; i++) {
             createBloq(testSet[i]);
