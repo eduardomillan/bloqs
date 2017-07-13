@@ -22,7 +22,7 @@ var remoteButtonPushedSwitch = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Comprobar que tecla se ha pulsado del'
+            value: 'bloq-makeblock-remote-switch'
         }, {
             id: 'REMOTE',
             alias: 'dynamicDropdown',

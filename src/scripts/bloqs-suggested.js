@@ -37,7 +37,7 @@
 
 
             showWindowCallback = params.showWindowCallback;
-            console.log('params.suggestedBloqs', params.suggestedBloqs);
+            //console.log('params.suggestedBloqs', params.suggestedBloqs);
             showWindow();
             if (params.suggestedText) {
                 setSuggestedText(params.suggestedText);
@@ -114,7 +114,7 @@
     }
 
     function moveWindow(params) {
-        console.log('place window in the available space', params);
+        //console.log('place window in the available space', params);
         suggestedWindow.className = suggestedWindow.className.replace(' right', '');
         suggestedWindow.className = suggestedWindow.className.replace(' top', '');
 
@@ -170,7 +170,7 @@
     }
 
     function actionWithWindowOpenListener(evt) {
-        console.log('actionWithWindowOpenListener', evt);
+        //console.log('actionWithWindowOpenListener', evt);
         var el;
         if (evt.detail !== 1) {
             el = evt.detail;
@@ -202,13 +202,13 @@
     }
 
     function onSuggestedBloqDragEnd(evt) {
-        console.log('onSuggestedBloqDragEnd', evt.detail.bloq);
+        //console.log('onSuggestedBloqDragEnd', evt.detail.bloq);
         //comprobar si está encima del input que lo llamo, o relativamente cerca, de estarlo se conecta, si no, no se conecta ya que puede haberlo arrastrado a otro sitio
         bloqSelected(evt.detail.bloq.uuid);
     }
 
     function onSuggestedBloqClick(evt) {
-        console.log('onSuggestedBloqClick', evt);
+        //console.log('onSuggestedBloqClick', evt);
         var eventBloq = evt.currentTarget;
         var eventBloqId = eventBloq.getAttribute('data-bloq-id');
         bloqSelected(eventBloqId, true);

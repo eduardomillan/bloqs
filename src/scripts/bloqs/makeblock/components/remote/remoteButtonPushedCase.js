@@ -22,7 +22,7 @@ var remoteButtonPushedCase = _.merge(_.clone(StatementInputBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'Si se ha pulsado la tecla'
+            value: 'bloq-makeblock-remote-switch-case'
         }, {
             id: 'REMOTEKEY',
             alias: 'staticDropdown',

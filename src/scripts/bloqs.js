@@ -727,9 +727,9 @@
 
         var bloq = bloqs[bloqUuid],
             i;
-        console.log('remove:', bloqUuid);
+        //console.log('remove:', bloqUuid);
         if (bloq) {
-            console.log('remove bloq name:', bloq.bloqData.name);
+            //console.log('remove bloq name:', bloq.bloqData.name);
             //disconnect
             var topConnector, bottomConnector, outputConnector;
             window.dispatchEvent(new Event('bloqs:bloqremoved'));
@@ -1266,7 +1266,7 @@
                 });
                 //Transform the name to create valid function / variables names
                 $element.keyup(function() {
-                    console.log(bloq);
+                    //console.log(bloq);
                     bloqsUtils.delay(function() {
                         var name = utils.validName($element.val(), bloq.uuid, softwareArrays);
                         $element.val(name);
@@ -1347,14 +1347,14 @@
     };
 
     function showSuggestedWindow(evt) {
-        console.log('click input', evt);
+        //console.log('click input', evt);
         //to avoid event on children and parents at the same time
 
         if (evt.target.hasAttribute('data-connector-name')) {
             var bloqConnectorUuid = evt.target.getAttribute('data-connector-id');
-            console.log('id', bloqConnectorUuid);
+            //console.log('id', bloqConnectorUuid);
             var bloq = utils.getBloqByConnectorUuid(bloqConnectorUuid, bloqs, IOConnectors);
-            console.log(bloq.itsEnabled());
+            //console.log(bloq.itsEnabled());
             if (bloq.itsEnabled()) {
                 evt.stopPropagation();
 
