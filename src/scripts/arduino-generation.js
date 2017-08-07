@@ -461,7 +461,7 @@
                 result = 'BitbloqMBotRanger';
                 break;
             default:
-                console.log('bloqs::BoardWithoutLibrary');
+                //console.log('bloqs::BoardWithoutLibrary');
         }
         return result;
     }
