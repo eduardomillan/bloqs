@@ -2104,7 +2104,7 @@
                 result = 'BitbloqMBotRanger';
                 break;
             default:
-                console.log('bloqs::BoardWithoutLibrary');
+                //console.log('bloqs::BoardWithoutLibrary');
         }
         return result;
     }
@@ -2583,7 +2583,7 @@
 
 
             showWindowCallback = params.showWindowCallback;
-            console.log('params.suggestedBloqs', params.suggestedBloqs);
+            //console.log('params.suggestedBloqs', params.suggestedBloqs);
             showWindow();
             if (params.suggestedText) {
                 setSuggestedText(params.suggestedText);
@@ -2660,7 +2660,7 @@
     }
 
     function moveWindow(params) {
-        console.log('place window in the available space', params);
+        //console.log('place window in the available space', params);
         suggestedWindow.className = suggestedWindow.className.replace(' right', '');
         suggestedWindow.className = suggestedWindow.className.replace(' top', '');
 
@@ -2716,7 +2716,7 @@
     }
 
     function actionWithWindowOpenListener(evt) {
-        console.log('actionWithWindowOpenListener', evt);
+        //console.log('actionWithWindowOpenListener', evt);
         var el;
         if (evt.detail !== 1) {
             el = evt.detail;
@@ -2748,13 +2748,13 @@
     }
 
     function onSuggestedBloqDragEnd(evt) {
-        console.log('onSuggestedBloqDragEnd', evt.detail.bloq);
+        //console.log('onSuggestedBloqDragEnd', evt.detail.bloq);
         //comprobar si está encima del input que lo llamo, o relativamente cerca, de estarlo se conecta, si no, no se conecta ya que puede haberlo arrastrado a otro sitio
         bloqSelected(evt.detail.bloq.uuid);
     }
 
     function onSuggestedBloqClick(evt) {
-        console.log('onSuggestedBloqClick', evt);
+        //console.log('onSuggestedBloqClick', evt);
         var eventBloq = evt.currentTarget;
         var eventBloqId = eventBloq.getAttribute('data-bloq-id');
         bloqSelected(eventBloqId, true);
@@ -2781,7 +2781,6 @@
     return bloqsSuggested;
 
 })(window.bloqsSuggested = window.bloqsSuggested || {}, bloqsLanguages, bloqsUtils, undefined);
-
 
 'use strict';
 (function(bloqsDotsMatrix, bloqsLanguages, bloqsUtils) {
@@ -2836,7 +2835,6 @@
     }
 
     function createDotsContent(params) {
-        console.log(params.dotsMatrixOptions);
         var tempRowContainer, tempDotContainer;
         for (var i = 0; i < params.dotsMatrixOptions.options.rows; i++) {
             tempRowContainer = document.createElement('div');
@@ -2862,7 +2860,6 @@
             hexArrayItems[i] = parseInt(hexArrayItems[i], 16).toString(2);
             hexArrayItems[i] = hexArrayItems[i].split('').reverse().join('');
         }
-        console.log(hexArrayItems[i]);
         for (var j = 0; j < hexArrayItems.length; j++) {
             for (var k = 0; k < rows; k++) {
                 if (hexArrayItems[j].charAt(k) === '1') {
@@ -2872,22 +2869,11 @@
                 }
 
             }
-            //hexArrayItems[i]
         }
-        /*for (var j = 0; j < matrix.length; j++) {
-            for (var k = 0; k < matrix[j].length; k++) {
-                if (hexArrayItems[j].charAt(k) === '1') {
-                    matrix[j][k] = true;
-                } else {
-                    matrix[j][k] = false;
-                }
-            }
-        }*/
         return matrix;
     };
 
     function setMatrix(matrix, options) {
-        console.log('setMatrix', matrix);
         if (matrix) {
             matrix = convertHexArrayToMatrix(matrix, options.rows, options.columns);
         } else {
@@ -2929,17 +2915,13 @@
 
             }
         }
-        //console.log(binaries);
+
         //parse to hex
         for (var l = 0; l < binaries.length; l++) {
             binaries[l] = '0x' + parseInt(binaries[l], 2).toString(16);
         }
 
-        //console.log(result);
-        console.log(binaries);
-        //binaries = '{ ' + binaries + ' }';
         binaries = binaries.toString();
-        console.log(binaries);
 
         return binaries;
     }
@@ -2955,7 +2937,6 @@
     }
 
     function overDot(evt) {
-        console.log('over');
         if (_userIsDragging) {
             var dot = evt.target;
             if (dot.className.indexOf('active') === -1) {
@@ -2986,7 +2967,6 @@
                 });
                 _userIsDragging = true;
                 toggleDot(evt);
-                console.log('activating');
 
             });
             bloqsWindow.addEventListener('mouseleave', function() {
@@ -3022,15 +3002,15 @@
                     bloqsWindow.className += ' hide';
                 }
                 bloqsWindow.removeEventListener('mouseover', cancelHideTimeout);
+                window.dispatchEvent(new Event('bloqs:dotsMatrixClosed'));
                 showWindowCallback(getMatrix());
-            }, 500);
+            }, 300);
         }
 
     }
 
     function cancelHideTimeout() {
         bloqsWindow.removeEventListener('mouseover', cancelHideTimeout);
-        console.log('mouseover cancel hide');
         changeShowWindowsClass();
         clearTimeout(timeoutId);
         timeoutId = null;
@@ -3041,7 +3021,6 @@
     }
 
     function moveWindow(params) {
-        console.log('place window in the available space', params);
         bloqsWindow.className = bloqsWindow.className.replace(' right', '');
         bloqsWindow.className = bloqsWindow.className.replace(' top', '');
 
@@ -3080,6 +3059,7 @@
     return bloqsDotsMatrix;
 
 })(window.bloqsDotsMatrix = window.bloqsDotsMatrix || {}, bloqsLanguages, bloqsUtils, undefined);
+
 
 'use strict';
 (function(exports, _, Q, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix) {
@@ -3810,9 +3790,9 @@
 
         var bloq = bloqs[bloqUuid],
             i;
-        console.log('remove:', bloqUuid);
+        //console.log('remove:', bloqUuid);
         if (bloq) {
-            console.log('remove bloq name:', bloq.bloqData.name);
+            //console.log('remove bloq name:', bloq.bloqData.name);
             //disconnect
             var topConnector, bottomConnector, outputConnector;
             window.dispatchEvent(new Event('bloqs:bloqremoved'));
@@ -4349,7 +4329,7 @@
                 });
                 //Transform the name to create valid function / variables names
                 $element.keyup(function() {
-                    console.log(bloq);
+                    //console.log(bloq);
                     bloqsUtils.delay(function() {
                         var name = utils.validName($element.val(), bloq.uuid, softwareArrays);
                         $element.val(name);
@@ -4425,19 +4405,20 @@
         };
         params.showWindowCallback = function(response) {
             elementSchema.value = response;
+            window.dispatchEvent(new Event('bloqs:change'));
         };
         bloqsDotsMatrix.showDotsWindow(params);
     };
 
     function showSuggestedWindow(evt) {
-        console.log('click input', evt);
+        //console.log('click input', evt);
         //to avoid event on children and parents at the same time
 
         if (evt.target.hasAttribute('data-connector-name')) {
             var bloqConnectorUuid = evt.target.getAttribute('data-connector-id');
-            console.log('id', bloqConnectorUuid);
+            //console.log('id', bloqConnectorUuid);
             var bloq = utils.getBloqByConnectorUuid(bloqConnectorUuid, bloqs, IOConnectors);
-            console.log(bloq.itsEnabled());
+            //console.log(bloq.itsEnabled());
             if (bloq.itsEnabled()) {
                 evt.stopPropagation();
 
