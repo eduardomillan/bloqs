@@ -9,19 +9,19 @@
     body {
         margin: 0;
     }
-    
+
     #code--field {
         width: 100%;
         height: 500px;
     }
-    
+
     #bloqs--field {
         overflow-y: auto;
         background-color: #EBEBEB;
         width: 1500px;
         height: 650px;
     }
-    
+
     code[class*="language-"],
     pre[class*="language-"] {
         color: black;
@@ -39,18 +39,19 @@
         -ms-user-select: text;
         user-select: text;
     }
-    
+
     code[class*="language-"]::-moz-selection,
     pre[class*="language-"]::-moz-selection {
         color: #000;
         background-color: #fefefe;
     }
-    
+
     code[class*="language-"]::selection,
     pre[class*="language-"]::selection {
         color: #000;
         background-color: #fefefe;
     }
+
     </style>
 </head>
 
@@ -127,6 +128,11 @@
 
         window.addEventListener('bloqs:created', function(evt) {
             console.log('bloqs:created');
+            console.log(evt);
+        });
+
+        window.addEventListener('bloqs:dotsMatrixClosed', function(evt) {
+            console.log('bloqs:dotsMatrixClosed');
             console.log(evt);
         });
 
@@ -445,7 +451,7 @@
 
         var testSet2 = ['mBotLedMatrix', 'digitalWrite'];
 
-        testSet = mbotSwitch;
+        testSet = testSet2;
 
         for (var i = 0; i < testSet.length; i++) {
             createBloq(testSet[i]);
@@ -947,6 +953,7 @@
         };
 
     });
+
     </script>
 </body>
 

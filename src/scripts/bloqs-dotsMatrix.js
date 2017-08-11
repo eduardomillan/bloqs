@@ -51,7 +51,6 @@
     }
 
     function createDotsContent(params) {
-        console.log(params.dotsMatrixOptions);
         var tempRowContainer, tempDotContainer;
         for (var i = 0; i < params.dotsMatrixOptions.options.rows; i++) {
             tempRowContainer = document.createElement('div');
@@ -77,7 +76,6 @@
             hexArrayItems[i] = parseInt(hexArrayItems[i], 16).toString(2);
             hexArrayItems[i] = hexArrayItems[i].split('').reverse().join('');
         }
-        console.log(hexArrayItems[i]);
         for (var j = 0; j < hexArrayItems.length; j++) {
             for (var k = 0; k < rows; k++) {
                 if (hexArrayItems[j].charAt(k) === '1') {
@@ -87,22 +85,11 @@
                 }
 
             }
-            //hexArrayItems[i]
         }
-        /*for (var j = 0; j < matrix.length; j++) {
-            for (var k = 0; k < matrix[j].length; k++) {
-                if (hexArrayItems[j].charAt(k) === '1') {
-                    matrix[j][k] = true;
-                } else {
-                    matrix[j][k] = false;
-                }
-            }
-        }*/
         return matrix;
     };
 
     function setMatrix(matrix, options) {
-        console.log('setMatrix', matrix);
         if (matrix) {
             matrix = convertHexArrayToMatrix(matrix, options.rows, options.columns);
         } else {
@@ -144,17 +131,13 @@
 
             }
         }
-        //console.log(binaries);
+
         //parse to hex
         for (var l = 0; l < binaries.length; l++) {
             binaries[l] = '0x' + parseInt(binaries[l], 2).toString(16);
         }
 
-        //console.log(result);
-        console.log(binaries);
-        //binaries = '{ ' + binaries + ' }';
         binaries = binaries.toString();
-        console.log(binaries);
 
         return binaries;
     }
@@ -170,7 +153,6 @@
     }
 
     function overDot(evt) {
-        console.log('over');
         if (_userIsDragging) {
             var dot = evt.target;
             if (dot.className.indexOf('active') === -1) {
@@ -201,7 +183,6 @@
                 });
                 _userIsDragging = true;
                 toggleDot(evt);
-                console.log('activating');
 
             });
             bloqsWindow.addEventListener('mouseleave', function() {
@@ -237,15 +218,15 @@
                     bloqsWindow.className += ' hide';
                 }
                 bloqsWindow.removeEventListener('mouseover', cancelHideTimeout);
+                window.dispatchEvent(new Event('bloqs:dotsMatrixClosed'));
                 showWindowCallback(getMatrix());
-            }, 500);
+            }, 300);
         }
 
     }
 
     function cancelHideTimeout() {
         bloqsWindow.removeEventListener('mouseover', cancelHideTimeout);
-        console.log('mouseover cancel hide');
         changeShowWindowsClass();
         clearTimeout(timeoutId);
         timeoutId = null;
@@ -256,7 +237,6 @@
     }
 
     function moveWindow(params) {
-        console.log('place window in the available space', params);
         bloqsWindow.className = bloqsWindow.className.replace(' right', '');
         bloqsWindow.className = bloqsWindow.className.replace(' top', '');
 

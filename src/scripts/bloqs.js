@@ -1342,6 +1342,7 @@
         };
         params.showWindowCallback = function(response) {
             elementSchema.value = response;
+            window.dispatchEvent(new Event('bloqs:change'));
         };
         bloqsDotsMatrix.showDotsWindow(params);
     };
