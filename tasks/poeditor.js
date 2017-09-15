@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         var querystring = require('querystring'),
             https = require('https');
 
-        params.api_token = 'acf6b930c1b02ae947f613004d170a4f';
+        params.api_token = '';
         if (!params.api_token) {
             grunt.log.error('we cant get string witouth a api_token');
         }
