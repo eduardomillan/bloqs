@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     var langKeys = {
         'es': 'es-ES',
@@ -17,11 +17,11 @@ module.exports = function(grunt) {
 
 
 
-    var callPoEditorApi = function(params, callback) {
+    var callPoEditorApi = function (params, callback) {
         var querystring = require('querystring'),
             https = require('https');
 
-        params.api_token = '';
+        params.api_token = 'acf6b930c1b02ae947f613004d170a4f';
         if (!params.api_token) {
             grunt.log.error('we cant get string witouth a api_token');
         }
@@ -40,17 +40,17 @@ module.exports = function(grunt) {
         };
 
         var result = '';
-        var req = https.request(options, function(res) {
+        var req = https.request(options, function (res) {
             res.setEncoding('utf8');
-            res.on('data', function(chunk) {
+            res.on('data', function (chunk) {
                 result += chunk;
             });
-            res.on('end', function() {
+            res.on('end', function () {
                 callback(null, JSON.parse(result));
             });
         });
 
-        req.on('error', function(e) {
+        req.on('error', function (e) {
             callback(e);
         });
 
@@ -59,17 +59,17 @@ module.exports = function(grunt) {
         req.end();
     };
 
-    var getPoeditorLanguages = function(projectId, callback) {
+    var getPoeditorLanguages = function (projectId, callback) {
         var params = {
             action: 'list_languages',
             id: projectId
         };
-        callPoEditorApi(params, function(err, res) {
+        callPoEditorApi(params, function (err, res) {
             callback(err, res.list);
         });
     };
 
-    var exportFromPoeditor = function(projectId, language, type, filter, filePrefix, filePath, callback) {
+    var exportFromPoeditor = function (projectId, language, type, filter, filePrefix, filePath, callback) {
         filePath = filePath || 'i18n/';
         var https = require('https'),
             params = {
@@ -82,19 +82,19 @@ module.exports = function(grunt) {
             path = filePath + filePrefix + language + '.' + params.type;
 
         grunt.log.writeln('...Getting ' + language);
-        callPoEditorApi(params, function(err, res) {
+        callPoEditorApi(params, function (err, res) {
             if (err) {
                 console.log('error on callPoEditorApi');
                 callback(err);
             } else {
-                https.get(res.item).on('response', function(response) {
+                https.get(res.item).on('response', function (response) {
                     var body = '';
                     var i = 0;
-                    response.on('data', function(chunk) {
+                    response.on('data', function (chunk) {
                         i++;
                         body += chunk;
                     });
-                    response.on('end', function() {
+                    response.on('end', function () {
                         //grunt.log.writeln(body.length);
                         if (body.length) {
                             grunt.file.write(path, body);
@@ -103,7 +103,7 @@ module.exports = function(grunt) {
                         }
                         callback(null, path, body);
                     });
-                }).on('uncaughtException', function(err) {
+                }).on('uncaughtException', function (err) {
                     console.log('uncaughtException');
                     console.log(err);
                     callback(err);
@@ -112,7 +112,7 @@ module.exports = function(grunt) {
         });
     };
 
-    grunt.registerTask('getpoeditorfiles', 'get langauges from poeditor', function(projectId, type, filter, filePrefix) {
+    grunt.registerTask('getpoeditorfiles', 'get langauges from poeditor', function (projectId, type, filter, filePrefix) {
         var async = require('async'),
             gruntTaskDone = this.async();
         type = type || 'json';
@@ -120,16 +120,16 @@ module.exports = function(grunt) {
         filePrefix = filePrefix || '';
 
         async.waterfall([
-            function(done) {
+            function (done) {
                 getPoeditorLanguages(projectId, done);
             },
-            function(languages, done) {
-                async.each(languages, function(item, done) {
-                        exportFromPoeditor(projectId, item.code, type, filter, filePrefix, null, done);
-                    },
+            function (languages, done) {
+                async.each(languages, function (item, done) {
+                    exportFromPoeditor(projectId, item.code, type, filter, filePrefix, null, done);
+                },
                     done);
             }
-        ], function(err) {
+        ], function (err) {
             if (err) {
                 console.log('error :S ' + err);
             }
@@ -138,7 +138,7 @@ module.exports = function(grunt) {
 
     });
 
-    grunt.registerTask('poeditor2bloqs', 'bloqs po to json', function() {
+    grunt.registerTask('poeditor2bloqs', 'bloqs po to json', function () {
         var fs = require('fs'),
             originPath = 'i18n/',
             destinationPath = 'src/scripts/bloqs-languages.js',
@@ -148,7 +148,7 @@ module.exports = function(grunt) {
 
         var availableLanguages = [];
 
-        folders.forEach(function(file) {
+        folders.forEach(function (file) {
             if (!hiddenFilePattern.test(file)) {
                 availableLanguages.push(file.substring(0, file.length - 5));
             }
@@ -175,7 +175,7 @@ module.exports = function(grunt) {
     /**
      * poeditorprojectbackup:42730
      */
-    grunt.registerTask('poeditorprojectbackup', 'generate a poeditor backup', function(projectId, timestamp) {
+    grunt.registerTask('poeditorprojectbackup', 'generate a poeditor backup', function (projectId, timestamp) {
         var date = new Date(),
             dateFormat = timestamp || date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '_' + date.getHours() + '-' + date.getMinutes();
 
@@ -183,18 +183,18 @@ module.exports = function(grunt) {
             gruntTaskDone = this.async(),
             backupFolder = 'backups_i18n/' + dateFormat + '/' + projectId + '/';
 
-        getPoeditorLanguages(projectId, function(err, languages) {
+        getPoeditorLanguages(projectId, function (err, languages) {
             if (err) {
                 console.log('error getting languages');
                 console.log(err);
             } else {
                 async.parallel([
-                    function(done) {
+                    function (done) {
                         //store terms
                         callPoEditorApi({
                             action: 'view_terms',
                             id: projectId
-                        }, function(err, terms) {
+                        }, function (err, terms) {
                             if (err) {
                                 done(err);
                             } else {
@@ -203,13 +203,13 @@ module.exports = function(grunt) {
                             }
                         });
                     },
-                    function(done) {
-                        async.each(languages, function(item, done) {
-                                exportFromPoeditor(projectId, item.code, 'json', '', '', backupFolder, done);
-                            },
+                    function (done) {
+                        async.each(languages, function (item, done) {
+                            exportFromPoeditor(projectId, item.code, 'json', '', '', backupFolder, done);
+                        },
                             done);
                     }
-                ], function(err) {
+                ], function (err) {
                     if (err) {
                         console.log('error :S ' + err);
                     }
@@ -222,7 +222,7 @@ module.exports = function(grunt) {
     /**
      * grunt poeditorrestore:1446736750041:42730:42730
      */
-    grunt.registerTask('poeditorrestore', 'restore poeditor project', function(timestamp, originProjectId, destProjectId) {
+    grunt.registerTask('poeditorrestore', 'restore poeditor project', function (timestamp, originProjectId, destProjectId) {
         var async = require('async'),
             gruntTaskDone = this.async(),
             backupFolder = 'backups_i18n/' + timestamp + '/' + originProjectId + '/';
@@ -233,14 +233,14 @@ module.exports = function(grunt) {
             action: 'sync_terms',
             id: destProjectId,
             data: JSON.stringify(data.list)
-        }, function(err, res) {
+        }, function (err, res) {
             //restore languages
-            async.each(Object.keys(langKeys), function(item, done) {
+            async.each(Object.keys(langKeys), function (item, done) {
                 callPoEditorApi({
                     action: 'add_language',
                     id: destProjectId,
                     language: item
-                }, function() {
+                }, function () {
                     if (item === 'es') {
                         console.log(err);
                         console.log(res);
@@ -264,12 +264,12 @@ module.exports = function(grunt) {
                         id: destProjectId,
                         language: item,
                         data: JSON.stringify(tempFile)
-                    }, function(err, res) {
+                    }, function (err, res) {
                         console.log('finish restoring ' + item);
                         done(err, res);
                     });
                 });
-            }, function(err) {
+            }, function (err) {
                 if (err) {
                     console.log(err);
                 }
@@ -278,14 +278,14 @@ module.exports = function(grunt) {
         });
     });
 
-    grunt.registerTask('fixduplicated', 'fix duplicated terms on poeditor', function(projectId) {
+    grunt.registerTask('fixduplicated', 'fix duplicated terms on poeditor', function (projectId) {
         var gruntTaskDone = this.async();
         var params = {
             action: 'view_terms',
             id: projectId || '42730',
             language: 'es'
         };
-        callPoEditorApi(params, function(err, res) {
+        callPoEditorApi(params, function (err, res) {
             if (err) {
                 console.log(err);
             } else {
