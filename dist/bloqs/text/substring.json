@@ -1,0 +1,56 @@
+{
+  "type": "output",
+  "name": "substring",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-string",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "Extraer texto de"
+      },
+      {
+        "id": "STRING",
+        "alias": "dynamicDropdown",
+        "options": "softwareVars"
+      },
+      {
+        "alias": "text",
+        "value": "empezando en la posición"
+      },
+      {
+        "id": "FROM",
+        "alias": "numberInput",
+        "value": 0
+      },
+      {
+        "alias": "text",
+        "value": "y acabando en la posición"
+      },
+      {
+        "id": "TO",
+        "alias": "numberInput",
+        "value": 3
+      }
+    ]
+  ],
+  "returnType": {
+    "type": "simple",
+    "value": "String"
+  },
+  "arduino": {
+    "code": "{STRING}.substring({FROM}, {TO})"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"substring\" no preparado para generar código python"
+      }
+    ]
+  }
+}
