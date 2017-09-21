@@ -1,5 +1,5 @@
 'use strict';
-(function(bloqsDotsMatrix, bloqsLanguages, bloqsUtils) {
+(function (bloqsDotsMatrix, bloqsLanguages, bloqsUtils) {
 
     var bloqsWindow,
         dotsContainer,
@@ -177,15 +177,15 @@
 
             createDotsContent(params);
 
-            bloqsWindow.addEventListener('mousedown', function(evt) {
-                bloqsWindow.addEventListener('mouseup', function() {
+            bloqsWindow.addEventListener('mousedown', function (evt) {
+                bloqsWindow.addEventListener('mouseup', function () {
                     _userIsDragging = false;
                 });
                 _userIsDragging = true;
                 toggleDot(evt);
 
             });
-            bloqsWindow.addEventListener('mouseleave', function() {
+            bloqsWindow.addEventListener('mouseleave', function () {
                 _userIsDragging = false;
                 hideWindow();
             });
@@ -212,7 +212,7 @@
             if (bloqsWindow.className.indexOf('opacity0') === -1) {
                 bloqsWindow.className += ' opacity0';
             }
-            timeoutId = setTimeout(function() {
+            timeoutId = setTimeout(function () {
                 timeoutId = null;
                 if (bloqsWindow.className.indexOf('hide') === -1) {
                     bloqsWindow.className += ' hide';
@@ -267,6 +267,7 @@
 
         bloqsWindow.style.transform = 'translate(' + finalPoint.left + 'px,' + finalPoint.top + 'px)';
     }
+
 
 
     bloqsDotsMatrix.init = init;

@@ -1,5 +1,5 @@
 'use strict';
-(function(arduinoGeneration) {
+(function (arduinoGeneration) {
 
     var INDENT_DEFAULT_CHARACTER = '    ',
         PARAMS_REGEXP = /{([^{].[^(\s]*?)}/,
@@ -18,16 +18,16 @@
         procesingProgram,
         bitmapUuids = {},
         bloqsFunctions = {
-            withoutAsterisk: function(text) {
+            withoutAsterisk: function (text) {
                 return text.replace('*', '');
             },
-            formatPin: function(pin) {
+            formatPin: function (pin) {
                 if (pin.indexOf('A') !== -1) {
                     pin = pin.replace(/\"/g, '');
                 }
                 return pin;
             },
-            readPin: function(pin) {
+            readPin: function (pin) {
                 var result;
 
                 if (pin.indexOf('A') !== -1) {
@@ -37,10 +37,10 @@
                 }
                 return result;
             },
-            getHashCodeFromString: function(hexArray) {
+            getHashCodeFromString: function (hexArray) {
                 return hexArray.replace('{', '').replace('}', '').replace(/ /g, '').replace(/0x/g, '').replace(/,/g, '');
             },
-            readSensor: function(sensorName, aliasesValuesHashMap, hardwareList) {
+            readSensor: function (sensorName, aliasesValuesHashMap, hardwareList) {
                 var result;
                 var sensorData,
                     i = 0;
@@ -89,6 +89,17 @@
 
 
                 return result || '';
+            },
+            tansformPointToHexArray: function (x, y) {
+                var column = '00000000',
+                    hexArray = [0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0];
+
+                y = 7 - y; //reverse position
+
+                column = column.substr(0, y) + '1' + column.substr((y + 1), column.length);
+                var columnHexValue = '0x' + parseInt(column, 2).toString(16);
+                hexArray[x] = parseInt(columnHexValue, 16);
+                return hexArray;
             }
         };
 
@@ -461,7 +472,7 @@
                 result = 'BitbloqMBotRanger';
                 break;
             default:
-                //console.log('bloqs::BoardWithoutLibrary');
+            //console.log('bloqs::BoardWithoutLibrary');
         }
         return result;
     }
