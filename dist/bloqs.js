@@ -1642,7 +1642,7 @@
 })(window.pythonGeneration = window.pythonGeneration || {}, undefined);
 
 'use strict';
-(function(arduinoGeneration) {
+(function (arduinoGeneration) {
 
     var INDENT_DEFAULT_CHARACTER = '    ',
         PARAMS_REGEXP = /{([^{].[^(\s]*?)}/,
@@ -1661,16 +1661,16 @@
         procesingProgram,
         bitmapUuids = {},
         bloqsFunctions = {
-            withoutAsterisk: function(text) {
+            withoutAsterisk: function (text) {
                 return text.replace('*', '');
             },
-            formatPin: function(pin) {
+            formatPin: function (pin) {
                 if (pin.indexOf('A') !== -1) {
                     pin = pin.replace(/\"/g, '');
                 }
                 return pin;
             },
-            readPin: function(pin) {
+            readPin: function (pin) {
                 var result;
 
                 if (pin.indexOf('A') !== -1) {
@@ -1680,10 +1680,10 @@
                 }
                 return result;
             },
-            getHashCodeFromString: function(hexArray) {
+            getHashCodeFromString: function (hexArray) {
                 return hexArray.replace('{', '').replace('}', '').replace(/ /g, '').replace(/0x/g, '').replace(/,/g, '');
             },
-            readSensor: function(sensorName, aliasesValuesHashMap, hardwareList) {
+            readSensor: function (sensorName, aliasesValuesHashMap, hardwareList) {
                 var result;
                 var sensorData,
                     i = 0;
@@ -1732,6 +1732,17 @@
 
 
                 return result || '';
+            },
+            tansformPointToHexArray: function (x, y) {
+                var column = '00000000',
+                    hexArray = [0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0];
+
+                y = 7 - y; //reverse position
+
+                column = column.substr(0, y) + '1' + column.substr((y + 1), column.length);
+                var columnHexValue = '0x' + parseInt(column, 2).toString(16);
+                hexArray[x] = parseInt(columnHexValue, 16);
+                return hexArray;
             }
         };
 
@@ -2104,7 +2115,7 @@
                 result = 'BitbloqMBotRanger';
                 break;
             default:
-                //console.log('bloqs::BoardWithoutLibrary');
+            //console.log('bloqs::BoardWithoutLibrary');
         }
         return result;
     }
@@ -2783,7 +2794,7 @@
 })(window.bloqsSuggested = window.bloqsSuggested || {}, bloqsLanguages, bloqsUtils, undefined);
 
 'use strict';
-(function(bloqsDotsMatrix, bloqsLanguages, bloqsUtils) {
+(function (bloqsDotsMatrix, bloqsLanguages, bloqsUtils) {
 
     var bloqsWindow,
         dotsContainer,
@@ -2961,15 +2972,15 @@
 
             createDotsContent(params);
 
-            bloqsWindow.addEventListener('mousedown', function(evt) {
-                bloqsWindow.addEventListener('mouseup', function() {
+            bloqsWindow.addEventListener('mousedown', function (evt) {
+                bloqsWindow.addEventListener('mouseup', function () {
                     _userIsDragging = false;
                 });
                 _userIsDragging = true;
                 toggleDot(evt);
 
             });
-            bloqsWindow.addEventListener('mouseleave', function() {
+            bloqsWindow.addEventListener('mouseleave', function () {
                 _userIsDragging = false;
                 hideWindow();
             });
@@ -2996,7 +3007,7 @@
             if (bloqsWindow.className.indexOf('opacity0') === -1) {
                 bloqsWindow.className += ' opacity0';
             }
-            timeoutId = setTimeout(function() {
+            timeoutId = setTimeout(function () {
                 timeoutId = null;
                 if (bloqsWindow.className.indexOf('hide') === -1) {
                     bloqsWindow.className += ' hide';
@@ -3051,6 +3062,7 @@
 
         bloqsWindow.style.transform = 'translate(' + finalPoint.left + 'px,' + finalPoint.top + 'px)';
     }
+
 
 
     bloqsDotsMatrix.init = init;

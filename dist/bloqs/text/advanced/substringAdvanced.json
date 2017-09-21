@@ -1,14 +1,21 @@
 {
-  "type": "statement",
-  "name": "mBotSetRGBLedAdvanced",
+  "type": "output",
+  "name": "substringAdvanced",
   "connectors": [
     {
-      "type": "connector--top",
-      "accept": "connector--bottom"
+      "type": "connector--output",
+      "accept": "connector--input"
     },
     {
-      "type": "connector--bottom",
-      "accept": "connector--top"
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "selectVariable"
+      ],
+      "name": "f2313065-a164-494b-89af-4fdf316a70ed"
     },
     {
       "type": "connector--input",
@@ -20,7 +27,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "cded6a30-b355-4478-b897-328f31b56a0f"
+      "name": "d3dbe655-6af1-4c94-ade2-f81f9abaccef"
     },
     {
       "type": "connector--input",
@@ -32,39 +39,33 @@
         "number",
         "selectVariable"
       ],
-      "name": "e1e83102-3008-4ddb-bb44-52f3783b4eeb"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": [
-        "all"
-      ],
-      "suggestedBloqs": [
-        "number",
-        "selectVariable"
-      ],
-      "name": "35eee04d-bdb9-43b9-bb9a-21b8def3f13c"
+      "name": "c7a9de03-77e4-46aa-9e7a-e2667aa827ae"
     }
   ],
-  "bloqClass": "bloq-mbot-setrgbLed",
+  "bloqClass": "bloq-string",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-mbot-setled-set"
+        "value": "Extraer texto de"
       },
       {
-        "id": "LED",
-        "alias": "dynamicDropdown",
-        "options": "mkb_integrated_RGB"
+        "bloqInputId": "STRING",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "selectVariable"
+        ],
+        "name": "f2313065-a164-494b-89af-4fdf316a70ed"
       },
       {
         "alias": "text",
-        "value": "bloq-rgbLed-red"
+        "value": "empezando en la posición"
       },
       {
-        "bloqInputId": "RED",
+        "bloqInputId": "FROM",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -73,14 +74,14 @@
           "number",
           "selectVariable"
         ],
-        "name": "cded6a30-b355-4478-b897-328f31b56a0f"
+        "name": "d3dbe655-6af1-4c94-ade2-f81f9abaccef"
       },
       {
         "alias": "text",
-        "value": "bloq-rgbLed-green"
+        "value": "y acabando en la posición"
       },
       {
-        "bloqInputId": "GREEN",
+        "bloqInputId": "TO",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -89,34 +90,21 @@
           "number",
           "selectVariable"
         ],
-        "name": "e1e83102-3008-4ddb-bb44-52f3783b4eeb"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-rgbLed-blue"
-      },
-      {
-        "bloqInputId": "BLUE",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "35eee04d-bdb9-43b9-bb9a-21b8def3f13c"
+        "name": "c7a9de03-77e4-46aa-9e7a-e2667aa827ae"
       }
     ]
   ],
-  "code": "",
+  "returnType": {
+    "type": "simple",
+    "value": "String"
+  },
   "arduino": {
-    "code": "robot.setLed(º[{LED}.pin.s],{RED}, {GREEN}, {BLUE});"
+    "code": "{STRING}.substring({FROM}, {TO})"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotSetRGBLedAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"substringAdvanced\" no preparado para generar código python"
       }
     ]
   }
