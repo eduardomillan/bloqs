@@ -1,14 +1,10 @@
 {
-  "type": "statement",
-  "name": "buzzerAdvanced",
+  "type": "output",
+  "name": "substringAdvanced",
   "connectors": [
     {
-      "type": "connector--top",
-      "accept": "connector--bottom"
-    },
-    {
-      "type": "connector--bottom",
-      "accept": "connector--top"
+      "type": "connector--output",
+      "accept": "connector--input"
     },
     {
       "type": "connector--input",
@@ -17,22 +13,9 @@
         "all"
       ],
       "suggestedBloqs": [
-        "hwVariable",
         "selectVariable"
       ],
-      "name": "4ce06533-a18d-498a-8fa0-24f18b5a4ec2"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": [
-        "all"
-      ],
-      "suggestedBloqs": [
-        "number",
-        "selectVariable"
-      ],
-      "name": "0a4e1305-d498-4ec4-b46a-3e19bd63da3a"
+      "name": "a5bc22f4-b48b-4204-93b4-72774011b3fd"
     },
     {
       "type": "connector--input",
@@ -44,50 +27,45 @@
         "number",
         "selectVariable"
       ],
-      "name": "6877d5d1-733b-4d3c-81f2-ad5dcdd8f0d1"
+      "name": "3d584e49-c50a-4230-9b0b-6e009563134f"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "5f54c1e3-9772-422c-af87-8c1604987024"
     }
   ],
-  "bloqClass": "bloq-buzzer-advance",
+  "bloqClass": "bloq-string",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-buzzer-advance-sound"
+        "value": "Extraer texto de"
       },
       {
-        "bloqInputId": "BUZZER",
+        "bloqInputId": "STRING",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
-          "hwVariable",
           "selectVariable"
         ],
-        "name": "4ce06533-a18d-498a-8fa0-24f18b5a4ec2"
+        "name": "a5bc22f4-b48b-4204-93b4-72774011b3fd"
       },
       {
         "alias": "text",
-        "value": "bloq-buzzer-advance-note"
+        "value": "empezando en la posición"
       },
       {
-        "bloqInputId": "NOTE",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "0a4e1305-d498-4ec4-b46a-3e19bd63da3a"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-buzzer-advance-for"
-      },
-      {
-        "bloqInputId": "SECONDS",
+        "bloqInputId": "FROM",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -96,22 +74,37 @@
           "number",
           "selectVariable"
         ],
-        "name": "6877d5d1-733b-4d3c-81f2-ad5dcdd8f0d1"
+        "name": "3d584e49-c50a-4230-9b0b-6e009563134f"
       },
       {
         "alias": "text",
-        "value": "bloq-buzzer-advance-ms"
+        "value": "y acabando en la posición"
+      },
+      {
+        "bloqInputId": "TO",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "5f54c1e3-9772-422c-af87-8c1604987024"
       }
     ]
   ],
-  "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});",
+  "returnType": {
+    "type": "simple",
+    "value": "String"
+  },
   "arduino": {
-    "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});"
+    "code": "{STRING}.substring({FROM}, {TO})"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"buzzerAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"substringAdvanced\" no preparado para generar código python"
       }
     ]
   }
