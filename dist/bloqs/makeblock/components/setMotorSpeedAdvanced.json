@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotSetLedMatrixBrightnessAdvanced",
+  "name": "robotSetMotorSpeedAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "c1d31411-5c86-485c-973d-55eecec7cf4b"
+      "name": "3c0bfc33-0e8b-4dd7-bc7d-7730920848a7"
     }
   ],
   "bloqClass": "bloq-components-color",
@@ -28,19 +28,28 @@
     [
       {
         "alias": "text",
-        "value": "bloq-makeblock-ledmatrix-setLight"
+        "value": "bloq-shield-DCmotor-spin"
       },
       {
-        "id": "LEDMATRIX",
-        "alias": "dynamicDropdown",
-        "options": "ledMatrix"
+        "id": "DIRECTION",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "right-male",
+            "value": "Right"
+          },
+          {
+            "label": "left-male",
+            "value": "Left"
+          }
+        ]
       },
       {
         "alias": "text",
-        "value": "to"
+        "value": "bloq-mbot-move-speed"
       },
       {
-        "bloqInputId": "BRIGHTNESSLEVEL",
+        "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -49,18 +58,22 @@
           "number",
           "selectVariable"
         ],
-        "name": "c1d31411-5c86-485c-973d-55eecec7cf4b"
+        "name": "3c0bfc33-0e8b-4dd7-bc7d-7730920848a7"
+      },
+      {
+        "alias": "text",
+        "value": "(-200,200)"
       }
     ]
   ],
   "code": "",
   "arduino": {
-    "code": "{LEDMATRIX}.setBrightness({BRIGHTNESSLEVEL});"
+    "code": "robot.set{DIRECTION}MotorSpeed({SPEED});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotSetLedMatrixBrightnessAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"robotSetMotorSpeedAdvanced\" no preparado para generar código python"
       }
     ]
   }

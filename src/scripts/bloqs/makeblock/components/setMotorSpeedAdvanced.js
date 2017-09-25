@@ -15,9 +15,9 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var robotSetMotorSpeed = _.merge(_.clone(StatementBloq, true), {
+var robotSetMotorSpeedAdvanced = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'robotSetMotorSpeed',
+    name: 'robotSetMotorSpeedAdvanced',
     bloqClass: 'bloq-components-color',
     content: [
         [{
@@ -37,9 +37,10 @@ var robotSetMotorSpeed = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'bloq-mbot-move-speed'
         }, {
-            id: 'SPEED',
-            alias: 'numberInput',
-            value: 0
+            bloqInputId: 'SPEED',
+            alias: 'bloqInput',
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: '(-200,200)'
@@ -51,7 +52,7 @@ var robotSetMotorSpeed = _.merge(_.clone(StatementBloq, true), {
     }
 });
 
-utils.preprocessBloq(robotSetMotorSpeed);
+utils.preprocessBloq(robotSetMotorSpeedAdvanced);
 
 
-module.exports = robotSetMotorSpeed;
+module.exports = robotSetMotorSpeedAdvanced;

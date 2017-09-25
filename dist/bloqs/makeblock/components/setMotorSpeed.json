@@ -16,25 +16,25 @@
     [
       {
         "alias": "text",
-        "value": "Mover el motor"
+        "value": "bloq-shield-DCmotor-spin"
       },
       {
         "id": "DIRECTION",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "Derecho",
+            "label": "right-male",
             "value": "Right"
           },
           {
-            "label": "izquierdo",
+            "label": "left-male",
             "value": "Left"
           }
         ]
       },
       {
         "alias": "text",
-        "value": "a una velocidad de"
+        "value": "bloq-mbot-move-speed"
       },
       {
         "id": "SPEED",
