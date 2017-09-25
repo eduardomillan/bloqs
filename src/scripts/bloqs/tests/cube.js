@@ -25,27 +25,27 @@ var wait = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'Crear cubo con tamaño X:'
         }, {
-            id: 'X',
+            id: 'XINPUT',
             alias: 'numberInput',
             value: 10,
         }, {
             alias: 'text',
             value: 'Y:'
         }, {
-            id: 'Y',
+            id: 'YINPUT',
             alias: 'numberInput',
             value: 10,
         }, {
             alias: 'text',
             value: 'Z:'
         }, {
-            id: 'Z',
+            id: 'ZINPUT',
             alias: 'numberInput',
             value: 10,
         }]
     ],
     arduino: {
-        code: 'cube([{X}, {Y}, {Z}], center=false);'
+        code: 'cube([ {XINPUT}, {YINPUT}, {ZINPUT} ], center=false);'
     }
 });
 
