@@ -1,6 +1,6 @@
 {
   "type": "output",
-  "name": "mkbGyroscope",
+  "name": "mkbAccelerometer",
   "connectors": [
     {
       "type": "connector--output",
@@ -12,7 +12,7 @@
     [
       {
         "alias": "text",
-        "value": "Leer información del giroscopio en el eje"
+        "value": "Obtener ángulo del acelerómetro en el eje"
       },
       {
         "id": "AXIS",
@@ -25,6 +25,10 @@
           {
             "label": "Y",
             "value": "Y"
+          },
+          {
+            "label": "Z",
+            "value": "Z"
           }
         ]
       }
@@ -36,12 +40,12 @@
     "value": "float"
   },
   "arduino": {
-    "code": "robot.getGyro{AXIS}()"
+    "code": "robot.getAngle{AXIS}()"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mkbGyroscope\" no preparado para generar código python"
+        "code": "Bloque \"mkbAccelerometer\" no preparado para generar código python"
       }
     ]
   }

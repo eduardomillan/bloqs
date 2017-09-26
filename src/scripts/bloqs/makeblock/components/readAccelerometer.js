@@ -6,7 +6,7 @@ var _ = require('lodash'),
     OutputBloq = require('./../../outputBloq');
 
 /**
- * Bloq name: mkGyroscope
+ * Bloq name: mkbAccelerometer
  *
  * Bloq type: Output
  *
@@ -15,14 +15,14 @@ var _ = require('lodash'),
  * Return type: float
  */
 
-var mkGyroscope = _.merge(_.clone(OutputBloq, true), {
+var mkbAccelerometer = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'mkbGyroscope',
+    name: 'mkbAccelerometer',
     bloqClass: 'bloq-components-color',
     content: [
         [{
             alias: 'text',
-            value: 'Leer información del giroscopio en el eje'
+            value: 'Obtener ángulo del acelerómetro en el eje'
         }, {
             id: 'AXIS',
             alias: 'staticDropdown',
@@ -32,6 +32,9 @@ var mkGyroscope = _.merge(_.clone(OutputBloq, true), {
             }, {
                 label: 'Y',
                 value: 'Y'
+            }, {
+                label: 'Z',
+                value: 'Z'
             }]
         }]
     ],
@@ -41,9 +44,9 @@ var mkGyroscope = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     },
     arduino: {
-        code: 'robot.getGyro{AXIS}()'
+        code: 'robot.getAngle{AXIS}()'
     }
 });
-utils.preprocessBloq(mkGyroscope);
+utils.preprocessBloq(mkbAccelerometer);
 
-module.exports = mkGyroscope;
+module.exports = mkbAccelerometer;
