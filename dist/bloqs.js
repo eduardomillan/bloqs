@@ -2491,6 +2491,20 @@
                             setupExtraCodeMap[tempSetupExtraCode] = true;
 
                             break;
+                        case 'mkb_fan':
+                            tempIncludes = ['BitbloqDCMotor.h'];
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Bitbloq::DCMotor',
+                                arguments: [
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                                ]
+                            };
+
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+                            break;
                     }
 
                     if (tempInstanceOf) {
