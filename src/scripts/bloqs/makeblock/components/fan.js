@@ -21,7 +21,7 @@ var mkbfan = _.merge(_.clone(StatementBloq, true), {
     bloqClass: 'bloq-mbot-color',
     content: [
         [{
-            id: 'STATE',
+            id: 'SPEED',
             alias: 'staticDropdown',
             options: [{
                 label: 'bloq-led-turnon',
@@ -44,7 +44,7 @@ var mkbfan = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        code: '{FAN}.setSpeed({VALUE});'
+        code: '{FAN}.setSpeed({SPEED});'
     }
 });
 utils.preprocessBloq(mkbfan);

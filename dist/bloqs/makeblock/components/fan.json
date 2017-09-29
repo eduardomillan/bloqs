@@ -15,7 +15,7 @@
   "content": [
     [
       {
-        "id": "STATE",
+        "id": "SPEED",
         "alias": "staticDropdown",
         "options": [
           {
@@ -45,7 +45,7 @@
   ],
   "code": "",
   "arduino": {
-    "code": "{FAN}.setSpeed({VALUE});"
+    "code": "{FAN}.setSpeed({SPEED});"
   },
   "python": {
     "codeLines": [
