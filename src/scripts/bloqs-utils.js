@@ -1,8 +1,8 @@
 'use strict';
-(function(bloqsUtils, _) {
+(function (bloqsUtils, _) {
 
 
-    var isNumeric = function(n) {
+    var isNumeric = function (n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
     };
     /**
@@ -10,7 +10,7 @@
      * @param  number
      */
 
-    var validNumber = function(number) {
+    var validNumber = function (number) {
         var temp = number;
         var removedChar = 0;
         var i = 0;
@@ -35,7 +35,7 @@
         };
     };
 
-    var getCaretPosition = function(el) {
+    var getCaretPosition = function (el) {
         if (el.selectionStart) {
             return el.selectionStart;
         } else if (document.selection) {
@@ -56,7 +56,7 @@
         return 0;
     };
 
-    var setCaretPosition = function(ctrl, pos) {
+    var setCaretPosition = function (ctrl, pos) {
         if (ctrl.setSelectionRange) {
             ctrl.focus();
             ctrl.setSelectionRange(pos, pos);
@@ -73,7 +73,7 @@
      * If the param has non escaped characters, escape them
      * @param  value
      */
-    var validString = function(value) {
+    var validString = function (value) {
         value = value.replace(/(^|\b|[^\\])(\\\\)*\\$/g, '$&\\');
         value = value.replace(/(^|\b|[^\\])((\\\\)*\")/g, '$1\\$2');
         value = value.replace(/(^|\b|[^\\])((\\\\)*\/\*)/g, '$1\\$2');
@@ -88,7 +88,7 @@
      * Return the first valid char from a string
      * @param  value
      */
-    var validChar = function(value) {
+    var validChar = function (value) {
         value = value.replace(/\$*/g, '');
         if (/^\\/g.test(value)) {
             if (/^\\([0-7]{1,3}|x[0-9A-F]{1,2}|u[0-9A-F]{1,4})/g.test(value)) {
@@ -113,7 +113,7 @@
      * If the param has a comment end, omit it
      * @param  value
      */
-    var validComment = function(value) {
+    var validComment = function (value) {
         value = value.replace(/\*\//g, '');
         value = value.replace(/\$\'/g, '\$\\\'');
         value = value.replace(/\$\&/g, '\$\\\&');
@@ -125,7 +125,7 @@
      * Transform a function or variable name to make it "legal" in Arduino coding language
      * @param  name
      */
-    var validName = function(name, bloqUuid, softwareArrays) {
+    var validName = function (name, bloqUuid, softwareArrays) {
         var reservedWords = 'setup,loop,if,else,for,switch,case,while,do,break,continue,return,goto,define,include,HIGH,LOW,INPUT,OUTPUT,INPUT_PULLUP,true,false,interger, constants,floating,point,void,bool,char,unsigned,byte,int,word,long,float,double,string,String,array,static, volatile,const,sizeof,pinMode,digitalWrite,digitalRead,analogReference,analogRead,analogWrite,tone,noTone,shiftOut,shitIn,pulseIn,millis,micros,delay,delayMicroseconds,min,max,abs,constrain,map,pow,sqrt,sin,cos,tan,randomSeed,random,lowByte,highByte,bitRead,bitWrite,bitSet,bitClear,bit,attachInterrupt,detachInterrupt,interrupts,noInterrupts';
         reservedWords = reservedWords.split(',');
         if (name && name.length > 0) {
@@ -181,10 +181,10 @@
         return name;
     };
 
-    var appendArrayInOneTime = function($container, $items) {
+    var appendArrayInOneTime = function ($container, $items) {
         var rawArray = $.map(
             $items,
-            function(value) {
+            function (value) {
 
                 // Return the unwrapped version. This will return
                 // the underlying DOM nodes contained within each
@@ -198,20 +198,20 @@
         $container.append(rawArray);
     };
 
-    var generateUUID = function() {
+    var generateUUID = function () {
         var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = (d + Math.random() * 16) % 16 | 0;
             d = Math.floor(d / 16);
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
         return uuid;
     };
-    var getNumericStyleProperty = function(style, prop) {
+    var getNumericStyleProperty = function (style, prop) {
         return parseInt(style.getPropertyValue(prop), 10);
     };
 
-    var drawDropdownOptions = function($element, arrayOptions) {
+    var drawDropdownOptions = function ($element, arrayOptions) {
         var $tempElement, i,
             $items = [];
 
@@ -227,14 +227,14 @@
         appendArrayInOneTime($element, $items);
     };
 
-    var itsOver = function(dragConnector, dropConnector, margin) {
+    var itsOver = function (dragConnector, dropConnector, margin) {
         margin = margin || 0;
         var dragConnectorOffset = dragConnector.offset(),
             dropConnectorOffset = dropConnector.offset();
         return dragConnectorOffset.left < (dropConnectorOffset.left + dropConnector[0].clientWidth + margin) && (dragConnectorOffset.left + dragConnector[0].clientWidth) > (dropConnectorOffset.left - margin) && dragConnectorOffset.top < (dropConnectorOffset.top + dropConnector[0].clientHeight + margin) && (dragConnectorOffset.top + dragConnector[0].clientHeight) > (dropConnectorOffset.top - margin);
     };
 
-    var sameConnectionType = function(dragBloq, dropBloq, dropConnectorAcceptType, bloqs, IOConnectors, softwareArrays, componentsArray) {
+    var sameConnectionType = function (dragBloq, dropBloq, dropConnectorAcceptType, bloqs, IOConnectors, softwareArrays, componentsArray) {
         var dragConnectorType = getTypeFromBloq(dragBloq, bloqs, IOConnectors, softwareArrays, componentsArray);
         //if acceptType its and object, the acceptType comes from a dinamic dropdown.
         if (Object.prototype.toString.call(dropConnectorAcceptType) === '[object Object]') {
@@ -244,7 +244,7 @@
         return (dragConnectorType === 'all') || (dropConnectorAcceptType.indexOf('all') !== -1) || (dropConnectorAcceptType.indexOf(dragConnectorType) !== -1) || ((dragConnectorType === 'float') && (dropConnectorAcceptType.indexOf('int') !== -1)) || ((dragConnectorType === 'int') && (dropConnectorAcceptType.indexOf('float') !== -1));
     };
     //getConnectorsUuidByAcceptType
-    var getTypeFromDynamicDropdown = function(bloq, typeObject, softwareArrays) {
+    var getTypeFromDynamicDropdown = function (bloq, typeObject, softwareArrays) {
         var attributeValue = bloq.$bloq.find('select[data-content-id="' + typeObject.idDropdown + '"][data-dropdowncontent="' + typeObject.options + '"]').attr('data-value');
         var selectedValue = bloq.$bloq.find('select[data-content-id="' + typeObject.idDropdown + '"][data-dropdowncontent="' + typeObject.options + '"]').val();
         var selectedVarNameOnDropdown = attributeValue || selectedValue;
@@ -268,7 +268,7 @@
         return '';
 
     };
-    var getFromDynamicDropdownType = function(bloq, idDropdown, options, softwareArrays, componentsArray) {
+    var getFromDynamicDropdownType = function (bloq, idDropdown, options, softwareArrays, componentsArray) {
         var attributeValue = bloq.$bloq.find('select[data-content-id="' + idDropdown + '"][data-dropdowncontent="' + options + '"]').attr('data-value');
         var selectedValue = bloq.$bloq.find('select[data-content-id="' + idDropdown + '"][data-dropdowncontent="' + options + '"]').val();
         var varName = attributeValue || selectedValue;
@@ -306,7 +306,7 @@
      * @param  connectorPosition 0: tipical position of the top-connector, 1: bottom-connector
      * @return
      */
-    var getTreeExtreme = function(bloqUuid, bloqs, connectors, connectorPosition) {
+    var getTreeExtreme = function (bloqUuid, bloqs, connectors, connectorPosition) {
         if (connectors[bloqs[bloqUuid].connectors[connectorPosition]].connectedTo) {
             return getTreeExtreme(connectors[connectors[bloqs[bloqUuid].connectors[connectorPosition]].connectedTo].bloqUuid, bloqs, connectors, connectorPosition);
         } else {
@@ -320,7 +320,7 @@
      * @param  {[type]} bloqs      [description]
      * @return {[type]}            [description]
      */
-    var getLastBottomConnectorUuid = function(bloqUuid, bloqs, connectors) {
+    var getLastBottomConnectorUuid = function (bloqUuid, bloqs, connectors) {
         return getTreeExtreme(bloqUuid, bloqs, connectors, 1);
     };
     /**
@@ -330,7 +330,7 @@
      * @param  {[type]} bloqs      [description]
      * @return {[type]}            [description]
      */
-    var getFirstTopConnectorUuid = function(bloqUuid, bloqs, connectors) {
+    var getFirstTopConnectorUuid = function (bloqUuid, bloqs, connectors) {
         return getTreeExtreme(bloqUuid, bloqs, connectors, 0);
     };
     /**
@@ -339,7 +339,7 @@
      * @param  IOConnectors
      * @return              the connector
      */
-    var getOutputConnector = function(bloq, IOConnectors) {
+    var getOutputConnector = function (bloq, IOConnectors) {
         var i = 0,
             outputConnector = null;
         while (!outputConnector && (i < bloq.IOConnectors.length)) {
@@ -362,7 +362,7 @@
      * @param  {[type]} connectors [description]
      * @return {[type]}            [description]
      */
-    var getNodesHeight = function(bloqUuid, bloqIsTop, bloqs, connectors) {
+    var getNodesHeight = function (bloqUuid, bloqIsTop, bloqs, connectors) {
         var bloq = bloqs[bloqUuid];
         var connectorPosition;
         if (bloqIsTop) {
@@ -383,7 +383,7 @@
      * @param  {[type]} connectors [description]
      * @return {[type]}            [description]
      */
-    var getTreeHeight = function(bloqUuid, bloqs, connectors) {
+    var getTreeHeight = function (bloqUuid, bloqs, connectors) {
         var bloq = bloqs[bloqUuid];
         var topConnectorUuid = connectors[bloq.connectors[0]].connectedTo,
             bottomConnectorUuid = connectors[bloq.connectors[1]].connectedTo;
@@ -403,7 +403,7 @@
      * @param  {[type]} topConnectorUuid [description]
      * @return {[type]}                  [description]
      */
-    var drawBranch = function(bloqs, connectors, topConnectorUuid) {
+    var drawBranch = function (bloqs, connectors, topConnectorUuid) {
         var branchUuid = connectors[topConnectorUuid].bloqUuid;
         console.log('          ******* - branch - *********', branchUuid);
         console.log('          ', bloqs[branchUuid].bloqData.name);
@@ -427,7 +427,7 @@
      * @param  {[type]} connectors [description]
      * @return {[type]}            [description]
      */
-    var drawTree = function(bloqs, connectors) {
+    var drawTree = function (bloqs, connectors) {
         console.log(bloqs);
         //buscamos los tipo statement q no tienen un top conectado
         for (var uuid in bloqs) {
@@ -473,7 +473,7 @@
      * @param  {[type]} bloqs      [description]
      * @return {[type]}            [description]
      */
-    var getBranchsConnectors = function(bloqUuid, bloqs, connectors) {
+    var getBranchsConnectors = function (bloqUuid, bloqs, connectors) {
         var bloq = bloqs[bloqUuid];
         var result = [];
         result = result.concat(bloq.connectors);
@@ -489,7 +489,7 @@
         }
         return result;
     };
-    var getBranchsConnectorsNoChildren = function(bloqUuid, connectors, bloqs) {
+    var getBranchsConnectorsNoChildren = function (bloqUuid, connectors, bloqs) {
         var bloq = bloqs[bloqUuid];
         var result = [];
         result = result.concat(bloq.connectors);
@@ -501,7 +501,7 @@
         return result;
     };
 
-    var getConnectorsUuidByAcceptType = function(IOConnectors, type) {
+    var getConnectorsUuidByAcceptType = function (IOConnectors, type) {
         var result = [];
         for (var key in IOConnectors) {
             if (IOConnectors[key].data.acceptType.indexOf('type') !== -1) {
@@ -510,7 +510,7 @@
         }
         return result;
     };
-    var getNotConnected = function(IOConnectors, uuids) {
+    var getNotConnected = function (IOConnectors, uuids) {
         var result = [];
         for (var i = 0; i < uuids.length; i++) {
             if (!IOConnectors[uuids[i]].connectedTo) {
@@ -519,7 +519,7 @@
         }
         return result;
     };
-    var getInputsConnectorsFromBloq = function(IOConnectors, bloqs, bloq) {
+    var getInputsConnectorsFromBloq = function (IOConnectors, bloqs, bloq) {
         var result = [];
         var uuid;
         // connectedBloq;
@@ -532,7 +532,7 @@
         return result;
     };
 
-    var removeInputsConnectorsFromBloq = function(IOConnectors, bloq) {
+    var removeInputsConnectorsFromBloq = function (IOConnectors, bloq) {
         //remove visually all bloqInputs
         bloq.$contentContainer.children('.bloqinput').remove();
         bloq.$contentContainer.children('.removabletext').remove();
@@ -543,7 +543,7 @@
             }
         }
     };
-    var generateBloqInputConnectors = function(bloq) {
+    var generateBloqInputConnectors = function (bloq) {
         var uuid;
         for (var i = 0; i < bloq.content.length; i++) {
             for (var j = 0; j < bloq.content[i].length; j++) {
@@ -559,12 +559,12 @@
             }
         }
     };
-    var getBloqByConnectorUuid = function(connectorUuid, bloqs, connectors) {
+    var getBloqByConnectorUuid = function (connectorUuid, bloqs, connectors) {
         return bloqs[connectors[connectorUuid].bloqUuid];
     };
 
     var translateRegExp = /translate\(((-)*(\d|\.)*)px, ((-)*(\d|\.)*)px\)/;
-    var redrawTree = function(bloq, bloqs, connectors) {
+    var redrawTree = function (bloq, bloqs, connectors) {
         var rootBloq = getBloqByConnectorUuid(getFirstTopConnectorUuid(bloq.uuid, bloqs, connectors), bloqs, connectors);
 
         var somethingConnectedInBottomUuid = connectors[rootBloq.connectors[1]].connectedTo,
@@ -591,11 +591,11 @@
 
     };
 
-    var itsARootConnector = function(connector) {
+    var itsARootConnector = function (connector) {
         return connector.data.type === 'connector--root';
     };
 
-    var itsInsideAConnectorRoot = function(bloq, bloqs, connectors) {
+    var itsInsideAConnectorRoot = function (bloq, bloqs, connectors) {
 
         var topConnector = connectors[bloq.connectors[0]];
         if (connectors[topConnector.connectedTo]) {
@@ -607,7 +607,7 @@
         }
     };
 
-    var getClassName = function(bloq, bloqs, connectors) {
+    var getClassName = function (bloq, bloqs, connectors) {
         var topConnector = connectors[bloq.connectors[0]];
         if (connectors[topConnector.connectedTo]) {
             var connectedWithTopConnector = connectors[topConnector.connectedTo];
@@ -622,10 +622,10 @@
         }
     };
 
-    var jqueryObjectsArrayToHtmlToInsert = function(arrayToTransform) {
+    var jqueryObjectsArrayToHtmlToInsert = function (arrayToTransform) {
         var rawArray = $.map(
             arrayToTransform,
-            function(value) {
+            function (value) {
 
                 // Return the unwrapped version. This will return
                 // the underlying DOM nodes contained within each
@@ -637,7 +637,7 @@
         return rawArray;
     };
 
-    var connectorIsInBranch = function(connectorUuid, topBloqUuid, bloqs, connectors) {
+    var connectorIsInBranch = function (connectorUuid, topBloqUuid, bloqs, connectors) {
         var isInBloq = false;
         var i = 0;
         //miro si es uno de mis conectores
@@ -667,7 +667,7 @@
         return isInBloq;
     };
 
-    var hasClass = function(el, selector) {
+    var hasClass = function (el, selector) {
         var className = ' ' + selector + ' ';
 
         if ((' ' + el.className + ' ').replace(/[\n\t]/g, ' ').indexOf(className) > -1) {
@@ -677,7 +677,7 @@
         return false;
     };
 
-    var getTypeFromBloq = function(bloq, bloqs, IOConnectors, softwareArrays, componentsArray) {
+    var getTypeFromBloq = function (bloq, bloqs, IOConnectors, softwareArrays, componentsArray) {
         var result;
         if (!bloq) {
             console.error('We cant get the type if we dont have a bloq');
@@ -720,7 +720,7 @@
         return result;
     };
 
-    var getTypeFromStaticDropdownProperty = function(bloq) {
+    var getTypeFromStaticDropdownProperty = function (bloq) {
         var type = '';
         var selectedValue = bloq.$bloq.find('[data-content-id="' + bloq.bloqData.returnType.idDropdown + '"]').val();
         if (selectedValue) {
@@ -739,7 +739,7 @@
 
     };
 
-    var occurrencesInString = function(string, subString, allowOverlapping) {
+    var occurrencesInString = function (string, subString, allowOverlapping) {
         string += '';
         subString += '';
         if (subString.length <= 0) {
@@ -762,13 +762,13 @@
         return (n);
     };
 
-    var getParent = function(bloq, bloqs, IOConnectors) {
+    var getParent = function (bloq, bloqs, IOConnectors) {
         var connector = getOutputConnector(bloq, IOConnectors);
         return getBloqByConnectorUuid(connector.connectedTo, bloqs, IOConnectors);
 
     };
 
-    var getArgsFromBloq = function(bloq, bloqs, IOConnectors) {
+    var getArgsFromBloq = function (bloq, bloqs, IOConnectors) {
         var result;
         if (!bloq) {
             throw 'wadafak';
@@ -805,13 +805,13 @@
         return result;
     };
 
-    var drawSoftwareVars = function(softwareArrays) {
+    var drawSoftwareVars = function (softwareArrays) {
         for (var i = 0; i < softwareArrays.softwareVars.length; i++) {
             console.log('name: ', softwareArrays.softwareVars[i].name, 'type: ', softwareArrays.softwareVars[i].type);
         }
     };
 
-    var drawSoftwareArray = function(softwareArrays) {
+    var drawSoftwareArray = function (softwareArrays) {
         console.info('drawSoftwareArray');
         drawSoftwareVars(softwareArrays);
         console.info('returnFunctions');
@@ -820,7 +820,7 @@
         }
     };
 
-    var fillSchemaWithContent = function(originalBloqSchema, data) {
+    var fillSchemaWithContent = function (originalBloqSchema, data) {
         var bloqSchema = _.clone(originalBloqSchema, true),
             k,
             found;
@@ -863,11 +863,11 @@
         return bloqSchema;
     };
 
-    var checkPins = function(component) {
+    var checkPins = function (component) {
 
         if (component.pins) {
             for (var pinType in component.pins) {
-                component.pins[pinType].forEach(function(pin) {
+                component.pins[pinType].forEach(function (pin) {
                     component.pin[pin] = component.pin[pin] || ''
                 });
             }
@@ -876,12 +876,12 @@
         return component;
     };
 
-    var splice = function(string, idx, rem, s) {
+    var splice = function (string, idx, rem, s) {
 
         return (string.slice(0, idx) + s + string.slice(idx + Math.abs(rem)));
     };
 
-    var executeFunctionOnConnectedStatementBloqs = function(functionToExecute, bloq, bloqs, connectors) {
+    var executeFunctionOnConnectedStatementBloqs = function (functionToExecute, bloq, bloqs, connectors) {
         var connector = connectors[bloq.connectors[1]].connectedTo,
             tempBloq;
 
@@ -893,8 +893,8 @@
     };
 
     var timers = [];
-    var delay = (function() {
-        return function(callback, ms, elementId) {
+    var delay = (function () {
+        return function (callback, ms, elementId) {
             if (timers[elementId]) {
                 clearTimeout(timers[elementId]);
             }
@@ -1170,13 +1170,13 @@
         }
     }
 
-    var removeDiacritics = function(str) {
-        return str.replace(/[^\u0000-\u007E]/g, function(a) {
+    var removeDiacritics = function (str) {
+        return str.replace(/[^\u0000-\u007E]/g, function (a) {
             return diacriticsMap[a] || a;
         }).replace(/[^\w\s]/gi, '').replace(/ /g, '_');
     };
 
-    var getEmptyComponentsArray = function() {
+    var getEmptyComponentsArray = function () {
         return {
             leds: [],
             rgbs: [],
@@ -1200,6 +1200,7 @@
             mkb_soundsensor: [],
             mkb_4buttonKeyPad: [],
             mkb_motionSensor: [],
+            mkb_fan: [],
             ledMatrix: [],
             display7seg: [],
             remoteControl: [],
@@ -1209,14 +1210,14 @@
         };
     };
 
-    var getArduinoCode = function(componentsArray, program) {
+    var getArduinoCode = function (componentsArray, program) {
         var varCode = getArduinoCodeFromBloq(program.vars),
             setupCode = getArduinoCodeFromBloq(program.setup),
             loopCode = getArduinoCodeFromBloq(program.loop);
         return varCode + setupCode + loopCode;
     };
 
-    var getArduinoCodeFromBloq = function(bloq) {
+    var getArduinoCodeFromBloq = function (bloq) {
         var code = '';
         if (bloq.enable) {
             var contentRegExp = new RegExp('{([A-Z0-9]+)}', 'g'),
@@ -1248,7 +1249,7 @@
         return code;
     };
 
-    var getContentFromBloq = function(contentId, bloq) {
+    var getContentFromBloq = function (contentId, bloq) {
         var content = {
             value: ''
         };
@@ -1259,7 +1260,7 @@
                 content.value += getArduinoCodeFromBloq(bloq.childs[i]);
             }
         } else {
-            content = _.filter(bloq.content[0], function(elem) {
+            content = _.filter(bloq.content[0], function (elem) {
                 if (elem.id === contentId) {
                     return true;
                 } else if (elem.bloqInputId === contentId) {
@@ -1275,7 +1276,7 @@
         return content;
     };
 
-    var getTypeFromBloqStructure = function(bloq) {
+    var getTypeFromBloqStructure = function (bloq) {
         var type = '',
             content = null;
         if (bloq.returnType) {
@@ -1365,8 +1366,8 @@
     }
 
     function arrayIntersection(arrays) {
-        return arrays.shift().filter(function(v) {
-            return arrays.every(function(a) {
+        return arrays.shift().filter(function (v) {
+            return arrays.every(function (a) {
                 return a.indexOf(v) !== -1;
             });
         });

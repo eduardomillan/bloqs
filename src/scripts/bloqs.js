@@ -1,5 +1,5 @@
 'use strict';
-(function(exports, _, Q, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix) {
+(function (exports, _, Q, bloqsUtils, bloqsLanguages, bloqsTooltip, bloqsSuggested, bloqsDotsMatrix) {
     /**
      * Events
      * bloqs:created
@@ -46,7 +46,7 @@
         shiftKeyDown,
         componentsArray = bloqsUtils.getEmptyComponentsArray();
 
-    var setOptions = function(options) {
+    var setOptions = function (options) {
         fieldOffsetTopSource = options.fieldOffsetTopSource || fieldOffsetTopSource || [];
         fieldOffsetLeft = options.fieldOffsetLeft || fieldOffsetLeft || 0;
         fieldOffsetRight = options.fieldOffsetRight || fieldOffsetRight || 0;
@@ -62,7 +62,7 @@
         lang = options.lang || 'es-ES';
     };
 
-    var getFieldOffsetTop = function(source) {
+    var getFieldOffsetTop = function (source) {
         var fieldOffsetTop = 0;
         if (fieldOffsetTopForced) {
             fieldOffsetTop = fieldOffsetTopForced;
@@ -79,7 +79,7 @@
         return fieldOffsetTop;
     };
 
-    var bloqMouseDown = function(evt) {
+    var bloqMouseDown = function (evt) {
         // console.log('bloqMouseDown');
         // console.log(evt);
         //console.log(evt.target.tagName);
@@ -103,7 +103,7 @@
         }
     };
 
-    var bloqMouseUpBeforeMove = function() {
+    var bloqMouseUpBeforeMove = function () {
         //console.log('bloqMouseUpBeforeMove');
         mouseDownBloq = null;
         document.removeEventListener('mousemove', bloqPreMouseMove);
@@ -113,7 +113,7 @@
     };
 
     //to avoid move bloqs with a 1 px movement
-    var bloqPreMouseMove = function(evt) {
+    var bloqPreMouseMove = function (evt) {
         // console.log('bloqPreMouseMove');
         // console.log(evt.type);
         var pageX = evt.pageX || evt.touches[0].pageX,
@@ -155,7 +155,7 @@
         }
     };
 
-    var bloqMouseMove = function(evt) {
+    var bloqMouseMove = function (evt) {
         //console.log('bloqMouseMove');
         var bloq = null;
         //actions to do before start to move
@@ -220,7 +220,7 @@
 
     };
 
-    var bloqMouseUp = function(evt) {
+    var bloqMouseUp = function (evt) {
         //console.log('bloqMouseUp');
         scrollTop = 0;
         var $dropConnector = $('.connector.available').first(),
@@ -235,7 +235,7 @@
         }));
     };
 
-    var connectBloq = function(bloq, $dropConnector) {
+    var connectBloq = function (bloq, $dropConnector) {
         if ($dropConnector[0]) {
 
             switch (bloq.bloqData.type) {
@@ -289,7 +289,7 @@
         document.removeEventListener('touchend', bloqMouseUp);
     };
 
-    var statementDragStart = function(bloq) {
+    var statementDragStart = function (bloq) {
 
         var previousConnector = connectors[bloq.connectors[0]].connectedTo;
         var afterConnector;
@@ -353,7 +353,7 @@
         };
     };
 
-    var removeFromStatementInput = function(firstBloqToRemove) {
+    var removeFromStatementInput = function (firstBloqToRemove) {
         var $totalBloqsToRemove = [firstBloqToRemove.$bloq];
         var childConnectorUuid = connectors[firstBloqToRemove.connectors[1]].connectedTo,
             bloqToRemove,
@@ -372,7 +372,7 @@
 
     };
 
-    var outputDragStart = function(bloq) {
+    var outputDragStart = function (bloq) {
         var outputConnector = utils.getOutputConnector(bloq, IOConnectors);
         if (outputConnector.connectedTo) {
             bloq.$bloq.removeClass('nested-bloq');
@@ -407,7 +407,7 @@
         // console.log('availableIOConnectors',availableIOConnectors);
     };
 
-    var moveBloq = function(bloq, clientX, clientY) {
+    var moveBloq = function (bloq, clientX, clientY) {
         var position = bloq.$bloq[0].getBoundingClientRect(),
             distance = Math.round(Math.sqrt(Math.pow(dragPreviousTopPosition - position.top, 2) + Math.pow(dragPreviousLeftPosition - position.left, 2))),
             x,
@@ -440,7 +440,7 @@
         return distance;
     };
 
-    var statementDragEnd = function(bloq, $dropConnector) {
+    var statementDragEnd = function (bloq, $dropConnector) {
 
         var dropConnectorUuid = $dropConnector.attr('data-connector-id');
         var dragConnectorUuid = $('[data-connector-id="' + dropConnectorUuid + '"]').attr('data-canconnectwith');
@@ -460,7 +460,7 @@
 
     };
 
-    var connectorRootDragEnd = function(dragBloq, $dropConnector) {
+    var connectorRootDragEnd = function (dragBloq, $dropConnector) {
         //console.log('connectorRootDragEnd');
         var dropConnectorUuid = $dropConnector.attr('data-connector-id');
         var dropBloq = bloqs[connectors[dropConnectorUuid].bloqUuid];
@@ -496,7 +496,7 @@
         utils.redrawTree(dropBloq, bloqs, connectors);
     };
 
-    var connectOutputBloq = function(bloq, $dropConnector) {
+    var connectOutputBloq = function (bloq, $dropConnector) {
         var dropConnectorUuid = $dropConnector.attr('data-connector-id');
         var dragConnectorUuid = utils.getOutputConnector(bloq, IOConnectors).uuid;
 
@@ -516,7 +516,7 @@
         }
     };
 
-    var handleCollisions = function(dragConnectors) {
+    var handleCollisions = function (dragConnectors) {
         var i,
             found,
             $dropConnector,
@@ -524,7 +524,7 @@
             tempBloq;
 
         // For each available connector
-        availableConnectors.forEach(function(dropConnectorUuid) {
+        availableConnectors.forEach(function (dropConnectorUuid) {
             $dropConnector = connectors[dropConnectorUuid].jqueryObject;
             i = 0;
             found = false;
@@ -555,10 +555,10 @@
         });
     };
 
-    var handleIOCollisions = function(bloq, availableIOConnectors) {
+    var handleIOCollisions = function (bloq, availableIOConnectors) {
         var dropConnector;
         var dragConnector = utils.getOutputConnector(bloq, IOConnectors);
-        availableIOConnectors.forEach(function(dropConnectorUuid) {
+        availableIOConnectors.forEach(function (dropConnectorUuid) {
             dropConnector = IOConnectors[dropConnectorUuid];
             if (utils.itsOver(dragConnector.jqueryObject, dropConnector.jqueryObject, 0) && utils.sameConnectionType(bloqs[dragConnector.bloqUuid], bloqs[dropConnector.bloqUuid], dropConnector.data.acceptType, bloqs, IOConnectors, softwareArrays, componentsArray)) {
                 dropConnector.jqueryObject.addClass('available');
@@ -569,7 +569,7 @@
         });
     };
 
-    var setLogicalConnections = function(dropConnectorUuid, dragConnectorUUid) {
+    var setLogicalConnections = function (dropConnectorUuid, dragConnectorUUid) {
         //console.log('conectamos', dropConnectorUuid, connectors[dropConnectorUuid].data.type, 'con ', dragConnectorUUid, connectors[dragConnectorUUid].data.type);
         //console.log('conectado con', connectors[dropConnectorUuid].connectedTo, 'y el otro con', connectors[dragConnectorUUid].connectedTo);
         if (connectors[dropConnectorUuid].connectedTo) {
@@ -601,7 +601,7 @@
         connectors[dragConnectorUUid].connectedTo = dropConnectorUuid;
     };
 
-    var placeNestedBloq = function(dropConnectorUuid, dragConnectorUuid) {
+    var placeNestedBloq = function (dropConnectorUuid, dragConnectorUuid) {
         //console.log('Nest');
 
         var dropBloq = bloqs[connectors[dropConnectorUuid].bloqUuid];
@@ -619,7 +619,7 @@
         }
     };
 
-    var updateSoftVar = function(bloq, name, type, args) {
+    var updateSoftVar = function (bloq, name, type, args) {
         var dynamicContentType = bloq.bloqData.createDynamicContent;
         //console.log('updating softVar', dynamicContentType);
         if (!dynamicContentType) {
@@ -683,7 +683,7 @@
         // console.log('afterUpdating: ', softwareArrays);
     };
 
-    var removeSoftVar = function(bloq) {
+    var removeSoftVar = function (bloq) {
         var dynamicContentType = bloq.bloqData.createDynamicContent;
         var found = false,
             i = 0;
@@ -701,7 +701,7 @@
         updateSoftVarTypes(softwareArrays, dynamicContentType, bloqs, IOConnectors);
     };
 
-    var updateSoftVarTypes = function(softwareArrays, dynamicContentType, bloqs, IOConnectors) {
+    var updateSoftVarTypes = function (softwareArrays, dynamicContentType, bloqs, IOConnectors) {
         //refresh type of functions and vars
         if ((dynamicContentType === 'returnFunctions') || (dynamicContentType === 'softwareVars')) {
             refreshSoftVarTypes(softwareArrays, 'returnFunctions', bloqs, IOConnectors);
@@ -723,7 +723,7 @@
         }
     }
 
-    var removeBloq = function(bloqUuid, redraw, removeAllConnectedBloqs) {
+    var removeBloq = function (bloqUuid, redraw, removeAllConnectedBloqs) {
 
         var bloq = bloqs[bloqUuid],
             i;
@@ -769,7 +769,7 @@
                         childConnector = connectors[tempBloq.connectors[1]].connectedTo;
                         removeBloq(tempBloq.uuid, redraw, removeAllConnectedBloqs);
                     }
-                    /* falls through */
+                /* falls through */
                 case 'statement':
 
                     topConnector = connectors[bloq.connectors[0]].connectedTo;
@@ -870,7 +870,7 @@
 
     };
 
-    var buildContent = function(bloq) {
+    var buildContent = function (bloq) {
 
         var bloqData = bloq.bloqData;
         var $tempElement;
@@ -887,7 +887,7 @@
         }
     };
 
-    var buildStatementConnector = function(tempUuid, bloqConnectors, bloq, tempConnector, $container) {
+    var buildStatementConnector = function (tempUuid, bloqConnectors, bloq, tempConnector, $container) {
         var $connector = $('<div>').attr({
             'data-connector-id': tempUuid
         });
@@ -902,7 +902,7 @@
         return $connector;
     };
 
-    var buildConnectors = function(bloqConnectors, bloq) {
+    var buildConnectors = function (bloqConnectors, bloq) {
         //connectors
         var $connector, tempUuid, tempConnector, $container;
         for (var i = 0; i < bloqConnectors.length; i++) {
@@ -977,7 +977,7 @@
         }
     };
 
-    var createBloqElement = function(bloq, elementSchema, softwareArrays) {
+    var createBloqElement = function (bloq, elementSchema, softwareArrays) {
         var i,
             $tempElement,
             $element = null,
@@ -1005,12 +1005,12 @@
                     $element.val(elementSchema.value);
                 }
 
-                $element.change(function() {
+                $element.change(function () {
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
 
                 if (bloq.bloqData.returnType && bloq.bloqData.returnType.type === 'fromDropdown') {
-                    $element.change(function() {
+                    $element.change(function () {
                         updateSoftVar(bloq);
                     });
                 }
@@ -1032,7 +1032,7 @@
                     case 'classes':
                     case 'objects':
                         arrayOptions = softwareArrays[elementSchema.options];
-                        $element.change(function() {
+                        $element.change(function () {
                             //if we change a dynamicDropdown, can be for two reasons
                             // We are a output and we refresh vars of the old BLoq
                             // We are selecting a variable in a statement, and we update the dont change type
@@ -1093,7 +1093,7 @@
 
                 if (elementSchema.value) {
                     $element.val(elementSchema.value);
-                    var componentRef = arrayOptions.find(function(item) {
+                    var componentRef = arrayOptions.find(function (item) {
                         return item.name === elementSchema.value;
                     });
                     $element[0].dataset.reference = componentRef ? componentRef.uid : '';
@@ -1101,7 +1101,7 @@
                     $element.val(elementSchema.value);
                 }
 
-                $element.change(function(evt) {
+                $element.change(function (evt) {
                     $element[0].dataset.value = evt.currentTarget.value;
                     $element[0].dataset.reference = evt.currentTarget.selectedOptions[0].dataset.reference;
                     //$element[0].dataset.varreference = evt.currentTarget.selectedOptions[0].dataset.varId;
@@ -1127,19 +1127,19 @@
                     placeholder: translateBloq(lang, elementSchema.placeholder)
                 }).val(elementSchema.value);
                 //Check that the characters are numbers
-                $element.bind('input', function() {
+                $element.bind('input', function () {
                     var position = utils.getCaretPosition(this);
                     var a = utils.validNumber($(this).val());
                     $(this).val(a.value);
                     utils.setCaretPosition(this, position - a.removedChar);
                 });
-                $element.on('keyup', function(evt) {
+                $element.on('keyup', function (evt) {
                     $(evt.currentTarget).autoGrowInput({
                         minWidth: 60,
                         comfortZone: 30
                     });
                 });
-                $element.change(function() {
+                $element.change(function () {
                     //console.log('change number!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
@@ -1152,13 +1152,13 @@
                     'data-placeholder-i18n': elementSchema.placeholder,
                     placeholder: translateBloq(lang, elementSchema.placeholder)
                 }).val(elementSchema.value || translateBloq(lang, elementSchema.defaultValue));
-                $element.on('keyup', function(evt) {
+                $element.on('keyup', function (evt) {
                     $(evt.currentTarget).autoGrowInput({
                         minWidth: 100,
                         comfortZone: 30
                     });
                 });
-                $element.change(function() {
+                $element.change(function () {
                     $element.val(utils.validString($element.val()));
                     //console.log('change String!');
                     window.dispatchEvent(new Event('bloqs:change'));
@@ -1172,13 +1172,13 @@
                     'data-placeholder-i18n': elementSchema.placeholder,
                     placeholder: translateBloq(lang, elementSchema.placeholder)
                 }).val(elementSchema.value);
-                $element.on('keyup', function(evt) {
+                $element.on('keyup', function (evt) {
                     $(evt.currentTarget).autoGrowInput({
                         minWidth: 100,
                         comfortZone: 30
                     });
                 });
-                $element.change(function() {
+                $element.change(function () {
                     $element.val(utils.validChar($element.val()));
                     //console.log('change Char!');
                     window.dispatchEvent(new Event('bloqs:change'));
@@ -1192,13 +1192,13 @@
                     'data-placeholder-i18n': elementSchema.placeholder,
                     placeholder: translateBloq(lang, elementSchema.placeholder)
                 }).val(elementSchema.value);
-                $element.on('keyup', function(evt) {
+                $element.on('keyup', function (evt) {
                     $(evt.currentTarget).autoGrowInput({
                         minWidth: 100,
                         comfortZone: 30
                     });
                 });
-                $element.change(function() {
+                $element.change(function () {
                     //console.log('change SCinput!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
@@ -1211,12 +1211,12 @@
                     'data-placeholder-i18n': elementSchema.placeholder,
                     placeholder: translateBloq(lang, elementSchema.placeholder)
                 }).val(elementSchema.value);
-                setTimeout(function() {
+                setTimeout(function () {
                     $('[name="' + elementSchema.id + '"]').autogrow({
                         onInitialize: true
                     });
                 }, 0);
-                $element.change(function() {
+                $element.change(function () {
                     //console.log('change multilineCode!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
@@ -1229,19 +1229,19 @@
                     'data-placeholder-i18n': elementSchema.placeholder,
                     placeholder: translateBloq(lang, elementSchema.placeholder)
                 }).val(elementSchema.value);
-                setTimeout(function() {
+                setTimeout(function () {
                     $('[name="' + elementSchema.id + '"]').autogrow({
                         onInitialize: true
                     });
                 }, 0);
 
-                $element.keyup(function() {
-                    bloqsUtils.delay(function() {
+                $element.keyup(function () {
+                    bloqsUtils.delay(function () {
                         $element.val(utils.validComment($element.val()));
                     }, 1000);
                 });
 
-                $element.change(function() {
+                $element.change(function () {
                     $element.val(utils.validComment($element.val()));
                     //console.log('change multilineComment!');
                     window.dispatchEvent(new Event('bloqs:change'));
@@ -1258,16 +1258,16 @@
                 bloq.varInputs = [];
                 bloq.varInputs.push($element);
                 $element.addClass('var--input');
-                $element.on('keyup', function(evt) {
+                $element.on('keyup', function (evt) {
                     $(evt.currentTarget).autoGrowInput({
                         minWidth: 100,
                         comfortZone: 30
                     });
                 });
                 //Transform the name to create valid function / variables names
-                $element.keyup(function() {
+                $element.keyup(function () {
                     //console.log(bloq);
-                    bloqsUtils.delay(function() {
+                    bloqsUtils.delay(function () {
                         var name = utils.validName($element.val(), bloq.uuid, softwareArrays);
                         $element.val(name);
                         if (name) {
@@ -1278,7 +1278,7 @@
                     }, 1000, bloq.uuid);
                 });
 
-                $element.change(function() {
+                $element.change(function () {
                     //console.log('change varInput!');
                     window.dispatchEvent(new Event('bloqs:change'));
                 });
@@ -1307,7 +1307,7 @@
                 break;
             case 'dotsMatrix':
                 $element = $('<div class="bloqs-dotsMatrix">');
-                $element.click(function(evt) {
+                $element.click(function (evt) {
                     showDotsMatrix(elementSchema, evt);
                 });
                 break;
@@ -1340,7 +1340,7 @@
             fieldScrollLeft: $field[0].scrollLeft,
             dotsMatrixOptions: elementSchema
         };
-        params.showWindowCallback = function(response) {
+        params.showWindowCallback = function (response) {
             elementSchema.value = response;
             window.dispatchEvent(new Event('bloqs:change'));
         };
@@ -1389,7 +1389,7 @@
                     params.suggestedBloqs = connectors[bloqConnectorUuid].data.suggestedBloqs;
                 }
                 params.suggestedBloqs = filterSuggestedBloqs(params.suggestedBloqs, componentsArray, softwareArrays, params.availableBloqs);
-                params.showWindowCallback = function(selectedBloqId) {
+                params.showWindowCallback = function (selectedBloqId) {
                     var selectedBloq = bloqs[selectedBloqId];
                     if (!selectedBloq.isConnectable()) {
                         selectedBloq.doConnectable();
@@ -1428,7 +1428,7 @@
         return filteredItems;
     }
 
-    var translateBloqs = function(newLang) {
+    var translateBloqs = function (newLang) {
         if (newLang !== lang) {
             lang = newLang;
             var bloqElements, bloqPlaceholders, i18nKey;
@@ -1452,7 +1452,7 @@
         }
     };
 
-    var destroyFreeBloqs = function() {
+    var destroyFreeBloqs = function () {
         var uuid, bloq;
         for (uuid in bloqs) {
             bloq = bloqs[uuid];
@@ -1482,7 +1482,7 @@
      * Get bloqs that are not connected
      *
      */
-    var getFreeBloqs = function() {
+    var getFreeBloqs = function () {
         var bloq,
             result = [],
             bloqGroup,
@@ -1529,12 +1529,12 @@
 
     var updateBloqsTimeout;
     var deferredUpdateBloqs;
-    var startBloqsUpdate = function(componentsArrayUpdated) {
+    var startBloqsUpdate = function (componentsArrayUpdated) {
         componentsArray = componentsArrayUpdated;
 
         if (!updateBloqsTimeout) {
             deferredUpdateBloqs = Q.defer();
-            updateBloqsTimeout = setTimeout(function() {
+            updateBloqsTimeout = setTimeout(function () {
                 updateBloqsTimeout = null;
                 updateBloqs(componentsArray);
                 deferredUpdateBloqs.resolve();
@@ -1543,10 +1543,8 @@
         return deferredUpdateBloqs.promise;
     };
 
-    var updateBloqs = function(componentsArray) {
+    var updateBloqs = function (componentsArray) {
 
-
-        var allBloqs = exports.bloqs;
         var allComponents = [];
 
         function _resetDropdown(element, list) {
@@ -1561,9 +1559,9 @@
             element.selectedIndex = 0;
         }
 
-        var updateBloq = function(element, list) {
+        var updateBloq = function (element, list) {
 
-            var componentRef = list.find(function(comp) {
+            var componentRef = list.find(function (comp) {
                 return comp.uid === element.dataset.reference;
             });
 
@@ -1614,16 +1612,16 @@
 
     };
 
-    var updateDropdowns = function() {
+    var updateDropdowns = function () {
         var key;
         for (key in softwareArrays) {
             updateDropdown(key);
         }
     };
 
-    var updateDropdown = function(softwareArrayKey) {
+    var updateDropdown = function (softwareArrayKey) {
         var $element, tempValue;
-        $('select[data-dropdownContent="' + softwareArrayKey + '"]').each(function(index, element) {
+        $('select[data-dropdownContent="' + softwareArrayKey + '"]').each(function (index, element) {
             $element = $(element);
             tempValue = $element.attr('data-value');
             bloqsUtils.drawDropdownOptions($element, softwareArrays[softwareArrayKey]);
@@ -1633,7 +1631,7 @@
         });
     };
 
-    var translateBloq = function(lang, key) {
+    var translateBloq = function (lang, key) {
         if (!bloqsLanguages.texts[lang]) {
             console.error('Language not supported ' + lang);
             lang = 'en-GB';
@@ -1675,7 +1673,7 @@
                 connectable,
                 that = this;
 
-            this.collapseGroupContent = function() {
+            this.collapseGroupContent = function () {
 
                 var $fieldContent = that.$bloq.children('.field--content');
                 //$fieldContent = $(e.currentTarget).parent().find('.field--content');
@@ -1684,7 +1682,7 @@
                 $fieldContent.parent().toggleClass('collapsed--field');
             };
 
-            this.enable = function(onlyParent) {
+            this.enable = function (onlyParent) {
                 if (!enable) {
                     this.$bloq.removeClass('disabled');
                     //console.log('activamos', this.uuid, this.bloqData.name);
@@ -1716,7 +1714,7 @@
                 }
             };
 
-            this.disable = function(onlyParent) {
+            this.disable = function (onlyParent) {
                 this.$bloq.addClass('disabled');
                 if (enable) {
 
@@ -1753,11 +1751,11 @@
                 }
             };
 
-            this.itsEnabled = function() {
+            this.itsEnabled = function () {
                 return enable;
             };
 
-            this.doConnectable = function() {
+            this.doConnectable = function () {
                 if (!connectable) {
                     // console.log('make them connectable', this.uuid, this.bloqData.name);
                     if (this.bloqData.content && this.bloqData.content[0]) {
@@ -1787,19 +1785,19 @@
                 }
             };
 
-            this.doNotConnectable = function() {
+            this.doNotConnectable = function () {
                 connectable = false;
             };
 
-            this.isConnectable = function() {
+            this.isConnectable = function () {
                 return connectable;
             };
 
-            this.itsFree = function() {
+            this.itsFree = function () {
                 return (this.$bloq.closest('.bloq--group').length === 0);
             };
 
-            this.autoRemove = function() {
+            this.autoRemove = function () {
                 removeBloq(this.uuid);
             };
 
@@ -1873,7 +1871,7 @@
                 }
             }
 
-            this.getIOConnectorUuidByContentId = function(contentId) {
+            this.getIOConnectorUuidByContentId = function (contentId) {
                 var found = false,
                     i = 0,
                     result = null;
@@ -1888,7 +1886,7 @@
                 return result;
             };
 
-            this.getBloqsStructure = function(fullStructure) {
+            this.getBloqsStructure = function (fullStructure) {
                 var result,
                     tempBloq;
 
@@ -2048,7 +2046,7 @@
         }
     };
 
-    var clearSoftwareArrays = function() {
+    var clearSoftwareArrays = function () {
         softwareArrays = {
             voidFunctions: [],
             returnFunctions: [],
@@ -2058,7 +2056,7 @@
         };
     };
 
-    var buildBloqWithContent = function(data, componentsArray, schemas, $field) {
+    var buildBloqWithContent = function (data, componentsArray, schemas, $field) {
 
         var tempBloq,
             originalBloqSchema = _.cloneDeep(schemas[data.name]),
