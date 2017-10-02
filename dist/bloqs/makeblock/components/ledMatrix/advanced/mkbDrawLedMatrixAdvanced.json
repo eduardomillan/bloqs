@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "zowiComponentBuzzerAdvanced",
+  "name": "mkbDrawLedMatrixAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "386880b4-011d-4088-bfc3-615c954fecb5"
+      "name": "59fa52b3-3552-4327-ba75-366848838054"
     },
     {
       "type": "connector--input",
@@ -32,22 +32,32 @@
         "number",
         "selectVariable"
       ],
-      "name": "f5e29169-7511-4f4a-92ef-14198025b31a"
+      "name": "22d78d98-8d80-4a30-97a6-9b36be0b108d"
     }
   ],
-  "bloqClass": "bloq-zowicomponent-buzzer-advance",
+  "bloqClass": "bloq-mbot-color",
   "content": [
     [
       {
-        "alias": "text",
-        "value": "bloq-buzzer-advance-sound"
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-led-turnon",
+            "value": true
+          },
+          {
+            "label": "bloq-led-turnoff",
+            "value": false
+          }
+        ]
       },
       {
         "alias": "text",
-        "value": "bloq-buzzer-advance-note"
+        "value": "el led en el punto x:"
       },
       {
-        "bloqInputId": "NOTE",
+        "bloqInputId": "COLUMN",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -56,14 +66,14 @@
           "number",
           "selectVariable"
         ],
-        "name": "386880b4-011d-4088-bfc3-615c954fecb5"
+        "name": "59fa52b3-3552-4327-ba75-366848838054"
       },
       {
         "alias": "text",
-        "value": "bloq-buzzer-advance-for"
+        "value": "y:"
       },
       {
-        "bloqInputId": "SECONDS",
+        "bloqInputId": "ROW",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -72,38 +82,27 @@
           "number",
           "selectVariable"
         ],
-        "name": "f5e29169-7511-4f4a-92ef-14198025b31a"
+        "name": "22d78d98-8d80-4a30-97a6-9b36be0b108d"
       },
       {
         "alias": "text",
-        "value": "bloq-buzzer-advance-ms"
+        "value": "in-the"
+      },
+      {
+        "id": "LEDMATRIX",
+        "alias": "dynamicDropdown",
+        "options": "ledMatrix"
       }
     ]
   ],
-  "code": "tone({BUZZER},{NOTE},{SECONDS});\ndelay({SECONDS});",
+  "code": "",
   "arduino": {
-    "includes": [
-      "BitbloqZowi.h",
-      "BitbloqUS.h",
-      "BitbloqBatteryReader.h",
-      "BitbloqLedMatrix.h",
-      "Servo.h",
-      "BitbloqOscillator.h",
-      "EEPROM.h"
-    ],
-    "needInstanceOf": [
-      {
-        "name": "zowi",
-        "type": "Zowi"
-      }
-    ],
-    "setupExtraCode": "zowi.init();",
-    "code": "zowi._tone({NOTE}, {SECONDS}, 0);"
+    "code": "{LEDMATRIX}.drawLed({COLUMN},{ROW}, {STATE});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"zowiComponentBuzzerAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mkbDrawLedMatrixAdvanced\" no preparado para generar código python"
       }
     ]
   }

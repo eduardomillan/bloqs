@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mkbSetLedOnPoint",
+  "name": "mkbDrawLedMatrix",
   "connectors": [
     {
       "type": "connector--top",
@@ -15,34 +15,34 @@
   "content": [
     [
       {
-        "id": "GESTURE",
+        "id": "STATE",
         "alias": "staticDropdown",
         "options": [
           {
-            "label": "encender",
-            "value": "1"
+            "label": "bloq-led-turnon",
+            "value": true
           },
           {
-            "label": "apagar",
-            "value": "0"
+            "label": "bloq-led-turnoff",
+            "value": false
           }
         ]
       },
       {
         "alias": "text",
-        "value": "el led en la fila"
+        "value": "el led en el punto x:"
       },
       {
-        "id": "ROW",
+        "id": "COLUMN",
         "alias": "numberInput",
         "value": 0
       },
       {
         "alias": "text",
-        "value": "y la columna"
+        "value": "y:"
       },
       {
-        "id": "COLUMN",
+        "id": "ROW",
         "alias": "numberInput",
         "value": 0
       },
@@ -59,12 +59,12 @@
   ],
   "code": "",
   "arduino": {
-    "code": "{LEDMATRIX}.draw({GESTURE});"
+    "code": "{LEDMATRIX}.drawLed({COLUMN},{ROW}, {STATE});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mkbSetLedOnPoint\" no preparado para generar código python"
+        "code": "Bloque \"mkbDrawLedMatrix\" no preparado para generar código python"
       }
     ]
   }

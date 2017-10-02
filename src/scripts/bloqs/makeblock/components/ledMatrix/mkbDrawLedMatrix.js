@@ -2,45 +2,45 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../../../build-utils'),
-    StatementBloq = require('./../../../../statementBloq');
+    utils = require('./../../../build-utils'),
+    StatementBloq = require('./../../../statementBloq');
 
 /**
- * Bloq name: 
+ * Bloq name: show time on led matrix
  *
  * Bloq type: Statement
  *
  * Description:
- * Return type: none
+ *
  */
 
-var mkbSetLedOnPoint = _.merge(_.clone(StatementBloq, true), {
+var mkbDrawLedMatrix = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'mkbSetLedOnPoint',
+    name: 'mkbDrawLedMatrix',
     bloqClass: 'bloq-mbot-color',
     content: [
         [{
-            id: 'GESTURE',
+            id: 'STATE',
             alias: 'staticDropdown',
             options: [{
-                label: 'encender',
-                value: '1'
+                label: 'bloq-led-turnon',
+                value: true
             }, {
-                label: 'apagar',
-                value: '0'
+                label: 'bloq-led-turnoff',
+                value: false
             }]
         }, {
             alias: 'text',
-            value: 'el led en la fila'
+            value: 'el led en el punto x:'
         }, {
-            id: 'ROW',
+            id: 'COLUMN',
             alias: 'numberInput',
             value: 0
         }, {
             alias: 'text',
-            value: 'y la columna'
+            value: 'y:'
         }, {
-            id: 'COLUMN',
+            id: 'ROW',
             alias: 'numberInput',
             value: 0
         }, {
@@ -54,9 +54,9 @@ var mkbSetLedOnPoint = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '',
     arduino: {
-        code: '{LEDMATRIX}.draw({GESTURE});'
+        code: '{LEDMATRIX}.drawLed({COLUMN},{ROW}, {STATE});'
     }
 });
-utils.preprocessBloq(mkbSetLedOnPoint);
+utils.preprocessBloq(mkbDrawLedMatrix);
 
-module.exports = mkbSetLedOnPoint;
+module.exports = mkbDrawLedMatrix;
