@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "rgbLedAdvanced",
+  "name": "mkbDrawRectangleAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "5cbba8a5-4b71-4fb1-b0d1-ab5f857ccba3"
+      "name": "ba3757e7-4a6f-4e81-8727-4a9f9b14c702"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "8d737551-ffd5-4472-bb55-127ebbbd24a3"
+      "name": "955eafba-8f7a-4e86-ad68-8ace73e8d895"
     },
     {
       "type": "connector--input",
@@ -44,79 +44,107 @@
         "number",
         "selectVariable"
       ],
-      "name": "f2a8f598-0f66-44f9-b56b-f27a0b8531f0"
+      "name": "acfcb9df-b5a6-4bc4-a61a-a1f573d6edba"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "9cfa410c-de4a-49bd-a31b-67dfd7b51519"
     }
   ],
-  "bloqClass": "bloq-rgbLed-advanced",
+  "bloqClass": "bloq-mbot-color",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-rgbLed"
+        "value": "Dibujar rectángulo con origen x:"
       },
       {
-        "id": "LED",
+        "bloqInputId": "COLUMN",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "ba3757e7-4a6f-4e81-8727-4a9f9b14c702"
+      },
+      {
+        "alias": "text",
+        "value": "y:"
+      },
+      {
+        "bloqInputId": "ROW",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "955eafba-8f7a-4e86-ad68-8ace73e8d895"
+      },
+      {
+        "alias": "text",
+        "value": "ancho:"
+      },
+      {
+        "bloqInputId": "WIDTH",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "acfcb9df-b5a6-4bc4-a61a-a1f573d6edba"
+      },
+      {
+        "alias": "text",
+        "value": "alto:"
+      },
+      {
+        "bloqInputId": "HEIGHT",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "9cfa410c-de4a-49bd-a31b-67dfd7b51519"
+      },
+      {
+        "alias": "text",
+        "value": "in-the"
+      },
+      {
+        "id": "LEDMATRIX",
         "alias": "dynamicDropdown",
-        "options": "rgbs"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-rgbLed-red"
-      },
-      {
-        "bloqInputId": "RED",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "5cbba8a5-4b71-4fb1-b0d1-ab5f857ccba3"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-rgbLed-green"
-      },
-      {
-        "bloqInputId": "GREEN",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "8d737551-ffd5-4472-bb55-127ebbbd24a3"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-rgbLed-blue"
-      },
-      {
-        "bloqInputId": "BLUE",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "f2a8f598-0f66-44f9-b56b-f27a0b8531f0"
+        "options": "ledMatrix"
       }
     ]
   ],
-  "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});",
+  "code": "",
   "arduino": {
-    "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});"
+    "code": "{LEDMATRIX}.drawRectangle({COLUMN},{ROW},{WIDTH},{HEIGHT});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"rgbLedAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mkbDrawRectangleAdvanced\" no preparado para generar código python"
       }
     ]
   }

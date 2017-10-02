@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "continuousServoStartAdvanced-v1",
+  "name": "mkbDrawLedMatrix",
   "connectors": [
     {
       "type": "connector--top",
@@ -17,10 +17,10 @@
         "all"
       ],
       "suggestedBloqs": [
-        "hwVariable",
+        "number",
         "selectVariable"
       ],
-      "name": "878d0fc0-6c0f-49cc-b5f2-e39dbc59529b"
+      "name": "298f1bb9-66a7-45d8-aaeb-c9d09b22da90"
     },
     {
       "type": "connector--input",
@@ -32,34 +32,32 @@
         "number",
         "selectVariable"
       ],
-      "name": "d9d4e4de-014d-4555-a500-ccfd681e1325"
+      "name": "a964252f-7cf0-4f02-9d5d-b3583c63f0c3"
     }
   ],
-  "bloqClass": "bloq-continuous-servo-start-advanced",
+  "bloqClass": "bloq-mbot-color",
   "content": [
     [
       {
-        "alias": "text",
-        "value": "bloq-continuous-servo-start-advanced-turn"
-      },
-      {
-        "bloqInputId": "SERVO",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "hwVariable",
-          "selectVariable"
-        ],
-        "name": "878d0fc0-6c0f-49cc-b5f2-e39dbc59529b"
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-led-turnon",
+            "value": true
+          },
+          {
+            "label": "bloq-led-turnoff",
+            "value": false
+          }
+        ]
       },
       {
         "alias": "text",
-        "value": "bloq-continuous-servo-start-advanced-direction"
+        "value": "el led en el punto x:"
       },
       {
-        "bloqInputId": "DIRECTION",
+        "bloqInputId": "COLUMN",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -68,18 +66,43 @@
           "number",
           "selectVariable"
         ],
-        "name": "d9d4e4de-014d-4555-a500-ccfd681e1325"
+        "name": "298f1bb9-66a7-45d8-aaeb-c9d09b22da90"
+      },
+      {
+        "alias": "text",
+        "value": "y:"
+      },
+      {
+        "bloqInputId": "ROW",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "a964252f-7cf0-4f02-9d5d-b3583c63f0c3"
+      },
+      {
+        "alias": "text",
+        "value": "in-the"
+      },
+      {
+        "id": "LEDMATRIX",
+        "alias": "dynamicDropdown",
+        "options": "ledMatrix"
       }
     ]
   ],
-  "code": "{SERVO}.write({DIRECTION});",
+  "code": "",
   "arduino": {
-    "code": "{SERVO}.write({DIRECTION});"
+    "code": "{LEDMATRIX}.drawLed({COLUMN},{ROW}, {STATE});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"continuousServoStartAdvanced-v1\" no preparado para generar código python"
+        "code": "Bloque \"mkbDrawLedMatrix\" no preparado para generar código python"
       }
     ]
   }

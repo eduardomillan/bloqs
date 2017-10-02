@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "rgbLedAdvanced",
+  "name": "mkbDrawLineAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "5cbba8a5-4b71-4fb1-b0d1-ab5f857ccba3"
+      "name": "dbb8ddc4-621e-444b-8406-675c7842baa6"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "8d737551-ffd5-4472-bb55-127ebbbd24a3"
+      "name": "9571e8de-ac38-4fa7-81dd-b4cb73fb399c"
     },
     {
       "type": "connector--input",
@@ -44,79 +44,107 @@
         "number",
         "selectVariable"
       ],
-      "name": "f2a8f598-0f66-44f9-b56b-f27a0b8531f0"
+      "name": "bac2b60b-b8b1-432d-853f-d5281fcde9a2"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "84a369ed-6615-4087-9206-c40647bb1184"
     }
   ],
-  "bloqClass": "bloq-rgbLed-advanced",
+  "bloqClass": "bloq-mbot-color",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-rgbLed"
+        "value": "Dibujar línea desde x1:"
       },
       {
-        "id": "LED",
+        "bloqInputId": "COLUMN",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "dbb8ddc4-621e-444b-8406-675c7842baa6"
+      },
+      {
+        "alias": "text",
+        "value": "y1:"
+      },
+      {
+        "bloqInputId": "ROW",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "9571e8de-ac38-4fa7-81dd-b4cb73fb399c"
+      },
+      {
+        "alias": "text",
+        "value": "hasta x2:"
+      },
+      {
+        "bloqInputId": "COLUMNF",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "bac2b60b-b8b1-432d-853f-d5281fcde9a2"
+      },
+      {
+        "alias": "text",
+        "value": "y2:"
+      },
+      {
+        "bloqInputId": "ROWF",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "84a369ed-6615-4087-9206-c40647bb1184"
+      },
+      {
+        "alias": "text",
+        "value": "in-the"
+      },
+      {
+        "id": "LEDMATRIX",
         "alias": "dynamicDropdown",
-        "options": "rgbs"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-rgbLed-red"
-      },
-      {
-        "bloqInputId": "RED",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "5cbba8a5-4b71-4fb1-b0d1-ab5f857ccba3"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-rgbLed-green"
-      },
-      {
-        "bloqInputId": "GREEN",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "8d737551-ffd5-4472-bb55-127ebbbd24a3"
-      },
-      {
-        "alias": "text",
-        "value": "bloq-rgbLed-blue"
-      },
-      {
-        "bloqInputId": "BLUE",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "f2a8f598-0f66-44f9-b56b-f27a0b8531f0"
+        "options": "ledMatrix"
       }
     ]
   ],
-  "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});",
+  "code": "",
   "arduino": {
-    "code": "{LED}.setRGBcolor({RED},{GREEN},{BLUE});"
+    "code": "{LEDMATRIX}.drawLine({COLUMN},{ROW},{COLUMNF},{ROWF});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"rgbLedAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"mkbDrawLineAdvanced\" no preparado para generar código python"
       }
     ]
   }
