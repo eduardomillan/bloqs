@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../../build-utils'),
-    StatementBloq = require('./../../../statementBloq');
+    utils = require('./../../../../build-utils'),
+    StatementBloq = require('./../../../../statementBloq');
 
 /**
  * Bloq name: show time on led matrix
@@ -14,9 +14,9 @@ var _ = require('lodash'),
  *
  */
 
-var mkbDrawLedMatrix = _.merge(_.clone(StatementBloq, true), {
+var mkbDrawLedMatrixAdvanced = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'mkbDrawLedMatrix',
+    name: 'mkbDrawLedMatrixAdvanced',
     bloqClass: 'bloq-mbot-color',
     content: [
         [{
@@ -33,16 +33,18 @@ var mkbDrawLedMatrix = _.merge(_.clone(StatementBloq, true), {
             alias: 'text',
             value: 'el led en el punto x:'
         }, {
-            id: 'COLUMN',
-            alias: 'numberInput',
-            value: 0
+            bloqInputId: 'COLUMN',
+            alias: 'bloqInput',
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'y:'
         }, {
-            id: 'ROW',
-            alias: 'numberInput',
-            value: 0
+            bloqInputId: 'ROW',
+            alias: 'bloqInput',
+            acceptType: ['all'],
+            suggestedBloqs: ['number', 'selectVariable']
         }, {
             alias: 'text',
             value: 'in-the'
@@ -57,6 +59,6 @@ var mkbDrawLedMatrix = _.merge(_.clone(StatementBloq, true), {
         code: '{LEDMATRIX}.drawLed({COLUMN},{ROW}, {STATE});'
     }
 });
-utils.preprocessBloq(mkbDrawLedMatrix);
+utils.preprocessBloq(mkbDrawLedMatrixAdvanced);
 
-module.exports = mkbDrawLedMatrix;
+module.exports = mkbDrawLedMatrixAdvanced;

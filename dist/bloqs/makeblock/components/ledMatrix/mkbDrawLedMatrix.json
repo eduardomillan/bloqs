@@ -9,30 +9,6 @@
     {
       "type": "connector--bottom",
       "accept": "connector--top"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": [
-        "all"
-      ],
-      "suggestedBloqs": [
-        "number",
-        "selectVariable"
-      ],
-      "name": "298f1bb9-66a7-45d8-aaeb-c9d09b22da90"
-    },
-    {
-      "type": "connector--input",
-      "accept": "connector--output",
-      "acceptType": [
-        "all"
-      ],
-      "suggestedBloqs": [
-        "number",
-        "selectVariable"
-      ],
-      "name": "a964252f-7cf0-4f02-9d5d-b3583c63f0c3"
     }
   ],
   "bloqClass": "bloq-mbot-color",
@@ -57,32 +33,18 @@
         "value": "el led en el punto x:"
       },
       {
-        "bloqInputId": "COLUMN",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "298f1bb9-66a7-45d8-aaeb-c9d09b22da90"
+        "id": "COLUMN",
+        "alias": "numberInput",
+        "value": 0
       },
       {
         "alias": "text",
         "value": "y:"
       },
       {
-        "bloqInputId": "ROW",
-        "alias": "bloqInput",
-        "acceptType": [
-          "all"
-        ],
-        "suggestedBloqs": [
-          "number",
-          "selectVariable"
-        ],
-        "name": "a964252f-7cf0-4f02-9d5d-b3583c63f0c3"
+        "id": "ROW",
+        "alias": "numberInput",
+        "value": 0
       },
       {
         "alias": "text",

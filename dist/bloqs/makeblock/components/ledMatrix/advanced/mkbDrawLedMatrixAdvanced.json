@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "digitalWrite",
+  "name": "mkbDrawLedMatrixAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "0a1a0659-33db-4f4c-8215-5fb7ae4ad201"
+      "name": "e50070f6-1cae-45ba-b71c-0343473c2728"
     },
     {
       "type": "connector--input",
@@ -29,22 +29,35 @@
         "all"
       ],
       "suggestedBloqs": [
-        "pinLevels",
         "number",
         "selectVariable"
       ],
-      "name": "4fc85925-b2a9-40ac-8327-ce03d057a30a"
+      "name": "47831253-716f-4d31-bebc-55051196af20"
     }
   ],
-  "bloqClass": "bloq-pin-writte-advanced",
+  "bloqClass": "bloq-mbot-color",
   "content": [
     [
       {
-        "alias": "text",
-        "value": "bloq-pin-digital-write"
+        "id": "STATE",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "bloq-led-turnon",
+            "value": true
+          },
+          {
+            "label": "bloq-led-turnoff",
+            "value": false
+          }
+        ]
       },
       {
-        "bloqInputId": "PIN",
+        "alias": "text",
+        "value": "el led en el punto x:"
+      },
+      {
+        "bloqInputId": "COLUMN",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -53,36 +66,43 @@
           "number",
           "selectVariable"
         ],
-        "name": "0a1a0659-33db-4f4c-8215-5fb7ae4ad201"
+        "name": "e50070f6-1cae-45ba-b71c-0343473c2728"
       },
       {
         "alias": "text",
-        "value": "bloq-pin-digital-write-data-V1"
+        "value": "y:"
       },
       {
-        "bloqInputId": "DATA",
+        "bloqInputId": "ROW",
         "alias": "bloqInput",
         "acceptType": [
           "all"
         ],
         "suggestedBloqs": [
-          "pinLevels",
           "number",
           "selectVariable"
         ],
-        "name": "4fc85925-b2a9-40ac-8327-ce03d057a30a"
+        "name": "47831253-716f-4d31-bebc-55051196af20"
+      },
+      {
+        "alias": "text",
+        "value": "in-the"
+      },
+      {
+        "id": "LEDMATRIX",
+        "alias": "dynamicDropdown",
+        "options": "ledMatrix"
       }
     ]
   ],
-  "code": "digitalWrite({PIN},{DATA});",
+  "code": "",
   "arduino": {
-    "code": "digitalWrite({PIN},{DATA});",
-    "setupExtraCode": "pinMode({PIN}, OUTPUT);"
+    "code": "{LEDMATRIX}.drawLed({COLUMN},{ROW}, {STATE});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"digitalWrite\" no preparado para generar código python"
+        "code": "Bloque \"mkbDrawLedMatrixAdvanced\" no preparado para generar código python"
       }
     ]
   }
