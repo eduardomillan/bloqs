@@ -454,9 +454,11 @@
 
             var makeblock3 = ['declareVariable', 'mkbShowFaceOnLedMatrix', 'robotSetMotorSpeed', 'robotSetMotorSpeedAdvanced', 'mkbGyroscope', 'mkbIntegratedSoundSensor', 'mkbAccelerometer'];
 
+            var makeblock4 = ['declareVariable', 'mkbReadMagneticField'];
+
             var testSet2 = ['mkbfan', 'mkbDrawRectangleAdvanced', 'mkbDrawLedMatrix', 'mkbDrawLineAdvanced', 'mkbDrawLedMatrixAdvanced'];
 
-            testSet = testSet2;
+            testSet = makeblock4;
 
             for (var i = 0; i < testSet.length; i++) {
                 createBloq(testSet[i]);
