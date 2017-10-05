@@ -885,8 +885,8 @@
                                 name: hardwareList.components[i].name,
                                 type: 'BitbloqMeRGBLed',
                                 arguments: [
-                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]',
-                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
                                 ]
                             };
                             break;

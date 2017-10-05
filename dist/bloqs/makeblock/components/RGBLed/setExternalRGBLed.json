@@ -20,8 +20,29 @@
       },
       {
         "id": "LED",
-        "alias": "dynamicDropdown",
-        "options": "mkb_integrated_RGB"
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "todos los leds",
+            "value": "0"
+          },
+          {
+            "label": "el led 1",
+            "value": "1"
+          },
+          {
+            "label": "el led 2",
+            "value": "2"
+          },
+          {
+            "label": "el led 3",
+            "value": "3"
+          },
+          {
+            "label": "el led 4",
+            "value": "4"
+          }
+        ]
       },
       {
         "alias": "text",
