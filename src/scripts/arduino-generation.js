@@ -878,6 +878,19 @@
 
                             setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
                             break;
+                        case 'mkb_RGBLed':
+                            tempIncludes = ['BitbloqMeRGBLed.h'];
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'BitbloqMeRGBLed',
+                                arguments: [
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]',
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                ]
+                            };
+                            break;
+
                     }
 
                     if (tempInstanceOf) {
