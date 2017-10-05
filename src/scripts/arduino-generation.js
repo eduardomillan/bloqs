@@ -72,7 +72,7 @@
                             result = 'robot.readLightSensor(' + pin + ')';
                             break;
                         case 'mkb_compass':
-                            result = sensorName + 'getAngle()';
+                            result = sensorName + '.getAngle()';
                             break;
                         case 'remote':
                         case 'freakscar_integrated_remote':
