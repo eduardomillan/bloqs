@@ -17,7 +17,7 @@ var _ = require('lodash'),
 var mkbReadMagneticField = _.merge(_.clone(OutputBloq, true), {
 
     name: 'mkbReadMagneticField',
-    bloqClass: 'bloq-mbot-color',
+    bloqClass: 'bloq-components-color',
     content: [
         [{
             alias: 'text',
