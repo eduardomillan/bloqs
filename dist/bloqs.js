@@ -1210,6 +1210,7 @@
             mkb_motionSensor: [],
             mkb_fan: [],
             mkb_compass: [],
+            mkb_RGBLed: [],
             ledMatrix: [],
             display7seg: [],
             remoteControl: [],

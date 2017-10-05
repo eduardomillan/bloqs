@@ -1,0 +1,142 @@
+{
+  "type": "statement",
+  "name": "mBotSetRGBLedAdvancedFull",
+  "connectors": [
+    {
+      "type": "connector--top",
+      "accept": "connector--bottom"
+    },
+    {
+      "type": "connector--bottom",
+      "accept": "connector--top"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "1aac8de5-309d-4386-a987-e2640aaf7c3f"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "bae8d416-47e9-443e-a8a2-0fcbb946b4ab"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "ae0a04f3-7bf3-4d49-9bad-c4cb01297078"
+    },
+    {
+      "type": "connector--input",
+      "accept": "connector--output",
+      "acceptType": [
+        "all"
+      ],
+      "suggestedBloqs": [
+        "number",
+        "selectVariable"
+      ],
+      "name": "ac5e709d-1aca-4c32-9c54-9a40bc744682"
+    }
+  ],
+  "bloqClass": "bloq-mbot-setrgbLed",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-rgbLed"
+      },
+      {
+        "bloqInputId": "LED",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "1aac8de5-309d-4386-a987-e2640aaf7c3f"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-rgbLed-red"
+      },
+      {
+        "bloqInputId": "RED",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "bae8d416-47e9-443e-a8a2-0fcbb946b4ab"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-rgbLed-green"
+      },
+      {
+        "bloqInputId": "GREEN",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "ae0a04f3-7bf3-4d49-9bad-c4cb01297078"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-rgbLed-blue"
+      },
+      {
+        "bloqInputId": "BLUE",
+        "alias": "bloqInput",
+        "acceptType": [
+          "all"
+        ],
+        "suggestedBloqs": [
+          "number",
+          "selectVariable"
+        ],
+        "name": "ac5e709d-1aca-4c32-9c54-9a40bc744682"
+      }
+    ]
+  ],
+  "code": "",
+  "arduino": {
+    "code": "robot.setLed({LED},{RED}, {GREEN}, {BLUE});"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"mBotSetRGBLedAdvancedFull\" no preparado para generar código python"
+      }
+    ]
+  }
+}

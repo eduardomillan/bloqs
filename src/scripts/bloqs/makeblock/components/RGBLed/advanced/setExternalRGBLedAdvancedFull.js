@@ -2,11 +2,11 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../../build-utils'),
-    StatementBloq = require('./../../../statementBloq');
+    utils = require('./../../../../build-utils'),
+    StatementBloq = require('./../../../../statementBloq');
 
 /**
- * Bloq name: mBotSetRGBLedAdvancedFull
+ * Bloq name: mkbSetExternalRGBLedAdvancedFull
  *
  * Bloq type: Statement
  *
@@ -17,9 +17,9 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var mBotSetRGBLedAdvancedFull = _.merge(_.clone(StatementBloq, true), {
+var mkbSetExternalRGBLedAdvancedFull = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'mBotSetRGBLedAdvancedFull',
+    name: 'mkbSetExternalRGBLedAdvancedFull',
     bloqClass: 'bloq-mbot-setrgbLed',
     content: [
         [{
@@ -54,15 +54,22 @@ var mBotSetRGBLedAdvancedFull = _.merge(_.clone(StatementBloq, true), {
             alias: 'bloqInput',
             acceptType: ['all'],
             suggestedBloqs: ['number', 'selectVariable']
+        }, {
+            alias: 'text',
+            value: 'in'
+        }, {
+            id: 'RGBLED',
+            alias: 'dynamicDropdown',
+            options: 'mkb_RGBLed'
         }]
     ],
     code: '',
     arduino: {
-        code: 'robot.setLed({LED},{RED}, {GREEN}, {BLUE});'
+        code: '{RGBLED}.showColor({LED},{RED}, {GREEN}, {BLUE});'
     }
 
 });
 
-utils.preprocessBloq(mBotSetRGBLedAdvancedFull);
+utils.preprocessBloq(mkbSetExternalRGBLedAdvancedFull);
 
-module.exports = mBotSetRGBLedAdvancedFull;
+module.exports = mkbSetExternalRGBLedAdvancedFull;

@@ -2,8 +2,8 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../../build-utils'),
-    StatementBloq = require('./../../../statementBloq');
+    utils = require('./../../../../build-utils'),
+    StatementBloq = require('./../../../../statementBloq');
 
 /**
  * Bloq name: mBotSetRGBLedAdvanced
@@ -24,7 +24,7 @@ var mBotSetRGBLedAdvanced = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-mbot-setled-set'
+            value: 'bloq-rgbLed'
         }, {
             id: 'LED',
             alias: 'dynamicDropdown',
