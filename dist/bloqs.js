@@ -1209,6 +1209,8 @@
             mkb_4buttonKeyPad: [],
             mkb_motionSensor: [],
             mkb_fan: [],
+            mkb_compass: [],
+            mkb_RGBLed: [],
             ledMatrix: [],
             display7seg: [],
             remoteControl: [],
@@ -1714,6 +1716,9 @@
                         case 'mkb_integrated_lightsensor':
                             var pin = sensorData.pin.s || '';
                             result = 'robot.readLightSensor(' + pin + ')';
+                            break;
+                        case 'mkb_compass':
+                            result = sensorName + '.getAngle()';
                             break;
                         case 'remote':
                         case 'freakscar_integrated_remote':
@@ -2505,6 +2510,33 @@
 
                             setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
                             break;
+                        case 'mkb_compass':
+                            tempIncludes = ['BitbloqCompass.h'];
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Bitbloq::Compass',
+                                arguments: [
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]',
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                ]
+                            };
+
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+                            break;
+                        case 'mkb_RGBLed':
+                            tempIncludes = ['BitbloqMeRGBLed.h'];
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'BitbloqMeRGBLed',
+                                arguments: [
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                                ]
+                            };
+                            break;
+
                     }
 
                     if (tempInstanceOf) {
@@ -4149,7 +4181,12 @@
                     case 'sensors':
                         arrayOptions = [];
 
-                        arrayOptions = arrayOptions.concat(componentsArray.sensors, componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor, componentsArray.freakscar_integrated_remote, componentsArray.freakscar_integrated_lightsensor);
+                        arrayOptions = arrayOptions.concat(componentsArray.sensors, componentsArray.mkb_lightsensor,
+                            componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor,
+                            componentsArray.joystick, componentsArray.mkb_4buttonKeyPad,
+                            componentsArray.remoteControl, componentsArray.mkb_motionSensor,
+                            componentsArray.freakscar_integrated_remote, componentsArray.freakscar_integrated_lightsensor,
+                            componentsArray.mkb_compass);
                         break;
                     case 'varComponents':
                         arrayOptions = [];
@@ -4674,7 +4711,11 @@
 
             if (type === 'sensors') {
                 /*jshint camelcase: false */
-                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor, componentsArray.freakscar_integrated_lightsensor, componentsArray.freakscar_integrated_remote);
+                componentsList = componentsArray.sensors.concat(componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower,
+                    componentsArray.mkb_soundsensor, componentsArray.joystick,
+                    componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl,
+                    componentsArray.mkb_motionSensor, componentsArray.freakscar_integrated_lightsensor,
+                    componentsArray.freakscar_integrated_remote, componentsArray.mkb_compass);
                 /*jshint camelcase: true */
             } else {
                 componentsList = componentsArray[type];
@@ -5046,7 +5087,11 @@
                                 //only software Vars get value from val(), hardware, use attribute or val()
                                 var variableType = this.bloqData.content[0][i].options,
                                     itsSoftwareValue = Object.keys(softwareArrays).indexOf(variableType),
-                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower, componentsArray.mkb_soundsensor, componentsArray.joystick, componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl, componentsArray.mkb_motionSensor, componentsArray.freakscar_integrated_remote, componentsArray.freakscar_integrated_lightsensor),
+                                    sensorsComponentsArray = componentsArray.sensors.concat(componentsArray.mkb_lightsensor, componentsArray.mkb_linefollower,
+                                        componentsArray.mkb_soundsensor, componentsArray.joystick,
+                                        componentsArray.mkb_4buttonKeyPad, componentsArray.remoteControl,
+                                        componentsArray.mkb_motionSensor, componentsArray.freakscar_integrated_remote,
+                                        componentsArray.freakscar_integrated_lightsensor, componentsArray.mkb_compass),
                                     valueType,
                                     j;
 

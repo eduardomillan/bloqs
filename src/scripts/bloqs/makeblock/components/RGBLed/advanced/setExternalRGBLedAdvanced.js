@@ -2,11 +2,11 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../../../build-utils'),
-    StatementBloq = require('./../../../statementBloq');
+    utils = require('./../../../../build-utils'),
+    StatementBloq = require('./../../../../statementBloq');
 
 /**
- * Bloq name: mBotSetRGBLedAdvanced
+ * Bloq name: mkbSetExternalRGBLedAdvanced
  *
  * Bloq type: Statement
  *
@@ -17,18 +17,33 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var mBotSetRGBLedAdvanced = _.merge(_.clone(StatementBloq, true), {
+var mkbSetExternalRGBLedAdvanced = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'mBotSetRGBLedAdvanced',
+    name: 'mkbSetExternalRGBLedAdvanced',
     bloqClass: 'bloq-mbot-setrgbLed',
     content: [
         [{
             alias: 'text',
-            value: 'bloq-mbot-setled-set'
+            value: 'bloq-rgbLed'
         }, {
             id: 'LED',
-            alias: 'dynamicDropdown',
-            options: 'mkb_integrated_RGB'
+            alias: 'staticDropdown',
+            options: [{
+                label: 'todos los leds',
+                value: '0'
+            }, {
+                label: 'el led 1',
+                value: '1'
+            }, {
+                label: 'el led 2',
+                value: '2'
+            }, {
+                label: 'el led 3',
+                value: '3'
+            }, {
+                label: 'el led 4',
+                value: '4'
+            }]
         }, {
             alias: 'text',
             value: 'bloq-rgbLed-red'
@@ -53,15 +68,22 @@ var mBotSetRGBLedAdvanced = _.merge(_.clone(StatementBloq, true), {
             alias: 'bloqInput',
             acceptType: ['all'],
             suggestedBloqs: ['number', 'selectVariable']
+        }, {
+            alias: 'text',
+            value: 'in'
+        }, {
+            id: 'RGBLED',
+            alias: 'dynamicDropdown',
+            options: 'mkb_RGBLed'
         }]
     ],
     code: '',
     arduino: {
-        code: 'robot.setLed(º[{LED}.pin.s],{RED}, {GREEN}, {BLUE});'
+        code: '{RGBLED}.showColor({LED},{RED}, {GREEN}, {BLUE});'
     }
 
 });
 
-utils.preprocessBloq(mBotSetRGBLedAdvanced);
+utils.preprocessBloq(mkbSetExternalRGBLedAdvanced);
 
-module.exports = mBotSetRGBLedAdvanced;
+module.exports = mkbSetExternalRGBLedAdvanced;

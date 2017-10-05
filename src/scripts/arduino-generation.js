@@ -71,6 +71,9 @@
                             var pin = sensorData.pin.s || '';
                             result = 'robot.readLightSensor(' + pin + ')';
                             break;
+                        case 'mkb_compass':
+                            result = sensorName + '.getAngle()';
+                            break;
                         case 'remote':
                         case 'freakscar_integrated_remote':
                             result = 'robot.getInfraredControlCommand()';
@@ -861,6 +864,33 @@
 
                             setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
                             break;
+                        case 'mkb_compass':
+                            tempIncludes = ['BitbloqCompass.h'];
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Bitbloq::Compass',
+                                arguments: [
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]',
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]'
+                                ]
+                            };
+
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+                            break;
+                        case 'mkb_RGBLed':
+                            tempIncludes = ['BitbloqMeRGBLed.h'];
+
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'BitbloqMeRGBLed',
+                                arguments: [
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][2]',
+                                    makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
+                                ]
+                            };
+                            break;
+
                     }
 
                     if (tempInstanceOf) {

@@ -454,9 +454,13 @@
 
             var makeblock3 = ['declareVariable', 'mkbShowFaceOnLedMatrix', 'robotSetMotorSpeed', 'robotSetMotorSpeedAdvanced', 'mkbGyroscope', 'mkbIntegratedSoundSensor', 'mkbAccelerometer'];
 
+            var mkb_compass = ['declareVariable', 'mkbReadMagneticField'];
+
+            var mkb_ExternalRGBLed = ['mkbSetExternalRGBLedSimple', 'mkbSetExternalRGBLedAdvanced', 'mkbSetExternalRGBLedAdvancedFull']
+
             var testSet2 = ['mkbfan', 'mkbDrawRectangleAdvanced', 'mkbDrawLedMatrix', 'mkbDrawLineAdvanced', 'mkbDrawLedMatrixAdvanced'];
 
-            testSet = testSet2;
+            testSet = mkb_ExternalRGBLed;
 
             for (var i = 0; i < testSet.length; i++) {
                 createBloq(testSet[i]);
