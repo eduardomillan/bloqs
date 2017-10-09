@@ -456,11 +456,13 @@
 
             var mkb_compass = ['declareVariable', 'mkbReadMagneticField'];
 
-            var mkb_ExternalRGBLed = ['mkbSetExternalRGBLedSimple', 'mkbSetExternalRGBLedAdvanced', 'mkbSetExternalRGBLedAdvancedFull']
+            var mkb_ExternalRGBLed = ['mkbSetExternalRGBLedSimple', 'mkbSetExternalRGBLedAdvanced', 'mkbSetExternalRGBLedAdvancedFull'];
 
-            var testSet2 = ['mkbfan', 'mkbDrawRectangleAdvanced', 'mkbDrawLedMatrix', 'mkbDrawLineAdvanced', 'mkbDrawLedMatrixAdvanced'];
+            var mkb_ledMatrixV2 = ['mkbfan', 'mkbDrawRectangleAdvanced', 'mkbDrawLedMatrix', 'mkbDrawLineAdvanced', 'mkbDrawLedMatrixAdvanced'];
 
-            testSet = mkb_ExternalRGBLed;
+            var testSet2 = ['if'];
+
+            testSet = testSet2;
 
             for (var i = 0; i < testSet.length; i++) {
                 createBloq(testSet[i]);

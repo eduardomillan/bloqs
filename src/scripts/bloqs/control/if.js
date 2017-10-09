@@ -33,24 +33,24 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
             id: 'OPERATOR',
             alias: 'staticDropdown',
             options: [{
-                    label: '=',
-                    value: '=='
-                }, {
-                    label: '!=',
-                    value: '!='
-                }, {
-                    label: '>',
-                    value: '>'
-                }, {
-                    label: '>=',
-                    value: '>='
-                }, {
-                    label: '<',
-                    value: '<'
-                }, {
-                    label: '<=',
-                    value: '<='
-                }] //'=', '≠', '>', '≥', '<', '≤']
+                label: '=',
+                value: '=='
+            }, {
+                label: '!=',
+                value: '!='
+            }, {
+                label: '>',
+                value: '>'
+            }, {
+                label: '>=',
+                value: '>='
+            }, {
+                label: '<',
+                value: '<'
+            }, {
+                label: '<=',
+                value: '<='
+            }] //'=', '≠', '>', '≥', '<', '≤']
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
@@ -59,8 +59,9 @@ var bloqIf = _.merge(_.clone(StatementInputBloq, true), {
         }, {
             alias: 'text',
             value: 'bloq-if-exec'
-        } ]
+        }]
     ],
+    suggestedBloqs: ['else', 'elseif'],
     code: 'if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}',
     arduino: {
         code: 'if({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}'

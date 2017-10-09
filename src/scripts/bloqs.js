@@ -44,6 +44,7 @@
         preMouseMoveX,
         preMouseMoveY,
         shiftKeyDown,
+        mainBloqs = [],
         componentsArray = bloqsUtils.getEmptyComponentsArray();
 
     var setOptions = function (options) {
@@ -217,7 +218,7 @@
             default:
                 throw 'Not defined bloq drag!!';
         }
-
+        activateSuggestionWindows();
     };
 
     var bloqMouseUp = function (evt) {
@@ -262,6 +263,7 @@
                     utils.executeFunctionOnConnectedStatementBloqs('enable', bloq, bloqs, connectors);
                 }
             }
+            activateSuggestionWindows();
         } else {
             bloq.disable();
             if ((bloq.bloqData.type === 'statement') || (bloq.bloqData.type === 'statement-input')) {
@@ -287,6 +289,7 @@
         document.removeEventListener('mouseup', bloqMouseUp);
         document.removeEventListener('touchmove', bloqMouseMove);
         document.removeEventListener('touchend', bloqMouseUp);
+
     };
 
     var statementDragStart = function (bloq) {
@@ -443,7 +446,7 @@
     var statementDragEnd = function (bloq, $dropConnector) {
 
         var dropConnectorUuid = $dropConnector.attr('data-connector-id');
-        var dragConnectorUuid = $('[data-connector-id="' + dropConnectorUuid + '"]').attr('data-canconnectwith');
+        var dragConnectorUuid = $('[data-connector-id="' + dropConnectorUuid + '"]').attr('data-canconnectwith') || bloq.connectors[0];
 
         //console.log('dragConnectorUuid', dragConnectorUuid);
         //console.log('dropUuid', dropConnectorUuid);
@@ -734,6 +737,10 @@
             var topConnector, bottomConnector, outputConnector;
             window.dispatchEvent(new Event('bloqs:bloqremoved'));
             bloq.$bloq[0].removeEventListener('mousedown', bloqMouseDown);
+
+            if (bloq.$suggestedField) {
+                bloq.$suggestedField.removeEventListener('click', bloqSuggestedFieldClick);
+            }
             //remove listener of suggested window
             if (bloq.$bloqInputs) {
                 for (i = 0; i < bloq.$bloqInputs.length; i++) {
@@ -1295,7 +1302,7 @@
                 });
                 $element.addClass('bloqinput');
 
-                $element.click(showSuggestedWindow);
+                $element.click(showBloqInputSuggestedWindow);
                 if (!bloq.$bloqInputs) {
                     bloq.$bloqInputs = [];
                 }
@@ -1352,7 +1359,37 @@
         bloqsDotsMatrix.showDotsWindow(params);
     };
 
-    function showSuggestedWindow(evt) {
+    function showSuggestedWindow(args) {
+        var launcherRect = args.launcherRect.getBoundingClientRect(),
+            workspaceRect = $field[0].getBoundingClientRect(),
+            params = {
+                suggestedText: translateBloq(lang, 'suggested'),
+                noSuggestedText: translateBloq(lang, 'no-suggested'),
+                launcherTopPoint: {
+                    top: launcherRect.top,
+                    left: launcherRect.left
+                },
+                launcherBottomPoint: {
+                    top: launcherRect.bottom,
+                    left: launcherRect.left
+                },
+                launcherHeight: launcherRect.height,
+                workspaceHeight: workspaceRect.height,
+                workspaceWidth: workspaceRect.width,
+                fieldOffsetTop: getFieldOffsetTop(fieldOffsetTopSource),
+                fieldOffsetLeft: fieldOffsetLeft,
+                fieldOffsetRight: fieldOffsetRight,
+                fieldScrollTop: $field[0].scrollTop,
+                fieldScrollLeft: $field[0].scrollLeft,
+                availableBloqs: availableBloqs,
+                suggestedBloqs: filterSuggestedBloqs(args.suggestedBloqs, componentsArray, softwareArrays, availableBloqs),
+                showWindowCallback: args.showWindowCallback
+            };
+
+        bloqsSuggested.showSuggestedWindow(params);
+    };
+
+    function showBloqInputSuggestedWindow(evt) {
         //console.log('click input', evt);
         //to avoid event on children and parents at the same time
 
@@ -1363,9 +1400,27 @@
             //console.log(bloq.itsEnabled());
             if (bloq.itsEnabled()) {
                 evt.stopPropagation();
-
-
-                var launcherRect = evt.target.getBoundingClientRect();
+                var suggestedBloqs;
+                if (IOConnectors[bloqConnectorUuid]) {
+                    suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
+                } else if (connectors[bloqConnectorUuid]) {
+                    suggestedBloqs = connectors[bloqConnectorUuid].data.suggestedBloqs;
+                }
+                showSuggestedWindow({
+                    launcherRect: evt.target,
+                    suggestedBloqs: suggestedBloqs,
+                    showWindowCallback: function (selectedBloqId) {
+                        var selectedBloq = bloqs[selectedBloqId];
+                        if (!selectedBloq.isConnectable()) {
+                            selectedBloq.doConnectable();
+                        }
+                        connectBloq(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
+                        window.dispatchEvent(new CustomEvent('bloqs:suggestedAdded', {
+                            detail: bloq
+                        }));
+                    }
+                });
+                /*var launcherRect = evt.target.getBoundingClientRect();
                 var workspaceRect = $field[0].getBoundingClientRect();
                 var params = {
                     suggestedText: translateBloq(lang, 'suggested'),
@@ -1399,12 +1454,12 @@
                     if (!selectedBloq.isConnectable()) {
                         selectedBloq.doConnectable();
                     }
-                    connectBloq(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
+            connectBloq(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
                     window.dispatchEvent(new CustomEvent('bloqs:suggestedAdded', {
                         detail: bloq
                     }));
                 }
-                bloqsSuggested.showSuggestedWindow(params);
+                bloqsSuggested.showBloqInputSuggestedWindow(params);*/
             }
         }
     }
@@ -1617,8 +1672,6 @@
                 updateBloq(servosNodeList[y], varServos);
             }
         }
-
-
     };
 
     var updateDropdowns = function () {
@@ -1652,19 +1705,58 @@
         //console.log('collapse IT!', evt);
         if (evt.target.parentElement.parentElement.className.indexOf(' collapsed') === -1) {
             evt.target.parentElement.parentElement.className = evt.target.parentElement.parentElement.className.concat(' collapsed');
-            evt.target.innerHTML = '+'
+            evt.target.innerHTML = '+';
         } else {
             evt.target.parentElement.parentElement.className = evt.target.parentElement.parentElement.className.replace(' collapsed', '');
-            evt.target.innerHTML = '-'
+            evt.target.innerHTML = '-';
         }
 
     }
 
+    function bloqSuggestedFieldClick(evt) {
+        console.log('bloqSuggestedFieldClick');
+        console.log(evt, this);
+        var bloq = this;
+        showSuggestedWindow({
+            launcherRect: bloq.$suggestedField,
+            suggestedBloqs: bloq.bloqData.suggestedBloqs,
+            showWindowCallback: function (selectedBloqId) {
+                console.log('showWindowCallback', selectedBloqId);
+                var selectedBloq = bloqs[selectedBloqId];
+                if (!selectedBloq.isConnectable()) {
+                    selectedBloq.doConnectable();
+                }
+                connectBloq(selectedBloq, connectors[bloq.connectors[1]].jqueryObject);
+                window.dispatchEvent(new CustomEvent('bloqs:suggestedAdded', {
+                    detail: bloq
+                }));
+            }
+        });
+
+    }
+
+    function activateSuggestionWindows() {
+        $('.suggestion-on').removeClass('suggestion-on');
+        var currentBloq,
+            nextConnectorInTree;
+        for (var i = 0; i < mainBloqs.length; i++) {
+            currentBloq = mainBloqs[i];
+            nextConnectorInTree = connectors[currentBloq.connectors[2]].connectedTo;
+
+            while (nextConnectorInTree) {
+                currentBloq = utils.getBloqByConnectorUuid(nextConnectorInTree, bloqs, connectors);
+                nextConnectorInTree = connectors[currentBloq.connectors[1]].connectedTo;
+            }
+            if (!nextConnectorInTree) {
+                currentBloq.setSuggestedBloqsWindowsView(true);
+            }
+        }
+    }
+
+
     // Block Constructor
     var Bloq = function Bloq(params) {
         if (params.bloqData) {
-
-
             this.uuid = 'bloq:' + utils.generateUUID();
 
             if (params.$field && !params.$field.is($field)) {
@@ -1818,6 +1910,16 @@
 
             this.$bloq.addClass('bloq bloq--' + this.bloqData.type + ' ' + this.bloqData.bloqClass);
 
+            this.setSuggestedBloqsWindowsView = function (value) {
+                if (this.$suggestedField) {
+                    if (value) {
+                        this.$bloq.addClass('suggestion-on');
+                    } else {
+                        this.$bloq.removeClass('suggestion-on');
+                    }
+                }
+            };
+
             bloqs[this.uuid] = this;
 
             //this.disable();
@@ -1825,10 +1927,16 @@
 
             switch (this.bloqData.type) {
                 case 'statement-input':
-                    this.$bloq.append('<div class="bloq--statement-input__header"><button class="btn-collapse">-</button></div><div class="bloq--extension"><div class="bloq--extension__content"></div> <div class="bloq--extension--end"></div></div>');
+                    this.$bloq.append('<div class="bloq--statement-input__header"><button class="btn-collapse">-</button></div><div class="bloq--extension"><div class="bloq--extension__content"></div><div class="bloq--extension--end"></div></div></div>');
+                    if (this.bloqData.suggestedBloqs) {
+                        this.$bloq.append('<div class="bloqs-suggested-field" data-i18n="suggested-bloqs"> <h4 class="suggestedfield-text">' + translateBloq(lang, 'suggested-bloqs') + '</h4></div>');
+                        this.$suggestedField = this.$bloq.find('.bloqs-suggested-field')[0];
+                        this.$suggestedField.addEventListener('click', bloqSuggestedFieldClick.bind(this));
+                        this.setSuggestedBloqsWindowsView(false);
+                    }
+
                     this.$contentContainer = this.$bloq.find('.bloq--statement-input__header');
                     this.$contentContainerDown = this.$bloq.find('.bloq--extension--end');
-                    //this.$bloq.attr('draggable', true);
                     buildContent(this);
                     this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
                     this.$bloq[0].addEventListener('touchstart', bloqMouseDown);
@@ -1866,6 +1974,7 @@
                     this.$bloq.find('.connector--root').addClass('connector--root--group');
                     this.$bloq.find('.field--header .btn').on('click', this.collapseGroupContent);
                     this.$bloq.find('.field--header h3').on('click', this.collapseGroupContent);
+                    mainBloqs.push(this);
                     break;
                 default:
                     throw 'bloqData ' + this.bloqData.type + 'not defined in bloq construction';
