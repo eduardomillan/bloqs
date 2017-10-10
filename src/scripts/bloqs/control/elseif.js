@@ -33,24 +33,24 @@ var elseif = _.merge(_.clone(StatementInputBloq, true), {
             id: 'OPERATOR',
             alias: 'staticDropdown',
             options: [{
-                    label: '=',
-                    value: '=='
-                }, {
-                    label: '!=',
-                    value: '!='
-                }, {
-                    label: '>',
-                    value: '>'
-                }, {
-                    label: '>=',
-                    value: '>='
-                }, {
-                    label: '<',
-                    value: '<'
-                }, {
-                    label: '<=',
-                    value: '<='
-                }] //'=', '≠', '>', '≥', '<', '≤']
+                label: '=',
+                value: '=='
+            }, {
+                label: '!=',
+                value: '!='
+            }, {
+                label: '>',
+                value: '>'
+            }, {
+                label: '>=',
+                value: '>='
+            }, {
+                label: '<',
+                value: '<'
+            }, {
+                label: '<=',
+                value: '<='
+            }] //'=', '≠', '>', '≥', '<', '≤']
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
@@ -61,6 +61,7 @@ var elseif = _.merge(_.clone(StatementInputBloq, true), {
             value: 'bloq-else-if-else'
         }]
     ],
+    suggestedBloqs: ['else', 'elseif'],
     code: 'else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}',
     python: {
         codeLines: [{

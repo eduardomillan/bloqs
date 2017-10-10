@@ -81,6 +81,11 @@ $available-connector-color: #f1cb33;
             }
         }
     }
+    &.suggestion-on{
+        .connector--bottom {
+            bottom: 48px;
+        }
+    }
     .connector--top {
         top: 0;
         &.invalid {
@@ -156,13 +161,5 @@ $available-connector-color: #f1cb33;
             width: 100%;
             left: 0;
         }
-    }
-    .bloq--extension {
-        .bloq--extension--end {
-            .connector--bottom {
-                width: 150px;
-                z-index: 10;
-            }
-        }
-    }
+    }   
 }

@@ -34,7 +34,7 @@
         "selectVariable",
         "readSensor"
       ],
-      "name": "b66d3335-1dce-4e16-a76c-d6b02d55eeb1"
+      "name": "25e2091a-7390-452a-90eb-3cd24f500eee"
     },
     {
       "type": "connector--input",
@@ -48,7 +48,7 @@
         "selectVariable",
         "readSensor"
       ],
-      "name": "1c4f2201-1425-4ae1-8318-efc3c7091573"
+      "name": "e229f74a-67be-43f2-afa5-ffbc2a829f66"
     }
   ],
   "bloqClass": "bloq-else-if",
@@ -70,7 +70,7 @@
           "selectVariable",
           "readSensor"
         ],
-        "name": "b66d3335-1dce-4e16-a76c-d6b02d55eeb1"
+        "name": "25e2091a-7390-452a-90eb-3cd24f500eee"
       },
       {
         "id": "OPERATOR",
@@ -114,13 +114,17 @@
           "selectVariable",
           "readSensor"
         ],
-        "name": "1c4f2201-1425-4ae1-8318-efc3c7091573"
+        "name": "e229f74a-67be-43f2-afa5-ffbc2a829f66"
       },
       {
         "alias": "text",
         "value": "bloq-else-if-else"
       }
     ]
+  ],
+  "suggestedBloqs": [
+    "else",
+    "elseif"
   ],
   "code": "else if ({ARG1} {OPERATOR} {ARG2}){{STATEMENTS}}",
   "python": {

@@ -541,7 +541,7 @@
         & > .bloq--extension {
             &:after {
                 content: '';
-                height: 100%;
+                //height: 100%;
                 width: 20px;
                 position: absolute;
                 top: 0;
@@ -695,16 +695,35 @@
     z-index: 0;
 }
 
-.bloq--statement-input:before {
-    content: '';
-    width: 20px;
-    height: 100%;
-    display: block;
-    position: absolute;
-    background-color: #ebebeb;
-    z-index: 1;
-    border-bottom-left-radius: 3px;
-    border-top-left-radius: 3px;
+.bloq--statement-input{
+    
+    &:before {
+        content: '';
+        width: 20px;
+        height: calc(100%);
+        display: block;
+        position: absolute;
+        background-color: #ebebeb;
+        z-index: 1;
+        border-bottom-left-radius: 3px;
+        border-top-left-radius: 3px;
+    }
+    .bloqs-suggested-field{
+        display: none;
+    }
+    &.suggestion-on{
+        &:before{
+            height: calc(100% - 64px);
+        }
+        &:focus{
+            &:before{
+            height: calc(100% - 89px);
+            }
+        }
+        .bloqs-suggested-field{
+            display: block;
+        }
+    }
 }
 
 .disabled.inside-bloq {

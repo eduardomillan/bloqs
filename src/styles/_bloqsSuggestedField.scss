@@ -1,0 +1,35 @@
+.bloqs-suggested-field{
+    $backgorundMainColor:#fcfcfc;
+    $backgorundHoverColor:#f1f1f1;
+    
+    @extend .handcursor;
+    
+    border: 2px dashed #dadada;
+    margin-top: 10px;
+    background-color: $backgorundMainColor;
+    .suggestedfield-text{
+        @extend .common-text;
+        text-align: center;
+        margin: 8px 22px 8px 40px;
+        &:before{
+            content: " ";
+            width: 13px;
+            height: 13px;
+            position: absolute;
+            margin-top: 3px;
+            left:19px;
+            background-color: $textsSecondaryColor;
+            -webkit-mask-image: url($bulb);
+            mask-image: url($bulb);
+        }
+    }
+    &:hover{
+        background-color: $backgorundHoverColor;
+        .suggestedfield-text{
+            color: $textsThirdColor;
+            &:before{
+                background-color: $textsThirdColor;
+            }
+        }
+    }
+}
