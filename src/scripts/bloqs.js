@@ -44,6 +44,7 @@
         preMouseMoveX,
         preMouseMoveY,
         shiftKeyDown,
+        suggestionOnStatements,
         mainBloqs = [],
         componentsArray = bloqsUtils.getEmptyComponentsArray();
 
@@ -53,6 +54,7 @@
         fieldOffsetRight = options.fieldOffsetRight || fieldOffsetRight || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || fieldOffsetTopForced || 0;
         availableBloqs = options.availableBloqs;
+        suggestionOnStatements = options.suggestionOnStatements || false;
 
         if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
             forcedScrollTop = options.forcedScrollTop;
@@ -1420,46 +1422,6 @@
                         }));
                     }
                 });
-                /*var launcherRect = evt.target.getBoundingClientRect();
-                var workspaceRect = $field[0].getBoundingClientRect();
-                var params = {
-                    suggestedText: translateBloq(lang, 'suggested'),
-                    noSuggestedText: translateBloq(lang, 'no-suggested'),
-                    launcherTopPoint: {
-                        top: launcherRect.top,
-                        left: launcherRect.left
-                    },
-                    launcherBottomPoint: {
-                        top: launcherRect.bottom,
-                        left: launcherRect.left
-                    },
-                    launcherHeight: launcherRect.height,
-                    workspaceHeight: workspaceRect.height,
-                    workspaceWidth: workspaceRect.width,
-                    fieldOffsetTop: getFieldOffsetTop(fieldOffsetTopSource),
-                    fieldOffsetLeft: fieldOffsetLeft,
-                    fieldOffsetRight: fieldOffsetRight,
-                    fieldScrollTop: $field[0].scrollTop,
-                    fieldScrollLeft: $field[0].scrollLeft,
-                    availableBloqs: availableBloqs
-                };
-                if (IOConnectors[bloqConnectorUuid]) {
-                    params.suggestedBloqs = IOConnectors[bloqConnectorUuid].data.suggestedBloqs;
-                } else if (connectors[bloqConnectorUuid]) {
-                    params.suggestedBloqs = connectors[bloqConnectorUuid].data.suggestedBloqs;
-                }
-                params.suggestedBloqs = filterSuggestedBloqs(params.suggestedBloqs, componentsArray, softwareArrays, params.availableBloqs);
-                params.showWindowCallback = function (selectedBloqId) {
-                    var selectedBloq = bloqs[selectedBloqId];
-                    if (!selectedBloq.isConnectable()) {
-                        selectedBloq.doConnectable();
-                    }
-            connectBloq(selectedBloq, IOConnectors[bloqConnectorUuid].jqueryObject);
-                    window.dispatchEvent(new CustomEvent('bloqs:suggestedAdded', {
-                        detail: bloq
-                    }));
-                }
-                bloqsSuggested.showBloqInputSuggestedWindow(params);*/
             }
         }
     }
@@ -1715,7 +1677,6 @@
 
     function bloqSuggestedFieldClick(evt) {
         console.log('bloqSuggestedFieldClick');
-        console.log(evt, this);
         var bloq = this;
         showSuggestedWindow({
             launcherRect: bloq.$suggestedField,
@@ -1732,7 +1693,6 @@
                 }));
             }
         });
-
     }
 
     function activateSuggestionWindows() {
@@ -1928,7 +1888,7 @@
             switch (this.bloqData.type) {
                 case 'statement-input':
                     this.$bloq.append('<div class="bloq--statement-input__header"><button class="btn-collapse">-</button></div><div class="bloq--extension"><div class="bloq--extension__content"></div><div class="bloq--extension--end"></div></div></div>');
-                    if (this.bloqData.suggestedBloqs) {
+                    if (suggestionOnStatements && this.bloqData.suggestedBloqs) {
                         this.$bloq.append('<div class="bloqs-suggested-field" data-i18n="suggested-bloqs"> <h4 class="suggestedfield-text">' + translateBloq(lang, 'suggested-bloqs') + '</h4></div>');
                         this.$suggestedField = this.$bloq.find('.bloqs-suggested-field')[0];
                         this.$suggestedField.addEventListener('click', bloqSuggestedFieldClick.bind(this));
