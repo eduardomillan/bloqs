@@ -74,4 +74,9 @@ $headerColor: #eaebec;
     &.hide {
         display: none;
     }
+
+    //fix static position and padding
+    .bloq--statement-input__header:first-of-type + .bloq--extension{
+        padding-top: 0;
+    }
 }

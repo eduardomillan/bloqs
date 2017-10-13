@@ -105,7 +105,8 @@
                 fieldOffsetTopForced: 0,
                 bloqSchemas: bloqSchemas,
                 suggestionWindowParent: document.getElementById('bloqs--field'),
-                dotsMatrixWindowParent: document.getElementById('bloqs--field')
+                dotsMatrixWindowParent: document.getElementById('bloqs--field'),
+                suggestionOnStatements: true
             });
 
             /**
@@ -464,7 +465,7 @@
 
             var testSet2 = ['if'];
 
-            testSet = mkb_ExternalRGBLed;
+            testSet = testSet2;
 
             for (var i = 0; i < testSet.length; i++) {
                 createBloq(testSet[i]);
