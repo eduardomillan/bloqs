@@ -711,7 +711,7 @@
     .bloqs-suggested-field{
         display: none;
     }
-    &.suggestion-on{
+    &.suggestion-on:last-child{
         &:before{
             height: calc(100% - 64px);
         }
@@ -720,10 +720,11 @@
             height: calc(100% - 89px);
             }
         }
-        .bloqs-suggested-field{
-            display: block;
-        }
     }
+    &.suggestion-on > .bloqs-suggested-field{
+            display: block;
+    }    
+
 }
 
 .disabled.inside-bloq {

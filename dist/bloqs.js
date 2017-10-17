@@ -3318,6 +3318,7 @@
             }
             mouseDownBloq = null;
             draggingBloq = bloq;
+            activateSuggestionWindows();
         }
 
         bloq = bloq || draggingBloq;
@@ -3342,7 +3343,6 @@
             default:
                 throw 'Not defined bloq drag!!';
         }
-        activateSuggestionWindows();
     };
 
     var bloqMouseUp = function (evt) {
@@ -4817,21 +4817,38 @@
         });
     }
 
+    function recursiveActivationOfSuggestedBloqs(currentBloq) {
+        var branchBloq, connectorInBranch;
+        if (currentBloq.connectors[2]) {
+            connectorInBranch = connectors[currentBloq.connectors[2]].connectedTo;
+            if (connectorInBranch) {
+                branchBloq = utils.getBloqByConnectorUuid(connectorInBranch, bloqs, connectors);
+                recursiveActivationOfSuggestedBloqs(branchBloq);
+            }
+        }
+
+        var nextConnectorInTree = connectors[currentBloq.connectors[1]].connectedTo;
+        while (nextConnectorInTree) {
+            currentBloq = utils.getBloqByConnectorUuid(nextConnectorInTree, bloqs, connectors);
+            nextConnectorInTree = connectors[currentBloq.connectors[1]].connectedTo;
+            if (currentBloq.connectors[2]) {
+                connectorInBranch = connectors[currentBloq.connectors[2]].connectedTo;
+                if (connectorInBranch) {
+                    branchBloq = utils.getBloqByConnectorUuid(connectorInBranch, bloqs, connectors);
+                    recursiveActivationOfSuggestedBloqs(branchBloq);
+                }
+            }
+        }
+
+        if (!nextConnectorInTree) {
+            currentBloq.setSuggestedBloqsWindowsView(true);
+        }
+    }
+
     function activateSuggestionWindows() {
         $('.suggestion-on').removeClass('suggestion-on');
-        var currentBloq,
-            nextConnectorInTree;
         for (var i = 0; i < mainBloqs.length; i++) {
-            currentBloq = mainBloqs[i];
-            nextConnectorInTree = connectors[currentBloq.connectors[2]].connectedTo;
-
-            while (nextConnectorInTree) {
-                currentBloq = utils.getBloqByConnectorUuid(nextConnectorInTree, bloqs, connectors);
-                nextConnectorInTree = connectors[currentBloq.connectors[1]].connectedTo;
-            }
-            if (!nextConnectorInTree) {
-                currentBloq.setSuggestedBloqsWindowsView(true);
-            }
+            recursiveActivationOfSuggestedBloqs(mainBloqs[i]);
         }
     }
 
@@ -5001,6 +5018,15 @@
                     }
                 }
             };
+            this.setStatementInputSuggestedBloqsWindowsView = function (value) {
+                if (this.$statementInputSuggestedField) {
+                    if (value) {
+                        this.$bloq.addClass('statementinput-suggestion-on');
+                    } else {
+                        this.$bloq.removeClass('statementinput-suggestion-on');
+                    }
+                }
+            };
 
             bloqs[this.uuid] = this;
 
@@ -5010,15 +5036,19 @@
             switch (this.bloqData.type) {
                 case 'statement-input':
                     this.$bloq.append('<div class="bloq--statement-input__header"><button class="btn-collapse">-</button></div><div class="bloq--extension"><div class="bloq--extension__content"></div><div class="bloq--extension--end"></div></div></div>');
-                    if (suggestionOnStatements && this.bloqData.suggestedBloqs) {
+                    if (suggestionOnStatements && this.bloqData.suggestedBloqs && (this.bloqData.suggestedBloqs.length > 0)) {
                         this.$bloq.append('<div class="bloqs-suggested-field" data-i18n="suggested-bloqs"> <h4 class="suggestedfield-text">' + translateBloq(lang, 'suggested-bloqs') + '</h4></div>');
                         this.$suggestedField = this.$bloq.find('.bloqs-suggested-field')[0];
                         this.$suggestedField.addEventListener('click', bloqSuggestedFieldClick.bind(this));
                         this.setSuggestedBloqsWindowsView(false);
                     }
 
+
                     this.$contentContainer = this.$bloq.find('.bloq--statement-input__header');
                     this.$contentContainerDown = this.$bloq.find('.bloq--extension--end');
+                    if (suggestionOnStatements && this.bloqData.statementInputSuggestedBloqs && (this.bloqData.statementInputSuggestedBloqs.length > 0)) {
+
+                    }
                     buildContent(this);
                     this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
                     this.$bloq[0].addEventListener('touchstart', bloqMouseDown);

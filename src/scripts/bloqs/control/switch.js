@@ -31,6 +31,7 @@ var bloqSwitch = _.merge(_.clone(StatementInputBloq, true), {
         }]
     ],
     code: 'switch (int({VAR})) {{STATEMENTS}}',
+    statementInputSuggestedBloqs: ['case', 'caseDefault'],
     arduino: {
         code: 'switch (int({VAR})) {{STATEMENTS}}'
     }

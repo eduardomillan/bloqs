@@ -33,6 +33,10 @@
     ]
   ],
   "code": "switch (int({VAR})) {{STATEMENTS}}",
+  "statementInputSuggestedBloqs": [
+    "case",
+    "caseDefault"
+  ],
   "arduino": {
     "code": "switch (int({VAR})) {{STATEMENTS}}"
   },

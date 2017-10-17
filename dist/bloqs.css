@@ -10242,13 +10242,13 @@
 .bloq--statement-input .bloqs-suggested-field {
   display: none; }
 
-.bloq--statement-input.suggestion-on:before {
+.bloq--statement-input.suggestion-on:last-child:before {
   height: calc(100% - 64px); }
 
-.bloq--statement-input.suggestion-on:focus:before {
+.bloq--statement-input.suggestion-on:last-child:focus:before {
   height: calc(100% - 89px); }
 
-.bloq--statement-input.suggestion-on .bloqs-suggested-field {
+.bloq--statement-input.suggestion-on > .bloqs-suggested-field {
   display: block; }
 
 .disabled.inside-bloq {
@@ -10481,7 +10481,7 @@ tester + span + .bloqinput {
     max-width: 200px;
     bottom: 0; }
 
-.bloq.suggestion-on .connector--bottom {
+.bloq.suggestion-on .connector--bottom:only-child {
   bottom: 48px; }
 
 .bloq .connector--top {
