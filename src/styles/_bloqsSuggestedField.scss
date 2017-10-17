@@ -7,17 +7,19 @@
     border: 2px dashed #dadada;
     margin-top: 10px;
     background-color: $backgorundMainColor;
+    width: 237px;
     .suggestedfield-text{
         @extend .common-text;
         text-align: center;
-        margin: 8px 22px 8px 40px;
+        position: relative;
+        margin: 8px;
         &:before{
             content: " ";
             width: 13px;
             height: 13px;
             position: absolute;
-            margin-top: 3px;
-            left:19px;
+            margin-top: 2px;
+            left: 11px;
             background-color: $textsSecondaryColor;
             -webkit-mask-image: url($bulb);
             mask-image: url($bulb);
@@ -32,4 +34,34 @@
             }
         }
     }
+}
+
+
+.suggestion{
+    display: none;
+    height: 100%;
+
+    &:before{
+        content: "";
+        width: 13px;
+        height: 13px;
+        position: absolute;
+        margin-top: 3px;
+        left: 69px;
+        background-color: #FFF;
+        -webkit-mask-image: url($bulb);
+        mask-image: url($bulb);
+    }
+}
+
+.suggestion-on:hover{
+        .suggestion{
+            display: block;
+            &:hover{
+                &:before{
+                    background-color: white;
+                }
+            }
+        }
+    
 }

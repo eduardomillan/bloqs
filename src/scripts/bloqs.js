@@ -1677,17 +1677,26 @@
 
     function bloqSuggestedFieldClick(evt) {
         console.log('bloqSuggestedFieldClick');
-        var bloq = this;
+        var bloq = this,
+            suggestedBloqs,
+            connectorNumber;
+        if (evt.currentTarget.classList.contains('statement-input')) {
+            suggestedBloqs = bloq.bloqData.statementInputSuggestedBloqs;
+            connectorNumber = 2;
+        } else {
+            suggestedBloqs = bloq.bloqData.suggestedBloqs;
+            connectorNumber = 1;
+        }
         showSuggestedWindow({
-            launcherRect: bloq.$suggestedField,
-            suggestedBloqs: bloq.bloqData.suggestedBloqs,
+            launcherRect: evt.currentTarget,
+            suggestedBloqs: suggestedBloqs,
             showWindowCallback: function (selectedBloqId) {
                 console.log('showWindowCallback', selectedBloqId);
                 var selectedBloq = bloqs[selectedBloqId];
                 if (!selectedBloq.isConnectable()) {
                     selectedBloq.doConnectable();
                 }
-                connectBloq(selectedBloq, connectors[bloq.connectors[1]].jqueryObject);
+                connectBloq(selectedBloq, connectors[bloq.connectors[connectorNumber]].jqueryObject);
                 window.dispatchEvent(new CustomEvent('bloqs:suggestedAdded', {
                     detail: bloq
                 }));
@@ -1728,6 +1737,8 @@
         for (var i = 0; i < mainBloqs.length; i++) {
             recursiveActivationOfSuggestedBloqs(mainBloqs[i]);
         }
+
+
     }
 
 
@@ -1914,18 +1925,28 @@
             switch (this.bloqData.type) {
                 case 'statement-input':
                     this.$bloq.append('<div class="bloq--statement-input__header"><button class="btn-collapse">-</button></div><div class="bloq--extension"><div class="bloq--extension__content"></div><div class="bloq--extension--end"></div></div></div>');
-                    if (suggestionOnStatements && this.bloqData.suggestedBloqs && (this.bloqData.suggestedBloqs.length > 0)) {
-                        this.$bloq.append('<div class="bloqs-suggested-field" data-i18n="suggested-bloqs"> <h4 class="suggestedfield-text">' + translateBloq(lang, 'suggested-bloqs') + '</h4></div>');
-                        this.$suggestedField = this.$bloq.find('.bloqs-suggested-field')[0];
+                    /*if (suggestionOnStatements && this.bloqData.suggestedBloqs && (this.bloqData.suggestedBloqs.length > 0)) {
+                        this.$bloq.append('<div class="bloqs-suggested-field statement" data-i18n="suggested-bloqs"> <h4 class="suggestedfield-text">' + translateBloq(lang, 'suggested-bloqs') + '</h4></div>');
+                        this.$suggestedField = this.$bloq.find('.bloqs-suggested-field.statement')[0];
                         this.$suggestedField.addEventListener('click', bloqSuggestedFieldClick.bind(this));
                         this.setSuggestedBloqsWindowsView(false);
-                    }
-
+                    }*/
 
                     this.$contentContainer = this.$bloq.find('.bloq--statement-input__header');
                     this.$contentContainerDown = this.$bloq.find('.bloq--extension--end');
-                    if (suggestionOnStatements && this.bloqData.statementInputSuggestedBloqs && (this.bloqData.statementInputSuggestedBloqs.length > 0)) {
+                    this.$extensionContent = this.$bloq.find('.bloq--extension__content');
 
+                    if (suggestionOnStatements && this.bloqData.suggestedBloqs && (this.bloqData.suggestedBloqs.length > 0)) {
+                        this.$contentContainerDown.append('<div class="suggestion statement"></div>');
+                        this.$suggestedField = this.$contentContainerDown.find('.suggestion.statement')[0];
+                        this.$suggestedField.addEventListener('click', bloqSuggestedFieldClick.bind(this));
+                    }
+
+                    if (suggestionOnStatements && this.bloqData.statementInputSuggestedBloqs && (this.bloqData.statementInputSuggestedBloqs.length > 0)) {
+                        this.$extensionContent.append('<div class="bloqs-suggested-field statement-input" data-i18n="suggested-bloqs"> <h4 class="suggestedfield-text">' + translateBloq(lang, 'suggested-bloqs') + '</h4></div>');
+                        this.$statementInputSuggestedField = this.$bloq.find('.bloqs-suggested-field.statement-input')[0];
+                        this.$statementInputSuggestedField.addEventListener('click', bloqSuggestedFieldClick.bind(this));
+                        this.setStatementInputSuggestedBloqsWindowsView(false);
                     }
                     buildContent(this);
                     this.$bloq[0].addEventListener('mousedown', bloqMouseDown);

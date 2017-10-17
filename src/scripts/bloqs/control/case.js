@@ -35,7 +35,8 @@ var bloqCase = _.merge(_.clone(StatementInputBloq, true), {
     code: 'case {VAR}:{STATEMENTS}break;',
     arduino: {
         code: 'case {VAR}:{STATEMENTS}break;'
-    }
+    },
+    suggestedBloqs: ['case', 'caseDefault']
 });
 
 bloqCase.connectors[0].acceptedAliases = ['switchChildren', 'case'];

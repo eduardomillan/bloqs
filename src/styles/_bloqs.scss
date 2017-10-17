@@ -721,10 +721,10 @@
             }
         }
     }
-    &.suggestion-on > .bloqs-suggested-field{
+    &.suggestion-on > .bloqs-suggested-field.statement,
+    &.statementinput-suggestion-on .bloq--extension__content > .bloqs-suggested-field.statement-input{
             display: block;
     }    
-
 }
 
 .disabled.inside-bloq {
