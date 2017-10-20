@@ -1719,7 +1719,7 @@
     }
 
     function bloqSuggestedFieldClick(evt) {
-        console.log('bloqSuggestedFieldClick');
+        //console.log('bloqSuggestedFieldClick');
         var bloq = this;
 
         showSuggestedWindow({
@@ -1728,7 +1728,7 @@
             offsetWidth: 40,
             originalBloq: bloq,
             showWindowCallback: function (selectedBloqId) {
-                console.log('showWindowCallback', selectedBloqId);
+                //console.log('showWindowCallback', selectedBloqId);
                 var selectedBloq = bloqs[selectedBloqId];
                 if (!selectedBloq.isConnectable()) {
                     selectedBloq.doConnectable();
