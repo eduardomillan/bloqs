@@ -4853,17 +4853,16 @@
     }
 
     function bloqSuggestedFieldClick(evt) {
-        console.log('bloqSuggestedFieldClick');
+        //console.log('bloqSuggestedFieldClick');
         var bloq = this;
 
-        utils.drawTree(bloqs, connectors);
         showSuggestedWindow({
             launcherRect: evt.currentTarget,
             suggestedBloqs: bloq.bloqData.suggestedBloqs,
             offsetWidth: 40,
             originalBloq: bloq,
             showWindowCallback: function (selectedBloqId) {
-                console.log('showWindowCallback', selectedBloqId);
+                //console.log('showWindowCallback', selectedBloqId);
                 var selectedBloq = bloqs[selectedBloqId];
                 if (!selectedBloq.isConnectable()) {
                     selectedBloq.doConnectable();
