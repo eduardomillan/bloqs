@@ -1722,7 +1722,6 @@
         console.log('bloqSuggestedFieldClick');
         var bloq = this;
 
-        utils.drawTree(bloqs, connectors);
         showSuggestedWindow({
             launcherRect: evt.currentTarget,
             suggestedBloqs: bloq.bloqData.suggestedBloqs,
