@@ -1,46 +1,8 @@
-.bloqs-suggested-field{
-    $backgorundMainColor:#fcfcfc;
-    $backgorundHoverColor:#f1f1f1;
-    
-    @extend .handcursor;
-    
-    border: 2px dashed #dadada;
-    margin-top: 10px;
-    background-color: $backgorundMainColor;
-    width: 237px;
-    .suggestedfield-text{
-        @extend .common-text;
-        text-align: center;
-        position: relative;
-        margin: 8px;
-        &:before{
-            content: " ";
-            width: 13px;
-            height: 13px;
-            position: absolute;
-            margin-top: 2px;
-            left: 11px;
-            background-color: $textsSecondaryColor;
-            -webkit-mask-image: url($bulb);
-            mask-image: url($bulb);
-        }
-    }
-    &:hover{
-        background-color: $backgorundHoverColor;
-        .suggestedfield-text{
-            color: $textsThirdColor;
-            &:before{
-                background-color: $textsThirdColor;
-            }
-        }
-    }
-}
-
-
 .suggestion{
-    display: none;
+    opacity: 0;
+    display:none;
     height: 100%;
-
+    transition: opacity 0.5s linear;
     &:before{
         content: "";
         width: 13px;
@@ -53,15 +15,19 @@
         mask-image: url($bulb);
     }
 }
-
+//show only when is inside a main bloq
+.bloq--group{
+    .suggestion{
+        display: block;
+    }
+}
+//show when the mouse is over
 .suggestion-on:hover{
-        .suggestion{
-            display: block;
-            &:hover{
-                &:before{
-                    background-color: white;
-                }
+    & > .bloq--extension{
+        & > .bloq--extension--end{
+            .suggestion{
+                opacity: 1;
             }
         }
-    
+    }
 }

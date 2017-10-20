@@ -81,11 +81,6 @@ $available-connector-color: #f1cb33;
             }
         }
     }
-    &.suggestion-on{
-        .connector--bottom:only-child{
-            bottom: 48px;
-        }
-    }
     .connector--top {
         top: 0;
         &.invalid {

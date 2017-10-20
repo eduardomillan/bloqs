@@ -708,23 +708,6 @@
         border-bottom-left-radius: 3px;
         border-top-left-radius: 3px;
     }
-    .bloqs-suggested-field{
-        display: none;
-    }
-    &.suggestion-on:last-child{
-        &:before{
-            height: calc(100% - 64px);
-        }
-        &:focus{
-            &:before{
-            height: calc(100% - 89px);
-            }
-        }
-    }
-    &.suggestion-on > .bloqs-suggested-field.statement,
-    &.statementinput-suggestion-on .bloq--extension__content > .bloqs-suggested-field.statement-input{
-            display: block;
-    }    
 }
 
 .disabled.inside-bloq {
@@ -834,6 +817,9 @@
             padding-top: 0;
         }
         .connector--root {
+            display: none;
+        }
+        &.suggestion-on .suggestion{
             display: none;
         }
     }
