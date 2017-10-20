@@ -1398,6 +1398,14 @@
         return result;
     }
 
+    function removeAttributeFromSelector(attributeToRemove, selector) {
+        var elems = document.querySelectorAll(selector);
+
+        [].forEach.call(elems, function (el) {
+            el.removeAttribute(attributeToRemove);
+        });
+    }
+
 
     bloqsUtils.validString = validString;
     bloqsUtils.validChar = validChar;
@@ -1452,6 +1460,7 @@
     bloqsUtils.canConnectStatementBloqs = canConnectStatementBloqs;
     bloqsUtils.findAncestor = findAncestor;
     bloqsUtils.createMatrix = createMatrix;
+    bloqsUtils.removeAttributeFromSelector = removeAttributeFromSelector;
 
     return bloqsUtils;
 

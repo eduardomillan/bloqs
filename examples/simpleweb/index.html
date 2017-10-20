@@ -105,7 +105,8 @@
                 fieldOffsetTopForced: 0,
                 bloqSchemas: bloqSchemas,
                 suggestionWindowParent: document.getElementById('bloqs--field'),
-                dotsMatrixWindowParent: document.getElementById('bloqs--field')
+                dotsMatrixWindowParent: document.getElementById('bloqs--field'),
+                suggestionOnStatements: true
             });
 
             /**
@@ -462,9 +463,9 @@
 
             var mkb_ledMatrixV2 = ['mkbfan', 'mkbDrawRectangleAdvanced', 'mkbDrawLedMatrix', 'mkbDrawLineAdvanced', 'mkbDrawLedMatrixAdvanced'];
 
-            var testSet2 = ['if'];
+            var testSet2 = ['if', 'switch', 'if', 'wait'];
 
-            testSet = mkb_ExternalRGBLed;
+            testSet = testSet2;
 
             for (var i = 0; i < testSet.length; i++) {
                 createBloq(testSet[i]);

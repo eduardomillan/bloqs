@@ -45,6 +45,7 @@
         preMouseMoveY,
         shiftKeyDown,
         suggestionOnStatements,
+        bloqSchemas,
         mainBloqs = [],
         componentsArray = bloqsUtils.getEmptyComponentsArray();
 
@@ -59,6 +60,7 @@
         if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
             forcedScrollTop = options.forcedScrollTop;
         }
+        bloqSchemas = options.bloqSchemas;
         bloqsSuggested.init(options.suggestionWindowParent, options.bloqSchemas);
         bloqsDotsMatrix.init(options.dotsMatrixWindowParent);
 
@@ -220,7 +222,6 @@
             default:
                 throw 'Not defined bloq drag!!';
         }
-        activateSuggestionWindows();
     };
 
     var bloqMouseUp = function (evt) {
@@ -236,6 +237,8 @@
                 mouseEvent: evt
             }
         }));
+        utils.removeAttributeFromSelector('data-canconnectwith', '[data-canconnectwith]');
+
     };
 
     var connectBloq = function (bloq, $dropConnector) {
@@ -264,8 +267,8 @@
                 if ((bloq.bloqData.type === 'statement') || (bloq.bloqData.type === 'statement-input')) {
                     utils.executeFunctionOnConnectedStatementBloqs('enable', bloq, bloqs, connectors);
                 }
+                autoChildCreation(bloq);
             }
-            activateSuggestionWindows();
         } else {
             bloq.disable();
             if ((bloq.bloqData.type === 'statement') || (bloq.bloqData.type === 'statement-input')) {
@@ -292,6 +295,24 @@
         document.removeEventListener('touchmove', bloqMouseMove);
         document.removeEventListener('touchend', bloqMouseUp);
 
+    };
+
+    var autoChildCreation = function (connectedBloq) {
+        if (connectedBloq.bloqData.autoChildCreation) {
+            if (!connectors[connectedBloq.connectors[2]].connectedTo) {
+                var newBloq;
+                newBloq = new Bloq({
+                    bloqData: bloqSchemas[connectedBloq.bloqData.autoChildCreation]
+                });
+                $field.append(newBloq);
+                newBloq.doConnectable();
+
+                connectBloq(newBloq, connectors[connectedBloq.connectors[2]].jqueryObject);
+                window.dispatchEvent(new CustomEvent('bloqs:suggestedAdded', {
+                    detail: newBloq
+                }));
+            }
+        }
     };
 
     var statementDragStart = function (bloq) {
@@ -455,12 +476,16 @@
         var areDroppingInsideABloq = utils.itsARootConnector(connectors[dropConnectorUuid]) || utils.itsInsideAConnectorRoot(utils.getBloqByConnectorUuid(dropConnectorUuid, bloqs, connectors), bloqs, connectors);
 
         //console.log('areDroppingInsideABloq?', areDroppingInsideABloq);
+        if (dropConnectorUuid !== dragConnectorUuid) {
 
-        setLogicalConnections(dropConnectorUuid, dragConnectorUuid);
-        if (areDroppingInsideABloq) {
-            connectorRootDragEnd(bloq, $dropConnector);
+            setLogicalConnections(dropConnectorUuid, dragConnectorUuid);
+            if (areDroppingInsideABloq) {
+                connectorRootDragEnd(bloq, $dropConnector);
+            } else {
+                placeNestedBloq(dropConnectorUuid, dragConnectorUuid);
+            }
         } else {
-            placeNestedBloq(dropConnectorUuid, dragConnectorUuid);
+            console.log('cant connect...');
         }
 
     };
@@ -1365,6 +1390,7 @@
         var launcherRect = args.launcherRect.getBoundingClientRect(),
             workspaceRect = $field[0].getBoundingClientRect(),
             params = {
+                offsetWidth: args.offsetWidth,
                 suggestedText: translateBloq(lang, 'suggested'),
                 noSuggestedText: translateBloq(lang, 'no-suggested'),
                 launcherTopPoint: {
@@ -1384,7 +1410,7 @@
                 fieldScrollTop: $field[0].scrollTop,
                 fieldScrollLeft: $field[0].scrollLeft,
                 availableBloqs: availableBloqs,
-                suggestedBloqs: filterSuggestedBloqs(args.suggestedBloqs, componentsArray, softwareArrays, availableBloqs),
+                suggestedBloqs: filterSuggestedBloqs(args.suggestedBloqs, componentsArray, softwareArrays, availableBloqs, args.originalBloq),
                 showWindowCallback: args.showWindowCallback
             };
 
@@ -1426,7 +1452,7 @@
         }
     }
 
-    function filterSuggestedBloqs(suggestedBloqs, componentsArray, softwareArrays, availableBloqs) {
+    function filterSuggestedBloqs(suggestedBloqs, componentsArray, softwareArrays, availableBloqs, originalBloq) {
         var filteredItems = [];
         for (var i = 0; i < suggestedBloqs.length; i++) {
             if (!availableBloqs || (availableBloqs && availableBloqs.indexOf(suggestedBloqs[i]) > -1)) {
@@ -1439,6 +1465,23 @@
                     case 'readSensor':
                         if (componentsArray.sensors.length > 0) {
                             filteredItems.push(suggestedBloqs[i]);
+                        }
+                        break;
+                    case 'caseDefault':
+                        if (originalBloq) {
+                            if (!connectors[originalBloq.connectors[1]].connectedTo) {
+                                filteredItems.push(suggestedBloqs[i]);
+                            }
+                        }
+                        break;
+                    case 'else':
+                        if (!connectors[originalBloq.connectors[1]].connectedTo) {
+                            filteredItems.push(suggestedBloqs[i]);
+                        } else {
+                            var bloq = utils.getBloqByConnectorUuid(connectors[originalBloq.connectors[1]].connectedTo, bloqs, connectors);
+                            if ((bloq.bloqData.name !== 'else') && (bloq.bloqData.name !== 'elseif')) {
+                                filteredItems.push(suggestedBloqs[i]);
+                            }
                         }
                         break;
                     default:
@@ -1678,41 +1721,56 @@
     function bloqSuggestedFieldClick(evt) {
         console.log('bloqSuggestedFieldClick');
         var bloq = this;
+
+        utils.drawTree(bloqs, connectors);
         showSuggestedWindow({
-            launcherRect: bloq.$suggestedField,
+            launcherRect: evt.currentTarget,
             suggestedBloqs: bloq.bloqData.suggestedBloqs,
+            offsetWidth: 40,
+            originalBloq: bloq,
             showWindowCallback: function (selectedBloqId) {
                 console.log('showWindowCallback', selectedBloqId);
                 var selectedBloq = bloqs[selectedBloqId];
                 if (!selectedBloq.isConnectable()) {
                     selectedBloq.doConnectable();
                 }
+
                 connectBloq(selectedBloq, connectors[bloq.connectors[1]].jqueryObject);
                 window.dispatchEvent(new CustomEvent('bloqs:suggestedAdded', {
                     detail: bloq
                 }));
+
             }
         });
     }
 
-    function activateSuggestionWindows() {
-        $('.suggestion-on').removeClass('suggestion-on');
-        var currentBloq,
-            nextConnectorInTree;
-        for (var i = 0; i < mainBloqs.length; i++) {
-            currentBloq = mainBloqs[i];
-            nextConnectorInTree = connectors[currentBloq.connectors[2]].connectedTo;
-
-            while (nextConnectorInTree) {
-                currentBloq = utils.getBloqByConnectorUuid(nextConnectorInTree, bloqs, connectors);
-                nextConnectorInTree = connectors[currentBloq.connectors[1]].connectedTo;
-            }
-            if (!nextConnectorInTree) {
-                currentBloq.setSuggestedBloqsWindowsView(true);
+    function recursiveActivationOfSuggestedBloqs(currentBloq) {
+        var branchBloq, connectorInBranch;
+        if (currentBloq.connectors[2]) {
+            connectorInBranch = connectors[currentBloq.connectors[2]].connectedTo;
+            if (connectorInBranch) {
+                branchBloq = utils.getBloqByConnectorUuid(connectorInBranch, bloqs, connectors);
+                recursiveActivationOfSuggestedBloqs(branchBloq);
             }
         }
-    }
 
+        var nextConnectorInTree = connectors[currentBloq.connectors[1]].connectedTo;
+        while (nextConnectorInTree) {
+            currentBloq = utils.getBloqByConnectorUuid(nextConnectorInTree, bloqs, connectors);
+            nextConnectorInTree = connectors[currentBloq.connectors[1]].connectedTo;
+            if (currentBloq.connectors[2]) {
+                connectorInBranch = connectors[currentBloq.connectors[2]].connectedTo;
+                if (connectorInBranch) {
+                    branchBloq = utils.getBloqByConnectorUuid(connectorInBranch, bloqs, connectors);
+                    recursiveActivationOfSuggestedBloqs(branchBloq);
+                }
+            }
+        }
+
+        if (!nextConnectorInTree) {
+            currentBloq.setSuggestedBloqsWindowsView(true);
+        }
+    }
 
     // Block Constructor
     var Bloq = function Bloq(params) {
@@ -1870,15 +1928,6 @@
 
             this.$bloq.addClass('bloq bloq--' + this.bloqData.type + ' ' + this.bloqData.bloqClass);
 
-            this.setSuggestedBloqsWindowsView = function (value) {
-                if (this.$suggestedField) {
-                    if (value) {
-                        this.$bloq.addClass('suggestion-on');
-                    } else {
-                        this.$bloq.removeClass('suggestion-on');
-                    }
-                }
-            };
 
             bloqs[this.uuid] = this;
 
@@ -1888,15 +1937,24 @@
             switch (this.bloqData.type) {
                 case 'statement-input':
                     this.$bloq.append('<div class="bloq--statement-input__header"><button class="btn-collapse">-</button></div><div class="bloq--extension"><div class="bloq--extension__content"></div><div class="bloq--extension--end"></div></div></div>');
-                    if (suggestionOnStatements && this.bloqData.suggestedBloqs) {
-                        this.$bloq.append('<div class="bloqs-suggested-field" data-i18n="suggested-bloqs"> <h4 class="suggestedfield-text">' + translateBloq(lang, 'suggested-bloqs') + '</h4></div>');
-                        this.$suggestedField = this.$bloq.find('.bloqs-suggested-field')[0];
-                        this.$suggestedField.addEventListener('click', bloqSuggestedFieldClick.bind(this));
-                        this.setSuggestedBloqsWindowsView(false);
-                    }
 
                     this.$contentContainer = this.$bloq.find('.bloq--statement-input__header');
                     this.$contentContainerDown = this.$bloq.find('.bloq--extension--end');
+                    this.$extensionContent = this.$bloq.find('.bloq--extension__content');
+
+                    if (suggestionOnStatements && this.bloqData.suggestedBloqs && (this.bloqData.suggestedBloqs.length > 0)) {
+                        this.$bloq.addClass('suggestion-on');
+                        this.$contentContainerDown.append('<div class="suggestion statement"></div>');
+                        this.$suggestedField = this.$contentContainerDown.find('.suggestion.statement')[0];
+                        this.$suggestedField.addEventListener('click', bloqSuggestedFieldClick.bind(this));
+                    }
+
+                    /*if (suggestionOnStatements && this.bloqData.statementInputSuggestedBloqs && (this.bloqData.statementInputSuggestedBloqs.length > 0)) {
+                        this.$extensionContent.append('<div class="bloqs-suggested-field statement-input" data-i18n="suggested-bloqs"> <h4 class="suggestedfield-text">' + translateBloq(lang, 'suggested-bloqs') + '</h4></div>');
+                        this.$statementInputSuggestedField = this.$bloq.find('.bloqs-suggested-field.statement-input')[0];
+                        this.$statementInputSuggestedField.addEventListener('click', bloqSuggestedFieldClick.bind(this));
+                        this.setStatementInputSuggestedBloqsWindowsView(false);
+                    }*/
                     buildContent(this);
                     this.$bloq[0].addEventListener('mousedown', bloqMouseDown);
                     this.$bloq[0].addEventListener('touchstart', bloqMouseDown);

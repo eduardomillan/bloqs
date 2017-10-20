@@ -1,5 +1,5 @@
 'use strict';
-(function(bloqsSuggested, bloqsLanguages, bloqsUtils) {
+(function (bloqsSuggested, bloqsLanguages, bloqsUtils) {
 
     var suggestedWindow,
         header,
@@ -34,6 +34,8 @@
             params.fieldScrollTop = params.fieldScrollTop || 0;
             params.fieldScrollLeft = params.fieldScrollLeft || 0;
 
+            params.offsetWidth = params.offsetWidth || 0;
+
 
 
             showWindowCallback = params.showWindowCallback;
@@ -54,7 +56,8 @@
                 fieldOffsetLeft: params.fieldOffsetLeft,
                 fieldOffsetRight: params.fieldOffsetRight,
                 fieldScrollTop: params.fieldScrollTop,
-                fieldScrollLeft: params.fieldScrollLeft
+                fieldScrollLeft: params.fieldScrollLeft,
+                offsetWidth: params.offsetWidth
             });
 
             if (params.suggestedBloqs && (params.suggestedBloqs.length > 0)) {
@@ -119,7 +122,7 @@
         suggestedWindow.className = suggestedWindow.className.replace(' top', '');
 
         var heightExtraOffset = 6,
-            widthExtraOffset = 21,
+            widthExtraOffset = 21 - params.offsetWidth,
             finalPoint = {},
             bottomFreeSpace = params.workspaceHeight + params.fieldOffsetTop - params.launcherBottomPoint.top,
             topFreeSpace = params.launcherTopPoint.top - params.fieldOffsetTop,
