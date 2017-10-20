@@ -55,7 +55,7 @@
         fieldOffsetRight = options.fieldOffsetRight || fieldOffsetRight || 0;
         fieldOffsetTopForced = options.fieldOffsetTopForced || fieldOffsetTopForced || 0;
         availableBloqs = options.availableBloqs;
-        suggestionOnStatements = options.suggestionOnStatements || false;
+        suggestionOnStatements = options.suggestionOnStatements || true;
 
         if ((options.forcedScrollTop === 0) || options.forcedScrollTop) {
             forcedScrollTop = options.forcedScrollTop;
