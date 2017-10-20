@@ -3178,7 +3178,7 @@
         preMouseMoveX,
         preMouseMoveY,
         shiftKeyDown,
-        suggestionOnStatements,
+        suggestionOnStatements = true,
         bloqSchemas,
         mainBloqs = [],
         componentsArray = bloqsUtils.getEmptyComponentsArray();
