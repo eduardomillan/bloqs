@@ -795,12 +795,9 @@
                 case 'statement-input':
                     bloq.$bloq.find('.btn-collapse')[0].removeEventListener('click', collapseButtonClick);
                 case 'group':
-                    var tempBloq,
-                        childConnector = connectors[bloq.connectors[2]].connectedTo;
-
-                    while (childConnector) {
-                        tempBloq = utils.getBloqByConnectorUuid(childConnector, bloqs, connectors);
-                        childConnector = connectors[tempBloq.connectors[1]].connectedTo;
+                    var childConnector = connectors[bloq.connectors[2]].connectedTo;
+                    if (childConnector) {
+                        var tempBloq = utils.getBloqByConnectorUuid(childConnector, bloqs, connectors);
                         removeBloq(tempBloq.uuid, redraw, removeAllConnectedBloqs);
                     }
                 /* falls through */
