@@ -894,7 +894,7 @@
                             tempIncludes = ['BitbloqDCMotor.h'];
                             var argument1Direc, argument2Speed;
 
-                            if (hardwareList.components[i].pin.A0) {
+                            if (hardwareList.components[i].pin.s === 'AO') {
                                 argument1Direc = 4;
                                 argument2Speed = 5;
                             } else {
