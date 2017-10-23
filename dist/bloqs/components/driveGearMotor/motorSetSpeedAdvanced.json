@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "mBotShowNumberOnLedMatrixAdvanced",
+  "name": "motorSetSpeedAdvanced",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,18 +20,27 @@
         "number",
         "selectVariable"
       ],
-      "name": "437355ea-6214-4426-864b-d64a226ba9e7"
+      "name": "4340c1cd-c42d-417f-a1b2-244c88cc6018"
     }
   ],
-  "bloqClass": "bloq-mbot-color",
+  "bloqClass": "bloq-components-color",
   "content": [
     [
       {
         "alias": "text",
-        "value": "bloq-makeblock-ledmatrix-writeNumber"
+        "value": "bloq-shield-DCmotor-spin"
       },
       {
-        "bloqInputId": "NUMBER",
+        "id": "MOTOR",
+        "alias": "dynamicDropdown",
+        "options": "drivegearmotor"
+      },
+      {
+        "alias": "text",
+        "value": "bloq-mbot-move-speed"
+      },
+      {
+        "bloqInputId": "SPEED",
         "alias": "bloqInput",
         "acceptType": [
           "all"
@@ -40,27 +49,22 @@
           "number",
           "selectVariable"
         ],
-        "name": "437355ea-6214-4426-864b-d64a226ba9e7"
+        "name": "4340c1cd-c42d-417f-a1b2-244c88cc6018"
       },
       {
         "alias": "text",
-        "value": "in-the"
-      },
-      {
-        "id": "LEDMATRIX",
-        "alias": "dynamicDropdown",
-        "options": "ledMatrix"
+        "value": "(-255,255)"
       }
     ]
   ],
   "code": "",
   "arduino": {
-    "code": "{LEDMATRIX}.showNum({NUMBER});"
+    "code": "{MOTOR}.setSpeed({SPEED});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"mBotShowNumberOnLedMatrixAdvanced\" no preparado para generar código python"
+        "code": "Bloque \"motorSetSpeedAdvanced\" no preparado para generar código python"
       }
     ]
   }

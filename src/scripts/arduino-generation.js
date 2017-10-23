@@ -890,6 +890,28 @@
                                 ]
                             };
                             break;
+                        case 'drivegearmotor':
+                            tempIncludes = ['BitbloqDCMotor.h'];
+                            var argument1Direc, argument2Speed;
+
+                            if (hardwareList.components[i].pin.s === 'AO') {
+                                argument1Direc = 4;
+                                argument2Speed = 5;
+                            } else {
+                                argument1Direc = 7;
+                                argument2Speed = 6;
+                            }
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Bitbloq::DCMotor',
+                                arguments: [
+                                    argument1Direc,
+                                    argument2Speed
+                                ]
+                            };
+
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
+                            break;
 
                     }
 

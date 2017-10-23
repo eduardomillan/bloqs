@@ -1216,7 +1216,8 @@
             remoteControl: [],
             freakscar_integrated_remote: [],
             freakscar_integrated_lightsensor: [],
-            freakscar_integrated_sp: []
+            freakscar_integrated_sp: [],
+            drivegearmotor: []
         };
     };
 
@@ -2544,6 +2545,28 @@
                                     makeblockBoardLibrary + '::ports[' + hardwareList.components[i].pin.s + '][1]'
                                 ]
                             };
+                            break;
+                        case 'drivegearmotor':
+                            tempIncludes = ['BitbloqDCMotor.h'];
+                            var argument1Direc, argument2Speed;
+
+                            if (hardwareList.components[i].pin.s === 'AO') {
+                                argument1Direc = 4;
+                                argument2Speed = 5;
+                            } else {
+                                argument1Direc = 7;
+                                argument2Speed = 6;
+                            }
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Bitbloq::DCMotor',
+                                arguments: [
+                                    argument1Direc,
+                                    argument2Speed
+                                ]
+                            };
+
+                            setupCodeAtTheEndOfExtraCodeMap[hardwareList.components[i].name + '.setup();'] = true;
                             break;
 
                     }
