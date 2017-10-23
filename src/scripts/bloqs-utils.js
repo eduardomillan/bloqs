@@ -1208,7 +1208,8 @@
             remoteControl: [],
             freakscar_integrated_remote: [],
             freakscar_integrated_lightsensor: [],
-            freakscar_integrated_sp: []
+            freakscar_integrated_sp: [],
+            drivegearmotor: []
         };
     };
 
