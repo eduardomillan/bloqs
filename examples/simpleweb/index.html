@@ -461,13 +461,15 @@
 
             var mkb_ExternalRGBLed = ['mkbSetExternalRGBLedSimple', 'mkbSetExternalRGBLedAdvanced', 'mkbSetExternalRGBLedAdvancedFull', 'mkbSetExternalRGBLedOff'];
 
+            var mkb_RangerRGBLed = ['mBotSetRGBLedSimple', 'mBotSetRGBLed', 'mBotRGBLedOff', 'mBotSetRGBLedAdvancedFull', 'mBotSetRGBLedAdvanced'];
+
             var mkb_ledMatrixV2 = ['mkbfan', 'mkbDrawRectangleAdvanced', 'mkbDrawLedMatrix', 'mkbDrawLineAdvanced', 'mkbDrawLedMatrixAdvanced'];
 
             var driveGearMotor = ['motorSetSpeed', 'motorSetSpeedAdvanced'];
 
             var testSet2 = ['if', 'switch', 'if', 'wait'];
 
-            testSet = driveGearMotor;
+            testSet = mkb_RangerRGBLed;
 
             for (var i = 0; i < testSet.length; i++) {
                 createBloq(testSet[i]);
