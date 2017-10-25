@@ -24,7 +24,7 @@ var mBotSetRGBLedSimple = _.merge(_.clone(StatementBloq, true), {
     content: [
         [{
             alias: 'text',
-            value: 'bloq-mbot-setled-set'
+            value: 'bloq-led-turnon'
         }, {
             id: 'LED',
             alias: 'dynamicDropdown',
