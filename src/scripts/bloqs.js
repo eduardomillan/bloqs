@@ -649,7 +649,7 @@
         }
     };
 
-    var updateSoftVar = function (bloq, name, type, args) {
+    var updateSoftVar = function (bloq, name, type) {
         var dynamicContentType = bloq.bloqData.createDynamicContent;
         //console.log('updating softVar', dynamicContentType);
         if (!dynamicContentType) {
@@ -667,18 +667,13 @@
             i++;
         }
         type = type || utils.getTypeFromBloq(bloq, bloqs, IOConnectors, softwareArrays, componentsArray);
-        //arguments if any:
-        if (bloq.bloqData.type === 'statement-input' && bloq.bloqData.arguments) {
-            args = args || utils.getArgsFromBloq(bloq, bloqs, IOConnectors);
-        } else {
-            args = '';
-        }
+
         var softVar;
         if (found) {
             softVar = softwareArrays[dynamicContentType][i - 1];
             softVar.name = name || softVar.name;
             softVar.type = type;
-            softVar.args = args;
+
             if (softVar.name) {
                 //cambiar data-value cuando el valor sea el mismo que el de la variable que se cambia
                 // $('select[data-varreference=' + softVar.id + ']').attr({
@@ -698,8 +693,7 @@
                     name: name,
                     id: utils.generateUUID(),
                     bloqUuid: bloq.uuid,
-                    type: type,
-                    args: args
+                    type: type
                 };
                 softwareArrays[dynamicContentType].push(softVar);
                 $('select[data-dropdowncontent="' + dynamicContentType + '"]').append($('<option>').attr({

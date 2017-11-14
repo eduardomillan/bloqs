@@ -768,43 +768,6 @@
 
     };
 
-    var getArgsFromBloq = function (bloq, bloqs, IOConnectors) {
-        var result;
-        if (!bloq) {
-            throw 'wadafak';
-        }
-
-        while (!bloq.bloqData.arguments) {
-            bloq = getParent(bloq, bloqs, IOConnectors);
-        }
-        var contentData = _.find(bloq.bloqData.content[0], {
-            bloqInputId: bloq.bloqData.arguments.bloqInputId
-        });
-        var connector = _.find(IOConnectors, {
-            bloqUuid: bloq.uuid,
-            data: {
-                name: contentData.name
-            }
-        });
-        if (connector && connector.connectedTo) {
-            var childBloq = getBloqByConnectorUuid(connector.connectedTo, bloqs, IOConnectors);
-            result = {
-                code: 'any code here',
-                bloq: childBloq.uuid,
-                funcName: '',
-                size: occurrencesInString(code, ',', false) + 1
-            };
-        } else {
-            result = {
-                code: '',
-                bloq: '',
-                funcName: '',
-                size: 0
-            };
-        }
-        return result;
-    };
-
     var drawSoftwareVars = function (softwareArrays) {
         for (var i = 0; i < softwareArrays.softwareVars.length; i++) {
             console.log('name: ', softwareArrays.softwareVars[i].name, 'type: ', softwareArrays.softwareVars[i].type);
@@ -1445,7 +1408,6 @@
     bloqsUtils.sameConnectionType = sameConnectionType;
     bloqsUtils.getFromDynamicDropdownType = getFromDynamicDropdownType;
     bloqsUtils.fillSchemaWithContent = fillSchemaWithContent;
-    bloqsUtils.getArgsFromBloq = getArgsFromBloq;
     bloqsUtils.removeInputsConnectorsFromBloq = removeInputsConnectorsFromBloq;
     bloqsUtils.getParent = getParent;
     bloqsUtils.checkPins = checkPins;

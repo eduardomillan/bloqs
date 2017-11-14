@@ -776,43 +776,6 @@
 
     };
 
-    var getArgsFromBloq = function (bloq, bloqs, IOConnectors) {
-        var result;
-        if (!bloq) {
-            throw 'wadafak';
-        }
-
-        while (!bloq.bloqData.arguments) {
-            bloq = getParent(bloq, bloqs, IOConnectors);
-        }
-        var contentData = _.find(bloq.bloqData.content[0], {
-            bloqInputId: bloq.bloqData.arguments.bloqInputId
-        });
-        var connector = _.find(IOConnectors, {
-            bloqUuid: bloq.uuid,
-            data: {
-                name: contentData.name
-            }
-        });
-        if (connector && connector.connectedTo) {
-            var childBloq = getBloqByConnectorUuid(connector.connectedTo, bloqs, IOConnectors);
-            result = {
-                code: 'any code here',
-                bloq: childBloq.uuid,
-                funcName: '',
-                size: occurrencesInString(code, ',', false) + 1
-            };
-        } else {
-            result = {
-                code: '',
-                bloq: '',
-                funcName: '',
-                size: 0
-            };
-        }
-        return result;
-    };
-
     var drawSoftwareVars = function (softwareArrays) {
         for (var i = 0; i < softwareArrays.softwareVars.length; i++) {
             console.log('name: ', softwareArrays.softwareVars[i].name, 'type: ', softwareArrays.softwareVars[i].type);
@@ -1453,7 +1416,6 @@
     bloqsUtils.sameConnectionType = sameConnectionType;
     bloqsUtils.getFromDynamicDropdownType = getFromDynamicDropdownType;
     bloqsUtils.fillSchemaWithContent = fillSchemaWithContent;
-    bloqsUtils.getArgsFromBloq = getArgsFromBloq;
     bloqsUtils.removeInputsConnectorsFromBloq = removeInputsConnectorsFromBloq;
     bloqsUtils.getParent = getParent;
     bloqsUtils.checkPins = checkPins;
@@ -3806,7 +3768,7 @@
         }
     };
 
-    var updateSoftVar = function (bloq, name, type, args) {
+    var updateSoftVar = function (bloq, name, type) {
         var dynamicContentType = bloq.bloqData.createDynamicContent;
         //console.log('updating softVar', dynamicContentType);
         if (!dynamicContentType) {
@@ -3824,18 +3786,13 @@
             i++;
         }
         type = type || utils.getTypeFromBloq(bloq, bloqs, IOConnectors, softwareArrays, componentsArray);
-        //arguments if any:
-        if (bloq.bloqData.type === 'statement-input' && bloq.bloqData.arguments) {
-            args = args || utils.getArgsFromBloq(bloq, bloqs, IOConnectors);
-        } else {
-            args = '';
-        }
+
         var softVar;
         if (found) {
             softVar = softwareArrays[dynamicContentType][i - 1];
             softVar.name = name || softVar.name;
             softVar.type = type;
-            softVar.args = args;
+
             if (softVar.name) {
                 //cambiar data-value cuando el valor sea el mismo que el de la variable que se cambia
                 // $('select[data-varreference=' + softVar.id + ']').attr({
@@ -3855,8 +3812,7 @@
                     name: name,
                     id: utils.generateUUID(),
                     bloqUuid: bloq.uuid,
-                    type: type,
-                    args: args
+                    type: type
                 };
                 softwareArrays[dynamicContentType].push(softVar);
                 $('select[data-dropdowncontent="' + dynamicContentType + '"]').append($('<option>').attr({
