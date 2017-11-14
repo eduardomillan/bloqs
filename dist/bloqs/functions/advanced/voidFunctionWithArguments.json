@@ -27,7 +27,7 @@
         "string",
         "selectVariable"
       ],
-      "name": "b53c014a-b228-40fb-a733-6254efa75c77"
+      "name": "c7fb35c4-ff12-4ef4-91a8-ab0636f1d12e"
     }
   ],
   "bloqClass": "bloq-void-function-with-arguments",
@@ -59,7 +59,7 @@
           "string",
           "selectVariable"
         ],
-        "name": "b53c014a-b228-40fb-a733-6254efa75c77"
+        "name": "c7fb35c4-ff12-4ef4-91a8-ab0636f1d12e"
       }
     ]
   ],
@@ -67,10 +67,6 @@
   "returnType": {
     "type": "simple",
     "value": "void"
-  },
-  "arguments": {
-    "type": "fromInput",
-    "bloqInputId": "ARGS"
   },
   "code": "void {FUNCNAME} ({ARGS}){{STATEMENTS}}",
   "arduino": {
