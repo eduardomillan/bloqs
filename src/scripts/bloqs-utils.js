@@ -1318,7 +1318,7 @@
         var connector1 = connectors[connectorUuid1],
             connector2 = connectors[connectorUuid2],
             result = false;
-        if (connector1.data && connector2.data) {
+        if (connector1 && connector2) {
             result = ((connector1.data.type === connector2.data.accept) && canConnectAliases(connector1.data.acceptedAliases, connector2.data.acceptedAliases));
         } else {
             console.log('cant check this connectors', connectorUuid1, connectorUuid2, connector1, connector2);
