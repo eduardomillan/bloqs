@@ -1324,9 +1324,14 @@
 
     function canConnectConnectors(connectorUuid1, connectorUuid2, connectors) {
         var connector1 = connectors[connectorUuid1],
-            connector2 = connectors[connectorUuid2];
-
-        return ((connector1.data.type === connector2.data.accept) && canConnectAliases(connector1.data.acceptedAliases, connector2.data.acceptedAliases));
+            connector2 = connectors[connectorUuid2],
+            result = false;
+        if (connector1 && connector2) {
+            result = ((connector1.data.type === connector2.data.accept) && canConnectAliases(connector1.data.acceptedAliases, connector2.data.acceptedAliases));
+        } else {
+            console.log('cant check this connectors', connectorUuid1, connectorUuid2, connector1, connector2);
+        }
+        return result;
     };
 
     function canConnectAliases(acceptedAliases1, acceptedAliases2) {
@@ -5388,6 +5393,16 @@
         return tempBloq;
     };
 
+    function removeAllBloqs() {
+        for (var i = 0; i < mainBloqs.length; i++) {
+            removeBloq(mainBloqs[i].uuid, true, true);
+        }
+        //prueba y descomenta
+        mainBloqs = []
+        //
+        destroyFreeBloqs();
+    }
+
     exports.Bloq = Bloq;
     exports.updateSoftVar = updateSoftVar;
     exports.connectors = connectors;
@@ -5402,6 +5417,7 @@
     exports.buildBloqWithContent = buildBloqWithContent;
     exports.clearSoftwareArrays = clearSoftwareArrays;
     exports.startBloqsUpdate = startBloqsUpdate;
+    exports.removeAllBloqs = removeAllBloqs;
 
     return exports;
 

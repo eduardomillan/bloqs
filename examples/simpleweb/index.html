@@ -60,6 +60,7 @@
     <div id="bloqs--field" class="theme-colors"></div>
     <button id="getcodebutton">getCode()</button>
     <button id="getStructure">getStructure()</button>
+    <button id="removeAllBloqs">removeAllBloqs()</button>
     <code id="code--field" class="language-"></code>
     <!-- end demo markup -->
     <p>See the
@@ -353,6 +354,10 @@
                     console.log('bloqs updated!');
                 });
             });
+            $('#removeAllBloqs').click(function () {
+                window.bloqs.removeAllBloqs();
+            });
+
             //start build bloqs!
             var createBloq = function (name) {
                 //Create a if bloq from the bloqsSchemas loaded
