@@ -5393,6 +5393,16 @@
         return tempBloq;
     };
 
+    function removeAllBloqs() {
+        for (var i = 0; i < mainBloqs.length; i++) {
+            removeBloq(mainBloqs[i].uuid, true, true);
+        }
+        //prueba y descomenta
+        mainBloqs = []
+        //
+        destroyFreeBloqs();
+    }
+
     exports.Bloq = Bloq;
     exports.updateSoftVar = updateSoftVar;
     exports.connectors = connectors;
@@ -5407,6 +5417,7 @@
     exports.buildBloqWithContent = buildBloqWithContent;
     exports.clearSoftwareArrays = clearSoftwareArrays;
     exports.startBloqsUpdate = startBloqsUpdate;
+    exports.removeAllBloqs = removeAllBloqs;
 
     return exports;
 
