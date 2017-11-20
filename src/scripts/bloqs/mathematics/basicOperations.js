@@ -75,7 +75,17 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
         }]
     },
     arduino: {
-        code: '{ARG1} {OPERATOR} {ARG2}'
+        conditional: {
+            aliasId: 'OPERATOR',
+            code: {
+                '+': '{ARG1} {OPERATOR} {ARG2}',
+                '-': '{ARG1} {OPERATOR} {ARG2}',
+                '*': '{ARG1} {OPERATOR} {ARG2}',
+                '/': '{ARG1} {OPERATOR} {ARG2}',
+                '^': 'pow({ARG1}, {ARG2})',
+                '%': '{ARG1} {OPERATOR} {ARG2}'
+            }
+        }
     }
 });
 
