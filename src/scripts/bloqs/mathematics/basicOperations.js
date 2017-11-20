@@ -29,24 +29,24 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
             id: 'OPERATOR',
             alias: 'staticDropdown',
             options: [{
-                    label: '+',
-                    value: '+'
-                }, {
-                    label: '-',
-                    value: '-'
-                }, {
-                    label: 'x',
-                    value: '*'
-                }, {
-                    label: '/',
-                    value: '/'
-                }, {
-                    label: '^',
-                    value: '^'
-                }, {
-                    label: '%',
-                    value: '%'
-                }] //'+', '-', '×', '÷', '^']
+                label: '+',
+                value: '+'
+            }, {
+                label: '-',
+                value: '-'
+            }, {
+                label: 'x',
+                value: '*'
+            }, {
+                label: '/',
+                value: '/'
+            }, {
+                label: '^',
+                value: '^'
+            }, {
+                label: '%',
+                value: '%'
+            }] //'+', '-', '×', '÷', '^']
         }, {
             bloqInputId: 'ARG2',
             alias: 'bloqInput',
@@ -75,17 +75,7 @@ var basicOperations = _.merge(_.clone(OutputBloq, true), {
         }]
     },
     arduino: {
-        conditional: {
-            aliasId: 'OPERATOR',
-            code: {
-                '+': '{ARG1} {OPERATOR} {ARG2}',
-                '-': '{ARG1} {OPERATOR} {ARG2}',
-                '*': '{ARG1} {OPERATOR} {ARG2}',
-                '/': '{ARG1} {OPERATOR} {ARG2}',
-                '^': '{ARG1} ** {ARG2}',
-                '%': '{ARG1} {OPERATOR} {ARG2}'
-            }
-        }
+        code: '{ARG1} {OPERATOR} {ARG2}'
     }
 });
 
