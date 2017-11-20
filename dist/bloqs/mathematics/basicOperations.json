@@ -18,7 +18,7 @@
         "basicOperations",
         "parenthesis"
       ],
-      "name": "ec8d3c85-262e-4581-942a-2efe26c055b9"
+      "name": "027c4b19-5097-4320-a584-cfa7c074e535"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "basicOperations",
         "parenthesis"
       ],
-      "name": "a910bd89-09eb-4b9d-8f07-fcc665d70218"
+      "name": "7e396fde-a253-4742-a106-3c4c375487fd"
     }
   ],
   "bloqClass": "bloq-basic-operations",
@@ -50,7 +50,7 @@
           "basicOperations",
           "parenthesis"
         ],
-        "name": "ec8d3c85-262e-4581-942a-2efe26c055b9"
+        "name": "027c4b19-5097-4320-a584-cfa7c074e535"
       },
       {
         "id": "OPERATOR",
@@ -94,7 +94,7 @@
           "basicOperations",
           "parenthesis"
         ],
-        "name": "a910bd89-09eb-4b9d-8f07-fcc665d70218"
+        "name": "7e396fde-a253-4742-a106-3c4c375487fd"
       }
     ]
   ],
@@ -121,6 +121,16 @@
     ]
   },
   "arduino": {
-    "code": "{ARG1} {OPERATOR} {ARG2}"
+    "conditional": {
+      "aliasId": "OPERATOR",
+      "code": {
+        "+": "{ARG1} {OPERATOR} {ARG2}",
+        "-": "{ARG1} {OPERATOR} {ARG2}",
+        "*": "{ARG1} {OPERATOR} {ARG2}",
+        "/": "{ARG1} {OPERATOR} {ARG2}",
+        "^": "pow({ARG1}, {ARG2})",
+        "%": "{ARG1} {OPERATOR} {ARG2}"
+      }
+    }
   }
 }
