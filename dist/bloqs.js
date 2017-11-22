@@ -1708,6 +1708,9 @@
                                 result = 'robot.readLDRLeft()';
                             }
                             break;
+                        case 'equidna_button_1':
+                            result = 'equidna.readButton1()';
+                            break;
                         default:
                             result = sensorName + '.read()';
                     }
@@ -2145,6 +2148,14 @@
                     type: 'BitbloqFreaksCar'
                 }, {}, hardwareList);
                 setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
+                break;
+            case 'equidna-ArduinoUNO':
+                includes['BitbloqEchidna.h'] = true;
+                addInstance({
+                    name: 'echidna',
+                    type: 'Bitbloq::Echidna'
+                }, {}, hardwareList);
+                setupCodeAtTheEndOfExtraCodeMap['echidna.setup();'] = true;
                 break;
         }
 
