@@ -38,7 +38,7 @@ var equidnaLeds = _.merge(_.clone(StatementBloq, true), {
             id: 'COLOR',
             alias: 'staticDropdown',
             options: [{
-                label: 'bloq-rgbLed-simple-green',
+                label: 'bloq-rgbLed-simple-red',
                 value: '0'
             }, {
                 label: 'amber',

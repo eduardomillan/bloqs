@@ -1,0 +1,53 @@
+{
+  "type": "output",
+  "name": "equidnaReadAccelXY",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-components-color",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "read-accelerometer"
+      },
+      {
+        "id": "AXIS",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "X",
+            "value": "X"
+          },
+          {
+            "label": "Y",
+            "value": "Y"
+          }
+        ]
+      }
+    ]
+  ],
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "arduino": {
+    "conditional": {
+      "aliasId": "AXIS",
+      "code": {
+        "X": "equidna.readAccX()",
+        "Y": "equidna.readAccY()"
+      }
+    }
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"equidnaReadAccelXY\" no preparado para generar código python"
+      }
+    ]
+  }
+}
