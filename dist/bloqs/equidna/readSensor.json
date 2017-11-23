@@ -1,0 +1,55 @@
+{
+  "type": "output",
+  "name": "equidnaReadSensor",
+  "connectors": [
+    {
+      "type": "connector--output",
+      "accept": "connector--input"
+    }
+  ],
+  "bloqClass": "bloq-read-sensor",
+  "content": [
+    [
+      {
+        "alias": "text",
+        "value": "bloq-read-read"
+      },
+      {
+        "id": "SENSOR",
+        "alias": "staticDropdown",
+        "options": [
+          {
+            "label": "equidna-button-1",
+            "value": "readButton1"
+          },
+          {
+            "label": "equidna-button-2",
+            "value": "readButton2"
+          },
+          {
+            "label": "equidna-ldrs",
+            "value": "readLightSensor"
+          },
+          {
+            "label": "equidna-joystick-button",
+            "value": "readJoystickButton"
+          }
+        ]
+      }
+    ]
+  ],
+  "returnType": {
+    "type": "simple",
+    "value": "float"
+  },
+  "arduino": {
+    "code": "equidna.{SENSOR}()"
+  },
+  "python": {
+    "codeLines": [
+      {
+        "code": "Bloque \"equidnaReadSensor\" no preparado para generar código python"
+      }
+    ]
+  }
+}

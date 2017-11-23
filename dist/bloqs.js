@@ -1708,18 +1708,6 @@
                                 result = 'robot.readLDRLeft()';
                             }
                             break;
-                        case 'equidna_button_1':
-                            result = 'equidna.readButton1()';
-                            break;
-                        case 'equidna_button_2':
-                            result = 'equidna.readButton1()';
-                            break;
-                        case 'equidna_ldrs':
-                            result = 'equidna.readLightSensor()';
-                            break;
-                        case 'equidna_joystick_button':
-                            result = 'equidna.readJoystickButton()';
-                            break;
                         default:
                             result = sensorName + '.read()';
                     }
