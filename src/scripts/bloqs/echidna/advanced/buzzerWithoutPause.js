@@ -74,6 +74,9 @@ var echidnaBuzzerWithoutPause = _.merge(_.clone(StatementBloq, true), {
         }, {
             alias: 'text',
             value: 'bloq-evolution-buzzer-ms'
+        }, {
+            alias: 'text',
+            value: 'bloq-buzzer-without-pause'
         }]
     ],
     arduino: {
