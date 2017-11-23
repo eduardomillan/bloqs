@@ -43,8 +43,8 @@ var echidnaReadAccelXY = _.merge(_.clone(OutputBloq, true), {
         conditional: {
             aliasId: 'AXIS',
             code: {
-                'X': 'equidna.readAccX()',
-                'Y': 'equidna.readAccY()'
+                'X': 'echidna.readAccX()',
+                'Y': 'echidna.readAccY()'
             }
         }
     }

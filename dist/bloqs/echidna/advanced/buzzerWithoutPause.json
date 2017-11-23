@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "echidnaBuzzer",
+  "name": "echidnaBuzzerWithoutPause",
   "connectors": [
     {
       "type": "connector--top",
@@ -88,12 +88,12 @@
     ]
   ],
   "arduino": {
-    "code": "echidna.playTone({NOTE},{SECONDS});\ndelay({SECONDS});"
+    "code": "echidna.playTone({NOTE},{SECONDS});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"echidnaBuzzer\" no preparado para generar código python"
+        "code": "Bloque \"echidnaBuzzerWithoutPause\" no preparado para generar código python"
       }
     ]
   }

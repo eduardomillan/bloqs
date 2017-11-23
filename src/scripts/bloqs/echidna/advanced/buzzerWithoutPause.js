@@ -2,11 +2,11 @@
 'use strict';
 
 var _ = require('lodash'),
-    utils = require('./../build-utils'),
-    StatementBloq = require('./../statementBloq');
+    utils = require('./../../build-utils'),
+    StatementBloq = require('./../../statementBloq');
 
 /**
- * Bloq name: echidnaBuzzer
+ * Bloq name: echidnaBuzzerWithoutPause
  *
  * Bloq type: Statement
  *
@@ -16,9 +16,9 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var echidnaBuzzer = _.merge(_.clone(StatementBloq, true), {
+var echidnaBuzzerWithoutPause = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'echidnaBuzzer',
+    name: 'echidnaBuzzerWithoutPause',
     bloqClass: 'bloq-components-color',
     content: [
         [{
@@ -77,9 +77,9 @@ var echidnaBuzzer = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     arduino: {
-        code: 'echidna.playTone({NOTE},{SECONDS});\ndelay({SECONDS});'
+        code: 'echidna.playTone({NOTE},{SECONDS});'
     }
 });
-utils.preprocessBloq(echidnaBuzzer);
+utils.preprocessBloq(echidnaBuzzerWithoutPause);
 
-module.exports = echidnaBuzzer;
+module.exports = echidnaBuzzerWithoutPause;
