@@ -6,7 +6,7 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
- * Bloq name: equidnaBuzzer
+ * Bloq name: echidnaBuzzer
  *
  * Bloq type: Statement
  *
@@ -16,9 +16,9 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var equidnaBuzzer = _.merge(_.clone(StatementBloq, true), {
+var echidnaBuzzer = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'equidnaBuzzer',
+    name: 'echidnaBuzzer',
     bloqClass: 'bloq-components-color',
     content: [
         [{
@@ -80,6 +80,6 @@ var equidnaBuzzer = _.merge(_.clone(StatementBloq, true), {
         code: 'echidna.playTone({NOTE},{SECONDS});'
     }
 });
-utils.preprocessBloq(equidnaBuzzer);
+utils.preprocessBloq(echidnaBuzzer);
 
-module.exports = equidnaBuzzer;
+module.exports = echidnaBuzzer;

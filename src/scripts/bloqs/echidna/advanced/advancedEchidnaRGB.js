@@ -6,7 +6,7 @@ var _ = require('lodash'),
     StatementBloq = require('./../../statementBloq');
 
 /**
- * Bloq name: advancedEquidnaRGB
+ * Bloq name: advancedEchidnaRGB
  *
  * Bloq type: Statement
  *
@@ -17,9 +17,9 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var advancedEquidnaRGB = _.merge(_.clone(StatementBloq, true), {
+var advancedEchidnaRGB = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'advancedEquidnaRGB',
+    name: 'advancedEchidnaRGB',
     bloqClass: 'bloq-components-color',
     content: [
         [{
@@ -55,11 +55,11 @@ var advancedEquidnaRGB = _.merge(_.clone(StatementBloq, true), {
         }]
     ],
     arduino: {
-        code: 'equidna.setRGBcolor({RED}, {GREEN}, {BLUE});'
+        code: 'echidna.setRGBcolor({RED}, {GREEN}, {BLUE});'
     }
 
 });
 
-utils.preprocessBloq(advancedEquidnaRGB);
+utils.preprocessBloq(advancedEchidnaRGB);
 
-module.exports = advancedEquidnaRGB;
+module.exports = advancedEchidnaRGB;

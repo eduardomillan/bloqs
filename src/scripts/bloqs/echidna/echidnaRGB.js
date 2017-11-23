@@ -6,7 +6,7 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
- * Bloq name: equidnaRGB
+ * Bloq name: echuidnaRGB
  *
  * Bloq type: Statement
  *
@@ -17,9 +17,9 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var equidnaRGB = _.merge(_.clone(StatementBloq, true), {
+var echuidnaRGB = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'equidnaRGB',
+    name: 'echidnaRGB',
     bloqClass: 'bloq-components-color',
     content: [
         [{
@@ -67,6 +67,6 @@ var equidnaRGB = _.merge(_.clone(StatementBloq, true), {
 
 });
 
-utils.preprocessBloq(equidnaRGB);
+utils.preprocessBloq(echuidnaRGB);
 
-module.exports = equidnaRGB;
+module.exports = echuidnaRGB;

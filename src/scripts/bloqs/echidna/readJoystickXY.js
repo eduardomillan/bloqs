@@ -6,7 +6,7 @@ var _ = require('lodash'),
     OutputBloq = require('./../outputBloq');
 
 /**
- * Bloq name: equidnaReadJoystickXY
+ * Bloq name: echidnaReadJoystickXY
  *
  * Bloq type: Statement-Input
  *
@@ -15,9 +15,9 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var equidnaReadJoystickXY = _.merge(_.clone(OutputBloq, true), {
+var echidnaReadJoystickXY = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'equidnaReadJoystickXY',
+    name: 'echidnaReadJoystickXY',
     bloqClass: 'bloq-components-color',
     content: [
         [{
@@ -46,13 +46,13 @@ var equidnaReadJoystickXY = _.merge(_.clone(OutputBloq, true), {
         conditional: {
             aliasId: 'OPTION',
             code: {
-                'X': 'equidna.readJoystickX()',
-                'Y': 'equidna.readJoystickY()'
+                'X': 'echidna.readJoystickX()',
+                'Y': 'echidna.readJoystickY()'
             }
         }
     }
 });
 
-utils.preprocessBloq(equidnaReadJoystickXY);
+utils.preprocessBloq(echidnaReadJoystickXY);
 
-module.exports = equidnaReadJoystickXY;
+module.exports = echidnaReadJoystickXY;

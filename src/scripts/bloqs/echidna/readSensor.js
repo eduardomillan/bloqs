@@ -6,7 +6,7 @@ var _ = require('lodash'),
     OutputBloq = require('./../outputBloq');
 
 /**
- * Bloq name: equidnareadSensor
+ * Bloq name: echidnareadSensor
  *
  * Bloq type: Output
  *
@@ -16,9 +16,9 @@ var _ = require('lodash'),
  * Return type: sensor's return type
  */
 
-var equidnareadSensor = _.merge(_.clone(OutputBloq, true), {
+var echidnareadSensor = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'equidnaReadSensor',
+    name: 'echidnaReadSensor',
     bloqClass: 'bloq-read-sensor',
     content: [
         [{
@@ -28,16 +28,16 @@ var equidnareadSensor = _.merge(_.clone(OutputBloq, true), {
             id: 'SENSOR',
             alias: 'staticDropdown',
             options: [{
-                label: 'equidna-button-1',
+                label: 'echidna-button-1',
                 value: 'readButton1'
             }, {
-                label: 'equidna-button-2',
+                label: 'echidna-button-2',
                 value: 'readButton2'
             }, {
-                label: 'equidna-ldrs',
+                label: 'echidna-ldrs',
                 value: 'readLightSensor'
             }, {
-                label: 'equidna-joystick-button',
+                label: 'echidna-joystick-button',
                 value: 'readJoystickButton'
             }]
         }]
@@ -47,10 +47,10 @@ var equidnareadSensor = _.merge(_.clone(OutputBloq, true), {
         value: 'float'
     },
     arduino: {
-        code: 'equidna.{SENSOR}()'
+        code: 'echidna.{SENSOR}()'
     }
 });
 
-utils.preprocessBloq(equidnareadSensor);
+utils.preprocessBloq(echidnareadSensor);
 
-module.exports = equidnareadSensor;
+module.exports = echidnareadSensor;

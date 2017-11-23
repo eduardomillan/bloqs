@@ -6,7 +6,7 @@ var _ = require('lodash'),
     OutputBloq = require('./../outputBloq');
 
 /**
- * Bloq name: equidnaReadAccelXY
+ * Bloq name: echidnaReadAccelXY
  *
  * Bloq type: Statement-Input
  *
@@ -15,9 +15,9 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var equidnaReadAccelXY = _.merge(_.clone(OutputBloq, true), {
+var echidnaReadAccelXY = _.merge(_.clone(OutputBloq, true), {
 
-    name: 'equidnaReadAccelXY',
+    name: 'echidnaReadAccelXY',
     bloqClass: 'bloq-components-color',
     content: [
         [{
@@ -50,6 +50,6 @@ var equidnaReadAccelXY = _.merge(_.clone(OutputBloq, true), {
     }
 });
 
-utils.preprocessBloq(equidnaReadAccelXY);
+utils.preprocessBloq(echidnaReadAccelXY);
 
-module.exports = equidnaReadAccelXY;
+module.exports = echidnaReadAccelXY;

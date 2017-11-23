@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "advancedEquidnaRGB",
+  "name": "advancedEchidnaRGB",
   "connectors": [
     {
       "type": "connector--top",
@@ -20,7 +20,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "049ff2d2-ecbf-42eb-b13c-1dd15a28519c"
+      "name": "b1970b3a-7ca7-4db7-80ac-691ee55d34f5"
     },
     {
       "type": "connector--input",
@@ -32,7 +32,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "1fbe3100-98cb-443f-9b88-e12cdacd5c31"
+      "name": "01119fcb-b5de-4a48-977c-b2932295c17a"
     },
     {
       "type": "connector--input",
@@ -44,7 +44,7 @@
         "number",
         "selectVariable"
       ],
-      "name": "f85a82ad-9449-498c-959a-8ee27d54b2b2"
+      "name": "766c215a-f0eb-40a0-ac16-27cec7eefc19"
     }
   ],
   "bloqClass": "bloq-components-color",
@@ -72,7 +72,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "049ff2d2-ecbf-42eb-b13c-1dd15a28519c"
+        "name": "b1970b3a-7ca7-4db7-80ac-691ee55d34f5"
       },
       {
         "alias": "text",
@@ -88,7 +88,7 @@
           "number",
           "selectVariable"
         ],
-        "name": "1fbe3100-98cb-443f-9b88-e12cdacd5c31"
+        "name": "01119fcb-b5de-4a48-977c-b2932295c17a"
       },
       {
         "alias": "text",
@@ -104,17 +104,17 @@
           "number",
           "selectVariable"
         ],
-        "name": "f85a82ad-9449-498c-959a-8ee27d54b2b2"
+        "name": "766c215a-f0eb-40a0-ac16-27cec7eefc19"
       }
     ]
   ],
   "arduino": {
-    "code": "equidna.setRGBcolor({RED}, {GREEN}, {BLUE});"
+    "code": "echidna.setRGBcolor({RED}, {GREEN}, {BLUE});"
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"advancedEquidnaRGB\" no preparado para generar código python"
+        "code": "Bloque \"advancedEchidnaRGB\" no preparado para generar código python"
       }
     ]
   }

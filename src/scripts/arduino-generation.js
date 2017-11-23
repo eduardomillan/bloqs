@@ -523,7 +523,9 @@
                 }, {}, hardwareList);
                 setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
                 break;
-            case 'equidna-ArduinoUNO':
+            case 'echidna-ArduinoUNO':
+            case 'echidna-bqZUM':
+            case 'echidna-FreaduinoUNO':
                 includes['BitbloqEchidna.h'] = true;
                 addInstance({
                     name: 'echidna',

@@ -6,7 +6,7 @@ var _ = require('lodash'),
     StatementBloq = require('./../statementBloq');
 
 /**
- * Bloq name: equidnaLeds
+ * Bloq name: echidnaLeds
  *
  * Bloq type: Statement
  *
@@ -16,9 +16,9 @@ var _ = require('lodash'),
  * Return type: none
  */
 
-var equidnaLeds = _.merge(_.clone(StatementBloq, true), {
+var echidnaLeds = _.merge(_.clone(StatementBloq, true), {
 
-    name: 'equidnaLeds',
+    name: 'echidnaLeds',
     bloqClass: 'bloq-components-color',
     content: [
         [{
@@ -39,13 +39,13 @@ var equidnaLeds = _.merge(_.clone(StatementBloq, true), {
             alias: 'staticDropdown',
             options: [{
                 label: 'bloq-rgbLed-simple-red',
-                value: '0'
+                value: '2'
             }, {
                 label: 'amber',
                 value: '1'
             }, {
                 label: 'bloq-rgbLed-simple-green',
-                value: '2'
+                value: '0'
             }]
         }]
     ],
@@ -53,6 +53,6 @@ var equidnaLeds = _.merge(_.clone(StatementBloq, true), {
         code: 'echidna.setLed({COLOR},{ACTION});'
     }
 });
-utils.preprocessBloq(equidnaLeds);
+utils.preprocessBloq(echidnaLeds);
 
-module.exports = equidnaLeds;
+module.exports = echidnaLeds;

@@ -1,6 +1,6 @@
 {
   "type": "output",
-  "name": "equidnaReadJoystickXY",
+  "name": "echidnaReadAccelXY",
   "connectors": [
     {
       "type": "connector--output",
@@ -12,10 +12,10 @@
     [
       {
         "alias": "text",
-        "value": "bloq-read-mkb_joystick"
+        "value": "read-accelerometer"
       },
       {
-        "id": "OPTION",
+        "id": "AXIS",
         "alias": "staticDropdown",
         "options": [
           {
@@ -27,10 +27,6 @@
             "value": "Y"
           }
         ]
-      },
-      {
-        "alias": "text",
-        "value": "bloq-of-joystick"
       }
     ]
   ],
@@ -40,17 +36,17 @@
   },
   "arduino": {
     "conditional": {
-      "aliasId": "OPTION",
+      "aliasId": "AXIS",
       "code": {
-        "X": "equidna.readJoystickX()",
-        "Y": "equidna.readJoystickY()"
+        "X": "equidna.readAccX()",
+        "Y": "equidna.readAccY()"
       }
     }
   },
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"equidnaReadJoystickXY\" no preparado para generar código python"
+        "code": "Bloque \"echidnaReadAccelXY\" no preparado para generar código python"
       }
     ]
   }

@@ -1,6 +1,6 @@
 {
   "type": "statement",
-  "name": "equidnaLeds",
+  "name": "echidnaLeds",
   "connectors": [
     {
       "type": "connector--top",
@@ -38,7 +38,7 @@
         "options": [
           {
             "label": "bloq-rgbLed-simple-red",
-            "value": "0"
+            "value": "2"
           },
           {
             "label": "amber",
@@ -46,7 +46,7 @@
           },
           {
             "label": "bloq-rgbLed-simple-green",
-            "value": "2"
+            "value": "0"
           }
         ]
       }
@@ -58,7 +58,7 @@
   "python": {
     "codeLines": [
       {
-        "code": "Bloque \"equidnaLeds\" no preparado para generar código python"
+        "code": "Bloque \"echidnaLeds\" no preparado para generar código python"
       }
     ]
   }
