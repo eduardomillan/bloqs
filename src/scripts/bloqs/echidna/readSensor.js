@@ -40,6 +40,9 @@ var echidnareadSensor = _.merge(_.clone(OutputBloq, true), {
                 label: 'echidna-joystick-button',
                 value: 'readJoystickButton'
             }]
+        }, {
+            alias: 'text',
+            value: 'from-echidna'
         }]
     ],
     returnType: {
