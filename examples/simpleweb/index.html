@@ -472,9 +472,11 @@
 
             var driveGearMotor = ['motorSetSpeed', 'motorSetSpeedAdvanced'];
 
+            var echidna = ['echidnaBuzzer', 'echidnaLeds', 'echidnaRGB', 'advancedEchidnaRGB', 'declareVariable', 'echidnaReadJoystickXY', 'echidnaReadAccelXY', 'echidnaReadSensor', 'echidnaBuzzerWithoutPause'];
+
             var testSet2 = ['declareVariable', 'basicOperations'];
 
-            testSet = testSet2;
+            testSet = echidna;
 
             for (var i = 0; i < testSet.length; i++) {
                 createBloq(testSet[i]);

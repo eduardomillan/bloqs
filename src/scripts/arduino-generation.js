@@ -523,6 +523,16 @@
                 }, {}, hardwareList);
                 setupCodeAtTheEndOfExtraCodeMap['robot.setup();'] = true;
                 break;
+            case 'echidna-ArduinoUNO':
+            case 'echidna-bqZUM':
+            case 'echidna-FreaduinoUNO':
+                includes['BitbloqEchidna.h'] = true;
+                addInstance({
+                    name: 'echidna',
+                    type: 'Bitbloq::Echidna'
+                }, {}, hardwareList);
+                setupCodeAtTheEndOfExtraCodeMap['echidna.setup();'] = true;
+                break;
         }
 
         if (hardwareList.components) {
