@@ -558,6 +558,7 @@
                                 equals: hardwareList.components[i].pin.s
                             };
                             break;
+                        case 'banana':
                         case 'button':
                         case 'analogButton':
                         case 'GroveShieldButton':
