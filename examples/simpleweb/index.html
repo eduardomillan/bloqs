@@ -474,9 +474,11 @@
 
             var echidna = ['echidnaBuzzer', 'echidnaLeds', 'echidnaRGB', 'advancedEchidnaRGB', 'declareVariable', 'echidnaReadJoystickXY', 'echidnaReadAccelXY', 'echidnaReadSensor', 'echidnaBuzzerWithoutPause'];
 
+            var echidna2 = ['declareVariable', 'echidnaReadSensor', 'echidnaRGBOff', 'echidnaRGBFull'];
+
             var testSet2 = ['declareVariable', 'basicOperations'];
 
-            testSet = echidna;
+            testSet = echidna2;
 
             for (var i = 0; i < testSet.length; i++) {
                 createBloq(testSet[i]);
