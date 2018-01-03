@@ -629,21 +629,17 @@
                             break;
                         case 'lcd':
                         case 'lcd_generic':
-                            var columns = 16,
-                                rows = 2;
+
                             tempIncludes = ['BitbloqLiquidCrystal.h'];
-                            if (hardwareList.components[i].metadata && hardwareList.components[i].metadata.rows) {
-                                columns = hardwareList.components[i].metadata.columns || 16;
-                                rows = hardwareList.components[i].metadata.rows || 2;
-                            }
+
                             if (hardwareList.components[i].metadata && hardwareList.components[i].metadata.i2cAddress) {
                                 tempInstanceOf = {
                                     name: hardwareList.components[i].name,
                                     type: 'Bitbloq::LiquidCrystal_I2C',
                                     arguments: [
                                         hardwareList.components[i].metadata.i2cAddress,
-                                        columns,
-                                        rows
+                                        hardwareList.components[i].metadata.columns || 16,
+                                        hardwareList.components[i].metadata.rows || 2
                                     ]
                                 };
                             } else {

@@ -50,15 +50,6 @@ var lcdWritePosition = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '{LCD}.setCursor({COLUMN},{ROW});{LCD}.print("{TEXT}");',
     arduino: {
-        includes: [
-            'Wire.h',
-            'BitbloqLiquidCrystal.h'
-        ],
-        needInstanceOf: [{
-            name: '{LCD}',
-            type: 'LiquidCrystal',
-            arguments: [0]
-        }],
         code: '{LCD}.setCursor({COLUMN},{ROW});{LCD}.print("{TEXT}");'
     }
 
