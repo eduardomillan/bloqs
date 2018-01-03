@@ -51,7 +51,6 @@ var lcdTurnOnOff = _.merge(_.clone(StatementBloq, true), {
             type: 'LiquidCrystal',
             arguments: [0]
         }],
-        setupExtraCode: '{LCD}.begin(16, 2);{LCD}.clear();',
         code: '{LCD}.setBacklight({STATE});'
     }
 });

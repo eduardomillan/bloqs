@@ -656,7 +656,7 @@
                                 };
                             }
 
-                            tempSetupExtraCode = hardwareList.components[i].name + '.begin(' + rows + ', ' + columns + ');' + hardwareList.components[i].name + '.clear();';
+                            tempSetupExtraCode = hardwareList.components[i].name + '.begin();' + hardwareList.components[i].name + '.clear();';
                             break;
 
                         case 'RGBled':

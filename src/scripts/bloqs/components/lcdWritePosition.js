@@ -59,7 +59,6 @@ var lcdWritePosition = _.merge(_.clone(StatementBloq, true), {
             type: 'LiquidCrystal',
             arguments: [0]
         }],
-        setupExtraCode: '{LCD}.begin(16, 2);{LCD}.clear();',
         code: '{LCD}.setCursor({COLUMN},{ROW});{LCD}.print("{TEXT}");'
     }
 

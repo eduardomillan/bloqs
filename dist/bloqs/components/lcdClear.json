@@ -40,7 +40,6 @@
         ]
       }
     ],
-    "setupExtraCode": "{LCD}.begin(16, 2);{LCD}.clear();",
     "code": "{LCD}.clear();"
   },
   "python": {
