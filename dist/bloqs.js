@@ -2251,16 +2251,37 @@
                             };
                             break;
                         case 'lcd':
-                            tempIncludes = ['Wire.h', 'BitbloqLiquidCrystal.h'];
-                            tempInstanceOf = {
-                                name: hardwareList.components[i].name,
-                                type: 'LiquidCrystal',
-                                arguments: [
-                                    '0'
-                                ]
-                            };
-                            tempSetupExtraCode = hardwareList.components[i].name + '.begin(16, 2);' + hardwareList.components[i].name + '.clear();';
+                        case 'lcd_generic':
+                            var columns = 16,
+                                rows = 2;
+                            tempIncludes = ['BitbloqLiquidCrystal.h'];
+                            if (hardwareList.components[i].metadata && hardwareList.components[i].metadata.rows) {
+                                columns = hardwareList.components[i].metadata.columns || 16;
+                                rows = hardwareList.components[i].metadata.rows || 2;
+                            }
+                            if (hardwareList.components[i].metadata && hardwareList.components[i].metadata.i2cAddress) {
+                                tempInstanceOf = {
+                                    name: hardwareList.components[i].name,
+                                    type: 'Bitbloq::LiquidCrystal_I2C',
+                                    arguments: [
+                                        hardwareList.components[i].metadata.i2cAddress,
+                                        columns,
+                                        rows
+                                    ]
+                                };
+                            } else {
+                                tempInstanceOf = {
+                                    name: hardwareList.components[i].name,
+                                    type: 'LiquidCrystal',
+                                    arguments: [
+                                        '0'
+                                    ]
+                                };
+                            }
+
+                            tempSetupExtraCode = hardwareList.components[i].name + '.begin(' + rows + ', ' + columns + ');' + hardwareList.components[i].name + '.clear();';
                             break;
+
                         case 'RGBled':
                             tempIncludes = ['BitbloqRGB.h'];
                             tempInstanceOf = {
