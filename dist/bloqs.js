@@ -2265,6 +2265,7 @@
                                         hardwareList.components[i].metadata.rows || 2
                                     ]
                                 };
+                                tempSetupExtraCode = hardwareList.components[i].name + '.begin();' + hardwareList.components[i].name + '.clear();';
                             } else {
                                 tempInstanceOf = {
                                     name: hardwareList.components[i].name,
@@ -2273,9 +2274,10 @@
                                         '0'
                                     ]
                                 };
+                                tempSetupExtraCode = hardwareList.components[i].name + '.begin(16, 2);' + hardwareList.components[i].name + '.clear();';
                             }
 
-                            tempSetupExtraCode = hardwareList.components[i].name + '.begin();' + hardwareList.components[i].name + '.clear();';
+
                             break;
 
                         case 'RGBled':
