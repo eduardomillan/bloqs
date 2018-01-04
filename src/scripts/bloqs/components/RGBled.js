@@ -54,7 +54,14 @@ var rgbLed = _.merge(_.clone(StatementBloq, true), {
     ],
     code: '{LED}.setRGBcolor({RED},{GREEN},{BLUE});',
     arduino: {
-        code: '{LED}.setRGBcolor({RED},{GREEN},{BLUE});'
+        conditional: {
+            hardwareProperty: 'codeType',
+            hardwareAliasId: 'LED',
+            code: {
+                'neopixel': '{LED}.setPixelColor(0, {LED}.Color({RED},{GREEN},{BLUE})); ',
+                '': '{LED}.setRGBcolor({RED},{GREEN},{BLUE});'
+            }
+        }
     }
 });
 

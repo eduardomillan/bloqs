@@ -11,6 +11,7 @@
 
     var includes = {},
         instances = {},
+        ifdefs = [],
         setupExtraCodeMap = {},
         setupCodeAtTheEndOfExtraCodeMap = {},
         programExtraCodeMap = {},
@@ -111,6 +112,7 @@
         procesingProgram = arduinoMainBloqs;
         includes = {};
         instances = {};
+        ifdefs = [];
         setupExtraCodeMap = {};
         setupCodeAtTheEndOfExtraCodeMap = {};
         programExtraCodeMap = {};
@@ -134,6 +136,12 @@
         var includesCode = '';
         for (prop in includes) {
             includesCode += '#include <' + prop + '>\n';
+        }
+        var ifdefsCode = '';
+        for (var i = 0; i < ifdefs.length; i++) {
+            ifdefsCode += '#ifdef ' + ifdefs[i].ifProperty + '\n';
+            ifdefsCode += '#include <' + ifdefs[i].libraryPath + '>\n';
+            ifdefsCode += '#endif\n\n';
         }
 
         var setupCodeAtTheEndOfExtraCode = '';
@@ -178,6 +186,7 @@
 
 
         code += '/***   Included libraries  ***/\n' + includesCode + '\n\n';
+        code += ifdefsCode + '\n\n';
         code += '/***   Global variables and function definition  ***/';
         code += programFunctionDeclarations + '\n';
         code += instancesCode + '\n';
@@ -313,8 +322,7 @@
             var aliases = bloqFullStructure.content[0],
                 childs = bloqFullStructure.childs,
                 childsCode = '',
-                aliasesValuesHashMap = {},
-                matchAliasOnInstance;
+                aliasesValuesHashMap = {};
 
             if (bloqFullStructure.arduino.includes) {
                 for (var i = 0; i < bloqFullStructure.arduino.includes.length; i++) {
@@ -344,8 +352,8 @@
                 }
             }
             if (childs) {
-                for (var i = 0; i < childs.length; i++) {
-                    childsCode += getCodeFromBloq(childs[i], hardwareList);
+                for (var k = 0; k < childs.length; k++) {
+                    childsCode += getCodeFromBloq(childs[k], hardwareList);
                 }
                 aliasesValuesHashMap.STATEMENTS = {
                     value: childsCode
@@ -353,11 +361,9 @@
             }
 
             if (bloqFullStructure.arduino.needInstanceOf) {
-                var tempInstanceName,
-                    tempInstanceId;
 
-                for (var i = 0; i < bloqFullStructure.arduino.needInstanceOf.length; i++) {
-                    addInstance(bloqFullStructure.arduino.needInstanceOf[i], aliasesValuesHashMap, hardwareList);
+                for (var j = 0; j < bloqFullStructure.arduino.needInstanceOf.length; j++) {
+                    addInstance(bloqFullStructure.arduino.needInstanceOf[j], aliasesValuesHashMap, hardwareList);
                 }
             }
 
@@ -381,7 +387,18 @@
 
 
             if (bloqFullStructure.arduino.conditional) {
-                code = bloqFullStructure.arduino.conditional.code[aliasesValuesHashMap[bloqFullStructure.arduino.conditional.aliasId].value];
+                if (bloqFullStructure.arduino.conditional.aliasId) {
+                    code = bloqFullStructure.arduino.conditional.code[aliasesValuesHashMap[bloqFullStructure.arduino.conditional.aliasId].value];
+                } else if (bloqFullStructure.arduino.conditional.hardwareAliasId) {
+                    var hardwareName = aliasesValuesHashMap[bloqFullStructure.arduino.conditional.hardwareAliasId].value;
+                    var tempHardwareData = findItemByProperty(hardwareName, hardwareList.components, 'name');
+                    var conditionalValue = accessNestedPropertyByString(tempHardwareData, 'metadata.' + bloqFullStructure.arduino.conditional.hardwareProperty);
+                    code = bloqFullStructure.arduino.conditional.code[conditionalValue];
+                } else {
+                    console.error('bloq conditional not defined');
+                    code = bloqFullStructure.arduino.conditional.code[aliasesValuesHashMap[bloqFullStructure.arduino.conditional.aliasId].value];
+                }
+
             } else {
                 code = bloqFullStructure.arduino.code;
             }
@@ -658,16 +675,32 @@
                             break;
 
                         case 'RGBled':
-                            tempIncludes = ['BitbloqRGB.h'];
-                            tempInstanceOf = {
-                                name: hardwareList.components[i].name,
-                                type: 'ZumRGB',
-                                arguments: [
-                                    hardwareList.components[i].pin.r,
-                                    hardwareList.components[i].pin.g,
-                                    hardwareList.components[i].pin.b
-                                ]
-                            };
+
+                            if (hardwareList.components[i].metadata && (hardwareList.components[i].metadata.codeType === 'neopixel')) {
+                                tempIncludes = ['Adafruit_NeoPixel.h'];
+                                ifdefs.push({
+                                    ifProperty: '__AVR__',
+                                    libraryPath: 'avr/power.h'
+                                });
+                                tempInstanceOf = {
+                                    name: hardwareList.components[i].name,
+                                    type: 'Bitbloq::Adafruit_NeoPixel',
+                                    equals: 'Bitbloq::Adafruit_NeoPixel( 1, ' + hardwareList.components[i].pin.s + ', NEO_GRB + NEO_KHZ800)',
+                                };
+                                tempSetupExtraCode = hardwareList.components[i].name + '.begin();';
+                            } else {
+                                tempIncludes = ['BitbloqRGB.h'];
+                                tempInstanceOf = {
+                                    name: hardwareList.components[i].name,
+                                    type: 'ZumRGB',
+                                    arguments: [
+                                        hardwareList.components[i].pin.r,
+                                        hardwareList.components[i].pin.g,
+                                        hardwareList.components[i].pin.b
+                                    ]
+                                };
+                            }
+
                             break;
                         case 'rtc':
                             tempIncludes = ['Wire.h', 'BitbloqRTC.h'];

@@ -279,6 +279,14 @@
                 }
             });
 
+            componentsArray.rgbs.push({
+                id: "rgbLed",
+                name: "neo",
+                pin: {
+                    s: "5"
+                }
+            });
+
             componentsArray.joystick.push({
                 id: "mkb_joystick",
                 name: "mkb_joystick",
@@ -478,7 +486,9 @@
 
             var testSet2 = ['declareVariable', 'basicOperations'];
 
-            testSet = echidna2;
+            var neoPixelRGB = ['rgbLed'];
+
+            testSet = neoPixelRGB;
 
             for (var i = 0; i < testSet.length; i++) {
                 createBloq(testSet[i]);
@@ -486,7 +496,28 @@
 
             var hardwareSchema = {
                 "board": "mcore",
-                "components": [{
+                "components": [
+                    {
+                        "uuid": "RGBled",
+                        "manufacturer": "standard",
+                        "category": "rgbs",
+                        "width": 67,
+                        "height": 79,
+                        "name": "neo",
+                        "pins": {
+                            "digital": [
+                                "s"
+                            ]
+                        },
+                        "pin": {
+                            "s": "2"
+                        },
+                        "connected": true,
+                        "metadata": {
+                            "codeType": "neopixel"
+                        }
+                    }
+                    /*{
                     "id": "sp",
                     "baudRate": "9600",
                     "width": 115,
@@ -571,7 +602,7 @@
                             "type": "yellow"
                         }
                     }
-                }
+                }*/
                     /*, {
                      "id": "phone",
                      "baudRate": "9600",
