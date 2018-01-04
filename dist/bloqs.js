@@ -2016,7 +2016,7 @@
                     var hardwareName = aliasesValuesHashMap[bloqFullStructure.arduino.conditional.hardwareAliasId].value;
                     var tempHardwareData = findItemByProperty(hardwareName, hardwareList.components, 'name');
                     var conditionalValue = accessNestedPropertyByString(tempHardwareData, 'metadata.' + bloqFullStructure.arduino.conditional.hardwareProperty);
-                    code = bloqFullStructure.arduino.conditional.code[conditionalValue];
+                    code = bloqFullStructure.arduino.conditional.code[conditionalValue || ''];
                 } else {
                     console.error('bloq conditional not defined');
                     code = bloqFullStructure.arduino.conditional.code[aliasesValuesHashMap[bloqFullStructure.arduino.conditional.aliasId].value];
