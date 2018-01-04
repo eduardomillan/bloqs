@@ -673,34 +673,30 @@
 
 
                             break;
-
+                        case 'neoRGBled':
+                            tempIncludes = ['Adafruit_NeoPixel.h'];
+                            ifdefs.push({
+                                ifProperty: '__AVR__',
+                                libraryPath: 'avr/power.h'
+                            });
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'Bitbloq::Adafruit_NeoPixel',
+                                equals: 'Bitbloq::Adafruit_NeoPixel( 1, ' + hardwareList.components[i].pin.s + ', NEO_GRB + NEO_KHZ800)',
+                            };
+                            tempSetupExtraCode = hardwareList.components[i].name + '.begin();';
+                            break;
                         case 'RGBled':
-
-                            if (hardwareList.components[i].metadata && (hardwareList.components[i].metadata.codeType === 'neopixel')) {
-                                tempIncludes = ['Adafruit_NeoPixel.h'];
-                                ifdefs.push({
-                                    ifProperty: '__AVR__',
-                                    libraryPath: 'avr/power.h'
-                                });
-                                tempInstanceOf = {
-                                    name: hardwareList.components[i].name,
-                                    type: 'Bitbloq::Adafruit_NeoPixel',
-                                    equals: 'Bitbloq::Adafruit_NeoPixel( 1, ' + hardwareList.components[i].pin.s + ', NEO_GRB + NEO_KHZ800)',
-                                };
-                                tempSetupExtraCode = hardwareList.components[i].name + '.begin();';
-                            } else {
-                                tempIncludes = ['BitbloqRGB.h'];
-                                tempInstanceOf = {
-                                    name: hardwareList.components[i].name,
-                                    type: 'ZumRGB',
-                                    arguments: [
-                                        hardwareList.components[i].pin.r,
-                                        hardwareList.components[i].pin.g,
-                                        hardwareList.components[i].pin.b
-                                    ]
-                                };
-                            }
-
+                            tempIncludes = ['BitbloqRGB.h'];
+                            tempInstanceOf = {
+                                name: hardwareList.components[i].name,
+                                type: 'ZumRGB',
+                                arguments: [
+                                    hardwareList.components[i].pin.r,
+                                    hardwareList.components[i].pin.g,
+                                    hardwareList.components[i].pin.b
+                                ]
+                            };
                             break;
                         case 'rtc':
                             tempIncludes = ['Wire.h', 'BitbloqRTC.h'];
