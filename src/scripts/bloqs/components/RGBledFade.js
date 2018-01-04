@@ -52,9 +52,15 @@ var rgbLedFade = _.merge(_.clone(StatementBloq, true), {
             value: 0
         }]
     ],
-    code: '{LED}.crossFade({RED},{GREEN},{BLUE});',
     arduino: {
-        code: '{LED}.crossFade({RED},{GREEN},{BLUE});'
+        conditional: {
+            hardwareProperty: 'codeType',
+            hardwareAliasId: 'LED',
+            code: {
+                'neopixel': '{LED}.setPixelColor(0, {LED}.Color({RED},{GREEN},{BLUE}));\n{LED}.show();',
+                '': '{LED}.crossFade({RED},{GREEN},{BLUE});'
+            }
+        }
     }
 });
 

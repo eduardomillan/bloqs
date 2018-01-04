@@ -58,7 +58,7 @@ var rgbLed = _.merge(_.clone(StatementBloq, true), {
             hardwareProperty: 'codeType',
             hardwareAliasId: 'LED',
             code: {
-                'neopixel': '{LED}.setPixelColor(0, {LED}.Color({RED},{GREEN},{BLUE})); ',
+                'neopixel': '{LED}.setPixelColor(0, {LED}.Color({RED},{GREEN},{BLUE}));\n{LED}.show();',
                 '': '{LED}.setRGBcolor({RED},{GREEN},{BLUE});'
             }
         }

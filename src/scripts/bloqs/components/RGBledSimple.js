@@ -66,9 +66,15 @@ var rgbLedSimple = _.merge(_.clone(StatementBloq, true), {
             }]
         }]
     ],
-    code: '{LED}.setRGBcolor({COLOR});',
     arduino: {
-        code: '{LED}.setRGBcolor({COLOR});'
+        conditional: {
+            hardwareProperty: 'codeType',
+            hardwareAliasId: 'LED',
+            code: {
+                'neopixel': '{LED}.setPixelColor(0, {LED}.Color({COLOR}));\n{LED}.show();',
+                '': '{LED}.setRGBcolor({COLOR});'
+            }
+        }
     }
 
 });

@@ -31,9 +31,15 @@ var rgbLedOff = _.merge(_.clone(StatementBloq, true), {
             options: 'rgbs'
         }]
     ],
-    code: '{LED}.setRGBcolor(0,0,0);',
     arduino: {
-        code: '{LED}.setRGBcolor(0,0,0);'
+        conditional: {
+            hardwareProperty: 'codeType',
+            hardwareAliasId: 'LED',
+            code: {
+                'neopixel': '{LED}.setPixelColor(0, {LED}.Color(0, 0, 0));\n{LED}.show();',
+                '': '{LED}.setRGBcolor(0,0,0);'
+            }
+        }
     }
 });
 
