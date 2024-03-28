@@ -1,13 +1,12 @@
-[![Stories in Ready](https://badge.waffle.io/bq/bloqs.png?label=ready&title=Ready)](https://waffle.io/bq/bloqs)
 # bloqs
 
 Bloqs lib to develop awesome tools to teach robotics
 
 ## About
 
-A JavaScript library by Bitbloq Team
+A JavaScript library by Bitbloq Team and enhanced by [Tom Calvo] ((https://github.com/tocalvo).
 
-See the [project homepage](https://github.com/bq/bloqs).
+See the [original repository](https://github.com/tocalvo/bloqs).
 
 ## Installation
 
